@@ -404,6 +404,20 @@ table.tbl td strong { color: var(--ink); }
   .open-book-left { display: none; }
 }
 
+/* header art: one historical picture inside the header, faded into the navy under the title (no separate banner strip) */
+.header.has-art { isolation: isolate; }
+.header-art { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.header-art img { position: absolute; top: 0; right: 0; width: 64%; height: 100%; object-fit: cover; display: block; opacity: .62; filter: sepia(.15) saturate(.9);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 35%, #000 70%), linear-gradient(0deg, transparent 0%, #000 22%);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 35%, #000 70%), linear-gradient(0deg, transparent 0%, #000 22%); mask-composite: intersect; }
+.header-credit { position: absolute; right: 16px; bottom: 14px; max-width: 46%; text-align: right; font-size: 10px; line-height: 1.35; color: rgba(255,255,255,.72); text-shadow: 0 1px 3px rgba(0,0,0,.7); }
+.header-credit em { font-style: italic; }
+.header-art img.art-tall { width: 30%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%), linear-gradient(0deg, transparent 0%, #000 22%); mask-image: linear-gradient(90deg, transparent 0%, #000 45%), linear-gradient(0deg, transparent 0%, #000 22%); }
+@media (max-width: 640px) {
+  .header-art img { width: 100%; opacity: .32; -webkit-mask-image: linear-gradient(0deg, transparent 0%, #000 30%); mask-image: linear-gradient(0deg, transparent 0%, #000 30%); }
+  .header-art img.art-tall { width: 100%; }
+  .header-credit { position: static; max-width: none; text-align: left; margin-top: 10px; }
+}
 </style>
 <style>
     #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
@@ -929,9 +943,8 @@ body.greenwood .writers-room .activity-num { background: #8E1E1E !important; }
     <div class="header-logo"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" /></div>
     <div><div class="header-org">Optima Academy Online</div><div class="header-sub">An Education Experience Company</div></div>
   </div>
-  <div class="header-course">6th Grade ELA &middot; Module 4 &middot; The Adventures of Robin Hood</div>
+  <div class="header-course">6th Grade ELA &middot; The Adventures of Robin Hood</div>
   <div class="header-title">The Writer&rsquo;s <em>Bench</em></div>
-  <div class="header-badge"><span class="header-badge-icon">✏️</span><span class="header-badge-text">Week 1 &middot; 3 of 4</span></div>
 </div>
 <button class="gw-toggle" id="gwToggle" type="button" aria-pressed="true">🌳 Greenwood colors: on</button>
 
@@ -946,12 +959,6 @@ body.greenwood .writers-room .activity-num { background: #8E1E1E !important; }
   </div>
 </div>
 
-<div class="info-strip">
-  <div class="info-cell"><div class="info-icon" style="background:#EEF1F8;">🏹</div><div><div class="info-label">Module</div><div class="info-value">Module 4</div><div class="info-detail">The Adventures of Robin Hood</div></div></div>
-  <div class="info-cell"><div class="info-icon" style="background:#EAF8FD;">📅</div><div><div class="info-label">Week</div><div class="info-value">Week 1</div><div class="info-detail">Lesson 3 of 4</div></div></div>
-  <div class="info-cell"><div class="info-icon" style="background:#FFF3DC;">📖</div><div><div class="info-label">Reading</div><div class="info-value">Prologue&ndash;Ch. 2</div><div class="info-detail">No new chapter</div></div></div>
-  <div class="info-cell"><div class="info-icon" style="background:#F1EAF6;">✏️</div><div><div class="info-label">Focus</div><div class="info-value">Proper Nouns</div><div class="info-detail">+ The eight words &middot; the draft</div></div></div>
-</div>
 
 <div class="quote-strip">
   <div class="quote-strip-text">&ldquo;All his movements were quick, but none of them was hurried.&rdquo;</div>
@@ -959,7 +966,7 @@ body.greenwood .writers-room .activity-num { background: #8E1E1E !important; }
 </div>
 
 <div class="intro-section" id="introSection">
-  <div class="intro-collapsed-bar" onclick="expandIntro()"><span class="intro-collapsed-icon">🎯</span><span class="intro-collapsed-text">This Lesson&rsquo;s Objectives &amp; Path</span><span class="intro-collapsed-toggle">▼ Expand</span></div>
+  <div class="intro-collapsed-bar" onclick="expandIntro()"><span class="intro-collapsed-icon">🎯</span><span class="intro-collapsed-text">This Lesson&rsquo;s Objectives</span><span class="intro-collapsed-toggle">▼ Expand</span></div>
   <div class="intro-2col">
     <div class="intro-card theme-question">
       <div class="intro-card-head"><div class="intro-card-head-icon">❓</div><div><div class="intro-card-head-label">Big Question</div><div class="intro-card-head-title">Today&rsquo;s Wonder</div></div></div>
@@ -972,15 +979,6 @@ body.greenwood .writers-room .activity-num { background: #8E1E1E !important; }
         <div class="obj-line"><span class="obj-icon">🔤</span><span><strong>Words:</strong> I will use all eight words of the week and make one of them my own.</span></div>
         <div class="obj-line"><span class="obj-icon">📝</span><span><strong>Writing:</strong> I will draft Quick Write 1.</span></div>
       </div>
-    </div>
-  </div>
-  <div class="todays-path">
-    <div class="todays-path-title">🗺️ Today&rsquo;s Path</div>
-    <div class="todays-path-steps">
-      <span class="todays-path-step">🌅 Fix a sentence, mark the poem</span><span class="todays-path-arrow">→</span>
-      <span class="todays-path-step">✏️ Learn proper nouns, then find them</span><span class="todays-path-arrow">→</span>
-      <span class="todays-path-step">🔤 Work with all eight words</span><span class="todays-path-arrow">→</span>
-      <span class="todays-path-step">✍️ Draft your Quick Write</span>
     </div>
   </div>
   <div class="need-strip">
@@ -1389,14 +1387,14 @@ Sherwood in the red dawn, is Robin Hood asleep?</div>
 </div>
 
 <div class="footer">
-  <div class="footer-main"><span>Optima Academy Online</span> · 6th Grade ELA · Quarter 3 · Module 4 · Week 1</div>
+  <div class="footer-main"><span>Optima Academy Online</span> · 6th Grade ELA · Module 4 · Week 1</div>
   <div class="footer-sub"><em>The Adventures of Robin Hood</em> · Prologue to Chapter 2 · The Writer&rsquo;s Bench</div>
   <div class="footer-standards">FL: ELA.6.C.3.1, ELA.6.V.1.3, ELA.6.C.1.2 · TX: 6.2(B), 6.11(A)</div>
   <div class="footer-copy">Academic Design and Curriculum (AcDC) · © Optima Academy Online · An Education Experience Company</div>
 </div>
 
 </div>
-<script type="application/json" id="page-config">{"week": 1, "weekKey": "ela6-m4-w1", "lesson": 3, "lessons": [{"n": 1, "title": "A Hero Is Born in the Greenwood", "href": "w1-lesson1-greenwood.html", "expect": 11}, {"n": 2, "title": "Outlawed on a False Charge", "href": "w1-lesson2-outlawed.html", "expect": 10}, {"n": 3, "title": "The Writer's Bench", "href": "w1-lesson3-writers-bench.html", "expect": 11}, {"n": 4, "title": "Hero or Outlaw?", "href": "w1-lesson4-hero-or-outlaw.html", "expect": 8}], "logTitle": "6TH GRADE ELA · MODULE 4 · WEEK 1 · THE WRITER'S BENCH"}</script>
+<script type="application/json" id="page-config">{"week": 1, "weekKey": "ela6-m4-w1", "lesson": 3, "lessons": [{"n": 1, "title": "A Hero Is Born in the Greenwood", "href": "w1-lesson1-greenwood.html", "expect": 11}, {"n": 2, "title": "Outlawed on a False Charge", "href": "w1-lesson2-outlawed.html", "expect": 10}, {"n": 3, "title": "The Writer's Bench", "href": "w1-lesson3-writers-bench.html", "expect": 11}, {"n": 4, "title": "Hero or Outlaw?", "href": "w1-lesson4-hero-or-outlaw.html", "expect": 7}], "logTitle": "6TH GRADE ELA · MODULE 4 · WEEK 1 · THE WRITER'S BENCH"}</script>
 <script>
 (function () {
     "use strict";
@@ -2096,7 +2094,7 @@ function l3markDone(el){ if (el && el.dataset.done !== '1') { el.dataset.done = 
 document.querySelectorAll('img[data-img]').forEach(function(i){ i.src = l3src(i.dataset.img); if (!i.alt) i.alt = (L3A.img[i.dataset.img] || {}).alt || ''; });
 
 /* ───── GREENWOOD SKIN: on from the start, with the same on/off switch as Lesson 1.
-   No painting in the header: the lesson's one banner is the .lesson-banner under it. ───── */
+   The lesson's one picture sits faded inside the header (.header-art); no banner strip. ───── */
 (function initGreenwood(){
   var t = document.getElementById('gwToggle');
   function set(on){

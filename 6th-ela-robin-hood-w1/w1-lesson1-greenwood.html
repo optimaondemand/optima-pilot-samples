@@ -404,6 +404,20 @@ table.tbl td strong { color: var(--ink); }
   .open-book-left { display: none; }
 }
 
+/* header art: one historical picture inside the header, faded into the navy under the title (no separate banner strip) */
+.header.has-art { isolation: isolate; }
+.header-art { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.header-art img { position: absolute; top: 0; right: 0; width: 64%; height: 100%; object-fit: cover; display: block; opacity: .62; filter: sepia(.15) saturate(.9);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 35%, #000 70%), linear-gradient(0deg, transparent 0%, #000 22%);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 35%, #000 70%), linear-gradient(0deg, transparent 0%, #000 22%); mask-composite: intersect; }
+.header-credit { position: absolute; right: 16px; bottom: 14px; max-width: 46%; text-align: right; font-size: 10px; line-height: 1.35; color: rgba(255,255,255,.72); text-shadow: 0 1px 3px rgba(0,0,0,.7); }
+.header-credit em { font-style: italic; }
+.header-art img.art-tall { width: 30%; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 45%), linear-gradient(0deg, transparent 0%, #000 22%); mask-image: linear-gradient(90deg, transparent 0%, #000 45%), linear-gradient(0deg, transparent 0%, #000 22%); }
+@media (max-width: 640px) {
+  .header-art img { width: 100%; opacity: .32; -webkit-mask-image: linear-gradient(0deg, transparent 0%, #000 30%); mask-image: linear-gradient(0deg, transparent 0%, #000 30%); }
+  .header-art img.art-tall { width: 100%; }
+  .header-credit { position: static; max-width: none; text-align: left; margin-top: 10px; }
+}
 </style>
 <style>
     #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
@@ -926,16 +940,16 @@ body.greenwood .tab-panel { background-image: linear-gradient(180deg, rgba(107,1
   <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
   <span class="progress-pct" id="progressPct">0%</span>
 </div>
-<div class="header">
+<div class="header has-art">
+  <div class="header-art" aria-hidden="true"><img data-img="nottingham" alt="" style="object-position:center 40%"></div>
   <div class="header-brand">
     <div class="header-logo"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" /></div>
     <div><div class="header-org">Optima Academy Online</div><div class="header-sub">An Education Experience Company</div></div>
   </div>
-  <div class="header-course">6th Grade ELA &middot; Module 4 &middot; The Adventures of Robin Hood</div>
+  <div class="header-course">6th Grade ELA &middot; The Adventures of Robin Hood</div>
   <div class="header-title">A Hero Is Born in the <em>Greenwood</em></div>
-  <div class="header-badge"><span class="header-badge-icon">🏹</span><span class="header-badge-text">Week 1 &middot; 1 of 4</span></div>
+  <div class="header-credit">Nottingham Castle on its rock above the town. Attributed to Paul Sandby, 1700s, Nottingham Castle Museum. Public domain.</div>
 </div>
-<div class="gw-banner" aria-hidden="true"><img data-img="nottingham" alt=""><div class="gw-banner-cap">Nottingham: the castle rock above the town<small>Painted in the 1700s. The medieval castle that stood here in Robin Hood&rsquo;s time was pulled down in 1651.</small></div></div>
 <button class="gw-toggle" id="gwToggle" type="button" aria-pressed="false">🌳 Greenwood colors: on</button>
 
 <div class="standards-toggle-bar" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open');">
@@ -949,12 +963,6 @@ body.greenwood .tab-panel { background-image: linear-gradient(180deg, rgba(107,1
   </div>
 </div>
 
-<div class="info-strip">
-  <div class="info-cell"><div class="info-icon" style="background:#EEF1F8;">🏹</div><div><div class="info-label">Module</div><div class="info-value">Module 4</div><div class="info-detail">The Adventures of Robin Hood</div></div></div>
-  <div class="info-cell"><div class="info-icon" style="background:#EAF8FD;">📅</div><div><div class="info-label">Week</div><div class="info-value">Week 1</div><div class="info-detail">Lesson 1 of 4</div></div></div>
-  <div class="info-cell"><div class="info-icon" style="background:#FFF3DC;">📖</div><div><div class="info-label">Reading</div><div class="info-value">Prologue &amp; Ch. 1</div><div class="info-detail">The Good Spirit of Sherwood</div></div></div>
-  <div class="info-cell"><div class="info-icon" style="background:#F1EAF6;">✏️</div><div><div class="info-label">Focus</div><div class="info-value">Setting</div><div class="info-detail">+ People words &middot; the cast</div></div></div>
-</div>
 
 <div class="quote-strip">
   <div class="quote-strip-text">&ldquo;May you be true to the soil of England and bring help to the down-trodden all your days!&rdquo;</div>
@@ -962,7 +970,7 @@ body.greenwood .tab-panel { background-image: linear-gradient(180deg, rgba(107,1
 </div>
 
 <div class="intro-section" id="introSection">
-  <div class="intro-collapsed-bar" onclick="expandIntro()"><span class="intro-collapsed-icon">🎯</span><span class="intro-collapsed-text">This Lesson&rsquo;s Objectives &amp; Path</span><span class="intro-collapsed-toggle">▼ Expand</span></div>
+  <div class="intro-collapsed-bar" onclick="expandIntro()"><span class="intro-collapsed-icon">🎯</span><span class="intro-collapsed-text">This Lesson&rsquo;s Objectives</span><span class="intro-collapsed-toggle">▼ Expand</span></div>
   <div class="intro-2col">
     <div class="intro-card theme-question">
       <div class="intro-card-head"><div class="intro-card-head-icon">❓</div><div><div class="intro-card-head-label">Big Question</div><div class="intro-card-head-title">Today&rsquo;s Wonder</div></div></div>
@@ -977,15 +985,6 @@ body.greenwood .tab-panel { background-image: linear-gradient(180deg, rgba(107,1
         <div class="obj-line"><span class="obj-icon">🧵</span><span><strong>Characters:</strong> I will match facts and traits to the people of Chapter 1 and retell the chapter as a tapestry.</span></div>
         <div class="obj-line"><span class="obj-icon">📝</span><span><strong>Writing:</strong> I will choose a hero for Quick Write 1 and plan it.</span></div>
       </div>
-    </div>
-  </div>
-  <div class="todays-path">
-    <div class="todays-path-title">🗺️ Today&rsquo;s Path</div>
-    <div class="todays-path-steps">
-      <span class="todays-path-step">🌅 Warm up and find Sherwood</span><span class="todays-path-arrow">→</span>
-      <span class="todays-path-step">📖 Learn four words, then read the Prologue and Ch. 1</span><span class="todays-path-arrow">→</span>
-      <span class="todays-path-step">🧵 Cast the characters and stitch the tapestry</span><span class="todays-path-arrow">→</span>
-      <span class="todays-path-step">📬 Answer and plan your Quick Write</span>
     </div>
   </div>
   <div class="need-strip">
@@ -1572,14 +1571,14 @@ Of opal and ruby and pearl and amethyst.</div>
 </div>
 <div class="pg-bird" id="pigeonBird" aria-hidden="true">&#128330;&#65039;</div>
 <div class="footer">
-  <div class="footer-main"><span>Optima Academy Online</span> · 6th Grade ELA · Quarter 3 · Module 4 · Week 1</div>
+  <div class="footer-main"><span>Optima Academy Online</span> · 6th Grade ELA · Module 4 · Week 1</div>
   <div class="footer-sub"><em>The Adventures of Robin Hood</em> · Prologue and Chapter 1 · A Hero Is Born in the Greenwood</div>
   <div class="footer-standards">FL: ELA.6.R.1.1, ELA.6.V.1.3, ELA.6.C.3.1, ELA.6.C.1.2 · TX: 6.7(D), 6.2(B), 6.11(A)</div>
   <div class="footer-copy">Academic Design and Curriculum (AcDC) · © Optima Academy Online · An Education Experience Company</div>
 </div>
 
 </div>
-<script type="application/json" id="page-config">{"week": 1, "weekKey": "ela6-m4-w1", "lesson": 1, "lessons": [{"n": 1, "title": "A Hero Is Born in the Greenwood", "href": "w1-lesson1-greenwood.html", "expect": 11}, {"n": 2, "title": "Outlawed on a False Charge", "href": "w1-lesson2-outlawed.html", "expect": 10}, {"n": 3, "title": "The Writer's Bench", "href": "w1-lesson3-writers-bench.html", "expect": 11}, {"n": 4, "title": "Hero or Outlaw?", "href": "w1-lesson4-hero-or-outlaw.html", "expect": 8}], "logTitle": "6TH GRADE ELA · MODULE 4 · WEEK 1 · A HERO IS BORN IN THE GREENWOOD"}</script>
+<script type="application/json" id="page-config">{"week": 1, "weekKey": "ela6-m4-w1", "lesson": 1, "lessons": [{"n": 1, "title": "A Hero Is Born in the Greenwood", "href": "w1-lesson1-greenwood.html", "expect": 11}, {"n": 2, "title": "Outlawed on a False Charge", "href": "w1-lesson2-outlawed.html", "expect": 10}, {"n": 3, "title": "The Writer's Bench", "href": "w1-lesson3-writers-bench.html", "expect": 11}, {"n": 4, "title": "Hero or Outlaw?", "href": "w1-lesson4-hero-or-outlaw.html", "expect": 7}], "logTitle": "6TH GRADE ELA · MODULE 4 · WEEK 1 · A HERO IS BORN IN THE GREENWOOD"}</script>
 <script>
 (function () {
     "use strict";
