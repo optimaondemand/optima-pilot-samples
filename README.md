@@ -17,4 +17,8 @@ Pilot lesson weeks shared with the AcDC team for review.
 - [Lesson 3: The Writer's Observatory](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-w1/w1-lesson3-writers-observatory.html)
 - [Lesson 4: Small Claims and Great](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-w1/w1-lesson4-small-claims.html)
 
+## Probability & Statistics Honors: Lesson 19.1 (glow-up prototype)
+
+- [Lesson 19.1: Statistics Begins with Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-l19-1/lesson-19-1-statistics-begins-with-data.html)
+
 Academic Design and Curriculum (AcDC)
