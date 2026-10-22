@@ -132,8 +132,22 @@ table.data td.n{font-family:var(--mono); text-align:right}
 .v-title{font-family:var(--hand); font-size:22px; line-height:1.1; color:var(--blue)}
 .v-ctl{display:flex; align-items:center; gap:10px; margin-top:6px; flex-wrap:wrap}
 .v-btn{border:1.5px solid var(--ink); background:var(--ink); color:#fff; padding:6px 14px; font-family:var(--mono); font-size:13.5px; font-weight:600}
-.v-bar{flex:1; min-width:120px; height:8px; border:1.5px solid var(--ink); background:#fff; position:relative}
-.v-fill{position:absolute; inset:0 auto 0 0; width:0; background:var(--blue); transition:width .4s}
+.v-skip{border:1.5px solid var(--ink); background:#fff; height:31px; padding:0 9px; font-size:10px; letter-spacing:-2px; line-height:1}
+.v-skip:hover{background:var(--blue-w)}
+.v-bar{flex:1; min-width:120px; height:10px; border:1.5px solid var(--ink); background:#fff; position:relative; cursor:pointer}
+.v-bar:hover{box-shadow:0 0 0 3px var(--blue-w)}
+.v-fill::after{content:""; position:absolute; right:-6px; top:50%; width:12px; height:12px; margin-top:-6px; border-radius:50%; background:var(--blue); border:2px solid #fff; box-shadow:0 0 0 1.5px var(--ink)}
+.v-cap.live span{color:#A3AEBB; transition:color .15s}
+.v-cap.live span.said{color:var(--ink2)}
+.v-cap.live span.now{color:var(--ink); background:linear-gradient(transparent 52%, rgba(85,200,232,.5) 52%)}
+.spot{outline:3px solid var(--red) !important; outline-offset:-2px; background-color:var(--red-w) !important; color:var(--red) !important}
+.field.spot{background-color:#fff !important}
+.field i.spot{outline:0 !important; background:var(--red) !important; transform:scale(1.9) !important}
+.tree g.spot{outline:0 !important}
+.tree g.spot rect{stroke:var(--red); stroke-width:3}
+.rcard svg.spot{outline:0 !important; background:none !important; animation:shake .5s 2}
+.v3 tr.pendlast td:last-child:not(.lit){color:transparent !important}
+.v-fill{position:absolute; inset:0 auto 0 0; width:0; background:var(--blue); transition:width .12s linear}
 .v-time{font-family:var(--mono); font-size:13px; color:var(--mute)}
 .v-note{font-size:12px; color:var(--mute); margin-top:4px}
 .v-stage{position:relative; padding:20px; min-height:250px; border-bottom:1.5px solid var(--ink);
@@ -392,6 +406,66 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
   .sheet{display:block !important; box-shadow:none; break-inside:auto}
   body{background:#fff}
 }
+
+/* ───── INSTRUMENT RAIL: calculator + paper-plane post, on every sheet ───── */
+.rail{position:fixed; right:0; top:50%; transform:translateY(-50%); z-index:40; display:flex; flex-direction:column; gap:8px}
+.rail button{background:var(--ink); color:#fff; border:0; width:46px; padding:12px 0 14px; display:flex; flex-direction:column; align-items:center; gap:10px; box-shadow:-3px 3px 0 rgba(14,28,66,.2); transition:transform .15s, background .15s}
+.rail button:hover, .rail button:focus-visible{transform:translateX(-4px); background:var(--blue)}
+.rail button.on{background:var(--blue)}
+.rail svg{width:26px; height:26px; display:block}
+.rail .lab{writing-mode:vertical-rl; transform:rotate(180deg); font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase}
+.drawer{position:fixed; top:0; right:0; bottom:0; width:min(420px,100vw); z-index:60; background:var(--sheet); border-left:1.5px solid var(--ink); box-shadow:-12px 0 30px rgba(14,28,66,.18);
+  display:flex; flex-direction:column; transform:translateX(105%); visibility:hidden; transition:transform .35s cubic-bezier(.2,.8,.2,1), visibility 0s .35s}
+.drawer.open{transform:none; visibility:visible; transition:transform .35s cubic-bezier(.2,.8,.2,1), visibility 0s}
+.dr-head{display:grid; grid-template-columns:auto 1fr auto; border-bottom:1.5px solid var(--ink); background:var(--sheet)}
+.dr-head > *{padding:9px 14px; border-right:1.5px solid var(--ink)}
+.dr-head > *:last-child{border-right:0}
+.dr-head small{display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); line-height:1.2}
+.dr-head b{display:block; font-size:17px; line-height:1.3}
+.dr-head .ic{display:grid; place-items:center; padding:6px 10px}
+.dr-head .ic svg{width:40px; height:40px; display:block; border-radius:50%}
+.dr-x{background:none; border:0; font-size:26px; line-height:1; padding:0 16px !important}
+.dr-x:hover{color:var(--red)}
+.calc-frame{flex:1; width:100%; border:0; background:#fff}
+.dr-foot{font-size:12.5px; color:var(--mute); padding:8px 14px; border-top:1.5px solid var(--ink); display:flex; justify-content:space-between; gap:10px}
+.dr-foot a{color:var(--blue)}
+.letters{flex:1; overflow:auto; padding:16px 14px; background-image:linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size:14px 14px}
+.letter{background:#fff; border:1.5px solid var(--ink); padding:10px 13px; margin:0 0 14px; font-size:14.5px; line-height:1.55; box-shadow:3px 3px 0 rgba(14,28,66,.1)}
+.letter.mine{margin-left:30px; border-color:var(--blue)}
+.letter.his{margin-right:24px; transform:rotate(-.5deg)}
+.letter.wait{font-family:var(--mono); font-size:12.5px; color:var(--mute); border-style:dashed; box-shadow:none}
+.letter .salute{font-family:var(--hand); font-size:21px; line-height:1.1; color:var(--blue); margin-bottom:2px}
+.letter.his .salute, .letter .sign{color:var(--red)}
+.letter .sign{font-family:var(--hand); font-size:21px; text-align:right; margin-top:4px}
+.letters .empty{font-size:14px; color:var(--mute); background:rgba(255,254,251,.9); padding:10px 12px; border:1.5px dashed var(--grid2)}
+.quick{display:flex; flex-wrap:wrap; gap:6px; margin-top:10px}
+.quick button{border:1.5px solid var(--ink); background:#fff; font-size:13px; padding:3px 10px}
+.quick button:hover{background:var(--blue-w)}
+.compose{padding:12px 14px 14px; border-top:1.5px solid var(--ink); background:var(--sheet)}
+.compose label{font-family:var(--hand); font-size:22px; color:var(--blue); display:block; line-height:1.1; margin-bottom:4px}
+.compose textarea{min-height:64px; max-width:none; font-size:14.5px}
+.compose .row{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:8px}
+.compose .pg-note{font-size:11.5px; color:var(--mute); line-height:1.35}
+.compose .btn{white-space:nowrap; flex:none}
+.plane{position:fixed; right:150px; bottom:110px; z-index:70; width:70px; pointer-events:none; opacity:0}
+.plane svg{width:100%; height:auto; display:block; filter:drop-shadow(2px 4px 2px rgba(14,28,66,.25))}
+.plane.out{animation:pout 1.3s ease-in forwards}
+.plane.in{animation:pin 1.3s ease-out forwards}
+@keyframes pout{0%{opacity:1; transform:translate(0,0) rotate(-150deg) scale(.5)} 35%{transform:translate(-22vw,-12vh) rotate(-160deg) scale(1)} 100%{opacity:1; transform:translate(-75vw,-95vh) rotate(-140deg) scale(.8)}}
+@keyframes pin{0%{opacity:1; transform:translate(-75vw,-95vh) rotate(30deg) scale(.8)} 65%{transform:translate(-18vw,-28vh) rotate(18deg) scale(1)} 100%{opacity:0; transform:translate(0,-14vh) rotate(25deg) scale(.5)}}
+.inst-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
+.inst-row .btn{display:inline-flex; align-items:center; gap:8px}
+.inst-row svg{width:20px; height:20px}
+@media (max-width:760px){
+  .rail{top:auto; bottom:14px; right:12px; transform:none; gap:10px}
+  .rail button{width:52px; height:52px; padding:0; border-radius:50%; justify-content:center; box-shadow:0 3px 10px rgba(14,28,66,.35)}
+  .rail button:hover{transform:none}
+  .rail .lab{display:none}
+  .drawer{top:auto; height:84vh; width:100%; border-left:0; border-top:1.5px solid var(--ink); transform:translateY(105%)}
+  .plane{right:40px; bottom:60px}
+}
+@media print{ .rail, .drawer, .plane{display:none !important} }
+.inst-row svg{background:var(--ink); border-radius:3px; padding:2px}
 </style>
 </head>
 <body>
@@ -471,9 +545,10 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
     <h3>What you need</h3>
     <div class="need">
       <div><b>Paper</b>A notebook and pencil.</div>
-      <div><b>Calculator</b>The free Desmos Scientific Calculator in another tab: <a href="https://www.desmos.com/scientific" target="_blank" rel="noopener">desmos.com/scientific</a></div>
+      <div><b>Calculator</b>The free Desmos Scientific Calculator, built in: the calculator tab on the right edge of every sheet. Or in another tab: <a href="https://www.desmos.com/scientific" target="_blank" rel="noopener">desmos.com/scientific</a></div>
       <div><b>Spreadsheet</b>Microsoft Excel (desktop or web) for the table-building exercise.</div>
     </div>
+    <div class="inst-row"><button class="btn" type="button" data-open="calc"><svg><use href="#ic-calc"/></svg>Open the calculator</button><button class="btn" type="button" data-open="chat"><svg><use href="#ic-plane"/></svg>Ask <span data-t="short">Dr. Usborne</span></button></div>
     <h3>Statistics is the science of learning from data</h3>
     <p>Every claim you have heard this month that begins “studies show” or “most people prefer” rests on one thing: somebody collected <span class="term">data</span>. Statistics is the discipline that asks how to collect it, how to display it, and how far it can honestly be trusted. Semester 1 taught you to reason about chance when the rules of the game are known: a fair coin, a well-shuffled deck. Semester 2 turns the problem around. Now the rules are <em>not</em> known; all we have is what we observed, and we must reason backward from it.</p>
     <p>Honesty is this module's virtue, and it begins in a very plain place: saying exactly what was measured, on whom, and in what units. A graph can be drawn beautifully and still deceive if nobody can tell what its numbers mean. So before we draw anything, we learn the vocabulary of data itself.</p>
@@ -492,7 +567,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
         <div class="v-who">
           <div class="v-name"><span data-t="full">Dr. Oswaldo Usborne</span><span data-t="role">Statistics teacher</span></div>
           <div class="v-title">Anatomy of a dataset</div>
-          <div class="v-ctl"><button class="v-btn" type="button">▶ Play</button><div class="v-bar"><div class="v-fill"></div></div><span class="v-time">1:10</span></div>
+          <div class="v-ctl"><button class="v-skip v-back" type="button" aria-label="Back one line" title="Back one line (←)">◀◀</button><button class="v-btn" type="button">▶ Play</button><button class="v-skip v-fwd" type="button" aria-label="Forward one line" title="Forward one line (→)">▶▶</button><div class="v-bar" title="Jump to a line"><div class="v-fill"></div></div><span class="v-time">1:10</span></div>
           <div class="v-note">An AI-generated character and voice.</div>
         </div>
       </div>
@@ -561,7 +636,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
         <div class="v-who">
           <div class="v-name"><span data-t="full">Dr. Oswaldo Usborne</span><span data-t="role">Statistics teacher</span></div>
           <div class="v-title">800 students, and the 60 we ask</div>
-          <div class="v-ctl"><button class="v-btn" type="button">▶ Play</button><div class="v-bar"><div class="v-fill"></div></div><span class="v-time">1:20</span></div>
+          <div class="v-ctl"><button class="v-skip v-back" type="button" aria-label="Back one line" title="Back one line (←)">◀◀</button><button class="v-btn" type="button">▶ Play</button><button class="v-skip v-fwd" type="button" aria-label="Forward one line" title="Forward one line (→)">▶▶</button><div class="v-bar" title="Jump to a line"><div class="v-fill"></div></div><span class="v-time">1:20</span></div>
           <div class="v-note">An AI-generated character and voice.</div>
         </div>
       </div>
@@ -636,7 +711,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
         <div class="v-who">
           <div class="v-name"><span data-t="full">Dr. Oswaldo Usborne</span><span data-t="role">Statistics teacher</span></div>
           <div class="v-title">Two questions for every variable</div>
-          <div class="v-ctl"><button class="v-btn" type="button">▶ Play</button><div class="v-bar"><div class="v-fill"></div></div><span class="v-time">1:30</span></div>
+          <div class="v-ctl"><button class="v-skip v-back" type="button" aria-label="Back one line" title="Back one line (←)">◀◀</button><button class="v-btn" type="button">▶ Play</button><button class="v-skip v-fwd" type="button" aria-label="Forward one line" title="Forward one line (→)">▶▶</button><div class="v-bar" title="Jump to a line"><div class="v-fill"></div></div><span class="v-time">1:30</span></div>
           <div class="v-note">An AI-generated character and voice.</div>
         </div>
       </div>
@@ -829,7 +904,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
       <li><input type="checkbox" id="xs5"><label for="xs5">Name the sheet: double-click the tab at the bottom that says <strong>Sheet1</strong>, type <strong>Sleep survey</strong>, and press <kbd>Enter</kbd>.</label></li>
       <li><input type="checkbox" id="xs6"><label for="xs6">Save with <kbd>Ctrl</kbd>+<kbd>S</kbd>, using a clear file name such as <strong>Wk19_YourName</strong>.</label></li>
     </ol>
-    <p class="cap">Desmos stays open in a tab for quick arithmetic checks; today it only needs to be ready.</p>
+    <p class="cap">Desmos stays one tap away (the calculator tab on the right edge) for quick arithmetic checks; today it only needs to be ready.</p>
     <div class="navrow"><button class="btn" data-go="5">← Sheet 05</button><button class="btn pri" data-go="7">Sheet 07 · AI Check →</button></div>
   </div>
 </section>
@@ -945,6 +1020,35 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
 <footer><i class="owl" aria-hidden="true"></i>Optima Academy Online · Probability &amp; Statistics Honors · Lesson 19.1<br>Academic Design and Curriculum (AcDC)</footer>
 </div>
 
+
+<!-- ═════════ INSTRUMENT RAIL (every sheet) ═════════ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-calc" viewBox="0 0 26 26"><rect x="4" y="1.5" width="18" height="23" rx="2.5" fill="none" stroke="#fff" stroke-width="1.8"/><rect x="7" y="4.5" width="12" height="5" fill="#55C8E8"/><g fill="#fff"><circle cx="8.6" cy="13.5" r="1.3"/><circle cx="13" cy="13.5" r="1.3"/><circle cx="17.4" cy="13.5" r="1.3"/><circle cx="8.6" cy="17.5" r="1.3"/><circle cx="13" cy="17.5" r="1.3"/><circle cx="8.6" cy="21.3" r="1.3"/><circle cx="13" cy="21.3" r="1.3"/></g><rect x="16.2" y="16.3" width="2.4" height="6.3" rx="1" fill="#55C8E8"/></symbol>
+  <symbol id="ic-plane" viewBox="0 0 26 26"><path d="M2 12.5 24 3l-6.5 19-5-6.5z" fill="#fff"/><path d="M24 3 12.5 15.5l-1 6.5 3.4-3.6" fill="#55C8E8" stroke="#fff" stroke-width=".8" stroke-linejoin="round"/></symbol>
+</svg>
+<div class="rail" aria-label="Tools">
+  <button type="button" id="railCalc" aria-controls="calcDrawer" aria-label="Open the scientific calculator"><svg><use href="#ic-calc"/></svg><span class="lab">Calculator</span></button>
+  <button type="button" id="railChat" aria-controls="chatDrawer"><svg><use href="#ic-plane"/></svg><span class="lab">Ask <span data-t="short">Dr. Usborne</span></span></button>
+</div>
+
+<div class="drawer" id="calcDrawer" role="dialog" aria-label="Scientific calculator">
+  <div class="dr-head"><div class="ic" style="background:var(--ink)"><svg viewBox="0 0 26 26" style="border-radius:0; width:30px; height:30px"><use href="#ic-calc"/></svg></div><div><small>Instrument</small><b>Scientific Calculator</b></div><button class="dr-x" type="button" aria-label="Close calculator">&times;</button></div>
+  <iframe class="calc-frame" id="calcFrame" title="Desmos Scientific Calculator" loading="lazy"></iframe>
+  <div class="dr-foot"><span>Desmos Scientific Calculator</span><a href="https://www.desmos.com/scientific" target="_blank" rel="noopener">open in a new tab ↗</a></div>
+</div>
+
+<div class="drawer" id="chatDrawer" role="dialog">
+  <div class="dr-head"><div class="ic"><svg role="img" aria-hidden="true"><use href="#usborne"/></svg></div><div><small>Paper-plane post</small><b>Ask <span data-t="full">Dr. Oswaldo Usborne</span></b></div><button class="dr-x" type="button" aria-label="Close">&times;</button></div>
+  <div class="letters" id="letters"><div class="empty">Write a question about Lesson 19.1. It folds into a paper plane, and <span data-t="short">Dr. Usborne</span> sends one back with an answer from his notes.
+    <div class="quick"><button type="button">What's the difference between a population and a sample?</button><button type="button">How do I tell discrete from continuous?</button><button type="button">Why isn't a locker number numerical?</button></div></div></div>
+  <div class="compose">
+    <label for="chatQ">Dear <span data-t="short">Dr. Usborne</span>,</label>
+    <textarea id="chatQ" maxlength="300" placeholder="Why do we usually take a sample?"></textarea>
+    <div class="row"><span class="pg-note">An AI-generated character. Replies come from prepared notes on Lesson 19.1.</span><button class="btn pri" id="chatSend" type="button">Fold &amp; send</button></div>
+  </div>
+</div>
+<div class="plane" id="plane" aria-hidden="true"><svg viewBox="0 0 70 44"><path d="M2 22 68 3 44 41 33 27Z" fill="#fff" stroke="#0E1C42" stroke-width="2" stroke-linejoin="round"/><path d="M68 3 33 27 28 39 44 41Z" fill="url(#gp)" stroke="#0E1C42" stroke-width="2" stroke-linejoin="round"/><path d="M33 27 28 39" stroke="#C43D27" stroke-width="1.5"/></svg></div>
+
 <script>
 /* ═════════ TEACHER: change the name here and every player follows ═════════ */
 var TEACHER = { full: 'Dr. Oswaldo Usborne', short: 'Dr. Usborne', role: 'Statistics teacher' };
@@ -1038,48 +1142,80 @@ function refresh(){
 
 /* ═════════ VOICED SEGMENTS ═════════
    Each cue = one line of the script + the visual frame it shows.
-   With data-audio set (a real MP3) and a start time t on each cue, the audio drives the frames.
+   cue.spots = [[regex, targets, class]]: when the voice reaches the matched words, the targets get the class
+   ('spot' = brief red highlight, moves on with the next spot; any other class stays for the rest of the line).
+   With data-audio set (a real MP3) and a start time t on each cue, the audio drives frames, words and spots.
    Until then a stand-in browser voice reads the script line by line. */
-var VOICES = [];
+var VOICES = [], CPS = 14.5;
 function pickVoice(){
   var v = window.speechSynthesis ? speechSynthesis.getVoices() : [];
   var en = v.filter(function(x){ return /^en/i.test(x.lang); });
   var pref = /(Guy|Andrew|Christopher|Ryan|Daniel|George|UK English Male|Mark|David|Alex)/i;
   return en.filter(function(x){ return pref.test(x.name); })[0] || en[0] || null;
 }
+function esc(t){ return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
 function Voiced(el, cues, render){
   var n = cues.length, i = -1, token = 0, playing = false, useTimer = !window.speechSynthesis, audio = null;
-  var btn = $('.v-btn', el), fill = $('.v-fill', el), time = $('.v-time', el), cap = $('.v-cap', el), steps = $('.v-steps', el);
-  var chars = cues.map(function(c){ return c.say.length; }), total = chars.reduce(function(a, b){ return a + b; }, 0);
-  function fmt(s){ s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
-  time.textContent = fmt(total / 14.5);
-  cues.forEach(function(c, k){
-    var b = document.createElement('button'); b.type = 'button'; b.textContent = k + 1;
-    b.setAttribute('aria-label', 'Frame ' + (k + 1));
-    b.addEventListener('click', function(){ pause(true); go(k); });
-    steps.appendChild(b);
+  var btn = $('.v-btn', el), bar = $('.v-bar', el), fill = $('.v-fill', el), time = $('.v-time', el), cap = $('.v-cap', el), steps = $('.v-steps', el);
+  var chars = cues.map(function(c){ return c.say.length; }), before = [], total = 0;
+  chars.forEach(function(c, k){ before[k] = total; total += c; });
+  cues.forEach(function(c){
+    c.words = []; var re = /\S+/g, m;
+    while ((m = re.exec(c.say))) c.words.push([m.index, m[0]]);
+    c.trig = (c.spots || []).map(function(s){ var mm = s[0].exec(c.say); return mm ? { pos: mm.index, sel: s[1], cls: s[2] || 'spot' } : null; })
+      .filter(Boolean).sort(function(a, b){ return a.pos - b.pos; });
   });
-  function go(k){
-    i = k; render(cues[k].step == null ? k : cues[k].step);
-    cap.textContent = cues[k].say;
+  var fired = 0, spotted = [], clock = null, gotBoundary = false, ended = false;
+  function fmt(s){ s = Math.max(0, Math.round(s)); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+  function els(sel){ return typeof sel === 'function' ? (sel() || []) : $$(sel); }
+  function clearSpots(){ spotted.forEach(function(e){ e.classList.remove('spot'); }); spotted = []; }
+  function fire(t, live){
+    if (t.cls === 'spot') { if (!live) return; clearSpots(); els(t.sel).forEach(function(e){ e.classList.add('spot'); spotted.push(e); }); }
+    else els(t.sel).forEach(function(e){ e.classList.add(t.cls); });
+  }
+  function showTime(done){ fill.style.width = (done / total * 100) + '%'; time.textContent = fmt(done / CPS) + ' / ' + fmt(total / CPS); }
+  function setPos(c){
+    var cue = cues[i]; if (!cue) return;
+    while (fired < cue.trig.length && cue.trig[fired].pos <= c) { fire(cue.trig[fired], true); fired++; }
+    var w = -1, spans = cap.children;
+    for (var j = 0; j < cue.words.length; j++) { if (cue.words[j][0] <= c) w = j; else break; }
+    for (j = 0; j < spans.length; j++) spans[j].className = j < w ? 'said' : j === w ? 'now' : '';
+    showTime(before[i] + Math.min(c, chars[i]));
+  }
+  function stopClock(){ clearInterval(clock); clock = null; }
+  function startClock(){
+    stopClock(); var t0 = performance.now();
+    clock = setInterval(function(){ if (!gotBoundary) setPos(Math.min(chars[i], (performance.now() - t0) / 1000 * CPS)); }, 70);
+  }
+  function go(k, live){
+    stopClock(); clearSpots(); i = k; fired = 0;
+    render(k, !!live);
+    var cue = cues[k];
+    cap.innerHTML = cue.words.map(function(w){ return '<span>' + esc(w[1]) + '</span>'; }).join(' ');
+    cap.classList.toggle('live', !!live);
     $$('button', steps).forEach(function(b, j){ b.classList.toggle('now', j === k); if (j <= k) b.classList.add('seen'); });
-    var rest = chars.slice(k + 1).reduce(function(a, b){ return a + b; }, 0);
-    fill.style.width = ((k + 1) / n * 100) + '%';
-    time.textContent = fmt(rest / 14.5);
+    if (live) setPos(0);
+    else { cue.trig.forEach(function(t){ fire(t, false); }); fired = cue.trig.length; showTime(before[k] + chars[k]); }
   }
   function finish(){
-    playing = false; el.classList.remove('playing'); btn.textContent = '↻ Play again';
+    playing = false; ended = true; stopClock(); el.classList.remove('playing'); btn.textContent = '↻ Play again';
+    cap.classList.remove('live'); $$('span', cap).forEach(function(s){ s.className = ''; });
     ST.misc['heard_' + el.id] = 1; save();
   }
   function chain(k, my){
     if (my !== token) return;
     if (k >= n) return finish();
-    go(k);
-    if (useTimer) { setTimeout(function(){ chain(k + 1, my); }, Math.max(2600, cues[k].say.length * 62)); return; }
+    go(k, true); gotBoundary = false;
+    if (useTimer) {
+      startClock();
+      setTimeout(function(){ if (my === token) chain(k + 1, my); }, chars[k] / CPS * 1000 + 450);
+      return;
+    }
     var u = new SpeechSynthesisUtterance(cues[k].say), started = false;
     u.voice = pickVoice(); u.rate = 0.98; u.pitch = 0.92;
-    u.onstart = function(){ started = true; };
-    u.onend = function(){ if (my === token) chain(k + 1, my); };
+    u.onstart = function(){ started = true; if (my === token) startClock(); };
+    u.onboundary = function(e){ if (my !== token || e.name === 'sentence') return; gotBoundary = true; setPos(e.charIndex); };
+    u.onend = function(){ if (my === token) { setPos(chars[k]); chain(k + 1, my); } };
     u.onerror = function(){ if (my === token && started) chain(k + 1, my); };
     speechSynthesis.speak(u);
     setTimeout(function(){
@@ -1089,33 +1225,65 @@ function Voiced(el, cues, render){
   function play(){
     stopAllVoices(el);
     playing = true; el.classList.add('playing'); btn.textContent = '❚❚ Pause';
-    var from = (i < 0 || i >= n - 1) ? 0 : i;
-    if (audio) { if (from === 0) audio.currentTime = 0; audio.play().catch(function(){}); return; }
+    var from = (i < 0 || ended) ? 0 : i; ended = false;
+    if (audio) { audio.currentTime = cues[from].t || 0; audio.play().catch(function(){}); return; }
     token++; chain(from, token);
   }
-  function pause(silent){
+  function pause(){
     if (!playing) return;
-    playing = false; token++; el.classList.remove('playing');
+    playing = false; token++; stopClock(); el.classList.remove('playing');
     if (audio) audio.pause(); else if (window.speechSynthesis) speechSynthesis.cancel();
     btn.textContent = '▶ Resume';
   }
+  function jump(k){
+    k = Math.max(0, Math.min(n - 1, k));
+    if (audio) { audio.currentTime = cues[k].t || 0; if (!playing) go(k, false); return; }
+    if (playing) { token++; if (!useTimer) speechSynthesis.cancel(); chain(k, token); }
+    else { ended = false; go(k, false); }
+  }
+  function skip(d){
+    var spokenIn = playing && cap.querySelector('.now') && [].indexOf.call(cap.children, cap.querySelector('.now')) > 3;
+    jump(d < 0 && spokenIn ? i : (i < 0 ? 0 : i + d));
+  }
+  cues.forEach(function(c, k){
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = k + 1;
+    b.setAttribute('aria-label', 'Line ' + (k + 1));
+    b.addEventListener('click', function(){ jump(k); });
+    steps.appendChild(b);
+  });
   if (el.dataset.audio) {
     audio = new Audio(el.dataset.audio);
     audio.addEventListener('timeupdate', function(){
       var t = audio.currentTime, k = 0;
       for (var j = 0; j < n; j++) if ((cues[j].t || 0) <= t) k = j;
-      if (k !== i) go(k);
+      if (k !== i) go(k, true);
+      var t1 = k < n - 1 ? cues[k + 1].t : audio.duration || t + 1, t0 = cues[k].t || 0;
+      setPos((t - t0) / Math.max(0.1, t1 - t0) * chars[k]);
     });
     audio.addEventListener('ended', finish);
   }
   btn.addEventListener('click', function(){ playing ? pause() : play(); });
-  $('.v-all', el).addEventListener('click', function(){ pause(true); go(n - 1); });
-  render(-1);
+  $('.v-back', el).addEventListener('click', function(){ skip(-1); });
+  $('.v-fwd', el).addEventListener('click', function(){ skip(1); });
+  bar.addEventListener('click', function(e){
+    var r = bar.getBoundingClientRect(), f = (e.clientX - r.left) / r.width;
+    if (audio && audio.duration) { audio.currentTime = f * audio.duration; return; }
+    var target = f * total, k = 0;
+    for (var j = 0; j < n; j++) if (before[j] <= target) k = j;
+    jump(k);
+  });
+  el.addEventListener('keydown', function(e){
+    if (/INPUT|TEXTAREA/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); skip(-1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); skip(1); }
+  });
+  $('.v-all', el).addEventListener('click', function(){ pause(); go(n - 1, false); });
+  render(-1, false); showTime(0); fill.style.width = '0';
   var api = { pause: pause, el: el };
   VOICES.push(api);
   return api;
 }
-function stopAllVoices(except){ VOICES.forEach(function(v){ if (v.el !== except) v.pause(true); }); }
+function stopAllVoices(except){ VOICES.forEach(function(v){ if (v.el !== except) v.pause(); }); }
 if (window.speechSynthesis) { speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged = function(){}; }
 function stepClasses(stage, base, k){
   var c = base;
@@ -1127,20 +1295,29 @@ function stepClasses(stage, base, k){
 /* V1 · anatomy of a dataset */
 (function(){
   var stage = $('#v1stage'), cnt = $('#v1count'), raf;
+  $$('#v1stage tr').forEach(function(tr){ [].forEach.call(tr.cells, function(c, j){ c.dataset.col = j; }); });
+  function col(j){ return '#v1stage [data-col="' + j + '"]'; }
+  function subj(name){ return function(){ return $$('#v1stage td.subj').filter(function(td){ return td.textContent === name; }); }; }
   function count(to){
     clearTimeout(raf); var c = 0;
-    (function tick(){ c = Math.min(to, c + 1); cnt.textContent = c; if (c < to) raf = setTimeout(tick, 55); })();
+    (function tick(){ c = Math.min(to, c + 1); cnt.textContent = c; if (c < to) raf = setTimeout(tick, 45); })();
   }
   Voiced($('#v1'), [
     { say: "Every claim that begins \"studies show\" rests on one thing: somebody collected data. So let's look at what data actually is." },
-    { say: "Here is a small, made-up table. Each row is one individual: the person, animal, or thing we collect information about. Here, five students." },
-    { say: "Each column is a variable: a characteristic that can change from one individual to the next. Favorite subject. Hours of sleep. Number of siblings. Locker number. Rides the bus." },
-    { say: "Each cell holds one recorded value, and the data are all of those values together. Five individuals, five variables, twenty-five recorded values." },
-    { say: "Notice the word variable. Favorite subject takes different values: math, history, art, Latin. If every student answered the same way, there would be nothing to study. Statistics exists because of variation." },
-    { say: "And here is where honesty begins: say exactly what was measured, on whom, and in what units. Hours of sleep, last night, for five students. A graph can be beautiful and still deceive if nobody can tell what its numbers mean." }
-  ], function(k){
+    { say: "Here is a small, made-up table. Each row is one individual: the person, animal, or thing we collect information about. Here, five students.",
+      spots: [[/Each row/, '#v1stage tbody tr:first-child td'], [/five students/, col(0)]] },
+    { say: "Each column is a variable: a characteristic that can change from one individual to the next. Favorite subject. Hours of sleep. Number of siblings. Locker number. Rides the bus.",
+      spots: [[/Favorite subject/, col(1)], [/Hours of sleep/, col(2)], [/Number of siblings/, col(3)], [/Locker number/, col(4)], [/Rides the bus/, col(5)]] },
+    { say: "Each cell holds one recorded value, and the data are all of those values together. Five individuals, five variables, twenty-five recorded values.",
+      spots: [[/one recorded value/, '#v1stage tbody tr:nth-child(3) td:nth-child(3)'], [/Five individuals/, '#v1stage tbody [data-col="0"]'],
+              [/five variables/, '#v1stage thead th:not(:first-child)'], [/twenty-five/, function(){ count(25); return [$('#v1stage .ann-cnt')]; }]] },
+    { say: "Notice the word variable. Favorite subject takes different values: math, history, art, Latin. If every student answered the same way, there would be nothing to study. Statistics exists because of variation.",
+      spots: [[/math/, subj('Math')], [/history/, subj('History')], [/\bart\b/, subj('Art')], [/Latin/, subj('Latin')], [/nothing to study/, '#v1stage tbody [data-col="1"]']] },
+    { say: "And here is where honesty begins: say exactly what was measured, on whom, and in what units. Hours of sleep, last night, for five students. A graph can be beautiful and still deceive if nobody can tell what its numbers mean.",
+      spots: [[/in what units/, '#v1stage .unit'], [/Hours of sleep, last night/, '#v1stage thead th:nth-child(3)'], [/for five students/, '#v1stage .ann-who']] }
+  ], function(k, live){
     stepClasses(stage, 'v-stage v1', k);
-    if (k === 3) count(25); else cnt.textContent = k > 3 ? 25 : 0;
+    if (k === 3 && !live) count(25); else if (k !== 3) cnt.textContent = k > 3 ? 25 : 0; else cnt.textContent = 0;
   });
 })();
 
@@ -1163,21 +1340,34 @@ function fillField(el){ var h = ''; for (var k = 0; k < 800; k++) h += '<i></i>'
   var f = $('#v2field'), dots = fillField(f), R2 = rng(7), ALL = POP.map(function(_, k){ return k; });
   var randS = pick(ALL, 60, R2), libS = pick(LIBIDX, 60, R2);
   function mark(list){ dots.forEach(function(d){ d.classList.remove('s'); }); list.forEach(function(k){ dots[k].classList.add('s'); }); }
+  function card(r){ return '.rcard[data-r="' + r + '"]'; }
+  function library(){
+    mark(libS); f.classList.add('corner');
+    $('#v2n').textContent = 'convenience sample · n = 60';
+    return [$('#v2field .corner-tag')];
+  }
   Voiced($('#v2'), [
-    { say: "Suppose we want to know how many hours the 800 students at a school sleep on a school night. Those 800 students are the population: the entire group we want to learn about." },
-    { say: "Asking all 800 is called a census." },
-    { say: "Asking 60 of them gives a sample: the part of the population we actually examine. The sample size is n equals 60." },
-    { say: "Why not always take a census? First, it can cost too much time or money." },
-    { say: "Second, the population may be too large or spread out to reach." },
-    { say: "Third, sometimes the measurement destroys the thing measured. A company that tests how long its batteries last can't test every battery, because a battery tested to failure can no longer be sold." },
-    { say: "So we sample, and we stay honest about the difference between what the sample showed and what the whole population is like. Suppose we asked only the 60 students in the library at seven in the morning. Would they sleep like everyone else? A sample is only as trustworthy as the way it was chosen." }
-  ], function(k){
-    f.className = 'field' + (k >= 0 ? ' show' : '') + (k === 1 ? ' census' : '') + (k >= 2 ? ' dim' : '') + (k === 6 ? ' corner' : '');
-    mark(k >= 2 && k < 6 ? randS : k === 6 ? libS : []);
+    { say: "Suppose we want to know how many hours the 800 students at a school sleep on a school night. Those 800 students are the population: the entire group we want to learn about.",
+      spots: [[/the 800 students/, '#v2field'], [/the population/, '#v2lab']] },
+    { say: "Asking all 800 is called a census.", spots: [[/census/, '#v2lab']] },
+    { say: "Asking 60 of them gives a sample: the part of the population we actually examine. The sample size is n equals 60.",
+      spots: [[/60 of them/, '#v2field i.s'], [/n equals 60/, '#v2n']] },
+    { say: "Why not always take a census? First, it can cost too much time or money.",
+      spots: [[/cost too much/, card(3), 'on'], [/cost too much/, card(3)]] },
+    { say: "Second, the population may be too large or spread out to reach.",
+      spots: [[/too large/, card(4), 'on'], [/too large/, card(4)]] },
+    { say: "Third, sometimes the measurement destroys the thing measured. A company that tests how long its batteries last can't test every battery, because a battery tested to failure can no longer be sold.",
+      spots: [[/destroys/, card(5), 'on'], [/destroys/, card(5)], [/tested to failure/, card(5) + ' svg']] },
+    { say: "So we sample, and we stay honest about the difference between what the sample showed and what the whole population is like. Suppose we asked only the 60 students in the library at seven in the morning. Would they sleep like everyone else? A sample is only as trustworthy as the way it was chosen.",
+      spots: [[/in the library/, library], [/Would they sleep/, '#v2field i.s'], [/trustworthy/, '#v2warn', 'on']] }
+  ], function(k, live){
+    var lib = k === 6 && !live;
+    f.className = 'field' + (k >= 0 ? ' show' : '') + (k === 1 ? ' census' : '') + (k >= 2 ? ' dim' : '') + (lib ? ' corner' : '');
+    mark(k >= 2 && !lib ? randS : lib ? libS : []);
     $('#v2lab').textContent = k === 1 ? 'census · all 800 asked' : 'population · N = 800';
-    $('#v2n').textContent = k >= 2 && k < 6 ? 'random sample · n = 60' : k === 6 ? 'convenience sample · n = 60' : '';
-    $$('.rcard').forEach(function(rc){ var r = +rc.dataset.r; rc.classList.toggle('on', k >= r); rc.classList.toggle('now', k === r); });
-    $('#v2warn').classList.toggle('on', k === 6);
+    $('#v2n').textContent = k >= 2 && !lib ? 'random sample · n = 60' : lib ? 'convenience sample · n = 60' : '';
+    $$('.rcard').forEach(function(rc){ var r = +rc.dataset.r; rc.classList.toggle('on', live ? k > r : k >= r); rc.classList.toggle('now', !live && k === r); });
+    $('#v2warn').classList.toggle('on', lib);
   });
 })();
 
@@ -1220,7 +1410,7 @@ function fillField(el){ var h = ''; for (var k = 0; k < 800; k++) h += '<i></i>'
   plot();
 })();
 
-/* V3 · classification tree */
+/* V3 · classification tree: live, each part of the path lights as it is said */
 (function(){
   var rows = $$('#v3tbl tbody tr');
   var PATHS = {
@@ -1230,26 +1420,43 @@ function fillField(el){ var h = ''; for (var k = 0; k < 800; k++) h += '<i></i>'
   };
   var STEPS = [null, ['Favorite subject','cat'], ['Hours of sleep','con'], ['Number of siblings','dis'], ['Locker number','cat'], ['Rides the bus?','cat'], null];
   var timers = [];
-  function light(path){
+  function light(path, animate){
     timers.forEach(clearTimeout); timers = [];
     $$('#tree .lit').forEach(function(e){ e.classList.remove('lit'); });
-    path.forEach(function(id, j){ timers.push(setTimeout(function(){ document.getElementById(id).classList.add('lit'); }, j * 260)); });
+    path.forEach(function(id, j){
+      var on = function(){ document.getElementById(id).classList.add('lit'); };
+      if (animate) timers.push(setTimeout(on, j * 260)); else on();
+    });
   }
+  function leaf(id, r){ return '#' + id + ', #v3tbl tbody tr:nth-child(' + r + ') td:last-child'; }
+  var Q1 = '#e-q1, #n-q1';
   Voiced($('#v3'), [
-    { say: "Variables come in two families, and the family decides which displays and calculations make sense. For each variable, I ask two questions." },
-    { say: "Favorite subject. Would adding or averaging the values tell us anything? No. It places each student in a group. Categorical." },
-    { say: "Hours of sleep. Averaging makes sense, so it's numerical. Was it counted or measured? Measured. It can take any value in an interval: six and a quarter, seven and a half. Numerical, continuous." },
-    { say: "Number of siblings. Numerical, and counted: zero, one, two, three, with nothing in between. Numerical, discrete." },
-    { say: "Locker number. It's written in digits, so a spreadsheet would happily average 214 and 407 and report 310 and a half. Locker 310 and a half means nothing. A locker number is a label. Categorical." },
-    { say: "Rides the bus? Yes or no. A label for a group. Categorical." },
-    { say: "The only judgment call was the locker number, and it's the one that matters. The tool does not know what the numbers mean. You do." }
-  ], function(k){
-    rows.forEach(function(r, j){ r.classList.toggle('pend', k < j + 1); r.classList.toggle('now', k === j + 1); });
-    $('#trap').classList.toggle('on', k === 4);
-    $('#v3moral').classList.toggle('on', k >= 6);
+    { say: "Variables come in two families, and the family decides which displays and calculations make sense. For each variable, I ask two questions.",
+      spots: [[/two families/, '#n-cat, #n-dis, #n-con'], [/two questions/, '#n-q1, #n-q2']] },
+    { say: "Favorite subject. Would adding or averaging the values tell us anything? No. It places each student in a group. Categorical.",
+      spots: [[/adding or averaging/, Q1, 'lit'], [/\bNo\b/, '#e-no', 'lit'], [/Categorical/, leaf('n-cat', 1), 'lit']] },
+    { say: "Hours of sleep. Averaging makes sense, so it's numerical. Was it counted or measured? Measured. It can take any value in an interval: six and a quarter, seven and a half. Numerical, continuous.",
+      spots: [[/Averaging makes sense/, Q1, 'lit'], [/numerical/, '#e-yes', 'lit'], [/counted or measured/, '#n-q2', 'lit'], [/Measured\./, '#e-mea', 'lit'], [/Numerical, continuous/, leaf('n-con', 2), 'lit']] },
+    { say: "Number of siblings. Numerical, and counted: zero, one, two, three, with nothing in between. Numerical, discrete.",
+      spots: [[/Numerical, and/, Q1 + ', #e-yes', 'lit'], [/counted/, '#n-q2, #e-cnt', 'lit'], [/Numerical, discrete/, leaf('n-dis', 3), 'lit']] },
+    { say: "Locker number. It's written in digits, so a spreadsheet would happily average 214 and 407 and report 310 and a half. Locker 310 and a half means nothing. A locker number is a label. Categorical.",
+      spots: [[/average 214/, Q1, 'lit'], [/average 214/, '#trap', 'on'], [/means nothing/, '#trap'], [/is a label/, '#e-no', 'lit'], [/Categorical/, leaf('n-cat', 4), 'lit']] },
+    { say: "Rides the bus? Yes or no. A label for a group. Categorical.",
+      spots: [[/Yes or no/, Q1, 'lit'], [/A label/, '#e-no', 'lit'], [/Categorical/, leaf('n-cat', 5), 'lit']] },
+    { say: "The only judgment call was the locker number, and it's the one that matters. The tool does not know what the numbers mean. You do.",
+      spots: [[/locker number/, '#v3tbl tbody tr:nth-child(4) td'], [/The tool does not know/, '#v3moral', 'on']] }
+  ], function(k, live){
+    rows.forEach(function(r, j){
+      r.classList.toggle('pend', k < j + 1); r.classList.toggle('now', k === j + 1);
+      r.classList.toggle('pendlast', live && k === j + 1);
+      $$('td', r).forEach(function(td){ td.classList.remove('lit'); });
+    });
+    $('#trap').classList.toggle('on', !live && k === 4);
+    $('#v3moral').classList.toggle('on', !live && k >= 6);
     var s = STEPS[k];
     $('#treeVar').textContent = s ? s[0] : 'a variable';
-    if (s) light(PATHS[s[1]]); else light([]);
+    if (live) light(s ? ['n-start'] : [], false);
+    else light(s ? PATHS[s[1]] : [], true);
   });
 })();
 
@@ -1640,6 +1847,139 @@ $('#pdfBtn').addEventListener('click', function(){
   doc.save('Lesson19-1_Progress_' + name.replace(/[^A-Za-z0-9]+/g, '_') + '.pdf');
   $('#pdfNote').textContent = 'saved · ' + date;
 });
+
+
+/* ═════════ INSTRUMENT RAIL: drawers ═════════ */
+var Drawers = (function(){
+  var map = { calc: ['#railCalc', '#calcDrawer'], chat: ['#railChat', '#chatDrawer'] };
+  function open(name){
+    Object.keys(map).forEach(function(k){
+      var on = k === name;
+      $(map[k][1]).classList.toggle('open', on); $(map[k][0]).classList.toggle('on', on);
+      $(map[k][0]).setAttribute('aria-expanded', on);
+    });
+    if (name === 'calc') { var f = $('#calcFrame'); if (!f.getAttribute('src')) f.src = 'https://www.desmos.com/scientific'; setTimeout(function(){ $('#calcDrawer .dr-x').focus(); }, 350); }
+    if (name === 'chat') setTimeout(function(){ $('#chatQ').focus(); }, 350);
+  }
+  function close(){ open(null); }
+  Object.keys(map).forEach(function(k){
+    $(map[k][0]).addEventListener('click', function(){ $(map[k][1]).classList.contains('open') ? close() : open(k); });
+    $('.dr-x', $(map[k][1])).addEventListener('click', close);
+  });
+  $('#railChat').setAttribute('aria-label', 'Ask ' + TEACHER.full);
+  $('#chatDrawer').setAttribute('aria-label', 'Ask ' + TEACHER.full);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  $$('[data-open]').forEach(function(b){ b.addEventListener('click', function(){ open(b.dataset.open); }); });
+  return { open: open, close: close };
+})();
+
+/* ═════════ PAPER-PLANE POST: Dr. Usborne answers from prepared notes on Lesson 19.1 ═════════
+   No live AI. Questions that match a practice or problem-set item get the questions he would ask, not the answer. */
+var USB_NOTES = [
+  { k: ['hello','hi','hey','who are you','your name','good morning'], w: 1,
+    a: "Hello! I teach statistics, and I answer questions about Lesson 19.1: populations, samples, variables, and the kinds of data. Ask me anything from today's sheets." },
+  { k: ['population','whole group','entire group'],
+    a: "The population is the entire group you want to learn about. If the question is about how the 800 students at a school sleep, the population is those 800 students. The population is decided by the question, not by who was easy to reach." },
+  { k: ['sample','sampled','sample size','n ='],
+    a: "A sample is the part of the population you actually examine. Its size is written n: ask 60 of the 800 students and n = 60. The price of sampling is honesty: you must keep \"what the sample showed\" separate from \"what the whole population is like.\"" },
+  { k: ['census','everyone','every one','all of them','ask everybody'],
+    a: "A census examines every member of the population. Asking all 800 students is a census; asking 60 is a sample." },
+  { k: ['why sample','why not','why do we','instead of','impossible','impractical','reason'], w: 1.2,
+    a: "Three honest reasons we usually sample instead of taking a census. It can cost too much time or money. The population may be too large or spread out to reach. And sometimes measuring destroys the thing measured: a battery tested until it fails can no longer be sold." },
+  { k: ['bias','biased','random','trustworthy','trust','convenience','library','fair','chosen','choose'],
+    a: "A sample is only as trustworthy as the way it was chosen. In the sampler on Sheet 02, the 60 students in the library at 7:00 a.m. slept less than everyone else, so their average missed the population every time. Random samples gave every student the same chance, and their averages landed near the truth." },
+  { k: ['individual','individuals','row','rows','case'],
+    a: "Individuals are the people, animals, or things you collect information about. In a well-made table, each row is one individual." },
+  { k: ['variable','variables','column','columns','characteristic'],
+    a: "A variable is a characteristic that can take different values from one individual to the next. In a table, each column is one variable. If every individual gave the same value, there would be nothing to study. Statistics exists because of variation." },
+  { k: ['data','datum','recorded value','values','how many values'],
+    a: "Data are the recorded values of the variables for the individuals you examined. Five students with five variables each gives twenty-five recorded values. The column that only names each individual is not counted as a variable." },
+  { k: ['categorical','category','categories','qualitative','group'],
+    a: "A categorical variable places each individual into a group: favorite subject, eye color, rides the bus. Counting how many fall in each group makes sense. Averaging them does not." },
+  { k: ['numerical','quantitative','numeric','arithmetic'],
+    a: "A numerical variable is a measurement or count where arithmetic means something: hours of sleep, number of siblings, height. My test: would adding or averaging these values tell you anything? If yes, it is numerical." },
+  { k: ['discrete','counted','count','whole number','whole numbers'],
+    a: "Discrete variables are counted. They take separated values, like 0, 1, 2, or 3 siblings, with nothing in between. Ask: did someone count this, or measure it?" },
+  { k: ['continuous','measured','measure','measurement','decimal','interval'],
+    a: "Continuous variables are measured. They can take any value in an interval: 7.5 hours, 6.25 hours, even 7.3333 hours. If a finer ruler or clock would give you more decimal places, it is continuous." },
+  { k: ['label','labels','digits','locker','numbers that','id number','not numerical'], w: 1.6,
+    a: "A number written down is not automatically numerical. A locker number is a label: locker 407 is not twice locker 214, and the average of two locker numbers means nothing. Ask whether averaging would tell you anything. If not, the variable is categorical, even though it is made of digits." },
+  { k: ['population and a sample','population and sample','sample and population','sample and a population','sample vs population','population vs sample'], w: 3,
+    a: "The population is the entire group you want to learn about; the sample is the part of it you actually examine. Want to know how the 800 students at a school sleep? The 800 are the population. The 60 you ask are the sample, n = 60. Asking all 800 would be a census." },
+  { k: ['tell apart','how do i tell','how can i tell','how do i know','which type','what type','what kind of variable','classify'], w: 2.2,
+    a: "I ask two questions of every variable. First: would adding or averaging the values tell you anything? If no, it is categorical. If yes, it is numerical, and I ask the second: was it counted or measured? Counted is discrete; measured is continuous." },
+  { k: ['univariate','bivariate','one variable','two variables','one or two'],
+    a: "Univariate data records one variable for each individual, like everyone's hours of sleep. Bivariate data records two for each individual, like hours of sleep and whether they ride the bus. Bivariate data lets you ask whether the two are associated." },
+  { k: ['scatter','two-way','two way','display','graph','which graph','chart'],
+    a: "The kinds of variables decide the display. Two categorical variables: a two-way table. Two numerical: a scatter plot. One of each: compare the numerical variable across the groups. You will build all three in this module and in Module 10." },
+  { k: ['association','associated','cause','causes','causation','correlation','related','relationship'],
+    a: "Even a strong association between two variables does not by itself show that one causes the other. Something else may drive both. Seeing a pattern is the first step; explaining it honestly is a much longer one." },
+  { k: ['graunt','bills','mortality','1662','london','history'],
+    a: "John Graunt was a London merchant who, in 1662, gathered years of weekly Bills of Mortality, sorted the entries into categories, and counted. The counts showed patterns no single entry could. He also questioned how reliable the recorded causes were, which is the honest habit this module is about." },
+  { k: ['excel','spreadsheet','workbook','cell','align','aligned','left','right','sheet tab'],
+    a: "Lay out data with one row per individual and one column per variable, with variable names in row 1. Excel left-aligns what it reads as text and right-aligns numbers. It is guessing the variable type, and it will guess wrong for a locker number, so check its guesses." },
+  { k: ['desmos','calculator','calculate'],
+    a: "The calculator tab on the right edge of every sheet opens the Desmos Scientific Calculator. Today you only need it ready for quick arithmetic checks." },
+  { k: ['ai','chatbot','prompt','verify','predict'],
+    a: "On Sheet 07: classify the variables yourself first, then compare with an AI tool's answer if you choose to use one. The usual slip is calling a zip code or jersey number numerical because it is made of digits. A tool that is wrong about that will also be wrong about which graph to draw." },
+  { k: ['pdf','download','progress','save','submit','turn in','hand in'],
+    a: "Finish the problem set on Sheet 08, then press \"Download my progress (PDF).\" It lists every answer, your first-try score, and the dataset you designed. Your teacher will tell you where to hand it in." },
+  { k: ['honest','honesty','virtue','deceive','misleading','lie','lying'],
+    a: "Honesty in statistics starts in a plain place: saying exactly what was measured, on whom, and in what units. A beautiful graph still deceives if nobody can tell what its numbers mean." }
+];
+var USB_PRACTICE = /(cereal|9,?000|40 boxes|principal|612|attendance|bike|trip length|start station|membership|riders|deer|wildlife|shelter|\bdogs?\b|kennel|beagle|crash|carmaker|ice cream|sunburn|zip|jersey|pets|eye colou?r|temperature|phone call|goals|blood type|area code|backpack|text messages|music genre|house number|what'?s the answer|answer (to|for)|is (it|the answer) [abcd]\b)/i;
+function usborneAnswer(q){
+  var t = ' ' + q.toLowerCase().replace(/[^a-z0-9',= ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+  if (USB_PRACTICE.test(q)) {
+    var cls = /(categor|numer|discrete|continuous|classif|type|kind)/i.test(q), pop = /(population|sample|census|\bn\b)/i.test(q);
+    return "That one is from your practice, so I'll give you my questions instead of the answer. " +
+      (cls ? "Would adding or averaging those values tell you anything? If yes, was it counted or measured?" :
+       pop ? "Who is the whole group the question is about? Who was actually examined? Count the ones examined to get n." :
+       "Reread it slowly and ask: what was measured, and on whom?") + " Try it, then check your feedback on the sheet.";
+  }
+  var best = null, bs = 0;
+  USB_NOTES.forEach(function(n){
+    var s = 0;
+    n.k.forEach(function(key){
+      var re = new RegExp('(^|[^a-z])' + key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?([^a-z]|$)');
+      if (re.test(t)) s += key.indexOf(' ') > 0 ? 3 : 2;
+    });
+    s *= (n.w || 1.5);
+    if (s > bs) { bs = s; best = n; }
+  });
+  if (!best || bs < 2) return "A good question, but my notes only cover Lesson 19.1: populations, samples, variables, and the kinds of data. Bring that one to your teacher.";
+  return best.a;
+}
+(function(){
+  var list = $('#letters'), ta = $('#chatQ'), send = $('#chatSend'), plane = $('#plane');
+  function letter(cls, html){
+    var e = $('.empty', list); if (e) e.remove();
+    var d = document.createElement('div'); d.className = 'letter ' + cls; d.innerHTML = html;
+    list.appendChild(d); list.scrollTop = list.scrollHeight; return d;
+  }
+  function mine(q){ return '<div class="salute">Dear ' + TEACHER.short + ',</div>' + esc(q).replace(/\n/g, '<br>'); }
+  function his(a){ return '<div class="salute">Dear student,</div>' + esc(a) + '<div class="sign">' + TEACHER.short + '</div>'; }
+  function fly(dir, done){ plane.className = 'plane ' + dir; setTimeout(function(){ plane.className = 'plane'; if (done) done(); }, 1300); }
+  var LOG = ST.misc.chat = ST.misc.chat || [];
+  LOG.forEach(function(m){ letter('mine', mine(m.q)); letter('his', his(m.a)); });
+  function ask(q){
+    q = q.trim(); if (!q) { ta.focus(); return; }
+    letter('mine', mine(q)); ta.value = ''; send.disabled = true;
+    var wait = letter('wait', '✈ Folding your question into a paper plane…');
+    fly('out', function(){
+      setTimeout(function(){
+        fly('in', function(){
+          var a = usborneAnswer(q);
+          wait.remove(); letter('his', his(a)); send.disabled = false;
+          LOG.push({ q: q, a: a }); if (LOG.length > 20) LOG.shift(); save();
+        });
+      }, 450);
+    });
+  }
+  send.addEventListener('click', function(){ ask(ta.value); });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(ta.value); } });
+  $$('.quick button', list).forEach(function(b){ b.addEventListener('click', function(){ ask(b.textContent); }); });
+})();
 
 /* ═════════ START ═════════ */
 var m = /sheet-(\d+)/.exec(location.hash);
