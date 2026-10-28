@@ -28,4 +28,11 @@ Pilot lesson weeks shared with the AcDC team for review.
 
 - [Lesson 19.1: Statistics Begins with Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-l19-1/lesson-19-1-statistics-begins-with-data.html)
 
+## Semantics and Logic Honors: Week 1
+
+- [Lesson 1.01a: What Is an Argument?](https://optimaondemand.github.io/optima-pilot-samples/hs-semantics-logic-w1/w01-1.01a-what-is-an-argument.html)
+- [Lesson 1.01b: The Purpose of Arguments](https://optimaondemand.github.io/optima-pilot-samples/hs-semantics-logic-w1/w01-1.01b-the-purpose-of-arguments.html)
+- [Lesson 1.01c: Arguments vs. Persuasion](https://optimaondemand.github.io/optima-pilot-samples/hs-semantics-logic-w1/w01-1.01c-arguments-vs-persuasion.html)
+- [Assignment: Arguments in the Wild](https://optimaondemand.github.io/optima-pilot-samples/hs-semantics-logic-w1/w01-assignment-arguments-in-the-wild.html)
+
 Academic Design and Curriculum (AcDC)
