@@ -66,6 +66,10 @@ Pilot lesson weeks shared with the AcDC team for review.
 
 - [Lesson 19.1: Statistics Begins with Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-l19-1/lesson-19-1-statistics-begins-with-data.html)
 
+## History: The Practice of Drama in Athens
+
+- [The Practice of Drama in Athens, with Mr. Magister](https://optimaondemand.github.io/optima-pilot-samples/hs-history-drama-in-athens/the-practice-of-drama-in-athens.html)
+
 ## Semantics and Logic Honors: Week 1
 
 - [Lesson 1.01a: What Is an Argument?](https://optimaondemand.github.io/optima-pilot-samples/hs-semantics-logic-w1/w01-1.01a-what-is-an-argument.html)
