@@ -33,9 +33,9 @@ h1,h2,h3{font-family:var(--head);font-weight:400;color:var(--terra-d);line-heigh
 /* hero */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:#EFE5D3}
 .hero::before{content:"";position:absolute;inset:0;background:url(img/theater-of-dionysus.jpg) center 60%/cover;opacity:.22;filter:sepia(.5)}
-.hero .wrap{position:relative;padding:44px 20px 36px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end}
+.hero .wrap{position:relative;padding:16px 20px 14px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
 .kicker{font:700 12px/1 system-ui,"Segoe UI",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
-.hero h1{font-size:46px;margin:10px 0 0}
+.hero h1{font-size:30px;margin:0}
 .guide{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px 12px 12px;box-shadow:0 6px 24px rgba(60,40,20,.10)}
 .guide img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--gold)}
 .guide b{display:block;font-family:var(--head);font-weight:400;font-size:21px;color:var(--ink)}
@@ -244,8 +244,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 
 @media (max-width:720px){
   body{font-size:17px}
-  .hero .wrap{grid-template-columns:1fr}
-  .hero h1{font-size:34px}
+  .hero h1{font-size:24px}
   .parthead h2{font-size:30px}
   .opts{grid-template-columns:1fr}
   .pp{position:static;display:inline-grid;margin-right:6px;width:24px;height:24px;vertical-align:-4px}
@@ -389,12 +388,29 @@ body.reading-open{overflow:hidden}
 .flow .ansbox textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;font:16px/1.5 Georgia,serif;background:#fff;color:var(--ink);resize:none;user-select:text}
 .flow .ansbox textarea:focus{outline:none;border-color:var(--terra)}
 /* the book landing (Parts 1-6) */
-.booklanding{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;padding:16px 0}
-.bigbook{--P:230px;position:relative;width:230px;height:320px;border:0;padding:0;border-radius:3px 9px 9px 3px;background:radial-gradient(ellipse at 40% 30%,rgba(255,220,180,.18),transparent 60%),linear-gradient(90deg,#5E220D 0 12px,#8F3716 12px 15px,var(--terra) 15px 100%);box-shadow:inset -4px 0 0 #E9DCC5,inset -7px 0 0 #CDBB9C,0 18px 40px rgba(60,30,10,.32);transition:transform .3s}
+.stage0{display:grid;grid-template-columns:auto auto 1fr;gap:36px;align-items:center;padding:8px 0 28px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+.mag{display:grid;justify-items:center;gap:4px;text-align:center;width:150px}
+.mag img{width:118px;height:118px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);box-shadow:0 8px 22px rgba(60,40,20,.18);margin-bottom:6px}
+.mag b{display:block;font-family:var(--head);font-weight:400;font-size:21px;color:var(--ink)}
+.mag small{display:block;color:var(--ink2);font-size:14px;margin-bottom:8px}
+.mag-b{display:grid;gap:6px;width:100%}
+.mag .btn{justify-content:center}
+.minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"f c" "o c";grid-template-rows:auto 1fr;gap:16px;align-items:start}
+.minis .card{padding:16px 18px;margin:0;font-size:16px}
+.minis .card.terra{grid-area:f}.minis .objs{grid-area:o}.minis .card.gold{grid-area:c}
+.minis .focusq{font-size:21px;margin:4px 0 6px}
+.minis .opts{gap:8px}
+.minis .opt{padding:9px 12px;font-size:15px}
+.objs summary{cursor:pointer;list-style:none}
+.objs summary::-webkit-details-marker{display:none}
+.objs summary::after{content:" ▾";color:var(--ink2)}
+.objs[open] summary::after{content:" ▴"}
+.objs .obj{margin:10px 0 0;font-size:15px}
+.bigbook{--P:260px;position:relative;width:260px;height:360px;border:0;padding:0;border-radius:3px 9px 9px 3px;background:radial-gradient(ellipse at 40% 30%,rgba(255,220,180,.18),transparent 60%),linear-gradient(90deg,#5E220D 0 12px,#8F3716 12px 15px,var(--terra) 15px 100%);box-shadow:inset -4px 0 0 #E9DCC5,inset -7px 0 0 #CDBB9C,0 18px 40px rgba(60,30,10,.32);transition:transform .3s}
 .bigbook:hover{transform:translateY(-4px) rotate(-1deg)}
 .bigbook .cv-in{inset:16px 18px 16px 26px;gap:12px;padding:10px}
 .bigbook .cv-k{font-size:8px}
-.bigbook .cv-t{font-size:19px}
+.bigbook .cv-t{font-size:21px}
 .bl-body h2{font-size:34px;margin:6px 0 14px}
 .partlist{display:grid;gap:6px;margin-bottom:18px}
 .pl-row{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:10px 14px}
@@ -403,7 +419,8 @@ body.reading-open{overflow:hidden}
 .pl-row.read i{background:var(--gold);color:#fff}
 .pl-row b{font-family:var(--head);font-weight:400;font-size:19px}
 .pl-row span{font:600 13px system-ui,sans-serif;color:var(--ink2)}
-@media (max-width:720px){.booklanding{grid-template-columns:1fr;justify-items:center;gap:22px}.pl-row{grid-template-columns:28px 1fr}.pl-row span{grid-column:2}}
+@media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
+@media (max-width:720px){.stage0{grid-template-columns:1fr;justify-items:center;gap:20px}.mag{width:auto;grid-template-columns:64px auto;align-items:center;justify-items:start;text-align:left;column-gap:12px}.mag img{grid-row:1/3;width:64px;height:64px;margin:0;border-width:3px}.mag small{display:none}.mag-b{display:flex;width:auto}.minis{grid-template-columns:1fr;grid-template-areas:"f" "o" "c";grid-template-rows:auto}.stage0 .bl-body{width:100%}.pl-row{grid-template-columns:28px 1fr}.pl-row span{grid-column:2}}
 .titlepg{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;break-after:column}
 .titlepg img{max-width:72%;max-height:42%;object-fit:contain;filter:sepia(.35);mix-blend-mode:multiply}
 .titlepg h2{font-size:calc(var(--fs)*1.9);color:var(--terra-d)}
@@ -529,15 +546,8 @@ body.reading-open{overflow:hidden}
 </div></div>
 
 <section class="hero"><div class="wrap">
-  <div>
-    <div class="kicker">Lesson</div>
-    <h1>The Practice of Drama in Athens</h1>
-  </div>
-  <div class="guide">
-    <img src="img/magister.jpg" alt="Mr. Magister">
-    <div><b>Mr. Magister</b><small>Your teacher</small>
-      <button class="btn" id="startBtn">&#9654; Take your seat</button></div>
-  </div>
+  <div class="kicker">Lesson</div>
+  <h1>The Practice of Drama in Athens</h1>
 </div></section>
 
 <nav class="route" aria-label="Lesson parts"><div class="wrap">
@@ -553,20 +563,35 @@ body.reading-open{overflow:hidden}
 
 <!-- 0 · ARRIVE -->
 <section class="step" data-step="0">
+  <div class="stage0">
+    <div class="mag">
+      <img src="img/magister.jpg" alt="Mr. Magister">
+      <div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
+      <div class="mag-b"><button class="btn small" id="startBtn">&#9654; Listen</button><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div>
+    </div>
+    <button class="bigbook" data-openbook="" aria-label="Open the book"><div class="cv-in"><div class="cv-k">Optima Academy Online</div><img src="img/pronomos-actors-crop.jpg" alt=""><div class="cv-t">The Practice of Drama in Athens</div></div></button>
+    <div class="bl-body">
+      <div class="kicker">The Book</div>
+      <h2>Parts 1 to 6</h2>
+      <div class="partlist" id="partlist"></div>
+      <div class="wrow"><button class="btn" data-openbook="">&#128214; Open the book</button><button class="btn ghost" data-go="7">Curtain &rarr;</button></div>
+    </div>
+  </div>
+  <div class="minis">
   <div class="card terra">
     <div class="label">Today's Focus <button class="say" data-play="focus">&#9654; Listen</button></div>
     <p class="focusq">What was dramatic performance in Athens like?</p>
     <p style="margin:0">Dramatic performances were a major occasion in Athens. There was no larger gathering in the city than the audience at the Theater of Dionysus, which held almost 20,000 spectators. What would it have been like to attend? What would you have seen and heard, and how similar to or different would it have been from watching a play today?</p>
   </div>
-  <div class="card">
-    <div class="label">Objectives</div>
+  <details class="card objs">
+    <summary class="label">Objectives</summary>
     <ol class="obj">
       <li><span>I will be able to describe what attending a play at the Theater of Dionysus would have been like, from the stage and the masks to the chorus.</span></li>
       <li><span>I will be able to explain how the City Dionysia was organized and who paid for it.</span></li>
       <li><span>I will be able to explain what the Greeks meant by <i>arete</i> and glory, and why they turned so much of life into a contest.</span></li>
       <li><span>I will be able to explain how the City Dionysia let individual excellence and the glory of the whole city work together.</span></li>
     </ol>
-  </div>
+  </details>
   <div class="card gold">
     <div class="label">Quick Check-in <button class="say" data-play="checkin">&#9654; Listen</button></div>
     <p style="margin:0 0 12px">A play in Athens had professional actors, a singing and dancing chorus, costumes, and an audience of almost 20,000. Who do you think paid for all of it? (No wrong answer. Just check in with your own guess.)</p>
@@ -578,7 +603,7 @@ body.reading-open{overflow:hidden}
     </div>
     <div class="note" id="guessNote"></div>
   </div>
-  <div class="next"><span></span><button class="btn" data-go="1">Part 1: The Theater &rarr;</button></div>
+  </div>
 </section>
 
 <!-- 1 · THEATER -->
@@ -766,19 +791,6 @@ body.reading-open{overflow:hidden}
     <div class="tally" id="gsortTally"></div>
   </div>
   <div class="next"><button class="btn ghost" data-go="5">&larr; Part 5</button><button class="btn" data-go="7">Curtain &rarr;</button></div>
-</section>
-
-<!-- the book (Parts 1-6 live inside it) -->
-<section class="step" data-step="b">
-  <div class="booklanding">
-    <button class="bigbook" data-openbook="" aria-label="Open the book"><div class="cv-in"><div class="cv-k">Optima Academy Online</div><img src="img/pronomos-actors-crop.jpg" alt=""><div class="cv-t">The Practice of Drama in Athens</div></div></button>
-    <div class="bl-body">
-      <div class="kicker">The Book</div>
-      <h2>Parts 1 to 6</h2>
-      <div class="partlist" id="partlist"></div>
-      <div class="wrow"><button class="btn" data-openbook="">&#128214; Open the book</button><button class="btn ghost" data-go="7">Curtain &rarr;</button></div>
-    </div>
-  </div>
 </section>
 
 <!-- 7 · CURTAIN -->
@@ -973,7 +985,7 @@ function go(n, auto = true) {
   if (cur !== n && !(cur >= 1 && cur <= 6 && n >= 1 && n <= 6 && n < cur)) { done.add(cur); store.set('done', [...done]); }
   cur = n; store.set('step', n);
   const inBook = n >= 1 && n <= 6;
-  $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === (inBook ? 'b' : String(n))));
+  $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === (inBook ? '0' : String(n))));
   drawStops(n);
   if (Q.length) { A.pause(); Q = []; qi = 0; drawVoice(); }
   if (inBook) {
@@ -991,13 +1003,13 @@ document.addEventListener('click', e => {
   const p = e.target.closest('[data-play]'); if (p) { started = true; play([p.dataset.play]); return; }
   const pt = e.target.closest('[data-part]'); if (pt) { started = true; play(PL[pt.dataset.part]); return; }
   const pp = e.target.closest('.pp'); if (pp) { started = true; const L = bookClips(); play(L, L.indexOf(pp.parentElement.dataset.clip)); return; }
-  const ob = e.target.closest('[data-openbook]'); if (ob) { openBook(ob.dataset.openbook || null, ob.closest('.readcard')?.querySelector('.minibook') || (ob.closest('[data-step="b"]') ? $('.bigbook') : null)); return; }
+  const ob = e.target.closest('[data-openbook]'); if (ob) { openBook(ob.dataset.openbook || null, ob.closest('.readcard')?.querySelector('.minibook') || (ob.closest('[data-step="0"]') ? $('.bigbook') : null)); return; }
   const t = e.target.closest('.term'); if (t) { showPop(t); if (t.dataset.g) play([t.dataset.g]); return; }
   if (!e.target.closest('.pop')) $('#pop').style.display = 'none';
   const o = e.target.closest('[data-open]'); if (o) { openDrawer(o.dataset.open); return; }
   if (e.target.closest('[data-close]') || e.target.id === 'scrim') closeDrawers();
 });
-$('#startBtn').onclick = () => { started = true; go(0, false); play(PL[0]); };
+$('#startBtn').onclick = () => { started = true; if (!voiceOn) setVoice(true); play(PL[0]); };
 
 /* ---------- player ---------- */
 const A = new Audio(); A.preload = 'auto';
@@ -1470,8 +1482,8 @@ async function openBook(ch, fromEl) {
   R.open = true;
   layout(false);
   const pos = store.get('pos'), pw = pos && wordEl(...pos);
-  const target = ch && /^P\d$/.test(ch) ? R.pts[ch[1]] : ch && R.chs[ch] ? R.chs[ch].a : (pw ? R.wcol[R.words.indexOf(pw)] : 1);
   const first = !store.get('opened'); store.set('opened', 1);
+  const target = ch && /^P\d$/.test(ch) ? R.pts[ch[1]] : ch && R.chs[ch] ? R.chs[ch].a : (pw && !first ? R.wcol[R.words.indexOf(pw)] : R.pts[1]);
   if (reduced) { show(target, 0); reader.animate([{ opacity: 0 }, { opacity: 1 }], 200); $('#rClose').focus(); return; }
   R.busy = true;
   const cover = $('#cover'), P = R.P, H = R.H, cx0 = R.two ? P : 0, x1 = R.two ? -P / 2 : 0;
@@ -1510,7 +1522,7 @@ async function openBook(ch, fromEl) {
 function closeBook() {
   if (!R.open) return;
   hideBar(); $('#noteEd').classList.remove('open'); $('#rpanel').classList.remove('open'); $('#rset').classList.remove('open');
-  const done = () => { if (cur >= 1 && cur <= 6) $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === 'b')); reader.classList.remove('open'); reader.setAttribute('aria-hidden', 'true'); document.body.classList.remove('reading-open'); R.open = false; R.busy = false; updateCards(); R.opener?.focus?.(); };
+  const done = () => { if (cur >= 1 && cur <= 6) $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === '0')); reader.classList.remove('open'); reader.setAttribute('aria-hidden', 'true'); document.body.classList.remove('reading-open'); R.open = false; R.busy = false; updateCards(); R.opener?.focus?.(); };
   if (reduced) return done();
   R.busy = true;
   reader.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220 }).finished.then(done).catch(done);
