@@ -496,6 +496,21 @@ table.tbl td strong { color: var(--ink); }
 .lesson-banner-cap { position: absolute; left: 22px; right: 22px; bottom: 10px; z-index: 1; color: #F3EBD8; font-family: 'Lora', Georgia, serif; font-size: 16px; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
 .lesson-banner-cap small { display: block; font-family: 'Nunito', sans-serif; font-size: 11px; opacity: .9; }
 @media (max-width: 560px) { .lesson-banner { height: 120px; } }
+/* Poetry Corner clean layout (2026-10-28) */
+.pc-clean .poem-card, .pc-clean .poem-card.solved { background: none; border: 0; box-shadow: none; padding: 0; margin-bottom: 18px; }
+.pc-clean .poem-title { font-size: 24px; line-height: 1.25; }
+.pc-clean .poem-author, .pc-clean .poem-credit { margin: 2px 0 10px; }
+.pc-clean .poet-reader { display: block; background: none; border: 0; border-radius: 0; padding: 0; margin: 0 0 18px; }
+.pc-clean .poet-ai { font-size: 12px; color: var(--mute); white-space: nowrap; }
+.pc-clean .hl-prompt { background: none; border: 0; border-radius: 0; padding: 0; margin: 0 0 14px; }
+.pc-clean .hl-tool { display: block; font-size: 13px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
+.pc-clean .hl-do { display: block; font-size: 19px; font-weight: 800; line-height: 1.35; color: var(--ink); }
+.pc-clean .poem-gloss { border-top: 0; padding-top: 0; margin-top: 14px; }
+.pc-clean .your-turn { background: none; border: 0; border-radius: 0; padding: 0; margin: 22px 0 6px; }
+.pc-clean .pc-head { display: flex; gap: 14px; align-items: center; margin-bottom: 10px; }
+.pc-clean .pc-head .poet-photo { width: 72px; height: 86px; flex: none; }
+.pc-clean .pc-head .poem-author { margin-bottom: 0; }
+.pc-clean .poet-credit { font-size: 11.5px; color: var(--mute); margin-top: 10px; }
 </style>
 
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Patrick+Hand&display=swap" rel="stylesheet">
@@ -1049,26 +1064,26 @@ body.greenwood .writers-room .activity-num { background: #8E1E1E !important; }
     </div>
   </div>
 
-  <div class="activity bl-gold">
-    <div class="activity-head"><div class="activity-num" style="background:#C7922C;">3</div><div><div class="activity-title">🪶 Poetry Corner</div><div class="activity-sub">Listen, highlight the poem, then read it aloud yourself.</div></div></div>
+  <div class="activity pc-clean bl-gold">
+    <div class="activity-head"><div class="activity-num" style="background:#C7922C;">3</div><div><div class="activity-title">🪶 Poetry Corner</div></div></div>
     <div class="activity-body">
-      <p>Here are the next three stanzas of the poem from Lesson 1.</p>
-      <div class="poet-reader" id="poetReader">
-        <img class="poet-photo" data-img="noyes" alt="Photograph of the poet Alfred Noyes as a young man">
-        <div class="poet-info">
-          <div class="poet-name">Alfred Noyes <span>(1880&ndash;1958)</span></div>
+      <div class="poem-card" id="poemCard" data-practice="Highlight the repeated line">
+        <div class="pc-head">
+          <img class="poet-photo" data-img="noyes" alt="Photograph of the poet Alfred Noyes as a young man">
+          <div>
+            <div class="poem-title">A Song of Sherwood</div>
+            <div class="poem-author">Alfred Noyes (1880&ndash;1958) &middot; 1903 &middot; stanzas 4&ndash;6 of 13</div>
+          </div>
+        </div>
+        <div class="poet-reader" id="poetReader">
           <div class="poet-controls">
             <button class="poet-play" id="poetPlay" type="button">&#9654; Listen to the poem</button>
             <div class="poet-bar"><div class="poet-bar-fill" id="poetBarFill"></div></div>
             <span class="poet-time" id="poetTime">0:51</span>
+            <span class="poet-ai">AI voice</span>
           </div>
-          <div class="poet-note">AI voice reading, not a recording of Noyes. Photograph: Bain News Service, Library of Congress, public domain.</div>
         </div>
-      </div>
-      <div class="poem-card" id="poemCard" data-practice="Highlight the repeated line">
-        <div class="hl-prompt">🖍️ <strong>Highlighter:</strong> one line appears twice, word for word. Highlight it both times.</div>
-        <div class="poem-title">A Song of Sherwood</div>
-        <div class="poem-author">Alfred Noyes (1903) &middot; stanzas 4&ndash;6 of 13</div>
+        <div class="hl-prompt"><span class="hl-tool">🖍️ Highlighter</span><span class="hl-do">Highlight the one line that appears twice, word for word.</span></div>
         <div class="poem-text">Merry, merry England is waking as of old,
 With eyes of blither hazel and hair of brighter gold:
 For Robin Hood is here again beneath the bursting spray
@@ -1085,6 +1100,7 @@ Round the fairy grass-rings frolic elf and fay,
 In Sherwood, in Sherwood, about the break of day.</div>
         <div class="hl-fb" role="status" aria-live="polite"></div>
         <div class="poem-gloss"><strong>blither:</strong> happier &middot; <strong>spray:</strong> a branch of blossoms &middot; <strong>laverock:</strong> a lark &middot; <strong>steep:</strong> a steep slope, here the sky &middot; <strong>fay:</strong> a fairy</div>
+        <div class="poet-credit">Photograph: Bain News Service, Library of Congress, public domain.</div>
       </div>
       <div class="your-turn">
         <div class="your-turn-label">🎙️ Your turn</div>
@@ -1110,7 +1126,7 @@ In Sherwood, in Sherwood, about the break of day.</div>
 <!-- ════════════ TAB 2: READ ════════════ -->
 <div class="tab-panel" id="tab-reading" data-gather-title="Read">
   <div class="activity chalk read-first bl-pur">
-    <div class="activity-head"><div class="activity-num" style="background:#67308F;">1</div><div><div class="activity-title">🔤 Words: Wrongdoing and the Forest</div><div class="activity-sub">Four more of this week&rsquo;s words. Learn them before you read.</div></div></div>
+    <div class="activity-head"><div class="activity-num" style="background:#67308F;">1</div><div><div class="activity-title">🔤 Words: Wrongdoing and the Forest</div><div class="activity-sub">Four words to learn before you read.</div></div></div>
     <div class="activity-body">
       <div class="lovelore" id="loreWords">
         <div class="ll-head">
@@ -1300,7 +1316,7 @@ In Sherwood, in Sherwood, about the break of day.</div>
         <div class="tap-box-label" style="margin-top:16px;">Your whole cloth, both ways</div>
         <div class="tap-strip eyes-strip" id="eyesStrip"></div>
         <div class="tap-print-row"><button type="button" class="gathered-btn gathered-btn-pdf" id="eyesPrint">🖨️ Print or save both views</button></div>
-        <details class="tap-log-wrap"><summary>📜 Your scenes in words (goes into your Week 1 PDF)</summary>
+        <details class="tap-log-wrap"><summary>📜 Your scenes in words (goes into your PDF)</summary>
           <textarea class="journal-box" id="eyes-log" data-label="Two Pairs of Eyes: my three scenes" readonly></textarea>
         </details>
       </div>
@@ -1331,7 +1347,7 @@ In Sherwood, in Sherwood, about the break of day.</div>
 
 
   <div class="activity bl-org">
-    <div class="activity-head"><div class="activity-num" style="background:#F78F1E;">B</div><div><div class="activity-title">🔍 Mini-Research: Is There a Historical Robin Hood?</div><div class="activity-sub">Step 1 of 2: find two reliable sources</div></div></div>
+    <div class="activity-head"><div class="activity-num" style="background:#F78F1E;">B</div><div><div class="activity-title">🔍 Mini-Research: Is There a Historical Robin Hood?</div><div class="activity-sub">Find two reliable sources</div></div></div>
     <div class="activity-body">
       <p>Green&rsquo;s Robin is a character in a book. The legend is older, and people still argue about whether a real outlaw stood behind the name. Your question:</p>
       <div class="socratic-box">
@@ -1353,7 +1369,7 @@ In Sherwood, in Sherwood, about the break of day.</div>
   </div>
 
   <div class="gathered-card">
-    <div class="gathered-header"><div class="gathered-header-icon">📋</div><div><div class="gathered-header-label">Week 1 &middot; 2 of 4</div><div class="gathered-header-title">Your Work So Far</div></div></div>
+    <div class="gathered-header"><div class="gathered-header-icon">📋</div><div><div class="gathered-header-label">Your work</div><div class="gathered-header-title">Your Work So Far</div></div></div>
     <div class="gathered-body">
       <div class="name-row"><label for="studentName">Your first and last name</label><input id="studentName" type="text" autocomplete="name" placeholder="First Last"></div>
       <textarea class="gathered-output" id="gatheredOutput" readonly></textarea>
@@ -1373,9 +1389,6 @@ In Sherwood, in Sherwood, about the break of day.</div>
         <div class="check-item" data-ck="l2b" onclick="toggleCheck(this,true)"><div class="check-box"></div><div class="check-text">I answered the three chapter questions and my Reader / Writer / Mimic responses.</div></div>
         <div class="check-item" data-ck="l2e" onclick="toggleCheck(this,true)"><div class="check-box"></div><div class="check-text">I stitched all three scenes in Two Pairs of Eyes, both ways.</div></div>
         <div class="check-item" data-ck="l2d" onclick="toggleCheck(this,true)"><div class="check-box"></div><div class="check-text">I found two reliable sources and took notes on each.</div></div>
-      </div>
-      <div class="tab-next-wrap" style="padding-bottom:0;">
-        <a class="next-lesson" href="w1-lesson3-writers-bench.html">Next: The Writer&rsquo;s Bench →</a>
       </div>
     </div>
   </div>
@@ -1988,7 +2001,7 @@ function studentFileName(suffix){
 function lessonSectionHtml(L){
   var st = lessonState(L);
   var h = '<h2>' + esc(L.title) + '</h2>';
-  if (!st.found) return h + '<p class="missing">Lesson not found on this device. Attach this lesson&rsquo;s own PDF to the same submission.</p>';
+  if (!st.found) return h + '<p class="missing">Not found on this device.</p>';
   var lastTab = '';
   st.fields.forEach(function(f){
     if (f.tab !== lastTab) { h += '<h3>' + esc(f.tab) + '</h3>'; lastTab = f.tab; }
@@ -2023,7 +2036,7 @@ function openPrint(title, heading, body){
 function downloadLesson(){
   gatherAnswers();
   var L = CFG.lessons.filter(function(x){ return x.n === CFG.lesson; })[0];
-  openPrint(studentFileName('M4W' + CFG.week + '_L' + CFG.lesson), 'Week ' + CFG.week + ' Work · ' + L.title, lessonSectionHtml(L));
+  openPrint(studentFileName('M4W' + CFG.week + '_L' + CFG.lesson), L.title, lessonSectionHtml(L));
 }
 function downloadWeek(){
   gatherAnswers();
@@ -2038,7 +2051,7 @@ function downloadWeek(){
     body += '<h2>' + esc(el.getAttribute('data-label') || el.id) + '</h2>' + (v && v.trim() ? '<div class="a">' + esc(v.trim()) + '</div>' : '<div class="a missing">(no answer saved)</div>');
     printed[el.dataset.shared] = 1;
   });
-  openPrint(studentFileName('M4W' + CFG.week), 'Week ' + CFG.week + ' Work', body);
+  openPrint(studentFileName('M4W' + CFG.week), 'Week ' + CFG.week, body);
 }
 
 /* ───── CONFETTI ───── */
@@ -2209,7 +2222,7 @@ function wrapPoem(card){
   var box = document.getElementById('poetReader'), R = L2A.reading || {};
   if (!box) return;
   if (!R.audio) { box.style.display = 'none'; return; }
-  var card = box.nextElementSibling;
+  var card = document.getElementById('poemCard');
   wrapPoem(card);
   var spans = card.querySelectorAll('.pw');
   function clear(){ spans.forEach(function(sp){ sp.classList.remove('hl', 'said'); }); card.classList.remove('reading'); }
