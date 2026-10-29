@@ -2,7 +2,7 @@
 
 Pilot lesson weeks shared with the AcDC team for review.
 
-## 6th Grade ELA: King Arthur, Week 1 (integrated pilot)
+## 6th Grade ELA: King Arthur, Week 1
 
 - [Lesson 1: The Sword in the Stone](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-w1/w1-lesson1-sword-in-the-stone.html)
 - [Lesson 2: Excalibur and the Lady of the Lake](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-w1/w1-lesson2-excalibur.html)
@@ -13,7 +13,7 @@ Pilot lesson weeks shared with the AcDC team for review.
 
 - [Module Project — "What Makes a Good Knight?" Comparison Essay (100 pts)](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-projects/module-project-what-makes-a-good-knight-comparison-essay.html)
 
-## 6th Grade ELA: Robin Hood, Week 1 (integrated pilot)
+## 6th Grade ELA: Robin Hood, Week 1
 
 - [Week 1 overview](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-robin-hood-w1/)
 - [Lesson 1: A Hero Is Born in the Greenwood](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-robin-hood-w1/w1-lesson1-greenwood.html)
@@ -25,7 +25,7 @@ Pilot lesson weeks shared with the AcDC team for review.
 
 - [Module Project: Portrait of a Hero (100 pts)](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-robin-hood-projects/module-project-portrait-of-a-hero.html)
 
-## 7th Grade ELA: The Call of the Wild, Week 1 (integrated pilot)
+## 7th Grade ELA: The Call of the Wild, Week 1
 
 - [Lesson 1: A Kidnapped King](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-call-of-the-wild-w1/w1-lesson1-a-kidnapped-king.html)
 - [Lesson 2: The Law of the Club](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-call-of-the-wild-w1/w1-lesson2-the-law-of-the-club.html)
@@ -36,7 +36,7 @@ Pilot lesson weeks shared with the AcDC team for review.
 
 - [CotW Final Project (40 pts)](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-call-of-the-wild-projects/cotw-final-project.html)
 
-## 8th Grade ELA: Out of the Silent Planet, Week 1 (integrated pilot)
+## 8th Grade ELA: Out of the Silent Planet, Week 1
 
 - [Lesson 1: A Promise at The Rise](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-w1/w1-lesson1-the-rise.html)
 - [Lesson 2: It's the Earth](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-w1/w1-lesson2-its-the-earth.html)
@@ -49,7 +49,7 @@ Pilot lesson weeks shared with the AcDC team for review.
 - [Lesson: Plan Your Story (Week 6)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-projects/w6-project1-plan-your-story.html)
 - [Lesson: Write Your Story (Week 6)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-projects/w6-project2-write-your-story.html)
 
-## Probability & Statistics Honors: Lesson 19.1 (glow-up prototype)
+## Probability & Statistics Honors: Lesson 19.1
 
 - [Lesson 19.1: Statistics Begins with Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-l19-1/lesson-19-1-statistics-begins-with-data.html)
 
