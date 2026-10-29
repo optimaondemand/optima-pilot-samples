@@ -49,6 +49,19 @@ Pilot lesson weeks shared with the AcDC team for review.
 - [Lesson: Plan Your Story (Week 6)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-projects/w6-project1-plan-your-story.html)
 - [Lesson: Write Your Story (Week 6)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-projects/w6-project2-write-your-story.html)
 
+## 8th Grade ELA: Lord of the Flies, Week 1
+
+- [Lesson 1: The Sound of the Shell](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-w1/w1-lesson1-sound-of-the-shell.html)
+- [Lesson 2: Fire on the Mountain](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-w1/w1-lesson2-fire-on-the-mountain.html)
+- [Lesson 3: The Writer's Island](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-w1/w1-lesson3-writers-island.html)
+- [Lesson 4: Chosen or Leading?](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-w1/w1-lesson4-chosen-or-leading.html)
+
+### Lord of the Flies, Major Project
+
+- [Module 4 Final Essay (100 pts)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/module-4-final-essay.html)
+- [Lesson: Build Your Case (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project1-build-your-case.html)
+- [Lesson: Write Your Essay (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project2-write-your-essay.html)
+
 ## Probability & Statistics Honors: Lesson 19.1
 
 - [Lesson 19.1: Statistics Begins with Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-l19-1/lesson-19-1-statistics-begins-with-data.html)
