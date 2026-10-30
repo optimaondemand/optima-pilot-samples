@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Phyllis">
+<title>Sixth Grade ELA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IM+Fell+English:ital@0;1&display=swap">
+<style>
+/* Cinematic course entry: forest in mist and morning sun, the trees part on the Great Library, the camera
+   closes on its gate, the gate opens the library map (map.html) in a new tab. One timeline, t in seconds. */
+:root{--cream:#f8f0d8;--red:#8f2a1c;--red-deep:#6e1f14;--gold:#c9a25a;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#0f160f}
+#stage{position:fixed;inset:0;overflow:hidden}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+.veil{position:absolute;inset:0;background:#070a07;pointer-events:none}
+.scrim{position:absolute;left:0;right:0;top:0;height:30%;background:linear-gradient(#0b0f0acc,#0b0f0a00);pointer-events:none;opacity:0}
+.title{position:absolute;left:16px;right:16px;top:26%;text-align:center;color:var(--cream);pointer-events:none;opacity:0;
+  text-shadow:0 2px 22px #000a,0 0 2px #0008}
+.title .k{font-family:Cinzel,Georgia,serif;font-weight:600;letter-spacing:.42em;font-size:clamp(12px,1.7vw,19px)}
+.title .h{font-family:'IM Fell English',Georgia,serif;font-size:clamp(34px,6.4vw,82px);line-height:1.04;margin-top:.22em}
+.endtop{position:absolute;left:16px;right:16px;top:clamp(14px,4.5vh,40px);text-align:center;color:var(--cream);opacity:0;pointer-events:none;
+  text-shadow:0 2px 14px #000c}
+.endtop .h{font-family:Cinzel,Georgia,serif;font-weight:600;letter-spacing:.2em;font-size:clamp(20px,3.4vw,42px);line-height:1.1}
+.endtop .s{font-family:'IM Fell English',Georgia,serif;font-style:italic;font-size:clamp(15px,1.8vw,22px);margin-top:4px}
+.enter{position:absolute;left:50%;bottom:clamp(16px,6vh,54px);transform:translate(-50%,10px);opacity:0;pointer-events:none;
+  display:inline-flex;align-items:center;gap:12px;white-space:nowrap;text-decoration:none;
+  font-family:Cinzel,Georgia,serif;font-weight:600;letter-spacing:.2em;font-size:clamp(14px,1.6vw,18px);
+  color:var(--cream);background:var(--red);border-radius:6px;padding:14px 26px;box-shadow:inset 0 0 0 1px #e6c27a88,0 14px 34px -12px #000c;
+  transition:opacity .6s,transform .6s,background .2s}
+.enter:hover{background:var(--red-deep)}
+.enter:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+.enter svg{width:18px;height:18px;flex:none}
+.ready .enter{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.ctl{position:absolute;right:max(14px,env(safe-area-inset-right,0px));bottom:14px;font-family:Cinzel,Georgia,serif;font-size:12px;letter-spacing:.2em;
+  color:var(--cream);background:#0b0f0a88;border:1px solid #f8f0d855;border-radius:4px;padding:7px 12px;cursor:pointer}
+.ctl:hover{background:#0b0f0acc;border-color:var(--cream)}
+.ctl:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+.ctl[hidden]{display:none}
+@media (max-width:560px){.ctl{bottom:auto;top:12px}}
+
+/* scene states */
+#gateLink{cursor:default;outline:none}
+.ready #gateLink{cursor:pointer}
+#glow{opacity:0}
+.ready #glow{animation:glow 2.4s ease-in-out infinite}
+@keyframes glow{0%,100%{opacity:.35}50%{opacity:.95}}
+#gateLink:focus-visible #glow{opacity:1;animation:none}
+.leaf{transform-box:fill-box;transition:transform 1.6s cubic-bezier(.5,0,.2,1)}
+#doorL{transform-origin:left center}
+#doorR{transform-origin:right center}
+.open #doorL,.open #doorR{transform:scaleX(.06)}
+#spill{opacity:0;transition:opacity 1.4s .3s}
+.open #spill{opacity:1}
+.ray{animation:shimmer 7s ease-in-out infinite alternate;mix-blend-mode:screen}
+@keyframes shimmer{from{opacity:.45}to{opacity:1}}
+.drift{animation:drift 16s ease-in-out infinite alternate}
+.drift.b{animation-duration:21s;animation-direction:alternate-reverse}
+@keyframes drift{from{transform:translateX(-70px)}to{transform:translateX(70px)}}
+.mote{animation:mote 9s ease-in-out infinite}
+@keyframes mote{0%{transform:translate(0,0);opacity:0}25%{opacity:.9}100%{transform:translate(26px,-60px);opacity:0}}
+.flag{transform-box:fill-box;transform-origin:left center;animation:flag 2.6s ease-in-out infinite}
+@keyframes flag{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.84)}}
+@media (prefers-reduced-motion:reduce){.ray,.drift,.mote,.flag,.ready #glow{animation:none}.leaf,#spill{transition:none}}
+</style>
+</head>
+<body>
+<div id="stage">
+<svg id="scene" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="sceneTitle">
+  <title id="sceneTitle">A misty forest in morning sun. The trees part on a castle, the Great Library, and the view closes on its gate.</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9d0cb"/><stop offset=".55" stop-color="#e9dfb9"/><stop offset="1" stop-color="#f1e6c2"/></linearGradient>
+    <radialGradient id="sunGlow" cx="800" cy="150" r="760" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fffbe9"/><stop offset=".18" stop-color="#fff2c8" stop-opacity=".85"/><stop offset=".6" stop-color="#f6e2a8" stop-opacity=".22"/><stop offset="1" stop-color="#f6e2a8" stop-opacity="0"/></radialGradient>
+    <linearGradient id="hills" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a7bda2"/><stop offset="1" stop-color="#8eaa8b"/></linearGradient>
+    <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eee4c2" stop-opacity=".1"/><stop offset="1" stop-color="#eee4c2" stop-opacity=".55"/></linearGradient>
+    <linearGradient id="meadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fa863"/><stop offset="1" stop-color="#55703c"/></linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e2d3a6"/><stop offset="1" stop-color="#c8b281"/></linearGradient>
+    <linearGradient id="midL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1f321d"/><stop offset="1" stop-color="#43623a"/></linearGradient>
+    <linearGradient id="midR" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#1f321d"/><stop offset="1" stop-color="#43623a"/></linearGradient>
+    <linearGradient id="foreL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d150c"/><stop offset="1" stop-color="#26381f"/></linearGradient>
+    <linearGradient id="foreR" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#0d150c"/><stop offset="1" stop-color="#26381f"/></linearGradient>
+    <linearGradient id="trunkL" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#140f0a"/><stop offset="1" stop-color="#3d2e1f"/></linearGradient>
+    <linearGradient id="trunkR" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#140f0a"/><stop offset="1" stop-color="#3d2e1f"/></linearGradient>
+    <linearGradient id="rayG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6d6" stop-opacity="0"/><stop offset=".32" stop-color="#fff6d6" stop-opacity=".55"/><stop offset=".7" stop-color="#fff2c8" stop-opacity=".14"/><stop offset="1" stop-color="#fff2c8" stop-opacity="0"/></linearGradient>
+    <radialGradient id="mist" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#f7f2e2" stop-opacity=".78"/><stop offset=".6" stop-color="#f3ecd8" stop-opacity=".32"/><stop offset="1" stop-color="#f3ecd8" stop-opacity="0"/></radialGradient>
+    <radialGradient id="vig" cx=".5" cy=".5" r=".75"><stop offset=".6" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".55"/></radialGradient>
+    <radialGradient id="warm" cx=".5" cy=".75" r=".7"><stop offset="0" stop-color="#fff3c4"/><stop offset="1" stop-color="#f0b85a"/></radialGradient>
+    <linearGradient id="spillG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe7a8" stop-opacity=".85"/><stop offset="1" stop-color="#ffe7a8" stop-opacity="0"/></linearGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a4426"/><stop offset="1" stop-color="#4b2f1a"/></linearGradient>
+    <pattern id="ashlar" width="44" height="22" patternUnits="userSpaceOnUse">
+      <path d="M0 21.5H44M0 10.75H44M11 0V10.75M33 10.75V21.5" stroke="#8c7d5c" stroke-width="1" fill="none" opacity=".55"/>
+    </pattern>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6"/></filter>
+  </defs>
+
+  <!-- camera: back plane (sky, hills, castle) -->
+  <g id="camB">
+    <rect x="-400" y="-300" width="2400" height="1500" fill="url(#sky)"/>
+    <rect x="-400" y="-300" width="2400" height="1500" fill="url(#sunGlow)"/>
+    <circle cx="800" cy="150" r="58" fill="#fffdf2"/>
+    <path d="M-400 640Q300 530 640 606T1120 596T2000 618V760H-400Z" fill="url(#hills)"/>
+    <g id="backWoods"></g>
+    <rect x="-400" y="520" width="2400" height="220" fill="url(#haze)"/>
+    <path d="M-400 702Q400 682 800 714Q1200 682 2000 702V1300H-400Z" fill="url(#meadow)"/>
+    <path d="M766 720H834L1060 1300H540Z" fill="url(#road)"/>
+    <path d="M766 720 540 1300M834 720 1060 1300" stroke="#a8925f" stroke-width="2" opacity=".6"/>
+    <ellipse cx="800" cy="724" rx="380" ry="16" fill="#3d4a2a" opacity=".35"/>
+    <g id="castle"></g>
+    <g class="drift b"><ellipse cx="560" cy="722" rx="420" ry="46" fill="url(#mist)"/><ellipse cx="1120" cy="716" rx="460" ry="50" fill="url(#mist)"/></g>
+  </g>
+  <!-- camera: middle plane (pines that part) -->
+  <g id="camM"><g id="midLeft"></g><g id="midRight"></g>
+    <g id="midMist" class="drift"><ellipse cx="400" cy="800" rx="520" ry="80" fill="url(#mist)"/><ellipse cx="1200" cy="790" rx="540" ry="84" fill="url(#mist)"/><ellipse cx="800" cy="840" rx="600" ry="70" fill="url(#mist)"/></g>
+  </g>
+  <!-- camera: front plane (great trunks and canopy that part) -->
+  <g id="camF"><g id="foreLeft"></g><g id="foreRight"></g></g>
+  <g id="rays"></g>
+  <g id="motes"></g>
+  <g id="frontMist" class="drift"><ellipse cx="300" cy="880" rx="640" ry="110" fill="url(#mist)"/><ellipse cx="1300" cy="870" rx="640" ry="120" fill="url(#mist)"/></g>
+  <rect x="-400" y="-300" width="2400" height="1500" fill="url(#vig)" pointer-events="none"/>
+</svg>
+<div class="scrim" id="scrim"></div>
+<div class="title" id="title" aria-hidden="true"><div class="k">SIXTH GRADE</div><div class="h">English Language Arts</div></div>
+<div class="endtop" id="endtop"><div class="h">THE GREAT LIBRARY</div><div class="s">Sixth Grade English Language Arts</div></div>
+<a class="enter" id="enter" href="map.html" target="_blank" rel="noopener" tabindex="-1">Open the gate
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<button class="ctl" id="skip" type="button">SKIP</button>
+<button class="ctl" id="replay" type="button" hidden>REPLAY</button>
+<div class="veil" id="veil"></div>
+</div>
+
+<script>
+(function(){
+const MAP_URL = 'map.html';
+const $ = id => document.getElementById(id);
+const stage = $('stage'), svg = $('scene');
+function rng(seed){ return () => (seed = (seed*16807) % 2147483647, (seed-1)/2147483646); }
+const ease = p => p<=0 ? 0 : p>=1 ? 1 : (p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2);
+const clamp01 = p => Math.max(0, Math.min(1, p));
+const seg = (t, a, b) => ease(clamp01((t-a)/(b-a)));
+
+/* ---------- trees ---------- */
+function pine(x, by, h, w){
+  let d = '';
+  const n = 5;
+  for (let i=0;i<n;i++){
+    const f = i/n, yb = by - h*.13 - h*.74*f, wi = w*(1-f*.8)/2, th = h*.34*(1-f*.3);
+    d += `M${x-wi} ${yb}L${x} ${yb-th}L${x+wi} ${yb}Q${x+wi*.45} ${yb-th*.1} ${x} ${yb+th*.07}Q${x-wi*.45} ${yb-th*.1} ${x-wi} ${yb}Z`;
+  }
+  return `<rect x="${x-w*.05}" y="${by-h*.16}" width="${w*.1}" height="${h*.16}" fill="#2a2016"/><path d="${d}"/>`;
+}
+function woods(el, x0, x1, step, by0, by1, h0, h1, wf, fill, seed){
+  const r = rng(seed); let s = `<g fill="${fill}">`;
+  for (let x=x0; x<=x1; x+=step*(.7+r()*.6)){
+    const h = h0 + r()*(h1-h0), by = by0 + r()*(by1-by0);
+    s += pine(Math.round(x), Math.round(by), Math.round(h), Math.round(h*wf*(.85+r()*.3)));
+  }
+  el.innerHTML = s + '</g>';
+}
+function bigTree(x, w, canopyY, side, r){
+  const tw = w/2, top = canopyY + 40;
+  let s = `<path d="M${x-tw*1.9} 905C${x-tw*1.1} 880 ${x-tw*.95} 820 ${x-tw*.95} 760C${x-tw*.8} 560 ${x-tw*.6} 380 ${x-tw*.42} ${top}L${x+tw*.42} ${top}C${x+tw*.6} 380 ${x+tw*.8} 560 ${x+tw*.95} 760C${x+tw*.95} 820 ${x+tw*1.1} 880 ${x+tw*1.9} 905Z" fill="url(#trunk${side})"/>`;
+  s += `<path d="M${x} ${top+120}C${x+tw*1.6} ${top+60} ${x+tw*3} ${top+20} ${x+tw*4.4} ${top-30}M${x} ${top+220}C${x-tw*1.6} ${top+150} ${x-tw*2.6} ${top+120} ${x-tw*3.8} ${top+70}" stroke="url(#trunk${side})" stroke-width="${tw*.36}" stroke-linecap="round" fill="none"/>`;
+  s += `<g fill="url(#fore${side})">`;
+  for (let k=0;k<11;k++){
+    const cx = x + (r()-.5)*w*7, cy = canopyY + (r()-.6)*170, rad = 70 + r()*90;
+    s += `<circle cx="${Math.round(cx)}" cy="${Math.round(cy)}" r="${Math.round(rad)}"/>`;
+  }
+  return s + '</g>';
+}
+function forest(el, side, seed){
+  const r = rng(seed), L = side==='L';
+  const xs = L ? [110, 360, 640] : [960, 1240, 1490], ws = L ? [120, 90, 74] : [78, 96, 124];
+  let s = '';
+  xs.forEach((x,i)=>{ s += bigTree(x, ws[i], i===1 ? 40 : 10 + r()*60, side, r); });
+  s += `<g fill="url(#fore${side})">`;
+  // canopy closing over the middle until the trees part
+  [[L ? 690 : 910, 70, 130], [L ? 760 : 840, 170, 100]].forEach(([cx, cy, rad])=>{ s += `<circle cx="${cx}" cy="${cy}" r="${rad}"/>`; });
+  for (let k=0;k<9;k++){ const cx = (L ? 0 : 800) + k*100 + r()*40; s += `<circle cx="${Math.round(cx)}" cy="${Math.round(905 + r()*40)}" r="${Math.round(60+r()*50)}"/>`; }
+  el.innerHTML = s + '</g>';
+}
+
+/* ---------- castle (the Great Library) ---------- */
+function castle(){
+  const ST = '#d8cba8', SH = '#b5a581', SD = '#9d8d6b', DK = '#2e2a22', RF = '#8f2a1c', RS = '#6e1f14';
+  const crenels = (x0, x1, y, w=12, gap=14) => { let d=''; for (let x=x0; x+w<=x1+.5; x+=w+gap) d += `M${x} ${y}h${w}v-14h-${w}z`; return `<path d="${d}" fill="${ST}"/>`; };
+  const block = (x, y, w, h, shadeLeft) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${ST}"/>` +
+      `<rect x="${shadeLeft ? x : x + w*.62}" y="${y}" width="${w*.38}" height="${h}" fill="${SH}" opacity=".7"/>` +
+      `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#ashlar)"/>`;
+  const cone = (cx, y, hw, h) => `<path d="M${cx-hw} ${y}L${cx} ${y-h}L${cx+hw} ${y}Z" fill="${RF}"/><path d="M${cx} ${y-h}L${cx+hw} ${y}H${cx}Z" fill="${RS}" opacity=".8"/>`;
+  const slit = (x, y, h=26) => `<path d="M${x-4} ${y+h}V${y+4}a4 4 0 0 1 8 0V${y+h}Z" fill="${DK}"/>`;
+  const flag = (x, y) => `<path d="M${x} ${y}v-46" stroke="#3a3328" stroke-width="2.5"/><path class="flag" d="M${x+1} ${y-46}h30l-8 9 8 9h-30z" fill="${RF}"/>`;
+  let s = '';
+  // outer walls and small towers
+  s += block(492, 610, 70, 110, true) + crenels(492, 562, 610) + block(1038, 610, 70, 110, false) + crenels(1038, 1108, 610);
+  s += block(446, 540, 48, 180, true) + cone(470, 540, 30, 64) + slit(470, 590) + slit(470, 650);
+  s += block(1106, 540, 48, 180, false) + cone(1130, 540, 30, 64) + slit(1130, 590) + slit(1130, 650);
+  // keep behind the gatehouse, with a rose window
+  s += block(742, 330, 116, 200, false) + cone(800, 332, 70, 104) + flag(800, 228);
+  s += `<circle cx="800" cy="420" r="23" fill="${DK}"/><circle cx="800" cy="420" r="23" fill="none" stroke="${SD}" stroke-width="4"/>` +
+       `<path d="M800 397V443M777 420H823M784 404 816 436M816 404 784 436" stroke="${SD}" stroke-width="2.5"/>` + slit(772, 360, 22) + slit(828, 360, 22);
+  // curtain walls and corner towers
+  s += block(636, 560, 90, 160, true) + crenels(636, 726, 560) + block(874, 560, 90, 160, false) + crenels(874, 964, 560);
+  s += block(560, 450, 80, 270, true) + cone(600, 452, 52, 104) + slit(600, 500) + slit(600, 570) + slit(600, 640);
+  s += block(960, 450, 80, 270, false) + cone(1000, 452, 52, 104) + slit(1000, 500) + slit(1000, 570) + slit(1000, 640);
+  s += flag(600, 348) + flag(1000, 348);
+  // gatehouse and flanking turrets
+  s += block(720, 500, 160, 220, false) + crenels(722, 878, 500);
+  s += block(704, 470, 42, 250, true) + cone(725, 472, 28, 60) + block(854, 470, 42, 250, false) + cone(875, 472, 28, 60);
+  // banners
+  [[732],[856]].forEach(([x])=>{ s += `<path d="M${x} 512h12v78l-6-8-6 8z" fill="${RF}"/><path d="M${x+3} 512v70" stroke="#c9a25a" stroke-width="1.6"/>`; });
+  // plaque with an open book
+  s += `<rect x="766" y="518" width="68" height="40" rx="3" fill="${SH}" stroke="${SD}" stroke-width="2"/>` +
+       `<path d="M800 548V530c-8-5-17-6-25-3v19c8-3 17-2 25 2c8-4 17-5 25-2v-19c-8-3-17-2-25 3" fill="#efe3c2" stroke="#7a5a2a" stroke-width="1.8" stroke-linejoin="round"/>` +
+       `<path d="M780 534c5-1 10-1 15 1M780 539c5-1 10-1 15 1M805 535c5-2 10-2 15-1M805 540c5-2 10-2 15-1" stroke="#a8842c" stroke-width="1.2" fill="none"/>`;
+  // the gate: warm light behind, doors in front, voussoirs, glow ring, all one link
+  const arch = 'M752 720V640A48 48 0 0 1 848 640V720Z';
+  s += `<a id="gateLink" href="${MAP_URL}" target="_blank" rel="noopener" tabindex="-1" aria-label="Open the gate: the Great Library map opens in a new tab">`;
+  s += `<path d="M742 720V640A58 58 0 0 1 858 640V720" fill="none" stroke="${SD}" stroke-width="14"/>`;
+  let vous = ''; for (let k=0;k<=10;k++){ const a = Math.PI - k*Math.PI/10, c = Math.cos(a), sn = Math.sin(a); vous += `M${(800+51*c).toFixed(1)} ${(640-51*sn).toFixed(1)}L${(800+65*c).toFixed(1)} ${(640-65*sn).toFixed(1)}`; }
+  s += `<path d="${vous}" stroke="#7f704f" stroke-width="1.6"/>`;
+  s += `<path d="${arch}" fill="url(#warm)"/>`;
+  s += `<path id="spill" d="M752 720H848L960 900H640Z" fill="url(#spillG)"/>`;
+  const leaf = (id, d, ring) => `<g id="${id}" class="leaf"><path d="${d}" fill="url(#wood)" stroke="#2e1e10" stroke-width="2"/>` +
+      `<path d="${ring}" stroke="#2a2620" stroke-width="5" fill="none"/></g>`;
+  s += leaf('doorL', 'M752 720V640A48 48 0 0 1 800 592V720Z', 'M754 628H800M752 668H800M752 704H800M764 610V720M776 600V720M788 595V720');
+  s += leaf('doorR', 'M800 592A48 48 0 0 1 848 640V720H800Z', 'M800 628H846M800 668H848M800 704H848M812 595V720M824 600V720M836 610V720');
+  s += `<g id="rings"><circle cx="792" cy="676" r="5" fill="none" stroke="#c9a25a" stroke-width="2"/><circle cx="808" cy="676" r="5" fill="none" stroke="#c9a25a" stroke-width="2"/></g>`;
+  s += `<path id="glow" d="M744 720V640A56 56 0 0 1 856 640V720" fill="none" stroke="#ffe39a" stroke-width="7" filter="url(#soft)"/>`;
+  s += `<path d="${arch}" fill="transparent"/></a>`;
+  $('castle').innerHTML = s;
+}
+
+/* ---------- light ---------- */
+function rays(){
+  const r = rng(5); let s = '';
+  [62, 71, 79, 86, 94, 101, 110, 118].forEach((deg, i)=>{
+    const half = 1.4 + r()*2.4, L = 1250;
+    const p = a => [800 + Math.cos(a*Math.PI/180)*L, 120 + Math.sin(a*Math.PI/180)*L];
+    const [ax, ay] = p(deg-half), [bx, by] = p(deg+half);
+    s += `<path class="ray" style="animation-delay:-${(i*1.7).toFixed(1)}s" d="M800 120L${ax.toFixed(0)} ${ay.toFixed(0)}L${bx.toFixed(0)} ${by.toFixed(0)}Z" fill="url(#rayG)"/>`;
+  });
+  $('rays').innerHTML = s;
+  const m = rng(17); let t = '';
+  for (let k=0;k<34;k++){
+    const x = 520 + m()*560, y = 250 + m()*560, rad = (1 + m()*2.2).toFixed(1);
+    t += `<circle class="mote" style="animation-delay:-${(m()*9).toFixed(1)}s;animation-duration:${(7+m()*6).toFixed(1)}s" cx="${x.toFixed(0)}" cy="${y.toFixed(0)}" r="${rad}" fill="#fff8dc"/>`;
+  }
+  $('motes').innerHTML = t;
+}
+
+woods($('backWoods'), -380, 1980, 34, 640, 690, 70, 150, .42, '#86a286', 3);
+woods($('midLeft'), -60, 800, 52, 860, 900, 520, 720, .44, 'url(#midL)', 7);
+woods($('midRight'), 800, 1660, 52, 860, 900, 520, 720, .44, 'url(#midR)', 9);
+// tall pines at the seam so no roof shows before the trees part
+$('midLeft').insertAdjacentHTML('beforeend', `<g fill="url(#midL)">${pine(600, 890, 760, 300)}${pine(730, 900, 800, 320)}</g>`);
+$('midRight').insertAdjacentHTML('beforeend', `<g fill="url(#midR)">${pine(870, 900, 800, 320)}${pine(1000, 890, 760, 300)}</g>`);
+forest($('foreLeft'), 'L', 21);
+forest($('foreRight'), 'R', 33);
+castle(); rays();
+
+/* ---------- timeline ---------- */
+const T_TITLE_IN = .9, T_TITLE_OUT = 3.6, T_PART = 3.4, T_PART_END = 8.6, T_ZOOM = 8.4, T_ZOOM_END = 12.2, T_END = 12.4;
+const FX = 800, FY = 642;  // camera focus: the gate
+const els = {camB:$('camB'), camM:$('camM'), camF:$('camF'), midL:$('midLeft'), midR:$('midRight'), foreL:$('foreLeft'), foreR:$('foreRight'),
+  rays:$('rays'), motes:$('motes'), front:$('frontMist'), midMist:$('midMist'), veil:$('veil'), title:$('title'), endtop:$('endtop'), scrim:$('scrim')};
+function cam(s, cy){ return `translate(${FX} ${cy.toFixed(2)}) scale(${s.toFixed(4)}) translate(${-FX} ${-FY})`; }
+function render(t){
+  const part = seg(t, T_PART, T_PART_END), zoom = seg(t, T_ZOOM, T_ZOOM_END);
+  const s = 1 + .05*part + 1.75*zoom, cy = FY - 150*zoom;
+  els.camB.setAttribute('transform', cam(s, cy));
+  els.camM.setAttribute('transform', cam(Math.pow(s, 1.35), cy));
+  els.camF.setAttribute('transform', cam(Math.pow(s, 1.8), cy));
+  els.midL.setAttribute('transform', `translate(${(-560*part).toFixed(1)} 0)`);
+  els.midR.setAttribute('transform', `translate(${(560*part).toFixed(1)} 0)`);
+  els.foreL.setAttribute('transform', `translate(${(-760*part).toFixed(1)} 0)`);
+  els.foreR.setAttribute('transform', `translate(${(760*part).toFixed(1)} 0)`);
+  els.rays.style.opacity = (.55 + .45*part) * (1 - .75*zoom);
+  els.motes.style.opacity = 1 - .8*zoom;
+  els.front.style.opacity = .95 * (1 - .55*part) * (1 - zoom);
+  els.midMist.style.opacity = .9 * (1 - .4*part);
+  els.veil.style.opacity = 1 - seg(t, 0, 1.6);
+  els.title.style.opacity = seg(t, T_TITLE_IN, T_TITLE_IN + 1.2) * (1 - seg(t, T_TITLE_OUT, T_TITLE_OUT + 1));
+  els.title.style.transform = `translateY(${(-14*seg(t, T_TITLE_IN, T_TITLE_OUT + 1)).toFixed(1)}px)`;
+  const end = seg(t, T_ZOOM_END - .8, T_END + .6);
+  els.endtop.style.opacity = end; els.scrim.style.opacity = end;
+}
+
+let t0 = null, raf = 0, done = false;
+function finish(){
+  cancelAnimationFrame(raf); render(T_END + 1); done = true;
+  stage.classList.add('ready');
+  $('gateLink').setAttribute('tabindex', '0'); $('enter').removeAttribute('tabindex');
+  $('skip').hidden = true; $('replay').hidden = false;
+}
+function frame(now){
+  if (t0 === null) t0 = now;
+  const t = (now - t0)/1000;
+  render(t);
+  if (t >= T_END) finish(); else raf = requestAnimationFrame(frame);
+}
+function play(){
+  stage.classList.remove('ready', 'open'); svg.classList.remove('open');
+  $('gateLink').setAttribute('tabindex', '-1'); $('enter').setAttribute('tabindex', '-1');
+  $('skip').hidden = false; $('replay').hidden = true;
+  done = false; t0 = null; render(0); raf = requestAnimationFrame(frame);
+}
+function openGate(){ svg.classList.add('open'); }
+$('gateLink').addEventListener('click', e=>{ if (!done){ e.preventDefault(); return; } openGate(); });
+$('gateLink').addEventListener('keydown', e=>{ if (e.key===' ' && done){ e.preventDefault(); openGate(); window.open(MAP_URL, '_blank', 'noopener'); } });
+$('enter').addEventListener('click', openGate);
+$('skip').addEventListener('click', finish);
+$('replay').addEventListener('click', play);
+
+render(0);
+const still = new URLSearchParams(location.search).get('t');  // ?t=6 holds one frame (render checks)
+if (still !== null){ const ts = +still; if (ts >= T_END) finish(); else render(ts); return; }
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduce) finish();
+else if ('IntersectionObserver' in window){
+  // start when the Canvas page has the iframe in view, so a student scrolling down still sees it from the top
+  const io = new IntersectionObserver(es=>{ if (es.some(e=>e.isIntersecting)){ io.disconnect(); play(); } }, {threshold:.4});
+  io.observe(stage);
+} else play();
+})();
+</script>
+</body>
+</html>

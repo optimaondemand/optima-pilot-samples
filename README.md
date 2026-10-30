@@ -2,6 +2,11 @@
 
 Pilot lesson weeks shared with the AcDC team for review.
 
+## 6th Grade ELA: Course Entry, The Great Library
+
+- [Opening sequence (Canvas iframe)](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-great-library/index.html)
+- [The Great Library map (King Arthur, Week 2 lessons inside)](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-great-library/map.html)
+
 ## 6th Grade ELA: King Arthur, Week 1
 
 - [Lesson 1: The Sword in the Stone](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-w1/w1-lesson1-sword-in-the-stone.html)

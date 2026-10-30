@@ -1,0 +1,793 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>The Great Library</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&display=swap">
+<style>
+/* Layout: slim title rule across the top, ink-on-vellum map stage (lobby -> wing -> week plan) left, quest log right; stacks on phones.
+   Deliberate single light look: a hand-inked map in the manner of a fantasy-novel endpaper, dark ink, one red accent, gold hairlines. */
+:root{
+  --page:#e6dbc0; --vellum:#f6efdc; --map:#f2e8cf; --ink:#2b2418; --ink-soft:#6f604a;
+  --rule:#cbb98f; --red:#8f2a1c; --red-deep:#6e1f14; --gold:#a8842c; --green:#4f6b3a;
+  --f-title:'Cinzel', 'Trajan Pro', Georgia, serif;
+  --f-map:'IM Fell English SC', Georgia, 'Times New Roman', serif;
+  --f-ital:'IM Fell English', Georgia, 'Times New Roman', serif;
+  --f-body:'Segoe UI', system-ui, -apple-system, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:radial-gradient(1400px 700px at 50% -20%, #f1e8d0 0%, transparent 70%), var(--page);
+  color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5}
+.wrap{max-width:1320px;margin:0 auto;padding-block:20px 44px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  display:grid;gap:18px}
+
+/* title rule */
+.hud{display:flex;flex-wrap:wrap;align-items:flex-end;gap:14px 34px;padding-bottom:14px;border-bottom:3px double var(--rule)}
+.brand{margin-right:auto;min-width:0}
+.brand h1{margin:0;font-family:var(--f-title);font-weight:600;font-size:clamp(26px,3.6vw,36px);letter-spacing:.14em;line-height:1.05;text-wrap:balance}
+.brand small{display:block;font-family:var(--f-ital);font-style:italic;font-size:17px;color:var(--ink-soft);margin-top:2px}
+.stats{display:flex;flex-wrap:wrap;gap:12px 28px}
+.stat{min-width:130px}
+.stat .k{font-family:var(--f-title);font-size:10px;letter-spacing:.2em;color:var(--ink-soft)}
+.stat .v{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.bar{height:3px;background:#d9cba6;margin-top:4px}
+.bar i{display:block;height:100%;background:var(--red)}
+.bar.ink i{background:var(--ink)}
+.bar.gold i{background:var(--gold)}
+.player{display:flex;align-items:center;gap:10px}
+.avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:var(--map);color:var(--ink);
+  font-family:var(--f-title);font-size:18px;box-shadow:0 0 0 2px var(--vellum),0 0 0 3px var(--gold)}
+.player .nm{font-weight:600;font-size:15px;line-height:1.2}
+.player .rk{font-family:var(--f-ital);font-style:italic;font-size:14px;color:var(--ink-soft)}
+
+/* game */
+.game{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,370px);gap:18px;align-items:start}
+@media (max-width:940px){.game{grid-template-columns:minmax(0,1fr)}}
+.frame,.card{background:var(--vellum);border:1px solid var(--rule);border-radius:8px;box-shadow:0 14px 30px -22px #4a361466;min-width:0}
+.frame{padding:10px}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;padding:2px 4px 10px}
+.crumbs{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--f-title);font-size:11px;letter-spacing:.18em;color:var(--ink-soft);margin-right:auto}
+.crumbs button{all:unset;cursor:pointer;color:var(--red)}
+.crumbs button:hover{text-decoration:underline;text-underline-offset:3px}
+.crumbs button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+.crumbs .here{color:var(--ink)}
+.btn{font-family:var(--f-title);font-size:11px;letter-spacing:.16em;cursor:pointer;background:transparent;color:var(--ink);
+  border:1px solid var(--rule);border-radius:4px;padding:6px 12px}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.stage{position:relative;width:100%;aspect-ratio:1000/680;border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--map)}
+.stage svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.layer-in{animation:layerIn .55s cubic-bezier(.2,.8,.2,1) both;transform-origin:50% 50%}
+.layer-back{animation:layerBack .45s cubic-bezier(.2,.8,.2,1) both;transform-origin:50% 50%}
+@keyframes layerIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes layerBack{from{opacity:0;transform:scale(1.08)}to{opacity:1;transform:none}}
+.legend{display:flex;flex-wrap:wrap;gap:6px 22px;padding:10px 6px 2px;font-family:var(--f-ital);font-style:italic;font-size:15px;color:var(--ink-soft)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend svg{flex:none}
+
+/* svg type + states */
+.t-map{font-family:var(--f-map)}
+.t-ital{font-family:var(--f-ital);font-style:italic}
+.t-cin{font-family:var(--f-title)}
+.halo{paint-order:stroke;stroke:#f2e8cf;stroke-width:5px;stroke-linejoin:round}
+.hit{cursor:pointer;outline:none}
+.hit .ring{stroke:transparent}
+.hit:hover .ring{stroke:#8f2a1c;stroke-opacity:.35}
+.hit:focus-visible .ring{stroke:#8f2a1c;stroke-opacity:1}
+.hit.kb .ring{stroke:#8f2a1c;stroke-opacity:1;stroke-width:2.2}
+.walk{animation:walk 1.8s ease-in-out infinite;transform-box:fill-box}
+@keyframes walk{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+.travelers{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.trav{font:inherit;cursor:pointer;background:transparent;border:1px solid transparent;border-radius:6px;padding:6px 2px 5px;display:grid;justify-items:center;gap:2px;color:var(--ink);min-width:0}
+.trav svg{width:100%;max-width:56px;height:auto;aspect-ratio:48/54}
+.trav span{font-family:var(--f-map);font-size:13px;line-height:1.1}
+.trav:hover{background:#efe4c7}
+.trav[aria-pressed="true"]{border-color:var(--red);background:#efe4c7}
+.trav:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+kbd{font-family:var(--f-title);font-style:normal;font-size:10px;letter-spacing:.08em;color:var(--ink);border:1px solid var(--rule);border-bottom-width:2px;border-radius:3px;padding:1px 5px;background:var(--vellum)}
+.locked .lift{opacity:.42}
+.pulse{animation:pulse 2.2s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pulse{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(1.7)}}
+.march{animation:march 1.4s linear infinite}
+@keyframes march{to{stroke-dashoffset:-26}}
+.flag{animation:flag 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:left center}
+@keyframes flag{0%,100%{transform:scaleX(1)}50%{transform:scaleX(.82)}}
+
+/* side */
+.side{display:grid;gap:18px;min-width:0}
+.card{padding:18px}
+.card h2{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-family:var(--f-title);font-weight:600;font-size:11px;letter-spacing:.24em;color:var(--ink-soft)}
+.card h2::after{content:"";flex:1;height:1px;background:var(--rule)}
+.guide{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:start}
+.portrait{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--vellum);
+  font-family:var(--f-title);font-size:22px;box-shadow:0 0 0 2px var(--vellum),0 0 0 3px var(--gold)}
+.guide .who{font-family:var(--f-title);font-size:10px;letter-spacing:.24em;color:var(--red);margin-bottom:2px}
+.guide .say{font-family:var(--f-ital);font-style:italic;font-size:18px;line-height:1.4}
+.cta{display:block;width:100%;margin-top:16px;cursor:pointer;border:0;border-radius:5px;padding:12px 16px;text-align:left;
+  background:var(--red);color:var(--vellum);font:inherit;box-shadow:inset 0 0 0 1px #c9a25a66}
+.cta:hover{background:var(--red-deep)}
+.cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.cta .k{display:block;font-family:var(--f-title);font-size:10px;letter-spacing:.22em;opacity:.85}
+.cta .v{display:block;font-family:var(--f-map);font-size:24px;line-height:1.15}
+.qhead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
+.qhead .title{font-family:var(--f-map);font-size:26px;line-height:1.1}
+.qhead .sub{font-family:var(--f-ital);font-style:italic;font-size:15px;color:var(--ink-soft);text-align:right}
+.quests{list-style:none;margin:0;padding:0}
+.q{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;cursor:pointer;text-align:left;
+  font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid #e0d2ad;padding:10px 6px}
+.q:hover{background:#efe4c7}
+.q:focus-visible{outline:2px solid var(--red);outline-offset:-2px}
+.q.sel{background:#ecdfbd}
+.q .ic{color:var(--ink)}
+.q .ic.canvas{color:var(--red)}
+.q .ic.boss{color:var(--gold)}
+.q .nm{display:block;font-weight:600;font-size:15px;line-height:1.25}
+.q .mt{display:block;font-family:var(--f-ital);font-style:italic;font-size:14px;color:var(--ink-soft)}
+.q.locked .nm,.q.locked .ic{opacity:.5}
+.st{font-family:var(--f-title);font-size:9px;letter-spacing:.16em;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft)}
+.st::before{content:"";width:7px;height:7px;border-radius:50%;border:1px solid currentColor}
+.st.done{color:var(--green)} .st.done::before{background:currentColor}
+.st.current{color:var(--red)} .st.current::before{background:currentColor;box-shadow:0 0 0 3px #8f2a1c33}
+.st.due{color:var(--red)}
+.st.open{color:var(--ink)}
+.gap{height:10px;border-bottom:1px solid var(--rule)}
+.seals{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.seal{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;border:1px dashed var(--rule);color:var(--rule)}
+.seal.got{border:0;color:#f3dfc0;background:radial-gradient(circle at 38% 32%,#b2402c,#7b2216 70%);box-shadow:0 2px 0 #5a180f, inset 0 0 0 3px #00000022}
+.seal svg{width:56%;height:56%}
+.sealnames{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-top:6px;font-family:var(--f-map);font-size:12px;color:var(--ink-soft);text-align:center}
+
+.toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%) translateY(16px);
+  max-width:min(92vw,520px);background:var(--vellum);color:var(--ink);border:1px solid var(--rule);border-top:3px solid var(--red);border-radius:6px;
+  padding:10px 16px;box-shadow:0 14px 30px -14px #4a361488;opacity:0;pointer-events:none;transition:opacity .2s, transform .2s;z-index:20}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast b{font-family:var(--f-title);font-size:10px;letter-spacing:.22em;display:block;color:var(--red)}
+
+/* lesson reader: full-screen, the week's four lessons as tabs */
+.reader{position:fixed;inset:0;z-index:30;display:grid;grid-template-rows:auto minmax(0,1fr);background:var(--page);
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.reader[hidden]{display:none}
+.rbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding-block:10px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  background:var(--vellum);border-bottom:3px double var(--rule)}
+.rwhere{font-family:var(--f-title);font-size:11px;letter-spacing:.2em;color:var(--ink-soft);white-space:nowrap}
+.rtabs{display:flex;gap:6px;flex:1 1 420px;min-width:0;overflow-x:auto;padding:2px}
+.rtab{flex:none;display:flex;align-items:center;gap:8px;font:inherit;cursor:pointer;color:var(--ink);background:transparent;
+  border:1px solid var(--rule);border-radius:5px;padding:5px 12px}
+.rtab:hover{border-color:var(--ink)}
+.rtab:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.rtab[aria-selected="true"]{background:var(--ink);color:var(--vellum);border-color:var(--ink)}
+.rtab .n{font-family:var(--f-title);font-size:9px;letter-spacing:.18em;color:var(--red)}
+.rtab[aria-selected="true"] .n{color:#e9b9a8}
+.rtab .t{font-family:var(--f-map);font-size:16px;white-space:nowrap}
+.rtrav{width:26px;height:26px;border-radius:50%;background:var(--map);flex:none}
+.rnav{display:flex;gap:6px}
+.btn:disabled{opacity:.4;cursor:default}
+.rbody{position:relative;min-height:0}
+.rbody iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+
+@media (prefers-reduced-motion: reduce){ .pulse,.march,.flag,.walk,.layer-in,.layer-back{animation:none} }
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="grain" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/>
+      <feColorMatrix values="0 0 0 0 .42  0 0 0 0 .32  0 0 0 0 .18  0 0 0 .13 0"/></filter>
+    <radialGradient id="burn" cx="50%" cy="50%" r="72%"><stop offset=".55" stop-color="#8a6a35" stop-opacity="0"/><stop offset="1" stop-color="#8a6a35" stop-opacity=".42"/></radialGradient>
+    <symbol id="s-george" viewBox="0 0 40 40"><path d="M8 5h24v13c0 9-6 14-12 17C14 32 8 27 8 18z" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M20 9v22M12 17h16" stroke="currentColor" stroke-width="3"/></symbol>
+    <symbol id="s-poetry" viewBox="0 0 40 40"><path d="M33 4C21 7 12 17 9 33l3 2c2-7 5-11 9-14-3 0-5 0-7 1 6-6 13-11 19-18z" fill="currentColor"/></symbol>
+    <symbol id="s-arthur" viewBox="0 0 40 40"><circle cx="20" cy="5" r="3" fill="currentColor"/><rect x="18.5" y="7" width="3" height="6" fill="currentColor"/><rect x="12" y="13" width="16" height="3" fill="currentColor"/><path d="M18 16h4l-.6 12h-2.8z" fill="currentColor"/><path d="M7 36l4-8h18l4 8z" fill="currentColor"/></symbol>
+    <symbol id="s-robin" viewBox="0 0 40 40"><circle cx="18" cy="22" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="18" cy="22" r="7" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="18" cy="22" r="2.5" fill="currentColor"/><path d="M19 21 35 5M29 5h6v6" stroke="currentColor" stroke-width="2.5" fill="none"/></symbol>
+    <symbol id="s-bronze" viewBox="0 0 40 40"><path d="M12 4c14 6 14 26 0 32" fill="none" stroke="currentColor" stroke-width="3"/><path d="M12 4v32" stroke="currentColor" stroke-width="1.5"/><path d="M6 20h28M30 16l4 4-4 4" stroke="currentColor" stroke-width="2.5" fill="none"/></symbol>
+    <symbol id="s-globe" viewBox="0 0 40 40"><circle cx="20" cy="23" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/><ellipse cx="20" cy="23" rx="6" ry="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 23h26" stroke="currentColor" stroke-width="2"/><path d="M20 10V2l8 3-8 3" fill="currentColor" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="s-door" viewBox="0 0 40 40"><path d="M10 36V16a10 10 0 0 1 20 0v20z" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="25" cy="25" r="1.8" fill="currentColor"/><path d="M5 36h30" stroke="currentColor" stroke-width="2.5"/></symbol>
+    <symbol id="s-out" viewBox="0 0 40 40"><path d="M16 8H8v24h24v-8" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M20 20 34 6M24 6h10v10" fill="none" stroke="currentColor" stroke-width="2.5"/></symbol>
+    <symbol id="s-keep" viewBox="0 0 40 40"><path d="M6 36V14h5v5h5v-5h8v5h5v-5h5v22z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 36v-8a3 3 0 0 1 6 0v8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 14V3l8 3-8 3" fill="currentColor"/></symbol>
+    <symbol id="s-lock" viewBox="0 0 40 40"><rect x="9" y="18" width="22" height="17" rx="2" fill="currentColor"/><path d="M14 18v-5a6 6 0 0 1 12 0v5" fill="none" stroke="currentColor" stroke-width="3"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <header class="hud">
+    <div class="brand"><h1>THE GREAT LIBRARY</h1><small>Sixth Grade English Language Arts</small></div>
+    <div class="stats" id="stats"></div>
+    <div class="player">
+      <div class="avatar" id="avatar" aria-hidden="true"></div>
+      <div><div class="nm">Sample Scholar</div><div class="rk" id="rank">Week 12 of the journey</div></div>
+    </div>
+  </header>
+
+  <main class="game">
+    <section class="frame" aria-label="Library map">
+      <div class="toolbar">
+        <nav class="crumbs" id="crumbs" aria-label="Where you are"></nav>
+        <button class="btn" id="backBtn" type="button" hidden>&larr; Back</button>
+      </div>
+      <div class="stage" id="stage">
+        <svg id="world" viewBox="0 0 1000 680" role="group" aria-label="Library lobby"></svg>
+        <svg id="wing" viewBox="0 0 1000 680" role="group" hidden></svg>
+        <svg id="chamber" viewBox="0 0 1000 680" role="group" hidden></svg>
+      </div>
+      <div class="legend">
+        <span><svg width="18" height="18" style="color:var(--ink)"><use href="#s-door" width="18" height="18"/></svg>Rooms are lessons, read here</span>
+        <span><svg width="18" height="18" style="color:var(--red)"><use href="#s-out" width="18" height="18"/></svg>Doors open in Canvas</span>
+        <span><svg width="18" height="18" style="color:var(--gold)"><use href="#s-keep" width="18" height="18"/></svg>The keep is the module project</span>
+        <span><kbd>&uarr;&darr;&larr;&rarr;</kbd> or <kbd>WASD</kbd> move &middot; <kbd>ENTER</kbd> go in &middot; <kbd>ESC</kbd> back</span>
+      </div>
+    </section>
+    <aside class="side" id="side"></aside>
+  </main>
+</div>
+<section class="reader" id="reader" hidden aria-label="Lesson reader">
+  <div class="rbar">
+    <button class="btn" type="button" id="rClose">&larr; Map</button>
+    <span class="rwhere" id="rWhere"></span>
+    <div class="rtabs" id="rTabs" role="tablist" aria-label="Lessons this week"></div>
+    <div class="rnav"><button class="btn" type="button" id="rPrev">&larr; Prev</button><button class="btn" type="button" id="rNext">Next &rarr;</button></div>
+  </div>
+  <div class="rbody" id="rBody"></div>
+</section>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const INK='#2b2418', SOFT='#6f604a', RED='#8f2a1c', VEL='#f2e8cf', VEL2='#e8dcbc', GOLD='#a8842c', GREEN='#4f6b3a';
+const MODS = [
+  {id:'george', name:'Dragon Gate',   book:'St. George and the Dragon', weeks:6, x:240, y:180, sym:'s-george', land:'crag',    terr:'mt',
+   rooms:['Gatehouse','Armory','Chapel Steps',"Dragon's Ridge"]},
+  {id:'poetry', name:"Poets' Tower",  book:'Poetry and Short Stories', weeks:4, x:500, y:128, sym:'s-poetry', land:'tower',   terr:'hill',
+   rooms:['Stair of Lines','Echo Gallery','Story Loft','Lantern Room']},
+  {id:'arthur', name:'Camelot',       book:'King Arthur', weeks:6, x:760, y:180, sym:'s-arthur', land:'castle',  terr:'hill',
+   rooms:['Great Hall','Scriptorium','Tiltyard','Round Table'],
+   titles:{2:['The Promise','The Green Lace',"The Writer's Bench",'What the Castle Never Saw'],
+           3:['The Knight of the Kitchen',"The Linnet's Song","The Writer's Bench",'Born or Earned?'],
+           4:['The Seat No One Dared','The End of the Quest',"The Writer's Bench",'The Roads from Camelot'],
+           5:['The Broken Fellowship','The Sword Returns to the Lake',"The Writer's Bench",'The King Who Will Return'],
+           6:["The Knight's Gallery",'The Other Side',"The Writer's Bench",'A Good Knight']},
+   files:{2:['lessons/w2-lesson1-the-promise.html','lessons/w2-lesson2-the-green-lace.html','lessons/w2-lesson3-writers-bench.html','lessons/w2-lesson4-what-the-castle-never-saw.html']}},
+  {id:'robin',  name:'Sherwood',      book:'Robin Hood', weeks:8, x:770, y:475, sym:'s-robin',  land:'oak',     terr:'tree',
+   rooms:['Major Oak','Archery Butts','Nottingham Road','Greenwood Camp']},
+  {id:'bronze', name:'Galilee Hills', book:'The Bronze Bow', weeks:5, x:500, y:540, sym:'s-bronze', land:'village', terr:'hill',
+   rooms:['Village Well','Mountain Cave','The Forge','Hillside Watch']},
+  {id:'globe',  name:'The Globe',     book:'Shakespeare Stories', weeks:3, x:230, y:475, sym:'s-globe',  land:'theatre', terr:'house',
+   rooms:['Tiring House','The Pit','The Balcony','The Trapdoor']}
+];
+let start = 1; MODS.forEach(m => { m.start = start; start += m.weeks; });
+const TOTAL_WEEKS = start - 1;
+const CUR = {m:2, w:2, l:3}; // sample student: Camelot, Week 2, Lesson 3
+const roomName = (mi,w,k) => (MODS[mi].titles && MODS[mi].titles[w] && MODS[mi].titles[w][k]) || MODS[mi].rooms[k];
+const lessonFile = (mi,w,k) => (MODS[mi].files && MODS[mi].files[w] && MODS[mi].files[w][k]) || null;
+function roomText(name, x, y){
+  const words = name.split(' '), lines = [];
+  words.forEach(wd => { const last = lines[lines.length-1]; if (last && (last+' '+wd).length <= 15) lines[lines.length-1] = last+' '+wd; else lines.push(wd); });
+  const fs = lines.length>2 ? 19 : 22;
+  return `<text class="t-map" x="${x}" y="${y}" font-size="${fs}" fill="${INK}">${lines.map((ln,i)=>`<tspan x="${x}" dy="${i?fs+2:0}">${esc(ln)}</tspan>`).join('')}</text>`;
+}
+
+const cmp = (a,b) => { for (let i=0;i<a.length;i++){ if(a[i]<b[i]) return -1; if(a[i]>b[i]) return 1; } return 0; };
+const lessonState = (m,w,l) => { const c = cmp([m,w,l],[CUR.m,CUR.w,CUR.l]); if (c<0) return 'done'; if (c===0) return 'current'; return (m===CUR.m && w===CUR.w) ? 'open' : 'locked'; };
+const turnState = (m,w) => { const c = cmp([m,w],[CUR.m,CUR.w]); return c<0 ? 'done' : c===0 ? 'due' : 'locked'; };
+const weekState = (m,w) => { const c = cmp([m,w],[CUR.m,CUR.w]); return c<0 ? 'done' : c===0 ? 'current' : 'locked'; };
+const modState  = m => m<CUR.m ? 'done' : m===CUR.m ? 'current' : 'locked';
+const projState = m => m<CUR.m ? 'done' : 'locked';
+const STATE = {done:'DONE', current:'YOU ARE HERE', open:'OPEN', due:'DUE THIS WEEK', locked:'SEALED'};
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+function seeded(seed){ return () => { seed = (seed*9301 + 49297) % 233280; return seed/233280; }; }
+const ROMAN = ['I','II','III','IV','V','VI'];
+
+/* ---------- ink glyphs ---------- */
+const S = `stroke="${INK}" stroke-linejoin="round" stroke-linecap="round"`;
+const mt = (x,y,s) => `<path d="M${x-s} ${y}L${x} ${y-s*1.25}L${x+s} ${y}" fill="${VEL}" ${S} stroke-width="1.5"/><path d="M${x} ${y-s*1.25}L${x+s*.35} ${y-s*.25}M${x+s*.2} ${y-s*.85}l${s*.28} ${s*.18}M${x+s*.3} ${y-s*.55}l${s*.3} ${s*.2}" fill="none" ${S} stroke-width=".9"/>`;
+const tree = (x,y,r) => `<path d="M${x} ${y}v${r*.7}" ${S} stroke-width="1.3"/><path d="M${x-r} ${y}A${r} ${r*1.15} 0 1 1 ${x+r} ${y}Z" fill="${VEL}" ${S} stroke-width="1.4"/><path d="M${x-r*.3} ${y-r*.5}q${r*.3} -${r*.25} ${r*.6} 0" fill="none" ${S} stroke-width=".8"/>`;
+const hill = (x,y,w) => `<path d="M${x-w} ${y}Q${x} ${y-w*.8} ${x+w} ${y}" fill="none" ${S} stroke-width="1.4"/><path d="M${x-w*.25} ${y-w*.28}q${w*.25} -${w*.12} ${w*.5} 0" fill="none" ${S} stroke-width=".8"/>`;
+const house = (x,y) => `<path d="M${x-7} ${y}v-10h14v10zM${x-9} ${y-10}l9-8 9 8z" fill="${VEL}" ${S} stroke-width="1.3"/>`;
+const flag = (x,y) => `<path d="M${x} ${y}v-18" ${S} stroke-width="1.3"/><path class="flag" d="M${x} ${y-18}l14 4-14 5z" fill="${RED}"/>`;
+const TERR = {mt:(x,y)=>mt(x,y,14), hill:(x,y)=>hill(x,y,18), tree:(x,y)=>tree(x,y,9), house:(x,y)=>house(x,y)};
+
+const LAND = {
+  castle:(x,y)=>{
+    return `<path d="M${x-40} ${y+24}V${y-12}h80V${y+24}z" fill="${VEL}" ${S} stroke-width="1.6"/>
+    <path d="M${x-40} ${y-12}v-6h10v6h10v-6h10v6h10v-6h10v6h10v-6h10v6h10v-6" fill="none" ${S} stroke-width="1.4"/>
+    <path d="M${x-54} ${y+24}V${y-30}h18V${y+24}zM${x+36} ${y+24}V${y-30}h18V${y+24}z" fill="${VEL}" ${S} stroke-width="1.6"/>
+    <path d="M${x-57} ${y-30}l12-18 12 18zM${x+33} ${y-30}l12-18 12 18z" fill="${VEL2}" ${S} stroke-width="1.4"/>
+    <path d="M${x-12} ${y-12}V${y-40}h24V${y-12}" fill="${VEL}" ${S} stroke-width="1.6"/>
+    <path d="M${x-15} ${y-40}l15-22 15 22z" fill="${VEL2}" ${S} stroke-width="1.4"/>
+    <path d="M${x-8} ${y+24}v-12a8 8 0 0 1 16 0v12" fill="${INK}" opacity=".85"/>
+    <path d="M${x-45} ${y-14}v8M${x+45} ${y-14}v8M${x-24} ${y}v8M${x+24} ${y}v8M${x} ${y-32}v8" ${S} stroke-width="2"/>
+    ${flag(x,y-62)}`;
+  },
+  tower:(x,y)=>`<path d="M${x-70} ${y+26}Q${x} ${y+4} ${x+70} ${y+26}" fill="none" ${S} stroke-width="1.4"/>
+    <path d="M${x-13} ${y+20}L${x-10} ${y-46}h20L${x+13} ${y+20}z" fill="${VEL}" ${S} stroke-width="1.6"/>
+    <path d="M${x-14} ${y-46}v-6h7v6h7v-6h7v6h7v-6" fill="none" ${S} stroke-width="1.3"/>
+    <path d="M${x-14} ${y-52}L${x} ${y-74}L${x+14} ${y-52}" fill="${VEL2}" ${S} stroke-width="1.4"/>
+    <path d="M${x-3} ${y-30}a3 3 0 0 1 6 0v8h-6zM${x-3} ${y-6}a3 3 0 0 1 6 0v8h-6z" fill="${INK}"/>
+    <path d="M${x+22} ${y+6}q10-10 22-4M${x-24} ${y+8}q-10-9-20-3" fill="none" ${S} stroke-width="1"/>
+    ${flag(x,y-74)}`,
+  crag:(x,y)=>`${mt(x+26,y+24,30)}${mt(x-18,y+24,40)}
+    <path d="M${x-24} ${y-26}v-22h12v22" fill="${VEL}" ${S} stroke-width="1.5"/>
+    <path d="M${x-26} ${y-48}l8-10 8 10z" fill="${VEL2}" ${S} stroke-width="1.3"/>
+    <path d="M${x+30} ${y-22}c10-14 26-10 30 0c-8-4-14-2-18 4c6 0 10 2 12 6c-10-4-18-4-24-10z" fill="${RED}" opacity=".85"/>
+    ${flag(x-18,y-58)}`,
+  oak:(x,y)=>`${tree(x-44,y+14,15)}${tree(x+44,y+14,15)}${tree(x-26,y+26,12)}${tree(x+28,y+28,12)}
+    <path d="M${x-4} ${y+26}V${y-4}h8V${y+26}" fill="${VEL}" ${S} stroke-width="1.5"/>
+    <path d="M${x-34} ${y-6}C${x-44} ${y-40} ${x-10} ${y-62} ${x} ${y-50}C${x+14} ${y-66} ${x+46} ${y-40} ${x+34} ${y-6}Z" fill="${VEL}" ${S} stroke-width="1.6"/>
+    <path d="M${x-18} ${y-28}q8-6 16 0M${x+4} ${y-36}q8-6 16 0M${x-8} ${y-16}q8-6 16 0" fill="none" ${S} stroke-width=".9"/>`,
+  village:(x,y)=>`${hill(x-30,y-6,40)}${hill(x+40,y-10,34)}${house(x-26,y+22)}${house(x+26,y+22)}
+    <path d="M${x-11} ${y+22}v-16h22v16zM${x-14} ${y+6}l14-12 14 12z" fill="${VEL}" ${S} stroke-width="1.4"/>
+    <path d="M${x-3} ${y+22}v-7h6v7" fill="${INK}"/>
+    <path d="M${x+48} ${y+24}v-22M${x+48} ${y+6}q-12-6-14 4M${x+48} ${y+2}q12-6 14 4" fill="none" ${S} stroke-width="1.2"/>`,
+  theatre:(x,y)=>`<path d="M${x-38} ${y-10}V${y+18}A38 12 0 0 0 ${x+38} ${y+18}V${y-10}" fill="${VEL}" ${S} stroke-width="1.6"/>
+    <ellipse cx="${x}" cy="${y-10}" rx="38" ry="12" fill="${VEL2}" ${S} stroke-width="1.6"/>
+    <ellipse cx="${x}" cy="${y-9}" rx="26" ry="7" fill="${VEL}" ${S} stroke-width="1"/>
+    <path d="M${x-26} ${y+4}v16M${x-13} ${y+6}v18M${x} ${y+7}v19M${x+13} ${y+6}v18M${x+26} ${y+4}v16" ${S} stroke-width="1"/>
+    <path d="M${x-30} ${y-2}h60" ${S} stroke-width=".8" opacity=".6"/>
+    ${flag(x,y-20)}`
+};
+
+/* ---------- stats ---------- */
+function renderStats(){
+  let lessons=0, turnins=0;
+  MODS.forEach((m,mi)=>{ for(let w=1;w<=m.weeks;w++){ for(let l=1;l<=4;l++) if(lessonState(mi,w,l)==='done') lessons++; if(turnState(mi,w)==='done') turnins+=2; } if(projState(mi)==='done') turnins++; });
+  const week = MODS[CUR.m].start + CUR.w - 1, totalL = TOTAL_WEEKS*4, totalT = TOTAL_WEEKS*2 + MODS.length;
+  const s = (k,v,pct,cls) => `<div class="stat"><div class="k">${k}</div><div class="v">${v}</div><div class="bar ${cls}"><i style="width:${pct.toFixed(1)}%"></i></div></div>`;
+  document.getElementById('stats').innerHTML =
+    s('JOURNEY', `Week ${week} of ${TOTAL_WEEKS}`, week/TOTAL_WEEKS*100, '') +
+    s('ROOMS READ', `${lessons} of ${totalL}`, lessons/totalL*100, 'ink') +
+    s('TURNED IN', `${turnins} of ${totalT}`, turnins/totalT*100, 'gold');
+  updatePlayer();
+}
+
+/* ---------- parchment base ---------- */
+const parchment = () => `<rect width="1000" height="680" fill="${VEL}"/><rect width="1000" height="680" filter="url(#grain)"/>`;
+const border = () => `<rect width="1000" height="680" fill="url(#burn)"/>
+  <rect x="16" y="16" width="968" height="648" fill="none" stroke="${INK}" stroke-width="2"/>
+  <rect x="23" y="23" width="954" height="634" fill="none" stroke="${INK}" stroke-width=".8"/>
+  ${[[16,16],[984,16],[16,664],[984,664]].map(([x,y])=>`<rect x="${x-5}" y="${y-5}" width="10" height="10" fill="${VEL}" stroke="${INK}" stroke-width="1.2" transform="rotate(45 ${x} ${y})"/>`).join('')}`;
+const compass = (x,y) => `<g transform="translate(${x} ${y})">
+  <circle r="30" fill="none" stroke="${INK}" stroke-width="1"/><circle r="24" fill="none" stroke="${INK}" stroke-width=".6"/>
+  <path d="M0-34 5-5 0 0-5-5zM0 34 5 5 0 0-5 5zM-34 0-5-5 0 0-5 5zM34 0 5-5 0 0 5 5z" fill="${INK}"/>
+  <path d="M0-34 5-5 0 0z" fill="${RED}"/>
+  <text class="t-map" y="-40" text-anchor="middle" font-size="15" fill="${RED}">N</text></g>`;
+
+/* ---------- world (lobby) ---------- */
+const CX = 500, CY = 335;
+function placeSVG(m, i){
+  const {x,y} = m, st = modState(i);
+  const sub = st==='done' ? `Module ${i+1} · explored` : st==='current' ? `Module ${i+1} · Week ${CUR.w} of ${m.weeks}` : `Module ${i+1} · opens Week ${m.start}`;
+  const lbl = `${m.name}, ${m.book}, module ${i+1}, ${st==='done'?'explored':st==='current'?'in progress':'sealed'}`;
+  return `<g class="hit ${st==='locked'?'locked':''}" data-wing="${i}" data-ax="${x+86}" data-ay="${y+30}" tabindex="0" role="button" aria-label="${esc(lbl)}">
+    <rect x="${x-95}" y="${y-85}" width="190" height="170" fill="transparent"/>
+    <ellipse class="ring" cx="${x}" cy="${y+8}" rx="92" ry="80" fill="none" stroke-width="1.5" stroke-dasharray="4 5"/>
+    ${st==='current'?`<ellipse class="pulse" cx="${x}" cy="${y+24}" rx="62" ry="16" fill="none" stroke="${RED}" stroke-width="2"/>`:''}
+    <g class="lift">${LAND[m.land](x,y)}</g>
+    <text class="t-map halo" x="${x}" y="${y+56}" text-anchor="middle" font-size="24" fill="${st==='current'?RED:INK}" letter-spacing="2">${esc(m.name)}</text>
+    <text class="t-ital halo" x="${x}" y="${y+74}" text-anchor="middle" font-size="14" fill="${SOFT}">${sub}</text>
+  </g>`;
+}
+function renderWorld(){
+  const w = document.getElementById('world');
+  const rnd = seeded(11);
+  let terr = '';
+  const offs = [[-128,-30],[-120,12],[122,-34],[128,8],[-86,-74],[90,-72],[-140,-62],[140,-60]];
+  MODS.forEach(m=>{ offs.forEach(([dx,dy],k)=>{ const jx=(rnd()-.5)*14, jy=(rnd()-.5)*10; const t = m.terr==='hill' && k%3===0 ? 'mt' : m.terr; terr += `<g opacity="${modState(MODS.indexOf(m))==='locked'?.45:.9}">${TERR[t](Math.round(m.x+dx+jx), Math.round(m.y+dy+jy))}</g>`; });
+    if (m.terr==='tree') [[-150,30],[150,30],[-104,44],[108,46],[-60,-96],[64,-96]].forEach(([dx,dy])=> terr += `<g opacity=".45">${tree(m.x+dx,m.y+dy,8)}</g>`); });
+  // edge mountain range across the top-left and right
+  [[60,110],[96,96],[132,112],[870,96],[906,84],[942,104]].forEach(([x,y])=> terr += mt(x,y,16));
+  const roads = MODS.map(m=>`<path d="M${CX} ${CY}L${m.x} ${m.y+26}" stroke="${SOFT}" stroke-width="1.1" stroke-dasharray="1 6" stroke-linecap="round" fill="none"/>`).join('');
+  let route='';
+  for (let i=0;i<MODS.length-1;i++){
+    const a=MODS[i], b=MODS[i+1], done = i<CUR.m;
+    const mx=(a.x+b.x)/2 + (CX-(a.x+b.x)/2)*-.18, my=(a.y+b.y)/2 + (CY-(a.y+b.y)/2)*-.18;
+    route += `<path d="M${a.x} ${a.y+22}Q${mx} ${my} ${b.x} ${b.y+22}" fill="none" stroke="${RED}" stroke-width="${done?2.4:1.6}" ${done?'':'stroke-dasharray="8 5" class="march"'} opacity="${done?.95:.55}" stroke-linecap="round"/>`;
+  }
+  const river = `<path d="M24 352C110 300 170 398 260 340S380 300 420 352" fill="none" stroke="#56707e" stroke-width="2.2" stroke-linecap="round" opacity=".75"/>
+    <path d="M976 330C910 372 860 300 780 340S640 372 590 344" fill="none" stroke="#56707e" stroke-width="2.2" stroke-linecap="round" opacity=".75"/>
+    <text class="t-ital halo" x="150" y="380" font-size="13" fill="#56707e" transform="rotate(-6 150 380)">River Quill</text>
+    <text class="t-ital halo" x="820" y="380" font-size="13" fill="#56707e" transform="rotate(4 820 380)">The Inkwater</text>`;
+  const cur = MODS[CUR.m];
+  w.innerHTML = `${parchment()}${terr}${river}${roads}${route}
+  <g>
+    <circle cx="${CX}" cy="${CY}" r="58" fill="${VEL}" stroke="${INK}" stroke-width="1.8"/>
+    <circle cx="${CX}" cy="${CY}" r="51" fill="none" stroke="${INK}" stroke-width=".7"/>
+    ${Array.from({length:16},(_,k)=>{const a=k*Math.PI/8;return `<path d="M${(CX+Math.cos(a)*51).toFixed(1)} ${(CY+Math.sin(a)*51).toFixed(1)}L${(CX+Math.cos(a)*58).toFixed(1)} ${(CY+Math.sin(a)*58).toFixed(1)}" stroke="${INK}" stroke-width="1"/>`;}).join('')}
+    <path d="M${CX-26} ${CY+4}A26 22 0 0 1 ${CX+26} ${CY+4}Z" fill="${VEL2}" ${S} stroke-width="1.4"/>
+    <path d="M${CX-28} ${CY+4}h56v16h-56z" fill="${VEL}" ${S} stroke-width="1.4"/>
+    <path d="M${CX-18} ${CY+4}v16M${CX-6} ${CY+4}v16M${CX+6} ${CY+4}v16M${CX+18} ${CY+4}v16M${CX} ${CY-18}v-8" ${S} stroke-width="1.1"/>
+    <text class="t-map halo" x="${CX}" y="${CY+84}" text-anchor="middle" font-size="22" fill="${INK}" letter-spacing="3">The Lobby</text>
+  </g>
+  ${MODS.map(placeSVG).join('')}
+  <text class="t-ital halo" x="${cur.x}" y="${cur.y-92}" text-anchor="middle" font-size="16" fill="${RED}">you are here</text>
+  <path d="M${cur.x} ${cur.y-86}v8" stroke="${RED}" stroke-width="1.4"/>
+  <g transform="translate(60 618)"><text class="t-map" font-size="26" fill="${INK}" letter-spacing="3">The Great Library</text>
+    <text class="t-ital" y="20" font-size="14" fill="${SOFT}">six wings, thirty-two weeks</text></g>
+  ${compass(920,590)}
+  ${border()}${tokenSVG()}`;
+}
+
+/* ---------- wing (module) ---------- */
+function nodePositions(n){
+  const pts=[]; for(let i=0;i<n;i++){ const row=Math.floor(i/4); let col=i%4; if(row%2) col=3-col; pts.push([180+col*215, 215+row*160]); } return pts;
+}
+function renderWing(mi){
+  const m = MODS[mi], svg = document.getElementById('wing'), n = m.weeks+1, pts = nodePositions(n), rnd = seeded(mi*97+13);
+  let terr='';
+  for(let k=0;k<70 && terr.split('<g').length<34;k++){
+    const x=50+rnd()*900, y=130+rnd()*500;
+    if (pts.some(p=>Math.hypot(p[0]-x,p[1]-y)<95)) continue;
+    if (x>780 && y>540) continue;
+    terr += `<g opacity=".7">${TERR[m.terr==='hill'&&k%3===0?'mt':m.terr](Math.round(x),Math.round(y))}</g>`;
+  }
+  const road = 'M'+pts.map(p=>p.join(' ')).join(' L');
+  const curIdx = mi<CUR.m ? n-1 : mi===CUR.m ? CUR.w-1 : -1;
+  const doneRoad = curIdx>0 ? 'M'+pts.slice(0,curIdx+1).map(p=>p.join(' ')).join(' L') : '';
+  let nodes='';
+  pts.forEach((p,i)=>{
+    const [x,y]=p;
+    if(i===n-1){
+      const st = projState(mi);
+      nodes += `<g class="hit ${st==='locked'?'locked':''}" data-proj="${mi}" data-ax="${x+80}" data-ay="${y+24}" tabindex="0" role="button" aria-label="Module project, ${st==='done'?'done':'sealed'}">
+        <rect x="${x-90}" y="${y-85}" width="180" height="160" fill="transparent"/>
+        <ellipse class="ring" cx="${x}" cy="${y}" rx="88" ry="76" fill="none" stroke-width="1.5" stroke-dasharray="4 5"/>
+        <g class="lift">${LAND[m.land](x,y-6)}</g>
+        <text class="t-map halo" x="${x}" y="${y+50}" text-anchor="middle" font-size="21" fill="${INK}" letter-spacing="1.5">Module Project</text>
+        <text class="t-ital halo" x="${x}" y="${y+67}" text-anchor="middle" font-size="13" fill="${st==='done'?GREEN:SOFT}">${st==='done'?'completed':'the keep · opens in Canvas'}</text>
+      </g>`;
+      return;
+    }
+    const w=i+1, st=weekState(mi,w);
+    const fill = st==='current'?RED:st==='done'?VEL2:VEL, num = st==='current'?VEL:INK;
+    nodes += `<g class="hit ${st==='locked'?'locked':''}" data-week="${w}" data-ax="${x+46}" data-ay="${y+18}" tabindex="0" role="button" aria-label="Week ${w}, ${st==='done'?'done':st==='current'?'you are here':'sealed'}">
+      ${st==='current'?`<circle class="pulse" cx="${x}" cy="${y}" r="30" fill="none" stroke="${RED}" stroke-width="2"/>`:''}
+      <circle class="ring" cx="${x}" cy="${y}" r="40" fill="none" stroke-width="1.5" stroke-dasharray="3 4"/>
+      <g class="lift"><circle cx="${x}" cy="${y}" r="30" fill="${fill}" stroke="${INK}" stroke-width="1.8"/>
+      <circle cx="${x}" cy="${y}" r="24" fill="none" stroke="${num}" stroke-width=".7" opacity=".7"/>
+      <text class="t-cin" x="${x}" y="${y+9}" text-anchor="middle" font-size="25" font-weight="600" fill="${num}">${w}</text></g>
+      <text class="t-map halo" x="${x}" y="${y+54}" text-anchor="middle" font-size="18" fill="${INK}" letter-spacing="1">Week ${w}</text>
+      <text class="t-ital halo" x="${x}" y="${y+70}" text-anchor="middle" font-size="13" fill="${st==='done'?GREEN:st==='current'?RED:SOFT}">${st==='done'?'done':st==='current'?'you are here':'sealed'}</text>
+    </g>`;
+  });
+  const status = modState(mi);
+  svg.innerHTML = `${parchment()}${terr}
+  <path d="${road}" fill="none" stroke="${RED}" stroke-width="1.8" stroke-dasharray="8 6" opacity=".5" stroke-linejoin="round"/>
+  ${doneRoad?`<path d="${doneRoad}" fill="none" stroke="${RED}" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>`:''}
+  <g transform="translate(56 80)">
+    <svg x="0" y="-32" width="38" height="38" style="color:${RED}"><use href="#${m.sym}" width="38" height="38"/></svg>
+    <text class="t-map halo" x="52" y="0" font-size="40" fill="${INK}" letter-spacing="3">${esc(m.name)}</text>
+    <text class="t-ital halo" x="54" y="24" font-size="16" fill="${SOFT}">Module ${mi+1} · ${esc(m.book)} · ${m.weeks} weeks · course weeks ${m.start}–${m.start+m.weeks-1}${status==='locked'?' · sealed until Week '+m.start:''}</text>
+  </g>
+  ${nodes}
+  ${compass(920,590)}
+  ${border()}${tokenSVG()}`;
+  svg.setAttribute('aria-label', `${m.name} wing`);
+}
+
+/* ---------- chamber (week) ---------- */
+function renderChamber(mi, w){
+  const m = MODS[mi], svg = document.getElementById('chamber'), last = w===m.weeks;
+  let rooms='';
+  m.rooms.forEach((_,k)=>{
+    const r = roomName(mi,w,k);
+    const x = 64+k*226, y = 140, W = 196, H = 160, st = lessonState(mi,w,k+1);
+    const col = st==='current'?RED:st==='done'?GREEN:SOFT;
+    rooms += `<g class="hit ${st==='locked'?'locked':''}" data-room="${k+1}" data-ax="${x+W-30}" data-ay="${y+H-14}" tabindex="0" role="button" aria-label="Lesson ${k+1}, ${esc(r)}, ${STATE[st].toLowerCase()}">
+      <rect class="ring" x="${x-8}" y="${y-8}" width="${W+16}" height="${H+16}" fill="none" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <g class="lift">
+        <rect x="${x}" y="${y}" width="${W}" height="${H}" fill="${st==='done'?VEL2:VEL}" stroke="${st==='current'?RED:INK}" stroke-width="3.5"/>
+        <rect x="${x+6}" y="${y+6}" width="${W-12}" height="${H-12}" fill="none" stroke="${INK}" stroke-width=".7"/>
+        <rect x="${x+W/2-16}" y="${y+H-4}" width="32" height="8" fill="${VEL}"/>
+      </g>
+      <text class="t-cin" x="${x+18}" y="${y+34}" font-size="11" letter-spacing="3" fill="${SOFT}">LESSON ${ROMAN[k]}</text>
+      ${roomText(r, x+18, y+64)}
+      <text class="t-ital" x="${x+18}" y="${y+H-24}" font-size="15" fill="${col}">${st==='current'?'you are here':st==='done'?'read':st==='open'?'open':'sealed'}</text>
+      ${st==='done'?`<path d="M${x+W-36} ${y+22}l6 6 12-13" fill="none" stroke="${GREEN}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`:''}
+    </g>`;
+  });
+  const doors = [{k:'work', t:`Week ${w} Work`, st:turnState(mi,w)}, {k:'quiz', t:`Week ${w} Quiz`, st:turnState(mi,w)}];
+  if (last) doors.push({k:'project', t:'Module Project', st:projState(mi)});
+  const dw = 104, gap = 96, total = doors.length*dw + (doors.length-1)*gap, x0 = 500 - total/2;
+  const doorSVG = doors.map((d,i)=>{
+    const x = x0 + i*(dw+gap), y = 448, boss = d.k==='project';
+    const edge = d.st==='done' ? GREEN : d.st==='locked' ? SOFT : boss ? GOLD : RED;
+    return `<g class="hit ${d.st==='locked'?'locked':''}" data-door="${d.k}" data-ax="${x+dw+30}" data-ay="${y+118}" tabindex="0" role="button" aria-label="${esc(d.t)}, opens in Canvas, ${STATE[d.st].toLowerCase()}">
+      <rect class="ring" x="${x-14}" y="${y-8}" width="${dw+28}" height="176" fill="none" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <g class="lift">
+        <path d="M${x} ${y+118}V${y+52}a${dw/2} ${dw/2} 0 0 1 ${dw} 0V${y+118}z" fill="${VEL}" stroke="${INK}" stroke-width="3"/>
+        <path d="M${x+7} ${y+118}V${y+52}a${dw/2-7} ${dw/2-7} 0 0 1 ${dw-14} 0V${y+118}" fill="none" stroke="${edge}" stroke-width="1.6"/>
+        <svg x="${x+dw/2-16}" y="${y+50}" width="32" height="32" style="color:${edge}"><use href="#${boss?'s-keep':'s-out'}" width="32" height="32"/></svg>
+      </g>
+      <text class="t-map" x="${x+dw/2}" y="${y+142}" text-anchor="middle" font-size="19" fill="${INK}">${esc(d.t)}</text>
+      <text class="t-ital" x="${x+dw/2}" y="${y+160}" text-anchor="middle" font-size="14" fill="${edge}">${d.st==='done'?'turned in':d.st==='due'?'due this week':d.st==='locked'?'sealed':'open'}</text>
+    </g>`;
+  }).join('');
+  const gx = Math.min(140, x0-60), gw = Math.max(720, total+120);
+  svg.innerHTML = `${parchment()}
+  <g transform="translate(64 84)">
+    <text class="t-map" font-size="42" fill="${INK}" letter-spacing="3">Week ${w}</text>
+    <text class="t-ital" x="2" y="24" font-size="16" fill="${SOFT}">${esc(m.name)} · ${esc(m.book)} · course week ${m.start+w-1}</text>
+  </g>
+  <path d="M70 338H930M70 360H930" stroke="${INK}" stroke-width="1.6"/>
+  ${[0,1,2,3].map(k=>{const cx=64+k*226+98;return `<path d="M${cx-16} 300V338M${cx+16} 300V338" stroke="${INK}" stroke-width="1.6"/><rect x="${cx-15}" y="337" width="30" height="3" fill="${VEL}"/>`;}).join('')}
+  <path d="M484 360V408M516 360V408" stroke="${INK}" stroke-width="1.6"/><rect x="485" y="358" width="30" height="4" fill="${VEL}"/>
+  ${rooms}
+  <rect x="${gx}" y="408" width="${gw}" height="232" fill="none" stroke="${RED}" stroke-width="1.4" stroke-dasharray="9 6"/>
+  <rect x="485" y="405" width="30" height="6" fill="${VEL}"/>
+  <text class="t-cin halo" x="500" y="436" text-anchor="middle" font-size="12" letter-spacing="4" fill="${RED}">THE TURN-IN GATE</text>
+  ${doorSVG}
+  ${border()}${tokenSVG()}`;
+  svg.setAttribute('aria-label', `Week ${w}, ${m.name}`);
+}
+
+/* ---------- side panel ---------- */
+function questItems(mi, w){
+  const m = MODS[mi], items = m.rooms.map((_,k)=>({kind:'lesson', id:'room-'+(k+1), title:roomName(mi,w,k), meta:`Lesson ${k+1} · read here`, st:lessonState(mi,w,k+1)}));
+  items.push({kind:'canvas', id:'door-work', title:`Week ${w} Work`, meta:'PDF upload in Canvas', st:turnState(mi,w)});
+  items.push({kind:'canvas', id:'door-quiz', title:`Week ${w} Quiz`, meta:'Quiz in Canvas', st:turnState(mi,w)});
+  if (w===m.weeks) items.push({kind:'boss', id:'door-project', title:'Module Project', meta:'The keep · Canvas', st:projState(mi)});
+  return items;
+}
+function questList(mi, w, sel){
+  return `<ul class="quests">${questItems(mi,w).map((q,i)=>{
+    const ic = q.kind==='lesson' ? 's-door' : q.kind==='boss' ? 's-keep' : 's-out';
+    return `${i===4?'<li class="gap" aria-hidden="true"></li>':''}<li><button type="button" class="q ${q.st==='locked'?'locked':''} ${sel===q.id?'sel':''}" data-q="${q.id}" data-m="${mi}" data-w="${w}">
+      <svg class="ic ${q.kind}" width="24" height="24" aria-hidden="true"><use href="#${ic}" width="24" height="24"/></svg>
+      <span><span class="nm">${esc(q.title)}</span><span class="mt">${esc(q.meta)}</span></span><span class="st ${q.st}">${STATE[q.st]}</span></button></li>`;
+  }).join('')}</ul>`;
+}
+const guideCard = (line, cta) => `<section class="card"><div class="guide"><div class="portrait" aria-hidden="true">L</div>
+  <div><div class="who">LOVELORE</div><div class="say">${line}</div></div></div>${cta||''}</section>`;
+function sealsCard(){
+  return `<section class="card"><h2>SEALS</h2><div class="seals">${MODS.map((m,i)=>{
+    const got = projState(i)==='done';
+    return `<div class="seal ${got?'got':''}" title="${esc(m.name)}${got?'':' (not yet earned)'}"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="#${got?m.sym:'s-lock'}" width="40" height="40"/></svg></div>`;
+  }).join('')}</div><div class="sealnames">${MODS.map(m=>`<span>${esc(m.name.replace(/^The /,'').split(' ')[0].replace(/'$/,''))}</span>`).join('')}</div></section>`;
+}
+function renderSide(){
+  const side = document.getElementById('side'), cm = MODS[CUR.m], curRoom = roomName(CUR.m, CUR.w, CUR.l-1);
+  if (view.level==='world'){
+    side.innerHTML = guideCard(`You left off in ${esc(cm.name)}, Week ${CUR.w}, at ${esc(curRoom)}. What do you remember from your last visit?`,
+      `<button class="cta" type="button" id="continueBtn"><span class="k">CONTINUE · WEEK ${CUR.w} · LESSON ${CUR.l}</span><span class="v">${esc(curRoom)}</span></button>`) +
+      `<section class="card"><h2>THIS WEEK</h2><div class="qhead"><div class="title">${esc(cm.name)}</div><div class="sub">Week ${CUR.w}</div></div>${questList(CUR.m, CUR.w)}</section>` + sealsCard();
+  } else if (view.level==='wing'){
+    const m = MODS[view.m], st = modState(view.m), w = st==='current' ? CUR.w : st==='done' ? m.weeks : 1;
+    const line = st==='done' ? `${esc(m.name)} is explored. Every room is still open if you want to walk back through.`
+      : st==='current' ? `${esc(m.name)}: ${m.weeks} weeks, and the keep at the end. Which week will you visit?`
+      : `${esc(m.name)} opens in Week ${m.start}. You may look, but the doors stay sealed.`;
+    side.innerHTML = guideCard(line) +
+      `<section class="card"><h2>${st==='locked'?'FIRST WEEK':st==='done'?'FINAL WEEK':'THIS WEEK'}</h2><div class="qhead"><div class="title">${esc(m.name)}</div><div class="sub">Week ${w}</div></div>${questList(view.m, w)}</section>`;
+  } else {
+    const m = MODS[view.m];
+    side.innerHTML = guideCard(`Four rooms in Week ${view.w}, then the Turn-in Gate. Its doors open in Canvas.`) +
+      `<section class="card"><h2>WEEK ${view.w}</h2><div class="qhead"><div class="title">${esc(m.name)}</div><div class="sub">${esc(m.book)}</div></div>${questList(view.m, view.w, view.sel)}</section>`;
+  }
+  side.insertAdjacentHTML('beforeend', travelerCard());
+  const c = document.getElementById('continueBtn'); if (c) c.addEventListener('click', continueQuest);
+}
+
+/* ---------- navigation ---------- */
+const view = {level:'world', m:null, w:null, sel:null};
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function zoom(svg, to, ms, done){
+  const from = svg.getAttribute('viewBox').split(' ').map(Number);
+  if (reduce){ svg.setAttribute('viewBox', to.join(' ')); done(); return; }
+  const t0 = performance.now();
+  (function step(t){
+    const p = Math.min(1,(t-t0)/ms), e = p<.5 ? 4*p*p*p : 1-Math.pow(-2*p+2,3)/2;
+    svg.setAttribute('viewBox', from.map((v,i)=>v+(to[i]-v)*e).join(' '));
+    svg.style.opacity = String(1 - Math.max(0,(p-.6)/.4));
+    p<1 ? requestAnimationFrame(step) : done();
+  })(t0);
+}
+function show(id, cls){
+  ['world','wing','chamber'].forEach(k=>{ const el=document.getElementById(k); el.hidden = k!==id; el.classList.remove('layer-in','layer-back'); el.style.opacity=''; });
+  const el = document.getElementById(id); void el.getBoundingClientRect(); el.classList.add(cls); el.setAttribute('viewBox','0 0 1000 680');
+}
+let busy = false;
+function goWing(mi, after){
+  if (busy) return; busy = true;
+  const m = MODS[mi];
+  zoom(document.getElementById('world'), [m.x-150, m.y-110, 300, 204], 700, ()=>{
+    renderWing(mi); Object.assign(view,{level:'wing', m:mi, w:null, sel:null}); show('wing','layer-in'); chrome(); busy=false;
+    if (after) setTimeout(after, reduce?0:450);
+  });
+}
+function goChamber(w, sel){
+  if (busy) return; busy = true;
+  const p = nodePositions(MODS[view.m].weeks+1)[w-1];
+  zoom(document.getElementById('wing'), [p[0]-110, p[1]-75, 220, 150], 650, ()=>{
+    renderChamber(view.m, w); Object.assign(view,{level:'chamber', w, sel:sel||null}); show('chamber','layer-in'); chrome(); busy=false;
+  });
+}
+function toWing(){ renderWing(view.m); Object.assign(view,{level:'wing', w:null, sel:null}); show('wing','layer-back'); chrome(); }
+function goWorld(){ renderWorld(); Object.assign(view,{level:'world', m:null, w:null, sel:null}); show('world','layer-back'); chrome(); }
+function back(){ if (view.level==='chamber') toWing(); else if (view.level==='wing') goWorld(); }
+function continueQuest(){ const go = () => goChamber(CUR.w, 'room-'+CUR.l); if (view.level==='world') goWing(CUR.m, go); }
+function chrome(){
+  const parts = [view.level==='world' ? `<span class="here">LOBBY</span>` : `<button type="button" data-crumb="world">LOBBY</button>`];
+  if (view.level!=='world'){ const nm = esc(MODS[view.m].name.toUpperCase()); parts.push('·', view.level==='wing' ? `<span class="here">${nm}</span>` : `<button type="button" data-crumb="wing">${nm}</button>`); }
+  if (view.level==='chamber') parts.push('·', `<span class="here">WEEK ${view.w}</span>`);
+  document.getElementById('crumbs').innerHTML = parts.join(' ');
+  document.getElementById('backBtn').hidden = view.level==='world';
+  renderSide();
+  select(defaultTarget());
+}
+
+/* ---------- actions ---------- */
+let toastTimer;
+function toast(head, msg){
+  const t = document.getElementById('toast'); t.innerHTML = `<b>${head}</b>${msg}`; t.classList.add('show');
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove('show'), 2600);
+}
+function act(mi, w, id){
+  const m = MODS[mi];
+  if (id.startsWith('room-')){
+    const l = +id.slice(5), nm = esc(roomName(mi,w,l-1));
+    if (lessonState(mi,w,l)==='locked') return toast('SEALED', `Lesson ${l} · ${nm} opens later.`);
+    if (lessonFile(mi,w,l-1)) return openReader(mi,w,l);
+    return toast('SAMPLE ROOM', `Real lessons are loaded for Camelot, Week 2. ${nm} would open here.`);
+  }
+  const what = id==='door-work' ? `Week ${w} Work` : id==='door-quiz' ? `Week ${w} Quiz` : 'Module Project';
+  const st = id==='door-project' ? projState(mi) : turnState(mi,w);
+  if (st==='locked') return toast('SEALED', `${what} is not open yet.`);
+  toast('TO CANVAS', `${what} opens in Canvas in a new tab.`);
+}
+const stage = document.getElementById('stage');
+stage.addEventListener('click', e=>{
+  const g = e.target.closest('[data-wing],[data-week],[data-proj],[data-room],[data-door]'); if (!g) return;
+  if (g.dataset.wing) return goWing(+g.dataset.wing);
+  if (g.dataset.week) return goChamber(+g.dataset.week);
+  if (g.dataset.proj) return goChamber(MODS[view.m].weeks, 'door-project');
+  select(g); act(view.m, view.w, view.sel);
+});
+stage.addEventListener('keydown', e=>{
+  if ((e.key==='Enter' || e.key===' ') && e.target.closest('[role="button"]')){ e.preventDefault(); e.target.dispatchEvent(new MouseEvent('click',{bubbles:true})); }
+});
+document.getElementById('side').addEventListener('click', e=>{
+  const t = e.target.closest('[data-char]'); if (t) return setChar(t.dataset.char);
+  const b = e.target.closest('[data-q]'); if (!b) return;
+  if (view.level==='chamber'){
+    const q = b.dataset.q, el = document.getElementById('chamber').querySelector(q.startsWith('room-') ? `[data-room="${q.slice(5)}"]` : `[data-door="${q.slice(5)}"]`);
+    if (el) select(el); else { view.sel = q; renderSide(); }
+  }
+  act(+b.dataset.m, +b.dataset.w, b.dataset.q);
+});
+document.getElementById('crumbs').addEventListener('click', e=>{
+  const b = e.target.closest('[data-crumb]'); if (!b) return;
+  b.dataset.crumb==='world' ? goWorld() : toWing();
+});
+document.getElementById('backBtn').addEventListener('click', back);
+
+/* ---------- traveler: the character who walks the map ---------- */
+const CHARS = [
+  {id:'squire',   name:'Squire',   cloak:'#8f2a1c', skin:'#c99a6e', hair:'#3a2a1a', head:'hair', prop:'shield'},
+  {id:'scribe',   name:'Scribe',   cloak:'#4a5a72', skin:'#f1d3b5', hair:'#6b4a2a', head:'hood', prop:'quill'},
+  {id:'archer',   name:'Archer',   cloak:'#4f6b3a', skin:'#8d5a3b', hair:'#1e1712', head:'hood', prop:'bow'},
+  {id:'minstrel', name:'Minstrel', cloak:'#a8842c', skin:'#e9c9a3', hair:'#7a4a22', head:'cap',  prop:'lute'},
+  {id:'mapmaker', name:'Mapmaker', cloak:'#6f604a', skin:'#a8704a', hair:'#2a1f17', head:'hair', prop:'scroll'}
+];
+let charId = 'squire';
+try { const v = localStorage.getItem('gl-traveler'); if (CHARS.some(c=>c.id===v)) charId = v; } catch(e){}
+const ch = () => CHARS.find(c=>c.id===charId);
+function figure(c){
+  const L = `stroke="${INK}" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"`;
+  const back = c.prop==='bow' ? `<path d="M-6 -30L-13 -12" stroke="${SOFT}" stroke-width="4" stroke-linecap="round"/><path d="M-7 -31l-2-4M-5 -31l1-4" ${L} fill="none"/>` : '';
+  const body = `<ellipse cx="0" cy="0" rx="12" ry="3" fill="#000" opacity=".2"/>
+    <path d="M-11 0L-8 -23Q0 -28 8 -23L11 0Z" fill="${c.cloak}" ${L}/>
+    <path d="M-9 -11h18" ${L} fill="none"/><path d="M-3 -24 0 -19 3 -24" fill="none" ${L}/>`;
+  const head = `<circle cx="0" cy="-31" r="7.5" fill="${c.skin}" ${L}/>
+    <circle cx="-2.6" cy="-31" r=".95" fill="${INK}"/><circle cx="2.6" cy="-31" r=".95" fill="${INK}"/>
+    <path d="M-1.8 -27.6q1.8 1.3 3.6 0" fill="none" stroke="${INK}" stroke-width=".9" stroke-linecap="round"/>`;
+  const top = c.head==='hood' ? `<path d="M-9.5 -27Q-11 -42 0 -42Q11 -42 9.5 -27L7.2 -25Q8 -36.5 0 -36.5Q-8 -36.5 -7.2 -25Z" fill="${c.cloak}" ${L}/>`
+    : c.head==='cap' ? `<path d="M-7.6 -32Q-7 -40 0 -39.5Q7 -40 7.6 -32Q0 -35 -7.6 -32Z" fill="${c.hair}"/><path d="M-9 -35.5Q0 -43 9 -35.5Q0 -38 -9 -35.5Z" fill="${c.cloak}" ${L}/><path d="M5 -38Q12 -46 15 -45Q11 -41 6 -37" fill="${RED}" ${L}/>`
+    : `<path d="M-7.6 -31Q-8 -40.5 0 -40Q8 -40.5 7.6 -31Q4 -36 -1 -35Q-5 -34.5 -7.6 -31Z" fill="${c.hair}" ${L}/>`;
+  const P = {
+    shield:`<path d="M-20 -22h11v8c0 6-3 9-5.5 10.5C-12 -5 -20 -8 -20 -14z" fill="${VEL}" ${L}/><path d="M-14.5 -20.5v14M-19 -15h9.5" stroke="${RED}" stroke-width="1.8"/>`,
+    quill:`<path d="M6 -22l11 -2 1 9 -11 2z" fill="${VEL2}" ${L}/><path d="M11.5 -23l.9 9" stroke="${INK}" stroke-width=".8"/><path d="M-9 -16C-14 -24 -14 -34 -11 -40C-10 -32 -8.5 -24 -9 -16Z" fill="${VEL}" ${L}/>`,
+    bow:`<path d="M13 -38Q25 -22 13 -6" fill="none" stroke="${INK}" stroke-width="1.8" stroke-linecap="round"/><path d="M13 -38V-6" stroke="${INK}" stroke-width=".8"/>`,
+    lute:`<path d="M12 -20L19 -33" stroke="${INK}" stroke-width="2" stroke-linecap="round"/><path d="M17 -35l4 -2" stroke="${INK}" stroke-width="1.4"/><ellipse cx="9" cy="-15" rx="6" ry="7.5" fill="#c9a25a" ${L} transform="rotate(30 9 -15)"/><circle cx="9.5" cy="-15.5" r="1.6" fill="${INK}"/>`,
+    scroll:`<rect x="-9" y="-20" width="18" height="10" fill="${VEL}" ${L}/><path d="M-5 -14q4 -4 8 0t4 -2" fill="none" stroke="${RED}" stroke-width="1.1"/><ellipse cx="-10" cy="-15" rx="2.6" ry="5.5" fill="${VEL2}" ${L}/><ellipse cx="10" cy="-15" rx="2.6" ry="5.5" fill="${VEL2}" ${L}/>`
+  };
+  return back + body + head + top + P[c.prop];
+}
+const tokenSVG = () => `<g class="token" pointer-events="none" style="transform:translate(-200px,-200px)"><g class="walk">${figure(ch())}</g></g>`;
+function placeToken(el){
+  const tok = document.getElementById(view.level).querySelector('.token'); if (!tok || !el.dataset.ax) return;
+  const s = {world:1.5, wing:1.4, chamber:1.55}[view.level];
+  tok.style.transition = (tok.dataset.placed && !reduce) ? 'transform .5s cubic-bezier(.3,.7,.3,1)' : 'none';
+  tok.style.transform = `translate(${el.dataset.ax}px, ${el.dataset.ay}px) scale(${s})`;
+  tok.dataset.placed = '1';
+}
+const travelerCard = () => `<section class="card"><h2>YOUR TRAVELER</h2><div class="travelers" role="group" aria-label="Choose your traveler">${CHARS.map(c=>`<button type="button" class="trav" data-char="${c.id}" aria-pressed="${c.id===charId}"><svg viewBox="-24 -50 48 54" aria-hidden="true">${figure(c)}</svg><span>${c.name}</span></button>`).join('')}</div></section>`;
+function updatePlayer(){
+  const week = MODS[CUR.m].start + CUR.w - 1;
+  document.getElementById('avatar').innerHTML = `<svg viewBox="-15 -45 30 30" width="44" height="44">${figure(ch())}</svg>`;
+  document.getElementById('rank').textContent = `${ch().name} · Week ${week} of the journey`;
+}
+function setChar(id){
+  charId = id;
+  try { localStorage.setItem('gl-traveler', id); } catch(e){}
+  document.querySelectorAll('.token .walk').forEach(g=>{ g.innerHTML = figure(ch()); });
+  updatePlayer(); renderSide();
+  toast('TRAVELER', `The ${ch().name} sets out.`);
+}
+
+/* ---------- lesson reader ---------- */
+const reader = document.getElementById('reader'), rTabs = document.getElementById('rTabs'), rBody = document.getElementById('rBody');
+let rCtx = null;
+function openReader(mi, w, l){
+  if (!rCtx || rCtx.mi!==mi || rCtx.w!==w) rBody.innerHTML = '';
+  rCtx = {mi, w, l};
+  document.getElementById('rWhere').textContent = `${MODS[mi].name.toUpperCase()} · WEEK ${w}`;
+  reader.hidden = false; document.body.style.overflow = 'hidden';
+  showLesson(l);
+}
+function renderReaderTabs(){
+  const {mi, w, l} = rCtx;
+  rTabs.innerHTML = MODS[mi].rooms.map((_,k)=>`<button type="button" role="tab" class="rtab" data-l="${k+1}" aria-selected="${k+1===l}" ${lessonFile(mi,w,k)?'':'disabled'}>${k+1===l?`<svg class="rtrav" viewBox="-15 -45 30 30" aria-hidden="true">${figure(ch())}</svg>`:''}<span class="n">LESSON ${ROMAN[k]}</span><span class="t">${esc(roomName(mi,w,k))}</span></button>`).join('');
+  document.getElementById('rPrev').disabled = l<=1 || !lessonFile(mi,w,l-2);
+  document.getElementById('rNext').disabled = l>=4 || !lessonFile(mi,w,l);
+}
+function showLesson(l){
+  rCtx.l = l; renderReaderTabs();
+  const {mi, w} = rCtx;
+  rBody.querySelectorAll('iframe').forEach(f=>{ f.hidden = +f.dataset.l!==l; });
+  let fr = rBody.querySelector(`iframe[data-l="${l}"]`);
+  if (!fr){ fr = document.createElement('iframe'); fr.dataset.l = l; fr.title = `Lesson ${l}: ${roomName(mi,w,l-1)}`; fr.src = lessonFile(mi,w,l-1); rBody.appendChild(fr); }
+  fr.focus();
+}
+function closeReader(){ reader.hidden = true; document.body.style.overflow = ''; if (kbSel) kbSel.focus({preventScroll:true}); }
+rTabs.addEventListener('click', e=>{ const b = e.target.closest('[data-l]'); if (b && !b.disabled) showLesson(+b.dataset.l); });
+document.getElementById('rPrev').addEventListener('click', ()=>showLesson(rCtx.l-1));
+document.getElementById('rNext').addEventListener('click', ()=>showLesson(rCtx.l+1));
+document.getElementById('rClose').addEventListener('click', closeReader);
+
+/* ---------- keyboard travel: arrows / WASD move, Enter or E goes in, Esc or Q goes back ---------- */
+let kbSel = null;
+const targets = () => [...document.getElementById(view.level).querySelectorAll('[role="button"]')];
+const center = el => { const r = el.getBoundingClientRect(); return [r.left + r.width/2, r.top + r.height/2]; };
+function defaultTarget(){
+  const svg = document.getElementById(view.level); let q;
+  if (view.level==='world') q = `[data-wing="${CUR.m}"]`;
+  else if (view.level==='wing') q = view.m===CUR.m ? `[data-week="${CUR.w}"]` : '[data-week="1"]';
+  else if (view.sel) q = view.sel.startsWith('room-') ? `[data-room="${view.sel.slice(5)}"]` : `[data-door="${view.sel.slice(5)}"]`;
+  else q = (view.m===CUR.m && view.w===CUR.w) ? `[data-room="${CUR.l}"]` : '[data-room="1"]';
+  return svg.querySelector(q) || targets()[0];
+}
+function select(el){
+  document.querySelectorAll('.hit.kb').forEach(e=>e.classList.remove('kb'));
+  kbSel = el || null; if (!el) return;
+  el.classList.add('kb'); el.focus({preventScroll:true}); placeToken(el);
+  if (view.level==='chamber'){
+    view.sel = el.dataset.room ? 'room-'+el.dataset.room : el.dataset.door ? 'door-'+el.dataset.door : null;
+    renderSide();
+  }
+}
+function move(dx, dy){
+  const list = targets();
+  if (!kbSel || !list.includes(kbSel)) return select(defaultTarget());
+  const [x0,y0] = center(kbSel); let best = null, bs = Infinity;
+  list.forEach(el=>{
+    if (el===kbSel) return;
+    const [x,y] = center(el), vx = x-x0, vy = y-y0, along = vx*dx + vy*dy;
+    if (along <= 4) return;
+    const score = along + Math.abs(vx*dy - vy*dx)*2;
+    if (score < bs){ bs = score; best = el; }
+  });
+  if (best) select(best);
+}
+document.addEventListener('keydown', e=>{
+  if (e.defaultPrevented || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (e.target.closest && e.target.closest('input,textarea,select,[contenteditable]')) return;
+  const k = e.key.length===1 ? e.key.toLowerCase() : e.key;
+  if (!reader.hidden){ if (k==='Escape'){ e.preventDefault(); closeReader(); } return; }
+  const dir = {ArrowUp:[0,-1], w:[0,-1], ArrowDown:[0,1], s:[0,1], ArrowLeft:[-1,0], a:[-1,0], ArrowRight:[1,0], d:[1,0]}[k];
+  if (dir){ e.preventDefault(); if (!busy) move(dir[0], dir[1]); return; }
+  if (k==='Escape' || k==='q'){ if (view.level!=='world' && !busy){ e.preventDefault(); back(); } return; }
+  if (k==='e' || ((k==='Enter' || k===' ') && (document.activeElement===document.body || document.activeElement===kbSel))){
+    if (kbSel && !busy){ e.preventDefault(); kbSel.dispatchEvent(new MouseEvent('click',{bubbles:true})); }
+  }
+});
+
+renderStats(); renderWorld(); chrome();
+</script>
+
+</body></html>
