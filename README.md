@@ -67,9 +67,17 @@ Pilot lesson weeks shared with the AcDC team for review.
 - [Lesson: Build Your Case (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project1-build-your-case.html)
 - [Lesson: Write Your Essay (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project2-write-your-essay.html)
 
-## Probability & Statistics Honors: Lesson 19.1
+## Probability & Statistics Honors: Week 19
 
 - [Lesson 19.1: Statistics Begins with Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-l19-1/lesson-19-1-statistics-begins-with-data.html)
+- [Lesson 19.2: Frequency and Relative Frequency Tables](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/lesson-19-2-frequency-tables.html)
+- [Lesson 19.3: Displaying Categorical Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/lesson-19-3-displaying-categorical-data.html)
+
+### Probability & Statistics Honors, Quarter 3 Major Projects
+
+- [Module 7 Lab: The Chart Room (15 pts)](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-7-lab-the-chart-room.html)
+- [Module 8 Lab: Walking the Distribution (15 pts)](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-8-lab-walking-the-distribution.html)
+- [Module 9 Lab: Inside the Bell (15 pts)](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-9-lab-inside-the-bell.html)
 
 ## History: The Practice of Drama in Athens
 
