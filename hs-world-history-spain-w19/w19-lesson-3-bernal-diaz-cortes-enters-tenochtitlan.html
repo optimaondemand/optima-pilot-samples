@@ -602,6 +602,39 @@ body:not(.voice-on) .gl{grid-template-columns:auto 1fr}
 .guesstext:focus{outline:none;border-color:var(--terra)}
 .final textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font:16px/1.5 Georgia,serif;background:#fff;resize:vertical}
 
+/* ribbon = progress only: numbered dots, centred */
+.stops{justify-content:center}
+.stop{padding:5px;border-radius:50%;gap:0}
+.stop i{width:24px;height:24px;font-size:12px}
+.stop.on{box-shadow:0 0 0 3px var(--terra-f)}
+/* Ask Mr. Magister + Key Words: floating pair, bottom right */
+.fab{position:fixed;right:18px;bottom:18px;z-index:45;display:flex;align-items:flex-end;gap:10px}
+.fab button{border:1px solid var(--line);background:var(--card);box-shadow:0 8px 26px rgba(50,30,10,.18);display:flex;align-items:center;gap:10px;font:700 14px/1 system-ui,"Segoe UI",sans-serif;color:var(--terra-d)}
+.fab button:hover{border-color:var(--terra)}
+.fab-ask{position:relative;border-radius:999px;padding:6px 18px 6px 6px}
+.fab-ask img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:3px solid var(--gold)}
+.fab-ask .bub{position:absolute;left:40px;top:-4px;width:24px;height:24px;border-radius:50%;background:var(--terra);color:#fff;font:800 14px/24px system-ui,sans-serif;text-align:center;font-style:normal;border:2px solid var(--card)}
+.fab-words{border-radius:999px;padding:10px 16px 10px 10px}
+.fab-words .fi{width:34px;height:34px;border-radius:50%;background:var(--gold-f);border:1.5px solid var(--gold);display:grid;place-items:center;font:700 15px/1 Georgia,serif;color:var(--gold-d)}
+body.reading-open .fab,.dock.show ~ .fab{display:none}
+body:has(.dock.show) .fab{bottom:112px}
+body:has(.drawer.open) .fab{display:none}
+.rt-ask img{width:22px;height:22px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold)}
+@media (max-width:720px){.fab{right:12px;bottom:12px;gap:8px}.fab .ft{display:none}.fab-ask{padding:4px}.fab-ask img{width:52px;height:52px}.fab-words{padding:4px}.fab-words .fi{width:44px;height:44px}.stop{padding:3px}.stop i{width:22px;height:22px}}
+/* phone: maps keep a readable label size and scroll sideways */
+@media (max-width:720px){.ml-stage{overflow-x:auto;-webkit-overflow-scrolling:touch}.ml-stage svg{width:600px;max-width:none}}
+.minis > *{min-width:0}
+.ml-stage{max-width:100%}
+/* book panel stays clear of the floating Ask / Key Words pair */
+.bookside .bigbook{--P:170px;width:170px;height:236px}
+.bookside .bigbook .cv-t{font-size:16px}
+.bs-in{gap:14px;padding:18px 18px 16px}
+.bookside .bl-body h2{font-size:24px;margin:2px 0 8px}
+.bookside .partlist{gap:5px;margin-bottom:12px}
+.bookside .pl-row{padding:7px 10px;min-height:40px}
+.bookside .pl-row span{display:none}
+@media (min-width:981px){.bookside{max-height:calc(100vh - 186px);overflow:auto;scrollbar-width:thin}}
+
 /* L3 widgets */
 #am,#hk{width:100%;height:auto;display:block;border-radius:8px}
 .pq{display:grid;gap:8px;margin-top:10px}
@@ -634,11 +667,6 @@ body:not(.voice-on) .gl{grid-template-columns:auto 1fr}
 
 <nav class="route" aria-label="Lesson parts"><div class="wrap">
   <div class="stops" id="stops"></div>
-  <div class="tools">
-    <button class="btn ghost small" data-openbook="" id="bookBtn">&#128213; <span>Book</span></button>
-    <button class="btn ghost small" data-open="glossDrawer">&#128214; <span>Words</span></button>
-    <button class="btn ghost small" data-open="askDrawer">&#128172; <span>Ask Mr. Magister</span></button>
-  </div>
 </div></nav>
 
 <main class="wrap">
@@ -647,11 +675,6 @@ body:not(.voice-on) .gl{grid-template-columns:auto 1fr}
 <section class="step" data-step="0">
   <div class="arrive2">
   <div class="intro">
-    <div class="mag">
-      <img src="img/magister.jpg" alt="Mr. Magister">
-      <div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
-      <div class="mag-b"><button class="btn small" id="startBtn">&#9654; Listen</button><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div>
-    </div>
   <div class="minis">
   <div class="ml" data-mini="mini1">
     <div class="ml-head"><img src="img/magister.jpg" alt="Mr. Magister"><div><div class="label">Mini-lesson · Mr. Magister</div><h3>Who Wrote This, and When?</h3></div><button class="btn small ml-play">&#9654; Play</button></div>
@@ -859,6 +882,11 @@ body:not(.voice-on) .gl{grid-template-columns:auto 1fr}
 
 <footer><div class="wrap"><span>Optima Academy Online · Student Lesson Page</span><span>Academic Design and Curriculum (AcDC) · © Optima Academy Online</span></div></footer>
 
+<div class="fab">
+  <button class="fab-words" data-open="glossDrawer" aria-label="Key words"><span class="fi">Aa</span><span class="ft">Key Words</span></button>
+  <button class="fab-ask" data-open="askDrawer" aria-label="Ask Mr. Magister"><img src="img/magister.jpg" alt=""><span class="ft">Ask Mr. Magister</span><i class="bub">?</i></button>
+</div>
+
 <!-- dock -->
 <div class="dock" id="dock" aria-live="polite">
   <img src="img/magister.jpg" alt="">
@@ -909,6 +937,8 @@ body:not(.voice-on) .gl{grid-template-columns:auto 1fr}
   <div class="rbar">
     <div class="rtitle"><span class="kicker" id="rKick"></span><b id="rChap"></b></div>
     <div class="rtools">
+      <button class="rt" data-open="glossDrawer" aria-label="Key words">Aa<span>Words</span></button>
+      <button class="rt rt-ask" data-open="askDrawer" aria-label="Ask Mr. Magister"><img src="img/magister.jpg" alt=""><span>Ask</span></button>
       <button class="rt" data-rpanel="toc" aria-label="Contents">&#9776;<span>Contents</span></button>
       <button class="rt" data-rpanel="marks" aria-label="My marks">&#9998;<span>My marks</span></button>
       <button class="rt" id="rSetBtn" aria-label="Text settings">Aa<span>Text</span></button>
@@ -985,7 +1015,7 @@ const store = (() => { let s = {}; try { s = JSON.parse(localStorage.getItem(LES
 const STOPS = LESSON.stops;
 const done = new Set(store.get('done') || []);
 function drawStops(cur) {
-  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === cur ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === CN ? '&#9733;' : i)}</i>${s}</button>`).join('');
+  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === cur ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}" title="${s}" aria-label="${s}${i === cur ? ' (you are here)' : ''}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === CN ? '&#9733;' : i)}</i></button>`).join('');
   $('.stop.on')?.scrollIntoView({ inline: 'center', block: 'nearest' });
 }
 let cur = 0;
@@ -1150,7 +1180,7 @@ function sorter(el, tallyEl, key, labels, items) {
 function miniLesson(root) {
   const id = root.dataset.mini, steps = $$('[data-step-at]', root), cap = $('.ml-cap', root), lines = LESSON.minis[id];
   let k = -1, timer = 0;
-  const show = n => { k = n; steps.forEach(s => s.classList.toggle('in', +s.dataset.stepAt <= n)); cap.innerHTML = lines[Math.max(0, n)] || ''; $('.ml-n', root).textContent = `${Math.max(0, n) + 1} / ${lines.length}`; root.classList.toggle('ml-end', n >= lines.length - 1); store.set('mini-' + id, Math.max(store.get('mini-' + id) || 0, n)); };
+  const show = n => { k = n; steps.forEach(s => s.classList.toggle('in', +s.dataset.stepAt <= n && (s.dataset.stepUntil == null || n <= +s.dataset.stepUntil))); cap.innerHTML = lines[Math.max(0, n)] || ''; $('.ml-n', root).textContent = `${Math.max(0, n) + 1} / ${lines.length}`; root.classList.toggle('ml-end', n >= lines.length - 1); store.set('mini-' + id, Math.max(store.get('mini-' + id) || 0, n)); };
   show(0);
   $('.ml-next', root).onclick = () => { A.pause(); show(Math.min(lines.length - 1, k + 1)); };
   $('.ml-prev', root).onclick = () => { A.pause(); show(Math.max(0, k - 1)); };
@@ -1744,7 +1774,7 @@ function updateCards() {
     const st = $('.rc-stat', el); st.classList.toggle('done', read);
     st.textContent = (read ? '✓ Read' : 'Not yet read') + (mine.length ? ` · ${mine.length} marked` : '') + (notes ? ` · ${notes} ${notes > 1 ? 'notes' : 'note'}` : '');
   });
-  const n = chRead.size; $('#bookBtn span').textContent = n ? `Book · ${n}/${CHAP.length}` : 'Book';
+  const n = chRead.size; if ($('#bookBtn span')) $('#bookBtn span').textContent = n ? `Book · ${n}/${CHAP.length}` : 'Book';
   updateNb();
 }
 function updateNb() {
