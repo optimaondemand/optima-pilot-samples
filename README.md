@@ -150,6 +150,19 @@ _Week 1 and major projects not posted yet_
 
 - [Final Project](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-call-of-the-wild-projects/cotw-final-project.html)
 
+#### Alternate demo: A Christmas Carol
+
+**Week 1**
+
+- [Lesson 1: Link by Link](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-a-christmas-carol-w1/w1-lesson1-link-by-link.html)
+- [Lesson 2: Shadows of the Past](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-a-christmas-carol-w1/w1-lesson2-shadows-of-the-past.html)
+- [Lesson 3: The Writer's Bench](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-a-christmas-carol-w1/w1-lesson3-writers-bench.html)
+- [Lesson 4: Fear, Memory, or Love](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-a-christmas-carol-w1/w1-lesson4-fear-memory-or-love.html)
+
+**Major Project**
+
+_Not posted yet_
+
 ### ★ M/J Grade 7 Mathematics (Mathematics · 1205040)
 
 _Week 1 and major projects not posted yet_

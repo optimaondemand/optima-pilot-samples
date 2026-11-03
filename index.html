@@ -24,6 +24,12 @@ h2{font-size:26px;margin:0 0 4px;padding-bottom:8px;border-bottom:3px solid var(
 h3{font-size:20px;margin:0 0 10px}
 .module{background:var(--soft);border-radius:8px;padding:14px 18px 10px;margin:0 0 12px}
 h4{font-size:17px;margin:0 0 8px}
+details.module>summary{cursor:pointer;list-style:none}
+details.module>summary::-webkit-details-marker{display:none}
+details.module>summary h4{display:inline}
+details.module>summary h4::before{content:"▸ ";color:var(--gold)}
+details.module[open]>summary h4::before{content:"▾ "}
+details.module[open]>summary{margin-bottom:8px}
 .cols{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px}
 .label{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:2px 0 4px}
 ul{margin:0 0 8px;padding-left:18px}
@@ -231,6 +237,16 @@ footer{color:var(--muted);font-size:14px;padding:24px 0 40px;border-top:1px soli
 <div><div class="label">Major Project</div>
 <ul><li><a href="7th-ela-call-of-the-wild-projects/cotw-final-project.html">Final Project</a></li></ul></div>
 </div></div>
+<details class="module alt">
+<summary><h4>Alternate demo: A Christmas Carol</h4></summary>
+<div class="cols">
+<div><div class="label">Week 1</div>
+<ul><li><a href="7th-ela-a-christmas-carol-w1/w1-lesson1-link-by-link.html">Lesson 1: Link by Link</a></li>
+<li><a href="7th-ela-a-christmas-carol-w1/w1-lesson2-shadows-of-the-past.html">Lesson 2: Shadows of the Past</a></li>
+<li><a href="7th-ela-a-christmas-carol-w1/w1-lesson3-writers-bench.html">Lesson 3: The Writer&#x27;s Bench</a></li>
+<li><a href="7th-ela-a-christmas-carol-w1/w1-lesson4-fear-memory-or-love.html">Lesson 4: Fear, Memory, or Love</a></li></ul></div>
+<div><div class="label">Major Project</div><p class="none">Not posted yet</p></div>
+</div></details>
 </div>
 
 <div class="course" data-code="1205040">
