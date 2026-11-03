@@ -14,7 +14,7 @@ _Week 1 and major projects not posted yet_
 
 ## Grade 4
 
-### 4th Grade Math (Mathematics)
+### ★ 4th Grade Math (Mathematics)
 
 #### Measurement (Pixel Quest)
 
@@ -47,7 +47,7 @@ _Week 1 and major projects not posted yet_
 
 ## Grade 6
 
-### M/J Language Arts 1 (English Language Arts · 1001010)
+### ★ M/J Language Arts 1 (English Language Arts · 1001010)
 
 #### Course Entry: The Great Library
 
@@ -81,15 +81,15 @@ _Week 1 and major projects not posted yet_
 
 - [Portrait of a Hero](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-robin-hood-projects/module-project-portrait-of-a-hero.html) (100 pts)
 
-### M/J Grade 6 Mathematics (Mathematics · 1205010)
+### ★ M/J Grade 6 Mathematics (Mathematics · 1205010)
 
 _Week 1 and major projects not posted yet_
 
-### M/J Comprehensive Science 1 (Science · 2002040)
+### ★ M/J Comprehensive Science 1 (Science · 2002040)
 
 _Week 1 and major projects not posted yet_
 
-### M/J World History (Social Studies · 2109010)
+### ★ M/J World History (Social Studies · 2109010)
 
 _Week 1 and major projects not posted yet_
 
@@ -107,7 +107,7 @@ _Week 1 and major projects not posted yet_
 
 ## Grade 7
 
-### M/J Language Arts 2 (English Language Arts · 1001040)
+### ★ M/J Language Arts 2 (English Language Arts · 1001040)
 
 #### The Call of the Wild
 
@@ -122,19 +122,19 @@ _Week 1 and major projects not posted yet_
 
 - [Final Project](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-call-of-the-wild-projects/cotw-final-project.html) (40 pts)
 
-### M/J Grade 7 Mathematics (Mathematics · 1205040)
+### ★ M/J Grade 7 Mathematics (Mathematics · 1205040)
 
 _Week 1 and major projects not posted yet_
 
-### M/J Comprehensive Science 2 (Science · 2002070)
+### ★ M/J Comprehensive Science 2 (Science · 2002070)
 
 _Week 1 and major projects not posted yet_
 
-### Grade 7 Texas History (Social Studies · txhist7)
+### ★ Grade 7 Texas History (Social Studies · txhist7)
 
 _Week 1 and major projects not posted yet_
 
-### M/J U.S. History: 1492-Reconstruction (Social Studies · 2100010)
+### ★ M/J U.S. History: 1492-Reconstruction (Social Studies · 2100010)
 
 _Week 1 and major projects not posted yet_
 
@@ -148,7 +148,7 @@ _Week 1 and major projects not posted yet_
 
 ## Grade 8
 
-### M/J Language Arts 3 (English Language Arts · 1001070)
+### ★ M/J Language Arts 3 (English Language Arts · 1001070)
 
 #### Out of the Silent Planet
 
@@ -180,15 +180,15 @@ _Week 1 and major projects not posted yet_
 - [Lesson: Build Your Case (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project1-build-your-case.html)
 - [Lesson: Write Your Essay (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project2-write-your-essay.html)
 
-### M/J Grade 8 Pre-Algebra (Mathematics · 1205070)
+### ★ M/J Grade 8 Pre-Algebra (Mathematics · 1205070)
 
 _Week 1 and major projects not posted yet_
 
-### M/J Comprehensive Science 3 (Science · 2002100)
+### ★ M/J Comprehensive Science 3 (Science · 2002100)
 
 _Week 1 and major projects not posted yet_
 
-### M/J Civics: U.S. Government (Social Studies · 2106010)
+### ★ M/J Civics: U.S. Government (Social Studies · 2106010)
 
 _Week 1 and major projects not posted yet_
 
@@ -224,7 +224,7 @@ _Week 1 and major projects not posted yet_
 
 ## Grade 9
 
-### English 1 (English Language Arts · 1001310)
+### ★ English 1 (English Language Arts · 1001310)
 
 #### The Scarlet Letter
 
@@ -239,107 +239,107 @@ _Week 1 and major projects not posted yet_
 
 _Not posted yet_
 
-### Algebra 1 (Mathematics · 1200310)
+### ★ Algebra 1 (Mathematics · 1200310)
 
 _Week 1 and major projects not posted yet_
 
-### Algebra 1 Honors (Mathematics · 1200320)
+### ★ Algebra 1 Honors (Mathematics · 1200320)
 
 _Week 1 and major projects not posted yet_
 
-### Biology 1 (Grades 9–10 · Science · 2000310)
+### ★ Biology 1 (Grades 9–10 · Science · 2000310)
 
 _Week 1 and major projects not posted yet_
 
-### Integrated Science 1 (Science · 2002400)
+### ★ Integrated Science 1 (Science · 2002400)
 
 _Week 1 and major projects not posted yet_
 
-### HS World History: Fall of Rome to Present (Social Studies · 2109310)
+### ★ HS World History: Fall of Rome to Present (Social Studies · 2109310)
 
 _Week 1 and major projects not posted yet_
 
 ## Grade 10
 
-### English 2 (English Language Arts · 1001340)
+### ★ English 2 (English Language Arts · 1001340)
 
 _Week 1 and major projects not posted yet_
 
-### English 2 (Mississippi) (English Language Arts · 1001340ms)
+### ★ English 2 (Mississippi) (English Language Arts · 1001340ms)
 
 _Week 1 and major projects not posted yet_
 
-### English 2 Honors (English Language Arts · 1001350)
+### ★ English 2 Honors (English Language Arts · 1001350)
 
 _Week 1 and major projects not posted yet_
 
-### Geometry Honors (Mathematics · 1206320)
+### ★ Geometry Honors (Mathematics · 1206320)
 
 _Week 1 and major projects not posted yet_
 
-### Chemistry I Honors (Science · 2003350)
+### ★ Chemistry I Honors (Science · 2003350)
 
 _Week 1 and major projects not posted yet_
 
-### HS U.S. History: Reconstruction to Present (Social Studies · 2100310)
+### ★ HS U.S. History: Reconstruction to Present (Social Studies · 2100310)
 
 _Week 1 and major projects not posted yet_
 
-### Mississippi U.S. History: 1877 to Present (Social Studies · msushist10)
+### ★ Mississippi U.S. History: 1877 to Present (Social Studies · msushist10)
 
 _Week 1 and major projects not posted yet_
 
-### World History: Age of Enlightenment to Present (Mississippi) (Social Studies · mswhist10)
+### ★ World History: Age of Enlightenment to Present (Mississippi) (Social Studies · mswhist10)
 
 _Week 1 and major projects not posted yet_
 
 ## Grade 11
 
-### English III (English Language Arts · 1001370)
+### ★ English III (English Language Arts · 1001370)
 
 _Week 1 and major projects not posted yet_
 
-### English III Honors (English Language Arts · 1001380)
+### ★ English III Honors (English Language Arts · 1001380)
 
 _Week 1 and major projects not posted yet_
 
-### Algebra 2 Honors (Mathematics · 1200340)
+### ★ Algebra 2 Honors (Mathematics · 1200340)
 
 _Week 1 and major projects not posted yet_
 
-### Anatomy and Physiology (Grades 11–12 · Science · 2000350)
+### ★ Anatomy and Physiology (Grades 11–12 · Science · 2000350)
 
 _Week 1 and major projects not posted yet_
 
-### HS Civics: Economics Honors (Social Studies · 2102320)
+### ★ HS Civics: Economics Honors (Social Studies · 2102320)
 
 _Week 1 and major projects not posted yet_
 
-### HS Civics: U.S. Government Honors (Social Studies · 2106320)
+### ★ HS Civics: U.S. Government Honors (Social Studies · 2106320)
 
 _Week 1 and major projects not posted yet_
 
 ## Grade 12
 
-### English IV (English Language Arts · 1001400)
+### ★ English IV (English Language Arts · 1001400)
 
 _Week 1 and major projects not posted yet_
 
-### English IV Honors (English Language Arts · 1001410)
+### ★ English IV Honors (English Language Arts · 1001410)
 
 _Week 1 and major projects not posted yet_
 
 ## High School, Multi-Grade
 
-### Calculus Honors (Grades 9–12 · Mathematics · 1202300)
+### ★ Calculus Honors (Grades 9–12 · Mathematics · 1202300)
 
 _Week 1 and major projects not posted yet_
 
-### Precalculus Honors (Grades 9–12 · Mathematics · 1202340)
+### ★ Precalculus Honors (Grades 9–12 · Mathematics · 1202340)
 
 _Week 1 and major projects not posted yet_
 
-### Probability and Statistics Honors (Grades 9–12 · Mathematics · 1210300)
+### ★ Probability and Statistics Honors (Grades 9–12 · Mathematics · 1210300)
 
 #### Quarter 3
 
@@ -355,7 +355,7 @@ _Week 1 and major projects not posted yet_
 - [Module 8 Lab: Walking the Distribution](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-8-lab-walking-the-distribution.html) (15 pts)
 - [Module 9 Lab: Inside the Bell](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-9-lab-inside-the-bell.html) (15 pts)
 
-### History (course to be assigned) (Grades 9–12 · Social Studies)
+### ★ History (course to be assigned) (Grades 9–12 · Social Studies)
 
 #### The Practice of Drama in Athens
 
@@ -367,15 +367,15 @@ _Week 1 and major projects not posted yet_
 
 _Not posted yet_
 
-### Mississippi History (Grades 9–12 · Social Studies · mshist912)
+### ★ Mississippi History (Grades 9–12 · Social Studies · mshist912)
 
 _Week 1 and major projects not posted yet_
 
-### Philosophy Honors (Grades 9–12 · Social Studies · 2120910)
+### ★ Philosophy Honors (Grades 9–12 · Social Studies · 2120910)
 
 _Week 1 and major projects not posted yet_
 
-### Philosophy Honors: Ethics (Grades 9–12 · Social Studies · 2105355)
+### ★ Philosophy Honors: Ethics (Grades 9–12 · Social Studies · 2105355)
 
 _Week 1 and major projects not posted yet_
 
