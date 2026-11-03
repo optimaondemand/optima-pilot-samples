@@ -432,7 +432,18 @@ _Week 1 and major projects not posted yet_
 
 ### ★ English III (English Language Arts · 1001370)
 
-_Week 1 and major projects not posted yet_
+#### Jane Eyre
+
+**Week 1**
+
+- [Lesson 1: The Red-Room](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson1-the-red-room.html)
+- [Lesson 2: “I Am Not Deceitful”](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson2-i-am-not-deceitful.html)
+- [Lesson 3: The Writer's Desk](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson3-writers-desk.html)
+- [Lesson 4: The Chronicle](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson4-the-chronicle.html)
+
+**Major Project**
+
+- [Module 3 Project: The Thornfield Chronicle](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/module-3-project-thornfield-chronicle.html)
 
 ### ★ English III Honors (English Language Arts · 1001380)
 
