@@ -418,6 +418,7 @@ _Week 1 and major projects not posted yet_
 **Major Project**
 
 - [Standing on the Causeway](https://optimaondemand.github.io/optima-pilot-samples/hs-world-history-spain-w19/w19-project-standing-on-the-causeway.html)
+- [Primary Source Report: Equiano and the Code Noir (Module 21)](https://optimaondemand.github.io/optima-pilot-samples/hs-world-history-spain-w19/w21-project-equiano-and-the-code-noir.html)
 
 ## Grade 10
 

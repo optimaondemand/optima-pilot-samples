@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Phyllis">
+<title>Primary Source Report: Equiano and the Code Noir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#F6F0E4; --card:#FFFCF6; --ink:#1F1A15; --ink2:#5B5148; --line:#E3D6C0;
+  --terra:#A3431E; --terra-d:#7C3115; --terra-f:#F5E3D8;
+  --gold:#C7922C; --gold-d:#8F6516; --gold-f:#FBF1DC;
+  --navy:#0E1C42; --cyan:#55C8E8;
+  --ok:#2E7D4F; --ok-f:#E5F3EA; --bad:#B3261E; --bad-f:#FBE7E5;
+  --head:"Marcellus", Georgia, "Times New Roman", serif;
+  --ui:system-ui,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--page);color:var(--ink);font:18px/1.7 Georgia,"Times New Roman",serif;padding-bottom:90px}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--head);font-weight:400;color:var(--terra-d);line-height:1.2;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.ui{font-family:var(--ui)}
+.oao{background:var(--navy);color:#fff;font:600 14px/1 var(--ui)}
+.oao .wrap{display:flex;align-items:center;gap:10px;height:52px}
+.oao img{width:34px;height:34px;object-fit:contain}
+.oao .sub{margin-left:auto;color:var(--cyan);letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+.hero{border-bottom:1px solid var(--line);background:#EFE5D3}
+.hero .wrap{padding:22px 20px 20px}
+.kicker{font:700 12px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.hero h1{font-size:40px;margin:10px 0 6px}
+.hero .meta{display:flex;gap:8px;flex-wrap:wrap;font:600 13px/1 var(--ui);color:var(--ink2)}
+.pill{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px}
+.btn{border:0;border-radius:999px;padding:11px 20px;background:var(--terra);color:#fff;font:600 15px/1 var(--ui);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn:hover{background:var(--terra-d)}
+.btn.ghost{background:transparent;color:var(--terra-d);border:1.5px solid var(--terra)}
+.btn.ghost:hover{background:var(--terra-f)}
+.btn.small{padding:8px 14px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,.stop:focus-visible,textarea:focus-visible,input:focus-visible,.lv:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* route */
+.route{position:sticky;top:0;z-index:30;background:rgba(246,240,228,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.route .wrap{display:flex;align-items:center;gap:10px;padding-top:9px;padding-bottom:9px}
+.stops{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.stops::-webkit-scrollbar{display:none}
+.stop{flex:none;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 13px/1 var(--ui);color:var(--ink2);display:flex;align-items:center;gap:6px;text-decoration:none}
+.stop i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);font-size:11px}
+.stop.done i{background:var(--gold);color:#fff}
+.stop.on{border-color:var(--terra);color:var(--terra-d)}
+.stop.on i{background:var(--terra);color:#fff}
+#saved{flex:none;font:600 12px/1 var(--ui);color:var(--ink2)}
+
+.sec{padding:38px 0 8px}
+.sechead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.sechead h2{font-size:34px}
+.meander{height:12px;margin:14px 0 22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='12' viewBox='0 0 24 12'%3E%3Cpath d='M0 11h6V3h8v5h-4V6' fill='none' stroke='%23A3431E' stroke-width='1.6'/%3E%3Cpath d='M14 11h10' stroke='%23A3431E' stroke-width='1.6'/%3E%3C/svg%3E") repeat-x;opacity:.55}
+.label{font:700 12px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:18px 0}
+.card.terra{border-top:4px solid var(--terra)}
+.card.gold{border-top:4px solid var(--gold)}
+.instr{font:16px/1.55 var(--ui);color:var(--ink2);margin:0 0 14px}
+
+/* Magister */
+.mag-intro{display:grid;grid-template-columns:96px 1fr;gap:22px;align-items:start}
+.mag-intro img.port{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--gold)}
+.mag-who b{display:block;font-family:var(--head);font-weight:400;font-size:21px;color:var(--ink)}
+.mag-who small{display:block;font:14px/1.3 var(--ui);color:var(--ink2);margin-bottom:12px}
+.mag-intro p{margin:0 0 12px}
+.mag-intro p.lead{font-size:20px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:10px;margin:0 0 10px;font:16px/1.5 var(--ui)}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 13px var(--ui);margin-top:1px}
+.crit-list{list-style:none;margin:0;padding:0;font:16px/1.5 var(--ui)}
+.crit-list li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:7px 0}
+.crit-list li b{font-weight:600}
+.crit-list li span{color:var(--ink2);white-space:nowrap}
+.magnote{display:grid;grid-template-columns:40px 1fr;gap:10px;align-items:start;background:var(--gold-f);border-left:3px solid var(--gold);border-radius:8px;padding:10px 12px;margin:14px 0;font:15px/1.5 var(--ui);color:var(--ink)}
+.magnote img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
+.magnote b{display:block;font:700 11px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);margin:2px 0 5px}
+.magnote p{margin:0}
+
+/* read + capture */
+.rc-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px;align-items:start}
+.reader{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--terra);border-radius:14px;overflow:hidden}
+.tabs{display:flex;border-bottom:1px solid var(--line);background:#F2E9D7}
+.tab{flex:1;border:0;background:transparent;padding:13px 14px;font:600 14px/1.25 var(--ui);color:var(--ink2);text-align:left;border-bottom:3px solid transparent}
+.tab small{display:block;font-weight:500;font-size:12px;color:var(--ink2);margin-top:2px}
+.tab[aria-selected=true]{background:var(--card);color:var(--terra-d);border-bottom-color:var(--terra)}
+.tabbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:10px 16px;background:var(--gold-f);border-bottom:1px solid var(--line);font:600 13px/1.3 var(--ui);color:var(--ink2)}
+.tabbar .sp{flex:1}
+.panel{padding:6px 22px 22px}
+.rd-scroll{max-height:74vh;overflow:auto}
+.srcnote{display:grid;grid-template-columns:128px 1fr;gap:18px;margin:16px 0 4px}
+.srcnote figure{margin:0}
+.srcnote img{border-radius:6px;border:1px solid var(--line);width:128px;height:auto}
+.srcnote figcaption{font:12px/1.4 var(--ui);color:var(--ink2);margin-top:6px}
+dl.facts{margin:0;font:15px/1.45 var(--ui)}
+dl.facts div{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:5px 0;border-bottom:1px solid var(--line)}
+dl.facts dt{font-weight:700;color:var(--gold-d);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-top:2px}
+dl.facts dd{margin:0}
+.cite{font:12.5px/1.45 var(--ui);color:var(--ink2);margin:10px 0 14px}
+.src-text p{margin:0 0 14px;font-size:18px;line-height:1.75}
+.src-text .artno{font:700 13px/1 var(--ui);letter-spacing:.08em;color:var(--gold-d);margin-right:8px;user-select:none;-webkit-user-select:none}
+.src-text .artsum{font:600 12px/1.4 var(--ui);color:var(--ink2);display:block;margin-bottom:4px;user-select:none;-webkit-user-select:none}
+.src-text .skip{text-align:center;color:var(--ink2);letter-spacing:.4em;margin:2px 0 14px;font-family:var(--ui)}
+.omit{color:var(--ink2);font-style:italic;user-select:none;-webkit-user-select:none;background:#EFE5D3;border-radius:4px;padding:0 4px}
+mark.hl{background:#F3D9A6;color:inherit;border-radius:3px;box-shadow:0 0 0 2px #F3D9A6;cursor:pointer}
+mark.hl:hover{background:#EBC57A;box-shadow:0 0 0 2px #EBC57A}
+.cnlabel{font:600 15px/1.45 var(--ui);color:var(--terra-d);margin:16px 0 0}
+
+.cardscol{position:sticky;top:64px;max-height:calc(100vh - 80px);overflow:auto;padding-right:4px}
+.profwrap{margin-top:26px}
+.profile{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px}
+.ixcards{display:grid;gap:14px}
+.ix{position:relative;background:#FFFEFA;border:1px solid #D9CBB0;border-top:3px solid #C9503A;border-radius:6px;padding:10px 14px 12px;box-shadow:0 2px 0 rgba(60,40,20,.08),0 10px 18px -12px rgba(60,40,20,.3)}
+.ix.flash{animation:flash 1.4s ease}
+@keyframes flash{0%,60%{box-shadow:0 0 0 4px var(--gold)}100%{box-shadow:0 2px 0 rgba(60,40,20,.08)}}
+.ix-h{display:flex;align-items:center;gap:8px;margin-bottom:6px;font:700 12px/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--terra-d)}
+.ix-n{width:22px;height:22px;border-radius:50%;background:var(--terra);color:#fff;display:grid;place-items:center;font-size:12px}
+.ix-src{margin-left:auto;display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.ix-src button{border:0;background:transparent;padding:5px 10px;font:600 12px/1 var(--ui);color:var(--ink2);text-transform:none;letter-spacing:0}
+.ix-src button[aria-pressed=true]{background:var(--terra);color:#fff}
+.ix-del{border:0;background:transparent;color:var(--ink2);font:600 12px/1 var(--ui);padding:4px 6px;text-transform:none;letter-spacing:0}
+.ix-del:hover{color:var(--bad)}
+.fl{display:block;font:700 11px/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--gold-d);margin:8px 0 2px}
+.fl .cnt{float:right;font-weight:600;letter-spacing:0;text-transform:none;color:var(--ink2)}
+.fl .cnt.warn{color:var(--bad)}
+.ruled{display:block;width:100%;border:0;border-bottom:1px solid transparent;background:repeating-linear-gradient(transparent 0 27px,#B9D1E4 27px 28px);line-height:28px;padding:0 2px;font:17px/28px Georgia,serif;resize:none;overflow:hidden;color:var(--ink)}
+.ruled:focus{outline:none;background-color:#FFFBEA}
+input.ruled{height:29px;background:repeating-linear-gradient(transparent 0 28px,#B9D1E4 28px 29px)}
+.addrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;font:600 13px/1 var(--ui);color:var(--ink2)}
+
+/* write */
+.q{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--terra);border-radius:14px;padding:20px 24px;margin:18px 0}
+.q-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.q-n{font:700 12px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d)}
+.chip{font:600 12px/1 var(--ui);border:1.5px solid var(--line);border-radius:999px;padding:5px 10px;color:var(--ink2);background:#fff}
+.q-t{font-size:19px;line-height:1.55;margin:0 0 14px;color:var(--ink)}
+.draft{width:100%;min-height:170px;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font:17px/1.6 Georgia,serif;background:#fff;resize:vertical}
+.draft:focus{outline:none;border-color:var(--terra)}
+.q-f{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:8px;font:600 13px/1.3 var(--ui);color:var(--ink2)}
+.wc b{font-size:18px;color:var(--ink)}
+details.mycards{margin-top:10px;font:15px/1.5 var(--ui)}
+details.mycards summary{cursor:pointer;font-weight:600;color:var(--terra-d);padding:4px 0}
+details.mycards ul{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}
+details.mycards li{border:1px solid var(--line);border-radius:8px;padding:8px 12px;background:#fff}
+details.mycards li q{font-family:Georgia,serif;font-size:16px}
+details.mycards li span{color:var(--ink2);display:block;font-size:13px}
+
+/* check */
+.checks{list-style:none;margin:0;padding:0;font:16px/1.45 var(--ui)}
+.checks li{display:grid;grid-template-columns:26px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid var(--line)}
+.checks li .m{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:12px;color:#fff;margin-top:2px}
+.checks li.ok .m{background:var(--ok);border-color:var(--ok)}
+.checks li.no .m{background:#fff}
+.checks li small{display:block;color:var(--ink2);font-size:13px}
+.checks li.tk{display:block}
+.checks label{display:grid;grid-template-columns:26px 1fr;gap:8px;cursor:pointer}
+.checks input[type=checkbox]{width:20px;height:20px;margin:2px 0 0;accent-color:var(--terra)}
+.crit{margin:0 0 18px}
+.crit h3{font-size:20px;color:var(--ink);margin-bottom:8px}
+.lvls{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.lv{text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font:14px/1.4 var(--ui);color:var(--ink)}
+.lv b{display:block;font-size:13px;margin-bottom:4px;color:var(--terra-d)}
+.lv:hover{border-color:var(--terra)}
+.lv[aria-pressed=true]{border-color:var(--terra);background:var(--terra-f)}
+.total{font:600 16px/1.4 var(--ui);color:var(--ink)}
+.total b{font:400 28px var(--head);color:var(--terra-d)}
+
+/* record */
+.rec{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:end}
+.nameinput{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font:17px Georgia,serif;background:#fff}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.status{font:600 14px/1.4 var(--ui);color:var(--ink2);min-height:20px;margin-top:10px}
+#toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;font:600 14px/1.3 var(--ui);padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:.25s;z-index:60;max-width:90vw;text-align:center}
+#toast.on{opacity:1;transform:translateX(-50%)}
+.foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font:13px/1.5 var(--ui);color:var(--ink2)}
+
+@media (max-width:1000px){
+  .rc-grid{grid-template-columns:1fr}
+  .cardscol{position:static;max-height:none;overflow:visible}
+  .rd-scroll{max-height:none;overflow:visible}
+  .two{grid-template-columns:1fr}
+  .lvls{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  body{font-size:17px}
+  .hero h1{font-size:30px}
+  .sechead h2{font-size:28px}
+  .mag-intro{grid-template-columns:64px 1fr;gap:14px}
+  .mag-intro img.port{width:64px;height:64px}
+  .mag-intro p.lead{font-size:18px}
+  .card,.q{padding:16px 16px}
+  .panel{padding:4px 16px 18px}
+  .srcnote{grid-template-columns:1fr}
+  .srcnote figure{display:grid;grid-template-columns:96px 1fr;gap:12px;align-items:start}
+  .srcnote img{width:96px}
+  .srcnote figcaption{margin-top:0}
+  dl.facts div{grid-template-columns:1fr;gap:2px}
+  .profile{grid-template-columns:1fr}
+  .lvls{grid-template-columns:1fr}
+  .rec{grid-template-columns:1fr}
+  .ix-h{flex-wrap:wrap}
+  .oao .sub{display:none}
+  #saved{display:none}
+  .src-text p{font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="oao"><div class="wrap">
+  <img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy">
+  <span>Optima Academy Online</span><span class="sub">World History</span>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Module 21 &middot; Primary Source Report</div>
+  <h1>Equiano and the Code Noir</h1>
+  <div class="meta"><span class="pill">16 points</span><span class="pill">Four questions</span><span class="pill">Two sources</span></div>
+</div></header>
+
+<nav class="route" aria-label="Project steps"><div class="wrap">
+  <div class="stops" id="stops">
+    <a class="stop on" href="#project" data-s="project"><i>1</i>Project</a>
+    <a class="stop" href="#read" data-s="read"><i>2</i>Read and capture</a>
+    <a class="stop" href="#write" data-s="write"><i>3</i>Write</a>
+    <a class="stop" href="#check" data-s="check"><i>4</i>Check</a>
+    <a class="stop" href="#record" data-s="record"><i>5</i>Record</a>
+  </div>
+  <span id="saved" aria-live="polite"></span>
+</div></nav>
+
+<main class="wrap">
+
+<!-- 1. PROJECT -->
+<section class="sec" id="project" data-std="FL:SS.912.W.1.3 SS.912.W.4.15 TX:113.42(d)(28)(C) 113.42(d)(7)(C) MS:DJ.SS.NA.2.4">
+  <div class="sechead"><h2>The project</h2></div><div class="meander"></div>
+  <div class="card terra mag-intro">
+    <img class="port" src="img/magister.jpg" alt="Mr. Magister">
+    <div>
+      <div class="mag-who"><b>Mr. Magister</b><small>Your teacher</small></div>
+      <p class="lead">This report asks you to read two documents from the Atlantic slave system and say what each one can and cannot tell us.</p>
+      <p>Source 1 is Olaudah Equiano's account of the voyage across the Atlantic, published in London in 1789. Source 2 is the Code Noir for Louisiana, an edict the French crown issued in 1724, closely modeled on the 1685 Code Noir for the Caribbean colonies. One was written by a man who endured the voyage. The other was issued by the crown for officials and colonists. Both texts are printed on this page.</p>
+      <p>Equiano's account describes conditions aboard a slave ship. Passages that describe violence in detail are left out and marked [Omitted].</p>
+      <a class="btn" href="#read">Start reading</a>
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="card gold" data-std="FL:SS.912.W.1.3 TX:113.42(d)(28)(F) MS:DJ.SS.NA.2.1">
+      <div class="label">What you do</div>
+      <ol class="steps">
+        <li><span>Read both sources. Select words in the passage to highlight them.</span></li>
+        <li><span>Fill in the source profile: who is speaking, who is addressed, what the speaker wanted.</span></li>
+        <li><span>Make evidence cards: a few words from the source, where it is, what it shows.</span></li>
+        <li><span>Draft four answers, one paragraph each.</span></li>
+        <li><span>Check your drafts against the rubric.</span></li>
+        <li><span>Save your process record as a PDF. Copy your four answers into the assignment's text box.</span></li>
+      </ol>
+    </div>
+    <div class="card gold" data-std="FL:SS.912.W.1.3 TX:113.42(d)(28)(D) MS:DJ.SS.NA.2.1">
+      <div class="label">How it is scored &middot; 16 points</div>
+      <ul class="crit-list"><li><b>Understanding of the material</b><span>4 points</span></li>
+<li><b>Quality of reasoning</b><span>4 points</span></li>
+<li><b>Clarity and precision of expression</b><span>4 points</span></li>
+<li><b>Intellectual honesty</b><span>4 points</span></li></ul>
+      <p class="instr" style="margin:12px 0 0">Your teacher scores each criterion from 1 to 4. You do not need an outside source.</p>
+    </div>
+  </div>
+
+  <div class="card" data-std="FL:SS.912.W.4.15 SS.912.W.5.4 TX:113.42(d)(7)(C) 113.42(d)(9)(D) MS:DJ.SS.NA.2.2">
+    <div class="label">Background</div>
+    <p style="margin:0 0 10px">The background for this report is in the Module 21 lessons: the sugar colonies, the Atlantic slave trade, and the Middle Passage. Details from those lessons count under &ldquo;Understanding of the material.&rdquo; Keep them open while you write.</p>
+    <p style="margin:0;font:15px/1.5 var(--ui);color:var(--ink2)">Optional workspace: if your class uses a virtual space, you can enter it, place your evidence cards on a whiteboard as notes, and take a picture to look at while you write. The report you turn in is the same either way.</p>
+  </div>
+</section>
+
+<!-- 2. READ AND CAPTURE -->
+<section class="sec" id="read" data-std="FL:SS.912.W.1.3 SS.912.W.4.15 TX:113.42(d)(28)(C) 113.42(d)(7)(C) MS:DJ.SS.NA.2.4">
+  <div class="sechead"><h2>Read and capture</h2></div><div class="meander"></div>
+  <p class="instr">Select words in the passage, then choose Highlight or Make card. A highlight stays until you click it. A card copies the words into a new evidence card.</p>
+  <div class="rc-grid">
+    <div class="reader" id="reader">
+      <div class="tabs" role="tablist">
+        <button class="tab" role="tab" id="tab-eq" aria-selected="true" aria-controls="pan-eq" data-tab="eq">Source 1<small>Equiano, The Interesting Narrative (1789)</small></button>
+        <button class="tab" role="tab" id="tab-cn" aria-selected="false" aria-controls="pan-cn" data-tab="cn">Source 2<small>Code Noir (Louisiana, 1724)</small></button>
+      </div>
+      <div class="tabbar">
+        <button class="btn small" id="btnHl" type="button">Highlight</button>
+        <button class="btn small ghost" id="btnCard" type="button">Make card</button>
+        <span class="sp"></span>
+        <span id="hlCount">0 highlights</span>
+        <button class="btn small ghost" id="btnHlClear" type="button">Clear highlights</button>
+      </div>
+      <div class="rd-scroll">
+        <div class="panel" id="pan-eq" role="tabpanel" aria-labelledby="tab-eq" data-std="FL:SS.912.W.1.3 SS.912.W.4.15 TX:113.42(d)(28)(C) 113.42(d)(7)(C) MS:DJ.SS.NA.2.4">
+          <div class="srcnote">
+            <figure>
+              <img src="img/equiano.jpg" alt="Engraved oval portrait of Olaudah Equiano in a coat and ruffled shirt, holding a book. The caption beneath reads Olaudah Equiano, or Gustavus Vassa, the African." width="128">
+              <figcaption>Frontispiece of the 1789 first edition: engraving after W. Denton by D. Orme, published 1 March 1789. British Library, via Wikimedia Commons (CC0).</figcaption>
+            </figure>
+            <dl class="facts">
+              <div><dt>Author</dt><dd>Olaudah Equiano, also called Gustavus Vassa</dd></div>
+              <div><dt>Published</dt><dd>London, 1789, printed for and sold by the author</dd></div>
+              <div><dt>Addressed to</dt><dd>The book's dedication is to the Lords and Commons of the Parliament of Great Britain</dd></div>
+              <div><dt>Passage</dt><dd>Chapter II: the voyage on the slave ship</dd></div>
+            </dl>
+          </div>
+          <div class="magnote"><img src="img/magister.jpg" alt=""><div><b>Mr. Magister</b><p>Equiano wrote this account in London, years after the voyage, for readers in Britain. A &middot; &middot; &middot; line means words were skipped. [Omitted: &hellip;] means a passage of violence is left out and summarized in one line. Everything else is word for word from the published text, including its old spelling.</p></div></div>
+          <div class="src-text eq-text" id="eqText">
+            <p data-p="eq1" data-where="Equiano, Chapter II, excerpt paragraph 1">The first object which saluted my eyes when I arrived on the coast was the sea, and a slave ship, which was then riding at anchor, and waiting for its cargo. These filled me with astonishment, which was soon converted into terror when I was carried on board. I was immediately handled and tossed up to see if I were sound by some of the crew; and I was now persuaded that I had gotten into a world of bad spirits, and that they were going to kill me. Their complexions too differing so much from ours, their long hair, and the language they spoke, (which was very different from any I had ever heard) united to confirm me in this belief. Indeed such were the horrors of my views and fears at the moment, that, if ten thousand worlds had been my own, I would have freely parted with them all to have exchanged my condition with that of the meanest slave in my own country. When I looked round the ship too and saw a large furnace or copper boiling, and a multitude of black people of every description chained together, every one of their countenances expressing dejection and sorrow, I no longer doubted of my fate; and, quite overpowered with horror and anguish, I fell motionless on the deck and fainted.</p>
+            <div class="skip" aria-hidden="true">&middot; &middot; &middot;</div>
+            <p data-p="eq2" data-where="Equiano, Chapter II, excerpt paragraph 2">I now saw myself deprived of all chance of returning to my native country, or even the least glimpse of hope of gaining the shore, which I now considered as friendly; and I even wished for my former slavery in preference to my present situation, which was filled with horrors of every kind, still heightened by my ignorance of what I was to undergo. I was not long suffered to indulge my grief; I was soon put down under the decks, and there I received such a salutation in my nostrils as I had never experienced in my life: so that, with the loathsomeness of the stench, and crying together, I became so sick and low that I was not able to eat, nor had I the least desire to taste any thing. <span class="omit">[Omitted: Two crewmen tie him down and whip him because he will not eat.]</span> I had never experienced any thing of this kind before; and although, not being used to the water, I naturally feared that element the first time I saw it, yet nevertheless, could I have got over the nettings, I would have jumped over the side, but I could not; and, besides, the crew used to watch us very closely who were not chained down to the decks, lest we should leap into the water: <span class="omit">[Omitted: He saw captives who tried to jump overboard cut and whipped, and others whipped every hour for not eating.]</span></p>
+            <div class="skip" aria-hidden="true">&middot; &middot; &middot;</div>
+            <p data-p="eq3" data-where="Equiano, Chapter II, excerpt paragraph 3">The stench of the hold while we were on the coast was so intolerably loathsome, that it was dangerous to remain there for any time, and some of us had been permitted to stay on the deck for the fresh air; but now that the whole ship's cargo were confined together, it became absolutely pestilential. The closeness of the place, and the heat of the climate, added to the number in the ship, which was so crowded that each had scarcely room to turn himself, almost suffocated us. This produced copious perspirations, so that the air soon became unfit for respiration, from a variety of loathsome smells, and brought on a sickness among the slaves, of which many died, thus falling victims to the improvident avarice, as I may call it, of their purchasers. This wretched situation was again aggravated by the galling of the chains, now become insupportable; and the filth of the necessary tubs, into which the children often fell, and were almost suffocated. The shrieks of the women, and the groans of the dying, rendered the whole a scene of horror almost inconceivable. <span class="omit">[Omitted: Three captives, two of them chained together, jump through the nettings into the sea. Two drown. The crew pulls the third back aboard and whips him.]</span> In this manner we continued to undergo more hardships than I can now relate, hardships which are inseparable from this accursed trade. Many a time we were near suffocation from the want of fresh air, which we were often without for whole days together. This, and the stench of the necessary tubs, carried off many.</p>
+          </div>
+          <p class="cite">Olaudah Equiano, <i>The Interesting Narrative of the Life of Olaudah Equiano, or Gustavus Vassa, the African. Written by Himself</i> (London: printed for and sold by the author, 1789), Vol. I, Chapter II. Text: Project Gutenberg eBook #15399, gutenberg.org/ebooks/15399. Excerpt of 672 words.</p>
+        </div>
+
+        <div class="panel" id="pan-cn" role="tabpanel" aria-labelledby="tab-cn" hidden data-std="FL:SS.912.W.1.3 SS.912.W.4.15 SS.912.W.5.4 TX:113.42(d)(28)(C) 113.42(d)(7)(C) 113.42(d)(9)(D) MS:DJ.SS.NA.2.2 DJ.SS.NA.2.4">
+          <p class="cnlabel">Code Noir (Louisiana, 1724), the French crown's edict for Louisiana, closely modeled on the 1685 Code Noir for the Caribbean colonies.</p>
+          <dl class="facts">
+            <div><dt>Issued by</dt><dd>The French crown</dd></div>
+            <div><dt>Issued</dt><dd>March 1724</dd></div>
+            <div><dt>Written for</dt><dd>The French colony of Louisiana, to be enforced by colonial officials</dd></div>
+            <div><dt>Articles</dt><dd>II (as summarized in this edition), XXXVIII, XL, XLIII</dd></div>
+          </dl>
+          <div class="magnote"><img src="img/magister.jpg" alt=""><div><b>Mr. Magister</b><p>A royal edict is written by people with power for the people who must obey it. Note who is speaking, who is addressed, and what the crown wants done. Article numbers are printed as in this edition, and the text keeps its spelling and punctuation. A &middot; &middot; &middot; line means articles were skipped.</p></div></div>
+          <div class="src-text cn-text" id="cnText">
+            <p data-p="cnII" data-where="Code Noir (Louisiana, 1724), Article II"><span class="artsum">Summary printed in this edition, not the full article</span><b class="artno">II.</b>Makes it imperative on masters to impart religious instruction to their slaves.</p>
+            <div class="skip" aria-hidden="true">&middot; &middot; &middot;</div>
+            <p data-p="cnXXXVIII" data-where="Code Noir (Louisiana, 1724), Article XXXVIII"><b class="artno">XXXVIII.</b>We also forbid all our subjects in this colony, whatever their condition or rank may be, to apply, on their own private authority, the rack to their slaves, under any pretence whatever. and to mutilate said slaves in any one of their limbs, or in any part of their bodies, under the penalty of the confiscation of said slaves; and said masters, so offending, shall be liable to a criminal prosecution. We only permit masters, when they shall think that the case requires it, to put their slaves in irons, and to have them whipped with rods or ropes.</p>
+            <div class="skip" aria-hidden="true">&middot; &middot; &middot;</div>
+            <p data-p="cnXL" data-where="Code Noir (Louisiana, 1724), Article XL"><b class="artno">XL.</b>Slaves shall be held in law as movables, and as such. they shall be part of the community of acquests between husband and wife; they shall not be liable to be seized under any mortgage whatever; and they shall be equally divided among the co-heirs without admitting from any one of said heirs any claim founded on preciput or right of primogeniture, or dowry.</p>
+            <div class="skip" aria-hidden="true">&middot; &middot; &middot;</div>
+            <p data-p="cnXLIII" data-where="Code Noir (Louisiana, 1724), Article XLIII"><b class="artno">XLIII.</b>Husbands and wives shall not be seized and sold separately when belonging to the same master: and their children, when under fourteen years of age, shall not be separated from their parents, and such seizures and sales shall be null and void. The present article shall apply to voluntary sales, and in case such sales should take place in violation of the law, the seller shall be deprived of the slave he has illegally retained. and said slave shall be adjudged to the purchaser without any additional price being required.</p>
+          </div>
+          <p class="cite">B. F. French, ed., <i>Historical Collections of Louisiana</i>, Part III (New York: D. Appleton &amp; Company; New Orleans: J. Ball, 1851), "Black Code of Louisiana," pp. 89&ndash;95: Article II on p. 89 (the editor prints a one-line summary of Article II, not the full article), Article XXXVIII on p. 93, Articles XL and XLIII on p. 94. Scan: archive.org/details/cihm_36229. Excerpt of 265 words.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="cardscol" id="cardscol" aria-label="Evidence capture" data-std="FL:SS.912.W.1.3 ELA.K12.EE.1.1 TX:113.42(d)(28)(E) 113.42(d)(28)(C) MS:DJ.SS.NA.2.4">
+      <div class="label">Evidence cards</div>
+      <div class="ixcards" id="cards"></div>
+      <div class="addrow"><button class="btn small ghost" id="addCard" type="button">Add a card</button><span id="cardStat"></span></div>
+    </aside>
+  </div>
+  <div class="profwrap" data-std="FL:SS.912.W.1.3 SS.912.W.1.4 TX:113.42(d)(28)(B) 113.42(d)(28)(C) MS:DJ.SS.NA.2.1">
+      <div class="label">Source profile</div>
+      <div class="profile">
+        <div class="ix" data-prof="eq">
+          <div class="ix-h"><span>Equiano &middot; 1789</span></div>
+          <label class="fl" for="pf-eq-who">Who is speaking</label><textarea class="ruled" rows="1" id="pf-eq-who" data-pf="eq.who"></textarea>
+          <label class="fl" for="pf-eq-aud">Who is the audience</label><textarea class="ruled" rows="1" id="pf-eq-aud" data-pf="eq.aud"></textarea>
+          <label class="fl" for="pf-eq-pur">What the speaker wanted</label><textarea class="ruled" rows="1" id="pf-eq-pur" data-pf="eq.pur"></textarea>
+        </div>
+        <div class="ix" data-prof="cn">
+          <div class="ix-h"><span>Code Noir &middot; 1724</span></div>
+          <label class="fl" for="pf-cn-who">Who is speaking</label><textarea class="ruled" rows="1" id="pf-cn-who" data-pf="cn.who"></textarea>
+          <label class="fl" for="pf-cn-aud">Who is the audience</label><textarea class="ruled" rows="1" id="pf-cn-aud" data-pf="cn.aud"></textarea>
+          <label class="fl" for="pf-cn-pur">What the speaker wanted</label><textarea class="ruled" rows="1" id="pf-cn-pur" data-pf="cn.pur"></textarea>
+        </div>
+      </div>
+  </div>
+</section>
+
+<!-- 3. WRITE -->
+<section class="sec" id="write" data-std="FL:SS.912.W.1.3 ELA.K12.EE.1.1 TX:113.42(d)(28)(F) 113.42(d)(30)(B) MS:DJ.SS.NA.2.1 DJ.SS.NA.2.4">
+  <div class="sechead"><h2>Write</h2></div><div class="meander"></div>
+  <p class="instr">Answer each question in complete sentences. Aim for one solid paragraph for each. Your work saves in this browser as you type.</p>
+  <div class="magnote"><img src="img/magister.jpg" alt=""><div><b>Mr. Magister</b><p>A quotation is a few words copied exactly and set inside quotation marks. Follow it with your own explanation.</p></div></div>
+  <div class="q" id="q1" data-std="FL:SS.912.W.1.3 SS.912.W.1.5 TX:113.42(d)(28)(B) 113.42(d)(28)(C) MS:DJ.SS.NA.2.1">
+    <div class="q-h"><span class="q-n">Question 1</span><span class="chip">Uses both sources</span></div>
+    <p class="q-t">Olaudah Equiano published his life story in 1789. The French crown issued the Code Noir for Louisiana in 1724. For each document, say who is speaking, who the audience is, and what the speaker wanted to achieve. How might these differences change what each document can teach us?</p>
+    <label class="fl" for="d1" style="margin-top:0">Your draft</label>
+    <textarea class="draft" id="d1" data-q="1" aria-label="Draft answer to question 1"></textarea>
+    <div class="q-f"><span class="wc"><b data-wc="1">0</b> words</span><span>Guide: one paragraph</span></div>
+    <details class="mycards"><summary>My evidence cards</summary><ul></ul></details>
+  </div>
+  <div class="q" id="q2" data-std="FL:SS.912.W.1.3 SS.912.W.4.15 TX:113.42(d)(28)(C) 113.42(d)(7)(C) MS:DJ.SS.NA.2.4">
+    <div class="q-h"><span class="q-n">Question 2</span><span class="chip">Uses Equiano</span></div>
+    <p class="q-t">Choose one passage from Equiano's account of the voyage. Quote it in a few words, then explain in your own words what it shows about conditions aboard the ship and how he felt about them.</p>
+    <label class="fl" for="d2" style="margin-top:0">Your draft</label>
+    <textarea class="draft" id="d2" data-q="2" aria-label="Draft answer to question 2"></textarea>
+    <div class="q-f"><span class="wc"><b data-wc="2">0</b> words</span><span>Guide: one paragraph</span></div>
+    <details class="mycards"><summary>My evidence cards</summary><ul></ul></details>
+  </div>
+  <div class="q" id="q3" data-std="FL:SS.912.W.4.15 SS.912.W.5.4 TX:113.42(d)(9)(D) 113.42(d)(28)(F) 113.42(d)(7)(C) MS:DJ.SS.NA.2.2 DJ.SS.NA.2.4">
+    <div class="q-h"><span class="q-n">Question 3</span><span class="chip">Uses both sources</span></div>
+    <p class="q-t">The Code Noir orders that masters give enslaved people religious instruction and limits some punishments, yet it also treats them as property that can be bought, sold, and inherited. Using evidence from both documents, explain how Equiano's account answers the idea that a person can be property.</p>
+    <label class="fl" for="d3" style="margin-top:0">Your draft</label>
+    <textarea class="draft" id="d3" data-q="3" aria-label="Draft answer to question 3"></textarea>
+    <div class="q-f"><span class="wc"><b data-wc="3">0</b> words</span><span>Guide: one paragraph</span></div>
+    <details class="mycards"><summary>My evidence cards</summary><ul></ul></details>
+  </div>
+  <div class="q" id="q4" data-std="FL:SS.912.W.1.3 SS.912.W.1.4 TX:113.42(d)(28)(D) 113.42(d)(28)(B) MS:DJ.SS.NA.2.1">
+    <div class="q-h"><span class="q-n">Question 4</span><span class="chip">Uses both sources</span></div>
+    <p class="q-t">A historian wants to learn how the slave system worked from day to day. Which of the two documents would you trust more for that purpose, and why? Name one thing the historian should check before relying on it.</p>
+    <label class="fl" for="d4" style="margin-top:0">Your draft</label>
+    <textarea class="draft" id="d4" data-q="4" aria-label="Draft answer to question 4"></textarea>
+    <div class="q-f"><span class="wc"><b data-wc="4">0</b> words</span><span>Guide: one paragraph</span></div>
+    <details class="mycards"><summary>My evidence cards</summary><ul></ul></details>
+  </div>
+</section>
+
+<!-- 4. CHECK -->
+<section class="sec" id="check" data-std="FL:SS.912.W.1.3 SS.912.W.1.4 TX:113.42(d)(28)(D) 113.42(d)(28)(F) MS:DJ.SS.NA.2.1 DJ.SS.NA.2.4">
+  <div class="sechead"><h2>Check against the rubric</h2></div><div class="meander"></div>
+  <div class="two">
+    <div class="card gold">
+      <div class="label">Checks on your drafts</div>
+      <ul class="checks" id="autoChecks"></ul>
+    </div>
+    <div class="card gold">
+      <div class="label">Your questions answered</div>
+      <ul class="checks" id="tickChecks">
+        <li class="tk"><label><input type="checkbox" data-tick="1"><span>Question 1: speaker, audience and purpose for both documents, and how the differences change what each can teach</span></label></li>
+        <li class="tk"><label><input type="checkbox" data-tick="2"><span>Question 2: one passage quoted in a few words, then conditions aboard the ship and Equiano's feelings in your own words</span></label></li>
+        <li class="tk"><label><input type="checkbox" data-tick="3"><span>Question 3: evidence from both documents, and how Equiano's account answers the idea of a person as property</span></label></li>
+        <li class="tk"><label><input type="checkbox" data-tick="4"><span>Question 4: one document chosen, a reason, and one thing the historian should check</span></label></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card terra" id="rubricCard">
+    <div class="label">Rate your own report</div>
+    <p class="instr">Choose the level that fits each criterion. This is your estimate. Your teacher scores the report.</p>
+    <div id="rubric"></div>
+    <div class="total" id="rtotal"></div>
+  </div>
+</section>
+
+<!-- 5. RECORD -->
+<section class="sec" id="record" data-std="FL:SS.912.W.1.3 TX:113.42(d)(30)(B) 113.42(d)(28)(F) MS:DJ.SS.NA.2.4">
+  <div class="sechead"><h2>Process record</h2></div><div class="meander"></div>
+  <div class="card terra">
+    <p class="instr">The process record is a PDF of your source profile, highlights, evidence cards, drafts and self-rating. Copy your four answers and paste them into the assignment's text box to turn in the report.</p>
+    <div class="rec">
+      <div><label class="fl" for="nameIn" style="margin-top:0">Your name</label><input class="nameinput" id="nameIn" type="text" autocomplete="name"></div>
+    </div>
+    <div class="btnrow">
+      <button class="btn" id="btnPdf" type="button" data-pdf="record">Save process record (PDF)</button>
+      <button class="btn ghost" id="btnCopy" type="button">Copy my four answers</button>
+    </div>
+    <div class="status" id="recStatus" role="status" aria-live="polite"></div>
+  </div>
+  <div class="foot">Optima Academy Online &middot; World History &middot; Module 21 &middot; Primary Source Report</div>
+</section>
+</main>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+'use strict';
+const KEY = 'wh21-proj-report-v1';
+const QS = ["Olaudah Equiano published his life story in 1789. The French crown issued the Code Noir for Louisiana in 1724. For each document, say who is speaking, who the audience is, and what the speaker wanted to achieve. How might these differences change what each document can teach us?", "Choose one passage from Equiano's account of the voyage. Quote it in a few words, then explain in your own words what it shows about conditions aboard the ship and how he felt about them.", "The Code Noir orders that masters give enslaved people religious instruction and limits some punishments, yet it also treats them as property that can be bought, sold, and inherited. Using evidence from both documents, explain how Equiano's account answers the idea that a person can be property.", "A historian wants to learn how the slave system worked from day to day. Which of the two documents would you trust more for that purpose, and why? Name one thing the historian should check before relying on it."];
+const RUB = [{"d": "Understanding of the material", "r": [{"d": "Excellent", "p": 4, "l": "Reads both sources accurately and draws on specific details from each, along with what the week's lessons taught."}, {"d": "Proficient", "p": 3, "l": "Reads both sources accurately but uses few specific details, or leans on only one."}, {"d": "Developing", "p": 2, "l": "Shows partial understanding of one or both sources, with some errors or vague claims."}, {"d": "Beginning", "p": 1, "l": "Misreads the sources or does not refer to them."}]}, {"d": "Quality of reasoning", "r": [{"d": "Excellent", "p": 4, "l": "Connects each claim to evidence and compares the sources with care. Explains why a speaker's purpose and position matter."}, {"d": "Proficient", "p": 3, "l": "Supports most claims with evidence. The comparison is sound but not fully developed."}, {"d": "Developing", "p": 2, "l": "States conclusions with little support, or describes the sources without comparing them."}, {"d": "Beginning", "p": 1, "l": "Offers opinions without evidence from the sources."}]}, {"d": "Clarity and precision of expression", "r": [{"d": "Excellent", "p": 4, "l": "Writes in clear, well-organized sentences. Quotations are short, accurate, and introduced."}, {"d": "Proficient", "p": 3, "l": "Writing is clear with minor lapses in organization or precision."}, {"d": "Developing", "p": 2, "l": "Writing is often unclear or disorganized, and quotations are unclear or misplaced."}, {"d": "Beginning", "p": 1, "l": "Writing is too unclear to follow."}]}, {"d": "Intellectual honesty", "r": [{"d": "Excellent", "p": 4, "l": "Names the limits of what each source can show and says what remains uncertain without overclaiming."}, {"d": "Proficient", "p": 3, "l": "Acknowledges at least one limit of the evidence."}, {"d": "Developing", "p": 2, "l": "Mentions limits only in passing, or claims more than the sources allow."}, {"d": "Beginning", "p": 1, "l": "Treats each source as complete and beyond question."}]}];
+const $ = (s, r) => (r || document).querySelector(s), $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const words = t => ((t || '').trim().match(/\S+/g) || []).length;
+const SRCN = { eq: 'Equiano', cn: 'Code Noir' };
+const mk = src => ({ id: 'c' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), src: src || 'eq', q: '', w: '', s: '' });
+
+let S = { name: '', tab: 'eq', prof: { eq: {}, cn: {} }, cards: [], hl: [], q: {}, rate: {}, tick: {} };
+try { const r = JSON.parse(localStorage.getItem(KEY) || 'null'); if (r && typeof r === 'object') S = Object.assign(S, r); } catch (e) {}
+S.prof = S.prof || { eq: {}, cn: {} }; S.prof.eq = S.prof.eq || {}; S.prof.cn = S.prof.cn || {};
+if (!Array.isArray(S.cards) || !S.cards.length) S.cards = [mk('eq'), mk('eq'), mk('cn'), mk('cn')];
+if (!Array.isArray(S.hl)) S.hl = [];
+S.q = S.q || {}; S.rate = S.rate || {}; S.tick = S.tick || {};
+
+let saveT;
+function save() { clearTimeout(saveT); saveT = setTimeout(flush, 200); }
+function flush() {
+  try { localStorage.setItem(KEY, JSON.stringify(S)); $('#saved').textContent = 'Saved'; } catch (e) { $('#saved').textContent = 'Not saved in this browser'; }
+}
+let toastT;
+function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('on'), 2400); }
+
+/* ---------- tabs ---------- */
+function setTab(t) {
+  S.tab = t;
+  $$('.tab').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === t)));
+  $('#pan-eq').hidden = t !== 'eq'; $('#pan-cn').hidden = t !== 'cn';
+  updHl(); save();
+}
+$$('.tab').forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
+$$('.tab').forEach(b => b.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { const o = b.dataset.tab === 'eq' ? 'cn' : 'eq'; setTab(o); $('#tab-' + o).focus(); } }));
+
+/* ---------- highlights ---------- */
+const textRoot = () => $(S.tab === 'eq' ? '#eqText' : '#cnText');
+function pText(p) { return p.textContent; }
+function offsetIn(p, node, off) { const r = document.createRange(); r.selectNodeContents(p); r.setEnd(node, off); return r.toString().length; }
+function clearMarks() {
+  $$('mark.hl').forEach(m => { const par = m.parentNode; while (m.firstChild) par.insertBefore(m.firstChild, m); par.removeChild(m); par.normalize(); });
+}
+function wrapRange(p, s, e, id) {
+  const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentNode.closest('.omit') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  let pos = 0, n; const jobs = [];
+  while ((n = walker.nextNode())) {
+    const len = n.nodeValue.length, a = Math.max(s, pos), b = Math.min(e, pos + len);
+    if (b > a) jobs.push([n, a - pos, b - pos]);
+    pos += len;
+  }
+  // omit text still counts toward offsets: recount using full textContent order
+  return jobs;
+}
+function applyHl() {
+  clearMarks();
+  S.hl.forEach(h => {
+    const p = $('[data-p="' + h.p + '"]'); if (!p) return;
+    // offsets are over p.textContent (omit spans included); walk all text nodes
+    const walker = document.createTreeWalker(p, NodeFilter.SHOW_TEXT);
+    let pos = 0, n; const jobs = [];
+    while ((n = walker.nextNode())) {
+      const len = n.nodeValue.length, a = Math.max(h.s, pos), b = Math.min(h.e, pos + len);
+      if (b > a && !n.parentNode.closest('.omit')) jobs.push([n, a - pos, b - pos]);
+      pos += len;
+    }
+    jobs.forEach(([node, a, b]) => {
+      const r = document.createRange(); r.setStart(node, a); r.setEnd(node, b);
+      const m = document.createElement('mark'); m.className = 'hl'; m.dataset.h = h.id; m.title = 'Click to remove this highlight';
+      r.surroundContents(m);
+    });
+  });
+}
+function curSel() {
+  const sel = window.getSelection();
+  if (!sel || sel.isCollapsed || !sel.rangeCount) return null;
+  const r = sel.getRangeAt(0);
+  const el = n => (n.nodeType === 1 ? n : n.parentNode);
+  const p1 = el(r.startContainer).closest('[data-p]'), p2 = el(r.endContainer).closest('[data-p]');
+  if (!p1 || p1 !== p2 || !textRoot().contains(p1)) return null;
+  const s = offsetIn(p1, r.startContainer, r.startOffset), e = offsetIn(p1, r.endContainer, r.endOffset);
+  if (e <= s) return null;
+  const text = pText(p1).slice(s, e).replace(/\[Omitted:[^\]]*\]/g, ' ').replace(/\s+/g, ' ').trim();
+  if (!text) return null;
+  return { p: p1.dataset.p, where: p1.dataset.where || '', s, e, text, src: S.tab };
+}
+function addHl(c) {
+  let s = c.s, e = c.e;
+  S.hl = S.hl.filter(h => { if (h.p === c.p && h.s <= e && h.e >= s) { s = Math.min(s, h.s); e = Math.max(e, h.e); return false; } return true; });
+  const p = $('[data-p="' + c.p + '"]');
+  S.hl.push({ id: 'h' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5), src: c.src, p: c.p, s, e, t: pText(p).slice(s, e).replace(/\[Omitted:[^\]]*\]/g, ' ').replace(/\s+/g, ' ').trim() });
+  applyHl(); updHl(); save();
+}
+function updHl() {
+  const n = S.hl.filter(h => h.src === S.tab).length;
+  $('#hlCount').textContent = n + (n === 1 ? ' highlight' : ' highlights');
+  $('#btnHlClear').disabled = !n;
+}
+$('#btnHl').addEventListener('mousedown', e => e.preventDefault());
+$('#btnCard').addEventListener('mousedown', e => e.preventDefault());
+$('#btnHl').addEventListener('click', () => { const c = curSel(); if (!c) return toast('Select words in the passage first.'); addHl(c); window.getSelection().removeAllRanges(); });
+$('#btnCard').addEventListener('click', () => {
+  const c = curSel(); if (!c) return toast('Select words in the passage first.');
+  addHl(c); window.getSelection().removeAllRanges();
+  let card = S.cards.find(x => x.src === c.src && !x.q && !x.w && !x.s) || S.cards.find(x => !x.q && !x.w && !x.s);
+  if (!card) { if (S.cards.length >= 12) return toast('All 12 cards are in use.'); card = mk(c.src); S.cards.push(card); }
+  card.src = c.src; card.q = c.text; card.w = c.where;
+  renderCards(); save();
+  const i = S.cards.indexOf(card); toast('Card ' + (i + 1) + ' made');
+  const el = $('[data-card="' + card.id + '"]'); if (el) { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 1500); if (window.innerWidth <= 1000) el.scrollIntoView({ block: 'center' }); else el.scrollIntoView({ block: 'nearest' }); }
+  refreshAll();
+});
+let clr = 0;
+$('#btnHlClear').addEventListener('click', e => {
+  if (!clr) { clr = 1; e.target.textContent = 'Clear them?'; setTimeout(() => { clr = 0; e.target.textContent = 'Clear highlights'; }, 2600); return; }
+  clr = 0; e.target.textContent = 'Clear highlights';
+  S.hl = S.hl.filter(h => h.src !== S.tab); applyHl(); updHl(); save();
+});
+document.addEventListener('click', e => { const m = e.target.closest && e.target.closest('mark.hl'); if (m && !window.getSelection().toString()) { S.hl = S.hl.filter(h => h.id !== m.dataset.h); applyHl(); updHl(); save(); } });
+
+/* ---------- source profile ---------- */
+$$('[data-pf]').forEach(inp => {
+  const [s, k] = inp.dataset.pf.split('.'); inp.value = (S.prof[s] || {})[k] || '';
+  inp.addEventListener('input', () => { S.prof[s][k] = inp.value; autosize(inp); save(); refreshAll(); });
+  setTimeout(() => autosize(inp), 0);
+});
+
+/* ---------- cards ---------- */
+const cardsEl = $('#cards');
+function autosize(t) { t.style.height = 'auto'; t.style.height = Math.max(t.scrollHeight, 30) + 'px'; }
+function renderCards() {
+  cardsEl.innerHTML = S.cards.map((c, i) => `
+<div class="ix" data-card="${c.id}">
+  <div class="ix-h"><span class="ix-n">${i + 1}</span><span>Card</span>
+    <span class="ix-src" role="group" aria-label="Source for card ${i + 1}"><button type="button" data-set="eq" aria-pressed="${c.src === 'eq'}">Equiano</button><button type="button" data-set="cn" aria-pressed="${c.src === 'cn'}">Code Noir</button></span>
+    <button type="button" class="ix-del" data-del>Remove</button></div>
+  <label class="fl" for="cq-${c.id}">A few words from the source <span class="cnt" data-cnt>${words(c.q)} words</span></label>
+  <textarea class="ruled" id="cq-${c.id}" data-f="q" rows="2">${esc(c.q)}</textarea>
+  <label class="fl" for="cw-${c.id}">Where</label>
+  <input class="ruled" id="cw-${c.id}" data-f="w" type="text" value="${esc(c.w)}" autocomplete="off">
+  <label class="fl" for="cs-${c.id}">What it shows</label>
+  <textarea class="ruled" id="cs-${c.id}" data-f="s" rows="2">${esc(c.s)}</textarea>
+</div>`).join('');
+  $$('textarea.ruled', cardsEl).forEach(autosize);
+  $$('.ix', cardsEl).forEach(el => { const c = S.cards.find(x => x.id === el.dataset.card); capWarn(el, c); });
+  cardStat();
+}
+function capWarn(el, c) { const cnt = $('[data-cnt]', el); const n = words(c.q); cnt.textContent = n + (n === 1 ? ' word' : ' words'); cnt.classList.toggle('warn', n > 15); }
+const done = c => c.q.trim() && c.w.trim() && c.s.trim();
+function cardStat() { const n = S.cards.filter(done).length; $('#cardStat').textContent = n + ' of ' + S.cards.length + ' cards complete'; $('#addCard').disabled = S.cards.length >= 12; }
+cardsEl.addEventListener('input', e => {
+  const t = e.target, el = t.closest('[data-card]'); if (!el || !t.dataset.f) return;
+  const c = S.cards.find(x => x.id === el.dataset.card); c[t.dataset.f] = t.value;
+  if (t.tagName === 'TEXTAREA') autosize(t);
+  if (t.dataset.f === 'q') capWarn(el, c);
+  cardStat(); save(); refreshAll();
+});
+let delArm = null;
+cardsEl.addEventListener('click', e => {
+  const el = e.target.closest('[data-card]'); if (!el) return;
+  const c = S.cards.find(x => x.id === el.dataset.card);
+  const set = e.target.closest('[data-set]');
+  if (set) { c.src = set.dataset.set; $$('[data-set]', el).forEach(b => b.setAttribute('aria-pressed', String(b.dataset.set === c.src))); save(); refreshAll(); return; }
+  if (e.target.closest('[data-del]')) {
+    const b = e.target.closest('[data-del]');
+    if ((c.q || c.w || c.s) && delArm !== c.id) { delArm = c.id; b.textContent = 'Remove it?'; setTimeout(() => { if (delArm === c.id) { delArm = null; b.textContent = 'Remove'; } }, 2600); return; }
+    S.cards = S.cards.filter(x => x !== c); if (!S.cards.length) S.cards.push(mk('eq'));
+    delArm = null; renderCards(); save(); refreshAll();
+  }
+});
+$('#addCard').addEventListener('click', () => {
+  if (S.cards.length >= 12) return;
+  const c = mk(S.tab); S.cards.push(c); renderCards(); save();
+  const el = $('[data-card="' + c.id + '"]'); el.scrollIntoView({ block: 'nearest' }); $('textarea', el).focus();
+});
+
+/* ---------- drafts ---------- */
+$$('.draft').forEach(t => {
+  const n = t.dataset.q; t.value = S.q[n] || '';
+  const upd = () => { const w = words(t.value); $('[data-wc="' + n + '"]').textContent = w; };
+  upd();
+  t.addEventListener('input', () => { S.q[n] = t.value; upd(); save(); refreshAll(); });
+});
+function myCards() {
+  $$('details.mycards').forEach(d => {
+    const list = S.cards.filter(c => c.q.trim() || c.s.trim());
+    $('ul', d).innerHTML = list.length ? list.map(c => `<li><q>${esc(c.q) || '(no quote)'}</q><span>${esc(SRCN[c.src])} &middot; ${esc(c.w) || 'where: not filled in'}${c.s ? ' &middot; ' + esc(c.s) : ''}</span></li>`).join('') : '<li>No cards filled in yet.</li>';
+    $('summary', d).textContent = 'My evidence cards (' + list.length + ')';
+  });
+}
+
+/* ---------- checks + rubric ---------- */
+const norm = s => s.toLowerCase().replace(/[‘’]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
+function eqPlain() { return norm($$('#eqText p').map(p => { const c = p.cloneNode(true); $$('.omit', c).forEach(o => o.remove()); return c.textContent; }).join(' ')); }
+function quoteCheck(txt) {
+  const found = []; const re = /[“"]([^”"]{6,})[”"]/g; let m;
+  while ((m = re.exec(txt))) found.push(m[1]);
+  if (!found.length) return { n: 0, bad: 0 };
+  const src = eqPlain(); let bad = 0;
+  found.forEach(q => { const parts = q.split(/\.{3}|…|\[[^\]]*\]/).map(norm).filter(p => words(p) >= 2); if (!parts.length || parts.some(p => !src.includes(p))) bad++; });
+  return { n: found.length, bad };
+}
+function renderAuto() {
+  const q = i => (S.q[i] || ''), wc = i => words(q(i));
+  const items = [];
+  const nDone = [1, 2, 3, 4].filter(i => wc(i) >= 50).length;
+  items.push([nDone === 4, 'All four questions drafted (' + nDone + ' of 4 at 50 words or more)', '']);
+  const qc = quoteCheck(q(2));
+  items.push([qc.n > 0 && qc.bad === 0, 'Question 2 quotes Equiano', qc.n === 0 ? 'No quotation marks found in your answer.' : (qc.bad ? 'A quotation does not match the passage. Check the words and spelling.' : 'Quotation found in the passage text.')]);
+  const both = [1, 3, 4].filter(i => /equiano/i.test(q(i)) && /code\s+noir/i.test(q(i))).length;
+  items.push([both === 3, 'Questions 1, 3 and 4 name both documents (' + both + ' of 3)', '']);
+  const cd = S.cards.filter(done); const eqN = cd.filter(c => c.src === 'eq').length, cnN = cd.filter(c => c.src === 'cn').length;
+  items.push([cd.length >= 4, 'At least four evidence cards complete (' + cd.length + ')', 'Equiano ' + eqN + ' · Code Noir ' + cnN]);
+  items.push([eqN >= 1 && cnN >= 1, 'Evidence from each source', '']);
+  const prof = ['eq', 'cn'].every(s => ['who', 'aud', 'pur'].every(k => (S.prof[s][k] || '').trim()));
+  items.push([prof, 'Source profile filled in for both documents', '']);
+  $('#autoChecks').innerHTML = items.map(([ok, t, sm]) => `<li class="${ok ? 'ok' : 'no'}"><span class="m">${ok ? '✓' : ''}</span><span>${esc(t)}${sm ? '<small>' + esc(sm) + '</small>' : ''}</span></li>`).join('');
+  return items;
+}
+function renderRubric() {
+  $('#rubric').innerHTML = RUB.map((c, i) => `<div class="crit"><h3>${esc(c.d)} <span class="ui" style="font-size:13px;color:var(--ink2)">(4 points)</span></h3><div class="lvls" role="group" aria-label="${esc(c.d)}">${c.r.map(r => `<button type="button" class="lv" data-crit="${i}" data-lv="${r.p}" aria-pressed="${S.rate[i] === r.p}"><b>${esc(r.d)} (${r.p})</b>${esc(r.l)}</button>`).join('')}</div></div>`).join('');
+  rtotal();
+}
+function rtotal() {
+  const v = Object.values(S.rate).filter(x => x), t = v.reduce((a, b) => a + b, 0);
+  $('#rtotal').innerHTML = v.length === RUB.length ? `Your estimate: <b>${t}</b> of 16` : `${v.length} of ${RUB.length} criteria rated`;
+}
+$('#rubric').addEventListener('click', e => {
+  const b = e.target.closest('.lv'); if (!b) return;
+  S.rate[b.dataset.crit] = +b.dataset.lv;
+  $$('.lv[data-crit="' + b.dataset.crit + '"]').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+  rtotal(); save(); stops();
+});
+$$('[data-tick]').forEach(cb => { cb.checked = !!S.tick[cb.dataset.tick]; cb.addEventListener('change', () => { S.tick[cb.dataset.tick] = cb.checked; save(); }); });
+
+/* ---------- route chips ---------- */
+function stops() {
+  const done = {
+    project: true,
+    read: S.hl.length > 0 || S.cards.some(c => c.q.trim()),
+    write: [1, 2, 3, 4].every(i => words(S.q[i]) >= 50),
+    check: Object.values(S.rate).filter(Boolean).length === RUB.length,
+    record: !!(S.name || '').trim() && !!S.recorded
+  };
+  $$('.stop').forEach(a => a.classList.toggle('done', !!done[a.dataset.s]));
+}
+function onScroll() {
+  let cur = 'project';
+  ['project', 'read', 'write', 'check', 'record'].forEach(id => { const el = document.getElementById(id); if (el && el.getBoundingClientRect().top < 140) cur = id; });
+  $$('.stop').forEach(a => a.classList.toggle('on', a.dataset.s === cur));
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+function refreshAll() { renderAuto(); myCards(); stops(); }
+
+/* ---------- record ---------- */
+const nameIn = $('#nameIn'); nameIn.value = S.name || '';
+nameIn.addEventListener('input', () => { S.name = nameIn.value; save(); stops(); });
+function answersText() { return QS.map((q, i) => (i + 1) + '. ' + (S.q[i + 1] || '').trim()).join('\n\n'); }
+$('#btnCopy').addEventListener('click', async () => {
+  const t = answersText(), st = $('#recStatus');
+  try { await navigator.clipboard.writeText(t); st.textContent = 'Copied your four answers.'; }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand('copy'); } catch (x) {} ta.remove();
+    st.textContent = ok ? 'Copied your four answers.' : 'Copy did not work in this browser. Select the text in each draft box and copy it.';
+  }
+});
+function loadPdfLib() {
+  if (window.jspdf) return Promise.resolve();
+  return new Promise((ok, no) => { const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+}
+function recordData() {
+  return {
+    name: (S.name || '').trim(),
+    prof: ['eq', 'cn'].map(s => [SRCN[s] + ' (' + (s === 'eq' ? '1789' : '1724') + ')', [['Who is speaking', S.prof[s].who], ['Audience', S.prof[s].aud], ['What the speaker wanted', S.prof[s].pur]]]),
+    cards: S.cards.filter(c => c.q.trim() || c.w.trim() || c.s.trim()),
+    hl: S.hl,
+    qs: QS.map((q, i) => ({ q, a: (S.q[i + 1] || '').trim() })),
+    rate: RUB.map((c, i) => [c.d, S.rate[i] ? c.r.find(r => r.p === S.rate[i]).d + ' (' + S.rate[i] + ')' : 'Not rated']),
+    total: Object.values(S.rate).filter(Boolean).length === RUB.length ? Object.values(S.rate).reduce((a, b) => a + b, 0) : null
+  };
+}
+async function savePdf() {
+  const st = $('#recStatus'); st.textContent = 'Making your process record…';
+  try { await loadPdfLib(); } catch (e) { st.textContent = 'The PDF tool could not load. Check your connection and try again.'; return; }
+  const d = recordData(), pdf = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' });
+  const L = 64, W = 612 - 128, BOT = 736, TERRA = [124, 49, 21], INK = [31, 26, 21], GREY = [91, 81, 72], GOLD = [143, 101, 22];
+  const clean = t => String(t).replace(/[^\x20-\x7E\xA0-\xFF‘’“”–—…•]/g, '').replace(/\s+/g, ' ').trim();
+  let y = 70;
+  const write = (t, o) => {
+    const { size = 11, font = 'times', style = 'normal', color = INK, indent = 0, gap = 4, lh = 1.4 } = o || {};
+    pdf.setFont(font, style); pdf.setFontSize(size); pdf.setTextColor(...color);
+    pdf.splitTextToSize(clean(t), W - indent).forEach(ln => { if (y + size * lh > BOT) { pdf.addPage(); y = 70; } pdf.text(ln, L + indent, y); y += size * lh; });
+    y += gap;
+  };
+  const rule = c => { if (y + 12 > BOT) { pdf.addPage(); y = 70; } pdf.setDrawColor(...(c || [227, 214, 192])); pdf.setLineWidth(.8); pdf.line(L, y, L + W, y); y += 16; };
+  const head = t => { if (y + 60 > BOT) { pdf.addPage(); y = 70; } y += 6; write(t, { size: 15, color: TERRA, gap: 4 }); };
+  const lab = t => write(t.toUpperCase(), { size: 8.5, font: 'helvetica', style: 'bold', color: GOLD, gap: 2 });
+  write('PROCESS RECORD', { size: 9, font: 'helvetica', style: 'bold', color: TERRA, gap: 14 });
+  write('Primary Source Report: Equiano and the Code Noir', { size: 22, gap: 2, lh: 1.25 });
+  write((d.name ? d.name + ' · ' : '') + 'World History · Module 21 · Optima Academy Online · ' + new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }), { size: 9, font: 'helvetica', color: GREY, gap: 10 });
+  rule([163, 67, 30]);
+  head('Source profile');
+  d.prof.forEach(([t, rows]) => { write(t, { size: 12, style: 'bold', gap: 2 }); rows.forEach(([a, b]) => { lab(a); write(b || 'Not filled in.', { size: 11.5, color: b ? INK : GREY, indent: 10, gap: 4 }); }); y += 4; });
+  rule();
+  head('Evidence cards');
+  if (!d.cards.length) write('No cards yet.', { color: GREY });
+  d.cards.forEach((c, i) => { write('Card ' + (i + 1) + ' · ' + SRCN[c.src], { size: 9, font: 'helvetica', style: 'bold', color: TERRA, gap: 2 }); write('“' + (c.q || '') + '”', { size: 11.5, style: 'italic', indent: 10, gap: 2 }); write('Where: ' + (c.w || ''), { size: 10, font: 'helvetica', color: GREY, indent: 10, gap: 2 }); write('Shows: ' + (c.s || ''), { size: 11, indent: 10, gap: 8 }); });
+  rule();
+  head('Highlights');
+  ['eq', 'cn'].forEach(s => { const hs = d.hl.filter(h => h.src === s); if (!hs.length) return; lab(SRCN[s]); hs.forEach(h => write('• “' + h.t + '”', { size: 10.5, style: 'italic', indent: 10, gap: 3 })); y += 4; });
+  if (!d.hl.length) write('No highlights.', { color: GREY });
+  rule();
+  head('Drafts');
+  d.qs.forEach((x, i) => { write('Question ' + (i + 1), { size: 9, font: 'helvetica', style: 'bold', color: TERRA, gap: 2 }); write(x.q, { size: 10.5, style: 'italic', gap: 4 }); write(x.a || 'No draft yet.', { size: 11.5, color: x.a ? INK : GREY, indent: 10, gap: 2 }); write(words(x.a) + ' words', { size: 8.5, font: 'helvetica', color: GREY, indent: 10, gap: 10 }); });
+  rule();
+  head('Rubric self-rating');
+  d.rate.forEach(([a, b]) => { write(a, { size: 11, style: 'bold', gap: 1 }); write(b, { size: 11, indent: 10, gap: 5 }); });
+  if (d.total != null) write('Self-estimate: ' + d.total + ' of 16', { size: 11, font: 'helvetica', color: GREY });
+  const n = pdf.getNumberOfPages();
+  for (let i = 1; i <= n; i++) { pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8); pdf.setTextColor(...GREY); pdf.text('Process record · Equiano and the Code Noir · page ' + i + ' of ' + n, L, 762); }
+  pdf.save('equiano-and-the-code-noir-process-record.pdf');
+  S.recorded = true; save(); stops();
+  st.textContent = 'Saved: equiano-and-the-code-noir-process-record.pdf';
+}
+$('#btnPdf').addEventListener('click', savePdf);
+
+/* ---------- init ---------- */
+$$('#cn .x').forEach(() => {});
+renderCards(); renderRubric(); applyHl(); setTab(S.tab === 'cn' ? 'cn' : 'eq'); refreshAll(); onScroll();
+window.__wh21 = { S: () => S };
+})();
+</script>
+</body>
+</html>
