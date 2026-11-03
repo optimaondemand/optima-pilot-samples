@@ -53,6 +53,19 @@ _Not posted yet_
 - [10.02 VR: Two Plots](https://optimaondemand.github.io/optima-4th-science/vr-10-02.html)
 - [12.01 VR: Sense Stations](https://optimaondemand.github.io/optima-4th-science/vr-12-01.html)
 
+### ★ 4th Grade Social Studies (Social Studies)
+
+#### Florida History (Florida Files)
+
+**Sample Lessons**
+
+- [Lesson 4.04.02: Motives for European Expeditions](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-04_02-motives-for-european-expeditions.html)
+- [Lesson 4.10.01: Technological Advances and Florida Growth](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-10-01-technological-advances-and-florida-growth.html)
+
+**Major Project**
+
+_Not posted yet_
+
 ### Music Intermediate 2 (Music · 5013100)
 
 _Week 1 and major projects not posted yet_
