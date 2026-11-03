@@ -53,19 +53,6 @@ _Not posted yet_
 - [10.02 VR: Two Plots](https://optimaondemand.github.io/optima-4th-science/vr-10-02.html)
 - [12.01 VR: Sense Stations](https://optimaondemand.github.io/optima-4th-science/vr-12-01.html)
 
-### ★ 4th Grade Social Studies (Social Studies)
-
-#### Florida History (Florida Files)
-
-**Sample Lessons**
-
-- [Lesson 4.04.02: Motives for European Expeditions](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-04_02-motives-for-european-expeditions.html)
-- [Lesson 4.10.01: Technological Advances and Florida Growth](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-10-01-technological-advances-and-florida-growth.html)
-
-**Major Project**
-
-_Not posted yet_
-
 ### Music Intermediate 2 (Music · 5013100)
 
 _Week 1 and major projects not posted yet_
@@ -523,19 +510,6 @@ _Week 1 and major projects not posted yet_
 
 - [Module 1 Project: Primary Source Report, Lodge or Palmer](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-projects/project-primary-source-report.html)
 
-#### Module 1: The League Rejected and the Red Scare
-
-**Week 1**
-
-- [Lesson 1: The League Rejected, 1919 to 1922](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-w19/l1-the-league-rejected.html)
-- [Lesson 2: Lodge, Speech Against the League of Nations](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-w19/l2-lodge-against-the-league.html)
-- [Lesson 3: Red Scare, Strikes, and the Closing Door](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-w19/l3-red-scare-and-the-closing-door.html)
-- [Lesson 4: Palmer, “The Case Against the ‘Reds’”](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-w19/l4-palmer-case-against-the-reds.html)
-
-**Major Project**
-
-- [Module 1 Project: Primary Source Report, Lodge or Palmer](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-projects/project-primary-source-report.html)
-
 ### ★ Mississippi U.S. History: 1877 to Present (Social Studies · msushist10)
 
 _Week 1 and major projects not posted yet_
@@ -548,25 +522,7 @@ _Week 1 and major projects not posted yet_
 
 ### ★ English III (English Language Arts · 1001370)
 
-#### Jane Eyre
-
-**Week 1**
-
-- [Lesson 1: The Red-Room](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson1-the-red-room.html)
-- [Lesson 2: “I Am Not Deceitful”](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson2-i-am-not-deceitful.html)
-- [Lesson 3: The Writer's Desk](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson3-writers-desk.html)
-- [Lesson 4: The Chronicle](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson4-the-chronicle.html)
-
-**Major Project**
-
-- [Module 3 Project: The Thornfield Chronicle](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/module-3-project-thornfield-chronicle.html)
-- [Lesson: The Workshop](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/proj-lesson1-the-workshop.html)
-- [Lesson: Going to Press](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/proj-lesson2-going-to-press.html)
-- [Chronicle Audio Minute](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/audio-minute.html)
-- [The Chronicle Online](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/the-chronicle-online.html)
-- [Graded Recitation](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/graded-recitation.html)
-- [Recorded Reading & Reflection: Module 3](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/recorded-reading-reflection.html)
-- [Quarterly Reading Check: Module 3](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/quarterly-reading-check.html)
+_Week 1 and major projects not posted yet_
 
 ### ★ English III Honors (English Language Arts · 1001380)
 
@@ -574,19 +530,7 @@ _Week 1 and major projects not posted yet_
 
 ### ★ Algebra 2 Honors (Mathematics · 1200340)
 
-#### Module 8: Rational Exponents and Radical Expressions
-
-**Week 1**
-
-- [Lesson 1: Rational Exponents](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson1-rational-exponents.html)
-- [Lesson 2: The Number e](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson2-the-number-e.html)
-- [Lesson 3: Radical Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson3-radical-expressions.html)
-- [Lesson 4: Adding and Subtracting Radical Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson4-adding-and-subtracting-radical-expressions.html)
-- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-week-1-check.html)
-
-**Major Project**
-
-_Not posted yet_
+_Week 1 and major projects not posted yet_
 
 ### ★ Anatomy and Physiology (Grades 11–12 · Science · 2000350)
 

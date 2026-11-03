@@ -612,11 +612,31 @@ h1,h2,h3,h4{letter-spacing:.005em}
 #mzoom .mz-cap .mbeat{display:inline-block;font:700 11px/1 system-ui,sans-serif;letter-spacing:.1em;color:var(--gold-d);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin-right:8px;vertical-align:2px}
 #mzoom [data-on]{opacity:0}#mzoom [data-on].shown{opacity:1}
 #mzoom svg text{font-family:system-ui,"Segoe UI",sans-serif}#mzoom svg .sh{font-family:"Old Standard TT",Georgia,serif}
-/* the opening mini-lecture leads the arrive page */
-.minis{grid-template-areas:"m m" "f c" "o c";grid-template-rows:auto auto 1fr}
-.minis .mini{grid-area:m}
-.minis .mini .mstage{max-width:760px;margin:0 auto}
-@media (max-width:720px){.minis{grid-template-areas:"m" "f" "o" "c"}}
+/* arrive: intro + overview on the left, the book (with a compact chapter list) on the right */
+.step[data-step="0"]{width:min(1140px,calc(100vw - 40px));margin-left:calc(50% - min(570px,calc(50vw - 20px)))}
+.arrive{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;align-items:start;padding:6px 0 10px}
+.a-left{display:grid;gap:16px;min-width:0}
+.a-left .mag{width:auto;display:grid;grid-template-columns:72px 1fr auto;align-items:center;justify-items:start;text-align:left;column-gap:14px;gap:0 14px}
+.a-left .mag img{width:72px;height:72px;margin:0;border-width:3px;grid-row:1/2}
+.a-left .mag small{margin:0}
+.a-left .mag-b{display:flex;gap:6px;width:auto}
+.a-left .minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"m m" "f c" "o c";grid-template-rows:auto auto 1fr;gap:16px;align-items:start}
+.a-left .minis .mini{grid-area:m}
+.a-right{position:sticky;top:76px;display:grid;justify-items:center;gap:12px;padding:16px 16px 18px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.a-right > .kicker{justify-self:start}
+.a-right .bigbook{--P:190px;width:190px;height:262px}
+.a-right .bigbook .cv-t{font-size:17px}
+.a-right .bigbook .cv-k{font-size:7px}
+.a-right .bl-body{width:100%}
+.a-right .bl-body .wrow{justify-content:center;margin:0 0 12px}
+.a-right .pl-h{font:700 11px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:0 0 8px}
+.a-right .partlist{gap:5px;margin:0}
+.a-right .pl-row{grid-template-columns:22px 1fr;gap:4px 9px;padding:7px 10px;border-radius:9px}
+.a-right .pl-row i{width:22px;height:22px;font-size:11px;grid-row:1/3}
+.a-right .pl-row b{font-size:15.5px;line-height:1.25}
+.a-right .pl-row span{grid-column:2;font-size:11.5px}
+@media (max-width:980px){.arrive{grid-template-columns:minmax(0,1fr) 250px;gap:22px}.a-right .bigbook{--P:160px;width:160px;height:222px}.a-left .minis{grid-template-columns:1fr;grid-template-areas:"m" "f" "o" "c"}}
+@media (max-width:720px){.step[data-step="0"]{width:auto;margin-left:0}.arrive{grid-template-columns:1fr}.a-right{position:static}.a-left .mag{grid-template-columns:56px 1fr}.a-left .mag img{width:56px;height:56px}.a-left .mag-b{grid-column:1/-1;margin-top:8px}}
 
 /* L2 */
 .ordn{display:inline-block;min-width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;background:var(--ink);color:#fff;font:700 12px/22px system-ui,sans-serif;margin-right:9px}
@@ -655,22 +675,15 @@ h1,h2,h3,h4{letter-spacing:.005em}
 
 <!-- 0 · ARRIVE -->
 <section class="step" data-step="0">
-  <div class="stage0">
+  <div class="arrive">
+  <div class="a-left">
     <div class="mag">
       <img src="img/magister.jpg" alt="Mr. Magister">
       <div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
       <div class="mag-b"><button class="btn small" data-mini-go="m1">&#9654; Start</button><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div>
     </div>
-    <button class="bigbook" data-openbook="" aria-label="Open the book"><div class="cv-in"><div class="cv-k">Henry Cabot Lodge · United States Senate · August 12, 1919</div><img src="img/lodge.jpg" alt=""><div class="cv-t">Against the League</div></div></button>
-    <div class="bl-body">
-      <div class="kicker">The Book</div>
-      <h2>Parts 1 to 3</h2>
-      <div class="partlist" id="partlist"></div>
-      <div class="wrow"><button class="btn" data-openbook="">&#128214; Open the book</button><button class="btn ghost" data-go="4">Questions &rarr;</button></div>
-    </div>
-  </div>
-  <div class="minis">
-  <div class="card mini" data-mini="m1">
+    <div class="minis">
+    <div class="card mini" data-mini="m1">
   <div class="mstage">
   <svg viewBox="0 0 640 300" role="img" aria-label="Lodge's nameplate, the treaty tied to the League, the two-thirds Senate vote, three groups in the Senate, Article 10, and Congress's power to declare war">
     <!-- 0: who -->
@@ -723,16 +736,27 @@ h1,h2,h3,h4{letter-spacing:.005em}
   </div>
 </div>
 
-  <div class="card terra">
-    <div class="label">Today's Focus</div>
-    <p class="focusq">Why did Lodge say the United States must not accept Article 10?</p>
-    <p style="margin:0">On August 12, 1919, the chairman of the Senate Foreign Relations Committee rose to explain why the League of Nations, as written, was a promise the nation should not make.</p>
+    <div class="card terra">
+      <div class="label">Today's Focus</div>
+      <p class="focusq">Why did Lodge say the United States must not accept Article 10?</p>
+      <p style="margin:0">On August 12, 1919, the chairman of the Senate Foreign Relations Committee rose to explain why the League of Nations, as written, was a promise the nation should not make.</p>
+    </div>
+    <details class="card objs">
+      <summary class="label">Objectives</summary>
+      <ol class="obj"><li><span>I will be able to trace Lodge&#x27;s chain of reasoning from a nation&#x27;s promises to the question of who sends troops abroad</span></li><li><span>I will be able to explain what Lodge means by sovereignty and why he says the power to send soldiers and sailors must never be yielded</span></li><li><span>I will be able to describe, in Lodge&#x27;s own words, the case for putting America first and what he fears the League would cost</span></li></ol>
+    </details>
+    <div class="card gold"><div class="label">Quick Check-in</div><p style="margin:0 0 12px">Lodge says: "Whatever the United States agrees to, by that agreement she must abide." A friend promised to help you move on a certain day, then got a better offer for that day. What should the friend do?</p><div class="opts" id="guess"><button class="opt" data-v="0">Keep the promise and help</button><button class="opt" data-v="1">Ask to be let out, and explain why</button><button class="opt" data-v="2">Skip it, since plans change</button><button class="opt" data-v="3">Depends on how big the promise was</button></div><div class="note" id="guessNote"></div></div>
+    </div>
   </div>
-  <details class="card objs">
-    <summary class="label">Objectives</summary>
-    <ol class="obj"><li><span>I will be able to trace Lodge&#x27;s chain of reasoning from a nation&#x27;s promises to the question of who sends troops abroad</span></li><li><span>I will be able to explain what Lodge means by sovereignty and why he says the power to send soldiers and sailors must never be yielded</span></li><li><span>I will be able to describe, in Lodge&#x27;s own words, the case for putting America first and what he fears the League would cost</span></li></ol>
-  </details>
-  <div class="card gold"><div class="label">Quick Check-in</div><p style="margin:0 0 12px">Lodge says: "Whatever the United States agrees to, by that agreement she must abide." A friend promised to help you move on a certain day, then got a better offer for that day. What should the friend do?</p><div class="opts" id="guess"><button class="opt" data-v="0">Keep the promise and help</button><button class="opt" data-v="1">Ask to be let out, and explain why</button><button class="opt" data-v="2">Skip it, since plans change</button><button class="opt" data-v="3">Depends on how big the promise was</button></div><div class="note" id="guessNote"></div></div>
+  <aside class="a-right" aria-label="The book">
+    <div class="kicker">The Book</div>
+    <button class="bigbook" data-openbook="" aria-label="Open the book"><div class="cv-in"><div class="cv-k">Henry Cabot Lodge · United States Senate · August 12, 1919</div><img src="img/lodge.jpg" alt=""><div class="cv-t">Against the League</div></div></button>
+    <div class="bl-body">
+      <div class="wrow"><button class="btn" data-openbook="">&#128214; Open the book</button><button class="btn ghost small" data-go="4">Questions &rarr;</button></div>
+      <div class="pl-h">Parts 1 to 3</div>
+      <div class="partlist" id="partlist"></div>
+    </div>
+  </aside>
   </div>
 </section>
 
