@@ -545,9 +545,28 @@ body:not(.voice-on) .gl button{display:grid}
 body:not(.voice-on) .gl{grid-template-columns:auto 1fr}
 .gl .nob{grid-row:span 2;width:34px}
 /* opening grid gets a full-width mini-lesson row */
-.minis{grid-template-areas:"m m" "f c" "o c";grid-template-rows:auto auto 1fr}
-.minis .ml{grid-area:m}
-@media (max-width:720px){.minis{grid-template-areas:"m" "f" "o" "c";grid-template-rows:auto}}
+/* opening: intro first on the left, the book on the right (sticky) */
+.arrive2{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:40px;align-items:start;width:min(1180px,calc(100vw - 40px));margin-left:calc(50% - min(590px,50vw - 20px));padding:8px 0 10px}
+.arrive2 .intro{display:grid;gap:16px;min-width:0}
+.arrive2 .mag{width:auto;display:grid;grid-template-columns:72px 1fr auto;align-items:center;justify-items:start;text-align:left;column-gap:14px;gap:0 14px}
+.arrive2 .mag img{grid-row:1/3;width:72px;height:72px;margin:0;border-width:3px}
+.arrive2 .mag-t b{font-size:22px}.arrive2 .mag small{margin:0}
+.arrive2 .mag-b{grid-row:1/3;grid-column:3;display:flex;gap:8px;width:auto}
+.minis{display:grid;grid-template-columns:1fr;grid-template-areas:none;grid-template-rows:none;gap:16px}
+.minis .card.terra,.minis .objs,.minis .card.gold,.minis .ml{grid-area:auto}
+.bookside{position:sticky;top:76px}
+.bs-in{display:grid;justify-items:center;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px}
+.bookside .bigbook{--P:200px;width:200px;height:278px}
+.bookside .bigbook .cv-t{font-size:18px}
+.bookside .bl-body{width:100%}
+.bookside .bl-body h2{font-size:26px;margin:4px 0 10px}
+.bookside .pl-row{grid-template-columns:26px 1fr;padding:8px 10px;gap:10px}
+.bookside .pl-row b{font-size:16px}
+.bookside .pl-row span{grid-column:2;font-size:12px}
+.bookside .pl-row i{width:24px;height:24px;font-size:12px}
+.bookside .wrow{flex-wrap:wrap}
+@media (max-width:980px){.arrive2{grid-template-columns:1fr;width:auto;margin-left:0}.bookside{position:static}.bs-in{grid-template-columns:auto 1fr;justify-items:start;align-items:start}.bookside .bigbook{--P:150px;width:150px;height:208px}.bookside .bigbook .cv-t{font-size:14px}}
+@media (max-width:560px){.bs-in{grid-template-columns:1fr;justify-items:center}.arrive2 .mag{grid-template-columns:56px 1fr}.arrive2 .mag img{width:56px;height:56px}.arrive2 .mag-b{grid-column:1/-1;grid-row:auto;margin-top:8px}}
 
 /* Mr. Magister mini-lesson */
 .ml{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--terra);border-radius:14px;padding:16px 18px;margin:0}
@@ -689,20 +708,13 @@ body:not(.voice-on) .gl{grid-template-columns:auto 1fr}
 
 <!-- 0 · ARRIVE -->
 <section class="step" data-step="0">
-  <div class="stage0">
+  <div class="arrive2">
+  <div class="intro">
     <div class="mag">
       <img src="img/magister.jpg" alt="Mr. Magister">
       <div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
       <div class="mag-b"><button class="btn small" id="startBtn">&#9654; Listen</button><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div>
     </div>
-    <button class="bigbook" data-openbook="" aria-label="Open the book"><div class="cv-in"><div class="cv-k">Optima Academy Online</div><img src="img/atahualpa.jpg" alt=""><div class="cv-t">Pizarro, the Inca, and the Silver of Potosí</div></div></button>
-    <div class="bl-body">
-      <div class="kicker">The Book</div>
-      <h2>Parts 1 to 6</h2>
-      <div class="partlist" id="partlist"></div>
-      <div class="wrow"><button class="btn" data-openbook="">&#128214; Open the book</button><button class="btn ghost" data-go="7">The Verdict &rarr;</button></div>
-    </div>
-  </div>
   <div class="minis">
   <div class="ml" data-mini="mini1">
     <div class="ml-head"><img src="img/magister.jpg" alt="Mr. Magister"><div><div class="label">Mini-lesson · Mr. Magister</div><h3>168 Men and a Mountain of Silver</h3></div><button class="btn small ml-play">&#9654; Play</button></div>
@@ -796,6 +808,17 @@ body:not(.voice-on) .gl{grid-template-columns:auto 1fr}
     <div class="note" id="guessNote"></div>
   </div>
 
+  </div>
+  </div>
+  <aside class="bookside" aria-label="The book"><div class="bs-in">
+    <button class="bigbook" data-openbook="" aria-label="Open the book"><div class="cv-in"><div class="cv-k">Optima Academy Online</div><img src="img/atahualpa.jpg" alt=""><div class="cv-t">Pizarro, the Inca, and the Silver of Potosí</div></div></button>
+    <div class="bl-body">
+      <div class="kicker">The Book</div>
+      <h2>Parts 1 to 6</h2>
+      <div class="partlist" id="partlist"></div>
+      <div class="wrow"><button class="btn" data-openbook="">&#128214; Open the book</button><button class="btn ghost" data-go="7">The Verdict &rarr;</button></div>
+    </div>
+  </div></aside>
   </div>
 </section>
 
