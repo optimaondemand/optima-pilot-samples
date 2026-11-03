@@ -1,10 +1,20 @@
 # Optima Pilot Samples
 
-Week 1 and major-project samples, grouped by grade and course. Live page: https://optimaondemand.github.io/optima-pilot-samples/
+Week 1 and major-project samples for every 2026-27 course, grades 3–12. Live page: https://optimaondemand.github.io/optima-pilot-samples/
+
+## Grade 3
+
+### Music Intermediate 1 (Music · 5013090)
+
+_Week 1 and major projects not posted yet_
+
+### Physical Education - Grade 3 (Physical Education · 5015050)
+
+_Week 1 and major projects not posted yet_
 
 ## Grade 4
 
-### 4th Grade Math
+### 4th Grade Math (Mathematics)
 
 #### Measurement (Pixel Quest)
 
@@ -15,11 +25,29 @@ Week 1 and major-project samples, grouped by grade and course. Live page: https:
 
 **Major Project**
 
-- Not posted yet
+_Not posted yet_
+
+### Music Intermediate 2 (Music · 5013100)
+
+_Week 1 and major projects not posted yet_
+
+### Physical Education - Grade 4 (Physical Education · 5015060)
+
+_Week 1 and major projects not posted yet_
+
+## Grade 5
+
+### Music Intermediate 3 (Music · 5013110)
+
+_Week 1 and major projects not posted yet_
+
+### Physical Education - Grade 5 (Physical Education · 5015070)
+
+_Week 1 and major projects not posted yet_
 
 ## Grade 6
 
-### 6th Grade ELA
+### M/J Language Arts 1 (English Language Arts · 1001010)
 
 #### Course Entry: The Great Library
 
@@ -53,9 +81,33 @@ Week 1 and major-project samples, grouped by grade and course. Live page: https:
 
 - [Portrait of a Hero](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-robin-hood-projects/module-project-portrait-of-a-hero.html) (100 pts)
 
+### M/J Grade 6 Mathematics (Mathematics · 1205010)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Comprehensive Science 1 (Science · 2002040)
+
+_Week 1 and major projects not posted yet_
+
+### M/J World History (Social Studies · 2109010)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Grade 6 Digital Discoveries (Computer Science · 0200021)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Fitness - Grade 6 (Physical Education · 1508000)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Visual Art 1 (Visual Arts · 0101100)
+
+_Week 1 and major projects not posted yet_
+
 ## Grade 7
 
-### 7th Grade ELA
+### M/J Language Arts 2 (English Language Arts · 1001040)
 
 #### The Call of the Wild
 
@@ -70,9 +122,33 @@ Week 1 and major-project samples, grouped by grade and course. Live page: https:
 
 - [Final Project](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-call-of-the-wild-projects/cotw-final-project.html) (40 pts)
 
+### M/J Grade 7 Mathematics (Mathematics · 1205040)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Comprehensive Science 2 (Science · 2002070)
+
+_Week 1 and major projects not posted yet_
+
+### Grade 7 Texas History (Social Studies · txhist7)
+
+_Week 1 and major projects not posted yet_
+
+### M/J U.S. History: 1492-Reconstruction (Social Studies · 2100010)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Grade 7 Digital Discoveries (Computer Science · 0200022)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Visual Art 2 (Visual Arts · 0101110)
+
+_Week 1 and major projects not posted yet_
+
 ## Grade 8
 
-### 8th Grade ELA
+### M/J Language Arts 3 (English Language Arts · 1001070)
 
 #### Out of the Silent Planet
 
@@ -104,9 +180,51 @@ Week 1 and major-project samples, grouped by grade and course. Live page: https:
 - [Lesson: Build Your Case (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project1-build-your-case.html)
 - [Lesson: Write Your Essay (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project2-write-your-essay.html)
 
-## High School
+### M/J Grade 8 Pre-Algebra (Mathematics · 1205070)
 
-### 9th Grade ELA
+_Week 1 and major projects not posted yet_
+
+### M/J Comprehensive Science 3 (Science · 2002100)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Civics: U.S. Government (Social Studies · 2106010)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Grade 8 Digital Discoveries (Computer Science · 0200023)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Visual Art 3 (Visual Arts · 0101120)
+
+_Week 1 and major projects not posted yet_
+
+## Middle School, Multi-Grade
+
+### M/J Critical Thinking, Problem Solving, and Learning Strategies (Grades 6–8 · Critical Thinking · 1700100)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Music Theory 1 (Grades 6–8 · Music · 1300000)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Music Theory 2 (Grades 6–8 · Music · 1300010)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Comprehensive Physical Education Grade 6/7 (Grades 6–7 · Physical Education · 1508060)
+
+_Week 1 and major projects not posted yet_
+
+### M/J Comprehensive Physical Education Grade 7/8 (Grades 7–8 · Physical Education · 1508070)
+
+_Week 1 and major projects not posted yet_
+
+## Grade 9
+
+### English 1 (English Language Arts · 1001310)
 
 #### The Scarlet Letter
 
@@ -119,9 +237,109 @@ Week 1 and major-project samples, grouped by grade and course. Live page: https:
 
 **Major Project**
 
-- Not posted yet
+_Not posted yet_
 
-### Probability & Statistics Honors
+### Algebra 1 (Mathematics · 1200310)
+
+_Week 1 and major projects not posted yet_
+
+### Algebra 1 Honors (Mathematics · 1200320)
+
+_Week 1 and major projects not posted yet_
+
+### Biology 1 (Grades 9–10 · Science · 2000310)
+
+_Week 1 and major projects not posted yet_
+
+### Integrated Science 1 (Science · 2002400)
+
+_Week 1 and major projects not posted yet_
+
+### HS World History: Fall of Rome to Present (Social Studies · 2109310)
+
+_Week 1 and major projects not posted yet_
+
+## Grade 10
+
+### English 2 (English Language Arts · 1001340)
+
+_Week 1 and major projects not posted yet_
+
+### English 2 (Mississippi) (English Language Arts · 1001340ms)
+
+_Week 1 and major projects not posted yet_
+
+### English 2 Honors (English Language Arts · 1001350)
+
+_Week 1 and major projects not posted yet_
+
+### Geometry Honors (Mathematics · 1206320)
+
+_Week 1 and major projects not posted yet_
+
+### Chemistry I Honors (Science · 2003350)
+
+_Week 1 and major projects not posted yet_
+
+### HS U.S. History: Reconstruction to Present (Social Studies · 2100310)
+
+_Week 1 and major projects not posted yet_
+
+### Mississippi U.S. History: 1877 to Present (Social Studies · msushist10)
+
+_Week 1 and major projects not posted yet_
+
+### World History: Age of Enlightenment to Present (Mississippi) (Social Studies · mswhist10)
+
+_Week 1 and major projects not posted yet_
+
+## Grade 11
+
+### English III (English Language Arts · 1001370)
+
+_Week 1 and major projects not posted yet_
+
+### English III Honors (English Language Arts · 1001380)
+
+_Week 1 and major projects not posted yet_
+
+### Algebra 2 Honors (Mathematics · 1200340)
+
+_Week 1 and major projects not posted yet_
+
+### Anatomy and Physiology (Grades 11–12 · Science · 2000350)
+
+_Week 1 and major projects not posted yet_
+
+### HS Civics: Economics Honors (Social Studies · 2102320)
+
+_Week 1 and major projects not posted yet_
+
+### HS Civics: U.S. Government Honors (Social Studies · 2106320)
+
+_Week 1 and major projects not posted yet_
+
+## Grade 12
+
+### English IV (English Language Arts · 1001400)
+
+_Week 1 and major projects not posted yet_
+
+### English IV Honors (English Language Arts · 1001410)
+
+_Week 1 and major projects not posted yet_
+
+## High School, Multi-Grade
+
+### Calculus Honors (Grades 9–12 · Mathematics · 1202300)
+
+_Week 1 and major projects not posted yet_
+
+### Precalculus Honors (Grades 9–12 · Mathematics · 1202340)
+
+_Week 1 and major projects not posted yet_
+
+### Probability and Statistics Honors (Grades 9–12 · Mathematics · 1210300)
 
 #### Quarter 3
 
@@ -137,7 +355,47 @@ Week 1 and major-project samples, grouped by grade and course. Live page: https:
 - [Module 8 Lab: Walking the Distribution](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-8-lab-walking-the-distribution.html) (15 pts)
 - [Module 9 Lab: Inside the Bell](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-9-lab-inside-the-bell.html) (15 pts)
 
-### Semantics and Logic Honors
+### History (course to be assigned) (Grades 9–12 · Social Studies)
+
+#### The Practice of Drama in Athens
+
+**Sample Lesson**
+
+- [The Practice of Drama in Athens, with Mr. Magister](https://optimaondemand.github.io/optima-pilot-samples/hs-history-drama-in-athens/the-practice-of-drama-in-athens.html)
+
+**Major Project**
+
+_Not posted yet_
+
+### Mississippi History (Grades 9–12 · Social Studies · mshist912)
+
+_Week 1 and major projects not posted yet_
+
+### Philosophy Honors (Grades 9–12 · Social Studies · 2120910)
+
+_Week 1 and major projects not posted yet_
+
+### Philosophy Honors: Ethics (Grades 9–12 · Social Studies · 2105355)
+
+_Week 1 and major projects not posted yet_
+
+### Career Research and Decision Making (Grades 9–12 · Career Education · 1700380)
+
+_Week 1 and major projects not posted yet_
+
+### Discovering Computer Science (Grades 9–12 · Computer Science · 0200384)
+
+_Week 1 and major projects not posted yet_
+
+### Critical Thinking and Study Skills (Grades 9–12 · Critical Thinking · 1700370)
+
+_Week 1 and major projects not posted yet_
+
+### Driver Education/Traffic Safety Classroom (Grades 9–12 · Driver Education · 1900310)
+
+_Week 1 and major projects not posted yet_
+
+### Semantics and Logic Honors (Grades 9–12 · Electives · 1004300)
 
 #### Quarter 1
 
@@ -150,18 +408,42 @@ Week 1 and major-project samples, grouped by grade and course. Live page: https:
 
 **Major Project**
 
-- Not posted yet
+_Not posted yet_
 
-### History
+### Sociology Honors (Grades 9–12 · Electives · 2108300)
 
-#### The Practice of Drama in Athens
+_Week 1 and major projects not posted yet_
 
-**Sample Lesson**
+### Music of the World (Grades 9–12 · Music · 1300340)
 
-- [The Practice of Drama in Athens, with Mr. Magister](https://optimaondemand.github.io/optima-pilot-samples/hs-history-drama-in-athens/the-practice-of-drama-in-athens.html)
+_Week 1 and major projects not posted yet_
 
-**Major Project**
+### Health Opportunities through Physical Education (HOPE) (Grades 9–12 · Physical Education · 3026010)
 
-- Not posted yet
+_Week 1 and major projects not posted yet_
+
+### 2D Studio Art 2 (Grades 9–12 · Visual Arts · 0101310)
+
+_Week 1 and major projects not posted yet_
+
+### Art History and Criticism 1 Honors (Grades 9–12 · Visual Arts · 0100330)
+
+_Week 1 and major projects not posted yet_
+
+### Digital Art Imaging 1 (Grades 9–12 · Visual Arts · 0108370)
+
+_Week 1 and major projects not posted yet_
+
+### Two-Dimensional Studio Art 1 (Grades 9–12 · Visual Arts · 0101300)
+
+_Week 1 and major projects not posted yet_
+
+### French 1 (Grades 9–12 · World Languages · 0701320)
+
+_Week 1 and major projects not posted yet_
+
+### Spanish 1 (Grades 9–12 · World Languages · 0708340)
+
+_Week 1 and major projects not posted yet_
 
 Academic Design and Curriculum (AcDC)
