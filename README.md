@@ -482,7 +482,21 @@ _Week 1 and major projects not posted yet_
 
 ### ★ English IV (English Language Arts · 1001400)
 
-_Week 1 and major projects not posted yet_
+#### The Metamorphosis
+
+**Week 1**
+
+- [Lesson 1: The Transformation](https://optimaondemand.github.io/optima-pilot-samples/12th-ela-metamorphosis-w1/w1-lesson1-the-transformation.html)
+- [Lesson 2: A Man at Work](https://optimaondemand.github.io/optima-pilot-samples/12th-ela-metamorphosis-w1/w1-lesson2-a-man-at-work.html)
+- [Lesson 3: The Door Opens](https://optimaondemand.github.io/optima-pilot-samples/12th-ela-metamorphosis-w1/w1-lesson3-the-door-opens.html)
+- [Lesson 4: Who Made Gregor?](https://optimaondemand.github.io/optima-pilot-samples/12th-ela-metamorphosis-w1/w1-lesson4-who-made-gregor.html)
+
+**Major Project**
+
+- [Module 3 Project: What We Become](https://optimaondemand.github.io/optima-pilot-samples/12th-ela-metamorphosis-projects/module-3-project-what-we-become.html)
+- [Project Lesson 1: Your Question and Your Sources](https://optimaondemand.github.io/optima-pilot-samples/12th-ela-metamorphosis-projects/m3-project1-question-and-sources.html)
+- [Project Lesson 2: Build the Core](https://optimaondemand.github.io/optima-pilot-samples/12th-ela-metamorphosis-projects/m3-project2-build-the-core.html)
+- [Project Lesson 3: Finish and Submit](https://optimaondemand.github.io/optima-pilot-samples/12th-ela-metamorphosis-projects/m3-project3-finish-and-submit.html)
 
 ### ★ English IV Honors (English Language Arts · 1001410)
 

@@ -156,6 +156,26 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .fromtxt{white-space:pre-wrap;font:16px/1.65 var(--serif);background:#F3F1EC;border-left:3px solid var(--slate);padding:12px 16px;border-radius:4px;color:var(--ink2)}
 .fromtxt.empty{font-style:italic;color:var(--muted)}
 
+/* ---------- index cards: short capture boxes as 3x5 ruled cards (9-12 rule, 2026-11-02) ---------- */
+.ixcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:10px 0 20px}
+.ixcards.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px}
+.ixcards.one{grid-template-columns:minmax(0,1fr);max-width:480px}
+@media (max-width:860px){.ixcards,.ixcards.two{grid-template-columns:1fr;max-width:480px}}
+.ix{position:relative;background:#FFFEFA;border-radius:3px;padding:14px 16px 10px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 18px rgba(30,30,30,.08);transform:rotate(-.6deg);transition:transform .2s ease}
+.ix:nth-child(2){transform:rotate(.5deg)}
+.ix:nth-child(3){transform:rotate(-.3deg)}
+.ix:nth-child(4){transform:rotate(.4deg)}
+.ix:focus-within{transform:rotate(0) translateY(-2px)}
+.ix-h{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--scarlet);padding-bottom:7px}
+.ix-n{font:500 24px/1 var(--display);color:var(--scarlet)}
+.ix-t{font:600 15px/1.3 var(--ui);color:var(--ink)}
+.ix-k{display:block;font:600 10.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:8px 0 2px}
+.ix-hint{display:block;font:13px/1.45 var(--ui);color:var(--muted);margin:7px 0 2px}
+.ix textarea.jbox{border:0;border-radius:0;background:transparent repeating-linear-gradient(180deg,transparent 0,transparent 27px,var(--line) 27px,var(--line) 28px);background-attachment:local;line-height:28px;padding:0 2px;min-height:112px;font:italic 16.5px/28px var(--serif);box-shadow:none}
+.ix textarea.jbox:focus{box-shadow:none}
+.ix .wc{margin-top:4px}
+@media print{.ix{transform:none;box-shadow:none;border:1px solid #ccc}}
+
 /* ---------- the reader (inline + Focus) ---------- */
 .reader{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;--rs:19px;--rlh:1.75}
 .rbar{position:sticky;top:47px;z-index:20;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
@@ -683,18 +703,9 @@ body.r-focus{overflow:hidden}
     <div class="sec-h"><span class="num">C</span><h2>Your Foreshadowing Plan</h2></div>
     <div class="plan-head" aria-hidden="true"><span>The detail I planted</span><span>What it quietly anticipates</span><span>Where it pays off later</span></div>
     <div class="card">
-      <div class="field">
-        <div class="q">Plant 1 <small>Three parts: the detail, what it quietly anticipates, which scene or moment pays it off.</small></div>
-        <textarea class="jbox" id="o-p1" data-label="Plan, plant 1: detail, what it anticipates, where it pays off" data-min="25" rows="4"></textarea>
-      </div>
-      <div class="field">
-        <div class="q">Plant 2</div>
-        <textarea class="jbox" id="o-p2" data-label="Plan, plant 2: detail, what it anticipates, where it pays off" data-min="25" rows="4"></textarea>
-      </div>
-      <div class="field">
-        <div class="q">Plant 3</div>
-        <textarea class="jbox" id="o-p3" data-label="Plan, plant 3: detail, what it anticipates, where it pays off" data-min="25" rows="4"></textarea>
-      </div>
+      <div class="ixcards"><div class="ix"><div class="ix-h"><span class="ix-n">1</span><span class="ix-t">Plant 1</span></div><span class="ix-hint">Three parts: the detail, what it quietly anticipates, which scene or moment pays it off.</span><textarea class="jbox" id="o-p1" data-label="Plan, plant 1: detail, what it anticipates, where it pays off" data-min="25" rows="4"></textarea></div>
+  <div class="ix"><div class="ix-h"><span class="ix-n">2</span><span class="ix-t">Plant 2</span></div><textarea class="jbox" id="o-p2" data-label="Plan, plant 2: detail, what it anticipates, where it pays off" data-min="25" rows="4"></textarea></div>
+  <div class="ix"><div class="ix-h"><span class="ix-n">3</span><span class="ix-t">Plant 3</span></div><textarea class="jbox" id="o-p3" data-label="Plan, plant 3: detail, what it anticipates, where it pays off" data-min="25" rows="4"></textarea></div></div>
     </div>
     <ul class="checks">
       <li data-ck="plan1">An opening of 150 to 300 words that introduces my seed's character and leans toward my dilemma.</li>
@@ -716,10 +727,7 @@ body.r-focus{overflow:hidden}
         </div>
         <div class="fb"></div>
       </div>
-      <div class="field">
-        <div class="q">The one thing you will look up <small>A place, an object, a job, a period detail, or a word's real meaning: the one a reader would most notice if you got it wrong. Then two or three key terms (not a full sentence), and the sentence in your story it could change. If checking it would change nothing, pick a different thing.</small></div>
-        <textarea class="jbox" id="o-look" data-label="One thing to look up: the detail, key terms, and the sentence it could change" data-min="20" rows="4"></textarea>
-      </div>
+      <div class="ixcards one"><div class="ix"><div class="ix-h"><span class="ix-t">The one thing you will look up</span></div><span class="ix-hint">A place, an object, a job, a period detail, or a word's real meaning: the one a reader would most notice if you got it wrong. Then two or three key terms (not a full sentence), and the sentence in your story it could change. If checking it would change nothing, pick a different thing.</span><textarea class="jbox" id="o-look" data-label="One thing to look up: the detail, key terms, and the sentence it could change" data-min="20" rows="4"></textarea></div></div>
     </div>
   </div>
   <div class="next"><button class="btn ghost" data-go="dilemma">&larr; The Dilemma</button><button class="btn" data-go="save">Save Your Plan &rarr;</button></div>

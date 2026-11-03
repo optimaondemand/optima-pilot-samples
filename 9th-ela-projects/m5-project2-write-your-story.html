@@ -156,6 +156,26 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .fromtxt{white-space:pre-wrap;font:16px/1.65 var(--serif);background:#F3F1EC;border-left:3px solid var(--slate);padding:12px 16px;border-radius:4px;color:var(--ink2)}
 .fromtxt.empty{font-style:italic;color:var(--muted)}
 
+/* ---------- index cards: short capture boxes as 3x5 ruled cards (9-12 rule, 2026-11-02) ---------- */
+.ixcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:10px 0 20px}
+.ixcards.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px}
+.ixcards.one{grid-template-columns:minmax(0,1fr);max-width:480px}
+@media (max-width:860px){.ixcards,.ixcards.two{grid-template-columns:1fr;max-width:480px}}
+.ix{position:relative;background:#FFFEFA;border-radius:3px;padding:14px 16px 10px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 18px rgba(30,30,30,.08);transform:rotate(-.6deg);transition:transform .2s ease}
+.ix:nth-child(2){transform:rotate(.5deg)}
+.ix:nth-child(3){transform:rotate(-.3deg)}
+.ix:nth-child(4){transform:rotate(.4deg)}
+.ix:focus-within{transform:rotate(0) translateY(-2px)}
+.ix-h{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--scarlet);padding-bottom:7px}
+.ix-n{font:500 24px/1 var(--display);color:var(--scarlet)}
+.ix-t{font:600 15px/1.3 var(--ui);color:var(--ink)}
+.ix-k{display:block;font:600 10.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:8px 0 2px}
+.ix-hint{display:block;font:13px/1.45 var(--ui);color:var(--muted);margin:7px 0 2px}
+.ix textarea.jbox{border:0;border-radius:0;background:transparent repeating-linear-gradient(180deg,transparent 0,transparent 27px,var(--line) 27px,var(--line) 28px);background-attachment:local;line-height:28px;padding:0 2px;min-height:112px;font:italic 16.5px/28px var(--serif);box-shadow:none}
+.ix textarea.jbox:focus{box-shadow:none}
+.ix .wc{margin-top:4px}
+@media print{.ix{transform:none;box-shadow:none;border:1px solid #ccc}}
+
 /* ---------- the reader (inline + Focus) ---------- */
 .reader{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;--rs:19px;--rlh:1.75}
 .rbar{position:sticky;top:47px;z-index:20;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
@@ -552,10 +572,7 @@ body.r-focus{overflow:hidden}
         </div>
         <div class="fb"></div>
       </div>
-      <div class="field">
-        <div class="q">One line of dialogue only your protagonist could say <small>Put it in quotation marks, with a comma inside the closing mark if a tag follows.</small></div>
-        <textarea class="jbox" id="m-dia" data-label="Draft: one line only your protagonist could say" data-min="6" rows="2"></textarea>
-      </div>
+      <div class="ixcards one"><div class="ix"><div class="ix-h"><span class="ix-t">One line of dialogue only your protagonist could say</span></div><span class="ix-hint">Put it in quotation marks, with a comma inside the closing mark if a tag follows.</span><textarea class="jbox" id="m-dia" data-label="Draft: one line only your protagonist could say" data-min="6" rows="2"></textarea></div></div>
     </div>
   </div>
 
@@ -646,18 +663,9 @@ body.r-focus{overflow:hidden}
     <div class="label">Techniques to choose from</div>
     <div class="tags"><span>Foreshadowing</span><span>Verbal irony</span><span>Situational irony</span><span>Dramatic irony</span><span>An unreliable narrator</span><span>An ambiguous ending</span><span>A twist ending</span><span>Juxtaposition</span><span>Sensory detail</span><span>A strong final sentence</span></div>
     <div class="card">
-      <div class="field">
-        <div class="q">Technique 1 <small>The technique, the studied story that taught it, and where it appears in your story (a scene, a paragraph, or a line).</small></div>
-        <textarea class="jbox" id="t-1" data-label="Technique log 1: technique, story that taught it, where it appears" data-min="20" rows="3"></textarea>
-      </div>
-      <div class="field">
-        <div class="q">Technique 2</div>
-        <textarea class="jbox" id="t-2" data-label="Technique log 2: technique, story that taught it, where it appears" data-min="20" rows="3"></textarea>
-      </div>
-      <div class="field">
-        <div class="q">Technique 3</div>
-        <textarea class="jbox" id="t-3" data-label="Technique log 3: technique, story that taught it, where it appears" data-min="20" rows="3"></textarea>
-      </div>
+      <div class="ixcards"><div class="ix"><div class="ix-h"><span class="ix-n">1</span><span class="ix-t">Technique 1</span></div><span class="ix-hint">The technique, the studied story that taught it, and where it appears in your story (a scene, a paragraph, or a line).</span><textarea class="jbox" id="t-1" data-label="Technique log 1: technique, story that taught it, where it appears" data-min="20" rows="3"></textarea></div>
+  <div class="ix"><div class="ix-h"><span class="ix-n">2</span><span class="ix-t">Technique 2</span></div><textarea class="jbox" id="t-2" data-label="Technique log 2: technique, story that taught it, where it appears" data-min="20" rows="3"></textarea></div>
+  <div class="ix"><div class="ix-h"><span class="ix-n">3</span><span class="ix-t">Technique 3</span></div><textarea class="jbox" id="t-3" data-label="Technique log 3: technique, story that taught it, where it appears" data-min="20" rows="3"></textarea></div></div>
     </div>
   </div>
 
@@ -714,18 +722,9 @@ body.r-focus{overflow:hidden}
         </div>
         <div class="fb"></div>
       </div>
-      <div class="field">
-        <div class="q">Line 1: One thing you looked up while writing</div>
-        <textarea class="jbox" id="n-1" data-label="Source Note line 1: what you looked up" data-min="8" rows="2"></textarea>
-      </div>
-      <div class="field">
-        <div class="q">Line 2: Where you found it, cited in MLA <small>Use the Cite option on the article page and paste the citation.</small></div>
-        <textarea class="jbox" id="n-2" data-label="Source Note line 2: where you found it, MLA citation" data-min="8" rows="3"></textarea>
-      </div>
-      <div class="field">
-        <div class="q">Line 3: How it changed a detail in your story <small>Name the detail and where it is in your story.</small></div>
-        <textarea class="jbox" id="n-3" data-label="Source Note line 3: how it changed a detail" data-min="15" rows="3"></textarea>
-      </div>
+      <div class="ixcards"><div class="ix"><div class="ix-h"><span class="ix-n">1</span><span class="ix-t">Line 1: One thing you looked up while writing</span></div><textarea class="jbox" id="n-1" data-label="Source Note line 1: what you looked up" data-min="8" rows="2"></textarea></div>
+  <div class="ix"><div class="ix-h"><span class="ix-n">2</span><span class="ix-t">Line 2: Where you found it, cited in MLA</span></div><span class="ix-hint">Use the Cite option on the article page and paste the citation.</span><textarea class="jbox" id="n-2" data-label="Source Note line 2: where you found it, MLA citation" data-min="8" rows="3"></textarea></div>
+  <div class="ix"><div class="ix-h"><span class="ix-n">3</span><span class="ix-t">Line 3: How it changed a detail in your story</span></div><span class="ix-hint">Name the detail and where it is in your story.</span><textarea class="jbox" id="n-3" data-label="Source Note line 3: how it changed a detail" data-min="15" rows="3"></textarea></div></div>
     </div>
   </div>
   <div class="next"><button class="btn ghost" data-go="ending">&larr; Irony + Last Line</button><button class="btn" data-go="revise">Revise &rarr;</button></div>
@@ -823,10 +822,7 @@ body.r-focus{overflow:hidden}
         <div class="q">The three changes that will do the most for your story <small>Be specific: a scene, a line, a paragraph. Choose from the dilemma, the planted details and their payoffs, the irony, the ending, scenes that do not earn their place, or the length.</small></div>
         <textarea class="jbox" id="r-changes" data-label="Revise: three changes I will make" data-min="30" rows="5"></textarea>
       </div>
-      <div class="field">
-        <div class="q">One sentence, before and after <small>Copy one sentence from your draft and label it Before. Rewrite it and label it After.</small></div>
-        <textarea class="jbox" id="r-ba" data-label="Revise: one sentence, before and after" data-min="20" rows="4"></textarea>
-      </div>
+      <div class="ixcards one"><div class="ix"><div class="ix-h"><span class="ix-t">One sentence, before and after</span></div><span class="ix-hint">Copy one sentence from your draft and label it Before. Rewrite it and label it After.</span><textarea class="jbox" id="r-ba" data-label="Revise: one sentence, before and after" data-min="20" rows="4"></textarea></div></div>
     </div>
   </div>
   <div class="next"><button class="btn ghost" data-go="reflect">&larr; Craft Reflection</button><button class="btn" data-go="turnin">Turn In &rarr;</button></div>

@@ -156,6 +156,26 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .fromtxt{white-space:pre-wrap;font:16px/1.65 var(--serif);background:#F3F1EC;border-left:3px solid var(--slate);padding:12px 16px;border-radius:4px;color:var(--ink2)}
 .fromtxt.empty{font-style:italic;color:var(--muted)}
 
+/* ---------- index cards: short capture boxes as 3x5 ruled cards (9-12 rule, 2026-11-02) ---------- */
+.ixcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:10px 0 20px}
+.ixcards.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px}
+.ixcards.one{grid-template-columns:minmax(0,1fr);max-width:480px}
+@media (max-width:860px){.ixcards,.ixcards.two{grid-template-columns:1fr;max-width:480px}}
+.ix{position:relative;background:#FFFEFA;border-radius:3px;padding:14px 16px 10px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 18px rgba(30,30,30,.08);transform:rotate(-.6deg);transition:transform .2s ease}
+.ix:nth-child(2){transform:rotate(.5deg)}
+.ix:nth-child(3){transform:rotate(-.3deg)}
+.ix:nth-child(4){transform:rotate(.4deg)}
+.ix:focus-within{transform:rotate(0) translateY(-2px)}
+.ix-h{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--scarlet);padding-bottom:7px}
+.ix-n{font:500 24px/1 var(--display);color:var(--scarlet)}
+.ix-t{font:600 15px/1.3 var(--ui);color:var(--ink)}
+.ix-k{display:block;font:600 10.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:8px 0 2px}
+.ix-hint{display:block;font:13px/1.45 var(--ui);color:var(--muted);margin:7px 0 2px}
+.ix textarea.jbox{border:0;border-radius:0;background:transparent repeating-linear-gradient(180deg,transparent 0,transparent 27px,var(--line) 27px,var(--line) 28px);background-attachment:local;line-height:28px;padding:0 2px;min-height:112px;font:italic 16.5px/28px var(--serif);box-shadow:none}
+.ix textarea.jbox:focus{box-shadow:none}
+.ix .wc{margin-top:4px}
+@media print{.ix{transform:none;box-shadow:none;border:1px solid #ccc}}
+
 /* ---------- the reader (inline + Focus) ---------- */
 .reader{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;--rs:19px;--rlh:1.75}
 .rbar{position:sticky;top:47px;z-index:20;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
