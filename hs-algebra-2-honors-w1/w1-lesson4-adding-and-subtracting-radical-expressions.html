@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Phyllis">
+<title>Adding and Subtracting Radical Expressions · Algebra 2 Honors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Algebra 1 integrated lesson · core look. Same frame as the 9th ELA pilot (Inter labels, Source Serif text, focus + objectives,
+   numbered tabs, teacher card); math keeps its graph-paper ground and Binary Blue ink. Two accents: blue (working), red (marks). */
+:root{
+  --paper:#F7F9F5; --card:#FFFFFF; --ink:#0E1C42; --ink2:#38434F; --muted:#65707C; --line:#DCE3EA; --line2:#C3CED9;
+  --grid:#E2EAF3; --grid2:#C9D8E8;
+  --blue:#1E5AA0; --blue-t:#E8F0FA; --red:#C43D27; --red-t:#FBEBE7;
+  --ok:#2F6B4F; --ok-t:#EAF3EE;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif; --ui:Inter, "Segoe UI", system-ui, sans-serif;
+  --r:10px; --wrap:1000px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:17px/1.65 var(--serif);-webkit-font-smoothing:antialiased;background-color:var(--paper);
+  background-image:linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:100px 100px,100px 100px,20px 20px,20px 20px}
+img{max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* ---------- header ---------- */
+.hero{padding:22px 0 8px}
+.brand{display:flex;align-items:center;gap:10px;font:600 12px/1.2 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);padding-bottom:16px;border-bottom:1.5px solid var(--ink)}
+.brand img{width:28px;height:28px}
+.hero-g{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;padding-top:26px}
+@media (max-width:760px){.hero-g{grid-template-columns:1fr;gap:20px}}
+.kicker{font:600 12px/1.3 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.hero h1{font:700 clamp(34px,5.4vw,50px)/1.06 var(--ui);letter-spacing:-.02em;margin:10px 0 14px;max-width:16ch}
+.focusq{border-left:3px solid var(--red);padding:2px 0 2px 16px}
+.label{font:600 11.5px/1.3 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.focusq p{margin:6px 0 0;font:400 20px/1.45 var(--serif);color:var(--ink)}
+.objs{margin:10px 0 0}
+.objs summary{font:600 13px/1.4 var(--ui);color:var(--ink2);cursor:pointer;list-style:none}
+.objs summary::-webkit-details-marker{display:none}
+.objs summary::before{content:"+ ";color:var(--red)}
+.objs[open] summary::before{content:"– "}
+.objs ul{margin:8px 0 0;padding-left:18px;font-size:15.5px;color:var(--ink2)}
+.figcard{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:16px 18px;box-shadow:0 1px 2px rgba(14,28,66,.05),0 10px 24px rgba(14,28,66,.06)}
+.figcard svg{display:block;width:100%;height:auto}
+.figcard .cap{font:12.5px/1.4 var(--ui);color:var(--muted);margin-top:8px}
+
+/* ---------- tabs + tools ---------- */
+.tabs{position:sticky;top:0;z-index:30;background:rgba(247,249,245,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line2);margin-top:26px}
+.tabs .wrap{display:flex;align-items:center;gap:4px}
+.tabs .tl{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.tabs .tl::-webkit-scrollbar{display:none}
+.tab{flex:none;border:0;background:none;padding:14px 12px 12px;font:600 14px/1 var(--ui);color:var(--muted);border-bottom:2px solid transparent;display:flex;gap:8px;align-items:baseline;white-space:nowrap}
+.tab .n{font:500 12px/1 var(--ui);color:var(--line2);letter-spacing:.06em}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);border-bottom-color:var(--blue)}
+.tab.on .n{color:var(--blue)}
+.tab.seen .n::after{content:" ✓";color:var(--ok)}
+.tools{display:flex;gap:6px;flex:none;padding-left:8px;border-left:1px solid var(--line)}
+.tool{display:flex;align-items:center;gap:7px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 11px 5px 6px;font:600 12.5px/1 var(--ui);color:var(--ink)}
+.tool:hover,.tool.on{border-color:var(--ink)}
+.tool .ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font:700 12px/1 var(--ui)}
+.tool img.ic{object-fit:cover;background:none}
+@media (max-width:700px){.tool .tx{display:none}.tool{padding:5px}}
+.tabs .wrap:has(.tab:nth-child(5)) .tool .tx{display:none}
+.tabs .wrap:has(.tab:nth-child(5)) .tool{padding:5px}
+.tabs .wrap:has(.tab:nth-child(5)) .tab{padding-left:10px;padding-right:10px}
+.panel{display:none;padding:30px 0 60px;animation:rise .35s ease}
+.panel.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- sections ---------- */
+.sec{margin:0 0 38px}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.sec-h .num{font:600 13px/1 var(--ui);color:var(--red);letter-spacing:.08em}
+.sec-h h2{font:700 26px/1.2 var(--ui);letter-spacing:-.01em;margin:0}
+.sec h3{font:600 17px/1.3 var(--ui);margin:22px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.card + .card{margin-top:14px}
+@media (max-width:600px){.card{padding:16px}}
+.hint{font:13.5px/1.5 var(--ui);color:var(--muted)}
+.prose{max-width:68ch}
+.prose p{margin:0 0 12px}
+
+/* ---------- math typesetting (HTML, no MathJax) ---------- */
+.m{font-family:var(--serif);white-space:nowrap}
+.m i{font-style:italic}
+.m sup{font-size:.68em;line-height:0}
+.mb{display:block;text-align:center;font:400 24px/1.5 var(--serif);margin:14px 0;white-space:normal}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.92em;line-height:1.15;margin:0 2px}
+.fr > span:first-child{border-bottom:1.2px solid currentColor;padding:0 3px}
+.fr > span:last-child{padding:0 3px}
+.hl{background:var(--blue-t);border-radius:3px;padding:0 2px}
+.hl-r{background:var(--red-t);border-radius:3px;padding:0 2px}
+
+/* worked example: steps that open one at a time */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;margin:0 0 16px}
+.ex-h{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ex-h .label{color:var(--red)}
+.ex-q{font:400 21px/1.45 var(--serif)}
+.ex ol.steps{list-style:none;counter-reset:s;margin:12px 0 0;padding:0}
+.ex ol.steps li{counter-increment:s;position:relative;padding:8px 0 8px 36px;border-top:1px dashed var(--line);display:none}
+.ex ol.steps li.on{display:block;animation:rise .3s ease}
+.ex ol.steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:50%;background:var(--blue-t);color:var(--blue);font:700 12px/22px var(--ui);text-align:center}
+.ex .more{margin-top:10px}
+.ex.done .more{display:none}
+
+/* video, tucked */
+details.watch{margin:6px 0 30px;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+details.watch summary{list-style:none;cursor:pointer;padding:11px 16px;font:600 13.5px/1.3 var(--ui);color:var(--ink2);display:flex;gap:10px;align-items:center}
+details.watch summary::-webkit-details-marker{display:none}
+details.watch summary::before{content:"▶";font-size:10px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none}
+details.watch[open] summary::before{content:"▾";font-size:13px}
+details.watch summary span{font-weight:400;color:var(--muted)}
+details.watch video{display:block;width:100%;max-height:520px;background:#000;border-radius:0 0 var(--r) var(--r)}
+
+/* word list (reference) */
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.word{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font:15px/1.5 var(--serif)}
+.word b{display:block;font:600 14.5px/1.3 var(--ui);color:var(--ink);margin-bottom:2px}
+details.gloss{margin:0 0 26px}
+details.gloss > summary{list-style:none;cursor:pointer;font:600 13.5px/1.4 var(--ui);color:var(--ink2);padding:6px 0}
+details.gloss > summary::-webkit-details-marker{display:none}
+details.gloss > summary::before{content:"+ ";color:var(--red)}
+details.gloss[open] > summary::before{content:"– "}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:999px;padding:9px 18px;font:600 14px/1 var(--ui)}
+.btn:hover{background:#1F3266}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line2)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.small{padding:7px 13px;font-size:13px}
+.btn[disabled]{opacity:.45;cursor:default}
+.next{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line2)}
+
+/* ---------- typed answers (words) ---------- */
+.field{margin:14px 0 20px}
+.field .q{font:600 16px/1.45 var(--serif);margin:0 0 8px}
+textarea.jbox,input.name{width:100%;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:12px 14px;font:16.5px/1.6 var(--serif);color:var(--ink);resize:vertical;min-height:100px}
+input.name{min-height:0;font-family:var(--ui);font-size:15px;max-width:360px}
+textarea.jbox:focus,input.name:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.wc{font:12.5px/1 var(--ui);color:var(--muted);margin-top:6px;text-align:right}
+.wc.met{color:var(--ok)}
+
+/* ---------- choices ---------- */
+.mcq,.mq{margin:0 0 24px}
+.stem{font-weight:600;margin:0 0 10px}
+.stem .qn{display:inline-block;min-width:26px;font:700 13px/1 var(--ui);color:var(--blue)}
+.opts{display:grid;gap:8px}
+.opts.row{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.opt{text-align:left;border:1px solid var(--line2);background:#fff;border-radius:8px;padding:10px 14px;font:16px/1.45 var(--serif);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--ink)}
+.opt.no{background:#F3F4F2;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+.opt.yes{border-color:var(--ok);background:var(--ok-t)}
+.mcq.done .opt:not(.yes){opacity:.55;pointer-events:none}
+.fb{font:15px/1.5 var(--serif);margin-top:10px;padding:10px 14px;border-radius:8px;display:none}
+.fb.show{display:block}
+.fb.good{background:var(--ok-t);border-left:3px solid var(--ok)}
+.fb.try{background:#F3F4F2;border-left:3px solid var(--line2)}
+.shake{animation:shake .32s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+/* ---------- typed math (checked by value, not by spelling) ---------- */
+.mq-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.mq-in{flex:1;min-width:200px;max-width:440px;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:10px 13px;font:17px/1.3 var(--serif);color:var(--ink)}
+.mq-in:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.mq.done .mq-in{border-color:var(--ok);background:var(--ok-t)}
+.mq-prev{font:15px/1.4 var(--serif);color:var(--muted);min-height:1.4em;margin-top:6px}
+.mq-prev .m{color:var(--ink)}
+.mq-keys{font:12.5px/1.4 var(--ui);color:var(--muted);margin:0 0 14px}
+.mq-keys code{font:600 12.5px/1 var(--ui);background:#fff;border:1px solid var(--line2);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* ---------- place (tap a card, tap a bin) ---------- */
+.place .bank{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;min-height:44px}
+.chip{border:1px solid var(--line2);background:#fff;border-radius:8px;padding:8px 13px;font:16px/1.4 var(--serif);text-align:left;max-width:100%;transition:transform .15s,border-color .15s,box-shadow .15s}
+.chip.sel{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-t);transform:translateY(-2px)}
+.chip.placed{pointer-events:none;cursor:default;border-color:transparent;background:transparent;padding:4px 0;font-size:15px}
+.chip.placed::before{content:"✓ ";color:var(--ok)}
+.bins{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.bin{border:1px dashed var(--line2);border-radius:var(--r);padding:12px 14px;background:#fff;min-height:70px;transition:border-color .15s,background .15s}
+.bin.armed{border-color:var(--ink);background:var(--blue-t);cursor:pointer}
+.bin h4{margin:0 0 4px;font:600 12px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tally{font:600 13px/1.4 var(--ui);color:var(--muted);margin-top:8px}
+.tally.done{color:var(--ok)}
+
+/* ---------- problem set + PDF ---------- */
+.pset-top{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-end;justify-content:space-between;margin:0 0 22px}
+.score{display:flex;gap:26px;font:600 12.5px/1.3 var(--ui);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.score b{display:block;font:700 30px/1.05 var(--ui);color:var(--ink);letter-spacing:-.01em;text-transform:none}
+.pdfbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px;padding:16px 18px;background:var(--card);border:1px solid var(--line2);border-radius:var(--r)}
+.print-note{display:none;font:13.5px/1.5 var(--ui);color:var(--red)}
+.print-note.show{display:block}
+.checks{list-style:none;padding:0;margin:8px 0}
+.checks li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer}
+.checks li .bx{flex:none;width:20px;height:20px;border:1.5px solid var(--line2);border-radius:5px;margin-top:3px;display:grid;place-items:center;font:700 13px/1 var(--ui);color:#fff}
+.checks li.on .bx{background:var(--ink);border-color:var(--ink)}
+
+/* ---------- side box (optional work, kept quiet) ---------- */
+.aside{border-left:3px solid var(--blue);background:rgba(255,255,255,.75);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;margin:0 0 22px}
+.aside .label{color:var(--blue);display:block;margin-bottom:4px}
+
+/* ---------- drawers: calculator + Ask ---------- */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100vw);z-index:60;background:#fff;border-left:1px solid var(--line2);box-shadow:-12px 0 30px rgba(14,28,66,.16);display:flex;flex-direction:column;transform:translateX(105%);visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}
+.drawer.open{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.dr-head{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line2)}
+.dr-head img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.dr-head div{flex:1}
+.dr-head small{display:block;font:600 10.5px/1.2 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dr-head b{display:block;font:600 16px/1.3 var(--ui)}
+.dr-x{background:none;border:0;font-size:26px;line-height:1;padding:0 6px;color:var(--ink2)}
+.calc-frame{flex:1;width:100%;border:0;background:#fff}
+.dr-foot{font:12.5px/1.4 var(--ui);color:var(--muted);padding:8px 14px;border-top:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px}
+.dr-foot a{color:var(--blue)}
+.letters{flex:1;overflow:auto;padding:16px 14px;background:var(--paper)}
+.letter{background:#fff;border:1px solid var(--line2);border-radius:10px;padding:10px 13px;margin:0 0 12px;font:15px/1.55 var(--serif)}
+.letter.mine{margin-left:34px;border-color:var(--blue);background:var(--blue-t)}
+.letter.his{margin-right:24px}
+.letter .who{font:600 12px/1.3 var(--ui);color:var(--muted);margin-bottom:3px}
+.letters .empty{font:14px/1.5 var(--ui);color:var(--muted)}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.quick button{border:1px solid var(--line2);background:#fff;border-radius:999px;font:13px/1.3 var(--ui);padding:5px 11px;text-align:left}
+.quick button:hover{border-color:var(--ink)}
+.compose{padding:12px 14px 14px;border-top:1px solid var(--line2)}
+.compose textarea{width:100%;min-height:64px;border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:15px/1.5 var(--serif);resize:vertical}
+.compose .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px}
+.compose .pg-note{font:11.5px/1.35 var(--ui);color:var(--muted)}
+@media (max-width:760px){.drawer{top:auto;height:84vh;width:100%;border-left:0;border-top:1px solid var(--line2);transform:translateY(105%)}}
+@media print{.tabs,.drawer{display:none!important}}
+
+footer.foot{border-top:1px solid var(--line2);padding:22px 0 40px;font:12.5px/1.5 var(--ui);color:var(--muted);background:rgba(247,249,245,.9)}
+footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ---------- Dr. Usborne mini-lesson card (same card as the 9th ELA teacher) ---------- */
+.vo{background:var(--card);border:1px solid var(--line2);border-radius:14px;overflow:hidden;margin:0 0 30px;box-shadow:0 1px 2px rgba(14,28,66,.04),0 10px 26px rgba(14,28,66,.06)}
+.vo-head{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.vo-face{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.vo-who{flex:1;min-width:0}
+.vo-name{font:600 15px/1.2 var(--ui);color:var(--ink)}
+.vo-title{font:600 20px/1.25 var(--ui);letter-spacing:-.01em;color:var(--ink);margin-top:2px}
+.vo-note{font:11.5px/1.3 var(--ui);color:var(--muted);margin-top:2px}
+.vo-ctl{display:flex;align-items:center;gap:10px;flex:none}
+.vo-time{font:12.5px/1 var(--ui);color:var(--muted)}
+.vo-stage{position:relative;padding:24px 22px 18px;min-height:220px;background-color:#FBFCFE;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px}
+.vo-cap{min-height:3.2em;padding:14px 22px 6px;font:400 19px/1.5 var(--serif);color:var(--ink);max-width:62ch}
+.vo-cap.in{animation:capin .45s ease}
+@keyframes capin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.vo:not(.started) .vo-cap::before{content:"Press Play. The picture builds as he talks.";color:var(--muted);font:14px/1.5 var(--ui)}
+.vo-foot{display:flex;align-items:center;gap:14px;padding:6px 22px 16px}
+.vo-bar{flex:1;height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.vo-fill{height:100%;width:0;background:var(--blue);transition:width .25s linear}
+.vo-dots{display:flex;gap:5px}
+.vo-dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--line2);background:#fff;padding:0}
+.vo-dots button.on{background:var(--ink);border-color:var(--ink)}
+.vo-tbtn{border:0;background:none;font:600 12.5px/1 var(--ui);color:var(--muted);padding:4px 0}
+.vo-trans{display:none;padding:0 22px 18px;font:15px/1.6 var(--serif);color:var(--ink2)}
+.vo.show-trans .vo-trans{display:block}
+.vo-trans p{margin:0 0 6px}
+/* step-driven visuals: anything with data-step fades in when he reaches it; .now is the beat he is on */
+.vo-stage [data-step]{opacity:.18;transition:opacity .6s ease,transform .6s ease,color .4s,background .4s,border-color .4s,box-shadow .4s}
+.vo-stage [data-step].on{opacity:1}
+.vo-stage [data-step].now{box-shadow:0 0 0 3px var(--blue-t)}
+.vo-stage svg [data-step].now,.vo-stage .nohalo.now{box-shadow:none}
+.vo.finished .vo-stage [data-step],.vo:not(.started) .vo-stage [data-step].keep{opacity:1}
+.vo.finished .vo-stage [data-step].now{box-shadow:none}
+@media (max-width:600px){ .vo-head{flex-wrap:wrap} .vo-ctl{width:100%;justify-content:space-between} .vo-cap{font-size:17.5px;padding:12px 16px 4px} .vo-stage{padding:18px 12px 14px} .vo-foot{padding:6px 16px 14px} }
+
+</style>
+<style>
+/* radicals as HTML: overline radicand, small raised index */
+.rt{white-space:nowrap}
+.rt .ov{text-decoration:overline;padding:0 2px}
+.rt .ix{font-size:.55em;line-height:0;margin-right:-3px;position:relative;top:-.15em}
+.rt sup{font-size:.62em;line-height:0}
+.cf{color:var(--red)}
+.rb{color:var(--blue)}
+
+/* hero figure */
+.he{display:flex;justify-content:center;align-items:baseline;gap:10px;flex-wrap:wrap;padding:10px 2px 4px;font:400 clamp(26px,6.4vw,36px)/1.3 var(--serif)}
+
+/* teacher-card visuals */
+.vrow{font:400 clamp(20px,5.2vw,28px)/1.5 var(--serif);text-align:center;margin:6px 0}
+.vrow .sbox{display:inline-block;border:1.5px solid var(--blue);border-radius:8px;background:#fff;padding:0 10px;margin:2px 3px}
+.vrow .dim{color:var(--ink2)}
+.pv{max-width:480px;margin:0 auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:6px 0}
+.chip{font:600 13.5px/1.3 var(--ui);color:var(--blue);background:var(--blue-t);border:1px solid var(--blue);border-radius:999px;padding:6px 12px}
+.chip.no{color:var(--red);background:#fff;border-color:var(--red)}
+.vrow.pair{display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+
+/* worked-example calculation stacks */
+.stk{display:flex;flex-direction:column;gap:4px;margin:8px 0 4px;padding-left:12px;border-left:2px solid var(--line2);font-size:20px}
+.stk .m{white-space:normal}
+
+/* method steps */
+.mstep{display:grid;gap:10px;margin:12px 0 0;padding:0;list-style:none;counter-reset:ms}
+.mstep li{counter-increment:ms;position:relative;border:1px solid var(--line2);border-radius:var(--r);padding:10px 14px 10px 48px;background:#fff}
+.mstep li::before{content:counter(ms);position:absolute;left:14px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--blue-t);color:var(--blue);font:700 13px/24px var(--ui);text-align:center}
+.mstep b{display:block}
+.mstep span{color:var(--ink2);font-size:15.5px}
+
+/* key rule */
+.keyrule{border:1px solid var(--blue);background:var(--blue-t);border-radius:var(--r);padding:12px 16px;margin:14px 0}
+.keyrule .m{display:block;font-size:clamp(19px,4.8vw,26px);text-align:center;margin-top:6px;white-space:normal}
+</style>
+
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="">Optima Academy Online</div>
+  <div class="hero-g">
+    <div>
+      <div class="kicker">Algebra 2 Honors &middot; Rational Exponents and Radicals</div>
+      <h1>Adding and Subtracting Radical Expressions</h1>
+      <div class="focusq"><div class="label">Focus</div><p>Two radical terms can be added only when they match. How do you tell, and what can you do when they do not match at first?</p></div>
+      <details class="objs"><summary>Objectives</summary><ul>
+        <li>Decide when two radical terms are like terms, using the index and the radicand.</li>
+        <li>Add and subtract like radical terms by combining their coefficients.</li>
+        <li>Simplify radicals so that unlike terms become like terms.</li>
+        <li>Work with cube roots, fourth roots, and radicands that contain variables.</li>
+        <li>Check that a final answer is in its most reduced radical form.</li>
+      </ul></details>
+    </div>
+    <figure class="figcard" style="margin:0">
+      <div class="he" role="img" aria-label="3 root 5 plus 7 root 5 equals 10 root 5"><span><span class="cf">3</span><span class="rt rb">&radic;<span class="ov">5</span></span></span><span>+</span><span><span class="cf">7</span><span class="rt rb">&radic;<span class="ov">5</span></span></span><span>=</span><span><span class="cf">10</span><span class="rt rb">&radic;<span class="ov">5</span></span></span></div>
+      <div class="cap">Like radicals combine.</div>
+    </figure>
+  </div>
+</div></header>
+
+<nav class="tabs" aria-label="Lesson sections"><div class="wrap"><div class="tl" role="tablist">
+  <button class="tab" data-tab="like" role="tab"><span class="n">01</span>Like Radicals</button>
+  <button class="tab" data-tab="unlike" role="tab"><span class="n">02</span>Unlike Radicals</button>
+  <button class="tab" data-tab="vars" role="tab"><span class="n">03</span>Variables Inside</button>
+  <button class="tab" data-tab="set" role="tab"><span class="n">04</span>Problem Set</button>
+</div></div></nav>
+
+<main class="wrap">
+
+<!-- ═════════ 01 LIKE RADICALS ═════════ -->
+<section class="panel" id="tab-like" role="tabpanel">
+  <div class="vo" data-clip="l4_like">
+    <div class="vo-head">
+      <img class="vo-face" alt="">
+      <div class="vo-who"><div class="vo-name"></div><div class="vo-title">Radicals That Match</div><div class="vo-note">An AI-generated character and voice.</div></div>
+      <div class="vo-ctl"><span class="vo-time"></span><button class="btn small vo-play" type="button">&#9654; Play</button></div>
+    </div>
+    <div class="vo-stage">
+      <div class="pv" aria-label="Like terms 3x plus 5x make 8x, and like radicals 3 root 5 plus 7 root 5 make 10 root 5; a square root and a cube root do not match">
+        <div class="vrow" data-step="0"><span class="m">3<i>x</i> + 5<i>x</i> = 8<i>x</i></span></div>
+        <div class="chips" data-step="1"><span class="chip">same index: 2</span><span class="chip">same radicand: 5</span></div>
+        <div class="vrow" data-step="2"><span class="cf">3</span><span class="rt rb">&radic;<span class="ov">5</span></span> + <span class="cf">7</span><span class="rt rb">&radic;<span class="ov">5</span></span></div>
+        <div class="vrow" data-step="3">= (<span class="cf">3 + 7</span>)<span class="rt rb">&radic;<span class="ov">5</span></span> = <span class="sbox"><span class="cf">10</span><span class="rt rb">&radic;<span class="ov">5</span></span></span></div>
+        <div class="vrow" data-step="4"><span class="cf">8</span><span class="rt rb">&radic;<span class="ov">2</span></span> &minus; <span class="cf">9</span><span class="rt rb">&radic;<span class="ov">2</span></span> = (<span class="cf">8 &minus; 9</span>)<span class="rt rb">&radic;<span class="ov">2</span></span> = <span class="sbox">&minus;<span class="rt rb">&radic;<span class="ov">2</span></span></span></div>
+        <div class="vrow pair" data-step="5"><span class="rt rb">&radic;<span class="ov">2</span></span><span>+</span><span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">2</span></span><span class="chip no">different index</span></div>
+      </div>
+    </div>
+    <div class="vo-cap" aria-live="polite"></div>
+    <div class="vo-foot"><div class="vo-bar"><div class="vo-fill"></div></div><div class="vo-dots"></div><button class="vo-tbtn" type="button" aria-expanded="false">Transcript</button></div>
+    <div class="vo-trans"></div>
+    <script type="application/json" class="vo-script">{"steps":[
+      "Combining radicals works like combining like terms. Three x plus five x is eight x, because both terms share the same variable.",
+      "Radicals combine only when they match exactly: the same index and the same radicand. Here both are square roots of five.",
+      "Three root five plus seven root five. The radical part stays exactly as it is, while the coefficients do the counting.",
+      "Add the coefficients, three plus seven, and keep the radical. The sum is ten root five.",
+      "Subtraction works the same way. Eight root two minus nine root two is eight minus nine, times root two, which is negative root two.",
+      "A square root of two and a cube root of two have different indexes, so they are unlike terms and cannot be combined."
+    ]}</script>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">A</span><h2>Adding and Subtracting Like Radical Terms</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p>Radicals appear constantly in Algebra 2: in solving equations, in quadratic functions, and in simplifying expressions. Just as you combine like terms in algebra, you can add and subtract radical expressions, but only when certain conditions are met. Knowing when radicals can be combined, and how to simplify them when they cannot be combined at first, is the skill this page builds.</p>
+        <p>Algebraic expressions such as <span class="m">3<i>x</i> + 5<i>x</i></span> can be combined because both terms contain the same variable <i>x</i>. Radical expressions can be combined <b>only when they have the same index and the same radicand</b>. These are called <b>like radical terms</b>.</p>
+      </div>
+      <div class="keyrule">
+        <b>Key principle</b> You may add or subtract radicals only when they match exactly in index and radicand. The radical part stays the same; only the coefficients are added or subtracted.
+        <span class="m"><i>a</i><span class="rt"><sup class="ix"><i>n</i></sup>&radic;<span class="ov"><i>b</i></span></span> + <i>c</i><span class="rt"><sup class="ix"><i>n</i></sup>&radic;<span class="ov"><i>b</i></span></span> = (<i>a</i> + <i>c</i>)<span class="rt"><sup class="ix"><i>n</i></sup>&radic;<span class="ov"><i>b</i></span></span></span>
+      </div>
+    </div>
+
+    <div class="ex" id="l4-ex1">
+      <div class="ex-h"><span class="label">Example 1</span><span class="ex-q">Find the sum. <span class="m">3<span class="rt">&radic;<span class="ov">5</span></span> + 7<span class="rt">&radic;<span class="ov">5</span></span></span></span></div>
+      <ol class="steps">
+        <li>Check that the radicands are the same. Both are 5, so you can combine the coefficients and leave the radicand as is.</li>
+        <li><div class="stk"><span class="m">3<span class="rt">&radic;<span class="ov">5</span></span> + 7<span class="rt">&radic;<span class="ov">5</span></span></span><span class="m">(3 + 7)<span class="rt">&radic;<span class="ov">5</span></span></span></div></li>
+        <li>The sum is <span class="m"><b>10<span class="rt">&radic;<span class="ov">5</span></span></b></span>.</li>
+      </ol>
+    </div>
+    <div class="ex" id="l4-ex2">
+      <div class="ex-h"><span class="label">Example 2</span><span class="ex-q">Find the difference. <span class="m">8<span class="rt">&radic;<span class="ov">2</span></span> &minus; 9<span class="rt">&radic;<span class="ov">2</span></span></span></span></div>
+      <ol class="steps">
+        <li>Both radicands are 2, so the radicals are like terms. Combine the coefficients and leave the radicand as is.</li>
+        <li><div class="stk"><span class="m">8<span class="rt">&radic;<span class="ov">2</span></span> &minus; 9<span class="rt">&radic;<span class="ov">2</span></span></span><span class="m">(8 &minus; 9)<span class="rt">&radic;<span class="ov">2</span></span></span><span class="m">&minus;1<span class="rt">&radic;<span class="ov">2</span></span></span></div></li>
+        <li>A coefficient of &minus;1 is written as a minus sign. The difference is <span class="m"><b>&minus;<span class="rt">&radic;<span class="ov">2</span></span></b></span>.</li>
+      </ol>
+    </div>
+    <div class="ex" id="l4-ex3">
+      <div class="ex-h"><span class="label">Example 3</span><span class="ex-q">Find the sum. <span class="m">5<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span> + 3<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span></span></span></div>
+      <ol class="steps">
+        <li>Both are cube roots, and both radicands are <i>y</i>. The radicals are like terms, so combine the coefficients.</li>
+        <li><div class="stk"><span class="m">5<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span> + 3<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span></span><span class="m">(5 + 3)<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span></span></div></li>
+        <li>The sum is <span class="m"><b>8<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span></b></span>.</li>
+      </ol>
+    </div>
+    <div class="ex" id="l4-ex4">
+      <div class="ex-h"><span class="label">Example 4</span><span class="ex-q">Generate an equivalent expression. <span class="m"><span class="rt"><sup class="ix">4</sup>&radic;<span class="ov">3<i>xy</i></span></span> + 5<span class="rt"><sup class="ix">4</sup>&radic;<span class="ov">3<i>xy</i></span></span> &minus; 4<span class="rt"><sup class="ix">4</sup>&radic;<span class="ov">3<i>xy</i></span></span></span></span></div>
+      <ol class="steps">
+        <li>All three terms are fourth roots of 3<i>xy</i>, so they are like terms. The first term has an unwritten coefficient of 1.</li>
+        <li><div class="stk"><span class="m">(1 + 5 &minus; 4)<span class="rt"><sup class="ix">4</sup>&radic;<span class="ov">3<i>xy</i></span></span></span><span class="m">2<span class="rt"><sup class="ix">4</sup>&radic;<span class="ov">3<i>xy</i></span></span></span></div></li>
+        <li>The equivalent expression is <span class="m"><b>2<span class="rt"><sup class="ix">4</sup>&radic;<span class="ov">3<i>xy</i></span></span></b></span>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">B</span><h2>Try It</h2></div>
+    <p class="mq-keys">A radical sign cannot be typed, so these boxes ask for the coefficient only. Type just the number.</p>
+    <div class="card">
+      <div class="mq" data-qid="l4-a1" data-ans="13" data-vars="" data-form="any" data-miss='[["36","Check the operation. Like radicals are added, and the coefficients are not multiplied."],["4","The radical stays, and the coefficients are combined. Look at both coefficients."]]' data-hint="Same index, same radicand. Add the two coefficients."><p class="stem"><span class="qn">1</span>Complete: <span class="m">4<span class="rt">&radic;<span class="ov">7</span></span> + 9<span class="rt">&radic;<span class="ov">7</span></span> = ? <span class="rt">&radic;<span class="ov">7</span></span></span>. Type the coefficient.</p></div>
+      <div class="mq" data-qid="l4-a2" data-ans="6" data-vars="" data-form="any" data-miss='[["16","Check the sign between the terms. The coefficients are not added here."]]' data-hint="Same radical, so combine the coefficients. Which operation is shown?"><p class="stem"><span class="qn">2</span>Complete: <span class="m">11<span class="rt">&radic;<span class="ov">3</span></span> &minus; 5<span class="rt">&radic;<span class="ov">3</span></span> = ? <span class="rt">&radic;<span class="ov">3</span></span></span>. Type the coefficient.</p></div>
+      <div class="mcq" data-qid="l4-a3"><p class="stem"><span class="qn">3</span>Which sum can be combined as written?</p><div class="opts">
+        <button class="opt" data-fb="The radicands are 5 and 7. Like radical terms need the same radicand."><span class="m">2<span class="rt">&radic;<span class="ov">5</span></span> + 3<span class="rt">&radic;<span class="ov">7</span></span></span></button>
+        <button class="opt" data-fb="One is a square root and the other is a cube root. The indexes differ."><span class="m">4<span class="rt">&radic;<span class="ov">3</span></span> + 6<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">3</span></span></span></button>
+        <button class="opt" data-ok="1" data-fb="Right. Both are square roots of 6, so they are like terms."><span class="m">5<span class="rt">&radic;<span class="ov">6</span></span> + 2<span class="rt">&radic;<span class="ov">6</span></span></span></button>
+        <button class="opt" data-fb="A plain number is not a radical term, so it does not combine with a radical."><span class="m">7<span class="rt">&radic;<span class="ov">2</span></span> + 7</span></button></div></div>
+      <div class="mq" data-qid="l4-a4" data-ans="6" data-vars="" data-form="any" data-miss='[["5","Count every term. A radical with no number in front still has a coefficient."]]' data-hint="The last term has an unwritten coefficient. What is it?"><p class="stem"><span class="qn">4</span>Complete: <span class="m">7<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span> &minus; 2<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span> + <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span> = ? <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>y</i></span></span></span>. Type the coefficient.</p></div>
+    </div>
+  </div>
+
+  <details class="gloss"><summary>All the words on this page</summary>
+    <div class="words">
+      <div class="word"><b>Coefficient</b>A numerical factor multiplied by a variable, radical, or algebraic term.</div>
+      <div class="word"><b>Equivalent radical expressions</b>Radical expressions that may look different but have the same simplified value for all allowable values of the variables.</div>
+      <div class="word"><b>Like radical terms</b>Radical expressions that have the same index and the same radicand, allowing them to be combined through addition or subtraction.</div>
+      <div class="word"><b>Radical</b>An expression that uses the radical symbol <span class="m"><span class="rt"><sup class="ix"><i>n</i></sup>&radic;<span class="ov"><i>a</i></span></span></span> to represent a root of a number or algebraic expression.</div>
+      <div class="word"><b>Radicand</b>The number, variable, or algebraic expression inside a radical symbol.</div>
+      <div class="word"><b>Simplify</b>To rewrite an expression in its most reduced or efficient form while keeping the value unchanged.</div>
+      <div class="word"><b>Unlike radical terms</b>Radical expressions that do not share the same index and radicand, and cannot be added or subtracted unless they are first simplified into like terms.</div>
+      <div class="word"><b>Variable expression</b>An algebraic expression containing one or more variables, numbers, and operations.</div>
+    </div>
+  </details>
+
+  <div class="next"><span></span><button class="btn" data-go="unlike" type="button">Next: Unlike Radicals &rarr;</button></div>
+</section>
+
+<!-- ═════════ 02 UNLIKE RADICALS ═════════ -->
+<section class="panel" id="tab-unlike" role="tabpanel">
+  <div class="vo" data-clip="l4_unlike">
+    <div class="vo-head">
+      <img class="vo-face" alt="">
+      <div class="vo-who"><div class="vo-name"></div><div class="vo-title">Simplify, Then Combine</div><div class="vo-note">An AI-generated character and voice.</div></div>
+      <div class="vo-ctl"><span class="vo-time"></span><button class="btn small vo-play" type="button">&#9654; Play</button></div>
+    </div>
+    <div class="vo-stage">
+      <div class="pv" aria-label="Root 45 plus 3 root 20 simplifies to 3 root 5 plus 6 root 5, which is 9 root 5">
+        <div class="vrow" data-step="0"><span class="rt rb">&radic;<span class="ov">45</span></span> + <span class="cf">3</span><span class="rt rb">&radic;<span class="ov">20</span></span></div>
+        <div class="vrow" data-step="1"><span class="rt rb">&radic;<span class="ov">45</span></span> = <span class="rt rb">&radic;<span class="ov"><span class="cf">9</span> &middot; 5</span></span> = <span class="cf">3</span><span class="rt rb">&radic;<span class="ov">5</span></span></div>
+        <div class="vrow" data-step="2"><span class="cf">3</span><span class="rt rb">&radic;<span class="ov">20</span></span> = <span class="cf">3</span><span class="rt rb">&radic;<span class="ov"><span class="cf">4</span> &middot; 5</span></span> = <span class="cf">3 &middot; 2</span><span class="rt rb">&radic;<span class="ov">5</span></span> = <span class="cf">6</span><span class="rt rb">&radic;<span class="ov">5</span></span></div>
+        <div class="vrow" data-step="3"><span class="cf">3</span><span class="rt rb">&radic;<span class="ov">5</span></span> + <span class="cf">6</span><span class="rt rb">&radic;<span class="ov">5</span></span></div>
+        <div class="vrow" data-step="4">= (<span class="cf">3 + 6</span>)<span class="rt rb">&radic;<span class="ov">5</span></span> = <span class="sbox"><span class="cf">9</span><span class="rt rb">&radic;<span class="ov">5</span></span></span></div>
+        <div class="chips" data-step="5"><span class="chip">1 simplify</span><span class="chip">2 match?</span><span class="chip">3 combine</span></div>
+      </div>
+    </div>
+    <div class="vo-cap" aria-live="polite"></div>
+    <div class="vo-foot"><div class="vo-bar"><div class="vo-fill"></div></div><div class="vo-dots"></div><button class="vo-tbtn" type="button" aria-expanded="false">Transcript</button></div>
+    <div class="vo-trans"></div>
+    <script type="application/json" class="vo-script">{"steps":[
+      "Look at root forty-five plus three root twenty. The radicands differ, so these look unlike, but simplifying first may reveal like radicals.",
+      "Pull out a perfect square. Forty-five is nine times five, and the square root of nine is three, so root forty-five becomes three root five.",
+      "Twenty is four times five, so root twenty is two root five. With the three in front, that term becomes six root five.",
+      "Now both terms are a multiple of root five. They are like radicals, so they can finally be combined.",
+      "Add the coefficients, three plus six, and keep root five. The answer is nine root five.",
+      "Simplify each radical, check that the radicals now match, then combine the coefficients. That order handles every example like this."
+    ]}</script>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">C</span><h2>Adding and Subtracting With Unlike Radicands</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p>When radical expressions have different radicands or indexes, they are <b>unlike radical terms</b> and cannot be combined, <b>unless you simplify the radicals first</b>. Many radicands contain perfect square or perfect cube factors that can be pulled out. Once simplified, the expressions may turn into like radicals.</p>
+      </div>
+      <ol class="mstep">
+        <li><b>Factor the radicands and simplify each radical.</b><span>Pull out perfect powers that match the index. Rewrite each term as a coefficient times a simplified radical.</span></li>
+        <li><b>Check if the simplified radicals now match.</b></li>
+        <li><b>Combine like radicals by adding or subtracting.</b></li>
+      </ol>
+    </div>
+
+    <div class="ex" id="l4-ex5">
+      <div class="ex-h"><span class="label">Example 1</span><span class="ex-q">Generate an equivalent expression. <span class="m"><span class="rt">&radic;<span class="ov">45</span></span> + 3<span class="rt">&radic;<span class="ov">20</span></span></span></span></div>
+      <ol class="steps">
+        <li>Check the radicands. They are different, so simplify each radical to see if the terms become like.</li>
+        <li><div class="stk"><span class="m"><span class="rt">&radic;<span class="ov">45</span></span> = <span class="rt">&radic;<span class="ov">9 &middot; 5</span></span> = 3<span class="rt">&radic;<span class="ov">5</span></span></span><span class="m">3<span class="rt">&radic;<span class="ov">20</span></span> = 3<span class="rt">&radic;<span class="ov">4 &middot; 5</span></span> = 3 &middot; 2<span class="rt">&radic;<span class="ov">5</span></span> = 6<span class="rt">&radic;<span class="ov">5</span></span></span></div></li>
+        <li>The expression becomes <span class="m">3<span class="rt">&radic;<span class="ov">5</span></span> + 6<span class="rt">&radic;<span class="ov">5</span></span></span>. The radicands now match, so combine the coefficients.
+          <div class="stk"><span class="m">(3 + 6)<span class="rt">&radic;<span class="ov">5</span></span></span></div></li>
+        <li>The result is <span class="m"><b>9<span class="rt">&radic;<span class="ov">5</span></span></b></span>.</li>
+      </ol>
+    </div>
+    <div class="ex" id="l4-ex6">
+      <div class="ex-h"><span class="label">Example 2</span><span class="ex-q">Generate an equivalent expression. <span class="m">6<span class="rt">&radic;<span class="ov">12</span></span> &minus; 2<span class="rt">&radic;<span class="ov">27</span></span></span></span></div>
+      <ol class="steps">
+        <li>The radicands are different, so simplify each radical to see if the terms become like.</li>
+        <li><div class="stk"><span class="m">6<span class="rt">&radic;<span class="ov">12</span></span> = 6<span class="rt">&radic;<span class="ov">4 &middot; 3</span></span> = 6 &middot; 2<span class="rt">&radic;<span class="ov">3</span></span> = 12<span class="rt">&radic;<span class="ov">3</span></span></span><span class="m">2<span class="rt">&radic;<span class="ov">27</span></span> = 2<span class="rt">&radic;<span class="ov">9 &middot; 3</span></span> = 2 &middot; 3<span class="rt">&radic;<span class="ov">3</span></span> = 6<span class="rt">&radic;<span class="ov">3</span></span></span></div></li>
+        <li>The expression becomes <span class="m">12<span class="rt">&radic;<span class="ov">3</span></span> &minus; 6<span class="rt">&radic;<span class="ov">3</span></span></span>. The radicands now match, so combine the coefficients.
+          <div class="stk"><span class="m">(12 &minus; 6)<span class="rt">&radic;<span class="ov">3</span></span></span></div></li>
+        <li>The result is <span class="m"><b>6<span class="rt">&radic;<span class="ov">3</span></span></b></span>.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">D</span><h2>Try It</h2></div>
+    <p class="mq-keys">Type a coefficient as a number. For exponent form, type the square root of 2 as <code>2^(1/2)</code>, like <code>5*2^(1/2)</code>.</p>
+    <div class="card">
+      <div class="mq" data-qid="l4-b1" data-ans="8" data-vars="" data-form="any" data-miss='[["15","The pulled-out roots are not multiplied. After both radicals match, the coefficients are added."],["5","That counts only root 50. Simplify root 18 as well, then add the coefficients."]]' data-hint="Write 18 as 9 times 2 and 50 as 25 times 2. Pull out the squares, then combine."><p class="stem"><span class="qn">1</span>Complete: <span class="m"><span class="rt">&radic;<span class="ov">18</span></span> + <span class="rt">&radic;<span class="ov">50</span></span> = ? <span class="rt">&radic;<span class="ov">2</span></span></span>. Type the coefficient.</p></div>
+      <div class="mq" data-qid="l4-b2" data-ans="3" data-vars="" data-form="any" data-miss='[["8","That is only the first term simplified. The second term is still to be subtracted."],["-3","Check the order of the subtraction. The simplified first coefficient is the larger one."]]' data-hint="Simplify the first radical. 48 is 16 times 3. Then both terms are multiples of the same radical."><p class="stem"><span class="qn">2</span>Complete: <span class="m">2<span class="rt">&radic;<span class="ov">48</span></span> &minus; 5<span class="rt">&radic;<span class="ov">3</span></span> = ? <span class="rt">&radic;<span class="ov">3</span></span></span>. Type the coefficient.</p></div>
+      <div class="mcq" data-qid="l4-b3"><p class="stem"><span class="qn">3</span>Which expression equals <span class="m"><span class="rt">&radic;<span class="ov">12</span></span> + <span class="rt">&radic;<span class="ov">27</span></span></span>?</p><div class="opts row">
+        <button class="opt" data-fb="That adds the radicands. Radicands are never added together."><span class="m"><span class="rt">&radic;<span class="ov">39</span></span></span></button>
+        <button class="opt" data-ok="1" data-fb="Right. Root 12 is 2 root 3 and root 27 is 3 root 3, and 2 + 3 is 5."><span class="m">5<span class="rt">&radic;<span class="ov">3</span></span></span></button>
+        <button class="opt" data-fb="That multiplies the coefficients 2 and 3. Like radicals are added."><span class="m">6<span class="rt">&radic;<span class="ov">3</span></span></span></button>
+        <button class="opt" data-fb="Simplify each radical first. The radicals do not combine into a root of 6."><span class="m">5<span class="rt">&radic;<span class="ov">6</span></span></span></button></div></div>
+      <div class="mq" data-qid="l4-b4" data-ans="3*2^(1/2)" data-vars="" data-form="any" data-miss='[["4*2^(1/2)","Check the simplified form of root 8. Which perfect square divides 8?"],["2*2^(1/2)","Count both terms. Root 2 on its own has a coefficient of 1."]]' data-hint="Write 8 as 4 times 2, pull out the square, then combine with the other root 2."><p class="stem"><span class="qn">4</span>Write <span class="m"><span class="rt">&radic;<span class="ov">8</span></span> + <span class="rt">&radic;<span class="ov">2</span></span></span> as one term in exponent form, like <code>5*2^(1/2)</code>.</p></div>
+      <div class="mcq" data-qid="l4-b5"><p class="stem"><span class="qn">5</span>Why is it worth simplifying each radical before adding?</p><div class="opts">
+        <button class="opt" data-fb="Simplifying keeps the value the same. It does not make the terms bigger.">It makes the numbers larger</button>
+        <button class="opt" data-ok="1" data-fb="Right. Pulling out perfect powers can turn unlike radicals into like radicals.">Unlike radicals can become like radicals</button>
+        <button class="opt" data-fb="Unlike radicals cannot be combined as written. Simplifying is the step that can make them match.">It lets you add any two radicands</button>
+        <button class="opt" data-fb="The index tells the root. Simplifying does not remove it.">It removes the index from every radical in the sum</button></div></div>
+    </div>
+  </div>
+
+  <div class="next"><button class="btn ghost" data-go="like" type="button">&larr; Like Radicals</button><button class="btn" data-go="vars" type="button">Next: Variables Inside &rarr;</button></div>
+</section>
+
+<!-- ═════════ 03 VARIABLES INSIDE ═════════ -->
+<section class="panel" id="tab-vars" role="tabpanel">
+  <div class="vo" data-clip="l4_vars">
+    <div class="vo-head">
+      <img class="vo-face" alt="">
+      <div class="vo-who"><div class="vo-name"></div><div class="vo-title">Perfect Cubes With Variables</div><div class="vo-note">An AI-generated character and voice.</div></div>
+      <div class="vo-ctl"><span class="vo-time"></span><button class="btn small vo-play" type="button">&#9654; Play</button></div>
+    </div>
+    <div class="vo-stage">
+      <div class="pv" aria-label="Cube root of 54 n to the fifth minus cube root of 16 n to the fifth simplifies to n times cube root of 2 n squared">
+        <div class="vrow" data-step="0"><span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">54<i>n</i><sup>5</sup></span></span> &minus; <span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">16<i>n</i><sup>5</sup></span></span></div>
+        <div class="vrow" data-step="1"><span class="m"><span class="cf">54 = 27 &middot; 2</span></span><br><span class="m"><span class="cf"><i>n</i><sup>5</sup> = <i>n</i><sup>3</sup> &middot; <i>n</i><sup>2</sup></span></span></div>
+        <div class="vrow" data-step="2"><span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">54<i>n</i><sup>5</sup></span></span> = <span class="cf">3<i>n</i></span><span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></div>
+        <div class="vrow" data-step="3"><span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">16<i>n</i><sup>5</sup></span></span> = <span class="cf">2<i>n</i></span><span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></div>
+        <div class="vrow" data-step="4">(<span class="cf">3<i>n</i> &minus; 2<i>n</i></span>)<span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></div>
+        <div class="vrow" data-step="5">= <span class="sbox"><span class="cf"><i>n</i></span><span class="rt rb"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></span></div>
+      </div>
+    </div>
+    <div class="vo-cap" aria-live="polite"></div>
+    <div class="vo-foot"><div class="vo-bar"><div class="vo-fill"></div></div><div class="vo-dots"></div><button class="vo-tbtn" type="button" aria-expanded="false">Transcript</button></div>
+    <div class="vo-trans"></div>
+    <script type="application/json" class="vo-script">{"steps":[
+      "Now add variables. Cube root of fifty-four n to the fifth, minus cube root of sixteen n to the fifth.",
+      "For a cube root, pull out perfect cubes. Fifty-four is twenty-seven times two, and n to the fifth is n cubed times n squared.",
+      "The cube root of twenty-seven is three, and of n cubed is n. That leaves three n, then the cube root of two n squared.",
+      "Sixteen is eight times two, and the cube root of eight is two. The second term becomes two n times the same radical.",
+      "Both terms now carry the cube root of two n squared. Subtract the coefficients: three n minus two n leaves one n.",
+      "So the difference is n times the cube root of two n squared. The one in front is never written."
+    ]}</script>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">E</span><h2>Radicands With Variables</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p>Many radicands contain perfect square or perfect cube factors, and variables work the same way as numbers. Split the radicand into a perfect power that matches the index and whatever is left over. The perfect power comes out of the radical, and the leftover stays inside. Once the radicals are simplified, the terms often turn out to be like terms.</p>
+      </div>
+    </div>
+
+    <div class="ex" id="l4-ex7">
+      <div class="ex-h"><span class="label">Example 1</span><span class="ex-q">Generate an equivalent expression. <span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">54<i>n</i><sup>5</sup></span></span> &minus; <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">16<i>n</i><sup>5</sup></span></span></span></span></div>
+      <ol class="steps">
+        <li>Check the radicands. They are different, so simplify each radical to see if the terms become like.</li>
+        <li><div class="stk"><span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">54<i>n</i><sup>5</sup></span></span> = <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">27 &middot; 2 &middot; <i>n</i><sup>5</sup></span></span> = 3 &middot; <i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span> = 3<i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></span><span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">16<i>n</i><sup>5</sup></span></span> = <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">8 &middot; 2 &middot; <i>n</i><sup>5</sup></span></span> = 2 &middot; <i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span> = 2<i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></span></div></li>
+        <li>The expression becomes <span class="m">3<i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span> &minus; 2<i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></span>. The radicals now match, so combine the coefficients.
+          <div class="stk"><span class="m">(3<i>n</i> &minus; 2<i>n</i>)<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></span><span class="m">1<i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></span></div></li>
+        <li>The unwritten 1 is dropped. The result is <span class="m"><b><i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></b></span>.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <div class="prose">
+        <p>Adding and subtracting radical expressions is very similar to combining like terms in algebra: radicals must match in both index and radicand. When they do, you combine the coefficients. When they do not, simplify each expression first. Many radicals contain perfect square or perfect cube factors that reveal like terms once simplified.</p>
+        <p>To check a final answer, look at each radicand. No factor inside should be a perfect power that matches the index, and no like radical terms should be left uncombined.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="num">F</span><h2>Try It</h2></div>
+    <p class="mq-keys">A radical sign cannot be typed, so the typed boxes ask for the coefficient only.</p>
+    <div class="card">
+      <div class="mcq" data-qid="l4-c1"><p class="stem"><span class="qn">1</span>Which expression equals <span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">16<i>n</i><sup>5</sup></span></span></span>?</p><div class="opts row">
+        <button class="opt" data-ok="1" data-fb="Right. 16 is 8 times 2, and n to the fifth is n cubed times n squared."><span class="m">2<i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></span></button>
+        <button class="opt" data-fb="Only a perfect cube comes out. n cubed leaves as n, and the n squared stays inside."><span class="m">2<i>n</i><sup>2</sup><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i></span></span></span></button>
+        <button class="opt" data-fb="The cube root of 8 is 2, not 8. Check the number that comes out."><span class="m">8<i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2<i>n</i><sup>2</sup></span></span></span></button>
+        <button class="opt" data-fb="16 is not a perfect cube, so it does not come out as 4. Look for the perfect cube factor of 16."><span class="m">4<i>n</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov"><i>n</i><sup>2</sup></span></span></span></button></div></div>
+      <div class="mq" data-qid="l4-c2" data-ans="5" data-vars="" data-form="any" data-miss='[["6","The second term has an unwritten coefficient. Is it added or subtracted?"]]' data-hint="The radicals match. What is the coefficient on the second term?"><p class="stem"><span class="qn">2</span>Complete: <span class="m">6<i>a</i><span class="rt">&radic;<span class="ov">2<i>b</i></span></span> &minus; <i>a</i><span class="rt">&radic;<span class="ov">2<i>b</i></span></span> = ? <i>a</i><span class="rt">&radic;<span class="ov">2<i>b</i></span></span></span>. Type the coefficient.</p></div>
+      <div class="mcq" data-qid="l4-c3"><p class="stem"><span class="qn">3</span>Which expression equals <span class="m"><span class="rt">&radic;<span class="ov">75<i>x</i></span></span> + <span class="rt">&radic;<span class="ov">12<i>x</i></span></span></span>?</p><div class="opts row">
+        <button class="opt" data-fb="Radicands are never added together. Simplify each radical first."><span class="m"><span class="rt">&radic;<span class="ov">87<i>x</i></span></span></span></button>
+        <button class="opt" data-fb="That multiplies the coefficients 5 and 2. Like radicals are added."><span class="m">10<span class="rt">&radic;<span class="ov">3<i>x</i></span></span></span></button>
+        <button class="opt" data-ok="1" data-fb="Right. Root of 75x is 5 root 3x, root of 12x is 2 root 3x, and 5 + 2 is 7."><span class="m">7<span class="rt">&radic;<span class="ov">3<i>x</i></span></span></span></button>
+        <button class="opt" data-fb="That subtracts the coefficients. The terms are added."><span class="m">3<span class="rt">&radic;<span class="ov">3<i>x</i></span></span></span></button></div></div>
+    </div>
+  </div>
+
+  <div class="next"><button class="btn ghost" data-go="unlike" type="button">&larr; Unlike Radicals</button><button class="btn" data-go="set" type="button">Next: Problem Set &rarr;</button></div>
+</section>
+
+<!-- ═════════ 04 PROBLEM SET ═════════ -->
+<section class="panel" id="tab-set" role="tabpanel">
+  <div class="pset">
+    <div class="pset-top">
+      <label class="field" style="margin:0"><span class="label">Your name</span><br><input class="name" type="text" autocomplete="name" placeholder="First and last name"></label>
+      <div class="score"><div><b data-score="done">0</b>solved</div><div><b data-score="first">0</b>first try</div></div>
+    </div>
+    <p class="mq-keys">A radical sign cannot be typed, so typed boxes ask for the coefficient only. Type just the number or letter.</p>
+
+    <div class="card">
+      <div class="mcq" data-qid="l4-p1"><p class="stem"><span class="qn">1</span>Which pair are like radical terms?</p><div class="opts">
+        <button class="opt" data-ok="1" data-fb="Right. Both are square roots of 5, so only the coefficients differ."><span class="m">3<span class="rt">&radic;<span class="ov">5</span></span> and 8<span class="rt">&radic;<span class="ov">5</span></span></span></button>
+        <button class="opt" data-fb="The radicands are 5 and 7, so the radicals do not match."><span class="m">3<span class="rt">&radic;<span class="ov">5</span></span> and 3<span class="rt">&radic;<span class="ov">7</span></span></span></button>
+        <button class="opt" data-fb="One is a square root and one is a cube root, so the indexes differ."><span class="m"><span class="rt">&radic;<span class="ov">5</span></span> and <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">5</span></span></span></button>
+        <button class="opt" data-fb="3 times 5 is a plain number. It has no radical to match."><span class="m">3<span class="rt">&radic;<span class="ov">5</span></span> and 3 &middot; 5</span></button></div></div>
+      <div class="mq" data-qid="l4-p2" data-ans="10" data-vars="" data-form="any" data-miss='[["24","Check the operation. Like radicals are added, and the coefficients are not multiplied."]]' data-hint="Same radicand. Combine the coefficients."><p class="stem"><span class="qn">2</span>Complete: <span class="m">6<span class="rt">&radic;<span class="ov">11</span></span> + 4<span class="rt">&radic;<span class="ov">11</span></span> = ? <span class="rt">&radic;<span class="ov">11</span></span></span>. Type the coefficient.</p></div>
+      <div class="mq" data-qid="l4-p3" data-ans="-3" data-vars="" data-form="any" data-miss='[["3","Check the sign. The coefficient being subtracted is the larger one."],["21","The sign between the terms is minus. Coefficients are subtracted, not added."]]' data-hint="Subtract the coefficients in the order given: 9 minus 12."><p class="stem"><span class="qn">3</span>Complete: <span class="m">9<span class="rt">&radic;<span class="ov">2</span></span> &minus; 12<span class="rt">&radic;<span class="ov">2</span></span> = ? <span class="rt">&radic;<span class="ov">2</span></span></span>. Type the coefficient.</p></div>
+      <div class="mq" data-qid="l4-p4" data-ans="6" data-vars="" data-form="any" data-miss='[["7","The last term has an unwritten coefficient of 1, and it is subtracted."],["8","The last term is subtracted, not added."]]' data-hint="Count every term. Add 2 and 5, then take away the last coefficient."><p class="stem"><span class="qn">4</span>Complete: <span class="m">2<span class="rt">&radic;<span class="ov">6</span></span> + 5<span class="rt">&radic;<span class="ov">6</span></span> &minus; <span class="rt">&radic;<span class="ov">6</span></span> = ? <span class="rt">&radic;<span class="ov">6</span></span></span>. Type the coefficient.</p></div>
+      <div class="mcq" data-qid="l4-p5"><p class="stem"><span class="qn">5</span>Which expression equals <span class="m"><span class="rt">&radic;<span class="ov">20</span></span></span>?</p><div class="opts row">
+        <button class="opt" data-fb="The square root of 4 is 2, not 4. Check the number that comes out."><span class="m">4<span class="rt">&radic;<span class="ov">5</span></span></span></button>
+        <button class="opt" data-ok="1" data-fb="Right. 20 is 4 times 5, and the square root of 4 is 2."><span class="m">2<span class="rt">&radic;<span class="ov">5</span></span></span></button>
+        <button class="opt" data-fb="That swaps the factors. 5 is not a perfect square, so it does not come out."><span class="m">5<span class="rt">&radic;<span class="ov">2</span></span></span></button>
+        <button class="opt" data-fb="That divides 20 by 2 and leaves the radical off. Look for a perfect square factor."><span class="m">10</span></button></div></div>
+      <div class="mq" data-qid="l4-p6" data-ans="7" data-vars="" data-form="any" data-miss='[["87","Radicands are never added together. Simplify each radical first."],["10","That multiplies the coefficients 2 and 5. Like radicals are added."]]' data-hint="Write 12 as 4 times 3 and 75 as 25 times 3. Pull out the squares."><p class="stem"><span class="qn">6</span>Complete: <span class="m"><span class="rt">&radic;<span class="ov">12</span></span> + <span class="rt">&radic;<span class="ov">75</span></span> = ? <span class="rt">&radic;<span class="ov">3</span></span></span>. Type the coefficient.</p></div>
+      <div class="mq" data-qid="l4-p7" data-ans="2" data-vars="" data-form="any" data-miss='[["5","Look again at the second radical. Does 32 have a perfect square factor?"]]' data-hint="Write 8 as 4 times 2 and 32 as 16 times 2. Simplify both before subtracting."><p class="stem"><span class="qn">7</span>Complete: <span class="m">3<span class="rt">&radic;<span class="ov">8</span></span> &minus; <span class="rt">&radic;<span class="ov">32</span></span> = ? <span class="rt">&radic;<span class="ov">2</span></span></span>. Type the coefficient.</p></div>
+      <div class="mq" data-qid="l4-p8" data-ans="7" data-vars="" data-form="any" data-miss='[["8","The last term is subtracted, and it has an unwritten coefficient of 1."],["9","Simplify the 50 and the 18 and watch the sign on the last term."]]' data-hint="Root 50 is 5 root 2. Root 18 is 3 root 2. Then combine all three terms."><p class="stem"><span class="qn">8</span>Complete: <span class="m"><span class="rt">&radic;<span class="ov">50</span></span> + <span class="rt">&radic;<span class="ov">18</span></span> &minus; <span class="rt">&radic;<span class="ov">2</span></span> = ? <span class="rt">&radic;<span class="ov">2</span></span></span>. Type the coefficient.</p></div>
+      <div class="mcq" data-qid="l4-p9"><p class="stem"><span class="qn">9</span>Which expression equals <span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">24<i>a</i><sup>4</sup></span></span> + <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">81<i>a</i><sup>4</sup></span></span></span>?</p><div class="opts row">
+        <button class="opt" data-fb="Radicands are never added together. Simplify each radical first."><span class="m">5<span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">105<i>a</i><sup>4</sup></span></span></span></button>
+        <button class="opt" data-ok="1" data-fb="Right. The terms are 2a and 3a times the cube root of 3a, and 2a + 3a is 5a."><span class="m">5<i>a</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">3<i>a</i></span></span></span></button>
+        <button class="opt" data-fb="That multiplies the coefficients 2 and 3. Like radicals are added."><span class="m">6<i>a</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">3<i>a</i></span></span></span></button>
+        <button class="opt" data-fb="The cube root of a to the fourth is a times the cube root of a. The leftover a stays inside."><span class="m">5<i>a</i><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">3</span></span></span></button></div></div>
+      <div class="mq" data-qid="l4-p10" data-ans="x" data-vars="x" data-form="any" data-miss='[["2*x","That is only the first term simplified. The second term still has to be subtracted."],["1","Each radicand has x cubed in it. What happens to the variable when it comes out of the root?"]]' data-hint="Root of 20x cubed is 2x root 5x. Simplify the other term the same way, then subtract."><p class="stem"><span class="qn">10</span>Complete: <span class="m"><span class="rt">&radic;<span class="ov">20<i>x</i><sup>3</sup></span></span> &minus; <span class="rt">&radic;<span class="ov">5<i>x</i><sup>3</sup></span></span> = ? <span class="rt">&radic;<span class="ov">5<i>x</i></span></span></span>. Type the coefficient.</p></div>
+    </div>
+
+    <div class="card">
+      <div class="field"><p class="q">11. A classmate writes <span class="m">3<span class="rt">&radic;<span class="ov">2</span></span> + 4<span class="rt">&radic;<span class="ov">3</span></span> = 7<span class="rt">&radic;<span class="ov">5</span></span></span>. Explain the mistake and say what can be done with this sum.</p>
+        <textarea class="jbox" id="l4-p11" data-label="11. The mistake in the classmate's sum" data-min="15"></textarea></div>
+    </div>
+
+    <div class="pdfbar"><button class="btn" data-pdf type="button">Download my work (PDF)</button><span class="hint">Lists each answer and whether you had it on the first try.</span><span class="print-note"></span></div>
+  </div>
+  <div class="next"><button class="btn ghost" data-go="vars" type="button">&larr; Variables Inside</button><span></span></div>
+</section>
+
+</main>
+
+<footer class="foot"><div class="wrap"><span>Optima Academy Online · Algebra 2 Honors · Week 1</span><span>Academic Design and Curriculum (AcDC) · © Optima Academy Online</span></div></footer>
+<script type="application/json" id="page-config">{"key": "alg2h-w1-l4", "title": "Adding and Subtracting Radical Expressions", "course": "Algebra 2 Honors", "teacher": {"full": "Dr. Oswaldo Usborne", "short": "Dr. Usborne"}, "footer": "Algebra 2 Honors · Week 1 · Adding and Subtracting Radical Expressions", "pdfTag": "Alg2H_W1_L4"}</script>
+<script type="application/json" id="page-assets">{"img": {"usb": {"src": "data:image/jpeg;base64,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", "alt": ""}}, "l4_like": {}, "l4_unlike": {}, "l4_vars": {}}</script>
+<script>
+window.ASK = {
+  scope: 'adding and subtracting radical expressions: like radical terms, simplifying radicals so unlike terms become like, and radicands with variables',
+  quick: ['What makes radical terms like terms?', 'What do I do when the radicands differ?', 'How do I pull a perfect cube out of a radical?'],
+  practice: /(\b(4|9)\s*(?:√|sqrt|square root of|root of|root|cube root of|cbrt|∛)\s*\(?\s*7|\b(11|5)\s*(?:√|sqrt|square root of|root of|root|cube root of|cbrt|∛)\s*\(?\s*3\b|(?:√|sqrt|square root of|root of|root|cube root of|cbrt|∛)\s*\(?\s*(11|18|50|48|32|20|75|12\s*x|5\s*x|2\s*b|24\s*a|81\s*a|16\s*n)|(?:√|sqrt|square root of|root of|root|cube root of|cbrt|∛)\s*\(?\s*(12|8)\s*\)?\s*\+|\b12\s*(?:√|sqrt|square root of|root of|root|cube root of|cbrt|∛)\s*\(?\s*2|\b[25]\s*(?:√|sqrt|square root of|root of|root|cube root of|cbrt|∛)\s*\(?\s*6|\b3\s*(?:√|sqrt|square root of|root of|root|cube root of|cbrt|∛)\s*\(?\s*8|\b7\s*(cube|∛|cbrt)|6\s*a\s*(?:√|sqrt|root)|combined as written|classmate)/i,
+  guide: 'That one is from your practice, so here are my questions instead of the answer. Do the radicals match in index and radicand? If not, is there a perfect power you can pull out first? Try it, then press Check.',
+  notes: [
+    { k: ['like radical','like radicals','like terms','like radical terms','same index','same radicand','match'], w: 1.4, a: 'Like radical terms have the same index and the same radicand. 3sqrt(5) and 7sqrt(5) are like terms. 3sqrt(5) and 3sqrt(7) are not, because the radicands differ.' },
+    { k: ['combine','add radicals','subtract radicals','adding','subtracting','coefficients'], w: 1.4, a: 'When radical terms are like terms, add or subtract the coefficients and leave the radical alone: a*sqrt(b) + c*sqrt(b) = (a + c)*sqrt(b). So 3sqrt(5) + 7sqrt(5) = 10sqrt(5).' },
+    { k: ['coefficient','coefficients'], a: 'The coefficient is the number multiplied by the radical. In 8sqrt(2), the coefficient is 8. A radical with no number in front has a coefficient of 1.' },
+    { k: ['radicand','index','radical'], a: 'The radicand is what sits under the radical sign. The index is the small number that says which root it is. A square root has index 2, and it is not written.' },
+    { k: ['unlike','different radicands','do not match','cannot combine','cant combine'], w: 1.3, a: 'Unlike radical terms cannot be combined as written. Simplify each radical first. Sometimes the simplified radicals match, and then they can be combined.' },
+    { k: ['simplify','simplifying','pull out','perfect square','perfect cube','perfect power'], w: 1.4, a: 'Look for a perfect power in the radicand that matches the index: a perfect square for a square root, a perfect cube for a cube root. For sqrt(45), 45 is 9 times 5, so sqrt(45) is 3sqrt(5).' },
+    { k: ['steps','method','order','what first'], a: 'Three steps. Simplify each radical by pulling out perfect powers that match the index. Check whether the simplified radicals now match. Then combine the like radicals by adding or subtracting coefficients.' },
+    { k: ['negative','minus','subtract','sign'], a: 'Subtraction combines coefficients too. 8sqrt(2) - 9sqrt(2) is (8 - 9)sqrt(2), which is -sqrt(2). A coefficient of -1 is written as just a minus sign.' },
+    { k: ['one','invisible coefficient','no number','missing coefficient'], a: 'A radical with no number in front has a coefficient of 1. In sqrt(3) + 5sqrt(3) - 4sqrt(3), the coefficients are 1, 5, and -4, which combine to 2.' },
+    { k: ['variable','variables','n^5','x^3','exponent under','radicand with variable'], w: 1.3, a: 'Split the variable part into a perfect power and a leftover. For a cube root, n^5 is n^3 times n^2. The cube root of n^3 is n, so one n comes out and n^2 stays inside.' },
+    { k: ['cube root','fourth root','index 3','index 4','higher root'], a: 'The rule does not change for other roots. Terms combine only when the index and radicand both match. The cube root of y plus the cube root of y is 2 times the cube root of y.' },
+    { k: ['reduced','most reduced','final answer','check','verify','done'], a: 'A radical is in reduced form when no factor in the radicand is a perfect power matching the index, and no like radical terms remain uncombined.' },
+    { k: ['type','typing','caret','enter','keys','exponent form','2^(1/2)'], a: 'You cannot type a radical sign here. Where a box asks for a coefficient, type just the number. Where it asks for exponent form, write the square root of 2 as 2^(1/2). Under the box, "Reads as" shows how I read what you typed.' }
+  ]
+};
+</script>
+
+<script>
+/* Algebra 1 integrated lesson · core engine (shell shared with the 9th ELA kit).
+   CFG (#page-config): { key, n, title, course, footer, pdfTag, teacher:{full,short} }
+   Page may define window.ASK = { scope, notes:[{k:[...], a:"..."}], practice:/regex/, quick:[...] } before this script. */
+var CFG = (function(){ try { return JSON.parse(document.getElementById('page-config').textContent); } catch(e){ return { key:'alg1-x', title:'' }; } })();
+var TEACHER = CFG.teacher || { full: 'Dr. Oswaldo Usborne', short: 'Dr. Usborne' };
+var PREFIX = CFG.key + '-';
+var ASSETS = (function(){ var el = document.getElementById('page-assets'); try { return el ? JSON.parse(el.textContent) : {}; } catch(e){ return {}; } })();
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+var STORE = (function(){
+  var mem = {}, s = null;
+  try { var t = window.localStorage; t.setItem('__t', '1'); t.removeItem('__t'); s = t; } catch(e){ s = null; }
+  function rget(k){ try { return s ? s.getItem(k) : (k in mem ? mem[k] : null); } catch(e){ return null; } }
+  function rset(k, v){ try { if (s) s.setItem(k, v); else mem[k] = v; } catch(e){ mem[k] = v; } }
+  return { get: function(k){ return rget(PREFIX + k); }, set: function(k, v){ rset(PREFIX + k, v); }, rawGet: rget, rawSet: rset };
+})();
+function jget(k, d){ try { var v = STORE.get(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
+function jset(k, v){ STORE.set(k, JSON.stringify(v)); }
+function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ---------- images from the asset pack ---------- */
+$$('[data-img]').forEach(function(el){
+  var a = (ASSETS.img || {})[el.dataset.img]; if (!a) return;
+  if (el.tagName === 'IMG') { el.src = a.src; if (!el.alt) el.alt = a.alt || ''; } else el.style.backgroundImage = 'url("' + a.src + '")';
+});
+
+/* ---------- tabs ---------- */
+var TABS = $$('.tab').map(function(b){ return b.dataset.tab; });
+function switchTab(id, noScroll){
+  if (TABS.indexOf(id) < 0) id = TABS[0];
+  $$('.tab').forEach(function(b){ var on = b.dataset.tab === id; b.classList.toggle('on', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+  $$('.panel').forEach(function(p){ p.classList.toggle('on', p.id === 'tab-' + id); });
+  STORE.set('tab', id);
+  var seen = (STORE.get('seen') || '').split(',').filter(Boolean);
+  if (seen.indexOf(id) < 0) { seen.push(id); STORE.set('seen', seen.join(',')); }
+  $$('.tab').forEach(function(b){ b.classList.toggle('seen', seen.indexOf(b.dataset.tab) > -1 && b.dataset.tab !== id); });
+  if (!noScroll) { var t = $('.tabs'); if (t && window.scrollY > t.offsetTop) window.scrollTo({ top: t.offsetTop, behavior: 'smooth' }); }
+  document.dispatchEvent(new CustomEvent('tabchange', { detail: id }));
+  psetScore();
+}
+$$('.tab').forEach(function(b){ b.addEventListener('click', function(){ switchTab(b.dataset.tab); }); });
+$$('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ switchTab(b.dataset.go); }); });
+
+/* ---------- typed answers (words) ---------- */
+function words(s){ return (s.trim().match(/\S+/g) || []).length; }
+$$('textarea.jbox').forEach(function(el){
+  var v = STORE.get('j-' + el.id); if (v !== null) el.value = v;
+  var d = document.createElement('div'); d.className = 'wc'; el.parentNode.insertBefore(d, el.nextSibling);
+  function wc(){ var n = words(el.value), min = +(el.dataset.min || 0); d.textContent = n + (n === 1 ? ' word' : ' words') + (min ? ' · aim for ' + min + '+' : ''); d.classList.toggle('met', min > 0 && n >= min); }
+  wc(); el.addEventListener('input', function(){ STORE.set('j-' + el.id, el.value); wc(); });
+});
+$$('input.name').forEach(function(el){
+  var v = STORE.rawGet('alg1-name'); if (v) el.value = v;
+  el.addEventListener('input', function(){ STORE.rawSet('alg1-name', el.value); });
+});
+
+/* ---------- worked examples: one step at a time ---------- */
+$$('.ex').forEach(function(ex, xi){
+  var lis = $$('ol.steps > li', ex); if (!lis.length) return;
+  var key = 'ex-' + (ex.id || xi), n = +(STORE.get(key) || 0);
+  var b = document.createElement('button'); b.type = 'button'; b.className = 'btn ghost small more';
+  ex.appendChild(b);
+  function draw(){ lis.forEach(function(li, i){ li.classList.toggle('on', i < n); }); ex.classList.toggle('done', n >= lis.length); b.textContent = n ? 'Next step' : 'Show the first step'; }
+  b.addEventListener('click', function(){ n = Math.min(lis.length, n + 1); STORE.set(key, n); draw(); });
+  draw();
+});
+
+/* ---------- choices (data-ok="1" on the right option; data-fb on any option) ---------- */
+$$('.mcq').forEach(function(q){
+  var id = q.dataset.qid, fb = $('.fb', q), opts = $$('.opt', q);
+  if (!fb) { fb = document.createElement('div'); fb.className = 'fb'; q.appendChild(fb); }
+  function show(o, quiet){
+    var good = o.dataset.ok === '1';
+    if (good) { o.classList.add('yes'); q.classList.add('done'); }
+    else { o.classList.add('no'); if (!quiet) { o.classList.remove('shake'); void o.offsetWidth; o.classList.add('shake'); } }
+    fb.innerHTML = o.dataset.fb || (good ? 'Right.' : 'Not this one. Look again.'); fb.className = 'fb show ' + (good ? 'good' : 'try');
+  }
+  opts.forEach(function(o, i){
+    o.type = 'button';
+    o.addEventListener('click', function(){
+      if (q.classList.contains('done')) return;
+      show(o);
+      var r = jget('c-' + id, { tried: [] }); if (r.tried.indexOf(i) < 0) r.tried.push(i);
+      r.ok = o.dataset.ok === '1'; if (r.first === undefined) r.first = r.ok; r.v = o.textContent.trim(); jset('c-' + id, r); psetScore();
+    });
+  });
+  jget('c-' + id, { tried: [] }).tried.forEach(function(i){ if (opts[i]) show(opts[i], true); });
+});
+
+/* ---------- typed math: checked by value at random points, then for simplified form ---------- */
+var MATH = (function(){
+  var SUP = { '⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁻':'-' };
+  function norm(s){
+    s = String(s).toLowerCase().replace(/[−–—]/g, '-').replace(/[×·∙]/g, '*').replace(/÷/g, '/').replace(/\s+/g, '');
+    s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, function(m){ return '^' + m.split('').map(function(c){ return SUP[c]; }).join(''); });
+    s = s.replace(/\^\((-?\d+)\)/g, '^$1');
+    return s;
+  }
+  function tokens(s){
+    var t = [], m, re = /\d+\.?\d*|\.\d+|[a-z]|[-+*/^()]/g, used = 0;
+    while ((m = re.exec(s))) { if (m.index !== used) return null; t.push(m[0]); used = re.lastIndex; }
+    return used === s.length ? t : null;
+  }
+  function parse(src){
+    var t = tokens(norm(src)); if (!t || !t.length) return null;
+    var p = 0, err = null;
+    function peek(){ return t[p]; }
+    function isNum(x){ return x !== undefined && /^[\d.]/.test(x); }
+    function isVar(x){ return x !== undefined && /^[a-z]$/.test(x); }
+    function expr(){
+      var f = term();
+      while (peek() === '+' || peek() === '-') { var op = t[p++], g = term(); f = (function(a, b, o){ return o === '+' ? function(e){ return a(e) + b(e); } : function(e){ return a(e) - b(e); }; })(f, g, op); }
+      return f;
+    }
+    function term(){
+      var f = unary();
+      for (;;) {
+        var x = peek();
+        if (x === '*' || x === '/') { p++; var g = unary(); f = (function(a, b, o){ return o === '*' ? function(e){ return a(e) * b(e); } : function(e){ return a(e) / b(e); }; })(f, g, x); }
+        else if (isVar(x) || x === '(') { var h = power(); f = (function(a, b){ return function(e){ return a(e) * b(e); }; })(f, h); }
+        else if (isNum(x)) { err = 'digits'; p++; }
+        else break;
+      }
+      return f;
+    }
+    function unary(){
+      if (peek() === '-') { p++; var f = unary(); return function(e){ return -f(e); }; }
+      if (peek() === '+') { p++; return unary(); }
+      return power();
+    }
+    function power(){
+      var b = atom();
+      if (peek() === '^') { p++; var x = unary(); return function(e){ return Math.pow(b(e), x(e)); }; }
+      return b;
+    }
+    function atom(){
+      var x = t[p++];
+      if (isNum(x)) { var v = parseFloat(x); return function(){ return v; }; }
+      if (isVar(x)) return function(e){ return e[x]; };
+      if (x === '(') { var f = expr(); if (t[p++] !== ')') err = 'paren'; return f; }
+      err = 'syntax'; return function(){ return NaN; };
+    }
+    var f;
+    try { f = expr(); } catch(e){ return null; }
+    if (p !== t.length || err) return { err: err || 'syntax' };
+    return { f: f };
+  }
+  var PTS = [[1.37, 2.11, 0.73], [2.59, 0.81, 1.93], [0.67, 1.71, 2.37], [3.13, 1.29, 0.59]];
+  function same(a, b, vars){
+    var A = parse(a), B = parse(b); if (!A || !B || !A.f || !B.f) return false;
+    for (var k = 0; k < PTS.length; k++) {
+      var e = {}; 'abcdefghijklmnopqrstuvwxyz'.split('').forEach(function(c, i){ e[c] = PTS[k][i % 3] + i * 0.013; });
+      (vars || '').split('').forEach(function(c, i){ e[c] = PTS[k][i % 3]; });
+      var x = A.f(e), y = B.f(e);
+      if (!isFinite(x) || !isFinite(y) || Math.abs(x - y) > 1e-7 * Math.max(1, Math.abs(y))) return false;
+    }
+    return true;
+  }
+  /* top-level terms; each must be one coefficient and each variable at most once; parentheses only in a denominator */
+  function terms(s){
+    s = norm(s); var out = [], depth = 0, cur = '';
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i];
+      if (c === '(') depth++; if (c === ')') depth--;
+      if ((c === '+' || c === '-') && depth === 0 && i > 0 && !/[\^*/(]/.test(s[i - 1])) { out.push(cur); cur = c === '-' ? '-' : ''; }
+      else cur += c;
+    }
+    out.push(cur); return out.filter(function(x){ return x !== '' && x !== '-'; });
+  }
+  function simple(s){
+    var T = terms(s);
+    for (var i = 0; i < T.length; i++) {
+      var t = T[i].replace(/^-/, '').replace(/\^\((-?\d+)\/(\d+)\)/g, function(m0, a, b){
+        a = Math.abs(+a); b = +b; var g = a, h = b; while (h) { var r = g % h; g = h; h = r; }
+        return (g === 1 && b !== 1) ? '^1' : '^(unreduced'; }), num = t.split('/')[0], den = t.split('/').slice(1).join('/');
+      if (/[()]/.test(num)) return false;
+      var core = num.replace(/\^-?\d+(\.\d+)?/g, '').replace(/\*/g, '');
+      var nums = core.match(/\d+\.?\d*|\.\d+/g) || [];
+      if (nums.length > 1 || (nums.length === 1 && core.indexOf(nums[0]) !== 0)) return false;
+      var letters = core.replace(/[\d.]/g, '').split('');
+      if (letters.some(function(c, k){ return letters.indexOf(c) !== k; })) return false;
+    }
+    return true;
+  }
+  function pretty(s){
+    var n = norm(s); if (!n) return '';
+    var h = esc(n).replace(/\^\(([^()]*)\)/g, '<sup>$1</sup>').replace(/\^(-?\d+(?:\.\d+)?)/g, '<sup>$1</sup>').replace(/([a-z])/g, '<i>$1</i>').replace(/\*/g, '·').replace(/-/g, ' − ').replace(/\+/g, ' + ').replace(/^ − /, '−').replace(/\( − /g, '(−').replace(/<sup> − /g, '<sup>−');
+    return '<span class="m">' + h + '</span>';
+  }
+  return { parse: parse, same: same, terms: terms, simple: simple, pretty: pretty, norm: norm };
+})();
+
+$$('.mq').forEach(function(q){
+  var id = q.dataset.qid, ans = q.dataset.ans, vars = q.dataset.vars || 'x', form = q.dataset.form || 'simp';
+  var miss = []; try { miss = JSON.parse(q.dataset.miss || '[]'); } catch(e){}
+  if (!$('.mq-row', q)) q.insertAdjacentHTML('beforeend', '<div class="mq-row"><input class="mq-in" type="text" autocomplete="off" spellcheck="false" aria-label="Your answer" placeholder="' + esc(q.dataset.ph || 'type your answer') + '"><button class="btn small" type="button">Check</button></div><div class="mq-prev" aria-live="polite"></div><div class="fb"></div>');
+  var inp = $('.mq-in', q), go = $('.mq-row button', q), prev = $('.mq-prev', q), fb = $('.fb', q);
+  var r = jget('m-' + id, null);
+  function say(ok, msg){ fb.innerHTML = msg; fb.className = 'fb show ' + (ok ? 'good' : 'try'); }
+  function preview(){ var v = inp.value.trim(); prev.innerHTML = v ? 'Reads as: ' + MATH.pretty(v) : ''; }
+  function check(quiet){
+    var v = inp.value.trim(); if (!v) { inp.focus(); return; }
+    var P = MATH.parse(v);
+    if (!P) { say(false, 'I can&rsquo;t read that yet. Use <code>^</code> for powers, like <code>x^2</code>.'); return; }
+    if (P.err === 'digits') { say(false, 'A number right after a letter is ambiguous. Write powers with <code>^</code>: <code>x^2</code>, not <code>x2</code>.'); return; }
+    if (P.err) { say(false, 'Check your parentheses and signs; I can&rsquo;t read that yet.'); return; }
+    var eq = MATH.same(v, ans, vars), ok = eq && (form !== 'simp' || (MATH.simple(v) && MATH.terms(v).length === MATH.terms(ans).length));
+    var msg;
+    if (ok) msg = q.dataset.fb || 'Right.';
+    else if (eq) msg = 'That&rsquo;s equal in value, but not simplified yet. Combine like terms and clear the parentheses.';
+    else {
+      msg = q.dataset.hint || 'Not equal yet. Check each like term: its sign, then its coefficient.';
+      for (var i = 0; i < miss.length; i++) if (MATH.same(v, miss[i][0], vars)) { msg = miss[i][1]; break; }
+    }
+    say(ok, msg);
+    if (quiet) return;
+    var rec = jget('m-' + id, { tries: 0 }); rec.tries++; rec.v = v; rec.ok = ok; if (rec.first === undefined) rec.first = ok;
+    jset('m-' + id, rec);
+    if (ok) { q.classList.add('done'); } else { inp.classList.remove('shake'); void inp.offsetWidth; inp.classList.add('shake'); }
+    psetScore();
+  }
+  inp.addEventListener('input', preview);
+  inp.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); check(); } });
+  go.addEventListener('click', function(){ check(); });
+  if (r && r.v) { inp.value = r.v; preview(); check(true); if (r.ok) q.classList.add('done'); }
+});
+
+/* ---------- place: tap a card, then tap its bin ---------- */
+$$('.place').forEach(function(g){
+  var id = g.id, fb = $('.place-fb', g), tally = $('.tally', g), chips = $$('.chip', g), sel = null;
+  function count(){ var n = $$('.chip.placed', g).length; if (tally) { tally.textContent = n + ' of ' + chips.length + ' placed'; tally.classList.toggle('done', n === chips.length); } }
+  function arm(on){ $$('.bin', g).forEach(function(b){ b.classList.toggle('armed', on); }); }
+  function put(c, b, quiet){ c.classList.remove('sel'); c.classList.add('placed'); c.tabIndex = -1; $('.drop', b).appendChild(c); if (!quiet && fb) fb.innerHTML = '<div class="fb show good">' + (c.dataset.fb || 'Right.') + '</div>'; }
+  chips.forEach(function(c){
+    c.type = 'button';
+    c.addEventListener('click', function(){
+      if (c.classList.contains('placed')) return;
+      if (sel === c) { c.classList.remove('sel'); sel = null; arm(false); return; }
+      if (sel) sel.classList.remove('sel'); sel = c; c.classList.add('sel'); arm(true);
+    });
+  });
+  $$('.bin', g).forEach(function(b){
+    b.addEventListener('click', function(){
+      if (!sel) return; var c = sel; sel = null; arm(false);
+      if (c.dataset.ans === b.dataset.bin) { put(c, b); var d = (STORE.get('p-' + id) || '').split(',').filter(Boolean); d.push(c.dataset.k); STORE.set('p-' + id, d.join(',')); }
+      else { c.classList.remove('sel', 'shake'); void c.offsetWidth; c.classList.add('shake'); if (fb) fb.innerHTML = '<div class="fb show try">' + (c.dataset.miss || 'Not there. Look again.') + '</div>'; }
+      count();
+    });
+  });
+  (STORE.get('p-' + id) || '').split(',').filter(Boolean).forEach(function(k){ var c = $('.chip[data-k="' + k + '"]', g); if (c) { var b = $('.bin[data-bin="' + c.dataset.ans + '"]', g); if (b) put(c, b, true); } });
+  count();
+});
+
+/* ---------- checklists ---------- */
+$$('.checks li').forEach(function(li){
+  li.insertAdjacentHTML('afterbegin', '<span class="bx" aria-hidden="true"></span>');
+  li.setAttribute('role', 'checkbox'); li.tabIndex = 0;
+  function set(on){ li.classList.toggle('on', on); li.setAttribute('aria-checked', on ? 'true' : 'false'); $('.bx', li).textContent = on ? '✓' : ''; }
+  set(STORE.get('ck-' + li.dataset.ck) === '1');
+  function tog(){ var on = !li.classList.contains('on'); set(on); STORE.set('ck-' + li.dataset.ck, on ? '1' : '0'); }
+  li.addEventListener('click', tog);
+  li.addEventListener('keydown', function(e){ if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); tog(); } });
+});
+
+/* ---------- problem set score ---------- */
+function itemRec(el){ return el.classList.contains('mq') ? jget('m-' + el.dataset.qid, null) : jget('c-' + el.dataset.qid, null); }
+function psetItems(){ return $$('.pset .mq, .pset .mcq'); }
+function psetScore(){
+  var it = psetItems(), done = 0, first = 0;
+  it.forEach(function(el){ var r = itemRec(el); if (r && r.ok) done++; if (r && r.first) first++; });
+  $$('[data-score="done"]').forEach(function(b){ b.textContent = done + ' / ' + it.length; });
+  $$('[data-score="first"]').forEach(function(b){ b.textContent = first + ' / ' + it.length; });
+}
+
+/* ---------- PDF (print window: no library needed) ---------- */
+function studentFile(){
+  var nm = (STORE.rawGet('alg1-name') || '').trim().split(/\s+/).filter(Boolean);
+  var who = nm.length >= 2 ? nm[nm.length - 1] + '_' + nm.slice(0, -1).join('') : (nm[0] || 'LastName_FirstName');
+  return who + '_' + (CFG.pdfTag || 'Alg1');
+}
+function stemText(el){ var s = $('.stem', el); if (!s) return ''; var c = s.cloneNode(true); $$('.qn', c).forEach(function(x){ x.remove(); }); return c.innerHTML.trim(); }
+function pdfHtml(){
+  var h = '<h2>Problem set</h2><table class="ps"><tr><th>#</th><th>Problem</th><th>My answer</th><th>Result</th></tr>';
+  psetItems().forEach(function(el, i){
+    var r = itemRec(el), a = !r || !r.v ? '<span class="missing">(not answered)</span>' : (el.classList.contains('mq') ? MATH.pretty(r.v) : esc(r.v));
+    var res = !r ? '' : r.ok ? (r.first ? '✓ first try' : '✓ after ' + ((r.tries || (r.tried || []).length) - 1) + ' more') : '✗ not yet';
+    h += '<tr><td>' + (i + 1) + '</td><td>' + stemText(el) + '</td><td>' + a + '</td><td>' + res + '</td></tr>';
+  });
+  h += '</table>';
+  var js = $$('textarea.jbox');
+  if (js.length) {
+    h += '<h2>Written answers</h2>';
+    js.forEach(function(el){ var v = (STORE.get('j-' + el.id) || '').trim(); h += '<div class="q">' + esc(el.dataset.label || el.id) + '</div>' + (v ? '<div class="a">' + esc(v) + '</div>' : '<div class="a missing">(no answer saved)</div>'); });
+  }
+  var ck = $$('.pset .checks li');
+  if (ck.length) { h += '<h2>Checklist</h2>'; ck.forEach(function(li){ h += '<div class="a">' + (li.classList.contains('on') ? '☑ ' : '☐ ') + esc(li.textContent.replace(/^✓/, '').trim()) + '</div>'; }); }
+  return h;
+}
+function openPrint(){
+  psetScore();
+  var nm = (STORE.rawGet('alg1-name') || '').trim(), file = studentFile();
+  var done = ($('[data-score="done"]') || {}).textContent || '', first = ($('[data-score="first"]') || {}).textContent || '';
+  var css = 'body{font:14.5px/1.55 Georgia,serif;color:#0E1C42;max-width:760px;margin:0 auto;padding:28px 36px}' +
+    'h1{font:700 22px/1.2 Arial,sans-serif;margin:0 0 4px}.sub{font:12.5px/1.4 Arial,sans-serif;color:#65707C;margin-bottom:6px}' +
+    '.sc{font:700 12.5px/1.4 Arial,sans-serif;margin:0 0 18px}h2{font:700 11px/1.3 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#C43D27;margin:22px 0 6px;padding-top:10px;border-top:2px solid #0E1C42}' +
+    'table.ps{border-collapse:collapse;width:100%;font-size:13.5px}table.ps th{font:700 10.5px/1.3 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:#65707C;border-bottom:1px solid #C3CED9;padding:4px 8px 4px 0}' +
+    'table.ps td{vertical-align:top;border-bottom:1px solid #E2EAF3;padding:6px 8px 6px 0}table.ps td:last-child{white-space:nowrap;font:12px Arial,sans-serif}' +
+    '.q{font:700 13px/1.45 Arial,sans-serif;margin-top:10px}.a{white-space:pre-wrap;margin:3px 0 0}.missing{color:#C43D27;font-style:italic}.m{white-space:nowrap}sup{font-size:.7em}.fr{display:inline-block;text-align:center;vertical-align:middle}.fr>span{display:block}.fr>span:first-child{border-bottom:1px solid}';
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + esc(file) + '<\/title>\x3cstyle>' + css + '<\/style><\/head><body><h1>' + esc(CFG.title) + '<\/h1><div class="sub">' + (nm ? esc(nm) + ' · ' : '') + esc(CFG.footer || '') + '<\/div><div class="sc">Solved: ' + esc(done) + ' · First try: ' + esc(first) + '<\/div>' + pdfHtml() + '<\/body><\/html>';
+  var win = window.open('', '_blank');
+  if (!win) { $$('.print-note').forEach(function(n){ n.textContent = 'The PDF window was blocked. Allow pop-ups for this page and try again.'; n.classList.add('show'); }); return; }
+  win.document.write(html); win.document.close();
+  setTimeout(function(){ win.focus(); win.print(); }, 400);
+}
+$$('[data-pdf]').forEach(function(b){ b.addEventListener('click', openPrint); });
+
+/* ---------- tools: calculator + Ask Dr. Usborne (two buttons in the tab bar, drawers on the right) ---------- */
+(function(){
+  var bar = $('.tabs .wrap'); if (!bar) return;
+  var face = ASSETS.img && ASSETS.img.usb ? ASSETS.img.usb.src : '';
+  bar.insertAdjacentHTML('beforeend', '<div class="tools"><button class="tool" id="tCalc" type="button" aria-controls="calcDrawer" aria-label="Calculator" title="Calculator"><span class="ic" aria-hidden="true">+−</span><span class="tx">Calculator</span></button>' +
+    '<button class="tool" id="tAsk" type="button" aria-controls="askDrawer" aria-label="Ask ' + esc(TEACHER.short) + '" title="Ask ' + esc(TEACHER.short) + '"><img class="ic" src="' + face + '" alt=""><span class="tx">Ask ' + esc(TEACHER.short) + '</span></button></div>');
+  var A = window.ASK || {};
+  document.body.insertAdjacentHTML('beforeend',
+    '<div class="drawer" id="calcDrawer" role="dialog" aria-label="Calculator"><div class="dr-head"><div><small>Tool</small><b>Scientific calculator</b></div><button class="dr-x" type="button" aria-label="Close">&times;</button></div>' +
+    '<iframe class="calc-frame" id="calcFrame" title="Desmos Scientific Calculator" loading="lazy"></iframe><div class="dr-foot"><span>Desmos Scientific Calculator</span><a href="https://www.desmos.com/scientific" target="_blank" rel="noopener">open in a new tab ↗</a></div></div>' +
+    '<div class="drawer" id="askDrawer" role="dialog" aria-label="Ask ' + esc(TEACHER.full) + '"><div class="dr-head"><img src="' + face + '" alt=""><div><small>Questions</small><b>Ask ' + esc(TEACHER.full) + '</b></div><button class="dr-x" type="button" aria-label="Close">&times;</button></div>' +
+    '<div class="letters" id="letters"><div class="empty">Ask about ' + esc(A.scope || 'this lesson') + '. He answers from his notes on this page.<div class="quick">' + (A.quick || []).map(function(q){ return '<button type="button">' + esc(q) + '</button>'; }).join('') + '</div></div></div>' +
+    '<div class="compose"><textarea id="askQ" maxlength="300" aria-label="Your question" placeholder="Type a question"></textarea><div class="row"><span class="pg-note">An AI-generated character. Replies come from prepared notes.</span><button class="btn small" id="askSend" type="button">Send</button></div></div></div>');
+  var map = { calc: ['#tCalc', '#calcDrawer'], ask: ['#tAsk', '#askDrawer'] };
+  function open(name){
+    Object.keys(map).forEach(function(k){ var on = k === name; $(map[k][1]).classList.toggle('open', on); $(map[k][0]).classList.toggle('on', on); $(map[k][0]).setAttribute('aria-expanded', on ? 'true' : 'false'); });
+    if (name === 'calc') { var f = $('#calcFrame'); if (!f.getAttribute('src')) f.src = 'https://www.desmos.com/scientific'; }
+    if (name === 'ask') setTimeout(function(){ $('#askQ').focus(); }, 350);
+  }
+  Object.keys(map).forEach(function(k){
+    $(map[k][0]).addEventListener('click', function(){ $(map[k][1]).classList.contains('open') ? open(null) : open(k); });
+    $('.dr-x', $(map[k][1])).addEventListener('click', function(){ open(null); });
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') open(null); });
+  $$('[data-open]').forEach(function(b){ b.addEventListener('click', function(){ open(b.dataset.open); }); });
+
+  var BASE = [
+    { k: ['hello','hi','hey','who are you','your name'], w: 1, a: 'Hello! I teach algebra. Ask me about anything on this page, and I will answer from my notes.' },
+    { k: ['pdf','download','submit','turn in','hand in','save'], a: 'Finish the problem set, then press "Download my work (PDF)". It lists each answer and whether you had it on the first try. Your teacher will tell you where to hand it in.' },
+    { k: ['type','typing','exponent','power','squared','cubed','caret','^'], a: 'Type powers with the caret: x^2 for x squared, x^3 for x cubed. Under the box, "Reads as" shows how I read what you typed, so check it before you press Check.' },
+    { k: ['calculator','desmos'], a: 'The Calculator button in the bar at the top opens a scientific calculator. It helps with the arithmetic on coefficients; the algebra is still yours.' }
+  ];
+  var NOTES = BASE.concat(A.notes || []);
+  function answer(q){
+    var t = ' ' + q.toLowerCase().replace(/[^a-z0-9^',= ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    if (A.practice && A.practice.test(q)) return A.guide || 'That one is from your practice, so I will give you my questions instead of the answer. Which terms are like terms? What happens to the sign of each one? Try it, then press Check.';
+    var best = null, bs = 0;
+    NOTES.forEach(function(n){
+      var s = 0;
+      n.k.forEach(function(key){ var re = new RegExp('(^|[^a-z])' + key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?([^a-z]|$)'); if (re.test(t)) s += key.indexOf(' ') > 0 ? 3 : 2; });
+      s *= (n.w || 1.5); if (s > bs) { bs = s; best = n; }
+    });
+    if (!best || bs < 2) return 'Good question, but my notes only cover ' + (A.scope || 'this lesson') + '. Bring that one to your teacher.';
+    return best.a;
+  }
+  var list = $('#letters'), ta = $('#askQ'), send = $('#askSend'), LOG = jget('ask', []);
+  function letter(cls, who, text){ var e = $('.empty', list); if (e) e.remove(); var d = document.createElement('div'); d.className = 'letter ' + cls; d.innerHTML = '<div class="who">' + esc(who) + '</div>' + esc(text); list.appendChild(d); list.scrollTop = list.scrollHeight; }
+  LOG.forEach(function(m){ letter('mine', 'You', m.q); letter('his', TEACHER.short, m.a); });
+  function ask(q){
+    q = q.trim(); if (!q) { ta.focus(); return; }
+    letter('mine', 'You', q); ta.value = '';
+    var a = answer(q); setTimeout(function(){ letter('his', TEACHER.short, a); }, 350);
+    LOG.push({ q: q, a: a }); if (LOG.length > 20) LOG.shift(); jset('ask', LOG);
+  }
+  send.addEventListener('click', function(){ ask(ta.value); });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(ta.value); } });
+  $$('.quick button', list).forEach(function(b){ b.addEventListener('click', function(){ ask(b.textContent); }); });
+})();
+
+/* ---------- boot ---------- */
+switchTab(STORE.get('tab') || TABS[0], true);
+psetScore();
+
+</script>
+<script>
+/* Dr. Usborne mini-lessons: a short talk that moves a visual step by step (same engine as the 9th ELA teacher card).
+   <div class="vo" data-clip="v_parts"> … <div class="vo-stage"> [data-step="n"] elements … </div> … a JSON block (.vo-script) holding {"steps":[…]}
+   With audio (ASSETS[clip] = {audio, words:[[s,e,t],…]}) steps follow his words; without it, Play steps through on a reading-pace timer.
+   Each new step fires document event "vo-step" {detail:{card, clip, i}} so a page can animate beyond fade-ins. */
+(function(){
+  $$('.vo').forEach(function(card){
+    var sc; try { sc = JSON.parse(card.querySelector('.vo-script').textContent); } catch(e){ return; }
+    var steps = sc.steps, clip = ASSETS[card.dataset.clip] || {}, audio = null, timer = null, cur = -1, playing = false, t0 = 0, elapsed = 0;
+    var cap = card.querySelector('.vo-cap'), btn = card.querySelector('.vo-play'), fill = card.querySelector('.vo-fill'), dots = card.querySelector('.vo-dots'), stage = card.querySelector('.vo-stage');
+    var face = card.querySelector('.vo-face'); if (face && ASSETS.img && ASSETS.img.usb) { face.src = ASSETS.img.usb.src; face.alt = ''; }
+    var nm = card.querySelector('.vo-name'); if (nm && !nm.textContent.trim()) nm.textContent = TEACHER.short;
+    var wc = steps.map(function(s){ return (s.match(/\S+/g) || []).length; });
+    var bounds = [], acc = 0;
+    if (clip.audio && clip.words && clip.words.length) {
+      audio = new Audio(clip.audio); audio.preload = 'none';
+      steps.forEach(function(s, i){ var w = clip.words[Math.min(acc, clip.words.length - 1)]; bounds.push(w ? w[0] : 0); acc += wc[i]; });
+    } else {
+      steps.forEach(function(s, i){ bounds.push(acc); acc += Math.max(2.4, wc[i] / 2.6); });
+    }
+    var total = audio ? (clip.words[clip.words.length - 1][1] + .4) : acc;
+    var sEl = card.querySelector('.vo-time'); if (sEl) sEl.textContent = fmt(total);
+    dots.innerHTML = steps.map(function(s, i){ return '<button type="button" aria-label="Step ' + (i + 1) + '" data-i="' + i + '"></button>'; }).join('');
+    var tr = card.querySelector('.vo-trans'); if (tr) tr.innerHTML = steps.map(function(s){ return '<p>' + esc(s) + '</p>'; }).join('');
+
+    function fmt(s){ s = Math.round(s); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+    function show(i){
+      if (i === cur) return; cur = i;
+      stage.querySelectorAll('[data-step]').forEach(function(el){
+        var ks = String(el.dataset.step).split(/[ ,]+/).map(Number), k = ks[0];
+        el.classList.toggle('on', k <= i); el.classList.toggle('now', ks.indexOf(i) > -1);
+      });
+      cap.textContent = i >= 0 ? steps[i] : '';
+      cap.classList.remove('in'); void cap.offsetWidth; cap.classList.add('in');
+      dots.querySelectorAll('button').forEach(function(d, k){ d.classList.toggle('on', k <= i); });
+      card.classList.toggle('started', i >= 0);
+      document.dispatchEvent(new CustomEvent('vo-step', { detail: { card: card, clip: card.dataset.clip, i: i } }));
+    }
+    function at(t){ var i = -1; bounds.forEach(function(b, k){ if (t >= b - .05) i = k; }); return i; }
+    function tick(){
+      var t = audio ? audio.currentTime : elapsed + (performance.now() - t0) / 1000;
+      show(at(t)); fill.style.width = Math.min(100, t / total * 100) + '%';
+      if (t >= total) { finish(); return; }
+      if (playing) timer = requestAnimationFrame(tick);
+    }
+    function play(){
+      if (card.classList.contains('finished')) reset();
+      playing = true; card.classList.add('playing'); btn.innerHTML = '&#10074;&#10074; Pause';
+      document.dispatchEvent(new CustomEvent('vo-play', { detail: card }));
+      if (audio) { audio.play().catch(function(){}); } else t0 = performance.now();
+      tick();
+    }
+    function pause(){
+      playing = false; card.classList.remove('playing'); btn.innerHTML = '&#9654; Resume';
+      if (audio) audio.pause(); else elapsed += (performance.now() - t0) / 1000;
+      cancelAnimationFrame(timer);
+    }
+    function finish(){
+      playing = false; card.classList.remove('playing'); cancelAnimationFrame(timer);
+      show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished');
+      STORE.set('vo-' + card.dataset.clip, '1');
+    }
+    function reset(){ elapsed = 0; if (audio) audio.currentTime = 0; cur = -2; show(-1); fill.style.width = '0'; card.classList.remove('finished'); }
+    function jump(i){
+      var t = bounds[i]; if (audio) audio.currentTime = t; else { elapsed = t; t0 = performance.now(); }
+      card.classList.remove('finished'); show(i); fill.style.width = (t / total * 100) + '%';
+      if (!playing) { btn.innerHTML = '&#9654; Resume'; }
+    }
+    btn.addEventListener('click', function(){ playing ? pause() : play(); });
+    dots.addEventListener('click', function(e){ var d = e.target.closest('button'); if (d) jump(+d.dataset.i); });
+    var tb = card.querySelector('.vo-tbtn'); if (tb) tb.addEventListener('click', function(){ var o = card.classList.toggle('show-trans'); tb.setAttribute('aria-expanded', o ? 'true' : 'false'); tb.textContent = o ? 'Hide transcript' : 'Transcript'; });
+    if (audio) audio.addEventListener('ended', finish);
+    document.addEventListener('vo-play', function(e){ if (e.detail !== card && playing) pause(); });
+    document.addEventListener('tabchange', function(){ if (playing) pause(); });
+    if (STORE.get('vo-' + card.dataset.clip) === '1') { show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished'); }
+    else show(-1);
+  });
+})();
+
+</script>
+
+</body>
+</html>

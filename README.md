@@ -48,7 +48,7 @@ _Not posted yet_
 - [Lesson 10.02: Ecosystem Balance](https://optimaondemand.github.io/optima-4th-science/lesson-10-02-ecosystem-balance.html)
 - [Lesson 12.01: Sensing the World](https://optimaondemand.github.io/optima-4th-science/lesson-12-01-sensing-the-world.html)
 
-**VR Field Missions**
+**Vr Field Missions**
 
 - [10.02 VR: Two Plots](https://optimaondemand.github.io/optima-4th-science/vr-10-02.html)
 - [12.01 VR: Sense Stations](https://optimaondemand.github.io/optima-4th-science/vr-12-01.html)
@@ -477,7 +477,19 @@ _Week 1 and major projects not posted yet_
 
 ### ★ Geometry Honors (Mathematics · 1206320)
 
-_Week 1 and major projects not posted yet_
+#### Module 7: Circles
+
+**Week 1**
+
+- [Lesson 1: Parts of a Circle](https://optimaondemand.github.io/optima-pilot-samples/hs-geometry-honors-w1/w1-lesson1-parts-of-a-circle.html)
+- [Lesson 2: Radii, Chords, and Tangents](https://optimaondemand.github.io/optima-pilot-samples/hs-geometry-honors-w1/w1-lesson2-radii-chords-and-tangents.html)
+- [Lesson 3: Secants and Tangents](https://optimaondemand.github.io/optima-pilot-samples/hs-geometry-honors-w1/w1-lesson3-secants-and-tangents.html)
+- [Lesson 4: Constructing a Tangent](https://optimaondemand.github.io/optima-pilot-samples/hs-geometry-honors-w1/w1-lesson4-constructing-a-tangent.html)
+- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/hs-geometry-honors-w1/w1-week-1-check.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ Chemistry I Honors (Science · 2003350)
 
@@ -549,7 +561,19 @@ _Week 1 and major projects not posted yet_
 
 ### ★ Algebra 2 Honors (Mathematics · 1200340)
 
-_Week 1 and major projects not posted yet_
+#### Module 8: Rational Exponents and Radical Expressions
+
+**Week 1**
+
+- [Lesson 1: Rational Exponents](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson1-rational-exponents.html)
+- [Lesson 2: The Number e](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson2-the-number-e.html)
+- [Lesson 3: Radical Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson3-radical-expressions.html)
+- [Lesson 4: Adding and Subtracting Radical Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson4-adding-and-subtracting-radical-expressions.html)
+- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-week-1-check.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ Anatomy and Physiology (Grades 11–12 · Science · 2000350)
 
@@ -602,11 +626,33 @@ _Week 1 and major projects not posted yet_
 
 ### ★ Calculus Honors (Grades 9–12 · Mathematics · 1202300)
 
-_Week 1 and major projects not posted yet_
+#### Module 1: The Idea of a Limit
+
+**Week 1**
+
+- [Lesson 1: What a Limit Is](https://optimaondemand.github.io/optima-pilot-samples/hs-calculus-honors-w1/w1-lesson1-what-a-limit-is.html)
+- [Lesson 2: The Limit Laws](https://optimaondemand.github.io/optima-pilot-samples/hs-calculus-honors-w1/w1-lesson2-the-limit-laws.html)
+- [Week 1 Problem Set: Limits from Graphs and Tables](https://optimaondemand.github.io/optima-pilot-samples/hs-calculus-honors-w1/w1-week-1-problem-set.html)
+- [Week 1 Quiz: The Idea of a Limit](https://optimaondemand.github.io/optima-pilot-samples/hs-calculus-honors-w1/w1-week-1-quiz.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ Precalculus Honors (Grades 9–12 · Mathematics · 1202340)
 
-_Week 1 and major projects not posted yet_
+#### Unit 6: Right Triangle Trigonometry
+
+**Week 19**
+
+- [Lesson 1: Angles in Degrees and Radians](https://optimaondemand.github.io/optima-pilot-samples/hs-precalculus-honors-w19/w19-lesson1-angles-in-degrees-and-radians.html)
+- [Lesson 2: Coterminal Angles, Arc Length, and Sectors](https://optimaondemand.github.io/optima-pilot-samples/hs-precalculus-honors-w19/w19-lesson2-coterminal-angles-arc-length-and-sectors.html)
+- [Lesson 3: Right Triangle Trigonometry](https://optimaondemand.github.io/optima-pilot-samples/hs-precalculus-honors-w19/w19-lesson3-right-triangle-trigonometry.html)
+- [Lesson 4: Solving with Right Triangles](https://optimaondemand.github.io/optima-pilot-samples/hs-precalculus-honors-w19/w19-lesson4-solving-with-right-triangles.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ Probability and Statistics Honors (Grades 9–12 · Mathematics · 1210300)
 
@@ -614,9 +660,9 @@ _Week 1 and major projects not posted yet_
 
 **Week 19**
 
-- [Lesson 19.1: Statistics Begins with Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-l19-1/lesson-19-1-statistics-begins-with-data.html)
-- [Lesson 19.2: Frequency and Relative Frequency Tables](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/lesson-19-2-frequency-tables.html)
-- [Lesson 19.3: Displaying Categorical Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/lesson-19-3-displaying-categorical-data.html)
+- [Lesson 1: Statistics Begins with Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-w19/w19-lesson1-statistics-begins-with-data.html)
+- [Lesson 2: Frequency Tables](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-w19/w19-lesson2-frequency-tables.html)
+- [Lesson 3: Displaying Categorical Data](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-w19/w19-lesson3-displaying-categorical-data.html)
 
 **Major Projects**
 
