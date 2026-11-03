@@ -251,7 +251,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .pl-row.read i{background:var(--hi);color:#fff}
 .pl-row b{font-family:var(--head);font-size:18px}
 .pl-row span{font:600 13px var(--ui);color:var(--ink2)}
-.minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"f c" "o c";grid-template-rows:auto 1fr;gap:16px;align-items:start}
+.minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"f c";grid-template-rows:auto;gap:16px;align-items:start}
 .minis .card{padding:16px 18px;margin:0;font-size:16px}
 .minis .card.acc{grid-area:f}.minis .objs{grid-area:o}.minis .card.hi{grid-area:c}
 .minis .focusq{font-size:21px;margin:4px 0 6px}
@@ -456,9 +456,30 @@ body.reading-open{overflow:hidden}
 .intro .mag{position:sticky;top:76px}
 .intro-m .mini{margin:0}
 .intro-m .mini-h img{display:none}
-.stage0.bookrow{grid-template-columns:auto 1fr;margin:28px 0 0;padding:28px 0 8px;border-bottom:0;border-top:3px double var(--rule)}
+.stage0.bookrow{grid-template-columns:1fr auto;margin:28px 0 0;padding:28px 0 8px;border-bottom:0;border-top:3px double var(--rule)}
 @media (max-width:720px){.intro{grid-template-columns:1fr;gap:14px}.intro .mag{position:static}.stage0.bookrow{grid-template-columns:1fr;justify-items:center}}
 @media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
+@media (min-width:721px){.stage0.bookrow{grid-template-columns:1fr auto}.stage0.bookrow .bl-body{grid-column:1;grid-row:1}.stage0.bookrow .bigbook{grid-column:2;grid-row:1}}
+/* orientation band: objectives + lesson path, top of Arrive */
+.orient{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start;margin:26px 0 26px;padding:20px 22px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:12px}
+.orient .obj{margin:0}.orient .obj li{margin:0 0 10px;font-size:16px;line-height:1.45}.orient .obj li:last-child{margin:0}
+.orient .obj li{grid-template-columns:18px 1fr;gap:8px}.orient .obj li::before{content:"";width:9px;height:9px;border-radius:2px;transform:rotate(45deg);background:var(--acc);margin-top:9px;margin-left:3px}
+.o-path{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.o-path li{position:relative}
+.o-path li:not(:last-child)::after{content:"";position:absolute;left:21px;top:38px;bottom:-4px;width:2px;background:var(--line)}
+.o-path a,.o-path button{display:grid;grid-template-columns:30px 1fr;column-gap:12px;align-items:center;width:100%;padding:8px 6px;border:0;border-radius:8px;background:none;text-align:left;text-decoration:none;color:var(--ink);font:inherit;cursor:pointer}
+.o-path a:hover,.o-path button:hover{background:var(--acc-f)}
+.o-path i{grid-row:1/3;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--hi);color:#fff;font:700 13px var(--ui);font-style:normal;position:relative;z-index:1}
+.o-path b{font:700 16px/1.2 var(--head)}
+.o-path small{font-size:13px;line-height:1.3;color:var(--ink2)}
+.pnum{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--hi);color:#fff;font:700 11px/1 var(--ui);font-style:normal;letter-spacing:0;margin-right:8px;vertical-align:1px}
+#arrive-mini,#paper{scroll-margin-top:80px}
+/* ribbon: Ask Mr. Magister as his portrait */
+.askme{position:relative;flex:none;width:40px;height:40px;padding:0;border:2px solid var(--hi);border-radius:50%;background:var(--card);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.askme img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.askme i{position:absolute;right:-5px;bottom:-4px;width:18px;height:18px;border-radius:50%;background:var(--acc);color:#fff;border:2px solid var(--card);font:700 11px/14px var(--ui);font-style:normal;text-align:center}
+.askme:hover{transform:translateY(-1px);box-shadow:0 0 0 3px var(--hi-f)}
+.askme:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 @media (max-width:860px){
   .rt span{display:none}.rt{padding:0 11px}.rbar{padding:0 8px 0 12px}.rtitle .kicker{display:none}.rtitle b{font-size:16px}
   .stagebook{padding:4px 0 0;place-items:start center}
@@ -473,7 +494,8 @@ body.reading-open{overflow:hidden}
   .mag{width:auto;grid-template-columns:64px auto;align-items:center;justify-items:start;text-align:left;column-gap:12px}
   .mag img{grid-row:1/3;width:64px;height:64px;margin:0;border-width:3px}
   .mag small{display:none}.mag-b{display:flex;width:auto}
-  .minis{grid-template-columns:1fr;grid-template-areas:"f" "o" "c";grid-template-rows:auto}
+  .minis{grid-template-columns:1fr;grid-template-areas:"f" "c";grid-template-rows:auto}
+  .orient{grid-template-columns:1fr;padding:18px 16px;gap:16px}
   .stage0 .bl-body{width:100%}
   .pl-row{grid-template-columns:28px 1fr}.pl-row span{grid-column:2}
   .readcard{grid-template-columns:1fr;gap:14px}
@@ -855,7 +877,7 @@ input.name{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:1
   <div class="tools">
     
     <button class="btn ghost small" data-open="glossDrawer">&#128214; <span>Words</span></button>
-    <button class="btn ghost small" data-open="askDrawer">&#128172; <span>Ask Mr. Magister</span></button>
+    <button class="askme" data-open="askDrawer" aria-label="Ask Mr. Magister" title="Ask Mr. Magister"><img src="img/magister.jpg" alt=""><i aria-hidden="true">?</i></button>
   </div>
 </div></nav>
 
@@ -1562,7 +1584,7 @@ const STOPS = CFG.stops || ['Arrive', ...CFG.parts.map(p => p.stop || p.title), 
 const FINAL = STOPS.length - 1;
 const done = new Set(store.get('done') || []);
 function drawStops(c) {
-  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === c ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === FINAL ? '&#9733;' : i)}</i>${s}</button>`).join('');
+  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === c ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === FINAL ? '&#9733;' : i)}</i>${s}</button>`).filter((_, i) => !CFG.parts.length || i === 0 || i === FINAL).join('');
   $('.stop.on')?.scrollIntoView({ inline: 'center', block: 'nearest' });
 }
 let cur = 0;

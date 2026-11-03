@@ -251,7 +251,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .pl-row.read i{background:var(--hi);color:#fff}
 .pl-row b{font-family:var(--head);font-size:18px}
 .pl-row span{font:600 13px var(--ui);color:var(--ink2)}
-.minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"f c" "o c";grid-template-rows:auto 1fr;gap:16px;align-items:start}
+.minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"f c";grid-template-rows:auto;gap:16px;align-items:start}
 .minis .card{padding:16px 18px;margin:0;font-size:16px}
 .minis .card.acc{grid-area:f}.minis .objs{grid-area:o}.minis .card.hi{grid-area:c}
 .minis .focusq{font-size:21px;margin:4px 0 6px}
@@ -456,9 +456,30 @@ body.reading-open{overflow:hidden}
 .intro .mag{position:sticky;top:76px}
 .intro-m .mini{margin:0}
 .intro-m .mini-h img{display:none}
-.stage0.bookrow{grid-template-columns:auto 1fr;margin:28px 0 0;padding:28px 0 8px;border-bottom:0;border-top:3px double var(--rule)}
+.stage0.bookrow{grid-template-columns:1fr auto;margin:28px 0 0;padding:28px 0 8px;border-bottom:0;border-top:3px double var(--rule)}
 @media (max-width:720px){.intro{grid-template-columns:1fr;gap:14px}.intro .mag{position:static}.stage0.bookrow{grid-template-columns:1fr;justify-items:center}}
 @media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
+@media (min-width:721px){.stage0.bookrow{grid-template-columns:1fr auto}.stage0.bookrow .bl-body{grid-column:1;grid-row:1}.stage0.bookrow .bigbook{grid-column:2;grid-row:1}}
+/* orientation band: objectives + lesson path, top of Arrive */
+.orient{display:grid;grid-template-columns:1fr 300px;gap:28px;align-items:start;margin:26px 0 26px;padding:20px 22px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--acc);border-radius:12px}
+.orient .obj{margin:0}.orient .obj li{margin:0 0 10px;font-size:16px;line-height:1.45}.orient .obj li:last-child{margin:0}
+.orient .obj li{grid-template-columns:18px 1fr;gap:8px}.orient .obj li::before{content:"";width:9px;height:9px;border-radius:2px;transform:rotate(45deg);background:var(--acc);margin-top:9px;margin-left:3px}
+.o-path{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative}
+.o-path li{position:relative}
+.o-path li:not(:last-child)::after{content:"";position:absolute;left:21px;top:38px;bottom:-4px;width:2px;background:var(--line)}
+.o-path a,.o-path button{display:grid;grid-template-columns:30px 1fr;column-gap:12px;align-items:center;width:100%;padding:8px 6px;border:0;border-radius:8px;background:none;text-align:left;text-decoration:none;color:var(--ink);font:inherit;cursor:pointer}
+.o-path a:hover,.o-path button:hover{background:var(--acc-f)}
+.o-path i{grid-row:1/3;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--hi);color:#fff;font:700 13px var(--ui);font-style:normal;position:relative;z-index:1}
+.o-path b{font:700 16px/1.2 var(--head)}
+.o-path small{font-size:13px;line-height:1.3;color:var(--ink2)}
+.pnum{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--hi);color:#fff;font:700 11px/1 var(--ui);font-style:normal;letter-spacing:0;margin-right:8px;vertical-align:1px}
+#arrive-mini,#paper{scroll-margin-top:80px}
+/* ribbon: Ask Mr. Magister as his portrait */
+.askme{position:relative;flex:none;width:40px;height:40px;padding:0;border:2px solid var(--hi);border-radius:50%;background:var(--card);cursor:pointer;transition:transform .15s,box-shadow .15s}
+.askme img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.askme i{position:absolute;right:-5px;bottom:-4px;width:18px;height:18px;border-radius:50%;background:var(--acc);color:#fff;border:2px solid var(--card);font:700 11px/14px var(--ui);font-style:normal;text-align:center}
+.askme:hover{transform:translateY(-1px);box-shadow:0 0 0 3px var(--hi-f)}
+.askme:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 @media (max-width:860px){
   .rt span{display:none}.rt{padding:0 11px}.rbar{padding:0 8px 0 12px}.rtitle .kicker{display:none}.rtitle b{font-size:16px}
   .stagebook{padding:4px 0 0;place-items:start center}
@@ -473,7 +494,8 @@ body.reading-open{overflow:hidden}
   .mag{width:auto;grid-template-columns:64px auto;align-items:center;justify-items:start;text-align:left;column-gap:12px}
   .mag img{grid-row:1/3;width:64px;height:64px;margin:0;border-width:3px}
   .mag small{display:none}.mag-b{display:flex;width:auto}
-  .minis{grid-template-columns:1fr;grid-template-areas:"f" "o" "c";grid-template-rows:auto}
+  .minis{grid-template-columns:1fr;grid-template-areas:"f" "c";grid-template-rows:auto}
+  .orient{grid-template-columns:1fr;padding:18px 16px;gap:16px}
   .stage0 .bl-body{width:100%}
   .pl-row{grid-template-columns:28px 1fr}.pl-row span{grid-column:2}
   .readcard{grid-template-columns:1fr;gap:14px}
@@ -568,16 +590,17 @@ body.reading-open{overflow:hidden}
   <div class="tools">
     <button class="btn ghost small" data-openbook="" id="bookBtn">&#128240; <span>The Paper</span></button>
     <button class="btn ghost small" data-open="glossDrawer">&#128214; <span>Words</span></button>
-    <button class="btn ghost small" data-open="askDrawer">&#128172; <span>Ask Mr. Magister</span></button>
+    <button class="askme" data-open="askDrawer" aria-label="Ask Mr. Magister" title="Ask Mr. Magister"><img src="img/magister.jpg" alt=""><i aria-hidden="true">?</i></button>
   </div>
 </div></nav>
 
 <main class="wrap">
 <section class="step" data-step="0">
-  <div class="intro">
+  <div class="orient"><div class="o-objs"><div class="label">I will be able to</div><ol class="obj"><li><span>Explain why scarcity forces individuals, businesses, and governments to make choices.</span></li><li><span>Distinguish microeconomics from macroeconomics and give an example of each.</span></li><li><span>Describe how opportunity cost and incentives shape a decision, large or small.</span></li></ol></div><ol class="o-path" aria-label="Lesson path"><li><a href="#arrive-mini"><i>1</i><b>Mini-lesson</b><small>The Problem Every Society Solves</small></a></li><li><a href="#paper"><i>2</i><b>The Paper</b><small>Parts 1 to 2</small></a></li><li><button data-go="3"><i>3</i><b>Your Turn</b><small>Decision Dissection</small></button></li></ol></div>
+  <div class="intro" id="arrive-mini">
     <div class="mag"><img src="img/magister.jpg" alt="Mr. Magister"><div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
       <div class="mag-b"><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div></div>
-    <div class="intro-m"><div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>The Problem Every Society Solves</b></div></div><svg class="ms m1" viewBox="0 0 600 340" role="img" aria-label="Scarcity: unlimited wants on one side, limited resources on the other, and the three questions every society answers">
+    <div class="intro-m"><div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small><i class="pnum">1</i>Mr. Magister · Mini-lesson</small><b>The Problem Every Society Solves</b></div></div><svg class="ms m1" viewBox="0 0 600 340" role="img" aria-label="Scarcity: unlimited wants on one side, limited resources on the other, and the three questions every society answers">
   <g class="pan wants">
     <rect x="8" y="8" width="236" height="196" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
     <text x="20" y="34" class="hd">WHAT PEOPLE WANT</text>
@@ -627,12 +650,11 @@ body.reading-open{overflow:hidden}
   </div>
   <div class="minis">
     <div class="card acc"><div class="label">Today's Focus</div><p class="focusq">How do people make decisions when they cannot have everything they want?</p><p style="margin:0">You already think like an economist more than you realize. Every time you choose one thing and give up another &mdash; a lunch, an evening, a purchase &mdash; you are wrestling with the problem this whole course is built on: resources are limited, wants are not. Economics is the discipline that studies how people, businesses, and governments handle that gap.</p></div>
-    <details class="card objs"><summary class="label">Objectives</summary><ol class="obj"><li><span>I will be able to explain why scarcity forces individuals, businesses, and governments to make choices.</span></li><li><span>I will be able to distinguish microeconomics from macroeconomics and give an example of each.</span></li><li><span>I will be able to describe how opportunity cost and incentives shape a decision, large or small.</span></li></ol></details>
     <div class="card hi"><div class="label">Quick Check-in</div><p style="margin:0 0 12px">Think back to one real choice you made this week. How did you decide? (No wrong answer — just check in with yourself.)</p><div class="opts" id="checkin"><button class="opt" data-v="0">📋 I planned it out ahead of time</button><button class="opt" data-v="1">⚡ I decided in the moment</button><button class="opt" data-v="2">🤔 I tried to avoid choosing</button></div><div class="note" id="checkinNote"></div></div>
   </div>
-  <div class="stage0 bookrow">
+  <div class="stage0 bookrow" id="paper">
     <button class="bigbook" data-openbook="" aria-label="Open The Paper"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.01</span><span>Economics Honors</span></div><div class="hl">What is Economics?</div><div class="dk">Resources are limited, wants are not</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></button>
-    <div class="bl-body"><div class="kicker">The Paper</div><h2>Parts 1 to 2</h2>
+    <div class="bl-body"><div class="kicker"><i class="pnum">2</i>The Paper</div><h2>Parts 1 to 2</h2>
       <div class="partlist" id="partlist"><button class="pl-row" data-go="1"><i>1</i><b>Scarcity</b><span></span></button><button class="pl-row" data-go="2"><i>2</i><b>Two Ways to Zoom</b><span></span></button></div>
       <div class="wrow"><button class="btn" data-openbook="">&#128240; Open The Paper</button><button class="btn ghost" data-go="3">Your Turn &rarr;</button></div></div>
   </div>
@@ -664,7 +686,7 @@ body.reading-open{overflow:hidden}
 </svg>
 <div class="sub"></div><div class="mctl"></div></div>
 </section><section class="step" data-step="3">
-  <div class="parthead"><div><div class="kicker">Your Turn</div><h2>Decision Dissection</h2></div></div>
+  <div class="parthead"><div><div class="kicker"><i class="pnum">3</i>Your Turn</div><h2>Decision Dissection</h2></div></div>
   <div class="dbl"></div>
   
   <div class="card acc desk" id="desk-0">
@@ -781,7 +803,7 @@ const STOPS = CFG.stops || ['Arrive', ...CFG.parts.map(p => p.stop || p.title), 
 const FINAL = STOPS.length - 1;
 const done = new Set(store.get('done') || []);
 function drawStops(c) {
-  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === c ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === FINAL ? '&#9733;' : i)}</i>${s}</button>`).join('');
+  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === c ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === FINAL ? '&#9733;' : i)}</i>${s}</button>`).filter((_, i) => !CFG.parts.length || i === 0 || i === FINAL).join('');
   $('.stop.on')?.scrollIntoView({ inline: 'center', block: 'nearest' });
 }
 let cur = 0;
