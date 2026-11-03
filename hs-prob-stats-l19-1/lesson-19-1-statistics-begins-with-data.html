@@ -464,6 +464,12 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
 .inst-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
 .inst-row .btn{display:inline-flex; align-items:center; gap:8px}
 .inst-row svg{width:20px; height:20px}
+.inst-row svg.face-ic{width:26px; height:26px; margin:-4px 0; border-radius:50%; box-shadow:0 0 0 1.5px var(--blue)}
+.obj-note .face{position:absolute; right:48px; bottom:9px; width:34px; height:34px; border-radius:50%; overflow:hidden; box-shadow:0 0 0 2px #fff, 0 0 0 3.5px var(--blue)}
+.obj-note .face svg{position:static; width:100%; height:100%}
+.letter .sign .face{display:inline-block; width:30px; height:30px; margin-left:8px; vertical-align:middle; border-radius:50%; overflow:hidden; box-shadow:0 0 0 1.5px var(--blue)}
+.letter .sign .face svg{display:block; width:100%; height:100%}
+@media (max-width:760px){ .obj-note .face{display:none} }
 @media (max-width:760px){
   .rail{top:auto; bottom:10px; right:10px; transform:none; gap:12px; flex-direction:row; align-items:flex-end}
   .obj-calc, .obj-calc:hover, .obj-calc.on{width:50px; transform:rotate(-6deg)}
@@ -547,7 +553,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
       <div><b>Calculator</b>The free Desmos Scientific Calculator, built in: the calculator tab on the right edge of every sheet. Or in another tab: <a href="https://www.desmos.com/scientific" target="_blank" rel="noopener">desmos.com/scientific</a></div>
       <div><b>Spreadsheet</b>Microsoft Excel (desktop or web) for the table-building exercise.</div>
     </div>
-    <div class="inst-row"><button class="btn" type="button" data-open="calc"><svg><use href="#ic-calc"/></svg>Open the calculator</button><button class="btn" type="button" data-open="chat"><svg><use href="#ic-plane"/></svg>Ask <span data-t="short">Dr. Usborne</span></button></div>
+    <div class="inst-row"><button class="btn" type="button" data-open="calc"><svg><use href="#ic-calc"/></svg>Open the calculator</button><button class="btn" type="button" data-open="chat"><svg class="face-ic" viewBox="0 0 86 86" aria-hidden="true"><use href="#usborne"/></svg>Ask <span data-t="short">Dr. Usborne</span></button></div>
     <h3>Statistics is the science of learning from data</h3>
     <p>Every claim you have heard this month that begins “studies show” or “most people prefer” rests on one thing: somebody collected <span class="term">data</span>. Statistics is the discipline that asks how to collect it, how to display it, and how far it can honestly be trusted. Semester 1 taught you to reason about chance when the rules of the game are known: a fair coin, a well-shuffled deck. Semester 2 turns the problem around. Now the rules are <em>not</em> known; all we have is what we observed, and we must reason backward from it.</p>
     <p>Honesty is this module's virtue, and it begins in a very plain place: saying exactly what was measured, on whom, and in what units. A graph can be drawn beautifully and still deceive if nobody can tell what its numbers mean. So before we draw anything, we learn the vocabulary of data itself.</p>
@@ -560,7 +566,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
   <div class="tb"><div><small>Sheet</small><div class="no">01</div></div><div><small>Station</small><h2 id="h1">Individuals, Variables, and Data</h2></div><div class="tm"><small>Time</small>≈ 12 min</div><div class="ck"><small>Status</small><span class="stat">—</span></div><div class="stamp"><i class="owl" role="img" aria-label="Optima Academy Online"></i></div></div>
   <div class="sb">
 
-    <div class="voiced" id="v1">
+    <div class="voiced" id="v1" data-audio="audio/usborne-v1.mp3">
       <div class="v-head">
         <div class="portrait"><svg role="img" aria-label="Portrait of Dr. Oswaldo Usborne"><use href="#usborne"/></svg></div>
         <div class="v-who">
@@ -629,7 +635,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
   <div class="tb"><div><small>Sheet</small><div class="no">02</div></div><div><small>Station</small><h2 id="h2">Population and Sample</h2></div><div class="tm"><small>Time</small>≈ 15 min</div><div class="ck"><small>Status</small><span class="stat">—</span></div><div class="stamp"><i class="owl" role="img" aria-label="Optima Academy Online"></i></div></div>
   <div class="sb">
 
-    <div class="voiced" id="v2">
+    <div class="voiced" id="v2" data-audio="audio/usborne-v2.mp3">
       <div class="v-head">
         <div class="portrait"><svg role="img" aria-label="Portrait of Dr. Oswaldo Usborne"><use href="#usborne"/></svg></div>
         <div class="v-who">
@@ -704,7 +710,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
       <p><span class="term">Categorical</span> variables place each individual into a group or category: favorite subject, rides the bus (yes/no), eye color. Counting how many fall in each category makes sense; averaging them does not. <span class="term">Numerical</span> variables are measurements or counts for which arithmetic is meaningful: hours of sleep, number of siblings, height. Numerical variables split once more: <span class="term">discrete</span> variables are <em>counted</em> and take separated values (0, 1, 2, 3 siblings), while <span class="term">continuous</span> variables are <em>measured</em> and can take any value in an interval (7.5 hours, 6.25 hours, 7.3333 hours…).</p>
     </div>
 
-    <div class="voiced" id="v3">
+    <div class="voiced" id="v3" data-audio="audio/usborne-v3.mp3">
       <div class="v-head">
         <div class="portrait"><svg role="img" aria-label="Portrait of Dr. Oswaldo Usborne"><use href="#usborne"/></svg></div>
         <div class="v-who">
@@ -1028,7 +1034,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
 </svg>
 <div class="rail" aria-label="Tools">
   <button type="button" id="railCalc" class="obj-calc" aria-controls="calcDrawer" aria-label="Open the scientific calculator" title="Calculator"><svg viewBox="0 0 100 150"><use href="#obj-calc"/></svg></button>
-  <button type="button" id="railChat" class="obj-note" aria-controls="chatDrawer"><span class="pin" aria-hidden="true"></span><span class="k">Questions?</span><span class="h">Ask <span data-t="short">Dr. Usborne</span></span><svg viewBox="0 0 40 24" aria-hidden="true"><path d="M2 20c6-2 9-6 13-6" fill="none" stroke="#0E1C42" stroke-width="1.2" stroke-dasharray="2 2.5"/><path d="M15 12 38 3l-8 18-5-6z" fill="#fff" stroke="#0E1C42" stroke-width="1.4" stroke-linejoin="round"/><path d="M38 3 25 15l-2 6" fill="none" stroke="#0E1C42" stroke-width="1.2"/></svg></button>
+  <button type="button" id="railChat" class="obj-note" aria-controls="chatDrawer"><span class="pin" aria-hidden="true"></span><span class="k">Questions?</span><span class="h">Ask <span data-t="short">Dr. Usborne</span></span><span class="face"><svg viewBox="0 0 86 86" aria-hidden="true"><use href="#usborne"/></svg></span><svg viewBox="0 0 40 24" aria-hidden="true"><path d="M2 20c6-2 9-6 13-6" fill="none" stroke="#0E1C42" stroke-width="1.2" stroke-dasharray="2 2.5"/><path d="M15 12 38 3l-8 18-5-6z" fill="#fff" stroke="#0E1C42" stroke-width="1.4" stroke-linejoin="round"/><path d="M38 3 25 15l-2 6" fill="none" stroke="#0E1C42" stroke-width="1.2"/></svg></button>
 </div>
 
 <div class="drawer" id="calcDrawer" role="dialog" aria-label="Scientific calculator">
@@ -1173,7 +1179,8 @@ function Voiced(el, cues, render){
     if (t.cls === 'spot') { if (!live) return; clearSpots(); els(t.sel).forEach(function(e){ e.classList.add('spot'); spotted.push(e); }); }
     else els(t.sel).forEach(function(e){ e.classList.add(t.cls); });
   }
-  function showTime(done){ fill.style.width = (done / total * 100) + '%'; time.textContent = fmt(done / CPS) + ' / ' + fmt(total / CPS); }
+  var cps = CPS;
+  function showTime(done){ fill.style.width = (done / total * 100) + '%'; time.textContent = fmt(done / cps) + ' / ' + fmt(total / cps); }
   function setPos(c){
     var cue = cues[i]; if (!cue) return;
     while (fired < cue.trig.length && cue.trig[fired].pos <= c) { fire(cue.trig[fired], true); fired++; }
@@ -1252,7 +1259,7 @@ function Voiced(el, cues, render){
     steps.appendChild(b);
   });
   if (el.dataset.audio) {
-    audio = new Audio(el.dataset.audio);
+    audio = new Audio(el.dataset.audio); audio.preload = 'metadata';
     audio.addEventListener('timeupdate', function(){
       var t = audio.currentTime, k = 0;
       for (var j = 0; j < n; j++) if ((cues[j].t || 0) <= t) k = j;
@@ -1261,6 +1268,7 @@ function Voiced(el, cues, render){
       setPos((t - t0) / Math.max(0.1, t1 - t0) * chars[k]);
     });
     audio.addEventListener('ended', finish);
+    audio.addEventListener('loadedmetadata', function(){ if (audio.duration) { cps = total / audio.duration; showTime(0); } });
   }
   btn.addEventListener('click', function(){ playing ? pause() : play(); });
   $('.v-back', el).addEventListener('click', function(){ skip(-1); });
@@ -1303,17 +1311,17 @@ function stepClasses(stage, base, k){
     (function tick(){ c = Math.min(to, c + 1); cnt.textContent = c; if (c < to) raf = setTimeout(tick, 45); })();
   }
   Voiced($('#v1'), [
-    { say: "Every claim that begins \"studies show\" rests on one thing: somebody collected data. So let's look at what data actually is." },
-    { say: "Here is a small, made-up table. Each row is one individual: the person, animal, or thing we collect information about. Here, five students.",
+    { t: 0, say: "Every claim that begins \"studies show\" rests on one thing: somebody collected data. So let's look at what data actually is." },
+    { t: 10.25, say: "Here is a small, made-up table. Each row is one individual: the person, animal, or thing we collect information about. Here, five students.",
       spots: [[/Each row/, '#v1stage tbody tr:first-child td'], [/five students/, col(0)]] },
-    { say: "Each column is a variable: a characteristic that can change from one individual to the next. Favorite subject. Hours of sleep. Number of siblings. Locker number. Rides the bus.",
+    { t: 21.09, say: "Each column is a variable: a characteristic that can change from one individual to the next. Favorite subject. Hours of sleep. Number of siblings. Locker number. Rides the bus.",
       spots: [[/Favorite subject/, col(1)], [/Hours of sleep/, col(2)], [/Number of siblings/, col(3)], [/Locker number/, col(4)], [/Rides the bus/, col(5)]] },
-    { say: "Each cell holds one recorded value, and the data are all of those values together. Five individuals, five variables, twenty-five recorded values.",
+    { t: 34.01, say: "Each cell holds one recorded value, and the data are all of those values together. Five individuals, five variables, twenty-five recorded values.",
       spots: [[/one recorded value/, '#v1stage tbody tr:nth-child(3) td:nth-child(3)'], [/Five individuals/, '#v1stage tbody [data-col="0"]'],
               [/five variables/, '#v1stage thead th:not(:first-child)'], [/twenty-five/, function(){ count(25); return [$('#v1stage .ann-cnt')]; }]] },
-    { say: "Notice the word variable. Favorite subject takes different values: math, history, art, Latin. If every student answered the same way, there would be nothing to study. Statistics exists because of variation.",
+    { t: 45.01, say: "Notice the word variable. Favorite subject takes different values: math, history, art, Latin. If every student answered the same way, there would be nothing to study. Statistics exists because of variation.",
       spots: [[/math/, subj('Math')], [/history/, subj('History')], [/\bart\b/, subj('Art')], [/Latin/, subj('Latin')], [/nothing to study/, '#v1stage tbody [data-col="1"]']] },
-    { say: "And here is where honesty begins: say exactly what was measured, on whom, and in what units. Hours of sleep, last night, for five students. A graph can be beautiful and still deceive if nobody can tell what its numbers mean.",
+    { t: 60.61, say: "And here is where honesty begins: say exactly what was measured, on whom, and in what units. Hours of sleep, last night, for five students. A graph can be beautiful and still deceive if nobody can tell what its numbers mean.",
       spots: [[/in what units/, '#v1stage .unit'], [/Hours of sleep, last night/, '#v1stage thead th:nth-child(3)'], [/for five students/, '#v1stage .ann-who']] }
   ], function(k, live){
     stepClasses(stage, 'v-stage v1', k);
@@ -1347,18 +1355,18 @@ function fillField(el){ var h = ''; for (var k = 0; k < 800; k++) h += '<i></i>'
     return [$('#v2field .corner-tag')];
   }
   Voiced($('#v2'), [
-    { say: "Suppose we want to know how many hours the 800 students at a school sleep on a school night. Those 800 students are the population: the entire group we want to learn about.",
+    { t: 0, say: "Suppose we want to know how many hours the 800 students at a school sleep on a school night. Those 800 students are the population: the entire group we want to learn about.",
       spots: [[/the 800 students/, '#v2field'], [/the population/, '#v2lab']] },
-    { say: "Asking all 800 is called a census.", spots: [[/census/, '#v2lab']] },
-    { say: "Asking 60 of them gives a sample: the part of the population we actually examine. The sample size is n equals 60.",
+    { t: 11.95, say: "Asking all 800 is called a census.", spots: [[/census/, '#v2lab']] },
+    { t: 15.71, say: "Asking 60 of them gives a sample: the part of the population we actually examine. The sample size is n equals 60.",
       spots: [[/60 of them/, '#v2field i.s'], [/n equals 60/, '#v2n']] },
-    { say: "Why not always take a census? First, it can cost too much time or money.",
+    { t: 24.89, say: "Why not always take a census? First, it can cost too much time or money.",
       spots: [[/cost too much/, card(3), 'on'], [/cost too much/, card(3)]] },
-    { say: "Second, the population may be too large or spread out to reach.",
+    { t: 30.61, say: "Second, the population may be too large or spread out to reach.",
       spots: [[/too large/, card(4), 'on'], [/too large/, card(4)]] },
-    { say: "Third, sometimes the measurement destroys the thing measured. A company that tests how long its batteries last can't test every battery, because a battery tested to failure can no longer be sold.",
+    { t: 35.35, say: "Third, sometimes the measurement destroys the thing measured. A company that tests how long its batteries last can't test every battery, because a battery tested to failure can no longer be sold.",
       spots: [[/destroys/, card(5), 'on'], [/destroys/, card(5)], [/tested to failure/, card(5) + ' svg']] },
-    { say: "So we sample, and we stay honest about the difference between what the sample showed and what the whole population is like. Suppose we asked only the 60 students in the library at seven in the morning. Would they sleep like everyone else? A sample is only as trustworthy as the way it was chosen.",
+    { t: 48.05, say: "So we sample, and we stay honest about the difference between what the sample showed and what the whole population is like. Suppose we asked only the 60 students in the library at seven in the morning. Would they sleep like everyone else? A sample is only as trustworthy as the way it was chosen.",
       spots: [[/in the library/, library], [/Would they sleep/, '#v2field i.s'], [/trustworthy/, '#v2warn', 'on']] }
   ], function(k, live){
     var lib = k === 6 && !live;
@@ -1431,19 +1439,19 @@ function fillField(el){ var h = ''; for (var k = 0; k < 800; k++) h += '<i></i>'
   function leaf(id, r){ return '#' + id + ', #v3tbl tbody tr:nth-child(' + r + ') td:last-child'; }
   var Q1 = '#e-q1, #n-q1';
   Voiced($('#v3'), [
-    { say: "Variables come in two families, and the family decides which displays and calculations make sense. For each variable, I ask two questions.",
+    { t: 0, say: "Variables come in two families, and the family decides which displays and calculations make sense. For each variable, I ask two questions.",
       spots: [[/two families/, '#n-cat, #n-dis, #n-con'], [/two questions/, '#n-q1, #n-q2']] },
-    { say: "Favorite subject. Would adding or averaging the values tell us anything? No. It places each student in a group. Categorical.",
+    { t: 10.17, say: "Favorite subject. Would adding or averaging the values tell us anything? No. It places each student in a group. Categorical.",
       spots: [[/adding or averaging/, Q1, 'lit'], [/\bNo\b/, '#e-no', 'lit'], [/Categorical/, leaf('n-cat', 1), 'lit']] },
-    { say: "Hours of sleep. Averaging makes sense, so it's numerical. Was it counted or measured? Measured. It can take any value in an interval: six and a quarter, seven and a half. Numerical, continuous.",
+    { t: 19.55, say: "Hours of sleep. Averaging makes sense, so it's numerical. Was it counted or measured? Measured. It can take any value in an interval: six and a quarter, seven and a half. Numerical, continuous.",
       spots: [[/Averaging makes sense/, Q1, 'lit'], [/numerical/, '#e-yes', 'lit'], [/counted or measured/, '#n-q2', 'lit'], [/Measured\./, '#e-mea', 'lit'], [/Numerical, continuous/, leaf('n-con', 2), 'lit']] },
-    { say: "Number of siblings. Numerical, and counted: zero, one, two, three, with nothing in between. Numerical, discrete.",
+    { t: 34.23, say: "Number of siblings. Numerical, and counted: zero, one, two, three, with nothing in between. Numerical, discrete.",
       spots: [[/Numerical, and/, Q1 + ', #e-yes', 'lit'], [/counted/, '#n-q2, #e-cnt', 'lit'], [/Numerical, discrete/, leaf('n-dis', 3), 'lit']] },
-    { say: "Locker number. It's written in digits, so a spreadsheet would happily average 214 and 407 and report 310 and a half. Locker 310 and a half means nothing. A locker number is a label. Categorical.",
+    { t: 43.89, say: "Locker number. It's written in digits, so a spreadsheet would happily average 214 and 407 and report 310 and a half. Locker 310 and a half means nothing. A locker number is a label. Categorical.",
       spots: [[/average 214/, Q1, 'lit'], [/average 214/, '#trap', 'on'], [/means nothing/, '#trap'], [/is a label/, '#e-no', 'lit'], [/Categorical/, leaf('n-cat', 4), 'lit']] },
-    { say: "Rides the bus? Yes or no. A label for a group. Categorical.",
+    { t: 59.79, say: "Rides the bus? Yes or no. A label for a group. Categorical.",
       spots: [[/Yes or no/, Q1, 'lit'], [/A label/, '#e-no', 'lit'], [/Categorical/, leaf('n-cat', 5), 'lit']] },
-    { say: "The only judgment call was the locker number, and it's the one that matters. The tool does not know what the numbers mean. You do.",
+    { t: 65.05, say: "The only judgment call was the locker number, and it's the one that matters. The tool does not know what the numbers mean. You do.",
       spots: [[/locker number/, '#v3tbl tbody tr:nth-child(4) td'], [/The tool does not know/, '#v3moral', 'on']] }
   ], function(k, live){
     rows.forEach(function(r, j){
@@ -1958,7 +1966,7 @@ function usborneAnswer(q){
     list.appendChild(d); list.scrollTop = list.scrollHeight; return d;
   }
   function mine(q){ return '<div class="salute">Dear ' + TEACHER.short + ',</div>' + esc(q).replace(/\n/g, '<br>'); }
-  function his(a){ return '<div class="salute">Dear student,</div>' + esc(a) + '<div class="sign">' + TEACHER.short + '</div>'; }
+  function his(a){ return '<div class="salute">Dear student,</div>' + esc(a) + '<div class="sign">' + TEACHER.short + '<span class="face"><svg viewBox=\"0 0 86 86\" aria-hidden=\"true\"><use href=\"#usborne\"/></svg></span></div>'; }
   function fly(dir, done){ plane.className = 'plane ' + dir; setTimeout(function(){ plane.className = 'plane'; if (done) done(); }, 1300); }
   var LOG = ST.misc.chat = ST.misc.chat || [];
   LOG.forEach(function(m){ letter('mine', mine(m.q)); letter('his', his(m.a)); });

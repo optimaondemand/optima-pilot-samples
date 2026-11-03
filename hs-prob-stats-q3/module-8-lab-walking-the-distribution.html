@@ -464,6 +464,12 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
 .inst-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px}
 .inst-row .btn{display:inline-flex; align-items:center; gap:8px}
 .inst-row svg{width:20px; height:20px}
+.inst-row svg.face-ic{width:26px; height:26px; margin:-4px 0; border-radius:50%; box-shadow:0 0 0 1.5px var(--blue)}
+.obj-note .face{position:absolute; right:48px; bottom:9px; width:34px; height:34px; border-radius:50%; overflow:hidden; box-shadow:0 0 0 2px #fff, 0 0 0 3.5px var(--blue)}
+.obj-note .face svg{position:static; width:100%; height:100%}
+.letter .sign .face{display:inline-block; width:30px; height:30px; margin-left:8px; vertical-align:middle; border-radius:50%; overflow:hidden; box-shadow:0 0 0 1.5px var(--blue)}
+.letter .sign .face svg{display:block; width:100%; height:100%}
+@media (max-width:760px){ .obj-note .face{display:none} }
 @media (max-width:760px){
   .rail{top:auto; bottom:10px; right:10px; transform:none; gap:12px; flex-direction:row; align-items:flex-end}
   .obj-calc, .obj-calc:hover, .obj-calc.on{width:50px; transform:rotate(-6deg)}
@@ -622,7 +628,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
       <div><b>Calculator</b>The free Desmos Scientific Calculator, built in: the calculator tab on the right edge of every sheet. Or in another tab: <a href="https://www.desmos.com/scientific" target="_blank" rel="noopener">desmos.com/scientific</a></div>
       <div><b>Time</b>About 30 uninterrupted minutes. The twist near the end is optional and takes about five more; skip it if you are past 30 minutes.</div>
     </div>
-    <div class="inst-row"><button class="btn" type="button" data-open="calc"><svg><use href="#ic-calc"/></svg>Open the calculator</button><button class="btn" type="button" data-open="chat"><svg><use href="#ic-plane"/></svg>Ask <span data-t="short">Dr. Usborne</span></button></div>
+    <div class="inst-row"><button class="btn" type="button" data-open="calc"><svg><use href="#ic-calc"/></svg>Open the calculator</button><button class="btn" type="button" data-open="chat"><svg class="face-ic" viewBox="0 0 86 86" aria-hidden="true"><use href="#usborne"/></svg>Ask <span data-t="short">Dr. Usborne</span></button></div>
     <h3>Walk the numbers, do not just read them</h3>
     <p>This module's virtue is courtesy. A number you hand to a reader should fit the data it stands for, and you owe the reader an honest word about what it leaves out. Today you do not read summary numbers off a page: you walk them. Fifteen data values stand as tokens on a numbered strip. You will stand on the <span class="term">mean</span>, pace out one <span class="term">standard deviation</span> each way, count how many tokens fall inside, place the <span class="term">median</span> and the <span class="term">quartiles</span>, and measure the gap from the median to the mean. Then you tell the story of the distribution: which way it leans, what pulled the mean, which pair of summaries you would hand a reader, and one thing every summary hides. A skew you have walked is a skew you will recognize on sight. All the data in this lab are constructed (made up).</p>
     <h3>Have these three ideas ready</h3>
@@ -977,7 +983,7 @@ footer{font-size:13px; color:var(--mute); text-align:center; padding:20px 0 0; f
 </svg>
 <div class="rail" aria-label="Tools">
   <button type="button" id="railCalc" class="obj-calc" aria-controls="calcDrawer" aria-label="Open the scientific calculator" title="Calculator"><svg viewBox="0 0 100 150"><use href="#obj-calc"/></svg></button>
-  <button type="button" id="railChat" class="obj-note" aria-controls="chatDrawer"><span class="pin" aria-hidden="true"></span><span class="k">Questions?</span><span class="h">Ask <span data-t="short">Dr. Usborne</span></span><svg viewBox="0 0 40 24" aria-hidden="true"><path d="M2 20c6-2 9-6 13-6" fill="none" stroke="#0E1C42" stroke-width="1.2" stroke-dasharray="2 2.5"/><path d="M15 12 38 3l-8 18-5-6z" fill="#fff" stroke="#0E1C42" stroke-width="1.4" stroke-linejoin="round"/><path d="M38 3 25 15l-2 6" fill="none" stroke="#0E1C42" stroke-width="1.2"/></svg></button>
+  <button type="button" id="railChat" class="obj-note" aria-controls="chatDrawer"><span class="pin" aria-hidden="true"></span><span class="k">Questions?</span><span class="h">Ask <span data-t="short">Dr. Usborne</span></span><span class="face"><svg viewBox="0 0 86 86" aria-hidden="true"><use href="#usborne"/></svg></span><svg viewBox="0 0 40 24" aria-hidden="true"><path d="M2 20c6-2 9-6 13-6" fill="none" stroke="#0E1C42" stroke-width="1.2" stroke-dasharray="2 2.5"/><path d="M15 12 38 3l-8 18-5-6z" fill="#fff" stroke="#0E1C42" stroke-width="1.4" stroke-linejoin="round"/><path d="M38 3 25 15l-2 6" fill="none" stroke="#0E1C42" stroke-width="1.2"/></svg></button>
 </div>
 
 <div class="drawer" id="calcDrawer" role="dialog" aria-label="Scientific calculator">
@@ -1959,7 +1965,7 @@ function usborneAnswer(q){
     list.appendChild(d); list.scrollTop = list.scrollHeight; return d;
   }
   function mine(q){ return '<div class="salute">Dear ' + TEACHER.short + ',</div>' + esc(q).replace(/\n/g, '<br>'); }
-  function his(a){ return '<div class="salute">Dear student,</div>' + esc(a) + '<div class="sign">' + TEACHER.short + '</div>'; }
+  function his(a){ return '<div class="salute">Dear student,</div>' + esc(a) + '<div class="sign">' + TEACHER.short + '<span class="face"><svg viewBox=\"0 0 86 86\" aria-hidden=\"true\"><use href=\"#usborne\"/></svg></span></div>'; }
   function fly(dir, done){ plane.className = 'plane ' + dir; setTimeout(function(){ plane.className = 'plane'; if (done) done(); }, 1300); }
   var LOG = ST.misc.chat = ST.misc.chat || [];
   LOG.forEach(function(m){ letter('mine', mine(m.q)); letter('his', his(m.a)); });
