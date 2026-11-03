@@ -457,6 +457,13 @@ _Week 1 and major projects not posted yet_
 **Major Project**
 
 - [Module 3 Project: The Thornfield Chronicle](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/module-3-project-thornfield-chronicle.html)
+- [Lesson: The Workshop](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/proj-lesson1-the-workshop.html)
+- [Lesson: Going to Press](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/proj-lesson2-going-to-press.html)
+- [Chronicle Audio Minute](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/audio-minute.html)
+- [The Chronicle Online](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/the-chronicle-online.html)
+- [Graded Recitation](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/graded-recitation.html)
+- [Recorded Reading & Reflection: Module 3](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/recorded-reading-reflection.html)
+- [Quarterly Reading Check: Module 3](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/quarterly-reading-check.html)
 
 ### ★ English III Honors (English Language Arts · 1001380)
 
