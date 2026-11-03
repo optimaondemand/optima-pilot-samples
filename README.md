@@ -347,6 +347,8 @@ _Not posted yet_
 - [Module 6 Project: Literary Analysis Essay](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/module-6-project.html)
 - [Lesson: Build Your Case](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m6-project1-build-your-case.html)
 - [Lesson: Write Your Essay](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m6-project2-write-your-essay.html)
+- [Independent Reading Check: Q3](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m6-independent-reading-check.html)
+- [Recitation 6: A Passage from the Forest](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m6-recitation.html)
 
 #### The Crucible
 
@@ -412,6 +414,8 @@ _Week 1 and major projects not posted yet_
 - [Module 3 Project: The Players' Company](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-projects/module-3-project-players-company.html)
 - [Lesson: The Director's Program](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-projects/proj-lesson1-the-directors-program.html)
 - [Lesson: Opening Night](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-projects/proj-lesson2-opening-night.html)
+- [Independent Reading Check: Q3](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-projects/independent-reading-check.html)
+- [Recitation Q3: Say It From Memory](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-projects/recitation.html)
 
 ### ★ English 2 (Mississippi) (English Language Arts · 1001340ms)
 
