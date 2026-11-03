@@ -1,0 +1,2140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Phyllis">
+<title>Module 1 Project · Guided Lesson 1 of 2: Your Case and Sources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+/* Economics Honors glow-up kit: financial-broadsheet theme. Two accents: market green (--acc) and brass (--hi). */
+:root{
+  --page:#F2EEE5; --card:#FFFDF8; --paper:#FAF7EF; --ink:#151515; --ink2:#55514A; --line:#D8D1C1; --rule:#1B1B1B;
+  --acc:#17603F; --acc-d:#0E4630; --acc-f:#E2EEE6;
+  --hi:#B4832A; --hi-d:#7A5513; --hi-f:#F5EBD5;
+  --navy:#0E1C42; --cyan:#55C8E8;
+  --ok:#2E7D4F; --ok-f:#E5F3EA; --bad:#B3261E; --bad-f:#FBE7E5;
+  --head:"Playfair Display", Georgia, "Times New Roman", serif;
+  --mast:"UnifrakturMaguntia", "Playfair Display", Georgia, serif;
+  --mono:"IBM Plex Mono", Consolas, monospace;
+  --ui:system-ui, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:18px/1.7 Georgia,"Times New Roman",serif;padding-bottom:120px}
+button{font:inherit;color:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--head);font-weight:700;color:var(--ink);line-height:1.15;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+.ui{font-family:var(--ui)}
+
+/* Optima chrome */
+.oao{background:var(--navy);color:#fff;font:600 14px/1 var(--ui)}
+.oao .wrap{display:flex;align-items:center;gap:10px;height:52px}
+.oao img{width:34px;height:34px;object-fit:contain}
+.oao .sub{margin-left:auto;color:var(--cyan);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+
+/* masthead hero */
+.hero{background:var(--paper);border-bottom:1px solid var(--line)}
+.hero .wrap{padding:16px 20px 0}
+.hero .dateline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:600 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);border-top:3px solid var(--rule);border-bottom:1px solid var(--rule);padding:7px 0}
+.hero h1{font-size:40px;font-weight:900;letter-spacing:-.01em;margin:14px 0 12px}
+.ticker{overflow:hidden;border-top:1px solid var(--rule);border-bottom:3px double var(--rule);background:var(--paper);white-space:nowrap}
+.ticker .tk{display:inline-flex;gap:34px;padding:7px 0;animation:tick 48s linear infinite;font:600 13px/1 var(--mono);letter-spacing:.06em}
+.ticker .tk span{color:var(--ink)}
+.ticker .tk b{font-weight:600;margin-left:6px}
+.ticker .up{color:var(--acc)}.ticker .dn{color:var(--hi-d)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.kicker{font:700 12px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+.btn{border:0;border-radius:999px;padding:10px 18px;background:var(--acc);color:#fff;font:600 15px/1 var(--ui);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn:hover{background:var(--acc-d)}
+.btn.ghost{background:transparent;color:var(--acc-d);border:1.5px solid var(--acc)}
+.btn.ghost:hover{background:var(--acc-f)}
+.btn.small{padding:7px 13px;font-size:13px}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* route */
+.route{position:sticky;top:0;z-index:20;background:rgba(242,238,229,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.route .wrap{max-width:1180px;display:flex;align-items:center;gap:8px;padding-top:10px;padding-bottom:10px}
+.stops{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.stops::-webkit-scrollbar{display:none}
+.stop{flex:none;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 13px/1 var(--ui);color:var(--ink2);display:flex;align-items:center;gap:6px}
+.stop i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);font-size:11px}
+.stop.done i{background:var(--hi);color:#fff}
+.stop.on{border-color:var(--acc);color:var(--acc-d)}
+.stop.on i{background:var(--acc);color:#fff}
+.tools{display:flex;gap:6px;flex:none}
+
+/* steps */
+.step{display:none;padding:30px 0 10px;animation:rise .45s ease}
+.step.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.parthead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.parthead h2{font-size:38px;margin-top:6px}
+.dbl{height:6px;margin:16px 0 22px;border-top:3px solid var(--rule);border-bottom:1px solid var(--rule)}
+.prose{position:relative;margin:0 0 16px}
+.w{border-radius:3px}
+.w.on{background:#F1DDA8;box-shadow:0 0 0 2px #F1DDA8}
+.term{border-bottom:2px dotted var(--acc);cursor:pointer}
+.term:hover{background:var(--acc-f)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:22px 0}
+.card.acc{border-top:4px solid var(--acc)}
+.card.hi{border-top:4px solid var(--hi)}
+.label{font:700 12px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--hi-d);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.label .say{margin-left:auto}
+.say{border:1.5px solid var(--line);background:var(--card);color:var(--acc-d);border-radius:999px;padding:5px 11px;font:600 12px/1 var(--ui);display:inline-flex;gap:6px;align-items:center}
+.say:hover{border-color:var(--acc)}
+.instr{font-size:16px;color:var(--ink2);margin:0 0 14px}
+figure{margin:24px 0}
+figure img{border-radius:6px;border:1px solid var(--line)}
+figcaption{font-size:14px;color:var(--ink2);margin-top:8px;line-height:1.5}
+
+/* arrive */
+.focusq{font-family:var(--head);font-style:italic;font-weight:700;font-size:30px;color:var(--ink);margin:0 0 12px;line-height:1.2}
+.obj{list-style:none;padding:0;margin:0;counter-reset:o}
+.obj li{counter-increment:o;display:grid;grid-template-columns:34px 1fr;gap:10px;margin:0 0 12px;font-size:17px}
+.obj li::before{content:counter(o);width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 13px var(--ui);margin-top:2px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:12px 14px;font-size:16px;line-height:1.35}
+.opt:hover{border-color:var(--acc)}
+.opt.picked{border-color:var(--acc);background:var(--acc-f)}
+.opt.right{border-color:var(--ok);background:var(--ok-f)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-f)}
+.note{font:600 14px/1.4 var(--ui);color:var(--ink2);margin-top:12px;min-height:20px}
+.next{display:flex;justify-content:space-between;gap:10px;margin:34px 0 10px;border-top:1px solid var(--line);padding-top:20px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.seg button{border:0;background:transparent;padding:7px 14px;font:600 13px/1 var(--ui);color:var(--ink2)}
+.seg button.on{background:var(--acc);color:#fff}
+.wrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0 0}
+.info{margin-top:12px;background:var(--hi-f);border-radius:8px;padding:12px 14px;font-size:16px;min-height:52px;line-height:1.5}
+.info b{font-family:var(--head);font-size:18px;color:var(--acc-d)}
+.fb{margin-top:12px;border-radius:8px;padding:10px 14px;font:15px/1.5 var(--ui);display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--ok-f);color:#1E5A37}
+.fb.no{background:var(--bad-f);color:#8A1D16}
+.fb.hint{background:var(--hi-f);color:#5A4320}
+.stage{width:100%;height:auto;display:block;background:var(--paper);border-radius:8px;border:1px solid var(--line)}
+
+/* rows widget (sort / match / name the concept) */
+.rows{display:grid;gap:10px}
+.row{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px}
+.row .rp{font-size:16px;line-height:1.4;margin:0 0 9px}
+.row .ro{display:flex;flex-wrap:wrap;gap:6px}
+.row .ro button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 13px/1.2 var(--ui)}
+.row .ro button:hover{border-color:var(--acc)}
+.row .ro button.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.row.ok{border-color:var(--ok);background:var(--ok-f)}
+.row.ok .ro button.sel{background:var(--ok);border-color:var(--ok)}
+.row.no{border-color:#E1B9A6}
+.row .why{font:14px/1.45 var(--ui);color:var(--ink2);margin-top:8px;display:none}
+.row.ok .why,.row.no .why{display:block}
+.tally{font:600 14px var(--ui);color:var(--ink2);margin-top:10px}
+
+/* Mr. Magister mini-lesson stage */
+.mini{border-top:4px solid var(--acc);padding:18px 20px 20px}
+.mini-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mini-h img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--hi);flex:none}
+.mini-h .t{flex:1;min-width:0}
+.mini-h .t b{display:block;font-family:var(--head);font-size:19px;line-height:1.2}
+.mini-h .t small{font:600 12px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.mini .ms{width:100%;height:auto;display:block;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.mini .sub{min-height:62px;margin-top:10px;font-size:16px;line-height:1.5;color:var(--ink);background:var(--hi-f);border-left:3px solid var(--hi);border-radius:0 8px 8px 0;padding:9px 12px}
+.mini .sub .w.on{background:#F1DDA8}
+.mini .mctl{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.mini .dots{display:flex;gap:4px;margin-left:auto}
+.mini .dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.mini .dots i.on{background:var(--acc)}
+.ms text{font-family:var(--ui)}
+.ms .fade{transition:opacity .6s ease, transform .6s ease}
+.mini .ms{transition:opacity .4s, filter .4s}
+.mini .ms.idle{opacity:.38;filter:grayscale(.6)}
+.mini .ms.idle *{transition:none!important;animation:none!important}
+
+/* assignment desk */
+.desk-head{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.desk-head .pts{font:700 13px/1 var(--mono);letter-spacing:.06em;color:var(--hi-d);border:1.5px solid var(--hi);border-radius:6px;padding:8px 10px;text-align:center}
+.desk-head .pts b{display:block;font:900 30px/1 var(--head);color:var(--ink);margin-bottom:4px}
+.dstep{display:grid;grid-template-columns:40px 1fr;gap:6px 14px;padding:18px 0;border-top:1px solid var(--line)}
+.dstep .n{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 15px var(--ui)}
+.dstep.has .n{background:var(--acc)}
+.dstep .dir{margin:4px 0 0;font-size:17px}
+.dstep .dir b{font-family:var(--head)}
+.coach{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;margin:10px 0;font:15px/1.5 var(--ui);color:#4A3A1C;background:var(--hi-f);border-radius:8px;padding:9px 12px}
+.coach img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+.dstep textarea,.ans textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.55 Georgia,serif;background:#fff;color:var(--ink);resize:vertical}
+.dstep textarea:focus,.ans textarea:focus{outline:none;border-color:var(--acc)}
+.wc{font:600 12px var(--ui);color:var(--ink2);text-align:right;margin-top:4px}
+.crit{list-style:none;padding:0;margin:0}
+.crit li{display:grid;grid-template-columns:26px 1fr;gap:8px;margin:0 0 10px;font-size:15.5px;line-height:1.45}
+.crit input{width:18px;height:18px;margin-top:3px;accent-color:var(--acc)}
+.rubric{overflow-x:auto}
+.rubric table{border-collapse:collapse;width:100%;font:13.5px/1.4 var(--ui);min-width:640px}
+.rubric th,.rubric td{border:1px solid var(--line);padding:8px;vertical-align:top;text-align:left}
+.rubric th{background:var(--paper);font-weight:700}
+details.more>summary{cursor:pointer;font:700 13px/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--acc-d);list-style:none;padding:6px 0}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"▸ "}
+details.more[open]>summary::before{content:"▾ "}
+.outbox{white-space:pre-wrap;background:#fff;border:1.5px dashed var(--line);border-radius:8px;padding:12px 14px;font:15px/1.55 Georgia,serif;max-height:300px;overflow:auto}
+.keep{background:var(--navy);color:#fff;border-radius:12px;padding:22px 24px;margin:26px 0}
+.keep .label{color:var(--cyan)}
+.keep p{margin:0;font-size:19px}
+.nextlist{list-style:none;padding:0;margin:0}
+.nextlist li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--line);font-size:16px}
+.nextlist li:first-child{border-top:0}
+.nextlist .tg{font:700 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--acc);color:var(--acc-d);border-radius:4px;padding:5px 7px;margin-top:3px}
+.nbstats{display:flex;gap:26px;flex-wrap:wrap;margin:4px 0 6px}
+.nbstats div{font:600 13px var(--ui);color:var(--ink2)}
+.nbstats b{display:block;font:900 34px/1.1 var(--head);color:var(--acc-d)}
+
+/* dock */
+.dock{position:fixed;left:50%;bottom:14px;transform:translate(-50%,140%);z-index:60;width:min(860px,calc(100% - 20px));background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 40px rgba(30,30,20,.22);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 14px 10px 10px;transition:transform .4s cubic-bezier(.3,.1,.2,1)}
+.dock.show{transform:translate(-50%,0)}
+.dock img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2.5px solid var(--hi)}
+.dock.talking img{animation:talk 1.4s ease-in-out infinite}
+@keyframes talk{50%{box-shadow:0 0 0 5px rgba(180,131,42,.28)}}
+.dock .who{font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.cap{font-size:15px;line-height:1.45;max-height:44px;overflow:hidden;color:var(--ink)}
+.seek{width:100%;accent-color:var(--acc);height:4px;margin:4px 0 0}
+.ctl{display:flex;gap:4px;align-items:center}
+.ctl button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;font-size:13px}
+.ctl button.main{width:44px;height:44px;background:var(--acc);border-color:var(--acc);color:#fff;font-size:15px}
+.ctl .rate{width:auto;padding:0 10px;border-radius:999px;font:700 12px var(--ui)}
+#voiceOff{font-size:18px;color:var(--ink2)}
+
+/* drawers */
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--card);z-index:80;box-shadow:-10px 0 40px rgba(30,30,20,.2);transform:translateX(105%);transition:transform .35s cubic-bezier(.3,.1,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer header{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.drawer header h3{font-size:22px;flex:1}
+.drawer .x{border:0;background:transparent;font-size:24px;line-height:1;color:var(--ink2)}
+.drawer .body{overflow-y:auto;padding:12px 18px 30px;flex:1}
+.gl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.gl button{grid-row:span 2;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--acc);font-size:14px}
+.gl b{font-family:var(--head);font-size:19px}
+.gl b small{font:600 12px var(--ui);color:var(--hi-d);margin-left:6px;letter-spacing:.04em}
+.gl span{font-size:15px;color:var(--ink2);line-height:1.45}
+.glh{font:700 12px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:18px 0 0}
+body:not(.has-audio) .gl button,body:not(.has-audio) .say{display:none}
+body:not(.has-audio) .gl{grid-template-columns:1fr}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:16px;line-height:1.5}
+.msg.me{align-self:flex-end;background:var(--acc-f);border-bottom-right-radius:4px}
+.msg.him{align-self:flex-start;background:var(--hi-f);border-bottom-left-radius:4px}
+.msg.ctx{align-self:stretch;max-width:100%;background:transparent;border-left:3px solid var(--hi);border-radius:0;font-style:italic;color:var(--ink2);font-size:15px;padding:4px 0 4px 12px}
+.askrow{display:flex;gap:8px;padding:12px 18px;border-top:1px solid var(--line)}
+.askrow input{flex:1;border:1.5px solid var(--line);border-radius:999px;padding:10px 14px;font:16px Georgia,serif;background:#fff}
+.scrim{position:fixed;inset:0;background:rgba(20,20,10,.25);z-index:78;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.pop{position:absolute;z-index:90;max-width:320px;background:var(--ink);color:#fff;border-radius:10px;padding:10px 13px;font:14px/1.45 var(--ui);box-shadow:0 8px 24px rgba(0,0,0,.25);display:none}
+.pop b{font-family:var(--head);font-size:18px;display:block}
+.pop i{color:#F1DDA8;font-style:normal;font-weight:600}
+.pop .savew,.pop .hear{display:inline-block;margin:8px 6px 0 0;border:1px solid rgba(255,255,255,.35);background:transparent;color:#F1DDA8;border-radius:999px;padding:5px 10px;font:600 12px/1 var(--ui)}
+footer{margin-top:40px;background:var(--navy);color:#C9D2E6;font:13px/1.6 var(--ui);padding:18px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* read cards + landing */
+.stage0{display:grid;grid-template-columns:auto auto 1fr;gap:34px;align-items:center;padding:8px 0 26px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.mag{display:grid;justify-items:center;gap:4px;text-align:center;width:150px}
+.mag img{width:118px;height:118px;border-radius:50%;object-fit:cover;border:4px solid var(--hi);box-shadow:0 8px 22px rgba(40,30,10,.18);margin-bottom:6px}
+.mag b{display:block;font-family:var(--head);font-size:20px}
+.mag small{display:block;color:var(--ink2);font-size:14px;margin-bottom:8px}
+.mag-b{display:grid;gap:6px;width:100%}
+.mag .btn{justify-content:center}
+.bl-body h2{font-size:32px;margin:6px 0 14px}
+.partlist{display:grid;gap:6px;margin-bottom:18px}
+.pl-row{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px}
+.pl-row:hover{border-color:var(--acc)}
+.pl-row i{font-style:normal;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--line);font:700 13px var(--ui)}
+.pl-row.read i{background:var(--hi);color:#fff}
+.pl-row b{font-family:var(--head);font-size:18px}
+.pl-row span{font:600 13px var(--ui);color:var(--ink2)}
+.minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"f c" "o c";grid-template-rows:auto 1fr;gap:16px;align-items:start}
+.minis .card{padding:16px 18px;margin:0;font-size:16px}
+.minis .card.acc{grid-area:f}.minis .objs{grid-area:o}.minis .card.hi{grid-area:c}
+.minis .focusq{font-size:21px;margin:4px 0 6px}
+.minis .opts{grid-template-columns:1fr;gap:8px}
+.minis .opt{padding:9px 12px;font-size:15px}
+.objs summary{cursor:pointer;list-style:none}
+.objs summary::-webkit-details-marker{display:none}
+.objs summary::after{content:" ▾";color:var(--ink2)}
+.objs[open] summary::after{content:" ▴"}
+.objs .obj{margin:10px 0 0;font-size:15px}
+
+/* the paper (cover + mini) : a folded broadsheet front page */
+.bigbook{--P:260px;position:relative;width:250px;height:340px;border:0;padding:0;border-radius:2px;background:var(--paper);box-shadow:3px 0 0 #E6DFCF,6px 1px 0 #D7CEBB,0 18px 40px rgba(30,25,10,.30);transition:transform .3s;text-align:left}
+.bigbook:hover{transform:translateY(-4px) rotate(-1deg)}
+.front{position:absolute;inset:0;padding:14px 14px 12px;display:flex;flex-direction:column;gap:6px;color:var(--ink);overflow:hidden}
+.front .mh{font-family:var(--mast);font-size:26px;line-height:1;text-align:center;letter-spacing:.01em}
+.front .ml{display:flex;justify-content:space-between;font:600 7.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border-top:2px solid var(--rule);border-bottom:1px solid var(--rule);padding:4px 0}
+.front .hl{font:900 21px/1.08 var(--head);text-align:center;margin:4px 0 2px}
+.front .dk{font:italic 10px/1.3 Georgia,serif;text-align:center;color:var(--ink2)}
+.front .cols{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:4px;border-top:1px solid var(--rule);padding-top:6px}
+.front .cols i{display:block;background:repeating-linear-gradient(#0000 0 5px,#BDB5A4 5px 6.2px);opacity:.75}
+.front .cols svg{grid-column:span 2;width:100%;height:auto;border:1px solid var(--line);background:#fff}
+.minibook{width:92px;height:124px;border:0;border-radius:2px;padding:0;position:relative;background:var(--paper);box-shadow:2px 0 0 #E6DFCF,4px 1px 0 #D7CEBB,0 8px 18px rgba(30,25,10,.26);transition:transform .25s}
+.minibook::before{content:"";position:absolute;left:8px;right:8px;top:8px;height:14px;border-bottom:2px solid var(--rule)}
+.minibook span{position:absolute;left:8px;right:8px;top:50%;transform:translateY(-50%);font:900 20px/1 var(--head);text-align:center}
+.minibook:hover{transform:translateY(-3px) rotate(-1.5deg)}
+
+/* voice */
+.dock{z-index:60}
+body.reading-open .dock{bottom:10px}
+
+/* the reader */
+.reader{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;align-items:center;background:rgba(22,22,18,.66);backdrop-filter:blur(3px);visibility:hidden;opacity:0;pointer-events:none}
+.reader.open{visibility:visible;opacity:1;pointer-events:auto}
+body.reading-open{overflow:hidden}
+.rbar{width:100%;height:56px;flex:none;display:flex;align-items:center;gap:12px;padding:0 14px 0 20px;color:#F3EFE6}
+.rtitle{flex:1;min-width:0;display:flex;align-items:baseline;gap:10px;white-space:nowrap;overflow:hidden}
+.rtitle .kicker{color:#E7C987}
+.rtitle b{font-family:var(--head);font-size:19px;overflow:hidden;text-overflow:ellipsis}
+.rtools{display:flex;gap:4px}
+.rt{border:1px solid rgba(243,239,230,.28);background:rgba(255,255,255,.06);color:#F3EFE6;border-radius:999px;height:36px;padding:0 13px;display:inline-flex;align-items:center;gap:7px;font:600 13px/1 var(--ui)}
+.rt:hover,.rt[aria-pressed="true"]{background:rgba(255,255,255,.18);border-color:rgba(243,239,230,.6)}
+.rt.close{background:#F3EFE6;color:var(--acc-d);border-color:#F3EFE6}
+.stagebook{flex:1;width:100%;display:grid;place-items:center;perspective:2600px;padding-bottom:18px}
+.book{--P:540px;--H:720px;--M:72px;--T:58px;--B:50px;--fs:19px;--lh:1.7;position:relative;width:var(--P);height:var(--H);transform-origin:0 0;perspective:2400px;user-select:none;-webkit-user-select:none}
+.book.two{width:calc(var(--P)*2)}
+.paper{position:absolute;top:0;height:100%;width:var(--P);background:var(--paper);box-shadow:0 18px 50px rgba(10,10,0,.38)}
+.pl{left:0;border-radius:2px 0 0 2px;background:linear-gradient(270deg,rgba(60,50,20,.16),rgba(60,50,20,.04) 5%,transparent 12%),var(--paper);box-shadow:-2px 0 0 #EAE3D3,-4px 1px 0 #D9D0BD,-6px 2px 0 #EAE3D3,-8px 3px 0 #C9BFA9,0 18px 50px rgba(10,10,0,.38)}
+.pr{left:var(--P);border-radius:0 2px 2px 0;background:linear-gradient(90deg,rgba(60,50,20,.18),rgba(60,50,20,.04) 5%,transparent 12%),var(--paper);box-shadow:2px 0 0 #EAE3D3,4px 1px 0 #D9D0BD,6px 2px 0 #EAE3D3,8px 3px 0 #C9BFA9,0 18px 50px rgba(10,10,0,.38)}
+.book:not(.two) .pr{display:none}
+.book:not(.two) .pl{border-radius:2px;background:var(--paper)}
+.vp{position:absolute;left:var(--M);top:var(--T);width:calc(var(--P) - 2*var(--M));height:calc(var(--H) - var(--T) - var(--B));overflow:hidden;touch-action:pinch-zoom}
+.book.two .vp{width:calc(2*var(--P) - 2*var(--M))}
+.flow{height:100%;column-count:1;column-gap:calc(2*var(--M));column-fill:auto;font-size:var(--fs);line-height:var(--lh);color:#1A1A17;user-select:text;-webkit-user-select:text;will-change:transform}
+.book.two .flow{column-count:2}
+.flow.slide{transition:transform .32s cubic-bezier(.3,.1,.2,1)}
+.flow .prose{margin:0;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.flow .prose + .prose{text-indent:1.5em}
+.book:not(.two) .flow .prose{text-align:left}
+.flow .ch{break-before:column}
+.flow .chk{font:700 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin:16px 0 10px}
+.flow .ch h3{font-size:calc(var(--fs)*1.6);font-weight:900;margin:0 0 6px;line-height:1.12}
+.flow .ch h3::after{content:"";display:block;height:5px;border-top:2px solid var(--rule);border-bottom:1px solid var(--rule);margin:14px 0 16px}
+.flow .ch > p.prose:first-of-type::first-letter{font:900 3.3em/.85 var(--head);float:left;margin:.05em .08em 0 0;color:var(--ink)}
+.flow .prose.aside{text-indent:0;text-align:left;margin:16px 0;padding:10px 14px;border:1px solid var(--rule);border-width:2px 0 1px;font-size:calc(var(--fs)*.92);background:rgba(180,131,42,.07)}
+.flow .prose.aside + .prose{text-indent:0}
+.flow .readfor{font:italic calc(var(--fs)*.88)/1.45 Georgia,serif;color:var(--ink2);margin:0 0 18px;padding-left:12px;border-left:3px solid var(--acc)}
+.flow .readfor b{display:block;font:700 12px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-style:normal;margin-bottom:4px}
+.partpg,.endpg{break-before:column;break-after:column;height:100%;display:flex;flex-direction:column;justify-content:center;text-align:center;gap:10px}
+.partpg h2,.endpg h2{font-size:calc(var(--fs)*2.1);font-weight:900}
+.partpg .chk,.endpg .chk{margin:0}
+.partpg .dbl,.endpg .dbl{width:50%;margin:8px auto 14px}
+.pt-ch{font-size:calc(var(--fs)*.95);color:var(--ink);line-height:1.4}
+.pt-ch b{display:block;font:700 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hi-d);margin:8px 0 4px}
+.pt-slot{text-align:left;margin-top:12px}
+.pt-slot .card{margin:0;font-size:16px;line-height:1.5}
+.endpg .btn{align-self:center}
+.plate{break-before:column;break-after:column;font-size:16px;line-height:1.5;user-select:none;-webkit-user-select:none}
+.plate.inline{break-before:auto;break-after:auto;margin:14px 0 18px}
+.plate .card{break-inside:avoid;background:transparent;border:0;padding:0;margin:0 0 18px;border-radius:0}
+.plate .card:has(.rows){break-inside:auto}
+.plate .row,.plate .instr,.plate .label{break-inside:avoid}
+.plate .label{break-after:avoid;font-size:13px;color:var(--acc);margin-bottom:8px}
+.plate .dbl{margin:2px 0 12px}
+.plate .card + .card{border-top:1px solid var(--line);padding-top:16px}
+.plate .instr{font-size:15px;margin-bottom:10px}
+.plate .info{font-size:15px;min-height:0}
+.plate .wrow{gap:6px;margin-top:10px}
+.plate .btn.small{padding:7px 11px;font-size:12.5px}
+.plate .row{padding:9px 11px}
+.plate .row .rp{font-size:15px;margin-bottom:7px}
+.plate .row .ro button{padding:5px 10px;font-size:12px}
+.plate .mini{padding:0;border:0}
+.plate .mini .sub{font-size:15px;min-height:54px}
+.flow .bfig{break-inside:avoid;margin:14px 0 18px;text-indent:0}
+.flow .bfig img{max-height:calc((var(--H) - var(--T) - var(--B)) * .42);width:auto;max-width:100%;margin:0 auto;border-radius:2px;border:0;filter:grayscale(.2)}
+.flow .bfig figcaption{font:13px/1.45 var(--ui);color:var(--ink2);margin-top:8px}
+.flow .ansbox{break-inside:avoid;margin:20px 0 6px;padding:14px 0 0;border-top:1px solid var(--line);text-indent:0}
+.flow .ansbox span{display:block;font:700 11px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--hi-d);margin-bottom:6px}
+.flow .ansbox em{display:block;font-size:calc(var(--fs)*.85);line-height:1.45;color:var(--ink2);margin-bottom:8px}
+.flow .ansbox textarea{width:100%;border:1.5px solid var(--line);border-radius:6px;padding:8px 10px;font:16px/1.5 Georgia,serif;background:#fff;color:var(--ink);resize:none;user-select:text}
+.flow .ansbox textarea:focus{outline:none;border-color:var(--acc)}
+.readcard{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;border-top:4px solid var(--acc)}
+.titlepg{height:100%;display:flex;flex-direction:column;justify-content:center;gap:12px;break-after:column;text-align:center}
+.titlepg .mh{font-family:var(--mast);font-size:calc(var(--fs)*2.4);line-height:1}
+.titlepg .ml{display:flex;justify-content:space-between;font:600 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border-top:3px solid var(--rule);border-bottom:1px solid var(--rule);padding:6px 0}
+.titlepg h2{font-size:calc(var(--fs)*2);font-weight:900}
+.titlepg .dk{font-style:italic;color:var(--ink2);font-size:calc(var(--fs)*.9)}
+.titlepg .tp-k{font:700 11px/1.4 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.w.hk,.s.hk{background:#F1DDA8}
+.w.he,.s.he{background:#CFE5D7}
+.w.hn,.s.hn{background:linear-gradient(transparent 82%,#C9A45A 82%)}
+.w.pre,.s.pre{background:rgba(23,96,63,.10)}
+.flow ::selection{background:rgba(23,96,63,.22)}
+.flow .ch > p.prose:first-of-type:has(.w[data-w="0"].hk)::first-letter{background:#F1DDA8}
+.flow .ch > p.prose:first-of-type:has(.w[data-w="0"].he)::first-letter{background:#CFE5D7}
+.hd{position:absolute;top:22px;font:600 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#8E877A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:calc(var(--P) - 2*var(--M));padding-bottom:7px;border-bottom:1px solid #CFC7B6}
+.hdL{left:var(--M)}.hdR{left:calc(var(--P) + var(--M));text-align:right}
+.hd:empty{border-bottom:0}
+.fo{position:absolute;bottom:18px;width:var(--P);text-align:center;font:600 12px/1 var(--mono);color:#8E877A}
+.foL{left:0}.foR{left:var(--P)}
+.book:not(.two) .hdR,.book:not(.two) .foR{display:none}
+.slips{position:absolute;inset:0;pointer-events:none}
+.slip{position:absolute;pointer-events:auto;width:calc(var(--M) - 16px);max-height:92px;overflow:hidden;border:0;border-left:3px solid var(--hi);background:var(--hi-f);color:#5A4320;font:12px/1.35 var(--ui);text-align:left;padding:6px 7px;border-radius:2px 6px 6px 2px;box-shadow:0 2px 6px rgba(60,40,10,.12);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical}
+.slip.L{left:8px}.slip.R{right:8px}
+.slip:hover{background:#F2E1BA}
+.book:not(.two) .slip{width:16px;height:16px;padding:0;border:0;border-radius:50%;background:var(--hi);color:transparent;left:3px}
+.ribbon{position:absolute;top:-6px;right:calc(var(--M) / 2 - 10px);width:20px;height:130px;background:linear-gradient(90deg,#0B3A26,var(--acc) 45%,#0B3A26);clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%);box-shadow:0 2px 3px rgba(0,0,0,.2);display:none;pointer-events:none}
+.ribbon.on{display:block}
+.ruler{position:absolute;inset:var(--T) 0 var(--B);display:none;flex-direction:column;pointer-events:none}
+.ruler.on{display:flex}
+.ruler i{display:block;background:rgba(30,30,20,.15)}
+.ruler b{display:block;flex:none;border-top:1px solid rgba(23,96,63,.4);border-bottom:1px solid rgba(23,96,63,.4)}
+.ruler i:last-child{flex:1}
+.turn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(243,239,230,.4);background:rgba(250,247,239,.94);color:var(--acc-d);font-size:26px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.turn.prev{left:-62px}.turn.next{right:-62px}
+.turn:disabled{opacity:.25;cursor:default}
+.book:not(.two) .turn{top:auto;bottom:-50px;transform:none;width:42px;height:42px;font-size:24px}
+.book:not(.two) .turn.prev{left:4px}.book:not(.two) .turn.next{right:4px}
+.leaf,.lift{position:absolute;top:0;height:100%;width:var(--P);display:none;transform-style:preserve-3d;pointer-events:none}
+.leaf.fwd{display:block;left:var(--P);transform-origin:left center}
+.leaf.back{display:block;left:0;transform-origin:right center}
+.lf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--paper);overflow:hidden}
+.leaf.fwd .lf.front{background:linear-gradient(90deg,rgba(60,50,20,.16),transparent 14%),var(--paper)}
+.leaf.fwd .lf.back,.leaf.back .lf.front{background:linear-gradient(270deg,rgba(60,50,20,.16),transparent 14%),var(--paper)}
+.leaf.back .lf.back{background:linear-gradient(90deg,rgba(60,50,20,.16),transparent 14%),var(--paper)}
+.lf.back{transform:rotateY(180deg)}
+.lift.on{display:block;background:var(--paper)}
+.clip{position:absolute;left:var(--M);top:var(--T);width:calc(var(--P) - 2*var(--M));height:calc(var(--H) - var(--T) - var(--B));overflow:hidden}
+.clip .flow{width:calc(var(--P) - 2*var(--M))}
+.book.two .clip .flow{width:calc(2*var(--P) - 2*var(--M))}
+.cover{position:absolute;top:0;height:100%;width:var(--P);left:var(--P);transform-origin:left center;transform-style:preserve-3d;display:none}
+.book:not(.two) .cover{left:0}
+.cover.on{display:block}
+.cf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:2px}
+.cf.front{background:var(--paper);box-shadow:0 24px 60px rgba(10,10,0,.5)}
+.cf.front .front{padding:calc(var(--P)*.06)}
+.cf.front .front .mh{font-size:calc(var(--P)*.1)}
+.cf.front .front .ml{font-size:calc(var(--P)*.019);padding:6px 0}
+.cf.front .front .hl{font-size:calc(var(--P)*.075)}
+.cf.front .front .dk{font-size:calc(var(--P)*.03)}
+.cf.back{transform:rotateY(180deg);background:linear-gradient(270deg,rgba(60,50,20,.18),transparent 12%),#EFE9DC}
+.book.closed .paper.pl,.book.closed .vp,.book.closed .hd,.book.closed .fo,.book.closed .slips,.book.closed .turn,.book.closed .ribbon{opacity:0}
+.book.closed:not(.two) .paper{opacity:1}
+.book .paper.pl,.book .vp,.book .hd,.book .fo,.book .slips,.book .turn{transition:opacity .45s}
+.rpanel{position:fixed;left:0;top:56px;bottom:0;width:min(360px,100%);background:var(--card);z-index:3;transform:translateX(-105%);transition:transform .3s;display:flex;flex-direction:column;box-shadow:10px 0 40px rgba(0,0,0,.25)}
+.rpanel.open{transform:none}
+.rpanel header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.rpanel header .seg{flex:1}
+.rpanel .x{border:0;background:transparent;font-size:24px;color:var(--ink2)}
+.rpbody{overflow-y:auto;padding:8px 16px 24px;flex:1}
+.toc{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:11px 2px}
+.toc small{grid-column:1/-1;font:700 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.toc b{font-family:var(--head);font-size:17px}
+.toc span{font:600 13px var(--ui);color:var(--ink2)}
+.toc.read span::before{content:"\2713  ";color:var(--ok)}
+.toc:hover b{color:var(--acc-d)}
+.mk{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:12px 2px}
+.mk em{display:-webkit-box;font-style:italic;font-size:15px;line-height:1.5;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.mk .nt{display:block;font:14px/1.45 var(--ui);color:#5A4320;background:var(--hi-f);border-left:3px solid var(--hi);padding:6px 9px;margin-top:6px}
+.tag{display:inline-block;font:700 10.5px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;padding:4px 7px;border-radius:4px;margin-bottom:6px}
+.tag.k{background:#F1DDA8;color:#6B4A0C}.tag.e{background:#CFE5D7;color:#0E4630}.tag.n{background:var(--hi-f);color:#6B4A0C}
+.mkh{font:700 12px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:18px 0 4px}
+.empty{color:var(--ink2);font-size:15px;padding:14px 2px}
+.rset{position:fixed;top:60px;right:14px;z-index:4;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:none}
+.rset.open{display:block}
+.hlbar{position:fixed;z-index:70;display:none;gap:2px;background:var(--ink);border-radius:12px;padding:5px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.hlbar.open{display:flex}
+.hlbar button{border:0;background:transparent;color:#fff;border-radius:8px;padding:8px 10px;font:600 13px/1 var(--ui);display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.hlbar button:hover{background:rgba(255,255,255,.14)}
+.hlbar .rm{display:none;color:#F3B9A6}
+.hlbar.edit .rm{display:inline-flex}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.k{background:#F1DDA8}.sw.e{background:#CFE5D7}
+.noteed{position:fixed;z-index:72;left:50%;top:50%;transform:translate(-50%,-50%);width:min(440px,calc(100% - 32px));background:var(--card);border-radius:16px;padding:18px 20px;box-shadow:0 20px 60px rgba(0,0,0,.4);display:none}
+.noteed.open{display:block}
+.noteed blockquote{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--hi);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink2);max-height:96px;overflow:auto}
+.noteed textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.5 Georgia,serif}
+
+@media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
+@media (max-width:860px){
+  .rt span{display:none}.rt{padding:0 11px}.rbar{padding:0 8px 0 12px}.rtitle .kicker{display:none}.rtitle b{font-size:16px}
+  .stagebook{padding:4px 0 0;place-items:start center}
+  .book{--T:44px;--B:52px}.hd{top:14px}.fo{bottom:20px}
+}
+@media (max-width:720px){
+  body{font-size:17px;padding-bottom:160px}
+  .hero h1{font-size:28px}
+  .parthead h2{font-size:30px}
+  .opts{grid-template-columns:1fr}
+  .stage0{grid-template-columns:1fr;justify-items:center;gap:20px}
+  .mag{width:auto;grid-template-columns:64px auto;align-items:center;justify-items:start;text-align:left;column-gap:12px}
+  .mag img{grid-row:1/3;width:64px;height:64px;margin:0;border-width:3px}
+  .mag small{display:none}.mag-b{display:flex;width:auto}
+  .minis{grid-template-columns:1fr;grid-template-areas:"f" "o" "c";grid-template-rows:auto}
+  .stage0 .bl-body{width:100%}
+  .pl-row{grid-template-columns:28px 1fr}.pl-row span{grid-column:2}
+  .readcard{grid-template-columns:1fr;gap:14px}
+  .dock{grid-template-columns:auto 1fr;bottom:8px;gap:6px 10px;padding:8px 10px}
+  .dock img{width:40px;height:40px}
+  .cap{font-size:14px;max-height:40px}
+  .dock .ctl{grid-column:1/-1;justify-content:center}
+  .ctl button{width:32px;height:32px}.ctl button.main{width:38px;height:38px}
+  #back5,#fwd5{display:none}
+  .tools .btn span{display:none}
+  .card{padding:18px 16px}
+  .dstep{grid-template-columns:1fr}
+  .desk-head{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Module 1 project lessons: shared components on top of kit.css (broadsheet look; two accents: --acc green, --hi brass) */
+.ms text{font-family:var(--ui);font-size:16px;fill:#151515}
+.ms .hd{font:700 15px var(--mono);letter-spacing:.06em}
+.ms .sm{font-size:15px;fill:#55514A}
+.ms .b{font-weight:700}
+.ms .lb{font:700 14px var(--mono);letter-spacing:.04em}
+.ms g{transition:opacity .6s ease, transform .9s cubic-bezier(.3,.1,.2,1)}
+.ms.idle{opacity:.5}
+
+.sec{margin:38px 0 0}
+.sec-h{display:flex;align-items:baseline;gap:14px;border-top:3px solid var(--rule);padding-top:10px;margin-bottom:16px}
+.sec-h .num{font:700 13px var(--mono);letter-spacing:.1em;color:var(--hi-d);min-width:22px}
+.sec-h h2{font-size:30px}
+.ask{font:600 15px/1.45 var(--ui);color:var(--ink2);margin:0 0 14px}
+.hint{font:600 14px/1.45 var(--ui);color:var(--ink2);margin:10px 0 0}
+.mono{font:600 .9em var(--mono);background:var(--hi-f);padding:1px 5px;border-radius:3px}
+.wrap2{max-width:900px}
+.card.plain{border-top:1px solid var(--line)}
+
+/* verbatim requirement blocks */
+.req{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.req .rc{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--acc);border-radius:10px;padding:16px 18px}
+.req .rc.b{border-top-color:var(--hi)}
+.req .rc .k{font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hi-d);margin-bottom:8px}
+.req .rc h3{font-size:22px;margin-bottom:8px}
+.req .rc p{margin:0 0 8px;font-size:16px;line-height:1.55}
+.req.wide{grid-template-columns:1fr}
+.exs{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.exs span{font:600 14px/1.3 var(--ui);border:1.5px solid var(--hi);background:var(--hi-f);border-radius:999px;padding:6px 12px}
+.due{margin-top:14px;font:700 15px/1.4 var(--ui);color:var(--acc-d);border-left:4px solid var(--acc);padding:4px 0 4px 12px}
+
+/* rail */
+.rail{display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:st}
+.rail .st{position:relative;padding:14px 14px 14px 16px;border-top:4px solid var(--line);background:var(--card);border-left:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rail .st:last-child{border-right:1px solid var(--line)}
+.rail .st.done{border-top-color:var(--hi)}
+.rail .st.now{border-top-color:var(--acc);background:var(--acc-f)}
+.rail .wk{font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hi-d)}
+.rail .nm{font:700 20px/1.2 var(--head);margin:6px 0}
+.rail .ds{font:14.5px/1.45 var(--ui);color:var(--ink2)}
+.rail .st.done .wk::after{content:" \2713"}
+
+/* rubric tiles */
+.rt-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.rtile{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px;display:flex;flex-direction:column;gap:6px}
+.rtile b{font:900 34px/1 var(--head);color:var(--ink)}
+.rtile h3{font-size:17px;line-height:1.2}
+.rtile p{margin:0;font:13.5px/1.4 var(--ui);color:var(--ink2);flex:1}
+.rtile .tag{font:700 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--acc-d);border-top:1px solid var(--line);padding-top:8px}
+.rtile.here{border-top:4px solid var(--acc)}
+.rtile.soon{border-top:4px solid var(--hi)}
+
+/* pulls: read-only, live from the Week 1 lessons */
+.pulls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.pulls.one{grid-template-columns:1fr}
+.pull{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--hi);border-radius:8px;padding:12px 14px;min-width:0}
+.pull.wide{grid-column:1/-1}
+.pull-k{font:700 11.5px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hi-d);margin-bottom:6px}
+.pull-v{font:16px/1.55 Georgia,serif;white-space:pre-wrap;overflow-wrap:anywhere}
+.pull-v.empty{font:600 14px/1.5 var(--ui);color:var(--ink2);white-space:normal}
+.pull-v.empty a{color:var(--acc-d);font-weight:700}
+.pull-v .pp{display:block;margin:0 0 8px}
+.pull-v .pp small{display:block;font:700 11px/1.2 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--acc-d)}
+.pull-use{font:600 13.5px/1.4 var(--ui);color:var(--acc-d);margin-top:8px}
+.preps{display:grid;gap:10px}
+.prep{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:0 16px}
+.prep>summary{cursor:pointer;list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:13px 0;font:600 15px/1.3 var(--ui)}
+.prep>summary::-webkit-details-marker{display:none}
+.prep>summary .pp-w{font:700 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--hi);border-radius:4px;padding:4px 7px}
+.prep>summary .pp-t{font-family:var(--head);font-size:18px}
+.prep>summary .pp-c{font:700 12px var(--ui);color:var(--ink2)}
+.prep>summary .pp-c.has{color:var(--acc-d)}
+.prep[open]>summary{border-bottom:1px solid var(--line)}
+.prep .pulls{margin:14px 0}
+.wkmap{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:0}
+.wkmap li{display:grid;grid-template-columns:110px 1fr;gap:12px;border-top:1px solid var(--line);padding:9px 0;font:15px/1.4 var(--ui)}
+.wkmap .wm-w{font:700 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hi-d)}
+.wkmap .wm-t{font-family:var(--head);font-weight:700;font-size:17px}
+.wkmap .wm-d{display:block;color:var(--ink2);font-size:14.5px}
+.label.dl{margin-top:18px}
+
+/* typed boxes */
+.fld{margin:0 0 20px}
+.fld .q{font:700 16px/1.4 var(--head);margin:0 0 6px}
+.fld .q small{display:block;font:500 14px/1.45 var(--ui);color:var(--ink2);margin-top:3px}
+.jbox{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.55 Georgia,serif;background:#fff;color:var(--ink);resize:vertical;display:block}
+.jbox:focus{outline:none;border-color:var(--acc)}
+.wc{font:600 12px var(--ui);color:var(--ink2);text-align:right;margin-top:3px}
+.wc.ok{color:var(--acc-d)}
+.wc.ok::before{content:"\2713  "}
+.ixcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:6px 0 4px}
+.ixcards.two{grid-template-columns:repeat(2,1fr)}
+.ixcards.four{grid-template-columns:repeat(2,1fr)}
+.ixcards.one{grid-template-columns:1fr}
+.ix{background:#fff;border:1px solid var(--line);border-top:3px solid var(--hi);border-radius:4px;padding:10px 14px 12px;background-image:repeating-linear-gradient(transparent,transparent 27px,#E4DCC8 27px,#E4DCC8 28px);background-position:0 38px;box-shadow:0 2px 0 rgba(0,0,0,.04)}
+.ix-h{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.ix-n{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 12px var(--ui)}
+.ix-t{font:700 17px/1.2 var(--head)}
+.ix-k{display:block;font:700 11.5px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hi-d);margin:8px 0 4px}
+.ix .jbox{border:0;border-bottom:1px dashed var(--line);border-radius:0;background:rgba(255,255,255,.75);padding:6px 4px}
+.ix .jbox:focus{border-bottom-color:var(--acc)}
+.ix .wc{margin-top:2px}
+.ix .ix-hint{display:block;font:14px/1.45 var(--ui);color:var(--ink2);margin-bottom:6px}
+.ix.stack{grid-column:1/-1}
+
+/* checks */
+.checks{list-style:none;margin:12px 0;padding:0;display:grid;gap:6px}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start;font:15.5px/1.45 var(--ui);cursor:pointer;padding:6px 8px;border-radius:8px}
+.checks li::before{content:"";width:20px;height:20px;border:1.8px solid var(--ink2);border-radius:5px;background:#fff;margin-top:1px}
+.checks li.on{background:var(--acc-f)}
+.checks li.on::before{background:var(--acc) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4 10.5l4 4 8-9' fill='none' stroke='white' stroke-width='2.5'/%3E%3C/svg%3E") center/16px no-repeat;border-color:var(--acc)}
+.checks li:focus-visible{outline:2px solid var(--acc)}
+
+/* mcq */
+.mcq{margin:18px 0}
+.mcq .stem{font:700 17px/1.4 var(--head);margin:0 0 10px}
+.mcq .opts{grid-template-columns:1fr}
+.mcq .opt{font:15.5px/1.45 var(--ui)}
+.mcq .opt.done-ok{border-color:var(--ok);background:var(--ok-f)}
+
+/* place (tap a chip, tap a bin) */
+.place .bank{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.chip{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font:15px/1.4 var(--ui);text-align:left;max-width:100%}
+.chip:hover{border-color:var(--acc)}
+.chip.sel{border-color:var(--ink);background:var(--hi-f);box-shadow:0 0 0 2px var(--hi)}
+.bins{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bins.four{grid-template-columns:repeat(2,1fr)}
+.bins.two{grid-template-columns:repeat(2,1fr)}
+.bin{border:1.5px dashed var(--ink2);border-radius:10px;padding:8px 10px 10px;min-height:92px;background:var(--paper);cursor:pointer}
+.bin:hover{border-color:var(--acc)}
+.bin h4{margin:0 0 6px;font:700 12.5px/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--acc-d)}
+.bin .drop{display:grid;gap:6px}
+.bin .drop .chip{cursor:default;font-size:14px;padding:7px 10px}
+.bin .drop .chip.ok{border-color:var(--ok);background:var(--ok-f)}
+.bin .drop .chip.no{border-color:var(--bad);background:var(--bad-f)}
+.place-fb{margin-top:12px;border-radius:8px;padding:10px 14px;font:15px/1.5 var(--ui);background:var(--hi-f);color:#4A3A1C;display:none}
+.place-fb.show{display:block}
+
+/* tab-like case picker */
+.cpick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.cp{background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;text-align:left;display:flex;flex-direction:column;gap:6px;min-height:118px}
+.cp b{font:700 17px/1.2 var(--head)}
+.cp span{font:14px/1.4 var(--ui);color:var(--ink2)}
+.cp.on{border-color:var(--acc);background:var(--acc-f);box-shadow:inset 0 4px 0 var(--acc)}
+.cpout{margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.cpout>div{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;font:15px/1.5 var(--ui)}
+.cpout .k{font:700 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hi-d);margin-bottom:6px}
+
+/* factor scan / generic 4-up */
+.fcards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.fc{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;border-top:4px solid var(--acc)}
+.fc.l2{border-top-color:var(--hi)}
+.fc h3{font-size:21px;margin-bottom:6px}
+.fc details{margin:6px 0 10px}
+.fc details summary{cursor:pointer;font:700 12px/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--acc-d);padding:4px 0}
+.fc details .pull{margin-top:8px}
+
+/* ladder */
+.ladder{display:grid;gap:8px}
+.lad{display:grid;grid-template-columns:36px 1fr;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.lad .lad-n{width:30px;height:30px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 14px var(--ui)}
+.lad .lad-k{font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hi-d)}
+.lad .lad-t{font:700 19px/1.3 var(--head);margin-top:4px}
+.lad .lad-s{font:14.5px/1.4 var(--ui);color:var(--ink2);margin-top:3px}
+.lad .lad-ex{margin-top:6px;font:italic 16px/1.5 Georgia,serif;color:var(--ink)}
+.tests{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tests span{font:700 12.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--acc);color:var(--acc-d);border-radius:999px;padding:7px 12px}
+
+/* jstor + search lab */
+.jfacts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.jf{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--acc);border-radius:10px;padding:14px 16px}
+.jf-k{font:700 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--hi-d);margin-bottom:6px}
+.jf p{margin:0;font:15.5px/1.5 var(--ui)}
+.steps5{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.steps5 li{border:1.5px solid var(--line);border-radius:10px;background:var(--card);padding:10px;text-align:center;font:700 14px/1.3 var(--ui)}
+.steps5 li b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:#fff;margin:0 auto 6px;font-size:13px}
+.sb{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.sb-goals{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.sg{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font:600 14.5px/1.3 var(--ui);text-align:left}
+.sg .sg-n{display:block;font:700 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--hi-d);margin-bottom:2px}
+.sg.on{border-color:var(--acc);background:var(--acc-f)}
+.sb-bank{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.sb-bank button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font:600 14px/1.2 var(--ui)}
+.sb-bank button:hover{border-color:var(--acc)}
+.sb-bank button.used{opacity:.4}
+.sb-tokens{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-height:40px;border:1.5px solid var(--ink);border-radius:8px;padding:6px 10px;background:#fff}
+.sb-tokens .tk2{border:1.5px solid var(--acc);background:var(--acc-f);border-radius:6px;padding:4px 8px;font:600 14px var(--ui)}
+.sb-tokens .op{border:1.5px solid var(--hi);background:var(--hi-f);border-radius:6px;padding:4px 8px;font:700 13px var(--mono)}
+.sb-tokens .empty{font:14px var(--ui);color:var(--ink2)}
+.sb-str{display:block;margin:8px 0 0;font:600 14px/1.4 var(--mono);color:var(--ink2);overflow-wrap:anywhere}
+.sb-read{margin-top:10px;font:600 14.5px/1.5 var(--ui);background:var(--hi-f);border-radius:8px;padding:10px 12px;min-height:44px}
+.sb-flt{margin-top:14px}
+.sb-fb{display:flex;gap:8px;flex-wrap:wrap}
+.flt{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font:600 13.5px var(--ui)}
+.flt.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.sb-fout{font:600 14px/1.45 var(--ui);color:var(--ink2);margin-top:8px}
+.note-card{margin:14px 0;background:var(--paper);border-left:4px solid var(--acc);border-radius:0 8px 8px 0;padding:12px 16px}
+.note-card p{margin:0;font:15.5px/1.5 var(--ui)}
+.five{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.fv{border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:10px;text-align:left;font:500 14px/1.3 var(--ui)}
+.fv b{display:block;font:900 20px/1.1 var(--head);color:var(--acc-d);margin-bottom:2px}
+.fv.on{border-color:var(--acc);background:var(--acc-f)}
+.fv-out{margin-top:10px;min-height:56px;background:var(--hi-f);border-radius:8px;padding:12px 14px;font:15.5px/1.5 var(--ui)}
+
+/* source kinds */
+.kinds{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kind{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;border-top:4px solid var(--acc)}
+.kind.k2{border-top-color:var(--hi)}
+.kind.k3{border-top-color:var(--ink)}
+.kind h3{font-size:20px;margin-bottom:6px}
+.kind p{margin:0 0 8px;font:15px/1.5 var(--ui)}
+.kind .wh{font:700 12px/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--acc-d)}
+.arch{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+.ar{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.ar b{font:700 17px var(--head);display:block;margin-bottom:3px}
+.ar p{margin:0;font:14.5px/1.5 var(--ui);color:var(--ink2)}
+
+/* citation patterns */
+.pat{font:17px/1.9 Georgia,serif;margin:0;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:8px;text-indent:-28px;margin-left:28px;width:calc(100% - 28px)}
+.pat button{border:0;background:transparent;padding:1px 2px;border-bottom:2px dotted var(--acc);font:inherit;text-indent:0;color:var(--ink)}
+.pat button:hover,.pat button.on{background:var(--hi-f)}
+.pat-g{margin-top:10px;min-height:52px;background:var(--hi-f);border-radius:8px;padding:12px 14px;font:15.5px/1.5 var(--ui)}
+.pat-set{display:none}.pat-set.on{display:block}
+.csteps{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;margin:0 0 14px;counter-reset:cs}
+.csteps li{counter-increment:cs;flex:1 1 180px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:10px 12px;font:15px/1.4 var(--ui)}
+.csteps li::before{content:counter(cs);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font:700 12px var(--ui);margin-right:8px}
+
+/* source log */
+.slog{width:100%;border-collapse:collapse;font:14.5px/1.4 var(--ui)}
+.slog th{font:700 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;text-align:left;color:var(--hi-d);padding:6px 6px;border-bottom:2px solid var(--ink)}
+.slog td{vertical-align:top;padding:8px 6px;border-bottom:1px solid var(--line)}
+.slog select,.slog textarea{width:100%;border:1.5px solid var(--line);border-radius:6px;padding:6px 8px;font:14.5px/1.45 Georgia,serif;background:#fff}
+.slog textarea{resize:vertical;min-height:64px}
+.slog .rn{font:900 22px var(--head);color:var(--acc-d)}
+.slog-ro .slogrow{border-bottom:1px solid var(--line);padding:8px 0;font:15px/1.5 Georgia,serif}
+.slog-ro .slogrow small{display:block;font:700 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--acc-d)}
+.slog-tally{font:700 14px var(--ui);color:var(--ink2);margin:10px 0 0}
+.slog-tally.ok{color:var(--acc-d)}
+
+/* timing planner */
+.tp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.tp-bar{display:flex;height:44px;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden;background:#fff;margin-bottom:6px}
+.tp-bar i{display:block;height:100%;border-right:1px solid #fff;min-width:0}
+.tp-bar i:nth-child(odd){background:var(--acc)}
+.tp-bar i:nth-child(even){background:#5E9A7E}
+.tp-bar i.vr{background:var(--hi)}
+.tp-scale{position:relative;height:26px;font:600 12px var(--mono);color:var(--ink2)}
+.tp-scale span{position:absolute;transform:translateX(-50%)}
+.tp-zone{position:relative;height:8px;background:#fff;border:1px solid var(--line);border-radius:4px;margin-bottom:12px}
+.tp-zone i{position:absolute;top:0;bottom:0;background:var(--acc-f);border-left:2px solid var(--acc);border-right:2px solid var(--acc)}
+.tp-rows{display:grid;gap:6px}
+.tp-row{display:grid;grid-template-columns:30px 1fr 96px;gap:10px;align-items:center;border-top:1px solid var(--line);padding:7px 0;font:15px/1.35 var(--ui)}
+.tp-row .n{width:26px;height:26px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 12px var(--ui)}
+.tp-row b{font-family:var(--head);font-size:17px}
+.tp-row small{display:block;font:13.5px/1.4 var(--ui);color:var(--ink2)}
+.tp-row input{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:7px 8px;font:600 16px var(--ui);text-align:right}
+.tp-row.vr .n{background:var(--hi)}
+.tp-tot{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;border-top:3px solid var(--ink);margin-top:6px;padding-top:10px}
+.tp-tot b{font:900 34px/1 var(--head)}
+.tp-msg{font:700 14.5px/1.4 var(--ui)}
+.tp-msg.ok{color:var(--acc-d)}.tp-msg.no{color:var(--bad)}
+
+/* segment table (rubric map) */
+.smap{width:100%;border-collapse:collapse;font:14px/1.35 var(--ui);background:var(--card);border:1px solid var(--line)}
+.smap th,.smap td{border:1px solid var(--line);padding:7px 8px;text-align:center}
+.smap th{font:700 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;background:var(--paper);color:var(--ink)}
+.smap td:first-child,.smap th:first-child{text-align:left;font-weight:700}
+.smap td.dot{color:var(--acc);font-size:20px;line-height:1}
+.smap-w{overflow-x:auto}
+
+/* script segment cards */
+.seg2{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--acc);border-radius:10px;padding:14px 18px;margin:0 0 16px}
+.seg2:nth-of-type(even){border-left-color:var(--hi)}
+.seg2-h{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.seg2-h b{font:700 22px var(--head)}
+.seg2-h .mins{font:700 12.5px var(--mono);color:var(--hi-d);margin-left:auto}
+.seg2 .job{font:15.5px/1.5 var(--ui);color:var(--ink2);margin:0 0 10px}
+.seg2 .rr{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
+.seg2 .rr span{font:700 11px/1 var(--mono);letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--acc);color:var(--acc-d);border-radius:4px;padding:4px 6px}
+.seg2 .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* status / save */
+.status{display:grid;gap:6px;margin:12px 0}
+.status .stl{display:grid;grid-template-columns:24px 1fr auto;gap:8px;font:14.5px/1.4 var(--ui);padding:5px 0;border-bottom:1px solid var(--line)}
+.status .stl i{font-style:normal;color:var(--line);font-weight:900}
+.status .stl.ok i{color:var(--acc)}
+.status .stl span{color:var(--ink2);font-weight:600}
+.status .sum{font:900 28px var(--head);color:var(--acc-d);padding:6px 0}
+input.name{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px Georgia,serif;background:#fff}
+.pdfnote{font:600 14px/1.4 var(--ui);color:var(--ink2);margin-left:6px}
+.opt-card{border:1.5px dashed var(--hi);background:var(--hi-f);border-radius:12px;padding:16px 18px}
+.opt-card .k{font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--hi-d);margin-bottom:6px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tipgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;border-top:4px solid var(--hi)}
+.tip b{display:block;font:700 17px var(--head);margin-bottom:4px}
+.tip p{margin:0;font:14.5px/1.5 var(--ui);color:var(--ink2)}
+
+@media (max-width:760px){
+  body{font-size:17px}
+  .hero h1{font-size:32px}
+  .sec-h h2{font-size:25px}
+  .req,.rt-row,.ixcards,.ixcards.two,.ixcards.four,.cpick,.cpout,.jfacts,.kinds,.arch,.fcards,.pulls,.two-col,.tipgrid,.seg2 .two{grid-template-columns:1fr}
+  .rail{grid-template-columns:1fr}
+  .rail .st:last-child{border-right:1px solid var(--line)}
+  .steps5{grid-template-columns:repeat(5,1fr);gap:4px}
+  .steps5 li{padding:8px 2px;font-size:12.5px}
+  .five{grid-template-columns:1fr 1fr}
+  .bins,.bins.four{grid-template-columns:1fr}
+  .tp-row{grid-template-columns:28px 1fr 78px}
+  .wkmap li{grid-template-columns:1fr;gap:2px}
+  .slog thead{display:none}
+  .slog,.slog tbody,.slog tr,.slog td{display:block;width:100%}
+  .slog tr{border:1px solid var(--line);border-radius:8px;padding:6px;margin-bottom:10px;background:var(--card)}
+  .slog td{border:0;padding:4px 2px}
+  .slog td[data-l]::before{content:attr(data-l);display:block;font:700 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hi-d);margin-bottom:2px}
+  .card{padding:18px 16px}
+  .stop{padding:6px 10px}
+  .tools .btn span{display:none}
+  .ms text{stroke:none}
+}
+
+/* Project 1 mini-lesson beat states (classes b1..bN are added cumulatively) */
+.pm1 .video,.pm1 .case,.pm1 .lens,.pm1 .thesis,.pm1 .road,.pm1 .rub,.pm1 .chip,.pm1 .sys,.pm1 .outs{opacity:0}
+.pm1 .chip{transform:translateY(8px)}
+.pm1.b1 .video{opacity:1}
+.pm1.b2 .case{opacity:1}
+.pm1.b3 .lens{opacity:1}
+.pm1.b3 .chip{opacity:1;transform:none}
+.pm1.b3 .c2{transition-delay:.3s}.pm1.b3 .c3{transition-delay:.6s}.pm1.b3 .c4{transition-delay:.9s}
+.pm1.b3 .sys{opacity:1;transition-delay:1.3s}
+.pm1.b4 .outs{opacity:1}
+.pm1.b5 .thesis{opacity:1}
+.pm1.b6 .road{opacity:1}
+.pm1.b7 .rub{opacity:1}
+
+.pm2 .thesis,.pm2 .prim,.pm2 .schol,.pm2 .data,.pm2 .cites,.pm2 .wide{opacity:0}
+.pm2.b1 .thesis{opacity:1}
+.pm2.b2 .prim{opacity:1}
+.pm2.b3 .schol{opacity:1}
+.pm2.b4 .data{opacity:1}
+.pm2.b5 .cites{opacity:1}
+.pm2.b6 .wide{opacity:1}
+
+</style>
+</head>
+<body class="">
+
+<div class="oao"><div class="wrap">
+  <img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy">
+  <span>Optima Academy Online</span><span class="sub">Economics Honors</span>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="dateline"><span>Module 1 Project · Guided Lesson 1 of 2</span><span>Module 1 · Introduction to Economics and Production</span></div>
+  <h1>Your Case and Sources</h1>
+</div>
+<div class="ticker" aria-hidden="true"><div class="tk"><span>CASE<b class="up">&#9650;</b></span><span>THESIS<b class="up">&#9650;</b></span><span>FACTORS<b class="up">&#9650;</b></span><span>SYSTEM<b class="dn">&#9660;</b></span><span>GOALS<b class="up">&#9650;</b></span><span>PRIMARY SOURCE<b class="up">&#9650;</b></span><span>DATA SERIES<b class="dn">&#9660;</b></span><span>CITATION<b class="up">&#9650;</b></span><span>CASE<b class="up">&#9650;</b></span><span>THESIS<b class="up">&#9650;</b></span><span>FACTORS<b class="up">&#9650;</b></span><span>SYSTEM<b class="dn">&#9660;</b></span><span>GOALS<b class="up">&#9650;</b></span><span>PRIMARY SOURCE<b class="up">&#9650;</b></span><span>DATA SERIES<b class="dn">&#9660;</b></span><span>CITATION<b class="up">&#9650;</b></span></div></div>
+</section>
+
+<nav class="route" aria-label="Lesson parts"><div class="wrap">
+  <div class="stops" id="stops"></div>
+  <div class="tools">
+    
+    <button class="btn ghost small" data-open="glossDrawer">&#128214; <span>Words</span></button>
+    <button class="btn ghost small" data-open="askDrawer">&#128172; <span>Ask Mr. Magister</span></button>
+  </div>
+</div></nav>
+
+<main class="wrap">
+<!-- ═════════ 0 THE PROJECT ═════════ -->
+<section class="step" data-step="0">
+  <div class="card mini" data-mini="m1" data-std="FL:SS.912.E.1.1 FL:SS.912.E.1.3 FL:SS.912.E.2.1 TX:(1)(C) TX:(5)(B) TX:(23)(D) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.5.14"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>The Whole Project on One Page</b></div></div><svg class="ms pm1" viewBox="0 0 600 430" role="img" aria-label="The whole project: one real case, seen through land, labor, capital and entrepreneurship inside an economic system, tied together by a thesis, delivered as a 15 to 20 minute video, built in two lessons, scored on five rubric rows">
+  <g class="pan case">
+    <rect x="8" y="8" width="140" height="176" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+    <text x="20" y="34" class="hd">THE CASE</text>
+    <line x1="20" y1="42" x2="136" y2="42" stroke="#151515" stroke-width="2"/>
+    <text x="20" y="76" class="b">A real place</text>
+    <text x="20" y="106" class="b">A real period</text>
+    <text x="20" y="150" class="sm">Not made up</text>
+  </g>
+  <g class="pan lens">
+    <rect x="160" y="8" width="290" height="176" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+    <text x="172" y="34" class="hd">THE LENS</text>
+    <line x1="172" y1="42" x2="438" y2="42" stroke="#151515" stroke-width="2"/>
+    <g class="chip c1"><rect x="172" y="50" width="130" height="26" rx="13" fill="#F5EBD5" stroke="#B4832A" stroke-width="1.5"/><text x="237" y="68" text-anchor="middle" class="b">Land</text></g>
+    <g class="chip c2"><rect x="308" y="50" width="130" height="26" rx="13" fill="#F5EBD5" stroke="#B4832A" stroke-width="1.5"/><text x="373" y="68" text-anchor="middle" class="b">Labor</text></g>
+    <g class="chip c3"><rect x="172" y="82" width="130" height="26" rx="13" fill="#F5EBD5" stroke="#B4832A" stroke-width="1.5"/><text x="237" y="100" text-anchor="middle" class="b">Capital</text></g>
+    <g class="chip c4"><rect x="308" y="82" width="130" height="26" rx="13" fill="#F5EBD5" stroke="#B4832A" stroke-width="1.5"/><text x="373" y="100" text-anchor="middle" class="b" style="font-size:14px" textLength="116" lengthAdjust="spacingAndGlyphs">Entrepreneurship</text></g>
+    <g class="sys"><rect x="172" y="116" width="266" height="30" rx="4" fill="#E2EEE6" stroke="#17603F" stroke-width="1.5"/><text x="305" y="137" text-anchor="middle" class="lb">ONE ECONOMIC SYSTEM</text></g>
+    <g class="outs">
+      <rect x="172" y="152" width="128" height="26" rx="4" fill="#fff" stroke="#17603F" stroke-width="1.5"/><text x="236" y="170" text-anchor="middle" style="font-size:15px;font-weight:700">answers scarcity</text>
+      <rect x="310" y="152" width="128" height="26" rx="4" fill="#fff" stroke="#B4832A" stroke-width="1.5"/><text x="374" y="170" text-anchor="middle" style="font-size:15px;font-weight:700">pursues goals</text>
+    </g>
+  </g>
+  <g class="pan video">
+    <rect x="462" y="8" width="130" height="176" rx="4" fill="#151515"/>
+    <rect x="470" y="16" width="114" height="160" rx="2" fill="#FAF7EF"/>
+    <text x="482" y="40" class="hd">THE VIDEO</text>
+    <text x="527" y="100" text-anchor="middle" style="font:900 34px var(--head);fill:#17603F">15–20</text>
+    <text x="527" y="124" text-anchor="middle" class="b">minutes</text>
+    <text x="527" y="156" text-anchor="middle" class="sm">one real case</text>
+  </g>
+  <g class="thesis">
+    <rect x="8" y="196" width="584" height="40" rx="4" fill="#F5EBD5" stroke="#151515" stroke-width="1.5"/>
+    <text x="22" y="222" class="lb" style="font-size:16px">THESIS</text>
+    <text x="104" y="222" style="font-size:17px;font-weight:700">One sentence you can defend, with arguments behind it</text>
+  </g>
+  <g class="road">
+    <text x="20" y="262" class="lb" style="fill:#17603F">THIS LESSON</text>
+    <path d="M44 270 V276 H316 V270" fill="none" stroke="#17603F" stroke-width="2.5"/>
+    <text x="400" y="262" class="lb" style="fill:#7A5513">NEXT LESSON</text>
+    <path d="M404 270 V276 H556 V270" fill="none" stroke="#B4832A" stroke-width="2.5"/>
+    <line x1="40" y1="300" x2="560" y2="300" stroke="#151515" stroke-width="3"/>
+    <g><circle cx="60" cy="300" r="15" fill="#fff" stroke="#151515" stroke-width="2"/><text x="60" y="306" text-anchor="middle" class="b">1</text><text x="60" y="334" text-anchor="middle" style="font-size:16px">Case</text></g>
+    <g><circle cx="180" cy="300" r="15" fill="#fff" stroke="#151515" stroke-width="2"/><text x="180" y="306" text-anchor="middle" class="b">2</text><text x="180" y="334" text-anchor="middle" style="font-size:16px">Thesis</text></g>
+    <g><circle cx="300" cy="300" r="15" fill="#fff" stroke="#151515" stroke-width="2"/><text x="300" y="306" text-anchor="middle" class="b">3</text><text x="300" y="334" text-anchor="middle" style="font-size:16px">Sources</text></g>
+    <g><circle cx="420" cy="300" r="15" fill="#fff" stroke="#151515" stroke-width="2"/><text x="420" y="306" text-anchor="middle" class="b">4</text><text x="420" y="334" text-anchor="middle" style="font-size:16px">Script</text></g>
+    <g><circle cx="540" cy="300" r="15" fill="#fff" stroke="#151515" stroke-width="2"/><text x="540" y="306" text-anchor="middle" class="b">5</text><text x="540" y="334" text-anchor="middle" style="font-size:16px">Record</text></g>
+  </g>
+  <g class="rub">
+    <text x="8" y="362" class="lb">FIVE ROWS · TEN POINTS EACH</text>
+    <g><rect x="8" y="370" width="112" height="52" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/><text x="64" y="391" text-anchor="middle" class="b" style="font-size:15px">Content</text><text x="64" y="411" text-anchor="middle" class="b" style="font-size:15px">Knowledge</text></g>
+    <g><rect x="124" y="370" width="112" height="52" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/><text x="180" y="401" text-anchor="middle" class="b" style="font-size:15px">Organization</text></g>
+    <g><rect x="240" y="370" width="112" height="52" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/><text x="296" y="401" text-anchor="middle" class="b" style="font-size:15px">Presentation</text></g>
+    <g><rect x="356" y="370" width="112" height="52" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/><text x="412" y="391" text-anchor="middle" class="b" style="font-size:15px">Critical</text><text x="412" y="411" text-anchor="middle" class="b" style="font-size:15px">Thinking</text></g>
+    <g><rect x="472" y="370" width="120" height="52" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/><text x="532" y="391" text-anchor="middle" class="b" style="font-size:15px">Research and</text><text x="532" y="411" text-anchor="middle" class="b" style="font-size:15px">Citations</text></g>
+  </g>
+</svg>
+<div class="sub"></div><div class="mctl"></div></div>
+
+  <section class="sec" data-std="FL:SS.912.E.1.1 FL:SS.912.E.1.3 FL:SS.912.E.2.1 TX:(1)(C) TX:(5)(B) TX:(23)(D) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.5.14">
+    <div class="sec-h"><span class="num">A</span><h2>What You Will Make</h2></div>
+    <div class="req">
+      <div class="rc"><div class="k">Final submission</div><h3>One video</h3>
+        <p>15-20 minute presentation.</p>
+        <p>Format: video recording. You may include an immersive/VR-recorded segment of up to about 5 minutes if you have access to one, but it is not required. Standard video formats (MP4, WMV, MOV, or similar) are accepted.</p></div>
+      <div class="rc b"><div class="k">Requirements</div><h3>Argue it</h3>
+        <p>Clear thesis and supporting arguments</p></div>
+      <div class="rc"><div class="k">Visuals</div><h3>Show it</h3>
+        <p>Give a thorough presentation and explanation. Feel free to use historical photographs, charts, and stock footage in addition to any immersive media elements.</p></div>
+    </div>
+    <div class="req wide" style="margin-top:14px"><div class="rc b"><div class="k">Topic</div><h3>One real case</h3>
+      <p>Choose one real historical or contemporary case that shows how factors of production (land, labor, capital, entrepreneurship) combine within an economic system to respond to scarcity and pursue broad economic goals. Examples include the Industrial Revolution, a command economy such as the Soviet Union or Cuba, a market economy responding to a resource shock, or a side-by-side comparison of two real nations with different economic systems. A good presentation will touch on factors of production, the economic system(s) involved, and the broad economic goals (efficiency, growth, freedom, fairness, stability) at stake.</p></div></div>
+    <div class="due">Module Project · 50 points · due at the end of Week 2</div>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.1.1 FL:SS.912.E.1.3 FL:SS.912.E.2.1 TX:(1)(C) TX:(5)(B) TX:(23)(D) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.5.14">
+    <div class="sec-h"><span class="num">B</span><h2>Two Weeks, Two Lessons</h2></div>
+    <div class="rail">
+      <div class="st done"><div class="wk">Week 1</div><div class="nm">Prep</div><div class="ds">Lessons 1.01, 1.02, and 1.03. Your answers there feed this project.</div></div>
+      <div class="st now"><div class="wk">This lesson</div><div class="nm">Case and sources</div><div class="ds">Choose and justify a case, draft a thesis, build a source log.</div></div>
+      <div class="st"><div class="wk">Project lesson 2</div><div class="nm">Build and record</div><div class="ds">Timing plan, script, visuals, rehearsal, recording, turn-in.</div></div>
+      <div class="st"><div class="wk">Due</div><div class="nm">End of Week 2</div><div class="ds">One video in Canvas. Lessons 1.04 Economic Systems and 1.05 Broad Economic Goals run alongside.</div></div>
+    </div>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.1.1 FL:SS.912.E.1.3 FL:SS.912.E.2.1 TX:(1)(C) TX:(5)(B) TX:(23)(D) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.5.14">
+    <div class="sec-h"><span class="num">C</span><h2>How You Are Scored</h2></div>
+    <div class="rt-row">
+      <div class="rtile here"><b>10</b><h3>Content Knowledge</h3><p>Accurate, relevant information from multiple sources.</p><span class="tag">Starts here</span></div>
+      <div class="rtile soon"><b>10</b><h3>Organization</h3><p>Clear introduction, logical flow, labeled sections.</p><span class="tag">Next lesson</span></div>
+      <div class="rtile soon"><b>10</b><h3>Presentation</h3><p>Graphics and media that help, clear pacing.</p><span class="tag">Next lesson</span></div>
+      <div class="rtile here"><b>10</b><h3>Critical Thinking</h3><p>Analysis, evaluation, and synthesis of what you find.</p><span class="tag">Starts here</span></div>
+      <div class="rtile here"><b>10</b><h3>Research and Citations</h3><p>Extensive research, properly cited sources.</p><span class="tag">Starts here</span></div>
+    </div>
+    <details class="more" style="margin-top:14px"><summary>Full grading rubric</summary><div class="rubric"><table>
+<th scope="col"ead><tr><th scope="col">Criteria</th><th scope="col">Excellent (10)</th><th scope="col">Proficient (8)</th><th scope="col">Satisfactory (6)</th><th scope="col">Developing (4)</th><th scope="col">Needs Improvement (2)</th></tr></thead>
+<tbody><tr><td><strong>Content Knowledge</strong><br><span>10 pts</span></td><td>The project demonstrates thorough understanding of the historical topic, incorporates accurate and relevant information from multiple sources, and provides insightful analysis.</td><td>The project shows a solid understanding of the historical topic, includes mostly accurate and relevant information from multiple sources, and offers reasonable analysis.</td><td>The project displays an adequate understanding of the historical topic, includes some accurate and relevant information from multiple sources, and provides basic analysis.</td><td>The project reveals a limited understanding of the historical topic, includes incomplete or inaccurate information from sources, and lacks analysis.</td><td>The project demonstrates a lack of understanding of the historical topic, includes incorrect or irrelevant information, and lacks analysis.</td></tr><tr><td><strong>Organization</strong><br><span>10 pts</span></td><td>The project is exceptionally well-structured, with a clear introduction, logical flow, and coherent transitions between ideas. Each section is clearly labeled, and the project follows a well-defined structure.</td><td>The project is well-organized, with an introduction, a logical flow, and transitions between ideas. Each section is labeled appropriately, and the project follows a consistent structure.</td><td>The project is adequately organized, with an introduction, a mostly logical flow, and some transitions between ideas. Sections are labeled, but the structure may be somewhat inconsistent.</td><td>The project lacks overall organization, with an unclear introduction, disjointed flow, and inadequate transitions between ideas. Sections may be poorly labeled, and the structure is inconsistent.</td><td>The project is poorly organized, lacking an introduction, logical flow, and transitions between ideas. Sections are not labeled, and the structure is confusing or absent.</td></tr><tr><td><strong>Presentation</strong><br><span>10 pts</span></td><td>The project is visually appealing and creatively presented. Graphics, images, and multimedia elements are used effectively to enhance understanding and engagement. The presentation is clear, well-paced, and demonstrates strong communication skills.</td><td>The project is visually pleasing and adequately presented. Graphics, images, and multimedia elements are used appropriately to support understanding and engagement. The presentation is clear, paced well, and communicates effectively.</td><td>The project is visually acceptable but may lack creativity or polish. Graphics, images, and multimedia elements are used to some extent, but their impact on understanding and engagement is limited. The presentation is generally clear and adequately communicates ideas.</td><td>The project lacks visual appeal and creative presentation. Graphics, images, and multimedia elements are either missing or poorly used, detracting from understanding and engagement. The presentation may be unclear and poorly communicate ideas.</td><td>The project is visually unappealing and poorly presented. Graphics, images, and multimedia elements are absent or completely ineffective, hindering understanding and engagement. The presentation is unclear and fails to communicate ideas effectively.</td></tr><tr><td><strong>Critical Thinking</strong><br><span>10 pts</span></td><td>The project demonstrates sophisticated critical thinking skills, including analysis, evaluation, and synthesis of information. It offers original insights and demonstrates a deep understanding of economic concepts and their implications.</td><td>The project shows solid critical thinking skills, including analysis, evaluation, and synthesis of information. It offers reasonable insights and demonstrates a good understanding of economic concepts and their implications.</td><td>The project displays basic critical thinking skills, including some analysis, evaluation, and synthesis of information. It provides basic insights and demonstrates an adequate understanding of economic concepts and their implications.</td><td>The project shows limited critical thinking skills, with minimal analysis, evaluation, and synthesis of information. It offers limited insights and demonstrates a limited understanding of economic concepts and their implications.</td><td>The project demonstrates a lack of critical thinking skills, with no analysis, evaluation, or synthesis of information. It provides no insights and demonstrates no understanding of economic concepts and their implications.</td></tr><tr><td><strong>Research and Citations</strong><br><span>10 pts</span></td><td>The project demonstrates extensive research, with a wide variety of high-quality sources properly cited throughout. Citations follow a consistent and appropriate format (e.g., MLA or APA).</td><td>The project shows sufficient research, with credible sources cited throughout. Citations are generally accurate and follow an appropriate format (e.g., MLA or APA).</td><td>The project includes some research, with sources cited but may lack variety or credibility. Citations may be inconsistent or contain minor errors in format (e.g., MLA or APA).</td><td>The project shows limited research, with few or unreliable sources cited. Citations may be inconsistent or contain major errors in format (e.g., MLA or APA).</td><td>The project demonstrates a lack of research, with no or inadequate sources cited. Citations are missing or contain major errors in format (e.g., MLA or APA).</td></tr>
+<tr><td colspan="5">Total:</td><td>50 pts</td></tr>
+</tbody></table></div></details>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.1.1 FL:SS.912.E.2.5 TX:(1)(C) TX:(11)(A) MS:DJ.SS.NA.5.14 MS:DJ.SS.NA.5.9 FL:SS.912.E.1.2 TX:(1)(A) TX:(1)(D) MS:DJ.SS.NA.1.1 MS:DJ.SS.NA.1.3 MS:DJ.SS.NA.1.5">
+    <div class="sec-h"><span class="num">D</span><h2>Your Prep So Far</h2></div>
+    <p class="ask">Read live from this browser. Open each lesson to see what it gives the project.</p>
+    <div class="preps">
+      <details class="prep" data-lesson="l101" open>
+        <summary><span class="pp-w">Week 1</span><span class="pp-t">Lesson 1.01 &middot; What is Economics?</span><span class="pp-c"></span></summary>
+        <div class="pulls">
+          <div class="pull wide"><div class="pull-k">Lesson 1.01 &middot; The Paper &middot; scarcity and the three questions</div><div class="pull-v" data-pull="l101:ans:r1"></div></div>
+          <div class="pull wide"><div class="pull-k">Lesson 1.01 &middot; Decision Dissection &middot; opportunity cost</div><div class="pull-v" data-pull="l101:desk:0:2"></div></div>
+          <div class="pull wide"><div class="pull-k">Lesson 1.01 &middot; your marks and margin notes</div><div class="pull-v" data-pull="l101:hls"></div></div>
+        </div>
+        <p class="pull-use">Use it for: the three questions (what, how, for whom) behind your system section, and the opportunity-cost sentence in your case.</p>
+      </details>
+      <details class="prep" data-lesson="l102">
+        <summary><span class="pp-w">Week 1</span><span class="pp-t">Lesson 1.02 &middot; Scarcity, Choice, and Opportunity Cost</span><span class="pp-c"></span></summary>
+        <div class="pulls">
+          <div class="pull wide"><div class="pull-k">Lesson 1.02 &middot; Reel Choices</div><div class="pull-v" data-pull="l102:desk:0:*"></div></div>
+          <div class="pull"><div class="pull-k">Lesson 1.02 &middot; production possibilities &middot; what moving between two points costs</div><div class="pull-v" data-pull="l102:desk:1:1"></div></div>
+          <div class="pull"><div class="pull-k">Lesson 1.02 &middot; production possibilities &middot; what shifts the curve outward</div><div class="pull-v" data-pull="l102:desk:1:3"></div></div>
+        </div>
+        <p class="pull-use">Use it for: weighing a choice by what it gives up, and explaining growth as the curve moving outward.</p>
+      </details>
+      <details class="prep" data-lesson="l103">
+        <summary><span class="pp-w">Week 1</span><span class="pp-t">Lesson 1.03 &middot; Factors of Production</span><span class="pp-c"></span></summary>
+        <div class="pulls">
+          <div class="pull"><div class="pull-k">Lesson 1.03 &middot; Factor Factory &middot; land</div><div class="pull-v" data-pull="l103:desk:0:1"></div></div>
+          <div class="pull"><div class="pull-k">Lesson 1.03 &middot; Factor Factory &middot; labor</div><div class="pull-v" data-pull="l103:desk:0:2"></div></div>
+          <div class="pull"><div class="pull-k">Lesson 1.03 &middot; Factor Factory &middot; capital</div><div class="pull-v" data-pull="l103:desk:0:3"></div></div>
+          <div class="pull"><div class="pull-k">Lesson 1.03 &middot; Factor Factory &middot; entrepreneurship</div><div class="pull-v" data-pull="l103:desk:0:4"></div></div>
+        </div>
+        <p class="pull-use">Use it for: the factor scan on the Your Case tab. Same method, applied to a real economy instead of an invented business.</p>
+      </details>
+    </div>
+    <div class="label wm-l" style="margin-top:20px">Still to come in Week 2</div>
+    <ol class="wkmap">
+      <li><span class="wm-w">Lesson 1.04</span><span><span class="wm-t">Economic Systems</span><span class="wm-d">How traditional, market, command, and mixed systems answer the three questions</span></span></li>
+      <li><span class="wm-w">Lesson 1.05</span><span><span class="wm-t">Broad Economic Goals</span><span class="wm-d">The goals your case pursued, and what pursuing one cost another</span></span></li>
+    </ol>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.1.1 FL:SS.912.E.1.3 FL:SS.912.E.2.1 TX:(1)(C) TX:(5)(B) TX:(23)(D) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.5.14">
+    <div class="sec-h"><span class="num">E</span><h2>Check and Commit</h2></div>
+    <div class="card">
+      <div class="mcq" data-qid="p1-fit">
+        <p class="stem">Which plan fits the Module 1 Project?</p>
+        <div class="opts">
+          <button class="opt" data-fb="One case is required. A tour of every system across all of history cannot be argued in fifteen to twenty minutes, and it leaves no room for a thesis.">A 20-minute video comparing the economic systems of the whole world from the earliest trade to today, with a timeline of every major change and a map for each century</button>
+          <button class="opt" data-ok="1" data-fb="Right. One real case, all four factors, the system, the goals at stake, and a thesis, inside the length limit.">A 16-minute video on one real economy in one period: how its land, labor, capital, and entrepreneurs combined, and which goals it pursued, with a thesis</button>
+          <button class="opt" data-fb="The case has to be real. A made-up economy cannot be checked against any source.">A 17-minute video on an imaginary island economy, so no one can say the facts are wrong</button>
+          <button class="opt" data-fb="The deliverable is a video recording of fifteen to twenty minutes, not a written essay.">A written essay of 1,500 words on the Industrial Revolution, with a reference list</button>
+        </div>
+        <div class="fb"></div>
+      </div>
+      <div class="fld">
+        <div class="q">Which kind of case do you expect to choose, and what do you want to show about it? <small>Two sentences. It can change on the next tab.</small></div>
+        <textarea class="jbox" id="p1-intent" data-label="Which kind of case I expect to choose, and what I want to show" data-min="20" rows="3"></textarea>
+      </div>
+    </div>
+  </section>
+  <div class="next"><span></span><button class="btn" data-go="1">Your Case &rarr;</button></div>
+</section>
+
+<!-- ═════════ 1 YOUR CASE ═════════ -->
+<section class="step" data-step="1">
+  <section class="sec" data-std="FL:SS.912.E.1.3 FL:SS.912.E.1.1 TX:(5)(C) TX:(22)(A) MS:DJ.SS.NA.2.2 MS:DJ.SS.NA.1.2">
+    <div class="sec-h"><span class="num">A</span><h2>Four Kinds of Case</h2></div>
+    <p class="ask">Tap a kind to compare. The four come from the project description.</p>
+    <div class="cpick" id="cpick">
+      <button class="cp" type="button" data-i="0"><b>The Industrial Revolution</b><span>One place, one stretch of years</span></button>
+      <button class="cp" type="button" data-i="1"><b>A command economy</b><span>Such as the Soviet Union or Cuba</span></button>
+      <button class="cp" type="button" data-i="2"><b>A market economy and a resource shock</b><span>A named resource, a named period</span></button>
+      <button class="cp" type="button" data-i="3"><b>A side-by-side comparison</b><span>Two real nations, different systems</span></button>
+    </div>
+    <div class="cpout" id="cpout" aria-live="polite"></div>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.1.3 FL:SS.912.E.1.1 TX:(5)(C) TX:(22)(A) MS:DJ.SS.NA.2.2 MS:DJ.SS.NA.1.2">
+    <div class="sec-h"><span class="num">B</span><h2>Case, Too Broad, or Not Real?</h2></div>
+    <p class="ask">Tap a statement, then tap where it belongs.</p>
+    <div class="place card" id="p1-casesort">
+      <div class="bank">
+        <button class="chip" data-k="c1" data-ans="use" data-fb="Right. It has a place, a period, and a way to find sources." data-miss="Look for a place and a period you could name. Does this have both?">The economy of one named country, in one named decade, with its main industries listed</button>
+        <button class="chip" data-k="c2" data-ans="broad" data-fb="Right. No fifteen-minute video can cover that span, and the project asks for one case." data-miss="Count the centuries it covers. Could one case show that in fifteen to twenty minutes?">Capitalism and communism from the earliest trade routes to today</button>
+        <button class="chip" data-k="c3" data-ans="not" data-fb="Right. It is an opinion with no place, no period, and no system to analyze." data-miss="Where and when is this? Which economic system does it examine?">Why prices feel too high these days</button>
+        <button class="chip" data-k="c4" data-ans="use" data-fb="Right. The project allows two real nations with different systems. One decade and a few measures keeps it workable." data-miss="Look for two real nations, a shared period, and a limited set of measures.">Two real nations in the same decade, one with a command economy and one with a market economy, compared on three measures</button>
+        <button class="chip" data-k="c5" data-ans="not" data-fb="Right. The case must be real. A game's rules are not evidence." data-miss="Could you find an archive record, an article, or a data series about it?">A made-up island nation from a video game, with its own factors of production</button>
+        <button class="chip" data-k="c6" data-ans="broad" data-fb="Right. Every market economy that ever faced a shock is a library, not a case." data-miss="How many economies does this name? A case is one.">Every market economy that has ever faced a resource shock</button>
+      </div>
+      <div class="bins three">
+        <div class="bin" data-bin="use"><h4>Usable case</h4><div class="drop"></div></div>
+        <div class="bin" data-bin="broad"><h4>Too broad</h4><div class="drop"></div></div>
+        <div class="bin" data-bin="not"><h4>Not a real case</h4><div class="drop"></div></div>
+      </div>
+      <div class="place-fb"></div>
+      <div class="tally"></div>
+    </div>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.1.3 FL:SS.912.E.1.1 TX:(5)(C) TX:(22)(A) MS:DJ.SS.NA.2.2 MS:DJ.SS.NA.1.2 TX:(1)(B) TX:(5)(A) TX:(5)(B) MS:DJ.SS.NA.2.3 MS:DJ.SS.NA.2.4">
+    <div class="sec-h"><span class="num">C</span><h2>Name and Justify Your Case</h2></div>
+    <div class="pulls one"><div class="pull"><div class="pull-k">The kind of case you tapped in section A</div><div class="pull-v" id="cpickNote"></div></div></div>
+    <div class="card">
+      <div class="fld">
+        <div class="q">1 &middot; Your case <small>The place, the period, and the economic system or systems. One or two sentences.</small></div>
+        <textarea class="jbox" id="p1-case" data-label="My case: the place, the period, and the economic system or systems" data-min="12" rows="3"></textarea>
+      </div>
+      <div class="fld">
+        <div class="q">2 &middot; Why this case fits <small>How it shows scarcity, the four factors, one system, and goals at stake. 3 to 5 sentences.</small></div>
+        <div class="coach"><img src="img/magister.jpg" alt=""><div>A strong answer points at evidence you expect to find, not just a topic you like. Ardena, a made-up country: "Its river valley is the land, its planners put workers and machines into steel, and the cost shows up in what households could buy." That names a factor, a choice, and a goal.</div></div>
+        <textarea class="jbox" id="p1-why" data-label="Why this case fits: scarcity, the four factors, one system, and goals at stake" data-min="45" rows="6"></textarea>
+      </div>
+      <div class="label dl">Test it</div>
+      <ul class="checks">
+        <li data-ck="cs1">I can name a real place and a real period.</li>
+        <li data-ck="cs2">At least two kinds of source exist for it: an article, an archive item, or a data series.</li>
+        <li data-ck="cs3">It shows a real choice made under scarcity.</li>
+        <li data-ck="cs4">It is small enough to explain in fifteen to twenty minutes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.1.1 FL:SS.912.E.2.5 TX:(1)(C) TX:(11)(A) MS:DJ.SS.NA.5.14 MS:DJ.SS.NA.5.9">
+    <div class="sec-h"><span class="num">D</span><h2>First Factor Scan</h2></div>
+    <div class="coach"><img src="img/magister.jpg" alt=""><div>Use the same move you made in Factor Factory: name the factor, then say what it did. "Workers" is a label. "Farm workers moved to the mills" says what happened. Short notes are fine here; the script comes in the next lesson.</div></div>
+    <div class="fcards" style="margin-top:14px">
+      <div class="fc">
+        <h3>Land</h3>
+        <details><summary>Your Factor Factory answer</summary><div class="pull"><div class="pull-v" data-pull="l103:desk:0:1"></div></div></details>
+        <div class="fld"><textarea class="jbox" id="p1-land" data-label="Land in my case: what it was and what it did" data-min="15" rows="4" aria-label="Land in my case"></textarea></div>
+      </div>
+      <div class="fc l2">
+        <h3>Labor</h3>
+        <details><summary>Your Factor Factory answer</summary><div class="pull"><div class="pull-v" data-pull="l103:desk:0:2"></div></div></details>
+        <div class="fld"><textarea class="jbox" id="p1-labor" data-label="Labor in my case: who worked and what skills they brought" data-min="15" rows="4" aria-label="Labor in my case"></textarea></div>
+      </div>
+      <div class="fc l2">
+        <h3>Capital</h3>
+        <details><summary>Your Factor Factory answer</summary><div class="pull"><div class="pull-v" data-pull="l103:desk:0:3"></div></div></details>
+        <div class="fld"><textarea class="jbox" id="p1-capital" data-label="Capital in my case: the tools, equipment, or buildings and what they added" data-min="15" rows="4" aria-label="Capital in my case"></textarea></div>
+      </div>
+      <div class="fc">
+        <h3>Entrepreneurship</h3>
+        <details><summary>Your Factor Factory answer</summary><div class="pull"><div class="pull-v" data-pull="l103:desk:0:4"></div></div></details>
+        <div class="fld"><textarea class="jbox" id="p1-ent" data-label="Entrepreneurship in my case: who took the risk and how they combined the other factors" data-min="15" rows="4" aria-label="Entrepreneurship in my case"></textarea></div>
+      </div>
+    </div>
+    <ul class="checks">
+      <li data-ck="fs1">Each card says what the factor did, not only what it was called.</li>
+      <li data-ck="fs2">Where a card is thin, I have written what I still need to find.</li>
+    </ul>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.1.2 TX:(1)(A) TX:(1)(D) MS:DJ.SS.NA.1.1 MS:DJ.SS.NA.1.3 MS:DJ.SS.NA.1.5 FL:SS.912.E.2.5 FL:SS.912.E.2.1 TX:(11)(A) TX:(11)(B) MS:DJ.SS.NA.7.2 MS:DJ.SS.NA.7.4">
+    <div class="sec-h"><span class="num">E</span><h2>Scarcity and What Was Given Up</h2></div>
+    <div class="pulls">
+      <div class="pull"><div class="pull-k">Lesson 1.02 &middot; what moving between two points on the curve costs</div><div class="pull-v" data-pull="l102:desk:1:1"></div></div>
+      <div class="pull"><div class="pull-k">Lesson 1.02 &middot; what shifts the curve outward</div><div class="pull-v" data-pull="l102:desk:1:3"></div></div>
+    </div>
+    <div class="card">
+      <div class="fld">
+        <div class="q">What was scarce in your case, and what did the system choose to give up? <small>Name the limited resource, what the system produced with it, and the next-best use it gave up. 3 to 4 sentences.</small></div>
+        <div class="coach"><img src="img/magister.jpg" alt=""><div>Scarcity shows up as a choice. In the production possibilities curve, it is the move from one point on the curve to another: more of one good, less of the other. Ardena (made up): "Steel took the workers who might have made cloth, so cloth was the cost."</div></div>
+        <textarea class="jbox" id="p1-scarce" data-label="What was scarce in my case, and what the system gave up" data-min="35" rows="5"></textarea>
+      </div>
+    </div>
+  </section>
+  <div class="next"><button class="btn ghost" data-go="0">&larr; The Project</button><button class="btn" data-go="2">Your Thesis &rarr;</button></div>
+</section>
+
+<!-- ═════════ 2 YOUR THESIS ═════════ -->
+<section class="step" data-step="2">
+  <section class="sec" data-std="FL:SS.912.E.2.1 FL:SS.912.E.1.3 FL:ELA.K12.EE.1.1 TX:(22)(C) TX:(22)(A) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.4">
+    <div class="sec-h"><span class="num">A</span><h2>From Topic to Thesis</h2></div>
+    <p class="ask">Open each step. The examples are made up, about an imaginary country, Ardena.</p>
+    <div class="ladder">
+      <div class="lad"><div class="lad-n">1</div><div><div class="lad-k">Topic</div><div class="lad-t">Ardena's economy in the 1950s</div><div class="lad-s">A subject. Nothing to argue yet.</div></div></div>
+      <details class="lad"><summary style="display:contents"><span class="lad-n">2</span><span><span class="lad-k">Question</span><span class="lad-s" style="display:block">Asks about a choice under scarcity</span></span></summary>
+        <div class="lad-ex" style="grid-column:2">How did Ardena's planners decide where workers and machines should go, and who gave something up?</div></details>
+      <details class="lad"><summary style="display:contents"><span class="lad-n">3</span><span><span class="lad-k">Thesis</span><span class="lad-s" style="display:block">Your answer, which someone could dispute</span></span></summary>
+        <div class="lad-ex" style="grid-column:2">Ardena's planners reached their growth goal by moving workers and machines into steel, but the cost was fewer goods and less choice for households.</div></details>
+      <details class="lad"><summary style="display:contents"><span class="lad-n">4</span><span><span class="lad-k">Supporting arguments</span><span class="lad-s" style="display:block">Three claims, each with its evidence</span></span></summary>
+        <div class="lad-ex" style="grid-column:2">One about land and capital, one about labor, one about the goal that was given up.</div></details>
+    </div>
+    <div class="tests"><span>Names the case</span><span>Takes a position</span><span>Names a goal and its cost</span><span>Could be disputed</span></div>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.2.1 FL:SS.912.E.1.3 FL:ELA.K12.EE.1.1 TX:(22)(C) TX:(22)(A) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.4">
+    <div class="sec-h"><span class="num">B</span><h2>Thesis, Topic, or Fact?</h2></div>
+    <p class="ask">All six are made-up lines about Ardena. Tap one, then tap where it belongs.</p>
+    <div class="place card" id="p1-thesissort">
+      <div class="bank">
+        <button class="chip" data-k="t1" data-ans="topic" data-fb="Right. It names a subject and takes no position." data-miss="Does it say anything someone could disagree with, or only name a subject?">Ardena's economy in the 1950s</button>
+        <button class="chip" data-k="t2" data-ans="thesis" data-fb="Right. It takes a position on how the factors were combined and names a goal and what it cost. Someone could argue the opposite." data-miss="Could a reasonable person argue the opposite? Does it name a choice and a cost?">Ardena's planners reached their output targets by moving workers and machines into steel, but households paid with fewer goods.</button>
+        <button class="chip" data-k="t3" data-ans="fact" data-fb="Right. It reports something that happened. A fact is evidence for a thesis, not the thesis." data-miss="Could anyone dispute this, or can it simply be checked?">Ardena published a five-year plan.</button>
+        <button class="chip" data-k="t4" data-ans="topic" data-fb="Right. It is a heading, not an argument." data-miss="Is there a verdict in it, or only a subject?">Factors of production in Ardena</button>
+        <button class="chip" data-k="t5" data-ans="thesis" data-fb="Right. It judges how a market system did on growth and fairness, and the judgment can be argued." data-miss="Does it weigh two goals against each other? That is what makes it arguable.">Ardena's open markets grew faster because entrepreneurs could enter any industry, but fairness suffered.</button>
+        <button class="chip" data-k="t6" data-ans="fact" data-fb="Right. It is a single number. It can support a claim once you say what it shows." data-miss="Is this a claim about what the number means, or just the number?">Ardena's unemployment rate was four percent in one year.</button>
+      </div>
+      <div class="bins three">
+        <div class="bin" data-bin="thesis"><h4>Thesis</h4><div class="drop"></div></div>
+        <div class="bin" data-bin="topic"><h4>Topic</h4><div class="drop"></div></div>
+        <div class="bin" data-bin="fact"><h4>Fact</h4><div class="drop"></div></div>
+      </div>
+      <div class="place-fb"></div>
+      <div class="tally"></div>
+    </div>
+    <div class="mcq" data-qid="p1-strong">
+      <p class="stem">Which made-up thesis is strongest for a fifteen to twenty minute video?</p>
+      <div class="opts">
+        <button class="opt" data-fb="It reaches past the case to every country at every time, and 'shows how markets work' is a general statement no single case can settle.">Ardena's market economy, which had many businesses, much trade, and a growing number of entrepreneurs over several decades, shows how markets work in every country at every time.</button>
+        <button class="opt" data-ok="1" data-fb="Right. One case, a system, a choice under scarcity, and a goal with its cost. It can be proved or challenged with sources.">Ardena's market economy answered a grain shortage by pulling farmers and capital toward grain through prices, but the price rise hurt poorer households.</button>
+        <button class="opt" data-fb="It says things changed and people had opinions. Nothing in it could be shown wrong.">Ardena changed a great deal after the grain shortage, and many people had strong opinions about it.</button>
+        <button class="opt" data-fb="It is a fact. It gives you a starting point and no argument.">The grain shortage happened in Ardena and lasted two harvests.</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.2.1 FL:SS.912.E.1.3 FL:ELA.K12.EE.1.1 TX:(22)(C) TX:(22)(A) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.4 TX:(1)(B) TX:(5)(A) TX:(5)(B) MS:DJ.SS.NA.2.2 MS:DJ.SS.NA.2.3">
+    <div class="sec-h"><span class="num">C</span><h2>Draft Your Thesis</h2></div>
+    <div class="pulls one"><div class="pull"><div class="pull-k">Lesson 1.01 &middot; scarcity and the three questions, in your words</div><div class="pull-v" data-pull="l101:ans:r1"></div></div></div>
+    <div class="note-card"><div class="label">Frame</div><p>In [case], [system] answered scarcity by [how the factors were combined], and it [advanced or gave up which goals] because [reason].</p></div>
+    <div class="card">
+      <div class="fld">
+        <div class="q">Your thesis <small>One or two sentences. Use the frame or leave it. It can change; it cannot be blank.</small></div>
+        <div class="coach"><img src="img/magister.jpg" alt=""><div>A thesis picks a side on a question the case could answer either way. Ardena (made up): "Its planners hit the growth goal and gave up the fairness goal" can be argued. "Ardena had planners" cannot.</div></div>
+        <textarea class="jbox" id="p1-thesis" data-label="My thesis" data-min="25" rows="4"></textarea>
+      </div>
+      <div class="label dl">Test it</div>
+      <ul class="checks">
+        <li data-ck="th1">It names my case.</li>
+        <li data-ck="th2">It says how the system combined the factors to answer scarcity.</li>
+        <li data-ck="th3">It names at least one goal and what pursuing it cost.</li>
+        <li data-ck="th4">Someone could reasonably argue against it.</li>
+      </ul>
+    </div>
+    <div class="label dl">Three supporting arguments</div>
+    <div class="coach"><img src="img/magister.jpg" alt=""><div>Each support is one claim plus the evidence you expect to find, and it points at a factor, the system, or a goal. Ardena (made up): "Steel took the workers: I expect a data series on jobs by industry."</div></div>
+    <div class="ixcards" style="margin-top:14px">
+      <div class="ix"><div class="ix-h"><span class="ix-n">1</span><span class="ix-t">Support one</span></div>
+        <label class="ix-k" for="p1-sup1">Claim &middot; evidence I expect &middot; kind of source</label>
+        <textarea class="jbox" id="p1-sup1" data-label="Supporting argument 1: claim, evidence, kind of source" data-min="20" rows="6"></textarea></div>
+      <div class="ix"><div class="ix-h"><span class="ix-n">2</span><span class="ix-t">Support two</span></div>
+        <label class="ix-k" for="p1-sup2">Claim &middot; evidence I expect &middot; kind of source</label>
+        <textarea class="jbox" id="p1-sup2" data-label="Supporting argument 2: claim, evidence, kind of source" data-min="20" rows="6"></textarea></div>
+      <div class="ix"><div class="ix-h"><span class="ix-n">3</span><span class="ix-t">Support three</span></div>
+        <label class="ix-k" for="p1-sup3">Claim &middot; evidence I expect &middot; kind of source</label>
+        <textarea class="jbox" id="p1-sup3" data-label="Supporting argument 3: claim, evidence, kind of source" data-min="20" rows="6"></textarea></div>
+    </div>
+  </section>
+
+  <section class="sec" data-std="FL:SS.912.E.2.1 FL:ELA.K12.EE.1.1 TX:(22)(C) TX:(6)(D) MS:DJ.SS.NA.2.5 MS:DJ.SS.NA.1.6">
+    <div class="sec-h"><span class="num">D</span><h2>The Best Objection</h2></div>
+    <div class="card">
+      <div class="fld">
+        <div class="q">What is the strongest objection to your thesis, and what evidence would answer it? <small>2 to 4 sentences. Write the objection so its holder would agree with how you put it.</small></div>
+        <div class="coach"><img src="img/magister.jpg" alt=""><div>State the objection in words the other side would sign, then name one kind of evidence that would settle it. Ardena (made up): "A critic could say output rose because of new mines, not planning. Output by industry, year by year, would show it."</div></div>
+        <textarea class="jbox" id="p1-skeptic" data-label="The strongest objection to my thesis, and the evidence that would answer it" data-min="30" rows="5"></textarea>
+      </div>
+    </div>
+  </section>
+  <div class="next"><button class="btn ghost" data-go="1">&larr; Your Case</button><button class="btn" data-go="3">Research Desk &rarr;</button></div>
+</section>
+
+<!-- ═════════ 3 RESEARCH DESK ═════════ -->
+<section class="step" data-step="3">
+  <div class="card mini" data-mini="m2" data-std="FL:ELA.K12.EE.1.1 FL:SS.912.E.1.3 TX:(22)(D) TX:(23)(E) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.2"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>Where Evidence Comes From</b></div></div><svg class="ms pm2" viewBox="0 0 600 360" role="img" aria-label="Three kinds of evidence, primary sources, scholars and data, all pointing at one thesis, each with a citation">
+  <defs><marker id="arp2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#151515"/></marker></defs>
+  <g class="thesis">
+    <rect x="225" y="150" width="150" height="66" rx="4" fill="#F5EBD5" stroke="#151515" stroke-width="2"/>
+    <text x="300" y="176" text-anchor="middle" class="lb" style="font-size:16px">MY THESIS</text>
+    <text x="300" y="198" text-anchor="middle" class="sm">one sentence</text>
+  </g>
+  <g class="card prim">
+    <rect x="8" y="128" width="190" height="172" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+    <text x="20" y="154" class="hd">PRIMARY</text>
+    <line x1="20" y1="162" x2="186" y2="162" stroke="#151515" stroke-width="2"/>
+    <text x="20" y="188" class="b">Made at the time</text>
+    <text x="20" y="212" class="sm">a photograph, a map,</text>
+    <text x="20" y="232" class="sm">a document from an</text>
+    <text x="20" y="252" class="sm">archive</text>
+    <path d="M198 190 L222 190" stroke="#151515" stroke-width="2.5" fill="none" marker-end="url(#arp2)"/>
+  </g>
+  <g class="card schol">
+    <rect x="402" y="128" width="190" height="172" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+    <text x="414" y="154" class="hd">SCHOLAR</text>
+    <line x1="414" y1="162" x2="580" y2="162" stroke="#151515" stroke-width="2"/>
+    <text x="414" y="188" class="b">Studied it later</text>
+    <text x="414" y="212" class="sm">a journal article that</text>
+    <text x="414" y="232" class="sm">argues what it means,</text>
+    <text x="414" y="252" class="sm">found on JStor</text>
+    <path d="M402 190 L378 190" stroke="#151515" stroke-width="2.5" fill="none" marker-end="url(#arp2)"/>
+  </g>
+  <g class="card data">
+    <rect x="205" y="8" width="190" height="112" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+    <text x="217" y="34" class="hd">DATA</text>
+    <line x1="217" y1="42" x2="383" y2="42" stroke="#151515" stroke-width="2"/>
+    <text x="217" y="64" class="b">Numbers over time</text>
+    <text x="217" y="84" class="sm">FRED, BLS, Census</text>
+    <path d="M300 120 L300 146" stroke="#151515" stroke-width="2.5" fill="none" marker-end="url(#arp2)"/>
+  </g>
+  <g class="cites">
+    <g><rect x="20" y="272" width="166" height="20" rx="10" fill="#E2EEE6" stroke="#17603F" stroke-width="1.2"/><text x="103" y="287" text-anchor="middle" style="font-size:15px;font-weight:700;fill:#0E4630">(Author, Year)</text></g>
+    <g><rect x="414" y="272" width="166" height="20" rx="10" fill="#E2EEE6" stroke="#17603F" stroke-width="1.2"/><text x="497" y="287" text-anchor="middle" style="font-size:15px;font-weight:700;fill:#0E4630">(Author, Year)</text></g>
+    <g><rect x="217" y="92" width="122" height="22" rx="10" fill="#E2EEE6" stroke="#17603F" stroke-width="1.2"/><text x="278" y="108" text-anchor="middle" style="font-size:15px;font-weight:700;fill:#0E4630">(Author, Year)</text></g>
+  </g>
+  <g class="wide">
+    <rect x="8" y="310" width="584" height="44" rx="4" fill="#E2EEE6" stroke="#17603F" stroke-width="1.5"/>
+    <text x="300" y="338" text-anchor="middle" style="font:700 18px var(--head)">A wide variety of high-quality sources</text>
+  </g>
+</svg>
+<div class="sub"></div><div class="mctl"></div></div>
+
+  <section class="sec" data-std="FL:ELA.K12.EE.1.1 FL:SS.912.E.1.3 TX:(22)(D) TX:(23)(E) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.2">
+    <div class="sec-h"><span class="num">A</span><h2>Three Kinds of Evidence</h2></div>
+    <div class="kinds">
+      <div class="kind"><h3>Primary source</h3><p>Made at the time you are studying. It shows what people saw, wrote, or counted then.</p><div class="wh">Library of Congress</div></div>
+      <div class="kind k2"><h3>Scholar</h3><p>Written later by someone who studied the case and argues what it meant. It gives you an argument to agree with, correct, or answer.</p><div class="wh">JStor</div></div>
+      <div class="kind k3"><h3>Data series</h3><p>Numbers recorded over time. A chart of one tells the viewer what changed and when.</p><div class="wh">FRED &middot; BLS &middot; Census</div></div>
+    </div>
+    <p class="hint">General encyclopedias and unsigned web pages are places to start looking for names to search. They are not sources to cite.</p>
+  </section>
+
+  <section class="sec" data-std="FL:ELA.K12.EE.1.1 FL:SS.912.E.1.3 TX:(22)(D) TX:(23)(E) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.2">
+    <div class="sec-h"><span class="num">B</span><h2>What JStor Is</h2></div>
+    <div class="jfacts">
+      <div class="jf"><div class="jf-k">It holds</div><p>Journal articles, books, and primary sources in one searchable library.</p></div>
+      <div class="jf"><div class="jf-k">You get in</div><p>Your teacher posts the school's JStor login in the Canvas item named Module 1 - Project: Economic Systems in Action. The login is not on this page.</p></div>
+      <div class="jf"><div class="jf-k">You want</div><p>A scholar's argument about your case, not a general overview of the era.</p></div>
+    </div>
+    <ol class="steps5">
+      <li><b>1</b>Search</li><li><b>2</b>Filter</li><li><b>3</b>Preview</li><li><b>4</b>Judge</li><li><b>5</b>Cite</li>
+    </ol>
+  </section>
+
+  <section class="sec" data-std="FL:ELA.K12.EE.1.1 FL:SS.912.E.1.3 TX:(22)(D) TX:(23)(E) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.2">
+    <div class="sec-h"><span class="num">C</span><h2>Search Lab</h2></div>
+    <p class="ask">Choose a goal, then tap terms into the search. Tap an AND or OR between two terms to switch it.</p>
+    <div class="sb" id="sb">
+      <div class="sb-goals" role="group" aria-label="Search goal">
+        <button type="button" class="sg on" data-g="a"><span class="sg-n">Goal 1</span>A scholar on my case</button>
+        <button type="button" class="sg" data-g="b"><span class="sg-n">Goal 2</span>A scholar on an idea in my thesis</button>
+      </div>
+      <div class="sb-bank" data-goal="a">
+        <button type="button" data-t="Industrial Revolution" data-ph="1" data-core="1">&ldquo;Industrial Revolution&rdquo;</button>
+        <button type="button" data-t="Soviet Union" data-ph="1" data-core="1">&ldquo;Soviet Union&rdquo;</button>
+        <button type="button" data-t="Cuba" data-core="1">Cuba</button>
+        <button type="button" data-t="command economy" data-ph="1" data-core="1">&ldquo;command economy&rdquo;</button>
+        <button type="button" data-t="market economy" data-ph="1" data-core="1">&ldquo;market economy&rdquo;</button>
+        <button type="button" data-t="resource shock" data-ph="1" data-core="1">&ldquo;resource shock&rdquo;</button>
+        <button type="button" data-t="central planning" data-ph="1">&ldquo;central planning&rdquo;</button>
+        <button type="button" data-t="labor">labor</button>
+        <button type="button" data-t="capital">capital</button>
+        <button type="button" data-t="entrepreneurs">entrepreneurs</button>
+        <button type="button" data-t="economic growth" data-ph="1">&ldquo;economic growth&rdquo;</button>
+        <button type="button" data-t="overview" data-noise="1">overview</button>
+        <button type="button" data-t="essay" data-noise="1">essay</button>
+      </div>
+      <div class="sb-bank" data-goal="b" hidden>
+        <button type="button" data-t="factors of production" data-ph="1" data-core="1">&ldquo;factors of production&rdquo;</button>
+        <button type="button" data-t="economic growth" data-ph="1" data-core="1">&ldquo;economic growth&rdquo;</button>
+        <button type="button" data-t="economic freedom" data-ph="1" data-core="1">&ldquo;economic freedom&rdquo;</button>
+        <button type="button" data-t="central planning" data-ph="1" data-core="1">&ldquo;central planning&rdquo;</button>
+        <button type="button" data-t="market economy" data-ph="1" data-core="1">&ldquo;market economy&rdquo;</button>
+        <button type="button" data-t="capital investment" data-ph="1" data-core="1">&ldquo;capital investment&rdquo;</button>
+        <button type="button" data-t="productivity">productivity</button>
+        <button type="button" data-t="efficiency">efficiency</button>
+        <button type="button" data-t="stability">stability</button>
+        <button type="button" data-t="fairness">fairness</button>
+        <button type="button" data-t="entrepreneurship">entrepreneurship</button>
+        <button type="button" data-t="textbook" data-noise="1">textbook</button>
+        <button type="button" data-t="opinion" data-noise="1">opinion</button>
+      </div>
+      <div class="sb-q">
+        <div class="label">Your search</div>
+        <div class="sb-tokens" id="sbTok" aria-live="polite"></div>
+        <code class="sb-str" id="sbStr"></code>
+      </div>
+      <div class="sb-read" id="sbRead" aria-live="polite"></div>
+      <div class="sb-flt">
+        <div class="label">Then narrow with filters</div>
+        <div class="sb-fb" role="group" aria-label="Filters">
+          <button type="button" class="flt" data-f="Content type: Journals">Content type: Journals</button>
+          <button type="button" class="flt" data-f="Date: the years of my case">Date: the years of my case</button>
+          <button type="button" class="flt" data-f="Subject: Economics or History">Subject: Economics or History</button>
+        </div>
+        <div class="sb-fout" id="sbFlt"></div>
+      </div>
+    </div>
+    <div class="note-card"><div class="label">Advanced Search</div><p>The same search can be built in JStor's Advanced Search: one box per term, a menu for AND, OR, and NOT between them, and limits for content type and date. Type operators in capital letters.</p></div>
+    <div class="mcq" data-qid="p1-search">
+      <p class="stem">A search for <span class="mono">"Industrial Revolution"</span> alone returns a very large number of results. What is the best next move?</p>
+      <div class="opts">
+        <button class="opt" data-fb="Adding the word article does not tie the search to an idea. It will still return far too much.">Add the word <span class="mono">article</span></button>
+        <button class="opt" data-ok="1" data-fb="Right. Joining the topic to your place and one idea from your thesis keeps every result relevant to both.">Add your country and one idea from your thesis, joined with <span class="mono">AND</span></button>
+        <button class="opt" data-fb="OR widens a search. It returns more results, not fewer.">Add several related terms joined with <span class="mono">OR</span></button>
+        <button class="opt" data-fb="A whole sentence in quotation marks matches only articles that contain those exact words, which is almost none.">Paste your whole thesis sentence into the box, in quotation marks</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+    <div class="fld">
+      <div class="q">Your search log <small>The search you ran on JStor, how many results came back, and what you changed to make it workable. 2 to 4 sentences.</small></div>
+      <textarea class="jbox" id="p1-searchlog" data-label="My JStor search log" data-min="25" rows="4"></textarea>
+    </div>
+  </section>
+
+  <section class="sec" data-std="FL:ELA.K12.EE.1.1 FL:SS.912.E.1.3 TX:(22)(D) TX:(23)(E) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.2">
+    <div class="sec-h"><span class="num">D</span><h2>Read Before You Save</h2></div>
+    <p class="ask">Open a result and read the abstract or the first-page preview. Ask five questions. Tap each to see where to look.</p>
+    <div class="five" id="five">
+      <button type="button" class="fv" data-a="The author's name and, on the first page, a university or research institution. A named economist or historian of the period is a good sign."><b>Who</b>wrote it?</button>
+      <button type="button" class="fv" data-a="The journal named above the title. One published by a university press or a scholarly society, with volume and issue numbers, usually reviews articles before printing."><b>Where</b>was it published?</button>
+      <button type="button" class="fv" data-a="The year. Newer work can use newer evidence. Older work can be a classic or can have been challenged since. Note the year either way."><b>When</b>did it appear?</button>
+      <button type="button" class="fv" data-a="Find the thesis in the abstract or first paragraph. If you cannot state it in one sentence, it is not yet a usable source."><b>What</b>does it argue?</button>
+      <button type="button" class="fv" data-a="Notice what it does not cover: another period, another region, another measure. Say so when you use it."><b>What</b>does it leave out?</button>
+    </div>
+    <div class="fv-out" id="fvOut" aria-live="polite"><span class="hint">Tap a question.</span></div>
+    <div class="mcq" data-qid="p1-judge">
+      <p class="stem">These are three made-up results for a search on your case. Which is the best fit for a scholar source?</p>
+      <div class="opts">
+        <button class="opt" data-fb="This is an editor's introduction to a whole issue. It surveys many topics and makes no sustained argument about your case.">A one-page editor's note introducing a journal issue on economic history, with a paragraph that mentions your case among many others</button>
+        <button class="opt" data-ok="1" data-fb="Right. It is a full article with a thesis about your case, a named author, a year, and citations to other work.">A 22-page journal article arguing one position about your case, with a named author, a year, and citations</button>
+        <button class="opt" data-fb="A review judges someone else's book. It may summarize an argument, but the argument is not the reviewer's own about your case.">A three-page review of a book about the period, summarizing what the book's author says</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </section>
+
+  <section class="sec" data-std="FL:ELA.K12.EE.1.1 FL:SS.912.E.1.2 TX:(22)(E) TX:(10)(A) TX:(22)(F) MS:DJ.SS.NA.7.1">
+    <div class="sec-h"><span class="num">E</span><h2>Archives and Data</h2></div>
+    <div class="arch">
+      <div class="ar"><b>Library of Congress</b><p>Photographs, maps, newspapers, and documents from many periods and countries. Check each record's creator, date, and rights information before you use an image.</p></div>
+      <div class="ar"><b>FRED, from the St. Louis Fed</b><p>Federal Reserve Economic Data: thousands of series you can chart and download, such as prices, employment, and output. Some series cover other countries.</p></div>
+      <div class="ar"><b>Bureau of Labor Statistics</b><p>Employment, wages, and prices for the United States. Use it when your case is American.</p></div>
+      <div class="ar"><b>Census Bureau</b><p>Population, business, and trade data for the United States.</p></div>
+    </div>
+    <p class="hint">A case outside the United States leans on JStor, the Library of Congress, and FRED's international series.</p>
+  </section>
+
+  <section class="sec" data-std="FL:ELA.K12.EE.5.1 FL:ELA.K12.EE.1.1 TX:(23)(E) TX:(23)(A) MS:DJ.SS.NA.2.4">
+    <div class="sec-h"><span class="num">F</span><h2>Cite It in APA 7</h2></div>
+    <ol class="csteps">
+      <li><b>Open</b> the item page.</li>
+      <li><b>Tap Cite</b> and choose APA.</li>
+      <li><b>Copy</b> the entry into your source log.</li>
+      <li><b>Check</b> every part against the pattern.</li>
+    </ol>
+    <div class="seg" id="patSeg" role="group" aria-label="Kind of source"><button type="button" class="on" data-p="art">Journal article</button><button type="button" data-p="dat">Data series</button><button type="button" data-p="arc">Archive item</button></div>
+    <p class="ask" style="margin-top:12px">Tap a part of the pattern. These are made-up examples.</p>
+    <div class="card" style="margin-top:0">
+      <div class="pat-set on" data-set="art"><p class="pat">
+        <button type="button" data-g="Last name, then initials, for every author. An ampersand joins the last two.">Last, F. M., &amp; Last, F. M.</button>
+        <button type="button" data-g="The year of publication in parentheses, then a period.">(Year).</button>
+        <button type="button" data-g="Sentence case: only the first word, the first word after a colon, and proper nouns are capitalized. No quotation marks and no italics.">Title of the article in sentence case.</button>
+        <button type="button" data-g="The journal name is in title case, and both the journal name and the volume number are italic."><i>Journal Name in Title Case, volume</i></button><button type="button" data-g="The issue number goes in parentheses and is not italic. Then the page range.">(issue), pages.</button>
+        <button type="button" data-g="Use the DOI as a link if the article has one. If not, use the stable link JStor shows, which begins https://www.jstor.org/stable/.">https://doi.org/xxxxx</button></p></div>
+      <div class="pat-set" data-set="dat"><p class="pat">
+        <button type="button" data-g="The agency or organization that produced the numbers.">Agency Name.</button>
+        <button type="button" data-g="The year of the data, or the year it was published, in parentheses.">(Year).</button>
+        <button type="button" data-g="The title of the series, italic, then [Data set] in square brackets."><i>Title of the series</i> [Data set].</button>
+        <button type="button" data-g="The site that hosts it, such as FRED. Leave it out when it is the same as the agency.">Publisher.</button>
+        <button type="button" data-g="The link to the series. If the numbers update over time, write Retrieved Month Day, Year, from before the link.">Retrieved Month Day, Year, from https://xxxxx</button></p></div>
+      <div class="pat-set" data-set="arc"><p class="pat">
+        <button type="button" data-g="The creator, last name first, with the role in parentheses. Use the creator's name from the record.">Last, F. M. (Photographer).</button>
+        <button type="button" data-g="The year the item was made. If the record gives no date, write (n.d.).">(Year).</button>
+        <button type="button" data-g="The title of the item, italic, then its kind in square brackets, such as [Photograph] or [Map]."><i>Title of the photograph</i> [Photograph].</button>
+        <button type="button" data-g="The archive that holds it, such as Library of Congress.">Library of Congress.</button>
+        <button type="button" data-g="The link to the item record.">https://xxxxx</button></p></div>
+      <div class="pat-g" id="patG" aria-live="polite"><span class="hint">Tap a part above.</span></div>
+      <p class="hint">In the video, a slide's source line is short: the author and year in parentheses, such as (Last, Year), or (Last &amp; Last, Year) for two authors. The full entries go on the last slide.</p>
+    </div>
+    <div class="mcq" data-qid="p1-intext">
+      <p class="stem">A journal article by two authors, Alvarez and Ng, was published in 2019. Which in-text citation follows APA 7?</p>
+      <div class="opts">
+        <button class="opt" data-fb="No comma, no ampersand: that is closer to MLA. APA 7 puts a comma before the year and an ampersand between the authors.">(Alvarez and Ng 2019)</button>
+        <button class="opt" data-ok="1" data-fb="Right. Both last names joined by an ampersand, a comma, then the year.">(Alvarez &amp; Ng, 2019)</button>
+        <button class="opt" data-fb="The year comes right after the names, and the word journal is not part of the citation.">(Alvarez, Ng, 2019, journal)</button>
+        <button class="opt" data-fb="The names come first, then the year.">(2019, Alvarez &amp; Ng)</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+    <div class="mcq" data-qid="p1-ref">
+      <p class="stem">Which made-up entry for a JStor article follows APA 7?</p>
+      <div class="opts">
+        <button class="opt" data-fb="Quotation marks around the title, vol. and no., and JSTOR as a container are MLA features. APA 7 does not use them.">Last, F. M. (Year). "Title of the Article." Journal Name, vol. #, no. #, pp. #-#. JSTOR, www.jstor.org/stable/#####. Accessed Month Day, Year.</button>
+        <button class="opt" data-ok="1" data-fb="Right. Year in parentheses, sentence-case title, italic journal and volume, issue, pages, then the link.">Last, F. M. (Year). Title of the article in sentence case. <i>Journal Name, #</i>(#), #-#. https://www.jstor.org/stable/#####</button>
+        <button class="opt" data-fb="The year sits at the end and the title is in title case. That is closer to Chicago style.">Last, F. M. Title of the Article. Journal Name (Year): pages.</button>
+        <button class="opt" data-fb="The author comes first, and APA 7 does not use Retrieved from for a stable journal article.">Title of the article. (Year). Last, F. M. Journal Name, volume, issue, pages. Retrieved from JStor.</button>
+      </div>
+      <div class="fb"></div>
+    </div>
+  </section>
+
+  <section class="sec" data-std="FL:ELA.K12.EE.1.1 FL:SS.912.E.1.3 TX:(22)(D) TX:(23)(E) MS:DJ.SS.NA.2.4 MS:DJ.SS.NA.1.2 FL:SS.912.E.1.2 TX:(22)(E) TX:(10)(A) TX:(22)(F) MS:DJ.SS.NA.7.1 FL:ELA.K12.EE.5.1 TX:(23)(A)">
+    <div class="sec-h"><span class="num">G</span><h2>Your Source Log</h2></div>
+    <div class="coach"><img src="img/magister.jpg" alt=""><div>Log each source the moment you find it: its kind, the full APA entry, what it shows in your own words, and where in the talk it will go. If you cannot say what it shows in your own words, you have not used it yet. Target: four sources, at least three kinds.</div></div>
+    <div class="card" style="margin-top:14px;padding:12px">
+      <table class="slog"><thead><tr><th>#</th><th>Kind</th><th>Reference, APA 7</th><th>What it shows, in my words</th><th>Where I will use it</th></tr></thead><tbody id="slogBody"></tbody></table>
+      <div class="wrow"><button class="btn ghost small" id="slogAdd" type="button">+ Add a source</button></div>
+      <div class="slog-tally" id="slogTally"></div>
+    </div>
+    <ul class="checks">
+      <li data-ck="sl1">Every entry follows the APA 7 pattern for its kind.</li>
+      <li data-ck="sl2">Every "what it shows" is in my words.</li>
+      <li data-ck="sl3">At least one source supports each of my three arguments.</li>
+    </ul>
+  </section>
+  <div class="next"><button class="btn ghost" data-go="2">&larr; Your Thesis</button><button class="btn" data-go="4">Save &rarr;</button></div>
+</section>
+
+<!-- ═════════ 4 SAVE ═════════ -->
+<section class="step" data-step="4">
+  <section class="sec" data-std="FL:ELA.K12.EE.5.1 TX:(23)(D) TX:(23)(E) MS:DJ.SS.NA.2.4">
+    <div class="sec-h"><span class="num">&#10003;</span><h2>This Lesson</h2></div>
+    <div class="fld" style="max-width:420px"><div class="q">Your name</div><input class="name" type="text" autocomplete="name" placeholder="First and last name" aria-label="Your name"></div>
+    <div class="status" aria-live="polite"></div>
+    <div class="label dl">Carry into Project Lesson 2</div>
+    <ul class="checks">
+      <li data-ck="go1">My case is named and justified.</li>
+      <li data-ck="go2">My thesis passes the four checks.</li>
+      <li data-ck="go3">Three supporting arguments, each with its evidence.</li>
+      <li data-ck="go4">Four sources in my log, in at least three kinds.</li>
+    </ul>
+    <p class="hint">Your answers save in this browser as you work. Project Lesson 2 reads your case, thesis, and source log from here. To keep a copy, download the process record.</p>
+    <div class="wrow"><button class="btn" type="button" id="pdfBtn">&#11015; Download process record (PDF)</button><span class="pdfnote" id="pdfNote"></span></div>
+  </section>
+  <div class="card"><div class="label">What You'll Do Next</div>
+    <ul class="nextlist">
+      <li><span class="tg">Lesson</span><div><b>Project Lesson 2: Build and Record</b><br><span style="font-size:15px;color:var(--ink2)">Timing plan, script and storyboard, visuals, rehearsal, recording, and turn-in.</span></div></li>
+      <li><span class="tg">Canvas</span><div><b>Module 1 - Project: Economic Systems in Action</b><br><span style="font-size:15px;color:var(--ink2)">Where the finished video is submitted. 50 points.</span></div></li>
+    </ul></div>
+  <div class="next"><button class="btn ghost" data-go="3">&larr; Research Desk</button><a class="btn" href="module-1-project-2-build-and-record.html">Project Lesson 2 &rarr;</a></div>
+</section>
+
+</main>
+
+<footer><div class="wrap"><span>Optima Academy Online · Student Lesson Page</span><span>Academic Design and Curriculum (AcDC) · © Optima Academy Online</span></div></footer>
+
+<!-- dock: appears only when the student presses play -->
+<div class="dock" id="dock" aria-live="polite">
+  <img src="img/magister.jpg" alt="">
+  <div style="min-width:0">
+    <div class="who">Mr. Magister</div>
+    <div class="cap" id="cap"></div>
+    <input type="range" class="seek" id="seek" min="0" max="1000" value="0" aria-label="Seek">
+  </div>
+  <div class="ctl">
+    <button id="prev" aria-label="Previous">&#9198;</button>
+    <button id="back5" aria-label="Back 5 seconds">&#8634;</button>
+    <button class="main" id="pp" aria-label="Play or pause">&#9654;</button>
+    <button id="fwd5" aria-label="Forward 5 seconds">&#8635;</button>
+    <button id="next" aria-label="Next">&#9197;</button>
+    <button class="rate" id="rate">1&times;</button>
+    <button id="voiceOff" aria-label="Stop and close" title="Stop and close">&times;</button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="glossDrawer" aria-label="Words">
+  <header><h3>Words</h3><button class="x" data-close>&times;</button></header>
+  <div class="body"><div class="glh">Subject vocabulary</div>
+<div class="gl"><button data-g="g_incentive" aria-label="Hear Incentive">&#128266;</button><b>Incentive</b><span>A reward or reason that pushes people toward one choice over another.</span></div>
+<div class="gl"><button data-g="g_opportunity-cost" aria-label="Hear Opportunity Cost">&#128266;</button><b>Opportunity Cost</b><span>The value of the next-best choice you give up when you decide.</span></div>
+<div class="gl"><button data-g="g_scarcity" aria-label="Hear Scarcity">&#128266;</button><b>Scarcity</b><span>The condition of having limited resources while human wants have no limit.</span></div>
+<div class="gl"><button data-g="g_trade-off" aria-label="Hear Trade-Off">&#128266;</button><b>Trade-Off</b><span>Giving up one thing in order to get another.</span></div>
+<div class="gl"><button data-g="g_entrepreneurship" aria-label="Hear Entrepreneurship">&#128266;</button><b>Entrepreneurship</b><span>The drive to start something new, take risks, and combine land, labor, and capital into a working business.</span></div>
+<div class="gl"><button data-g="g_human-capital" aria-label="Hear Human Capital">&#128266;</button><b>Human Capital</b><span>The skills, knowledge, and experience that make workers more productive.</span></div>
+<div class="gl"><button data-g="g_physical-capital" aria-label="Hear Physical Capital">&#128266;</button><b>Physical Capital</b><span>Human-made tools, such as machines, buildings, and roads, that are used to produce goods.</span></div>
+<div class="gl"><button data-g="g_thesis" aria-label="Hear Thesis">&#128266;</button><b>Thesis</b><span>One sentence that states your answer and that someone could argue against. The rest of the project proves it.</span></div>
+<div class="gl"><button data-g="g_primary-source" aria-label="Hear Primary Source">&#128266;</button><b>Primary Source</b><span>Something made at the time you are studying, such as a photograph, a map, or an archive document.</span></div>
+<div class="gl"><button data-g="g_secondary-source" aria-label="Hear Secondary Source">&#128266;</button><b>Secondary Source</b><span>Work by someone who studied the case later and argues what it means, such as a journal article.</span></div>
+<div class="gl"><button data-g="g_data-series" aria-label="Hear Data Series">&#128266;</button><b>Data Series</b><span>Numbers recorded over time, such as prices or employment, that you can chart.</span></div>
+<div class="gl"><button data-g="g_citation" aria-label="Hear Citation">&#128266;</button><b>Citation</b><span>A short note in the text, and a full entry in the reference list, that tells the viewer where a fact or an image came from.</span></div></div>
+</aside>
+<aside class="drawer" id="askDrawer" aria-label="Ask Mr. Magister">
+  <header><img src="img/magister.jpg" alt="" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--hi)"><h3>Ask Mr. Magister</h3><button class="x" data-close>&times;</button></header>
+  <div class="body"><div class="chat" id="chat"></div></div>
+  <form class="askrow" id="askForm"><input id="askIn" placeholder="Ask about the lesson" autocomplete="off"><button class="btn" type="submit">Ask</button></form>
+</aside>
+<div class="pop" id="pop"></div>
+
+
+
+<script>
+const CFG = {"key": "econ-hon-m1-proj1-v1", "kicker": "Module 1 Project · Guided Lesson 1 of 2", "title": "Your Case and Sources", "nbFile": "Econ-M1-Project-1", "stops": ["The Project", "Your Case", "Your Thesis", "Research Desk", "Save"], "parts": [], "chapters": [], "slots": {}, "finalStop": "Save", "glossary": [{"id": "incentive", "word": "Incentive", "def": "A reward or reason that pushes people toward one choice over another."}, {"id": "opportunity-cost", "word": "Opportunity Cost", "def": "The value of the next-best choice you give up when you decide."}, {"id": "scarcity", "word": "Scarcity", "def": "The condition of having limited resources while human wants have no limit."}, {"id": "trade-off", "word": "Trade-Off", "def": "Giving up one thing in order to get another."}, {"id": "entrepreneurship", "word": "Entrepreneurship", "def": "The drive to start something new, take risks, and combine land, labor, and capital into a working business."}, {"id": "human-capital", "word": "Human Capital", "def": "The skills, knowledge, and experience that make workers more productive."}, {"id": "physical-capital", "word": "Physical Capital", "def": "Human-made tools, such as machines, buildings, and roads, that are used to produce goods."}, {"id": "thesis", "word": "Thesis", "def": "One sentence that states your answer and that someone could argue against. The rest of the project proves it."}, {"id": "primary-source", "word": "Primary Source", "def": "Something made at the time you are studying, such as a photograph, a map, or an archive document."}, {"id": "secondary-source", "word": "Secondary Source", "def": "Work by someone who studied the case later and argues what it means, such as a journal article."}, {"id": "data-series", "word": "Data Series", "def": "Numbers recorded over time, such as prices or employment, that you can chart."}, {"id": "citation", "word": "Citation", "def": "A short note in the text, and a full entry in the reference list, that tells the viewer where a fact or an image came from."}], "widgets": {}, "checkin": null, "minis": {"m1": {"title": "The Whole Project on One Page", "beats": [{"say": "Here's the whole project on one page. At the end you hand in one video, fifteen to twenty minutes long."}, {"say": "It's about one real case: a real place in a real period. Not a made-up one."}, {"say": "Through that case, you show how land, labor, capital, and entrepreneurship come together inside one economic system."}, {"say": "That system is answering scarcity, and it's pursuing goals like efficiency, growth, freedom, fairness, or stability. Which goals, and what they cost, is for you to find in the case."}, {"say": "A thesis ties it together: one sentence you can defend. Everything in the video backs it up."}, {"say": "You get there in two lessons. This one picks the case, drafts the thesis, and builds your source log. The next one is the script, the slides, and the recording."}, {"say": "Five rubric rows, ten points each, fifty in all. Every step in these lessons feeds one of them."}]}, "m2": {"title": "Where Evidence Comes From", "beats": [{"say": "Every claim in your video needs something under it. Start with your thesis in the middle."}, {"say": "First kind: primary sources. They were made at the time: a photograph, a map, a document from an archive such as the Library of Congress."}, {"say": "Second kind: scholars. They studied your case later and argue about what it meant. JStor holds their journal articles."}, {"say": "Third kind: data. Numbers over time that you can chart, from places like FRED at the St. Louis Fed, the Bureau of Labor Statistics, and the Census Bureau."}, {"say": "Each one gets a citation the moment you use it, so you never have to hunt for it later."}, {"say": "Three kinds, all pointing at one thesis. That is what a wide variety of high-quality sources looks like."}]}}, "assigns": [], "ask": {"hello": "Ask me about the project: choosing a case, your thesis, the research desk, JStor, or citations.", "fallback": "My notes don't cover that one. Which tab were you on when it came up? Try a word from it, like case, thesis, JStor, or citation.", "backDefault": "Go back to the tab you were on. Which line of the rubric does that choice affect?", "notes": [["how long|length|minutes|time limit", "The video runs fifteen to twenty minutes. The Project tab, section A, gives the full requirement."], ["format|mp4|wmv|mov|file type", "Standard video formats are accepted: MP4, WMV, MOV, or similar. See The Project tab, section A."], ["vr|immersive|headset", "An immersive or VR-recorded segment of up to about five minutes is optional. You can include one if you have access to one. See The Project tab, section A."], ["which case|what case|topic|choose a case|case type", "Pick one real historical or contemporary case. The four examples are on The Project tab, section A, and the Your Case tab compares them."], ["thesis", "A thesis is one sentence that states your answer and that someone could argue against. See Your Thesis, section A."], ["jstor", "JStor is a library of journal articles, books, and primary sources. Your teacher posts the school login in the Canvas project item. See Research Desk, section B."], ["login|password|sign.?in", "The school's JStor login is in the Canvas item named Module 1 - Project: Economic Systems in Action. It is not on this page."], ["apa|cite|citation|reference", "This lesson teaches APA 7. Research Desk, section F, shows the patterns for a journal article, a data series, and an archive item."], ["primary|secondary|data series|source kinds|kinds of source", "A primary source was made at the time, a secondary source studies it later, and a data series is numbers over time. Research Desk, section A."], ["factor|land|labor|capital|entrepreneur", "Your Case tab, section D, is a first factor scan. Land, labor, capital, and entrepreneurship each get a card."], ["rubric|points|score|grade", "Five rows, ten points each: Content Knowledge, Organization, Presentation, Critical Thinking, Research and Citations. The Project tab, section C."], ["week 1|prep|earlier lesson|pull", "The Your Prep So Far part of The Project tab shows what you wrote in Lessons 1.01, 1.02, and 1.03, read live from this browser."]], "back": [["which case|best case|what should i pick", "Which of the four case types gives you a clear before and after to explain? Check the Your Case tab, section A."], ["thesis|is this good", "Test it against the four checks in Your Thesis, section C. Which one does it not pass yet?"], ["source|jstor|archive", "What would you need to show with it, a fact, a picture, or a number? That decides which kind of source to look for."]]}, "p1boxes": []};
+const DATA = {"audio": [], "tim": {}, "disp": {}};
+/* ===== Economics Honors glow-up kit: core (route, player, words, check-in, rows, mini-lessons, desk, Ask) =====
+   Lesson config arrives as CFG (lesson.json, shaped by build.py). Lesson-only code goes in lesson.js. */
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const store = (() => { let s = {}; try { s = JSON.parse(localStorage.getItem(CFG.key) || '{}'); } catch (e) {}
+  return { get: k => s[k], set: (k, v) => { s[k] = v; try { localStorage.setItem(CFG.key, JSON.stringify(s)); } catch (e) {} } }; })();
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const NP = CFG.parts.length, HASBOOK = NP > 0;
+
+/* ---------- route ---------- */
+const STOPS = CFG.stops || ['Arrive', ...CFG.parts.map(p => p.stop || p.title), CFG.finalStop || 'Your Turn'];
+const FINAL = STOPS.length - 1;
+const done = new Set(store.get('done') || []);
+function drawStops(c) {
+  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === c ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === FINAL ? '&#9733;' : i)}</i>${s}</button>`).join('');
+  $('.stop.on')?.scrollIntoView({ inline: 'center', block: 'nearest' });
+}
+let cur = 0;
+const inBookStep = n => HASBOOK && n >= 1 && n <= NP;
+function go(n, auto = true) {
+  if (cur !== n && !(inBookStep(cur) && inBookStep(n) && n < cur)) { done.add(cur); store.set('done', [...done]); }
+  cur = n; store.set('step', n);
+  const ib = inBookStep(n);
+  $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === (ib ? '0' : String(n))));
+  drawStops(n);
+  if (Q.length) { A.pause(); Q = []; qi = 0; }
+  if (ib) {
+    if (!auto) return;
+    if (R.open) { const c = R.pts[n]; if (spreadStart(c) !== R.col) show(c, c > R.col ? 1 : -1); return; }
+    window.scrollTo({ top: $('main').offsetTop - 60, behavior: 'instant' });
+    openBook('P' + n, $('.bigbook'));
+  } else {
+    if (HASBOOK && R.open) closeBook();
+    window.scrollTo({ top: $('main').offsetTop - 60, behavior: 'smooth' });
+  }
+}
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]'); if (g) { go(+g.dataset.go); return; }
+  const p = e.target.closest('[data-play]'); if (p) { play([p.dataset.play]); return; }
+  const ob = e.target.closest('[data-openbook]'); if (ob && HASBOOK) { openBook(ob.dataset.openbook || null, ob.closest('.readcard')?.querySelector('.minibook') || (ob.closest('[data-step="0"]') ? $('.bigbook') : null)); return; }
+  const t = e.target.closest('.term'); if (t) { showPop(t); return; }
+  if (!e.target.closest('.pop')) $('#pop').style.display = 'none';
+  const o = e.target.closest('[data-open]'); if (o) { openDrawer(o.dataset.open); return; }
+  if (e.target.closest('[data-close]') || e.target.id === 'scrim') closeDrawers();
+});
+
+/* ---------- player: plays only when the student presses a play button ---------- */
+const A = new Audio(); A.preload = 'none';
+let Q = [], qi = 0, words = [], times = null, lastW = -1, rate = 1, raf = 0, onTime = null;
+const dock = $('#dock'), cap = $('#cap'), seek = $('#seek');
+function play(list, start = 0, hook = null) {
+  Q = list.filter(id => DATA.audio.includes(id)); qi = Math.max(0, start); onTime = hook;
+  if (!Q.length) return; load();
+}
+function load() {
+  const id = Q[qi]; if (!id) return stop();
+  $$('.w.on').forEach(w => w.classList.remove('on'));
+  const mini = $(`.mini[data-clip="${id}"] .sub`);
+  const d = DATA.disp[id] || '';
+  cap.innerHTML = d.split(/\s+/).map((w, i) => `<span class="w" data-w="${i}">${esc(w)}</span>`).join(' ');
+  words = $$('.w', cap);
+  times = DATA.tim[id] || null; lastW = -1;
+  dock.classList.add('show'); if (HASBOOK && R.open) layout(true);
+  A.src = 'audio/' + id + '.mp3'; A.playbackRate = rate;
+  A.play().catch(() => {});
+}
+function stop() { dock.classList.remove('talking'); $('#pp').innerHTML = '&#9654;'; cancelAnimationFrame(raf); }
+function closeDock() { A.pause(); Q = []; qi = 0; onTime = null; dock.classList.remove('show'); $$('.w.on').forEach(w => w.classList.remove('on')); if (HASBOOK && R.open) layout(true); }
+A.addEventListener('play', () => { dock.classList.add('talking'); $('#pp').innerHTML = '&#10074;&#10074;'; tick(); });
+A.addEventListener('pause', stop);
+A.addEventListener('ended', () => { $$('.w.on').forEach(w => w.classList.remove('on')); qi++; if (qi < Q.length) load(); else { const h = onTime; Q = []; qi = 0; stop(); h && h(Infinity, -1); onTime = null; } });
+A.addEventListener('error', () => { setTimeout(() => { qi++; if (qi < Q.length) load(); else stop(); }, 400); });
+function wordAt(t) {
+  if (times) { let k = -1; for (let i = 0; i < times.length; i++) { if (times[i] && times[i][0] <= t) k = i; } return k; }
+  if (!A.duration) return -1;
+  return Math.min(words.length - 1, Math.floor(t / A.duration * words.length));
+}
+function tick() {
+  const t = A.currentTime, k = wordAt(t);
+  if (k !== lastW) {
+    words.forEach(w => w.classList.remove('on'));
+    $$(`[data-w="${k}"]`, cap).forEach(w => w.classList.add('on'));
+    onTime && onTime(t, k);
+    lastW = k;
+  }
+  if (A.duration) seek.value = Math.round(t / A.duration * 1000);
+  if (!A.paused) raf = requestAnimationFrame(tick);
+}
+seek.oninput = () => { if (A.duration) { A.currentTime = seek.value / 1000 * A.duration; tick(); } };
+$('#pp').onclick = () => { if (!Q.length) return; A.paused ? A.play() : A.pause(); };
+$('#prev').onclick = () => { if (A.currentTime > 2 || qi === 0) A.currentTime = 0; else { qi--; load(); } };
+$('#next').onclick = () => { if (qi < Q.length - 1) { qi++; load(); } };
+$('#back5').onclick = () => { A.currentTime = Math.max(0, A.currentTime - 5); tick(); };
+$('#fwd5').onclick = () => { A.currentTime = Math.min(A.duration || 0, A.currentTime + 5); tick(); };
+$('#rate').onclick = () => { rate = rate === 1 ? 1.25 : rate === 1.25 ? 0.85 : 1; A.playbackRate = rate; $('#rate').innerHTML = rate + '&times;'; };
+$('#voiceOff').onclick = closeDock;
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input, textarea')) return;
+  if (HASBOOK && R.open && !R.busy) {
+    if (e.key === 'ArrowRight') { turn(1); return; }
+    if (e.key === 'ArrowLeft') { turn(-1); return; }
+    if (e.key === 'Escape') { if (!$('#noteEd').classList.contains('open') && !$('#hlbar').classList.contains('open') && !$('.drawer.open')) closeBook(); hideBar(); return; }
+  }
+  if (e.key === ' ' && Q.length) { e.preventDefault(); $('#pp').click(); }
+});
+
+/* ---------- words: popover + drawer ---------- */
+let savedWords = store.get('words') || {};
+const GL = Object.fromEntries(CFG.glossary.map(g => [g.id, g]));
+function showPop(t) {
+  const g = GL[t.dataset.g] || {}, word = t.textContent.trim(), key = g.word || word;
+  const p = $('#pop');
+  p.innerHTML = `<b>${esc(word)}</b>${g.pron ? `<i>${esc(g.pron)}</i> · ` : ''}${esc(g.def || '')}<br>` +
+    (DATA.audio.includes('g_' + g.id) ? `<button class="hear">&#128266; Hear it</button>` : '') +
+    `<button class="savew">${savedWords[key] ? '&#10003; Saved to my words' : '+ Save to my words'}</button>`;
+  $('.savew', p).onclick = () => { savedWords[key] = g.def || ''; store.set('words', savedWords); $('.savew', p).innerHTML = '&#10003; Saved to my words'; if (HASBOOK) drawMarks(); updateNb(); };
+  const h = $('.hear', p); if (h) h.onclick = () => play(['g_' + g.id]);
+  p.style.display = 'block';
+  const r = t.getBoundingClientRect();
+  p.style.left = Math.max(10, Math.min(scrollX + r.left, scrollX + innerWidth - 340)) + 'px';
+  p.style.top = (scrollY + r.bottom + 8) + 'px';
+}
+function openDrawer(id) { closeDrawers(); $('#' + id).classList.add('open'); $('#scrim').classList.add('on'); if (id === 'askDrawer') { askHello(); setTimeout(() => $('#askIn').focus(), 300); } }
+function closeDrawers() { $$('.drawer').forEach(d => d.classList.remove('open')); $('#scrim').classList.remove('on'); askCtx = ''; $('#askIn').placeholder = 'Ask about the lesson'; }
+$$('.gl button').forEach(b => b.onclick = () => play([b.dataset.g]));
+
+/* ---------- quick check-in (verbatim source widget; the choice comes back later) ---------- */
+function drawCheckin() {
+  const v = store.get('checkin'), C = CFG.checkin; if (!C || !$('#checkin')) return;
+  $$('#checkin .opt').forEach(o => o.classList.toggle('picked', +o.dataset.v === v));
+  $('#checkinNote').innerHTML = v == null ? '' : esc(C.opts[v].fb) + (C.returns ? `<br><span style="color:var(--acc-d)">${esc(C.returns)}</span>` : '');
+  $$('.checkin-back').forEach(el => el.innerHTML = v == null ? '' : `<div class="coach"><img src="img/magister.jpg" alt=""><div><b>Your check-in:</b> ${esc(C.opts[v].label)}. ${esc(C.back || '')}</div></div>`);
+}
+$$('#checkin .opt').forEach(o => o.onclick = () => { store.set('checkin', +o.dataset.v); drawCheckin(); updateNb(); });
+
+/* ---------- rows widget: sort / match / name it (prompts, options, hints and feedback from the source) ---------- */
+const rowState = store.get('rows') || {};
+function rowsWidget(el) {
+  const key = el.dataset.rows, W = CFG.widgets[key]; const st = rowState[key] = rowState[key] || {};
+  function draw() {
+    el.innerHTML = W.rows.map((r, i) => {
+      const a = st[i], ok = a === r.correct, cls = a == null ? '' : ok ? 'ok' : 'no';
+      return `<div class="row ${cls}" data-i="${i}"><p class="rp">${r.prompt}</p><div class="ro">${r.opts.map((o, k) => `<button data-k="${k}" class="${a === k ? 'sel' : ''}">${o}</button>`).join('')}</div><div class="why">${a == null ? '' : ok ? '&#10003; ' + r.fb : '&#8635; ' + r.hint}</div></div>`;
+    }).join('') + `<div class="tally"></div>`;
+    $$('.ro button', el).forEach(b => b.onclick = () => { const i = +b.closest('.row').dataset.i; st[i] = +b.dataset.k; store.set('rows', rowState); draw(); updateNb(); });
+    const right = W.rows.filter((r, i) => st[i] === r.correct).length, tried = Object.keys(st).length;
+    $('.tally', el).textContent = tried ? `${right} of ${W.rows.length} right` + (right === W.rows.length ? '. All done.' : '') : '';
+  }
+  draw();
+}
+
+/* ---------- Mr. Magister mini-lessons: a visual that changes beat by beat; voiced ones follow the audio ---------- */
+const miniSeen = new Set(store.get('miniSeen') || []);
+function miniWidget(el) {
+  const id = el.dataset.mini, M = CFG.minis[id], svg = $('.ms', el), sub = $('.sub', el), n = M.beats.length;
+  const voiced = DATA.audio.includes(id);
+  let b = -1;
+  const words0 = []; let acc = 0; M.beats.forEach(bt => { words0.push(acc); acc += bt.say.split(/\s+/).length; });
+  function setBeat(k, fromAudio) {
+    if (svg?.classList.contains('idle')) { svg.classList.remove('idle'); for (let i = 0; i < n; i++) svg.classList.remove('b' + (i + 1)); }
+    b = Math.max(0, Math.min(n - 1, k));
+    for (let i = 0; i < n; i++) svg?.classList.toggle('b' + (i + 1), i <= b);
+    if (!fromAudio) sub.innerHTML = esc(M.beats[b].say);
+    else sub.innerHTML = M.beats[b].say.split(/\s+/).map((w, i) => `<span class="w" data-mw="${words0[b] + i}">${esc(w)}</span>`).join(' ');
+    $$('.dots i', el).forEach((d, i) => d.classList.toggle('on', i <= b));
+    $('.mprev', el).disabled = b <= 0; $('.mnext', el).disabled = b >= n - 1;
+    if (b === n - 1) { miniSeen.add(id); store.set('miniSeen', [...miniSeen]); updateNb(); }
+  }
+  function reset() { b = -1; for (let i = 0; i < n; i++) svg?.classList.add('b' + (i + 1)); svg?.classList.add('idle'); sub.innerHTML = `<i style="color:var(--ink2)">${voiced ? 'Play, or step through.' : 'Start, then step through.'}</i>`; $$('.dots i', el).forEach(d => d.classList.remove('on')); $('.mprev', el).disabled = true; $('.mnext', el).disabled = false; }
+  el.querySelector('.mctl').innerHTML = (voiced ? `<button class="btn small mplay">&#9654; Play</button>` : '') +
+    `<button class="btn ghost small mprev" aria-label="Back">&#8249; Back</button><button class="btn ghost small mnext">${voiced ? 'Step' : 'Start'} &#8250;</button><button class="btn ghost small mreset" aria-label="Start over">&#8635;</button><span class="dots">${'<i></i>'.repeat(n)}</span>`;
+  $('.mnext', el).onclick = () => { if (Q[qi] === id) closeDock(); setBeat(b + 1); $('.mnext', el).innerHTML = 'Next &#8250;'; };
+  $('.mprev', el).onclick = () => { if (Q[qi] === id) closeDock(); setBeat(b - 1); };
+  $('.mreset', el).onclick = () => { if (Q[qi] === id) closeDock(); reset(); };
+  if (voiced) $('.mplay', el).onclick = () => {
+    reset();
+    const T = DATA.tim[id] || [];
+    const starts = words0.map(w => (T[w] || [0])[0]);
+    play([id], 0, (t, k) => {
+      if (t === Infinity) { setBeat(n - 1); return; }
+      let bb = 0; starts.forEach((s, i) => { if (t >= s - 0.05) bb = i; });
+      if (bb !== b) setBeat(bb, true);
+      $$('.sub .w', el).forEach(w => w.classList.toggle('on', +w.dataset.mw === k));
+    });
+  };
+  reset();
+}
+
+/* ---------- assignment desks (the live Canvas assignments, worked here, submitted in Canvas) ---------- */
+const ASG = CFG.assigns || [];
+let deskAns = store.get('desks') || {}, critChk = store.get('crits') || {};
+const wcount = t => (t.trim().match(/\S+/g) || []).length;
+const dAns = (a, i) => ((deskAns[a] || {})[i] || '');
+const deskDone = a => ASG[a].steps.filter((s, i) => dAns(a, i).trim()).length;
+function deskText(a) {
+  const D = ASG[a];
+  return `${D.title}\n${CFG.kicker} · ${CFG.title}\n\n` + D.steps.map((s, i) => `${i + 1}. ${s.title}\n${dAns(a, i).trim() || '(not written yet)'}`).join('\n\n');
+}
+function drawOut(a) { const o = $(`#deskOut-${a}`); if (o) o.textContent = deskText(a); const s = $(`#deskStat-${a}`); if (s) s.textContent = `${deskDone(a)} of ${ASG[a].steps.length} parts written`; }
+function drawDesk() {
+  ASG.forEach((D, a) => {
+    const root = $(`#desk-${a}`); if (!root) return;
+    $$('textarea[data-d]', root).forEach(t => {
+      const i = +t.dataset.d; t.value = dAns(a, i);
+      const upd = () => { t.closest('.dstep').classList.toggle('has', !!t.value.trim()); t.parentElement.querySelector('.wc').textContent = wcount(t.value) + ' words'; };
+      t.oninput = () => { (deskAns[a] = deskAns[a] || {})[i] = t.value; store.set('desks', deskAns); upd(); drawOut(a); updateNb(); }; upd();
+    });
+    $$('.crit input', root).forEach(c => { const k = a + ':' + c.dataset.c; c.checked = !!critChk[k]; c.onchange = () => { critChk[k] = c.checked; store.set('crits', critChk); }; });
+    $(`#deskCopy-${a}`).onclick = async () => { const n = $(`#deskNote-${a}`); try { await navigator.clipboard.writeText(deskText(a)); n.textContent = 'Copied. Paste it into the Canvas assignment.'; } catch (e) { const r = document.createRange(); r.selectNodeContents($(`#deskOut-${a}`)); getSelection().removeAllRanges(); getSelection().addRange(r); n.textContent = 'Selected. Press Ctrl+C (or Cmd+C) to copy.'; } };
+    $(`#deskPdf-${a}`).onclick = () => deskPdf(a);
+    drawOut(a);
+  });
+}
+
+/* ---------- Ask Mr. Magister (prepared notes; opinion questions get a question back) ---------- */
+let askCtx = '';
+const NOTES = (CFG.ask?.notes || []).map(([r, a]) => [new RegExp(r, 'i'), a]);
+const BACK = (CFG.ask?.back || []).map(([r, a]) => [new RegExp(r, 'i'), a]);
+const THINK = /\b(should|would you|do you think|is it fair|fair|better|worse|worth|agree|right or wrong|good idea|bad idea|which is best|your opinion|my answer|is this right|check my)\b/i;
+function reply(q) {
+  if (THINK.test(q)) { const b = BACK.find(([r]) => r.test(q)) || (askCtx && BACK.find(([r]) => r.test(askCtx))); return "That's yours to decide. " + (b ? b[1] : CFG.ask.backDefault); }
+  const n = NOTES.find(([r]) => r.test(q)) || (askCtx && NOTES.find(([r]) => r.test(askCtx)));
+  return n ? n[1] : CFG.ask.fallback;
+}
+function say(who, t) { const m = document.createElement('div'); m.className = 'msg ' + who; m.textContent = t; $('#chat').appendChild(m); m.scrollIntoView({ block: 'end' }); }
+let helloed = false;
+function askHello() { if (!helloed) { helloed = true; say('him', CFG.ask.hello); } }
+$('#askForm').onsubmit = e => { e.preventDefault(); const q = $('#askIn').value.trim(); if (!q) return; say('me', q); $('#askIn').value = ''; setTimeout(() => say('him', reply(q)), 350); };
+function askAbout(text) {
+  openDrawer('askDrawer'); askCtx = text;
+  const m = document.createElement('div'); m.className = 'msg ctx'; m.textContent = '“' + (text.length > 220 ? text.slice(0, 220) + '…' : text) + '”';
+  $('#chat').appendChild(m); m.scrollIntoView({ block: 'end' });
+  $('#askIn').placeholder = 'Ask about this passage';
+}
+
+/* ---------- My Notebook (PDF): check-in, read-for answers, marks + margin notes, words, activities, mini-lessons, assignment draft ---------- */
+function updateNb() {
+  const el = $('#nbStats'); if (!el) return;
+  const a = HASBOOK ? Object.values(ans).filter(v => (v || '').trim()).length : 0;
+  const parts = ASG.reduce((n, D, a) => n + deskDone(a), 0), total = ASG.reduce((n, D) => n + D.steps.length, 0);
+  const H = HASBOOK ? hls : [];
+  el.innerHTML = [[a, 'answers'], [H.filter(h => h.l !== 'n').length, 'highlights'], [H.filter(h => h.note).length, 'margin notes'], [Object.keys(savedWords).length, 'words'], ...(ASG.length ? [[parts + '/' + total, 'assignment parts']] : [])]
+    .map(([n, l]) => `<div><b>${n}</b>${l}</div>`).join('');
+}
+function loadPdfLib() {
+  if (window.jspdf) return Promise.resolve();
+  return new Promise((ok, no) => { const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+}
+const LBLS = { k: 'Key idea', e: 'Evidence', n: 'Note' };
+function nbData() {
+  const order = HASBOOK ? bookClips() : [];
+  const H = HASBOOK ? [...hls].sort((a, b) => order.indexOf(a.parts[0][0]) - order.indexOf(b.parts[0][0]) || a.parts[0][1] - b.parts[0][1]) : [];
+  const v = store.get('checkin');
+  return {
+    checkin: CFG.checkin && v != null ? [CFG.checkin.q, CFG.checkin.opts[v].label] : null,
+    slots: HASBOOK ? Object.entries(SLOTS).map(([slot, [chs, q]]) => ({ title: (chs.length > 1 ? 'Chapters ' : 'Chapter ') + chs.map(chNum).join(' and ') + ': ' + chs.map(chTitle).join('; '), q, a: (ans[slot] || '').trim(), marks: H.filter(h => chs.includes(h.ch)) })) : [],
+    words: Object.entries(savedWords),
+    acts: Object.entries(CFG.widgets || {}).map(([k, W]) => { const st = rowState[k] || {}; const right = W.rows.filter((r, i) => st[i] === r.correct).length; return [W.title, `${right} of ${W.rows.length} right` + (Object.keys(st).length ? '' : ' (not tried)')]; }).concat(typeof lessonNbActs === 'function' ? lessonNbActs() : []),
+    minis: Object.entries(CFG.minis || {}).map(([k, M]) => [M.title, miniSeen.has(k) ? 'Watched to the end' : 'Not finished']),
+    desks: ASG.map((D, a) => [D.title, D.steps.map((s, i) => [`${i + 1}. ${s.title}`, dAns(a, i).trim()])]),
+    keep: $('.keep p')?.textContent || ''
+  };
+}
+function pdfKit(pdf) {
+  const L = 64, W = 612 - 128, BOT = 736, ACC = [14, 70, 48], INK = [21, 21, 21], GREY = [85, 81, 74], HI = [122, 85, 19];
+  const clean = t => String(t).replace(/[^\x20-\x7E\xA0-\xFF‘’“”–—…•]/g, '').replace(/\s+/g, ' ').trim();
+  const k = { y: 70, L, W, ACC, INK, GREY, HI };
+  k.write = (t, { size = 11, font = 'times', style = 'normal', color = INK, indent = 0, gap = 4, lh = 1.4 } = {}) => {
+    pdf.setFont(font, style); pdf.setFontSize(size); pdf.setTextColor(...color);
+    pdf.splitTextToSize(clean(t), W - indent).forEach(ln => { if (k.y + size * lh > BOT) { pdf.addPage(); k.y = 70; } pdf.text(ln, L + indent, k.y); k.y += size * lh; });
+    k.y += gap;
+  };
+  k.para = (t, o = {}) => String(t).split(/\n+/).forEach(p => k.write(p, o));
+  k.rule = (c = [216, 209, 193], w = .8) => { if (k.y + 12 > BOT) { pdf.addPage(); k.y = 70; } pdf.setDrawColor(...c); pdf.setLineWidth(w); pdf.line(L, k.y, L + W, k.y); k.y += 16; };
+  k.head = t => { if (k.y + 60 > BOT) { pdf.addPage(); k.y = 70; } k.y += 8; k.write(t, { size: 15, style: 'bold', color: INK, gap: 4 }); };
+  k.lab = t => k.write(t.toUpperCase(), { size: 8.5, font: 'helvetica', style: 'bold', color: HI, gap: 2 });
+  k.masthead = (kick, title) => {
+    k.write(kick, { size: 9, font: 'helvetica', style: 'bold', color: ACC, gap: 12 });
+    k.write(title, { size: 24, style: 'bold', gap: 2, lh: 1.25 });
+    k.write('Economics Honors · ' + CFG.kicker + ' · ' + CFG.title + ' · Optima Academy Online · ' + new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }), { size: 9, font: 'helvetica', color: GREY, gap: 10 });
+    k.rule([21, 21, 21], 2);
+  };
+  k.foot = name => { const n = pdf.getNumberOfPages(); for (let i = 1; i <= n; i++) { pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8); pdf.setTextColor(...GREY); pdf.text(`${name} · page ${i} of ${n}`, L, 762); } };
+  return k;
+}
+async function notebook() {
+  const note = $('#nbNote'); if (note) note.textContent = 'Making your notebook…';
+  try { await loadPdfLib(); } catch (e) { if (note) note.textContent = ''; return notebookHtml(); }
+  const d = nbData(), pdf = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' }), k = pdfKit(pdf);
+  k.masthead('MY NOTEBOOK', CFG.title);
+  if (d.checkin) { k.lab('Quick check-in'); k.write(d.checkin[0], { size: 11, style: 'italic', gap: 1 }); k.write(d.checkin[1], { size: 12, gap: 8 }); }
+  d.slots.forEach(s => {
+    k.head(s.title);
+    k.lab('Read for'); k.write(s.q, { size: 11.5, style: 'italic', gap: 6 });
+    k.lab('My answer'); k.write(s.a || 'No answer yet.', { size: 11.5, color: s.a ? k.INK : k.GREY, gap: 8 });
+    if (s.marks.length) {
+      k.lab('My marks and margin notes');
+      s.marks.forEach(h => {
+        k.write(LBLS[h.l].toUpperCase(), { size: 7.5, font: 'helvetica', style: 'bold', color: h.l === 'e' ? k.ACC : k.HI, indent: 12, gap: 1 });
+        k.write('“' + h.text + '”', { size: 11, style: 'italic', indent: 12, gap: h.note ? 2 : 7 });
+        if (h.note) k.write('Margin note: ' + h.note, { size: 10, font: 'helvetica', color: [90, 67, 32], indent: 12, gap: 7 });
+      });
+    }
+    k.rule();
+  });
+  if (d.words.length) { k.head('My Words'); d.words.forEach(([w, t]) => { k.write(w, { size: 12, style: 'bold', gap: 0 }); k.write(t, { size: 10.5, font: 'helvetica', color: k.GREY, gap: 6 }); }); k.rule(); }
+  if (d.minis.length || d.acts.length) { k.head('Activities'); d.minis.concat(d.acts).forEach(([t, r]) => { k.write(t, { size: 11, style: 'bold', gap: 0 }); k.write(r, { size: 10, font: 'helvetica', color: k.GREY, gap: 6 }); }); k.rule(); }
+  d.desks.forEach(([title, rows]) => { k.head('Assignment draft: ' + title); rows.forEach(([t, a]) => { k.write(t, { size: 11, style: 'bold', gap: 1 }); k.para(a || 'Not written yet.', { size: 11, color: a ? k.INK : k.GREY, gap: 6 }); }); k.rule(); });
+  if (d.keep) { k.lab('Carry this forward'); k.write(d.keep, { size: 12, style: 'italic' }); }
+  k.foot('My Notebook · ' + CFG.kicker);
+  pdf.save(CFG.nbFile + '-My-Notebook.pdf');
+  if (note) note.textContent = 'Saved: ' + CFG.nbFile + '-My-Notebook.pdf';
+}
+function notebookHtml() {
+  const d = nbData(), e = esc;
+  const html = `<!doctype html><meta charset="utf-8"><title>My Notebook</title><body style="font:16px/1.6 Georgia,serif;max-width:720px;margin:40px auto;padding:0 20px;color:#151515">
+<p style="font:700 11px sans-serif;letter-spacing:.14em;color:#0E4630">MY NOTEBOOK</p><h1>${e(CFG.title)}</h1>` +
+    (d.checkin ? `<p><i>${e(d.checkin[0])}</i><br>${e(d.checkin[1])}</p>` : '') +
+    d.slots.map(s => `<h2>${e(s.title)}</h2><p><i>Read for: ${e(s.q)}</i></p><p><b>My answer:</b> ${e(s.a || 'No answer yet.')}</p>` +
+      s.marks.map(h => `<blockquote><small>${LBLS[h.l]}</small><br><i>“${e(h.text)}”</i>${h.note ? `<br>Margin note: ${e(h.note)}` : ''}</blockquote>`).join('')).join('') +
+    (d.words.length ? '<h2>My Words</h2>' + d.words.map(([w, t]) => `<p><b>${e(w)}</b>: ${e(t)}</p>`).join('') : '') +
+    d.desks.map(([title, rows]) => `<h2>Assignment draft: ${e(title)}</h2>` + rows.map(([t, a]) => `<p><b>${e(t)}</b><br>${e(a || 'Not written yet.')}</p>`).join('')).join('') + `<p><i>${e(d.keep)}</i></p>`;
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' })); a.download = CFG.nbFile + '-My-Notebook.html'; a.click();
+  const n = $('#nbNote'); if (n) n.textContent = 'Saved: ' + CFG.nbFile + '-My-Notebook.html';
+}
+async function deskPdf(a) {
+  const D = ASG[a], note = $(`#deskNote-${a}`);
+  try { await loadPdfLib(); } catch (e) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([deskText(a)], { type: 'text/plain' })); a.download = CFG.nbFile + '-' + D.file + '.txt'; a.click(); note.textContent = 'Saved as a text file.'; return; }
+  const pdf = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' }), k = pdfKit(pdf);
+  k.masthead('ASSIGNMENT · ' + D.pts + ' POINTS', D.title);
+  k.lab('Focus question'); k.write(D.focus, { size: 11.5, style: 'italic', gap: 10 });
+  D.steps.forEach((s, i) => { k.write(`${i + 1}. ${s.title}`, { size: 13, style: 'bold', gap: 3 }); k.para(dAns(a, i).trim() || 'Not written yet.', { size: 11.5, gap: 8 }); });
+  k.foot(D.title + ' · ' + CFG.kicker);
+  pdf.save(CFG.nbFile + '-' + D.file + '.pdf'); note.textContent = 'Saved: ' + CFG.nbFile + '-' + D.file + '.pdf';
+}
+$('#nbBtn')?.addEventListener('click', () => notebook());
+
+/* Module 1 project lessons: shared components (typed boxes, checks, mcq, place, pulls from the Week 1 lessons, source log, process-record PDF) */
+const BOX = store.get('boxes') || {}, MCQ = store.get('mcq') || {}, PLC = store.get('place') || {}, CK = store.get('ck') || {};
+const W1 = {
+  l101: { n: '1.01', t: 'What is Economics?', key: 'econ-hon-w1-l101-v1', href: 'lesson-1-01-what-is-economics.html' },
+  l102: { n: '1.02', t: 'Scarcity, Choice, and Opportunity Cost', key: 'econ-hon-w1-l102-v1', href: 'lesson-1-02-scarcity-choice-opportunity-cost.html' },
+  l103: { n: '1.03', t: 'Factors of Production', key: 'econ-hon-w1-l103-v1', href: 'lesson-1-03-factors-of-production.html' }
+};
+const P1KEY = 'econ-hon-m1-proj1-v1', P1HREF = 'module-1-project-1-your-case-and-sources.html';
+const readLS = k => { try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch (e) { return null; } };
+const wordsOf = t => (String(t || '').trim().match(/\S+/g) || []).length;
+const SRC_TYPES = ['Scholarly article (JSTOR)', 'Primary source or archive item', 'Data series', 'Report or other credible source'];
+
+/* ---------- pulls: read-only, live from the lessons' localStorage ---------- */
+function pullOf(spec) {
+  const [k, kind, a, b] = spec.split(':');
+  if (k === 'p1') {
+    const S = readLS(P1KEY) || {};
+    if (kind === 'box') { const v = ((S.boxes || {})[a] || '').trim(); return { name: 'Project 1: Your Case and Sources', href: P1HREF, text: v }; }
+    if (kind === 'case') { const v = S.cpick; return { name: 'Project 1: Your Case and Sources', href: P1HREF, text: v == null ? '' : (CASE_TYPES[v] || '') }; }
+    if (kind === 'slog') { const rows = (S.slog || []).filter(r => r && (r.ref || '').trim()); return { name: 'Project 1: Your Case and Sources', href: P1HREF, rows }; }
+  }
+  const L = W1[k]; if (!L) return { text: '' };
+  const S = readLS(L.key) || {}; const out = { name: `Lesson ${L.n}`, href: L.href };
+  if (kind === 'ans') out.text = ((S.ans || {})[a] || '').trim();
+  else if (kind === 'desk') {
+    const D = (S.desks || {})[a] || {};
+    if (b === '*') out.parts = Object.keys(D).sort((x, y) => x - y).filter(i => (D[i] || '').trim()).map(i => [+i + 1, D[i].trim()]);
+    else out.text = (D[b] || '').trim();
+  } else if (kind === 'hls') out.marks = (S.hls || []).filter(h => h.l === 'k' || h.note).slice(0, 6);
+  return out;
+}
+const PART_TITLES = { 'l102:desk:0:*': ['Set the scene', 'Weigh the options', 'Name the cost', 'Make your own call'] };
+const CASE_TYPES = ['The Industrial Revolution', 'A command economy', 'A market economy and a resource shock', 'A side-by-side comparison'];
+function drawPulls() {
+  $$('[data-pull]').forEach(el => {
+    const p = pullOf(el.dataset.pull);
+    let html = '';
+    if (p.text) html = esc(p.text);
+    else if (p.parts && p.parts.length) { const T = PART_TITLES[el.dataset.pull] || []; html = p.parts.map(([n, t]) => `<span class="pp"><small>${esc(T[n - 1] || "Part " + n)}</small>${esc(t)}</span>`).join(''); }
+    else if (p.marks && p.marks.length) html = p.marks.map(h => `<span class="pp"><small>${h.l === 'k' ? 'Key idea' : h.l === 'e' ? 'Evidence' : 'Margin note'}</small>&ldquo;${esc(h.text)}&rdquo;${h.note ? ' ' + esc(h.note) : ''}</span>`).join('');
+    else if (p.rows && p.rows.length) html = p.rows.map((r, i) => `<span class="pp"><small>Source ${i + 1} &middot; ${esc(r.type || '')}</small>${esc(r.ref)}</span>`).join('');
+    if (html) { el.className = 'pull-v'; el.innerHTML = html; }
+    else { el.className = 'pull-v empty'; el.innerHTML = `Not written yet in ${esc(p.name || 'the lesson')}. ${p.href ? `<a href="${p.href}" target="_blank" rel="noopener">Open it</a>` : ''}`; }
+  });
+  $$('details.prep[data-lesson]').forEach(d => {
+    const all = $$('.pull-v', d), has = all.filter(e => !e.classList.contains('empty')).length, c = $('.pp-c', d);
+    c.textContent = has ? `${has} of ${all.length} found` : 'Nothing found yet'; c.classList.toggle('has', has > 0);
+  });
+}
+
+/* ---------- typed boxes ---------- */
+function boxBoot() {
+  $$('.jbox').forEach(t => {
+    t.value = BOX[t.id] || '';
+    const wcEl = document.createElement('div'); wcEl.className = 'wc'; t.insertAdjacentElement('afterend', wcEl);
+    const min = +t.dataset.min || 0;
+    const upd = () => { const n = wordsOf(t.value); wcEl.textContent = min ? `${n} of ${min} words` : `${n} words`; wcEl.classList.toggle('ok', min ? n >= min : n > 0); };
+    t.addEventListener('input', () => { BOX[t.id] = t.value; store.set('boxes', BOX); upd(); drawStatus(); if (typeof onBox === 'function') onBox(t); });
+    upd();
+  });
+}
+const boxList = () => $$('.jbox').filter(t => +t.dataset.min > 0);
+function drawStatus() {
+  $$('.status').forEach(el => {
+    const L = boxList(), ok = L.filter(t => wordsOf(BOX[t.id]) >= +t.dataset.min);
+    const ck = $$('.checks li[data-ck]'), ckOn = ck.filter(li => CK[li.dataset.ck]).length;
+    el.innerHTML = `<div class="sum">${ok.length} of ${L.length} written parts done</div>` + L.map(t => { const n = wordsOf(BOX[t.id]), m = +t.dataset.min; return `<div class="stl ${n >= m ? 'ok' : ''}"><i>&#10003;</i>${esc(t.dataset.label)}<span>${n >= m ? 'done' : n + ' of ' + m + ' words'}</span></div>`; }).join('') + `<div class="stl ${ckOn === ck.length ? 'ok' : ''}"><i>&#10003;</i>Checklists ticked<span>${ckOn} of ${ck.length}</span></div>`;
+  });
+}
+
+/* ---------- check lists ---------- */
+function checksBoot() {
+  $$('.checks li[data-ck]').forEach(li => {
+    li.tabIndex = 0; li.setAttribute('role', 'checkbox');
+    const draw = () => { li.classList.toggle('on', !!CK[li.dataset.ck]); li.setAttribute('aria-checked', !!CK[li.dataset.ck]); };
+    const tog = () => { CK[li.dataset.ck] = !CK[li.dataset.ck]; store.set('ck', CK); draw(); drawStatus(); };
+    li.addEventListener('click', tog); li.addEventListener('keydown', e => { if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); tog(); } }); draw();
+  });
+}
+
+/* ---------- multiple choice ---------- */
+function mcqBoot() {
+  $$('.mcq').forEach(q => {
+    const id = q.dataset.qid, opts = $$('.opt', q), fb = $('.fb', q);
+    const draw = () => {
+      const v = MCQ[id]; opts.forEach((o, i) => { o.classList.remove('right', 'wrong'); if (v && v.i === i) o.classList.add(v.ok ? 'right' : 'wrong'); });
+      if (v) { fb.className = 'fb show ' + (v.ok ? 'ok' : 'no'); fb.textContent = opts[v.i].dataset.fb; } else { fb.className = 'fb'; fb.textContent = ''; }
+    };
+    opts.forEach((o, i) => o.addEventListener('click', () => { if (MCQ[id] && MCQ[id].ok) return; MCQ[id] = { i, ok: !!o.dataset.ok }; store.set('mcq', MCQ); draw(); }));
+    draw();
+  });
+}
+
+/* ---------- place: tap a chip, tap where it belongs ---------- */
+function placeBoot() {
+  $$('.place').forEach(root => {
+    const id = root.id, chips = $$('.bank .chip', root), N = chips.length, fb = $('.place-fb', root), tally = $('.tally', root);
+    PLC[id] = PLC[id] || []; let sel = null;
+    const bins = {}; $$('.bin', root).forEach(b => bins[b.dataset.bin] = $('.drop', b));
+    const draw = () => {
+      chips.forEach(c => { const done = PLC[id].includes(c.dataset.k); if (done) { c.classList.remove('sel'); c.classList.add('ok'); bins[c.dataset.ans].appendChild(c); } });
+      tally.textContent = `${PLC[id].length} of ${N} placed` + (PLC[id].length === N ? '. All placed.' : '');
+    };
+    chips.forEach(c => c.addEventListener('click', () => { if (PLC[id].includes(c.dataset.k)) return; sel = c; chips.forEach(x => x.classList.toggle('sel', x === c)); }));
+    $$('.bin', root).forEach(b => b.addEventListener('click', () => {
+      if (!sel) { fb.className = 'place-fb show'; fb.textContent = 'Tap a statement first.'; return; }
+      const right = sel.dataset.ans === b.dataset.bin;
+      if (right) { PLC[id].push(sel.dataset.k); store.set('place', PLC); fb.className = 'place-fb show'; fb.textContent = sel.dataset.fb; sel = null; draw(); }
+      else { fb.className = 'place-fb show'; fb.textContent = sel.dataset.miss; sel.classList.add('no'); const s = sel; setTimeout(() => s.classList.remove('no'), 900); }
+    }));
+    draw();
+  });
+}
+
+/* ---------- source log (Project 1 writes it, Project 2 reads it) ---------- */
+let SLOG = store.get('slog') || [{}, {}, {}, {}];
+function slogBoot() {
+  const tb = $('#slogBody'); if (!tb) return;
+  const draw = () => {
+    tb.innerHTML = SLOG.map((r, i) => `<tr data-i="${i}"><td class="rn">${i + 1}</td>
+      <td data-l="Kind of source"><select data-f="type" aria-label="Kind of source ${i + 1}"><option value="">Choose</option>${SRC_TYPES.map(t => `<option ${r.type === t ? 'selected' : ''}>${t}</option>`).join('')}</select></td>
+      <td data-l="Reference, APA 7"><textarea data-f="ref" aria-label="Reference ${i + 1}" rows="3"></textarea></td>
+      <td data-l="What it shows, in my words"><textarea data-f="shows" aria-label="What source ${i + 1} shows" rows="3"></textarea></td>
+      <td data-l="Where I will use it"><textarea data-f="use" aria-label="Where source ${i + 1} is used" rows="3"></textarea></td></tr>`).join('');
+    $$('tr', tb).forEach(tr => { const r = SLOG[+tr.dataset.i]; $$('[data-f]', tr).forEach(f => { if (f.tagName === 'TEXTAREA') f.value = r[f.dataset.f] || ''; f.addEventListener('input', () => { r[f.dataset.f] = f.value; store.set('slog', SLOG); tallyIt(); }); }); });
+    tallyIt();
+  };
+  const tallyIt = () => {
+    const have = SLOG.filter(r => wordsOf(r.ref) >= 5), kinds = new Set(have.map(r => r.type).filter(Boolean));
+    const ok = have.length >= 4 && kinds.size >= 3, el = $('#slogTally');
+    el.textContent = `${have.length} sources logged · ${kinds.size} kinds` + (ok ? ' · target met' : ' · target: 4 sources, 3 kinds'); el.classList.toggle('ok', ok);
+    const s = $('#slogStat'); if (s) { s.dataset.n = have.length; }
+    drawStatus();
+  };
+  $('#slogAdd').onclick = () => { SLOG.push({}); store.set('slog', SLOG); draw(); };
+  draw();
+}
+
+/* ---------- process record PDF ---------- */
+function ownName() { return (store.get('name') || '').trim(); }
+function nameBoot() {
+  $$('input.name').forEach(i => { i.value = store.get('name') || ''; i.addEventListener('input', () => store.set('name', i.value)); });
+}
+function fileFor(tag) {
+  const n = ownName().split(/\s+/).filter(Boolean), last = n.length > 1 ? n[n.length - 1] : (n[0] || 'LastName'), first = n.length > 1 ? n[0] : 'FirstName';
+  return `${last}_${first}_${tag}.pdf`.replace(/[^A-Za-z0-9_.-]/g, '');
+}
+function recordGroups(scopeSel) {
+  const groups = [];
+  $$(scopeSel + ' .sec').forEach(sec => {
+    const h = $('.sec-h h2', sec); if (!h) return;
+    const rows = $$('.jbox', sec).map(t => [t.dataset.label, (BOX[t.id] || '').trim()]);
+    if (rows.length) groups.push([h.textContent.trim(), rows]);
+  });
+  return groups;
+}
+async function writeRecord(title, sections, file, note) {
+  const nt = $(note); nt.textContent = 'Making your PDF...';
+  try { await loadPdfLib(); } catch (e) { nt.textContent = 'The PDF tool did not load. Check the connection and try again.'; return; }
+  const pdf = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' }), k = pdfKit(pdf);
+  k.masthead('PROCESS RECORD', title);
+  k.write('Name: ' + (ownName() || '(not entered)'), { size: 11, font: 'helvetica', gap: 10 });
+  sections.forEach(([head, rows]) => {
+    k.head(head);
+    rows.forEach(([lab, val]) => {
+      k.write(lab, { size: 10.5, style: 'bold', gap: 1 });
+      if (Array.isArray(val)) val.forEach(v => k.para(v, { size: 10.5, indent: 10, gap: 3 }));
+      else k.para(val || 'Not written yet.', { size: 11, color: val ? k.INK : k.GREY, gap: 7 });
+    });
+    k.rule();
+  });
+  k.foot('Process record · ' + CFG.kicker);
+  pdf.save(file); nt.textContent = 'Saved: ' + file;
+}
+function slogLines() {
+  return (store.get('slog') || SLOG).filter(r => wordsOf(r.ref) >= 1).map((r, i) => `${i + 1}. [${r.type || 'kind not chosen'}] ${(r.ref || '').trim()}  |  Shows: ${(r.shows || '').trim() || 'not written'}  |  Use: ${(r.use || '').trim() || 'not written'}`);
+}
+
+/* ---------- boot ---------- */
+function projBoot() {
+  nameBoot(); boxBoot(); checksBoot(); mcqBoot(); placeBoot(); slogBoot(); drawPulls(); drawStatus();
+  window.addEventListener('focus', drawPulls); document.addEventListener('visibilitychange', drawPulls); window.addEventListener('storage', drawPulls);
+}
+
+/* Project 1 only: case picker, search lab, five questions, citation patterns, process record */
+const CASE_INFO = [
+  ['A change you can trace, so each factor has a before and after to compare.', 'The Industrial Revolution is too large to be a case. Name one country and one span of years.', 'The country AND "Industrial Revolution" AND labor or capital'],
+  ['The three questions have a clear answer: who decided what to produce, how, and for whom.', 'Ask who published each figure and why. Back any number with a second kind of source.', '"command economy" OR "central planning", AND the country'],
+  ['A clear event with a before and after: the shock.', 'Name the resource and the dates. Separate the shock from other changes at the same time.', '"resource shock" AND the resource AND the country'],
+  ['The contrast makes the differences between systems visible.', 'Two cases in fifteen to twenty minutes is tight. Use one period and the same few measures for both.', 'One search per nation, then one search with both names']
+];
+function caseBoot() {
+  const out = $('#cpout'), btns = $$('#cpick .cp');
+  const draw = () => {
+    const v = store.get('cpick');
+    btns.forEach((b, i) => b.classList.toggle('on', v === i));
+    out.innerHTML = v == null ? '' : ['Makes it easier', 'Watch for', 'Search to try'].map((k, j) => `<div><div class="k">${k}</div>${esc(CASE_INFO[v][j])}</div>`).join('');
+    const n = $('#cpickNote'); n.className = 'pull-v' + (v == null ? ' empty' : ''); n.textContent = v == null ? 'Tap a kind of case in section A first.' : CASE_TYPES[v];
+  };
+  btns.forEach((b, i) => b.addEventListener('click', () => { store.set('cpick', i); draw(); }));
+  draw();
+}
+
+function searchLab() {
+  const sb = $('#sb'); if (!sb) return;
+  let goal = 'a', terms = [], ops = [];
+  const tok = $('#sbTok'), str = $('#sbStr'), rd = $('#sbRead');
+  const draw = () => {
+    $$('.sb-bank', sb).forEach(b => b.hidden = b.dataset.goal !== goal);
+    $$('.sg', sb).forEach(g => g.classList.toggle('on', g.dataset.g === goal));
+    $$('.sb-bank button', sb).forEach(b => b.classList.toggle('used', terms.some(t => t.t === b.dataset.t)));
+    tok.innerHTML = terms.length ? terms.map((t, i) => (i ? `<button type="button" class="op" data-o="${i - 1}" aria-label="Switch ${ops[i - 1]}">${ops[i - 1]}</button>` : '') + `<button type="button" class="tk2" data-r="${i}" aria-label="Remove ${esc(t.t)}">${t.ph ? '&ldquo;' + esc(t.t) + '&rdquo;' : esc(t.t)} &times;</button>`).join('') : '<span class="empty">Tap terms below.</span>';
+    str.textContent = terms.map((t, i) => (i ? ' ' + ops[i - 1] + ' ' : '') + (t.ph ? '"' + t.t + '"' : t.t)).join('');
+    const n = terms.length, noise = terms.some(t => t.noise), core = terms.some(t => t.core), allOr = n > 1 && ops.every(o => o === 'OR');
+    rd.textContent = !n ? 'Tap terms to build a search.'
+      : noise ? 'Words like overview, essay, textbook, and opinion match summaries, not arguments. Take them out.'
+      : n === 1 ? 'One term alone returns a very large number of results. Add your place and one idea from your thesis with AND.'
+      : allOr ? 'Every join is OR, so this returns more results, not fewer. Switch at least one to AND.'
+      : n > 5 ? 'Too many terms. A long list rarely matches one article. Keep three to five.'
+      : !core ? 'Add a term that names your case or an idea in your thesis.'
+      : 'Focused: every result must contain every AND term. Run it on JStor, then read the abstract before you save anything.';
+  };
+  sb.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.g) { goal = b.dataset.g; terms = []; ops = []; }
+    else if (b.dataset.t && b.closest('.sb-bank')) { if (!terms.some(t => t.t === b.dataset.t)) { if (terms.length) ops.push('AND'); terms.push({ t: b.dataset.t, ph: !!b.dataset.ph, core: !!b.dataset.core, noise: !!b.dataset.noise }); } }
+    else if (b.dataset.o != null) ops[+b.dataset.o] = ops[+b.dataset.o] === 'AND' ? 'OR' : 'AND';
+    else if (b.dataset.r != null) { const i = +b.dataset.r; terms.splice(i, 1); ops.splice(Math.max(0, i - 1), 1); }
+    else if (b.classList.contains('flt')) { b.classList.toggle('on'); const on = $$('.flt.on', sb).map(x => x.dataset.f); $('#sbFlt').textContent = on.length ? 'Filters on: ' + on.join(' · ') + '. Each one removes results that cannot be your source.' : ''; return; }
+    else return;
+    draw();
+  });
+  draw();
+}
+
+function deskBits() {
+  $$('#five .fv').forEach(b => b.addEventListener('click', () => { $$('#five .fv').forEach(x => x.classList.toggle('on', x === b)); $('#fvOut').textContent = b.dataset.a; }));
+  $$('#patSeg button').forEach(b => b.addEventListener('click', () => { $$('#patSeg button').forEach(x => x.classList.toggle('on', x === b)); $$('.pat-set').forEach(s => s.classList.toggle('on', s.dataset.set === b.dataset.p)); $('#patG').innerHTML = '<span class="hint">Tap a part above.</span>'; }));
+  $$('.pat button').forEach(b => b.addEventListener('click', () => { $$('.pat button').forEach(x => x.classList.toggle('on', x === b)); $('#patG').textContent = b.dataset.g; }));
+}
+
+function pageBoot() {
+  caseBoot(); searchLab(); deskBits();
+  $('#pdfBtn').onclick = () => {
+    const sections = recordGroups('.step');
+    const v = store.get('cpick'); sections.unshift(['Kind of case chosen', [['Kind of case', v == null ? '' : CASE_TYPES[v]]]]);
+    sections.push(['Source log', [['Sources', slogLines()]]]);
+    writeRecord('Module 1 Project: Your Case and Sources', sections, fileFor('Econ-M1-Project-Process-Record-1'), '#pdfNote');
+  };
+}
+
+
+$$('.mini').forEach(miniWidget);
+projBoot();
+typeof pageBoot === 'function' && pageBoot();
+go(Math.min(store.get('step') || 0, STOPS.length - 1), false);
+
+</script>
+</body>
+</html>

@@ -531,7 +531,18 @@ _Week 1 and major projects not posted yet_
 
 ### ★ HS Civics: Economics Honors (Social Studies · 2102320)
 
-_Week 1 and major projects not posted yet_
+#### Module 1: Introduction to Economics and Production
+
+**Week 1**
+
+- [Lesson 1.01: What is Economics?](https://optimaondemand.github.io/optima-pilot-samples/hs-econ-honors-m1/lesson-1-01-what-is-economics.html)
+- [Lesson 1.02: Scarcity, Choice, and Opportunity Cost](https://optimaondemand.github.io/optima-pilot-samples/hs-econ-honors-m1/lesson-1-02-scarcity-choice-opportunity-cost.html)
+- [Lesson 1.03: Factors of Production](https://optimaondemand.github.io/optima-pilot-samples/hs-econ-honors-m1/lesson-1-03-factors-of-production.html)
+
+**Major Project**
+
+- [Economic Systems in Action, Part 1: Your Case and Sources](https://optimaondemand.github.io/optima-pilot-samples/hs-econ-honors-m1/module-1-project-1-your-case-and-sources.html)
+- [Economic Systems in Action, Part 2: Build and Record](https://optimaondemand.github.io/optima-pilot-samples/hs-econ-honors-m1/module-1-project-2-build-and-record.html)
 
 ### ★ HS Civics: U.S. Government Honors (Social Studies · 2106320)
 

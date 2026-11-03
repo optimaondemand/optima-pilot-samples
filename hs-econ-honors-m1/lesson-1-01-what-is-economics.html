@@ -1,0 +1,1533 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Phyllis">
+<title>Lesson 1.01: What is Economics?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@600&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
+<style>
+/* Economics Honors glow-up kit: financial-broadsheet theme. Two accents: market green (--acc) and brass (--hi). */
+:root{
+  --page:#F2EEE5; --card:#FFFDF8; --paper:#FAF7EF; --ink:#151515; --ink2:#55514A; --line:#D8D1C1; --rule:#1B1B1B;
+  --acc:#17603F; --acc-d:#0E4630; --acc-f:#E2EEE6;
+  --hi:#B4832A; --hi-d:#7A5513; --hi-f:#F5EBD5;
+  --navy:#0E1C42; --cyan:#55C8E8;
+  --ok:#2E7D4F; --ok-f:#E5F3EA; --bad:#B3261E; --bad-f:#FBE7E5;
+  --head:"Playfair Display", Georgia, "Times New Roman", serif;
+  --mast:"UnifrakturMaguntia", "Playfair Display", Georgia, serif;
+  --mono:"IBM Plex Mono", Consolas, monospace;
+  --ui:system-ui, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:18px/1.7 Georgia,"Times New Roman",serif;padding-bottom:120px}
+button{font:inherit;color:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--head);font-weight:700;color:var(--ink);line-height:1.15;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+.ui{font-family:var(--ui)}
+
+/* Optima chrome */
+.oao{background:var(--navy);color:#fff;font:600 14px/1 var(--ui)}
+.oao .wrap{display:flex;align-items:center;gap:10px;height:52px}
+.oao img{width:34px;height:34px;object-fit:contain}
+.oao .sub{margin-left:auto;color:var(--cyan);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+
+/* masthead hero */
+.hero{background:var(--paper);border-bottom:1px solid var(--line)}
+.hero .wrap{padding:16px 20px 0}
+.hero .dateline{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font:600 11.5px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);border-top:3px solid var(--rule);border-bottom:1px solid var(--rule);padding:7px 0}
+.hero h1{font-size:40px;font-weight:900;letter-spacing:-.01em;margin:14px 0 12px}
+.ticker{overflow:hidden;border-top:1px solid var(--rule);border-bottom:3px double var(--rule);background:var(--paper);white-space:nowrap}
+.ticker .tk{display:inline-flex;gap:34px;padding:7px 0;animation:tick 48s linear infinite;font:600 13px/1 var(--mono);letter-spacing:.06em}
+.ticker .tk span{color:var(--ink)}
+.ticker .tk b{font-weight:600;margin-left:6px}
+.ticker .up{color:var(--acc)}.ticker .dn{color:var(--hi-d)}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.kicker{font:700 12px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+.btn{border:0;border-radius:999px;padding:10px 18px;background:var(--acc);color:#fff;font:600 15px/1 var(--ui);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn:hover{background:var(--acc-d)}
+.btn.ghost{background:transparent;color:var(--acc-d);border:1.5px solid var(--acc)}
+.btn.ghost:hover{background:var(--acc-f)}
+.btn.small{padding:7px 13px;font-size:13px}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* route */
+.route{position:sticky;top:0;z-index:20;background:rgba(242,238,229,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.route .wrap{max-width:1180px;display:flex;align-items:center;gap:8px;padding-top:10px;padding-bottom:10px}
+.stops{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.stops::-webkit-scrollbar{display:none}
+.stop{flex:none;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 13px/1 var(--ui);color:var(--ink2);display:flex;align-items:center;gap:6px}
+.stop i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);font-size:11px}
+.stop.done i{background:var(--hi);color:#fff}
+.stop.on{border-color:var(--acc);color:var(--acc-d)}
+.stop.on i{background:var(--acc);color:#fff}
+.tools{display:flex;gap:6px;flex:none}
+
+/* steps */
+.step{display:none;padding:30px 0 10px;animation:rise .45s ease}
+.step.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.parthead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.parthead h2{font-size:38px;margin-top:6px}
+.dbl{height:6px;margin:16px 0 22px;border-top:3px solid var(--rule);border-bottom:1px solid var(--rule)}
+.prose{position:relative;margin:0 0 16px}
+.w{border-radius:3px}
+.w.on{background:#F1DDA8;box-shadow:0 0 0 2px #F1DDA8}
+.term{border-bottom:2px dotted var(--acc);cursor:pointer}
+.term:hover{background:var(--acc-f)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;margin:22px 0}
+.card.acc{border-top:4px solid var(--acc)}
+.card.hi{border-top:4px solid var(--hi)}
+.label{font:700 12px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--hi-d);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.label .say{margin-left:auto}
+.say{border:1.5px solid var(--line);background:var(--card);color:var(--acc-d);border-radius:999px;padding:5px 11px;font:600 12px/1 var(--ui);display:inline-flex;gap:6px;align-items:center}
+.say:hover{border-color:var(--acc)}
+.instr{font-size:16px;color:var(--ink2);margin:0 0 14px}
+figure{margin:24px 0}
+figure img{border-radius:6px;border:1px solid var(--line)}
+figcaption{font-size:14px;color:var(--ink2);margin-top:8px;line-height:1.5}
+
+/* arrive */
+.focusq{font-family:var(--head);font-style:italic;font-weight:700;font-size:30px;color:var(--ink);margin:0 0 12px;line-height:1.2}
+.obj{list-style:none;padding:0;margin:0;counter-reset:o}
+.obj li{counter-increment:o;display:grid;grid-template-columns:34px 1fr;gap:10px;margin:0 0 12px;font-size:17px}
+.obj li::before{content:counter(o);width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 13px var(--ui);margin-top:2px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:12px 14px;font-size:16px;line-height:1.35}
+.opt:hover{border-color:var(--acc)}
+.opt.picked{border-color:var(--acc);background:var(--acc-f)}
+.opt.right{border-color:var(--ok);background:var(--ok-f)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-f)}
+.note{font:600 14px/1.4 var(--ui);color:var(--ink2);margin-top:12px;min-height:20px}
+.next{display:flex;justify-content:space-between;gap:10px;margin:34px 0 10px;border-top:1px solid var(--line);padding-top:20px;flex-wrap:wrap}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.seg button{border:0;background:transparent;padding:7px 14px;font:600 13px/1 var(--ui);color:var(--ink2)}
+.seg button.on{background:var(--acc);color:#fff}
+.wrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0 0}
+.info{margin-top:12px;background:var(--hi-f);border-radius:8px;padding:12px 14px;font-size:16px;min-height:52px;line-height:1.5}
+.info b{font-family:var(--head);font-size:18px;color:var(--acc-d)}
+.fb{margin-top:12px;border-radius:8px;padding:10px 14px;font:15px/1.5 var(--ui);display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--ok-f);color:#1E5A37}
+.fb.no{background:var(--bad-f);color:#8A1D16}
+.fb.hint{background:var(--hi-f);color:#5A4320}
+.stage{width:100%;height:auto;display:block;background:var(--paper);border-radius:8px;border:1px solid var(--line)}
+
+/* rows widget (sort / match / name the concept) */
+.rows{display:grid;gap:10px}
+.row{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px}
+.row .rp{font-size:16px;line-height:1.4;margin:0 0 9px}
+.row .ro{display:flex;flex-wrap:wrap;gap:6px}
+.row .ro button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 13px/1.2 var(--ui)}
+.row .ro button:hover{border-color:var(--acc)}
+.row .ro button.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.row.ok{border-color:var(--ok);background:var(--ok-f)}
+.row.ok .ro button.sel{background:var(--ok);border-color:var(--ok)}
+.row.no{border-color:#E1B9A6}
+.row .why{font:14px/1.45 var(--ui);color:var(--ink2);margin-top:8px;display:none}
+.row.ok .why,.row.no .why{display:block}
+.tally{font:600 14px var(--ui);color:var(--ink2);margin-top:10px}
+
+/* Mr. Magister mini-lesson stage */
+.mini{border-top:4px solid var(--acc);padding:18px 20px 20px}
+.mini-h{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mini-h img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--hi);flex:none}
+.mini-h .t{flex:1;min-width:0}
+.mini-h .t b{display:block;font-family:var(--head);font-size:19px;line-height:1.2}
+.mini-h .t small{font:600 12px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.mini .ms{width:100%;height:auto;display:block;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+.mini .sub{min-height:62px;margin-top:10px;font-size:16px;line-height:1.5;color:var(--ink);background:var(--hi-f);border-left:3px solid var(--hi);border-radius:0 8px 8px 0;padding:9px 12px}
+.mini .sub .w.on{background:#F1DDA8}
+.mini .mctl{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap}
+.mini .dots{display:flex;gap:4px;margin-left:auto}
+.mini .dots i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.mini .dots i.on{background:var(--acc)}
+.ms text{font-family:var(--ui)}
+.ms .fade{transition:opacity .6s ease, transform .6s ease}
+.mini .ms{transition:opacity .4s, filter .4s}
+.mini .ms.idle{opacity:.38;filter:grayscale(.6)}
+.mini .ms.idle *{transition:none!important;animation:none!important}
+
+/* assignment desk */
+.desk-head{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.desk-head .pts{font:700 13px/1 var(--mono);letter-spacing:.06em;color:var(--hi-d);border:1.5px solid var(--hi);border-radius:6px;padding:8px 10px;text-align:center}
+.desk-head .pts b{display:block;font:900 30px/1 var(--head);color:var(--ink);margin-bottom:4px}
+.dstep{display:grid;grid-template-columns:40px 1fr;gap:6px 14px;padding:18px 0;border-top:1px solid var(--line)}
+.dstep .n{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:700 15px var(--ui)}
+.dstep.has .n{background:var(--acc)}
+.dstep .dir{margin:4px 0 0;font-size:17px}
+.dstep .dir b{font-family:var(--head)}
+.coach{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;margin:10px 0;font:15px/1.5 var(--ui);color:#4A3A1C;background:var(--hi-f);border-radius:8px;padding:9px 12px}
+.coach img{width:30px;height:30px;border-radius:50%;object-fit:cover}
+.dstep textarea,.ans textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.55 Georgia,serif;background:#fff;color:var(--ink);resize:vertical}
+.dstep textarea:focus,.ans textarea:focus{outline:none;border-color:var(--acc)}
+.wc{font:600 12px var(--ui);color:var(--ink2);text-align:right;margin-top:4px}
+.crit{list-style:none;padding:0;margin:0}
+.crit li{display:grid;grid-template-columns:26px 1fr;gap:8px;margin:0 0 10px;font-size:15.5px;line-height:1.45}
+.crit input{width:18px;height:18px;margin-top:3px;accent-color:var(--acc)}
+.rubric{overflow-x:auto}
+.rubric table{border-collapse:collapse;width:100%;font:13.5px/1.4 var(--ui);min-width:640px}
+.rubric th,.rubric td{border:1px solid var(--line);padding:8px;vertical-align:top;text-align:left}
+.rubric th{background:var(--paper);font-weight:700}
+details.more>summary{cursor:pointer;font:700 13px/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--acc-d);list-style:none;padding:6px 0}
+details.more>summary::-webkit-details-marker{display:none}
+details.more>summary::before{content:"▸ "}
+details.more[open]>summary::before{content:"▾ "}
+.outbox{white-space:pre-wrap;background:#fff;border:1.5px dashed var(--line);border-radius:8px;padding:12px 14px;font:15px/1.55 Georgia,serif;max-height:300px;overflow:auto}
+.keep{background:var(--navy);color:#fff;border-radius:12px;padding:22px 24px;margin:26px 0}
+.keep .label{color:var(--cyan)}
+.keep p{margin:0;font-size:19px}
+.nextlist{list-style:none;padding:0;margin:0}
+.nextlist li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:10px 0;border-top:1px solid var(--line);font-size:16px}
+.nextlist li:first-child{border-top:0}
+.nextlist .tg{font:700 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--acc);color:var(--acc-d);border-radius:4px;padding:5px 7px;margin-top:3px}
+.nbstats{display:flex;gap:26px;flex-wrap:wrap;margin:4px 0 6px}
+.nbstats div{font:600 13px var(--ui);color:var(--ink2)}
+.nbstats b{display:block;font:900 34px/1.1 var(--head);color:var(--acc-d)}
+
+/* dock */
+.dock{position:fixed;left:50%;bottom:14px;transform:translate(-50%,140%);z-index:60;width:min(860px,calc(100% - 20px));background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 10px 40px rgba(30,30,20,.22);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 14px 10px 10px;transition:transform .4s cubic-bezier(.3,.1,.2,1)}
+.dock.show{transform:translate(-50%,0)}
+.dock img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2.5px solid var(--hi)}
+.dock.talking img{animation:talk 1.4s ease-in-out infinite}
+@keyframes talk{50%{box-shadow:0 0 0 5px rgba(180,131,42,.28)}}
+.dock .who{font:700 12px var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.cap{font-size:15px;line-height:1.45;max-height:44px;overflow:hidden;color:var(--ink)}
+.seek{width:100%;accent-color:var(--acc);height:4px;margin:4px 0 0}
+.ctl{display:flex;gap:4px;align-items:center}
+.ctl button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;font-size:13px}
+.ctl button.main{width:44px;height:44px;background:var(--acc);border-color:var(--acc);color:#fff;font-size:15px}
+.ctl .rate{width:auto;padding:0 10px;border-radius:999px;font:700 12px var(--ui)}
+#voiceOff{font-size:18px;color:var(--ink2)}
+
+/* drawers */
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--card);z-index:80;box-shadow:-10px 0 40px rgba(30,30,20,.2);transform:translateX(105%);transition:transform .35s cubic-bezier(.3,.1,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer header{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.drawer header h3{font-size:22px;flex:1}
+.drawer .x{border:0;background:transparent;font-size:24px;line-height:1;color:var(--ink2)}
+.drawer .body{overflow-y:auto;padding:12px 18px 30px;flex:1}
+.gl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.gl button{grid-row:span 2;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--acc);font-size:14px}
+.gl b{font-family:var(--head);font-size:19px}
+.gl b small{font:600 12px var(--ui);color:var(--hi-d);margin-left:6px;letter-spacing:.04em}
+.gl span{font-size:15px;color:var(--ink2);line-height:1.45}
+.glh{font:700 12px var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin:18px 0 0}
+body:not(.has-audio) .gl button,body:not(.has-audio) .say{display:none}
+body:not(.has-audio) .gl{grid-template-columns:1fr}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:16px;line-height:1.5}
+.msg.me{align-self:flex-end;background:var(--acc-f);border-bottom-right-radius:4px}
+.msg.him{align-self:flex-start;background:var(--hi-f);border-bottom-left-radius:4px}
+.msg.ctx{align-self:stretch;max-width:100%;background:transparent;border-left:3px solid var(--hi);border-radius:0;font-style:italic;color:var(--ink2);font-size:15px;padding:4px 0 4px 12px}
+.askrow{display:flex;gap:8px;padding:12px 18px;border-top:1px solid var(--line)}
+.askrow input{flex:1;border:1.5px solid var(--line);border-radius:999px;padding:10px 14px;font:16px Georgia,serif;background:#fff}
+.scrim{position:fixed;inset:0;background:rgba(20,20,10,.25);z-index:78;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.pop{position:absolute;z-index:90;max-width:320px;background:var(--ink);color:#fff;border-radius:10px;padding:10px 13px;font:14px/1.45 var(--ui);box-shadow:0 8px 24px rgba(0,0,0,.25);display:none}
+.pop b{font-family:var(--head);font-size:18px;display:block}
+.pop i{color:#F1DDA8;font-style:normal;font-weight:600}
+.pop .savew,.pop .hear{display:inline-block;margin:8px 6px 0 0;border:1px solid rgba(255,255,255,.35);background:transparent;color:#F1DDA8;border-radius:999px;padding:5px 10px;font:600 12px/1 var(--ui)}
+footer{margin-top:40px;background:var(--navy);color:#C9D2E6;font:13px/1.6 var(--ui);padding:18px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* read cards + landing */
+.stage0{display:grid;grid-template-columns:auto auto 1fr;gap:34px;align-items:center;padding:8px 0 26px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+.mag{display:grid;justify-items:center;gap:4px;text-align:center;width:150px}
+.mag img{width:118px;height:118px;border-radius:50%;object-fit:cover;border:4px solid var(--hi);box-shadow:0 8px 22px rgba(40,30,10,.18);margin-bottom:6px}
+.mag b{display:block;font-family:var(--head);font-size:20px}
+.mag small{display:block;color:var(--ink2);font-size:14px;margin-bottom:8px}
+.mag-b{display:grid;gap:6px;width:100%}
+.mag .btn{justify-content:center}
+.bl-body h2{font-size:32px;margin:6px 0 14px}
+.partlist{display:grid;gap:6px;margin-bottom:18px}
+.pl-row{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:10px 14px}
+.pl-row:hover{border-color:var(--acc)}
+.pl-row i{font-style:normal;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--line);font:700 13px var(--ui)}
+.pl-row.read i{background:var(--hi);color:#fff}
+.pl-row b{font-family:var(--head);font-size:18px}
+.pl-row span{font:600 13px var(--ui);color:var(--ink2)}
+.minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"f c" "o c";grid-template-rows:auto 1fr;gap:16px;align-items:start}
+.minis .card{padding:16px 18px;margin:0;font-size:16px}
+.minis .card.acc{grid-area:f}.minis .objs{grid-area:o}.minis .card.hi{grid-area:c}
+.minis .focusq{font-size:21px;margin:4px 0 6px}
+.minis .opts{grid-template-columns:1fr;gap:8px}
+.minis .opt{padding:9px 12px;font-size:15px}
+.objs summary{cursor:pointer;list-style:none}
+.objs summary::-webkit-details-marker{display:none}
+.objs summary::after{content:" ▾";color:var(--ink2)}
+.objs[open] summary::after{content:" ▴"}
+.objs .obj{margin:10px 0 0;font-size:15px}
+
+/* the paper (cover + mini) : a folded broadsheet front page */
+.bigbook{--P:260px;position:relative;width:250px;height:340px;border:0;padding:0;border-radius:2px;background:var(--paper);box-shadow:3px 0 0 #E6DFCF,6px 1px 0 #D7CEBB,0 18px 40px rgba(30,25,10,.30);transition:transform .3s;text-align:left}
+.bigbook:hover{transform:translateY(-4px) rotate(-1deg)}
+.front{position:absolute;inset:0;padding:14px 14px 12px;display:flex;flex-direction:column;gap:6px;color:var(--ink);overflow:hidden}
+.front .mh{font-family:var(--mast);font-size:26px;line-height:1;text-align:center;letter-spacing:.01em}
+.front .ml{display:flex;justify-content:space-between;font:600 7.5px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border-top:2px solid var(--rule);border-bottom:1px solid var(--rule);padding:4px 0}
+.front .hl{font:900 21px/1.08 var(--head);text-align:center;margin:4px 0 2px}
+.front .dk{font:italic 10px/1.3 Georgia,serif;text-align:center;color:var(--ink2)}
+.front .cols{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:4px;border-top:1px solid var(--rule);padding-top:6px}
+.front .cols i{display:block;background:repeating-linear-gradient(#0000 0 5px,#BDB5A4 5px 6.2px);opacity:.75}
+.front .cols svg{grid-column:span 2;width:100%;height:auto;border:1px solid var(--line);background:#fff}
+.minibook{width:92px;height:124px;border:0;border-radius:2px;padding:0;position:relative;background:var(--paper);box-shadow:2px 0 0 #E6DFCF,4px 1px 0 #D7CEBB,0 8px 18px rgba(30,25,10,.26);transition:transform .25s}
+.minibook::before{content:"";position:absolute;left:8px;right:8px;top:8px;height:14px;border-bottom:2px solid var(--rule)}
+.minibook span{position:absolute;left:8px;right:8px;top:50%;transform:translateY(-50%);font:900 20px/1 var(--head);text-align:center}
+.minibook:hover{transform:translateY(-3px) rotate(-1.5deg)}
+
+/* voice */
+.dock{z-index:60}
+body.reading-open .dock{bottom:10px}
+
+/* the reader */
+.reader{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;align-items:center;background:rgba(22,22,18,.66);backdrop-filter:blur(3px);visibility:hidden;opacity:0;pointer-events:none}
+.reader.open{visibility:visible;opacity:1;pointer-events:auto}
+body.reading-open{overflow:hidden}
+.rbar{width:100%;height:56px;flex:none;display:flex;align-items:center;gap:12px;padding:0 14px 0 20px;color:#F3EFE6}
+.rtitle{flex:1;min-width:0;display:flex;align-items:baseline;gap:10px;white-space:nowrap;overflow:hidden}
+.rtitle .kicker{color:#E7C987}
+.rtitle b{font-family:var(--head);font-size:19px;overflow:hidden;text-overflow:ellipsis}
+.rtools{display:flex;gap:4px}
+.rt{border:1px solid rgba(243,239,230,.28);background:rgba(255,255,255,.06);color:#F3EFE6;border-radius:999px;height:36px;padding:0 13px;display:inline-flex;align-items:center;gap:7px;font:600 13px/1 var(--ui)}
+.rt:hover,.rt[aria-pressed="true"]{background:rgba(255,255,255,.18);border-color:rgba(243,239,230,.6)}
+.rt.close{background:#F3EFE6;color:var(--acc-d);border-color:#F3EFE6}
+.stagebook{flex:1;width:100%;display:grid;place-items:center;perspective:2600px;padding-bottom:18px}
+.book{--P:540px;--H:720px;--M:72px;--T:58px;--B:50px;--fs:19px;--lh:1.7;position:relative;width:var(--P);height:var(--H);transform-origin:0 0;perspective:2400px;user-select:none;-webkit-user-select:none}
+.book.two{width:calc(var(--P)*2)}
+.paper{position:absolute;top:0;height:100%;width:var(--P);background:var(--paper);box-shadow:0 18px 50px rgba(10,10,0,.38)}
+.pl{left:0;border-radius:2px 0 0 2px;background:linear-gradient(270deg,rgba(60,50,20,.16),rgba(60,50,20,.04) 5%,transparent 12%),var(--paper);box-shadow:-2px 0 0 #EAE3D3,-4px 1px 0 #D9D0BD,-6px 2px 0 #EAE3D3,-8px 3px 0 #C9BFA9,0 18px 50px rgba(10,10,0,.38)}
+.pr{left:var(--P);border-radius:0 2px 2px 0;background:linear-gradient(90deg,rgba(60,50,20,.18),rgba(60,50,20,.04) 5%,transparent 12%),var(--paper);box-shadow:2px 0 0 #EAE3D3,4px 1px 0 #D9D0BD,6px 2px 0 #EAE3D3,8px 3px 0 #C9BFA9,0 18px 50px rgba(10,10,0,.38)}
+.book:not(.two) .pr{display:none}
+.book:not(.two) .pl{border-radius:2px;background:var(--paper)}
+.vp{position:absolute;left:var(--M);top:var(--T);width:calc(var(--P) - 2*var(--M));height:calc(var(--H) - var(--T) - var(--B));overflow:hidden;touch-action:pinch-zoom}
+.book.two .vp{width:calc(2*var(--P) - 2*var(--M))}
+.flow{height:100%;column-count:1;column-gap:calc(2*var(--M));column-fill:auto;font-size:var(--fs);line-height:var(--lh);color:#1A1A17;user-select:text;-webkit-user-select:text;will-change:transform}
+.book.two .flow{column-count:2}
+.flow.slide{transition:transform .32s cubic-bezier(.3,.1,.2,1)}
+.flow .prose{margin:0;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.flow .prose + .prose{text-indent:1.5em}
+.book:not(.two) .flow .prose{text-align:left}
+.flow .ch{break-before:column}
+.flow .chk{font:700 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin:16px 0 10px}
+.flow .ch h3{font-size:calc(var(--fs)*1.6);font-weight:900;margin:0 0 6px;line-height:1.12}
+.flow .ch h3::after{content:"";display:block;height:5px;border-top:2px solid var(--rule);border-bottom:1px solid var(--rule);margin:14px 0 16px}
+.flow .ch > p.prose:first-of-type::first-letter{font:900 3.3em/.85 var(--head);float:left;margin:.05em .08em 0 0;color:var(--ink)}
+.flow .prose.aside{text-indent:0;text-align:left;margin:16px 0;padding:10px 14px;border:1px solid var(--rule);border-width:2px 0 1px;font-size:calc(var(--fs)*.92);background:rgba(180,131,42,.07)}
+.flow .prose.aside + .prose{text-indent:0}
+.flow .readfor{font:italic calc(var(--fs)*.88)/1.45 Georgia,serif;color:var(--ink2);margin:0 0 18px;padding-left:12px;border-left:3px solid var(--acc)}
+.flow .readfor b{display:block;font:700 12px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-style:normal;margin-bottom:4px}
+.partpg,.endpg{break-before:column;break-after:column;height:100%;display:flex;flex-direction:column;justify-content:center;text-align:center;gap:10px}
+.partpg h2,.endpg h2{font-size:calc(var(--fs)*2.1);font-weight:900}
+.partpg .chk,.endpg .chk{margin:0}
+.partpg .dbl,.endpg .dbl{width:50%;margin:8px auto 14px}
+.pt-ch{font-size:calc(var(--fs)*.95);color:var(--ink);line-height:1.4}
+.pt-ch b{display:block;font:700 10.5px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--hi-d);margin:8px 0 4px}
+.pt-slot{text-align:left;margin-top:12px}
+.pt-slot .card{margin:0;font-size:16px;line-height:1.5}
+.endpg .btn{align-self:center}
+.plate{break-before:column;break-after:column;font-size:16px;line-height:1.5;user-select:none;-webkit-user-select:none}
+.plate.inline{break-before:auto;break-after:auto;margin:14px 0 18px}
+.plate .card{break-inside:avoid;background:transparent;border:0;padding:0;margin:0 0 18px;border-radius:0}
+.plate .card:has(.rows){break-inside:auto}
+.plate .row,.plate .instr,.plate .label{break-inside:avoid}
+.plate .label{break-after:avoid;font-size:13px;color:var(--acc);margin-bottom:8px}
+.plate .dbl{margin:2px 0 12px}
+.plate .card + .card{border-top:1px solid var(--line);padding-top:16px}
+.plate .instr{font-size:15px;margin-bottom:10px}
+.plate .info{font-size:15px;min-height:0}
+.plate .wrow{gap:6px;margin-top:10px}
+.plate .btn.small{padding:7px 11px;font-size:12.5px}
+.plate .row{padding:9px 11px}
+.plate .row .rp{font-size:15px;margin-bottom:7px}
+.plate .row .ro button{padding:5px 10px;font-size:12px}
+.plate .mini{padding:0;border:0}
+.plate .mini .sub{font-size:15px;min-height:54px}
+.flow .bfig{break-inside:avoid;margin:14px 0 18px;text-indent:0}
+.flow .bfig img{max-height:calc((var(--H) - var(--T) - var(--B)) * .42);width:auto;max-width:100%;margin:0 auto;border-radius:2px;border:0;filter:grayscale(.2)}
+.flow .bfig figcaption{font:13px/1.45 var(--ui);color:var(--ink2);margin-top:8px}
+.flow .ansbox{break-inside:avoid;margin:20px 0 6px;padding:14px 0 0;border-top:1px solid var(--line);text-indent:0}
+.flow .ansbox span{display:block;font:700 11px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--hi-d);margin-bottom:6px}
+.flow .ansbox em{display:block;font-size:calc(var(--fs)*.85);line-height:1.45;color:var(--ink2);margin-bottom:8px}
+.flow .ansbox textarea{width:100%;border:1.5px solid var(--line);border-radius:6px;padding:8px 10px;font:16px/1.5 Georgia,serif;background:#fff;color:var(--ink);resize:none;user-select:text}
+.flow .ansbox textarea:focus{outline:none;border-color:var(--acc)}
+.readcard{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;border-top:4px solid var(--acc)}
+.titlepg{height:100%;display:flex;flex-direction:column;justify-content:center;gap:12px;break-after:column;text-align:center}
+.titlepg .mh{font-family:var(--mast);font-size:calc(var(--fs)*2.4);line-height:1}
+.titlepg .ml{display:flex;justify-content:space-between;font:600 10px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;border-top:3px solid var(--rule);border-bottom:1px solid var(--rule);padding:6px 0}
+.titlepg h2{font-size:calc(var(--fs)*2);font-weight:900}
+.titlepg .dk{font-style:italic;color:var(--ink2);font-size:calc(var(--fs)*.9)}
+.titlepg .tp-k{font:700 11px/1.4 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.w.hk,.s.hk{background:#F1DDA8}
+.w.he,.s.he{background:#CFE5D7}
+.w.hn,.s.hn{background:linear-gradient(transparent 82%,#C9A45A 82%)}
+.w.pre,.s.pre{background:rgba(23,96,63,.10)}
+.flow ::selection{background:rgba(23,96,63,.22)}
+.flow .ch > p.prose:first-of-type:has(.w[data-w="0"].hk)::first-letter{background:#F1DDA8}
+.flow .ch > p.prose:first-of-type:has(.w[data-w="0"].he)::first-letter{background:#CFE5D7}
+.hd{position:absolute;top:22px;font:600 10px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#8E877A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:calc(var(--P) - 2*var(--M));padding-bottom:7px;border-bottom:1px solid #CFC7B6}
+.hdL{left:var(--M)}.hdR{left:calc(var(--P) + var(--M));text-align:right}
+.hd:empty{border-bottom:0}
+.fo{position:absolute;bottom:18px;width:var(--P);text-align:center;font:600 12px/1 var(--mono);color:#8E877A}
+.foL{left:0}.foR{left:var(--P)}
+.book:not(.two) .hdR,.book:not(.two) .foR{display:none}
+.slips{position:absolute;inset:0;pointer-events:none}
+.slip{position:absolute;pointer-events:auto;width:calc(var(--M) - 16px);max-height:92px;overflow:hidden;border:0;border-left:3px solid var(--hi);background:var(--hi-f);color:#5A4320;font:12px/1.35 var(--ui);text-align:left;padding:6px 7px;border-radius:2px 6px 6px 2px;box-shadow:0 2px 6px rgba(60,40,10,.12);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical}
+.slip.L{left:8px}.slip.R{right:8px}
+.slip:hover{background:#F2E1BA}
+.book:not(.two) .slip{width:16px;height:16px;padding:0;border:0;border-radius:50%;background:var(--hi);color:transparent;left:3px}
+.ribbon{position:absolute;top:-6px;right:calc(var(--M) / 2 - 10px);width:20px;height:130px;background:linear-gradient(90deg,#0B3A26,var(--acc) 45%,#0B3A26);clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%);box-shadow:0 2px 3px rgba(0,0,0,.2);display:none;pointer-events:none}
+.ribbon.on{display:block}
+.ruler{position:absolute;inset:var(--T) 0 var(--B);display:none;flex-direction:column;pointer-events:none}
+.ruler.on{display:flex}
+.ruler i{display:block;background:rgba(30,30,20,.15)}
+.ruler b{display:block;flex:none;border-top:1px solid rgba(23,96,63,.4);border-bottom:1px solid rgba(23,96,63,.4)}
+.ruler i:last-child{flex:1}
+.turn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(243,239,230,.4);background:rgba(250,247,239,.94);color:var(--acc-d);font-size:26px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.turn.prev{left:-62px}.turn.next{right:-62px}
+.turn:disabled{opacity:.25;cursor:default}
+.book:not(.two) .turn{top:auto;bottom:-50px;transform:none;width:42px;height:42px;font-size:24px}
+.book:not(.two) .turn.prev{left:4px}.book:not(.two) .turn.next{right:4px}
+.leaf,.lift{position:absolute;top:0;height:100%;width:var(--P);display:none;transform-style:preserve-3d;pointer-events:none}
+.leaf.fwd{display:block;left:var(--P);transform-origin:left center}
+.leaf.back{display:block;left:0;transform-origin:right center}
+.lf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--paper);overflow:hidden}
+.leaf.fwd .lf.front{background:linear-gradient(90deg,rgba(60,50,20,.16),transparent 14%),var(--paper)}
+.leaf.fwd .lf.back,.leaf.back .lf.front{background:linear-gradient(270deg,rgba(60,50,20,.16),transparent 14%),var(--paper)}
+.leaf.back .lf.back{background:linear-gradient(90deg,rgba(60,50,20,.16),transparent 14%),var(--paper)}
+.lf.back{transform:rotateY(180deg)}
+.lift.on{display:block;background:var(--paper)}
+.clip{position:absolute;left:var(--M);top:var(--T);width:calc(var(--P) - 2*var(--M));height:calc(var(--H) - var(--T) - var(--B));overflow:hidden}
+.clip .flow{width:calc(var(--P) - 2*var(--M))}
+.book.two .clip .flow{width:calc(2*var(--P) - 2*var(--M))}
+.cover{position:absolute;top:0;height:100%;width:var(--P);left:var(--P);transform-origin:left center;transform-style:preserve-3d;display:none}
+.book:not(.two) .cover{left:0}
+.cover.on{display:block}
+.cf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:2px}
+.cf.front{background:var(--paper);box-shadow:0 24px 60px rgba(10,10,0,.5)}
+.cf.front .front{padding:calc(var(--P)*.06)}
+.cf.front .front .mh{font-size:calc(var(--P)*.1)}
+.cf.front .front .ml{font-size:calc(var(--P)*.019);padding:6px 0}
+.cf.front .front .hl{font-size:calc(var(--P)*.075)}
+.cf.front .front .dk{font-size:calc(var(--P)*.03)}
+.cf.back{transform:rotateY(180deg);background:linear-gradient(270deg,rgba(60,50,20,.18),transparent 12%),#EFE9DC}
+.book.closed .paper.pl,.book.closed .vp,.book.closed .hd,.book.closed .fo,.book.closed .slips,.book.closed .turn,.book.closed .ribbon{opacity:0}
+.book.closed:not(.two) .paper{opacity:1}
+.book .paper.pl,.book .vp,.book .hd,.book .fo,.book .slips,.book .turn{transition:opacity .45s}
+.rpanel{position:fixed;left:0;top:56px;bottom:0;width:min(360px,100%);background:var(--card);z-index:3;transform:translateX(-105%);transition:transform .3s;display:flex;flex-direction:column;box-shadow:10px 0 40px rgba(0,0,0,.25)}
+.rpanel.open{transform:none}
+.rpanel header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.rpanel header .seg{flex:1}
+.rpanel .x{border:0;background:transparent;font-size:24px;color:var(--ink2)}
+.rpbody{overflow-y:auto;padding:8px 16px 24px;flex:1}
+.toc{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:11px 2px}
+.toc small{grid-column:1/-1;font:700 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--acc)}
+.toc b{font-family:var(--head);font-size:17px}
+.toc span{font:600 13px var(--ui);color:var(--ink2)}
+.toc.read span::before{content:"\2713  ";color:var(--ok)}
+.toc:hover b{color:var(--acc-d)}
+.mk{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:12px 2px}
+.mk em{display:-webkit-box;font-style:italic;font-size:15px;line-height:1.5;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.mk .nt{display:block;font:14px/1.45 var(--ui);color:#5A4320;background:var(--hi-f);border-left:3px solid var(--hi);padding:6px 9px;margin-top:6px}
+.tag{display:inline-block;font:700 10.5px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;padding:4px 7px;border-radius:4px;margin-bottom:6px}
+.tag.k{background:#F1DDA8;color:#6B4A0C}.tag.e{background:#CFE5D7;color:#0E4630}.tag.n{background:var(--hi-f);color:#6B4A0C}
+.mkh{font:700 12px/1 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:18px 0 4px}
+.empty{color:var(--ink2);font-size:15px;padding:14px 2px}
+.rset{position:fixed;top:60px;right:14px;z-index:4;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:none}
+.rset.open{display:block}
+.hlbar{position:fixed;z-index:70;display:none;gap:2px;background:var(--ink);border-radius:12px;padding:5px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.hlbar.open{display:flex}
+.hlbar button{border:0;background:transparent;color:#fff;border-radius:8px;padding:8px 10px;font:600 13px/1 var(--ui);display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.hlbar button:hover{background:rgba(255,255,255,.14)}
+.hlbar .rm{display:none;color:#F3B9A6}
+.hlbar.edit .rm{display:inline-flex}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.k{background:#F1DDA8}.sw.e{background:#CFE5D7}
+.noteed{position:fixed;z-index:72;left:50%;top:50%;transform:translate(-50%,-50%);width:min(440px,calc(100% - 32px));background:var(--card);border-radius:16px;padding:18px 20px;box-shadow:0 20px 60px rgba(0,0,0,.4);display:none}
+.noteed.open{display:block}
+.noteed blockquote{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--hi);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink2);max-height:96px;overflow:auto}
+.noteed textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.5 Georgia,serif}
+
+@media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
+@media (max-width:860px){
+  .rt span{display:none}.rt{padding:0 11px}.rbar{padding:0 8px 0 12px}.rtitle .kicker{display:none}.rtitle b{font-size:16px}
+  .stagebook{padding:4px 0 0;place-items:start center}
+  .book{--T:44px;--B:52px}.hd{top:14px}.fo{bottom:20px}
+}
+@media (max-width:720px){
+  body{font-size:17px;padding-bottom:160px}
+  .hero h1{font-size:28px}
+  .parthead h2{font-size:30px}
+  .opts{grid-template-columns:1fr}
+  .stage0{grid-template-columns:1fr;justify-items:center;gap:20px}
+  .mag{width:auto;grid-template-columns:64px auto;align-items:center;justify-items:start;text-align:left;column-gap:12px}
+  .mag img{grid-row:1/3;width:64px;height:64px;margin:0;border-width:3px}
+  .mag small{display:none}.mag-b{display:flex;width:auto}
+  .minis{grid-template-columns:1fr;grid-template-areas:"f" "o" "c";grid-template-rows:auto}
+  .stage0 .bl-body{width:100%}
+  .pl-row{grid-template-columns:28px 1fr}.pl-row span{grid-column:2}
+  .readcard{grid-template-columns:1fr;gap:14px}
+  .dock{grid-template-columns:auto 1fr;bottom:8px;gap:6px 10px;padding:8px 10px}
+  .dock img{width:40px;height:40px}
+  .cap{font-size:14px;max-height:40px}
+  .dock .ctl{grid-column:1/-1;justify-content:center}
+  .ctl button{width:32px;height:32px}.ctl button.main{width:38px;height:38px}
+  #back5,#fwd5{display:none}
+  .tools .btn span{display:none}
+  .card{padding:18px 16px}
+  .dstep{grid-template-columns:1fr}
+  .desk-head{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* L1 mini-lesson visuals: classes b1..bN are added beat by beat */
+.ms text{font-family:var(--ui);font-size:16px;fill:#151515}
+.ms .hd{font:700 15px var(--mono);letter-spacing:.06em}
+.ms .sm{font-size:15px;fill:#55514A}
+.ms .b{font-weight:700}
+.ms .lb{font:700 14px var(--mono);letter-spacing:.04em}
+.ms g{transition:opacity .6s ease, transform .9s cubic-bezier(.3,.1,.2,1)}
+/* m1 */
+.m1 .wants,.m1 .res,.m1 .gap,.m1 .trade,.m1 .q{opacity:0}
+.m1 .chip{opacity:0;transform:translateX(-14px)}
+.m1 .chip rect{fill:#F5EBD5;stroke:#B4832A;stroke-width:1.5}
+.m1 .more{opacity:0}
+.m1 .inf{font:900 30px var(--head);fill:#17603F}
+.m1 .tile{opacity:0;transform:translateY(10px)}
+.m1 .tile rect{fill:#E2EEE6;stroke:#17603F;stroke-width:1.5}
+.m1 .tile text{font-weight:700}
+.m1 .lim{font:700 13px var(--mono);letter-spacing:.2em;fill:#17603F}
+.m1 .stamp{transform-box:fill-box;transform-origin:center}
+.m1 .stamp text{font:900 17px var(--head);fill:#7A5513;letter-spacing:.04em}
+.m1 .opt1,.m1 .opt2{font:700 20px var(--head)}
+.m1 .x{opacity:0}
+.m1 .q rect{fill:#fff;stroke:#151515;stroke-width:1.5}
+.m1 .q .big{font:900 28px var(--head);fill:#151515}
+.m1.b1 .wants{opacity:.25}.m1.b1 .res{opacity:.25}
+.m1.b2 .wants{opacity:1}
+.m1.b2 .chip{opacity:1;transform:none}
+.m1.b2 .c2{transition-delay:.35s}.m1.b2 .c3{transition-delay:.7s}.m1.b2 .c4{transition-delay:1.05s}.m1.b2 .c5{transition-delay:1.4s}
+.m1.b2 .more{opacity:1;transition-delay:2s}
+.m1.b3 .res{opacity:1}
+.m1.b3 .tile{opacity:1;transform:none}
+.m1.b3 .t2{transition-delay:.3s}.m1.b3 .t3{transition-delay:.6s}.m1.b3 .t4{transition-delay:.9s}.m1.b3 .t5{transition-delay:1.2s}
+.m1.b4 .gap{opacity:1}
+.m1.b4 .stamp{animation:stamp .5s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes stamp{from{transform:scale(1.8);opacity:0}to{transform:scale(1);opacity:1}}
+.m1.b5 .trade{opacity:1}
+.m1.b5 .x{opacity:1;transition-delay:1.2s}
+.m1.b6 .trade{opacity:0}
+.m1.b6 .q1,.m1.b7 .q2,.m1.b8 .q3{opacity:1}
+.m1.b6:not(.b7) .q1 rect,.m1.b7:not(.b8) .q2 rect{stroke:#17603F;stroke-width:3}
+.m1.b8 .q rect{stroke:#17603F;stroke-width:2.5;fill:#E2EEE6}
+/* m2 */
+.m2 .cafe,.m2 .town,.m2 .lab,.m2 .gauges,.m2 .sum{opacity:0}
+.m2 .cafe{transform-box:view-box;transform-origin:300px 130px}
+.m2 .town rect{fill:#E2EEE6;stroke:#17603F;stroke-width:1}
+.m2 .town rect.hot{fill:#B4832A;stroke:#7A5513}
+.m2 .nd{transform-box:view-box;transition:transform 1.4s cubic-bezier(.3,1.4,.5,1)}
+.m2 .g1 .nd{transform-origin:100px 288px}.m2 .g2 .nd{transform-origin:300px 288px}.m2 .g3 .nd{transform-origin:500px 288px}
+.m2 .nd{transform:rotate(-70deg)}
+.m2.b2 .cafe{opacity:1}.m2.b2 .lab1{opacity:1}
+.m2.b3 .cafe{transform:scale(.12);opacity:0;transition:transform 1.2s cubic-bezier(.5,.1,.3,1),opacity .5s .9s}
+.m2.b3 .town{opacity:1;transition-delay:.6s}
+.m2.b3 .lab1{opacity:0}
+.m2.b4 .gauges{opacity:1}.m2.b4 .lab2{opacity:1}
+.m2.b4 .g1 .nd{transform:rotate(30deg)}.m2.b4 .g2 .nd{transform:rotate(10deg)}.m2.b4 .g3 .nd{transform:rotate(-20deg)}
+.m2.b5 .gauges{opacity:0}.m2.b5 .sum{opacity:1}.m2.b5 .lab1{opacity:1}
+.m2 .sum text{font-size:17px}
+
+</style>
+</head>
+<body class="has-audio">
+
+<div class="oao"><div class="wrap">
+  <img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy">
+  <span>Optima Academy Online</span><span class="sub">Economics Honors</span>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="dateline"><span>Lesson 1.01</span><span>Module 1 · Introduction to Economics and Production</span></div>
+  <h1>What is Economics?</h1>
+</div>
+<div class="ticker" aria-hidden="true"><div class="tk"><span>SCARCITY<b class="up">&#9650;</b></span><span>TRADE-OFF<b class="dn">&#9660;</b></span><span>OPPORTUNITY COST<b class="up">&#9650;</b></span><span>INCENTIVE<b class="up">&#9650;</b></span><span>MICROECONOMICS<b class="dn">&#9660;</b></span><span>MACROECONOMICS<b class="up">&#9650;</b></span><span>RECESSION<b class="dn">&#9660;</b></span><span>WHAT · HOW · FOR WHOM<b class="up">&#9650;</b></span><span>SCARCITY<b class="up">&#9650;</b></span><span>TRADE-OFF<b class="dn">&#9660;</b></span><span>OPPORTUNITY COST<b class="up">&#9650;</b></span><span>INCENTIVE<b class="up">&#9650;</b></span><span>MICROECONOMICS<b class="dn">&#9660;</b></span><span>MACROECONOMICS<b class="up">&#9650;</b></span><span>RECESSION<b class="dn">&#9660;</b></span><span>WHAT · HOW · FOR WHOM<b class="up">&#9650;</b></span></div></div>
+</section>
+
+<nav class="route" aria-label="Lesson parts"><div class="wrap">
+  <div class="stops" id="stops"></div>
+  <div class="tools">
+    <button class="btn ghost small" data-openbook="" id="bookBtn">&#128240; <span>The Paper</span></button>
+    <button class="btn ghost small" data-open="glossDrawer">&#128214; <span>Words</span></button>
+    <button class="btn ghost small" data-open="askDrawer">&#128172; <span>Ask Mr. Magister</span></button>
+  </div>
+</div></nav>
+
+<main class="wrap">
+<section class="step" data-step="0">
+  <div class="stage0">
+    <div class="mag"><img src="img/magister.jpg" alt="Mr. Magister"><div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
+      <div class="mag-b"><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div></div>
+    <button class="bigbook" data-openbook="" aria-label="Open The Paper"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.01</span><span>Economics Honors</span></div><div class="hl">What is Economics?</div><div class="dk">Resources are limited, wants are not</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></button>
+    <div class="bl-body"><div class="kicker">The Paper</div><h2>Parts 1 to 2</h2>
+      <div class="partlist" id="partlist"><button class="pl-row" data-go="1"><i>1</i><b>Scarcity</b><span></span></button><button class="pl-row" data-go="2"><i>2</i><b>Two Ways to Zoom</b><span></span></button></div>
+      <div class="wrow"><button class="btn" data-openbook="">&#128240; Open The Paper</button><button class="btn ghost" data-go="3">Your Turn &rarr;</button></div></div>
+  </div>
+  <div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>The Problem Every Society Solves</b></div></div><svg class="ms m1" viewBox="0 0 600 340" role="img" aria-label="Scarcity: unlimited wants on one side, limited resources on the other, and the three questions every society answers">
+  <g class="pan wants">
+    <rect x="8" y="8" width="236" height="196" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+    <text x="20" y="34" class="hd">WHAT PEOPLE WANT</text>
+    <line x1="20" y1="42" x2="232" y2="42" stroke="#151515" stroke-width="2"/>
+    <g class="chip c1"><rect x="20" y="52" width="150" height="24" rx="12"/><text x="34" y="69">Food</text></g>
+    <g class="chip c2"><rect x="20" y="81" width="150" height="24" rx="12"/><text x="34" y="98">A phone</text></g>
+    <g class="chip c3"><rect x="20" y="110" width="150" height="24" rx="12"/><text x="34" y="127">A night out</text></g>
+    <g class="chip c4"><rect x="20" y="139" width="150" height="24" rx="12"/><text x="34" y="156">A new road</text></g>
+    <g class="chip c5"><rect x="20" y="168" width="170" height="24" rx="12"/><text x="34" y="185">A better hospital</text></g>
+    <g class="more"><path d="M212 186 V62" stroke="#17603F" stroke-width="3" fill="none" marker-end="url(#ar1)"/><text x="200" y="128" class="inf">∞</text></g>
+  </g>
+  <g class="pan res">
+    <rect x="356" y="8" width="236" height="196" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+    <text x="368" y="34" class="hd">WHAT WE HAVE</text>
+    <line x1="368" y1="42" x2="580" y2="42" stroke="#151515" stroke-width="2"/>
+    <g class="tile t1"><rect x="368" y="52" width="100" height="40"/><text x="418" y="77" text-anchor="middle">Land</text></g>
+    <g class="tile t2"><rect x="478" y="52" width="100" height="40"/><text x="528" y="77" text-anchor="middle">Workers</text></g>
+    <g class="tile t3"><rect x="368" y="100" width="100" height="40"/><text x="418" y="125" text-anchor="middle">Machines</text></g>
+    <g class="tile t4"><rect x="478" y="100" width="100" height="40"/><text x="528" y="125" text-anchor="middle">Money</text></g>
+    <g class="tile t5"><rect x="368" y="148" width="210" height="40"/><text x="473" y="173" text-anchor="middle">Hours in the day</text></g>
+    <text x="474" y="200" text-anchor="middle" class="lim">LIMITED</text>
+  </g>
+  <g class="gap">
+    <path d="M252 106 H348" stroke="#151515" stroke-width="2" stroke-dasharray="4 4" marker-start="url(#ar2)" marker-end="url(#ar1b)"/>
+    <g class="stamp" transform="rotate(-8 300 106)"><rect x="250" y="86" width="100" height="40" rx="3" fill="#F5EBD5" stroke="#B4832A" stroke-width="3"/><text x="300" y="114" text-anchor="middle">SCARCITY</text></g>
+  </g>
+  <g class="trade">
+    <text x="300" y="236" text-anchor="middle" class="sm">The same farmland, one use at a time</text>
+    <rect x="262" y="250" width="76" height="46" rx="3" fill="#E2EEE6" stroke="#17603F" stroke-width="2"/>
+    <path d="M268 262 h64 M268 272 h64 M268 282 h64" stroke="#17603F" stroke-width="2"/>
+    <path d="M258 273 H170" stroke="#151515" stroke-width="2" marker-end="url(#ar1)"/><path d="M342 273 H430" stroke="#151515" stroke-width="2" marker-end="url(#ar1)"/>
+    <text x="120" y="279" text-anchor="middle" class="opt1">Food</text>
+    <text x="490" y="279" text-anchor="middle" class="opt2">Fuel crops</text>
+    <path class="x" d="M462 262 l56 24 M518 262 l-56 24" stroke="#B3261E" stroke-width="3"/>
+    <text x="300" y="322" text-anchor="middle" class="sm">Choose one: give up the other</text>
+  </g>
+  <g class="q q1"><rect x="8" y="222" width="186" height="108" rx="4"/><text x="101" y="268" text-anchor="middle" class="big">WHAT?</text><text x="101" y="296" text-anchor="middle" class="sm">should be produced</text></g>
+  <g class="q q2"><rect x="207" y="222" width="186" height="108" rx="4"/><text x="300" y="268" text-anchor="middle" class="big">HOW?</text><text x="300" y="296" text-anchor="middle" class="sm">should it be produced</text></g>
+  <g class="q q3"><rect x="406" y="222" width="186" height="108" rx="4"/><text x="499" y="268" text-anchor="middle" class="big">FOR WHOM?</text><text x="499" y="296" text-anchor="middle" class="sm">should it be produced</text></g>
+  <defs>
+    <marker id="ar1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#151515"/></marker>
+    <marker id="ar1b" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#151515"/></marker>
+    <marker id="ar2" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10 z" fill="#151515"/></marker>
+  </defs>
+</svg>
+<div class="sub"></div><div class="mctl"></div></div>
+  <div class="minis">
+    <div class="card acc"><div class="label">Today's Focus</div><p class="focusq">How do people make decisions when they cannot have everything they want?</p><p style="margin:0">You already think like an economist more than you realize. Every time you choose one thing and give up another &mdash; a lunch, an evening, a purchase &mdash; you are wrestling with the problem this whole course is built on: resources are limited, wants are not. Economics is the discipline that studies how people, businesses, and governments handle that gap.</p></div>
+    <details class="card objs"><summary class="label">Objectives</summary><ol class="obj"><li><span>I will be able to explain why scarcity forces individuals, businesses, and governments to make choices.</span></li><li><span>I will be able to distinguish microeconomics from macroeconomics and give an example of each.</span></li><li><span>I will be able to describe how opportunity cost and incentives shape a decision, large or small.</span></li></ol></details>
+    <div class="card hi"><div class="label">Quick Check-in</div><p style="margin:0 0 12px">Think back to one real choice you made this week. How did you decide? (No wrong answer — just check in with yourself.)</p><div class="opts" id="checkin"><button class="opt" data-v="0">📋 I planned it out ahead of time</button><button class="opt" data-v="1">⚡ I decided in the moment</button><button class="opt" data-v="2">🤔 I tried to avoid choosing</button></div><div class="note" id="checkinNote"></div></div>
+  </div>
+</section><section class="bookhold" hidden><div class="card acc" data-book="plate:c1"><div class="label">SORT IT · WHAT, HOW, OR FOR WHOM?</div><p class="instr">Every society has to answer three questions: what to produce, how to produce it, and for whom. Decide which question each decision answers.</p><div class="rows" data-rows="w1"></div></div>
+<div class="card acc" data-book="plate:c2"><div class="label">TRY IT · MATCH THE TERM</div><p class="instr">Match each situation to the concept it best illustrates.</p><div class="rows" data-rows="w2"></div></div>
+<div class="card mini" data-book="start:c2" data-mini="m2" data-clip="m2"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>Two Lenses: Micro and Macro</b></div></div><svg class="ms m2" viewBox="0 0 600 330" role="img" aria-label="Two lenses: zoom in on one café (microeconomics), zoom out to the whole country's jobs, prices, and growth (macroeconomics)">
+  <rect x="8" y="8" width="584" height="230" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+  <g class="vf"><path d="M24 40 V24 H40 M560 24 H576 V40 M576 206 V222 H560 M40 222 H24 V206" stroke="#151515" stroke-width="3" fill="none"/></g>
+  <g class="town">
+    <!-- many small shops and homes: the whole economy -->
+  </g>
+  <g class="cafe">
+    <rect x="215" y="70" width="170" height="120" fill="#F5EBD5" stroke="#151515" stroke-width="2"/>
+    <path d="M205 70 L300 34 L395 70 Z" fill="#17603F" stroke="#151515" stroke-width="2"/>
+    <rect x="240" y="110" width="50" height="80" fill="#fff" stroke="#151515" stroke-width="2"/>
+    <rect x="310" y="104" width="56" height="40" fill="#fff" stroke="#151515" stroke-width="2"/>
+    <text x="300" y="96" text-anchor="middle" class="sm b">CAFÉ</text>
+    <circle cx="428" cy="148" r="11" fill="#151515"/><path d="M414 190 v-24 q0-12 14-12 q14 0 14 12 v24 z" fill="#151515"/>
+    <circle cx="456" cy="156" r="8" fill="#55514A"/><path d="M446 190 v-18 q0-8 10-8 q10 0 10 8 v18 z" fill="#55514A"/>
+  </g>
+  <g class="lab lab1"><rect x="20" y="196" width="230" height="30" rx="3" fill="#E2EEE6"/><text x="32" y="217" class="lb">MICRO · one decision-maker</text></g>
+  <g class="lab lab2"><rect x="330" y="196" width="250" height="30" rx="3" fill="#F5EBD5"/><text x="342" y="217" class="lb">MACRO · the whole economy</text></g>
+  <g class="gauges">
+    <g class="g g1" transform="translate(100 288)"><path d="M-46 0 A46 46 0 0 1 46 0" fill="none" stroke="#D8D1C1" stroke-width="10"/><line class="nd" x1="0" y1="0" x2="0" y2="-38" stroke="#151515" stroke-width="3"/><circle r="5" fill="#151515"/><text y="30" text-anchor="middle" class="sm b">JOBS</text></g>
+    <g class="g g2" transform="translate(300 288)"><path d="M-46 0 A46 46 0 0 1 46 0" fill="none" stroke="#D8D1C1" stroke-width="10"/><line class="nd" x1="0" y1="0" x2="0" y2="-38" stroke="#151515" stroke-width="3"/><circle r="5" fill="#151515"/><text y="30" text-anchor="middle" class="sm b">PRICES</text></g>
+    <g class="g g3" transform="translate(500 288)"><path d="M-46 0 A46 46 0 0 1 46 0" fill="none" stroke="#D8D1C1" stroke-width="10"/><line class="nd" x1="0" y1="0" x2="0" y2="-38" stroke="#151515" stroke-width="3"/><circle r="5" fill="#151515"/><text y="30" text-anchor="middle" class="sm b">GROWTH</text></g>
+  </g>
+  <g class="sum"><text x="300" y="276" text-anchor="middle" class="sm"><tspan class="b" fill="#17603F">Micro:</tspan> one choice  ·  <tspan class="b" fill="#7A5513">Macro:</tspan> millions of choices, added up</text></g>
+</svg>
+<div class="sub"></div><div class="mctl"></div></div>
+</section><section class="step" data-step="3">
+  <div class="parthead"><div><div class="kicker">Your Turn</div><h2>Decision Dissection</h2></div></div>
+  <div class="dbl"></div>
+  
+  <div class="card acc desk" id="desk-0">
+  <div class="desk-head"><div class="pts"><b>20</b>POINTS</div><div><div class="label" style="margin-bottom:6px">Assignment · Lesson 1.01 - Assignment: Decision Dissection</div><h3 style="font-size:26px">Decision Dissection</h3></div></div>
+  <p style="margin:14px 0 6px">Every decision you make is really an economics problem in disguise: something given up so something else can be gained. This assignment asks you to take one real decision from your own life and examine it the way an economist would.</p>
+  <p style="margin:0 0 6px"><b>Focus question:</b> <i>What can a real decision you made teach you about scarcity, trade-offs, and opportunity cost?</i></p>
+  <div class="checkin-back"></div>
+  <div class="dstep"><div class="n">1</div><div><p class="dir"><b>Choose a real decision.</b> Pick one actual decision you made recently, something with a real trade-off (how to spend a free evening, a purchase, a choice between two commitments). Describe the decision and what was at stake for you.</p><div class="coach"><img src="img/magister.jpg" alt=""><div>A decision with a real trade-off has two or more options you actually wanted and could not have together. An evening you spent studying instead of going to a friend's game qualifies. A choice you never weighed does not.</div></div><textarea rows="5" data-d="0" aria-label="Choose a real decision." placeholder="Write here"></textarea><div class="wc"></div></div></div><div class="dstep"><div class="n">2</div><div><p class="dir"><b>Describe your alternatives.</b> Explain at least two options you actually considered and what choosing each one would have meant for you.</p><div class="coach"><img src="img/magister.jpg" alt=""><div>Describe each option in terms of what it would have given you and what it would have used up: money, time, energy, or another commitment.</div></div><textarea rows="6" data-d="1" aria-label="Describe your alternatives." placeholder="Write here"></textarea><div class="wc"></div></div></div><div class="dstep"><div class="n">3</div><div><p class="dir"><b>Name the opportunity cost.</b> For the option you chose, identify specifically what you gave up (time, money, another experience) by not choosing the next-best alternative. Be concrete, not general.</p><div class="coach"><img src="img/magister.jpg" alt=""><div>Opportunity cost is only the next-best option you gave up, not every option you skipped. If you took the extra work shift and your second choice was the game, the game is the cost. Name it precisely: the hours, the dollars, the experience.</div></div><textarea rows="4" data-d="2" aria-label="Name the opportunity cost." placeholder="Write here"></textarea><div class="wc"></div></div></div><div class="dstep"><div class="n">4</div><div><p class="dir"><b>Reflect and justify.</b> Looking back, do you think you made the right call? Use the language of scarcity, trade-offs, and opportunity cost to explain your reasoning, not just your gut feeling.</p><div class="coach"><img src="img/magister.jpg" alt=""><div>Judge the choice by comparing what you gained with the opportunity cost. Use the terms scarcity, trade-off, and opportunity cost by name, and say what limited resource forced the choice.</div></div><textarea rows="6" data-d="3" aria-label="Reflect and justify." placeholder="Write here"></textarea><div class="wc"></div></div></div>
+  <div class="dstep" style="grid-template-columns:1fr"><div><div class="label">Success criteria · check your draft</div><ul class="crit"><li><input type="checkbox" data-c="0" id="cr0-0"><label for="cr0-0"><b>Content Knowledge:</b> Responses demonstrate a thorough understanding of economic decision-making. Clearly explains personal and real-world examples using accurate economic concepts such as scarcity, trade-offs, and opportunity cost.</label></li><li><input type="checkbox" data-c="1" id="cr0-1"><label for="cr0-1"><b>Application of Economic Concepts:</b> Effectively applies key concepts (scarcity, opportunity cost, trade-offs) to both personal and real-world examples with clear and logical connections. Demonstrates insight into how economic factors influence decisions.</label></li><li><input type="checkbox" data-c="2" id="cr0-2"><label for="cr0-2"><b>Organization and Clarity:</b> Responses are exceptionally well-organized, clearly structured, and logically developed. Each section is easy to follow, and sentences flow smoothly.</label></li><li><input type="checkbox" data-c="3" id="cr0-3"><label for="cr0-3"><b>Critical Thinking:</b> Demonstrates strong critical thinking through analysis and reflection on personal choices and real-world implications. Insightfully evaluates alternatives, opportunity costs, and impacts.</label></li><li><input type="checkbox" data-c="4" id="cr0-4"><label for="cr0-4"><b>Mechanics and Presentation:</b> Writing is clear, polished, and free of errors. Uses complete sentences, proper grammar, punctuation, and vocabulary appropriate for academic writing.</label></li></ul>
+  <details class="more"><summary>Grading rubric</summary><div class="rubric"><table>
+<thead><tr><th>Criteria</th><th>Excellent (4.0)</th><th>Proficient (3.0)</th><th>Satisfactory (2.0)</th><th>Developing (1.0)</th><th>Needs Improvement (0)</th></tr></thead>
+<tbody><tr><td><strong>Content Knowledge</strong><br><span>4.0 pts</span></td><td>Responses demonstrate a thorough understanding of economic decision-making. Clearly explains personal and real-world examples using accurate economic concepts such as scarcity, trade-offs, and opportunity cost.</td><td>Responses show solid understanding of economic decision-making, explaining both examples with mostly accurate economic concepts and details.</td><td>Responses show basic understanding of economic decision-making. Some concepts are applied correctly, but explanations may lack depth or clarity.</td><td>Responses show limited understanding of economic decision-making, with inaccurate or incomplete use of economic terms or examples.</td><td>Responses show little or no understanding of economic decision-making. Concepts are missing, incorrect, or irrelevant.</td></tr><tr><td><strong>Application of Economic Concepts</strong><br><span>4.0 pts</span></td><td>Effectively applies key concepts (scarcity, opportunity cost, trade-offs) to both personal and real-world examples with clear and logical connections. Demonstrates insight into how economic factors influence decisions.</td><td>Applies key concepts accurately to both examples, though explanations may lack some depth or clarity. Shows understanding of how economic factors influence decisions.</td><td>Applies some key concepts correctly but may omit or confuse one or more. Connections between examples and economic ideas are somewhat unclear.</td><td>Demonstrates limited or inconsistent understanding of key concepts. Explanations are vague or incomplete.</td><td>Fails to apply economic concepts appropriately. Explanations are inaccurate or unrelated to the prompt.</td></tr><tr><td><strong>Organization and Clarity</strong><br><span>4.0 pts</span></td><td>Responses are exceptionally well-organized, clearly structured, and logically developed. Each section is easy to follow, and sentences flow smoothly.</td><td>Responses are well-organized with a clear structure and logical flow. Transitions between ideas are mostly smooth.</td><td>Responses are adequately organized but may lack consistent flow or transitions. Some ideas are underdeveloped.</td><td>Responses are disorganized or confusing, making ideas difficult to follow. Lacks clear structure or flow.</td><td>Responses are poorly organized, lacking logical order or clarity. Answers are incomplete or incoherent.</td></tr><tr><td><strong>Critical Thinking</strong><br><span>4.0 pts</span></td><td>Demonstrates strong critical thinking through analysis and reflection on personal choices and real-world implications. Insightfully evaluates alternatives, opportunity costs, and impacts.</td><td>Demonstrates good critical thinking with analysis of decisions and impacts. Provides reasonable reflection and understanding of trade-offs.</td><td>Shows some critical thinking but relies more on description than analysis. Evaluations of choices are limited or surface-level.</td><td>Shows minimal critical thinking with weak or unsupported reasoning. Explanations are vague or overly simplistic.</td><td>Lacks evidence of critical thinking. Answers are purely descriptive or off-topic, showing no evaluation or insight.</td></tr><tr><td><strong>Mechanics and Presentation</strong><br><span>4.0 pts</span></td><td>Writing is clear, polished, and free of errors. Uses complete sentences, proper grammar, punctuation, and vocabulary appropriate for academic writing.</td><td>Writing is mostly clear and well-edited, with few minor errors that do not affect understanding.</td><td>Writing is generally understandable but contains several errors or awkward phrasing.</td><td>Writing includes frequent grammar or spelling errors that affect readability.</td><td>Writing is unclear or incomplete, with major grammatical or spelling errors that impede understanding.</td></tr>
+<tr><td colspan="5">Total:</td><td>20.0 pts</td></tr>
+</tbody></table></div></details></div></div>
+  <div class="dstep" style="grid-template-columns:1fr"><div><div class="label">Turn it in <span id="deskStat-0" style="margin-left:auto;letter-spacing:0;text-transform:none;font-weight:600;color:var(--ink2)"></span></div>
+  <p style="margin:0 0 10px;font-size:16px">Submit your response directly in Canvas (typed answers in complete sentences unless the task asks for a chart, image, or file upload). Copy your response from here and paste it into <b>Lesson 1.01 - Assignment: Decision Dissection</b>.</p>
+  <div class="outbox" id="deskOut-0"></div>
+  <div class="wrow"><button class="btn" id="deskCopy-0">&#128203; Copy my response</button><button class="btn ghost" id="deskPdf-0">&#11015; Download as PDF</button><span class="note" id="deskNote-0" style="margin:0"></span></div></div></div>
+</div>
+  <div class="card hi" id="nbCard"><div class="label">My Notebook</div><div class="nbstats" id="nbStats"></div>
+    <div class="wrow"><button class="btn" id="nbBtn">&#11015; Download My Notebook (PDF)</button><span class="note" id="nbNote" style="margin:0"></span></div></div>
+  <div class="keep"><div class="label">Carry This Forward</div><p>Every lesson this semester will hand you a new tool for thinking about choices under scarcity. Get comfortable with trade-offs and opportunity cost now &mdash; they are the two ideas the rest of this course keeps coming back to.</p></div>
+  <div class="card"><div class="label">What You'll Do Next</div><ul class="nextlist"><li><span class="tg">Canvas</span><div><b>Lesson 1.01 Reading Quiz</b><br><span style="font-size:15px;color:var(--ink2)">A short auto-graded check on scarcity, trade-offs, and the micro/macro split.</span></div></li><li><span class="tg">Canvas</span><div><b>Lesson 1.01 - Assignment: Decision Dissection</b><br><span style="font-size:15px;color:var(--ink2)">Paste or upload your response from Your Turn. 20 points.</span></div></li></ul></div>
+  <div class="next"><button class="btn ghost" data-go="2">&larr; Part 2</button><a class="btn" href="lesson-1-02-scarcity-choice-opportunity-cost.html">Lesson 1.02 &rarr;</a></div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Optima Academy Online · Student Lesson Page</span><span>Academic Design and Curriculum (AcDC) · © Optima Academy Online</span></div></footer>
+
+<!-- dock: appears only when the student presses play -->
+<div class="dock" id="dock" aria-live="polite">
+  <img src="img/magister.jpg" alt="">
+  <div style="min-width:0">
+    <div class="who">Mr. Magister</div>
+    <div class="cap" id="cap"></div>
+    <input type="range" class="seek" id="seek" min="0" max="1000" value="0" aria-label="Seek">
+  </div>
+  <div class="ctl">
+    <button id="prev" aria-label="Previous">&#9198;</button>
+    <button id="back5" aria-label="Back 5 seconds">&#8634;</button>
+    <button class="main" id="pp" aria-label="Play or pause">&#9654;</button>
+    <button id="fwd5" aria-label="Forward 5 seconds">&#8635;</button>
+    <button id="next" aria-label="Next">&#9197;</button>
+    <button class="rate" id="rate">1&times;</button>
+    <button id="voiceOff" aria-label="Stop and close" title="Stop and close">&times;</button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="glossDrawer" aria-label="Words">
+  <header><h3>Words</h3><button class="x" data-close>&times;</button></header>
+  <div class="body"><div class="glh">Subject vocabulary</div>
+<div class="gl"><button data-g="g_incentive" aria-label="Hear Incentive">&#128266;</button><b>Incentive<small>/in-SEN-tiv/</small></b><span>A reward or reason that pushes people toward one choice over another.</span></div>
+<div class="gl"><button data-g="g_macroeconomics" aria-label="Hear Macroeconomics">&#128266;</button><b>Macroeconomics<small>/MAK-roh-ek-uh-NOM-iks/</small></b><span>The study of the whole economy, including unemployment, inflation, and growth.</span></div>
+<div class="gl"><button data-g="g_microeconomics" aria-label="Hear Microeconomics">&#128266;</button><b>Microeconomics<small>/my-kroh-ek-uh-NOM-iks/</small></b><span>The study of the choices made by individual people, households, and businesses.</span></div>
+<div class="gl"><button data-g="g_opportunity-cost" aria-label="Hear Opportunity Cost">&#128266;</button><b>Opportunity Cost<small>/op-er-TOO-nih-tee kawst/</small></b><span>The value of the next-best choice you give up when you decide.</span></div>
+<div class="gl"><button data-g="g_recession" aria-label="Hear Recession">&#128266;</button><b>Recession<small>/rih-SESH-un/</small></b><span>A period when the economy shrinks. It is usually measured as two quarters in a row of falling output.</span></div>
+<div class="gl"><button data-g="g_scarcity" aria-label="Hear Scarcity">&#128266;</button><b>Scarcity<small>/SKAIR-sih-tee/</small></b><span>The condition of having limited resources while human wants have no limit.</span></div>
+<div class="gl"><button data-g="g_trade-off" aria-label="Hear Trade-Off">&#128266;</button><b>Trade-Off<small>/TRAYD-awf/</small></b><span>Giving up one thing in order to get another.</span></div></div>
+</aside>
+<aside class="drawer" id="askDrawer" aria-label="Ask Mr. Magister">
+  <header><img src="img/magister.jpg" alt="" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--hi)"><h3>Ask Mr. Magister</h3><button class="x" data-close>&times;</button></header>
+  <div class="body"><div class="chat" id="chat"></div></div>
+  <form class="askrow" id="askForm"><input id="askIn" placeholder="Ask about the lesson" autocomplete="off"><button class="btn" type="submit">Ask</button></form>
+</aside>
+<div class="pop" id="pop"></div>
+
+<div class="reader" id="reader" role="dialog" aria-label="The Paper" aria-hidden="true">
+  <div class="rbar"><div class="rtitle"><span class="kicker" id="rKick"></span><b id="rChap"></b></div>
+    <div class="rtools">
+      <button class="rt" data-rpanel="toc" aria-label="Contents">&#9776;<span>Contents</span></button>
+      <button class="rt" data-rpanel="marks" aria-label="My marks">&#9998;<span>My marks</span></button>
+      <button class="rt" id="rSetBtn" aria-label="Text settings">Aa<span>Text</span></button>
+      <button class="rt" id="rRuler" aria-label="Reading line" aria-pressed="false">&#9636;<span>Line</span></button>
+      <button class="rt" id="rRibbon" aria-label="Ribbon" aria-pressed="false">&#9873;<span>Ribbon</span></button>
+      <button class="rt close" id="rClose" aria-label="Close">&times;<span>Close</span></button>
+    </div></div>
+  <div class="stagebook" id="stagebook"><div class="book" id="book">
+      <div class="paper pl"></div><div class="paper pr"></div>
+      <div class="hd hdL" id="hL"></div><div class="hd hdR" id="hR"></div>
+      <div class="vp" id="vp"><div class="flow" id="flow"><section class="titlepg"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.01</span><span>Economics Honors</span></div><h2>What is Economics?</h2><div class="dk">Resources are limited, wants are not</div><div class="tp-k">Module 1 · Introduction to Economics and Production</div></section><section class="partpg" data-pt="1"><div class="chk">Part 1</div><h2>Scarcity</h2><div class="dbl"></div><div class="pt-ch"><b>Chapter 1</b>Scarcity: the Problem Every Society Must Solve</div><div class="pt-slot"></div></section><section class="ch" data-ch="c1"><div class="chk">Chapter 1</div><h3>Scarcity: the Problem Every Society Must Solve</h3><div class="readfor" data-rf="r1"></div><p class="prose" data-clip="c1_1"><span class="w" data-w="0">Economics</span><span class="s" data-s="0"> </span><span class="w" data-w="1">is</span><span class="s" data-s="1"> </span><span class="w" data-w="2">sometimes</span><span class="s" data-s="2"> </span><span class="w" data-w="3">called</span><span class="s" data-s="3"> </span><span class="w" data-w="4">the</span><span class="s" data-s="4"> </span><span class="w" data-w="5">science</span><span class="s" data-s="5"> </span><span class="w" data-w="6">of</span><span class="s" data-s="6"> </span><span class="term" data-g="scarcity"><span class="w" data-w="7">scarcity</span></span><span class="w" data-w="7">.</span><span class="s" data-s="7"> </span><span class="term" data-g="scarcity"><span class="w" data-w="8">Scarcity</span></span><span class="s" data-s="8"> </span><span class="w" data-w="9">does</span><span class="s" data-s="9"> </span><span class="w" data-w="10">not</span><span class="s" data-s="10"> </span><span class="w" data-w="11">mean</span><span class="s" data-s="11"> </span><span class="w" data-w="12">nothing</span><span class="s" data-s="12"> </span><span class="w" data-w="13">is</span><span class="s" data-s="13"> </span><span class="w" data-w="14">available</span><span class="s" data-s="14"> </span><span class="w" data-w="15">&mdash;</span><span class="s" data-s="15"> </span><span class="w" data-w="16">it</span><span class="s" data-s="16"> </span><span class="w" data-w="17">means</span><span class="s" data-s="17"> </span><span class="w" data-w="18">there</span><span class="s" data-s="18"> </span><span class="w" data-w="19">is</span><span class="s" data-s="19"> </span><span class="w" data-w="20">never</span><span class="s" data-s="20"> </span><span class="w" data-w="21">enough</span><span class="s" data-s="21"> </span><span class="w" data-w="22">of</span><span class="s" data-s="22"> </span><span class="w" data-w="23">everything</span><span class="s" data-s="23"> </span><span class="w" data-w="24">to</span><span class="s" data-s="24"> </span><span class="w" data-w="25">satisfy</span><span class="s" data-s="25"> </span><span class="w" data-w="26">every</span><span class="s" data-s="26"> </span><span class="w" data-w="27">possible</span><span class="s" data-s="27"> </span><span class="w" data-w="28">use</span><span class="s" data-s="28"> </span><span class="w" data-w="29">for</span><span class="s" data-s="29"> </span><span class="w" data-w="30">it.</span><span class="s" data-s="30"> </span><span class="w" data-w="31">Farmland</span><span class="s" data-s="31"> </span><span class="w" data-w="32">used</span><span class="s" data-s="32"> </span><span class="w" data-w="33">to</span><span class="s" data-s="33"> </span><span class="w" data-w="34">grow</span><span class="s" data-s="34"> </span><span class="w" data-w="35">food</span><span class="s" data-s="35"> </span><span class="w" data-w="36">cannot</span><span class="s" data-s="36"> </span><span class="w" data-w="37">also</span><span class="s" data-s="37"> </span><span class="w" data-w="38">grow</span><span class="s" data-s="38"> </span><span class="w" data-w="39">biofuel;</span><span class="s" data-s="39"> </span><span class="w" data-w="40">a</span><span class="s" data-s="40"> </span><span class="w" data-w="41">forest</span><span class="s" data-s="41"> </span><span class="w" data-w="42">logged</span><span class="s" data-s="42"> </span><span class="w" data-w="43">for</span><span class="s" data-s="43"> </span><span class="w" data-w="44">timber</span><span class="s" data-s="44"> </span><span class="w" data-w="45">cannot</span><span class="s" data-s="45"> </span><span class="w" data-w="46">also</span><span class="s" data-s="46"> </span><span class="w" data-w="47">stay</span><span class="s" data-s="47"> </span><span class="w" data-w="48">untouched</span><span class="s" data-s="48"> </span><span class="w" data-w="49">wilderness.</span><span class="s" data-s="49"> </span><span class="w" data-w="50">Because</span><span class="s" data-s="50"> </span><span class="w" data-w="51">resources</span><span class="s" data-s="51"> </span><span class="w" data-w="52">&mdash;</span><span class="s" data-s="52"> </span><span class="w" data-w="53">tangible</span><span class="s" data-s="53"> </span><span class="w" data-w="54">ones</span><span class="s" data-s="54"> </span><span class="w" data-w="55">like</span><span class="s" data-s="55"> </span><span class="w" data-w="56">land,</span><span class="s" data-s="56"> </span><span class="w" data-w="57">money,</span><span class="s" data-s="57"> </span><span class="w" data-w="58">and</span><span class="s" data-s="58"> </span><span class="w" data-w="59">machinery,</span><span class="s" data-s="59"> </span><span class="w" data-w="60">and</span><span class="s" data-s="60"> </span><span class="w" data-w="61">intangible</span><span class="s" data-s="61"> </span><span class="w" data-w="62">ones</span><span class="s" data-s="62"> </span><span class="w" data-w="63">like</span><span class="s" data-s="63"> </span><span class="w" data-w="64">time</span><span class="s" data-s="64"> </span><span class="w" data-w="65">and</span><span class="s" data-s="65"> </span><span class="w" data-w="66">skill</span><span class="s" data-s="66"> </span><span class="w" data-w="67">&mdash;</span><span class="s" data-s="67"> </span><span class="w" data-w="68">are</span><span class="s" data-s="68"> </span><span class="w" data-w="69">limited,</span><span class="s" data-s="69"> </span><span class="w" data-w="70">every</span><span class="s" data-s="70"> </span><span class="w" data-w="71">decision</span><span class="s" data-s="71"> </span><span class="w" data-w="72">involves</span><span class="s" data-s="72"> </span><span class="w" data-w="73">a</span><span class="s" data-s="73"> </span><span class="term" data-g="trade-off"><span class="w" data-w="74">trade-off</span></span><span class="w" data-w="74">:</span><span class="s" data-s="74"> </span><span class="w" data-w="75">choosing</span><span class="s" data-s="75"> </span><span class="w" data-w="76">one</span><span class="s" data-s="76"> </span><span class="w" data-w="77">option</span><span class="s" data-s="77"> </span><span class="w" data-w="78">means</span><span class="s" data-s="78"> </span><span class="w" data-w="79">giving</span><span class="s" data-s="79"> </span><span class="w" data-w="80">up</span><span class="s" data-s="80"> </span><span class="w" data-w="81">another.</span></p>
+<p class="prose" data-clip="c1_2"><span class="w" data-w="0">Because</span><span class="s" data-s="0"> </span><span class="term" data-g="scarcity"><span class="w" data-w="1">scarcity</span></span><span class="s" data-s="1"> </span><span class="w" data-w="2">is</span><span class="s" data-s="2"> </span><span class="w" data-w="3">universal,</span><span class="s" data-s="3"> </span><span class="w" data-w="4">every</span><span class="s" data-s="4"> </span><span class="w" data-w="5">society,</span><span class="s" data-s="5"> </span><span class="w" data-w="6">no</span><span class="s" data-s="6"> </span><span class="w" data-w="7">matter</span><span class="s" data-s="7"> </span><span class="w" data-w="8">its</span><span class="s" data-s="8"> </span><span class="w" data-w="9">politics</span><span class="s" data-s="9"> </span><span class="w" data-w="10">or</span><span class="s" data-s="10"> </span><span class="w" data-w="11">geography,</span><span class="s" data-s="11"> </span><span class="w" data-w="12">has</span><span class="s" data-s="12"> </span><span class="w" data-w="13">to</span><span class="s" data-s="13"> </span><span class="w" data-w="14">answer</span><span class="s" data-s="14"> </span><span class="w" data-w="15">three</span><span class="s" data-s="15"> </span><span class="w" data-w="16">questions:</span><span class="s" data-s="16"> </span><em><span class="w" data-w="17">What</span><span class="s" data-s="17"> </span><span class="w" data-w="18">should</span><span class="s" data-s="18"> </span><span class="w" data-w="19">be</span><span class="s" data-s="19"> </span><span class="w" data-w="20">produced?</span><span class="s" data-s="20"> </span><span class="w" data-w="21">How</span><span class="s" data-s="21"> </span><span class="w" data-w="22">should</span><span class="s" data-s="22"> </span><span class="w" data-w="23">it</span><span class="s" data-s="23"> </span><span class="w" data-w="24">be</span><span class="s" data-s="24"> </span><span class="w" data-w="25">produced?</span><span class="s" data-s="25"> </span><span class="w" data-w="26">For</span><span class="s" data-s="26"> </span><span class="w" data-w="27">whom</span><span class="s" data-s="27"> </span><span class="w" data-w="28">should</span><span class="s" data-s="28"> </span><span class="w" data-w="29">it</span><span class="s" data-s="29"> </span><span class="w" data-w="30">be</span><span class="s" data-s="30"> </span><span class="w" data-w="31">produced?</span></em><span class="s" data-s="31"> </span><span class="w" data-w="32">A</span><span class="s" data-s="32"> </span><span class="w" data-w="33">market</span><span class="s" data-s="33"> </span><span class="w" data-w="34">economy</span><span class="s" data-s="34"> </span><span class="w" data-w="35">lets</span><span class="s" data-s="35"> </span><span class="w" data-w="36">consumer</span><span class="s" data-s="36"> </span><span class="w" data-w="37">demand</span><span class="s" data-s="37"> </span><span class="w" data-w="38">and</span><span class="s" data-s="38"> </span><span class="w" data-w="39">business</span><span class="s" data-s="39"> </span><span class="w" data-w="40">competition</span><span class="s" data-s="40"> </span><span class="w" data-w="41">answer</span><span class="s" data-s="41"> </span><span class="w" data-w="42">those</span><span class="s" data-s="42"> </span><span class="w" data-w="43">questions;</span><span class="s" data-s="43"> </span><span class="w" data-w="44">a</span><span class="s" data-s="44"> </span><span class="w" data-w="45">centrally</span><span class="s" data-s="45"> </span><span class="w" data-w="46">planned</span><span class="s" data-s="46"> </span><span class="w" data-w="47">economy</span><span class="s" data-s="47"> </span><span class="w" data-w="48">has</span><span class="s" data-s="48"> </span><span class="w" data-w="49">government</span><span class="s" data-s="49"> </span><span class="w" data-w="50">officials</span><span class="s" data-s="50"> </span><span class="w" data-w="51">answer</span><span class="s" data-s="51"> </span><span class="w" data-w="52">them.</span><span class="s" data-s="52"> </span><span class="w" data-w="53">Either</span><span class="s" data-s="53"> </span><span class="w" data-w="54">way,</span><span class="s" data-s="54"> </span><span class="w" data-w="55">the</span><span class="s" data-s="55"> </span><span class="w" data-w="56">answers</span><span class="s" data-s="56"> </span><span class="w" data-w="57">shape</span><span class="s" data-s="57"> </span><span class="w" data-w="58">who</span><span class="s" data-s="58"> </span><span class="w" data-w="59">has</span><span class="s" data-s="59"> </span><span class="w" data-w="60">access</span><span class="s" data-s="60"> </span><span class="w" data-w="61">to</span><span class="s" data-s="61"> </span><span class="w" data-w="62">what,</span><span class="s" data-s="62"> </span><span class="w" data-w="63">and</span><span class="s" data-s="63"> </span><span class="w" data-w="64">how</span><span class="s" data-s="64"> </span><span class="w" data-w="65">wealth</span><span class="s" data-s="65"> </span><span class="w" data-w="66">moves</span><span class="s" data-s="66"> </span><span class="w" data-w="67">through</span><span class="s" data-s="67"> </span><span class="w" data-w="68">a</span><span class="s" data-s="68"> </span><span class="w" data-w="69">society.</span></p><div class="ansbox" data-slot="r1"></div></section><section class="partpg" data-pt="2"><div class="chk">Part 2</div><h2>Two Ways to Zoom</h2><div class="dbl"></div><div class="pt-ch"><b>Chapter 2</b>Two Ways to Zoom: Micro and Macro</div><div class="pt-slot"></div></section><section class="ch" data-ch="c2"><div class="chk">Chapter 2</div><h3>Two Ways to Zoom: Micro and Macro</h3><div class="readfor" data-rf="r2"></div><p class="prose" data-clip="c2_1"><span class="w" data-w="0">Economics</span><span class="s" data-s="0"> </span><span class="w" data-w="1">splits</span><span class="s" data-s="1"> </span><span class="w" data-w="2">into</span><span class="s" data-s="2"> </span><span class="w" data-w="3">two</span><span class="s" data-s="3"> </span><span class="w" data-w="4">branches.</span><span class="s" data-s="4"> </span><span class="term" data-g="microeconomics"><span class="w" data-w="5">Microeconomics</span></span><span class="s" data-s="5"> </span><span class="w" data-w="6">zooms</span><span class="s" data-s="6"> </span><span class="w" data-w="7">in</span><span class="s" data-s="7"> </span><span class="w" data-w="8">on</span><span class="s" data-s="8"> </span><span class="w" data-w="9">individual</span><span class="s" data-s="9"> </span><span class="w" data-w="10">decision-makers</span><span class="s" data-s="10"> </span><span class="w" data-w="11">&mdash;</span><span class="s" data-s="11"> </span><span class="w" data-w="12">a</span><span class="s" data-s="12"> </span><span class="w" data-w="13">household</span><span class="s" data-s="13"> </span><span class="w" data-w="14">deciding</span><span class="s" data-s="14"> </span><span class="w" data-w="15">what</span><span class="s" data-s="15"> </span><span class="w" data-w="16">to</span><span class="s" data-s="16"> </span><span class="w" data-w="17">buy,</span><span class="s" data-s="17"> </span><span class="w" data-w="18">a</span><span class="s" data-s="18"> </span><span class="w" data-w="19">worker</span><span class="s" data-s="19"> </span><span class="w" data-w="20">deciding</span><span class="s" data-s="20"> </span><span class="w" data-w="21">where</span><span class="s" data-s="21"> </span><span class="w" data-w="22">to</span><span class="s" data-s="22"> </span><span class="w" data-w="23">apply,</span><span class="s" data-s="23"> </span><span class="w" data-w="24">a</span><span class="s" data-s="24"> </span><span class="w" data-w="25">business</span><span class="s" data-s="25"> </span><span class="w" data-w="26">deciding</span><span class="s" data-s="26"> </span><span class="w" data-w="27">what</span><span class="s" data-s="27"> </span><span class="w" data-w="28">to</span><span class="s" data-s="28"> </span><span class="w" data-w="29">produce</span><span class="s" data-s="29"> </span><span class="w" data-w="30">&mdash;</span><span class="s" data-s="30"> </span><span class="w" data-w="31">and</span><span class="s" data-s="31"> </span><span class="w" data-w="32">asks</span><span class="s" data-s="32"> </span><span class="w" data-w="33">why</span><span class="s" data-s="33"> </span><span class="w" data-w="34">ticket</span><span class="s" data-s="34"> </span><span class="w" data-w="35">prices</span><span class="s" data-s="35"> </span><span class="w" data-w="36">spike</span><span class="s" data-s="36"> </span><span class="w" data-w="37">in</span><span class="s" data-s="37"> </span><span class="w" data-w="38">peak</span><span class="s" data-s="38"> </span><span class="w" data-w="39">season</span><span class="s" data-s="39"> </span><span class="w" data-w="40">or</span><span class="s" data-s="40"> </span><span class="w" data-w="41">how</span><span class="s" data-s="41"> </span><span class="w" data-w="42">a</span><span class="s" data-s="42"> </span><span class="w" data-w="43">sale</span><span class="s" data-s="43"> </span><span class="w" data-w="44">changes</span><span class="s" data-s="44"> </span><span class="w" data-w="45">buying</span><span class="s" data-s="45"> </span><span class="w" data-w="46">habits.</span><span class="s" data-s="46"> </span><span class="term" data-g="macroeconomics"><span class="w" data-w="47">Macroeconomics</span></span><span class="s" data-s="47"> </span><span class="w" data-w="48">zooms</span><span class="s" data-s="48"> </span><span class="w" data-w="49">out</span><span class="s" data-s="49"> </span><span class="w" data-w="50">to</span><span class="s" data-s="50"> </span><span class="w" data-w="51">the</span><span class="s" data-s="51"> </span><span class="w" data-w="52">whole</span><span class="s" data-s="52"> </span><span class="w" data-w="53">economy</span><span class="s" data-s="53"> </span><span class="w" data-w="54">&mdash;</span><span class="s" data-s="54"> </span><span class="w" data-w="55">unemployment,</span><span class="s" data-s="55"> </span><span class="w" data-w="56">inflation,</span><span class="s" data-s="56"> </span><span class="w" data-w="57">growth,</span><span class="s" data-s="57"> </span><span class="w" data-w="58">trade</span><span class="s" data-s="58"> </span><span class="w" data-w="59">&mdash;</span><span class="s" data-s="59"> </span><span class="w" data-w="60">and</span><span class="s" data-s="60"> </span><span class="w" data-w="61">asks</span><span class="s" data-s="61"> </span><span class="w" data-w="62">why</span><span class="s" data-s="62"> </span><span class="w" data-w="63">an</span><span class="s" data-s="63"> </span><span class="w" data-w="64">entire</span><span class="s" data-s="64"> </span><span class="w" data-w="65">economy</span><span class="s" data-s="65"> </span><span class="w" data-w="66">slides</span><span class="s" data-s="66"> </span><span class="w" data-w="67">into</span><span class="s" data-s="67"> </span><span class="w" data-w="68">a</span><span class="s" data-s="68"> </span><span class="term" data-g="recession"><span class="w" data-w="69">recession</span></span><span class="s" data-s="69"> </span><span class="w" data-w="70">or</span><span class="s" data-s="70"> </span><span class="w" data-w="71">grows</span><span class="s" data-s="71"> </span><span class="w" data-w="72">quickly.</span><span class="s" data-s="72"> </span><span class="w" data-w="73">You</span><span class="s" data-s="73"> </span><span class="w" data-w="74">will</span><span class="s" data-s="74"> </span><span class="w" data-w="75">use</span><span class="s" data-s="75"> </span><span class="w" data-w="76">both</span><span class="s" data-s="76"> </span><span class="w" data-w="77">lenses</span><span class="s" data-s="77"> </span><span class="w" data-w="78">all</span><span class="s" data-s="78"> </span><span class="w" data-w="79">semester:</span><span class="s" data-s="79"> </span><span class="w" data-w="80">micro</span><span class="s" data-s="80"> </span><span class="w" data-w="81">to</span><span class="s" data-s="81"> </span><span class="w" data-w="82">explain</span><span class="s" data-s="82"> </span><span class="w" data-w="83">one</span><span class="s" data-s="83"> </span><span class="w" data-w="84">firm's</span><span class="s" data-s="84"> </span><span class="w" data-w="85">decision,</span><span class="s" data-s="85"> </span><span class="w" data-w="86">macro</span><span class="s" data-s="86"> </span><span class="w" data-w="87">to</span><span class="s" data-s="87"> </span><span class="w" data-w="88">explain</span><span class="s" data-s="88"> </span><span class="w" data-w="89">the</span><span class="s" data-s="89"> </span><span class="w" data-w="90">system</span><span class="s" data-s="90"> </span><span class="w" data-w="91">those</span><span class="s" data-s="91"> </span><span class="w" data-w="92">decisions</span><span class="s" data-s="92"> </span><span class="w" data-w="93">add</span><span class="s" data-s="93"> </span><span class="w" data-w="94">up</span><span class="s" data-s="94"> </span><span class="w" data-w="95">to.</span></p>
+<p class="prose aside" data-clip="c2_2"><strong><span class="w" data-w="0">Worth</span><span class="s" data-s="0"> </span><span class="w" data-w="1">noticing:</span></strong><span class="s" data-s="1"> </span><span class="w" data-w="2">economists</span><span class="s" data-s="2"> </span><span class="w" data-w="3">lean</span><span class="s" data-s="3"> </span><span class="w" data-w="4">on</span><span class="s" data-s="4"> </span><span class="w" data-w="5">two</span><span class="s" data-s="5"> </span><span class="w" data-w="6">more</span><span class="s" data-s="6"> </span><span class="w" data-w="7">ideas</span><span class="s" data-s="7"> </span><span class="w" data-w="8">constantly.</span><span class="s" data-s="8"> </span><span class="term" data-g="opportunity-cost"><span class="w" data-w="9">Opportunity</span><span class="s" data-s="9"> </span><span class="w" data-w="10">cost</span></span><span class="s" data-s="10"> </span><span class="w" data-w="11">is</span><span class="s" data-s="11"> </span><span class="w" data-w="12">the</span><span class="s" data-s="12"> </span><span class="w" data-w="13">value</span><span class="s" data-s="13"> </span><span class="w" data-w="14">of</span><span class="s" data-s="14"> </span><span class="w" data-w="15">the</span><span class="s" data-s="15"> </span><span class="w" data-w="16">next-best</span><span class="s" data-s="16"> </span><span class="w" data-w="17">alternative</span><span class="s" data-s="17"> </span><span class="w" data-w="18">you</span><span class="s" data-s="18"> </span><span class="w" data-w="19">gave</span><span class="s" data-s="19"> </span><span class="w" data-w="20">up</span><span class="s" data-s="20"> </span><span class="w" data-w="21">to</span><span class="s" data-s="21"> </span><span class="w" data-w="22">make</span><span class="s" data-s="22"> </span><span class="w" data-w="23">your</span><span class="s" data-s="23"> </span><span class="w" data-w="24">choice.</span><span class="s" data-s="24"> </span><span class="term" data-g="incentive"><span class="w" data-w="25">Incentives</span></span><span class="s" data-s="25"> </span><span class="w" data-w="26">are</span><span class="s" data-s="26"> </span><span class="w" data-w="27">the</span><span class="s" data-s="27"> </span><span class="w" data-w="28">financial,</span><span class="s" data-s="28"> </span><span class="w" data-w="29">social,</span><span class="s" data-s="29"> </span><span class="w" data-w="30">or</span><span class="s" data-s="30"> </span><span class="w" data-w="31">personal</span><span class="s" data-s="31"> </span><span class="w" data-w="32">motivations</span><span class="s" data-s="32"> </span><span class="w" data-w="33">that</span><span class="s" data-s="33"> </span><span class="w" data-w="34">push</span><span class="s" data-s="34"> </span><span class="w" data-w="35">people</span><span class="s" data-s="35"> </span><span class="w" data-w="36">toward</span><span class="s" data-s="36"> </span><span class="w" data-w="37">one</span><span class="s" data-s="37"> </span><span class="w" data-w="38">choice</span><span class="s" data-s="38"> </span><span class="w" data-w="39">over</span><span class="s" data-s="39"> </span><span class="w" data-w="40">another.</span><span class="s" data-s="40"> </span><span class="w" data-w="41">You</span><span class="s" data-s="41"> </span><span class="w" data-w="42">will</span><span class="s" data-s="42"> </span><span class="w" data-w="43">meet</span><span class="s" data-s="43"> </span><span class="w" data-w="44">both</span><span class="s" data-s="44"> </span><span class="w" data-w="45">terms</span><span class="s" data-s="45"> </span><span class="w" data-w="46">again</span><span class="s" data-s="46"> </span><span class="w" data-w="47">and</span><span class="s" data-s="47"> </span><span class="w" data-w="48">again</span><span class="s" data-s="48"> </span><span class="w" data-w="49">this</span><span class="s" data-s="49"> </span><span class="w" data-w="50">semester</span><span class="s" data-s="50"> </span><span class="w" data-w="51">&mdash;</span><span class="s" data-s="51"> </span><span class="w" data-w="52">they</span><span class="s" data-s="52"> </span><span class="w" data-w="53">are</span><span class="s" data-s="53"> </span><span class="w" data-w="54">not</span><span class="s" data-s="54"> </span><span class="w" data-w="55">one-lesson</span><span class="s" data-s="55"> </span><span class="w" data-w="56">vocabulary,</span><span class="s" data-s="56"> </span><span class="w" data-w="57">they</span><span class="s" data-s="57"> </span><span class="w" data-w="58">are</span><span class="s" data-s="58"> </span><span class="w" data-w="59">how</span><span class="s" data-s="59"> </span><span class="w" data-w="60">economists</span><span class="s" data-s="60"> </span><span class="w" data-w="61">think.</span></p><div class="ansbox" data-slot="r2"></div></section><section class="endpg"><div class="chk">End of the reading</div><h2>Your Turn</h2><div class="dbl"></div><button class="btn" data-go="3">Go to Your Turn &rarr;</button></section></div></div>
+      <div class="fo foL" id="fL"></div><div class="fo foR" id="fR"></div>
+      <div class="slips" id="slips"></div><div class="ribbon" id="ribbon"></div>
+      <div class="ruler" id="ruler"><i></i><b></b><i></i></div>
+      <div class="leaf" id="leaf"><div class="lf front"></div><div class="lf back"></div></div>
+      <div class="lift" id="lift"></div>
+      <div class="cover" id="cover"><div class="cf front"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.01</span><span>Economics Honors</span></div><div class="hl">What is Economics?</div><div class="dk">Resources are limited, wants are not</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></div><div class="cf back"></div></div>
+      <button class="turn prev" id="tPrev" aria-label="Previous page">&#8249;</button>
+      <button class="turn next" id="tNext" aria-label="Next page">&#8250;</button>
+  </div></div>
+  <aside class="rpanel" id="rpanel"><header><div class="seg" id="rpTabs"><button data-rpanel="toc">Contents</button><button data-rpanel="marks">My marks</button></div><button class="x" id="rpX" aria-label="Close panel">&times;</button></header><div class="rpbody" id="rpBody"></div></aside>
+  <div class="rset" id="rset"><div class="label">Text size</div><div class="seg" id="rSize"><button data-v="0">A&minus;</button><button data-v="1">A</button><button data-v="2">A+</button></div>
+    <div class="label" style="margin-top:14px">Line spacing</div><div class="seg" id="rLh"><button data-v="0">Snug</button><button data-v="1">Open</button></div></div>
+  <div class="hlbar" id="hlbar"><button data-hl="k"><i class="sw k"></i>Key idea</button><button data-hl="e"><i class="sw e"></i>Evidence</button><button data-hl="n">&#9998; Margin note</button><button data-hl="ask">&#128172; Ask</button><button data-hl="x" class="rm">Remove</button></div>
+  <div class="noteed" id="noteEd"><div class="label">Margin note</div><blockquote id="neQ"></blockquote><textarea id="neT" rows="4" placeholder="Your note"></textarea>
+    <div class="wrow"><button class="btn small" id="neSave">Save</button><button class="btn ghost small" id="neDel">Delete</button><button class="btn ghost small" id="neX">Cancel</button></div></div>
+</div>
+
+<script>
+const CFG = {"key": "econ-hon-w1-l101-v1", "kicker": "Lesson 1.01", "title": "What is Economics?", "nbFile": "Econ-1-01", "bookName": "The Paper", "parts": [{"title": "Scarcity", "stop": "Scarcity", "chapters": ["c1"]}, {"title": "Two Ways to Zoom", "stop": "Micro & Macro", "chapters": ["c2"]}], "chapters": [{"id": "c1", "title": "Scarcity: the Problem Every Society Must Solve"}, {"id": "c2", "title": "Two Ways to Zoom: Micro and Macro"}], "slots": {"r1": [["c1"], "Scarcity does not mean nothing is available. What does it mean, and what three questions does it force on every society?"], "r2": [["c2"], "Name one question a microeconomist would ask and one a macroeconomist would ask."]}, "finalStop": "Your Turn", "glossary": [{"id": "incentive", "word": "Incentive", "pron": "/in-SEN-tiv/", "def": "A reward or reason that pushes people toward one choice over another."}, {"id": "macroeconomics", "word": "Macroeconomics", "pron": "/MAK-roh-ek-uh-NOM-iks/", "def": "The study of the whole economy, including unemployment, inflation, and growth."}, {"id": "microeconomics", "word": "Microeconomics", "pron": "/my-kroh-ek-uh-NOM-iks/", "def": "The study of the choices made by individual people, households, and businesses."}, {"id": "opportunity-cost", "word": "Opportunity Cost", "pron": "/op-er-TOO-nih-tee kawst/", "def": "The value of the next-best choice you give up when you decide."}, {"id": "recession", "word": "Recession", "pron": "/rih-SESH-un/", "def": "A period when the economy shrinks. It is usually measured as two quarters in a row of falling output."}, {"id": "scarcity", "word": "Scarcity", "pron": "/SKAIR-sih-tee/", "def": "The condition of having limited resources while human wants have no limit."}, {"id": "trade-off", "word": "Trade-Off", "pron": "/TRAYD-awf/", "def": "Giving up one thing in order to get another."}], "widgets": {"w1": {"title": "SORT IT · WHAT, HOW, OR FOR WHOM?", "question": "Every society has to answer three questions: what to produce, how to produce it, and for whom. Decide which question each decision answers.", "rows": [{"prompt": "1. A city decides to build a new school instead of a new stadium.", "opts": ["How to produce it", "What to produce", "For whom"], "correct": 1, "fb": "Yes. Choosing which goods and services to make, and how much of each, is the \"what\" question.", "hint": "Ask whether the choice is about which things to make, how to make them, or who gets them."}, {"prompt": "2. A farm switches from hand watering to drip irrigation to use less water.", "opts": ["How to produce it", "For whom", "What to produce"], "correct": 0, "fb": "Right. Choosing the method used to make something is the \"how\" question.", "hint": "The farm is still growing the same crop for the same buyers. What changed?"}, {"prompt": "3. A town gives free school lunches only to families who earn the least.", "opts": ["What to produce", "How to produce it", "For whom"], "correct": 2, "fb": "Yes. Deciding who receives the goods and services is the \"for whom\" question.", "hint": "Look at who gets the lunches, not at how or whether they are made."}, {"prompt": "4. A bakery buys an automatic mixer so it needs fewer workers to make the same bread.", "opts": ["For whom", "What to produce", "How to produce it"], "correct": 2, "fb": "Right. The bread is the same. The method of making it changed, so this is the \"how\" question.", "hint": "The bakery is still making bread. What changed about the way it makes it?"}]}, "w2": {"title": "TRY IT · MATCH THE TERM", "question": "Match each situation to the concept it best illustrates.", "rows": [{"prompt": "1. You spend your savings on a trip to the mountains instead of the beach vacation you were also considering.", "opts": ["Scarcity", "Incentive", "Opportunity cost", "Macroeconomics"], "correct": 2, "fb": "Right — the vacation you didn't take is the opportunity cost of the one you did.", "hint": "Opportunity cost is about the next-best alternative you gave up, not the choice you made."}, {"prompt": "2. Tickets to a popular concert sell out in minutes because far more people want them than there are seats.", "opts": ["Scarcity", "Trade-off", "Microeconomics", "Yield"], "correct": 0, "fb": "Right — only so many seats exist for a popular concert; that limit is scarcity in action.", "hint": "Ask: is something simply limited relative to how many people want it?"}, {"prompt": "3. A news report announces the national unemployment rate rose last month.", "opts": ["Opportunity cost", "Quantify", "Trade-off", "Macroeconomics"], "correct": 3, "fb": "Right — a national unemployment rate is a whole-economy measure, which is macroeconomics' territory.", "hint": "Ask: is this about one household or business, or about the economy as a whole?"}, {"prompt": "4. A store offers a discount coupon to encourage customers to buy before the weekend ends.", "opts": ["Macroeconomics", "Incentive", "Scarcity", "Opportunity cost"], "correct": 1, "fb": "Right — the coupon is designed to motivate a specific action, which makes it an incentive.", "hint": "Ask: is something here designed to motivate a choice?"}]}}, "checkin": {"q": "Think back to one real choice you made this week. How did you decide? (No wrong answer — just check in with yourself.)", "opts": [{"label": "📋 I planned it out ahead of time", "fb": "Planning ahead means you were already weighing trade-offs before the moment arrived — that is economic thinking, whether you called it that or not."}, {"label": "⚡ I decided in the moment", "fb": "Deciding in the moment is still a trade-off — you just ran the comparison quickly instead of on paper. Economists study both kinds of decisions."}, {"label": "🤔 I tried to avoid choosing", "fb": "Avoiding a choice is its own choice — it usually means letting someone or something else (time, a default, another person) decide for you."}], "returns": "Your choice comes back in Your Turn.", "back": "You can dissect that decision below, or any other real one."}, "minis": {"m1": {"title": "The Problem Every Society Solves", "beats": [{"say": "G'day, I'm Mr. Magister. It rhymes with mister, with a hard G, and it's the Latin word for teacher. Welcome to economics."}, {"say": "Here's the whole subject in one picture. On this side, everything people want: food, a phone, a night out, a new road, a better hospital. That list never runs out."}, {"say": "On this side, what we actually have to work with: land, workers, machines, money, and hours in the day. That pile is limited."}, {"say": "The gap between the two is called scarcity. It doesn't mean nothing is available. It means there's never enough of everything for every possible use."}, {"say": "So every choice has a trade-off. Farmland that grows food this year can't also grow fuel crops."}, {"say": "And every society, rich or poor, has to answer three questions. What should be produced?"}, {"say": "How should it be produced?"}, {"say": "And for whom? Hang on to those three. You'll use them all semester."}]}, "m2": {"title": "Two Lenses: Micro and Macro", "beats": [{"say": "Economists look through two lenses, a bit like the zoom on a camera."}, {"say": "Zoom right in, and you see one decision-maker: a family choosing what to buy this week, or a café deciding whether to open an hour earlier. That's microeconomics."}, {"say": "Now zoom all the way out. The café disappears into the crowd, and you see the whole country at once."}, {"say": "How many people have jobs. How fast prices are rising. Whether the economy is growing or shrinking. That's macroeconomics."}, {"say": "Same economy, different distance. Micro explains one choice. Macro explains what millions of choices add up to."}]}}, "assigns": [{"src": "source/lesson-1-01-assignment-decision-dissection.html", "title": "Decision Dissection", "canvas": "Lesson 1.01 - Assignment: Decision Dissection", "pts": 20, "file": "Decision-Dissection", "checkin_back": true, "coach": ["A decision with a real trade-off has two or more options you actually wanted and could not have together. An evening you spent studying instead of going to a friend's game qualifies. A choice you never weighed does not.", "Describe each option in terms of what it would have given you and what it would have used up: money, time, energy, or another commitment.", "Opportunity cost is only the next-best option you gave up, not every option you skipped. If you took the extra work shift and your second choice was the game, the game is the cost. Name it precisely: the hours, the dollars, the experience.", "Judge the choice by comparing what you gained with the opportunity cost. Use the terms scarcity, trade-off, and opportunity cost by name, and say what limited resource forced the choice."], "step_extra": {"1": {"rows": 5}, "2": {"rows": 6}, "3": {"rows": 4}, "4": {"rows": 6}}, "submit": "Submit your response directly in Canvas (typed answers in complete sentences unless the task asks for a chart, image, or file upload). Copy your response from here and paste it into <b>Lesson 1.01 - Assignment: Decision Dissection<\/b>.", "steps": [{"title": "Choose a real decision.", "text": "Pick one actual decision you made recently, something with a real trade-off (how to spend a free evening, a purchase, a choice between two commitments). Describe the decision and what was at stake for you.", "coach": "A decision with a real trade-off has two or more options you actually wanted and could not have together. An evening you spent studying instead of going to a friend's game qualifies. A choice you never weighed does not.", "rows": 5}, {"title": "Describe your alternatives.", "text": "Explain at least two options you actually considered and what choosing each one would have meant for you.", "coach": "Describe each option in terms of what it would have given you and what it would have used up: money, time, energy, or another commitment.", "rows": 6}, {"title": "Name the opportunity cost.", "text": "For the option you chose, identify specifically what you gave up (time, money, another experience) by not choosing the next-best alternative. Be concrete, not general.", "coach": "Opportunity cost is only the next-best option you gave up, not every option you skipped. If you took the extra work shift and your second choice was the game, the game is the cost. Name it precisely: the hours, the dollars, the experience.", "rows": 4}, {"title": "Reflect and justify.", "text": "Looking back, do you think you made the right call? Use the language of scarcity, trade-offs, and opportunity cost to explain your reasoning, not just your gut feeling.", "coach": "Judge the choice by comparing what you gained with the opportunity cost. Use the terms scarcity, trade-off, and opportunity cost by name, and say what limited resource forced the choice.", "rows": 6}], "overview": "Every decision you make is really an economics problem in disguise: something given up so something else can be gained. This assignment asks you to take one real decision from your own life and examine it the way an economist would.", "focus": "What can a real decision you made teach you about scarcity, trade-offs, and opportunity cost?", "criteria": [["Content Knowledge", "Responses demonstrate a thorough understanding of economic decision-making. Clearly explains personal and real-world examples using accurate economic concepts such as scarcity, trade-offs, and opportunity cost."], ["Application of Economic Concepts", "Effectively applies key concepts (scarcity, opportunity cost, trade-offs) to both personal and real-world examples with clear and logical connections. Demonstrates insight into how economic factors influence decisions."], ["Organization and Clarity", "Responses are exceptionally well-organized, clearly structured, and logically developed. Each section is easy to follow, and sentences flow smoothly."], ["Critical Thinking", "Demonstrates strong critical thinking through analysis and reflection on personal choices and real-world implications. Insightfully evaluates alternatives, opportunity costs, and impacts."], ["Mechanics and Presentation", "Writing is clear, polished, and free of errors. Uses complete sentences, proper grammar, punctuation, and vocabulary appropriate for academic writing."]]}], "ask": {"hello": "Ask me about anything in the lesson: scarcity, trade-offs, the three questions, micro and macro, or your assignment.", "fallback": "My notes don't cover that one. Which part were you reading when the question came up? Try a word from it, like scarcity, trade-off, or macroeconomics.", "backDefault": "Go back to the paragraph that made you ask. What resource is limited there, and what gets given up?", "notes": [["scarc", "Scarcity does not mean nothing is available. It means there is never enough of everything to satisfy every possible use for it. Part 1, first paragraph."], ["trade.?off", "A trade-off is giving up one thing in order to get another. Farmland used to grow food cannot also grow biofuel. Part 1, first paragraph."], ["three questions|what to produce|how to produce|for whom", "What should be produced? How should it be produced? For whom should it be produced? Every society has to answer them. Part 1, second paragraph."], ["market economy|centrally planned|planned economy|government official", "A market economy lets consumer demand and business competition answer the three questions. A centrally planned economy has government officials answer them. Part 1, second paragraph."], ["resource|tangible|intangible", "Resources can be tangible, like land, money, and machinery, or intangible, like time and skill. Both are limited. Part 1, first paragraph."], ["micro", "Microeconomics zooms in on individual decision-makers: a household, a worker, a business. Part 2, first paragraph."], ["macro|unemploy|inflation|growth|whole economy", "Macroeconomics zooms out to the whole economy: unemployment, inflation, growth, and trade. Part 2, first paragraph."], ["recession", "A recession is a period when the economy shrinks, usually measured as two quarters in a row of falling output. It is in the Words list."], ["opportunity cost|next.?best", "Opportunity cost is the value of the next-best alternative you gave up to make your choice. Part 2, the boxed note."], ["incentive|coupon|reward|motivat", "Incentives are the financial, social, or personal motivations that push people toward one choice over another. Part 2, the boxed note."], ["assignment|decision dissection|dissect|turn in|submit", "Decision Dissection is in Your Turn: four parts about one real decision you made. Copy it from there into the Canvas assignment."]], "back": [["decision|choice|chose|right call", "Look at what you gave up in Step 3. Was it worth more or less to you than what you got?"], ["market|plan|government", "Reread the second paragraph of Part 1. Who answers the three questions in each system, and what changes for the people who live there?"]]}};
+const DATA = {"audio":["m1","m2","g_incentive","g_macroeconomics","g_microeconomics","g_opportunity-cost","g_recession","g_scarcity","g_trade-off"],"tim":{"m1":[[0.0,0.36],[0.6,0.98],[0.98,1.3],[1.3,2.62],[2.62,2.72],[2.72,3.02],[3.02,3.22],[3.22,3.72],[3.96,4.04],[4.04,4.14],[4.14,4.38],[4.38,4.72],[4.98,5.2],[5.2,5.34],[5.34,5.48],[5.48,5.68],[5.68,5.96],[5.96,6.2],[6.2,6.6],[7.26,7.3],[7.3,7.62],[7.62,8.04],[8.82,9.02],[9.02,9.14],[9.14,9.4],[9.4,9.78],[9.78,10.12],[10.12,10.44],[10.44,10.92],[11.42,11.5],[11.5,11.68],[11.68,11.98],[12.34,12.6],[12.6,13.08],[13.08,13.42],[13.96,14.22],[14.52,14.6],[14.6,15.0],[15.24,15.34],[15.34,15.52],[15.52,15.8],[16.0,16.1],[16.1,16.24],[16.24,16.64],[16.82,16.92],[16.92,17.06],[17.06,17.48],[17.96,18.12],[18.12,18.38],[18.38,18.86],[18.86,19.22],[19.22,19.5],[20.06,20.18],[20.18,20.36],[20.36,20.7],[20.98,21.12],[21.12,21.28],[21.28,21.7],[21.7,21.96],[21.96,22.16],[22.16,22.44],[22.44,22.76],[23.3,23.54],[23.84,24.28],[24.62,25.02],[25.42,25.56],[25.96,26.06],[26.06,26.4],[26.4,26.58],[26.58,26.7],[26.7,26.92],[27.38,27.6],[27.6,27.92],[27.92,28.22],[28.22,28.58],[29.14,29.42],[29.42,29.66],[29.66,29.98],[29.98,30.14],[30.14,30.42],[30.42,30.66],[30.66,30.96],[30.96,31.5],[32.18,32.3],[32.3,32.48],[32.48,32.7],[32.7,32.98],[32.98,33.18],[33.18,33.56],[34.02,34.14],[34.14,34.34],[34.34,34.62],[34.62,34.98],[34.98,35.26],[35.26,35.46],[35.46,35.96],[35.96,36.26],[36.26,36.66],[36.66,37.04],[37.04,37.46],[38.08,38.1],[38.1,38.52],[38.52,38.86],[38.86,39.18],[39.18,39.32],[39.32,40.52],[40.52,40.76],[40.76,40.94],[40.94,41.14],[41.14,41.44],[41.44,41.68],[41.68,42.0],[42.0,42.48],[42.48,42.9],[42.9,43.18],[43.18,43.52],[43.52,43.9],[44.42,44.5],[44.5,44.82],[44.82,45.3],[45.66,45.78],[45.78,46.14],[46.14,46.48],[46.7,46.86],[46.86,47.04],[47.04,47.3],[47.3,47.7],[47.7,48.22],[48.9,49.0],[49.0,49.26],[49.26,49.44],[49.44,49.78],[50.34,50.52],[50.52,50.74],[50.74,50.84],[50.84,50.96],[50.96,51.28],[51.78,51.9],[51.9,52.06],[52.06,52.38],[53.04,53.14],[53.14,53.28],[53.28,53.42],[53.42,53.58],[53.58,53.86],[54.12,54.32],[54.32,54.46],[54.46,54.64],[54.64,54.96],[54.96,55.34]],"m2":[[0.0,0.58],[0.58,0.82],[0.82,1.06],[1.06,1.46],[1.46,1.88],[2.38,2.4],[2.4,2.5],[2.5,2.66],[2.66,2.82],[2.82,3.1],[3.1,3.3],[3.3,3.44],[3.44,3.76],[4.36,4.52],[4.52,4.9],[4.9,5.22],[5.22,5.48],[5.48,5.6],[5.6,5.78],[5.78,6.16],[6.16,7.36],[7.36,7.48],[7.48,7.84],[7.84,8.12],[8.12,8.36],[8.36,8.52],[8.52,8.72],[8.72,8.9],[8.9,9.18],[9.44,9.68],[9.68,9.88],[9.88,10.16],[10.16,10.66],[10.66,10.88],[10.88,11.06],[11.06,11.26],[11.26,11.42],[11.42,11.66],[11.66,12.06],[12.58,13.04],[13.04,14.02],[14.44,14.66],[14.66,14.96],[14.96,15.42],[15.42,15.56],[15.56,15.72],[15.72,16.02],[16.42,16.56],[16.56,16.9],[16.9,17.56],[17.56,17.82],[17.82,18.0],[18.0,18.3],[18.3,18.58],[18.58,18.68],[18.68,18.82],[18.82,18.98],[18.98,19.28],[19.28,19.7],[19.7,19.88],[19.88,20.28],[20.72,20.84],[20.84,21.0],[21.0,21.24],[21.24,21.46],[21.46,21.78],[22.2,22.36],[22.36,22.86],[22.86,23.3],[23.3,23.48],[23.48,23.86],[24.24,24.38],[24.38,24.58],[24.58,24.96],[24.96,25.2],[25.2,25.54],[25.54,25.94],[25.94,26.28],[26.92,27.16],[27.16,28.38],[28.38,28.98],[28.98,29.38],[29.82,30.02],[30.02,30.56],[31.28,31.44],[31.44,31.92],[31.92,32.3],[32.3,32.72],[33.54,33.54],[33.54,34.02],[34.02,34.24],[34.24,34.66],[34.66,34.98],[34.98,35.26],[35.26,35.54],[35.54,35.7],[35.7,35.94]],"g_incentive":[[0.0,0.82],[1.36,1.4],[1.4,1.82],[1.82,2.1],[2.1,2.52],[2.52,2.84],[2.84,3.14],[3.14,3.54],[3.54,3.88],[3.88,4.22],[4.22,4.64],[4.64,5.04],[5.04,5.38]],"g_macroeconomics":[[0.0,1.26],[1.74,1.76],[1.76,2.02],[2.02,2.26],[2.26,2.36],[2.36,2.72],[2.72,3.24],[3.54,3.92],[3.92,4.56],[5.06,5.4],[5.92,5.98],[5.98,6.28]],"g_microeconomics":[[0.0,1.22],[1.68,1.72],[1.72,2.0],[2.0,2.22],[2.22,2.36],[2.36,2.72],[2.72,3.04],[3.04,3.28],[3.28,3.7],[3.7,4.34],[4.72,5.08],[5.08,5.56],[5.56,5.92]],"g_opportunity-cost":[[0.0,0.54],[0.54,1.04],[1.84,1.86],[1.86,2.18],[2.18,2.42],[2.42,2.54],[2.54,3.16],[3.16,3.52],[3.52,3.76],[3.76,3.94],[3.94,4.2],[4.2,4.48],[4.48,4.6],[4.6,5.0]],"g_recession":[[0.0,0.56],[1.34,1.34],[1.34,1.62],[1.62,1.96],[1.96,2.08],[2.08,2.54],[2.54,3.26],[3.7,3.78],[3.78,3.9],[3.9,4.3],[4.3,4.68],[4.68,4.94],[4.94,5.3],[5.3,5.62],[5.62,5.84],[5.84,5.96],[5.96,6.26],[6.26,6.48],[6.48,6.86],[6.86,7.38]],"g_scarcity":[[0.0,0.64],[1.42,1.46],[1.46,1.76],[1.76,2.04],[2.04,2.3],[2.3,2.68],[2.68,3.36],[3.36,3.74],[3.74,4.1],[4.1,4.62],[4.62,4.88],[4.88,5.2],[5.2,5.5]],"g_trade-off":[[0.0,1.18],[1.18,1.34],[1.34,1.54],[1.54,1.86],[1.86,2.18],[2.18,2.54],[2.54,2.74],[2.74,2.96],[2.96,3.12],[3.12,3.48]]},"disp":{"m1":"G'day, I'm Mr. Magister. It rhymes with mister, with a hard G, and it's the Latin word for teacher. Welcome to economics. Here's the whole subject in one picture. On this side, everything people want: food, a phone, a night out, a new road, a better hospital. That list never runs out. On this side, what we actually have to work with: land, workers, machines, money, and hours in the day. That pile is limited. The gap between the two is called scarcity. It doesn't mean nothing is available. It means there's never enough of everything for every possible use. So every choice has a trade-off. Farmland that grows food this year can't also grow fuel crops. And every society, rich or poor, has to answer three questions. What should be produced? How should it be produced? And for whom? Hang on to those three. You'll use them all semester.","m2":"Economists look through two lenses, a bit like the zoom on a camera. Zoom right in, and you see one decision-maker: a family choosing what to buy this week, or a café deciding whether to open an hour earlier. That's microeconomics. Now zoom all the way out. The café disappears into the crowd, and you see the whole country at once. How many people have jobs. How fast prices are rising. Whether the economy is growing or shrinking. That's macroeconomics. Same economy, different distance. Micro explains one choice. Macro explains what millions of choices add up to.","g_incentive":"Incentive. A reward or reason that pushes people toward one choice over another.","g_macroeconomics":"Macroeconomics. The study of the whole economy, including unemployment, inflation, and growth.","g_microeconomics":"Microeconomics. The study of the choices made by individual people, households, and businesses.","g_opportunity-cost":"Opportunity Cost. The value of the next-best choice you give up when you decide.","g_recession":"Recession. A period when the economy shrinks. It is usually measured as two quarters in a row of falling output.","g_scarcity":"Scarcity. The condition of having limited resources while human wants have no limit.","g_trade-off":"Trade-Off. Giving up one thing in order to get another."}};
+/* ===== Economics Honors glow-up kit: core (route, player, words, check-in, rows, mini-lessons, desk, Ask) =====
+   Lesson config arrives as CFG (lesson.json, shaped by build.py). Lesson-only code goes in lesson.js. */
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const store = (() => { let s = {}; try { s = JSON.parse(localStorage.getItem(CFG.key) || '{}'); } catch (e) {}
+  return { get: k => s[k], set: (k, v) => { s[k] = v; try { localStorage.setItem(CFG.key, JSON.stringify(s)); } catch (e) {} } }; })();
+const esc = t => String(t ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const NP = CFG.parts.length, HASBOOK = NP > 0;
+
+/* ---------- route ---------- */
+const STOPS = CFG.stops || ['Arrive', ...CFG.parts.map(p => p.stop || p.title), CFG.finalStop || 'Your Turn'];
+const FINAL = STOPS.length - 1;
+const done = new Set(store.get('done') || []);
+function drawStops(c) {
+  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === c ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === FINAL ? '&#9733;' : i)}</i>${s}</button>`).join('');
+  $('.stop.on')?.scrollIntoView({ inline: 'center', block: 'nearest' });
+}
+let cur = 0;
+const inBookStep = n => HASBOOK && n >= 1 && n <= NP;
+function go(n, auto = true) {
+  if (cur !== n && !(inBookStep(cur) && inBookStep(n) && n < cur)) { done.add(cur); store.set('done', [...done]); }
+  cur = n; store.set('step', n);
+  const ib = inBookStep(n);
+  $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === (ib ? '0' : String(n))));
+  drawStops(n);
+  if (Q.length) { A.pause(); Q = []; qi = 0; }
+  if (ib) {
+    if (!auto) return;
+    if (R.open) { const c = R.pts[n]; if (spreadStart(c) !== R.col) show(c, c > R.col ? 1 : -1); return; }
+    window.scrollTo({ top: $('main').offsetTop - 60, behavior: 'instant' });
+    openBook('P' + n, $('.bigbook'));
+  } else {
+    if (HASBOOK && R.open) closeBook();
+    window.scrollTo({ top: $('main').offsetTop - 60, behavior: 'smooth' });
+  }
+}
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]'); if (g) { go(+g.dataset.go); return; }
+  const p = e.target.closest('[data-play]'); if (p) { play([p.dataset.play]); return; }
+  const ob = e.target.closest('[data-openbook]'); if (ob && HASBOOK) { openBook(ob.dataset.openbook || null, ob.closest('.readcard')?.querySelector('.minibook') || (ob.closest('[data-step="0"]') ? $('.bigbook') : null)); return; }
+  const t = e.target.closest('.term'); if (t) { showPop(t); return; }
+  if (!e.target.closest('.pop')) $('#pop').style.display = 'none';
+  const o = e.target.closest('[data-open]'); if (o) { openDrawer(o.dataset.open); return; }
+  if (e.target.closest('[data-close]') || e.target.id === 'scrim') closeDrawers();
+});
+
+/* ---------- player: plays only when the student presses a play button ---------- */
+const A = new Audio(); A.preload = 'none';
+let Q = [], qi = 0, words = [], times = null, lastW = -1, rate = 1, raf = 0, onTime = null;
+const dock = $('#dock'), cap = $('#cap'), seek = $('#seek');
+function play(list, start = 0, hook = null) {
+  Q = list.filter(id => DATA.audio.includes(id)); qi = Math.max(0, start); onTime = hook;
+  if (!Q.length) return; load();
+}
+function load() {
+  const id = Q[qi]; if (!id) return stop();
+  $$('.w.on').forEach(w => w.classList.remove('on'));
+  const mini = $(`.mini[data-clip="${id}"] .sub`);
+  const d = DATA.disp[id] || '';
+  cap.innerHTML = d.split(/\s+/).map((w, i) => `<span class="w" data-w="${i}">${esc(w)}</span>`).join(' ');
+  words = $$('.w', cap);
+  times = DATA.tim[id] || null; lastW = -1;
+  dock.classList.add('show'); if (HASBOOK && R.open) layout(true);
+  A.src = 'audio/' + id + '.mp3'; A.playbackRate = rate;
+  A.play().catch(() => {});
+}
+function stop() { dock.classList.remove('talking'); $('#pp').innerHTML = '&#9654;'; cancelAnimationFrame(raf); }
+function closeDock() { A.pause(); Q = []; qi = 0; onTime = null; dock.classList.remove('show'); $$('.w.on').forEach(w => w.classList.remove('on')); if (HASBOOK && R.open) layout(true); }
+A.addEventListener('play', () => { dock.classList.add('talking'); $('#pp').innerHTML = '&#10074;&#10074;'; tick(); });
+A.addEventListener('pause', stop);
+A.addEventListener('ended', () => { $$('.w.on').forEach(w => w.classList.remove('on')); qi++; if (qi < Q.length) load(); else { const h = onTime; Q = []; qi = 0; stop(); h && h(Infinity, -1); onTime = null; } });
+A.addEventListener('error', () => { setTimeout(() => { qi++; if (qi < Q.length) load(); else stop(); }, 400); });
+function wordAt(t) {
+  if (times) { let k = -1; for (let i = 0; i < times.length; i++) { if (times[i] && times[i][0] <= t) k = i; } return k; }
+  if (!A.duration) return -1;
+  return Math.min(words.length - 1, Math.floor(t / A.duration * words.length));
+}
+function tick() {
+  const t = A.currentTime, k = wordAt(t);
+  if (k !== lastW) {
+    words.forEach(w => w.classList.remove('on'));
+    $$(`[data-w="${k}"]`, cap).forEach(w => w.classList.add('on'));
+    onTime && onTime(t, k);
+    lastW = k;
+  }
+  if (A.duration) seek.value = Math.round(t / A.duration * 1000);
+  if (!A.paused) raf = requestAnimationFrame(tick);
+}
+seek.oninput = () => { if (A.duration) { A.currentTime = seek.value / 1000 * A.duration; tick(); } };
+$('#pp').onclick = () => { if (!Q.length) return; A.paused ? A.play() : A.pause(); };
+$('#prev').onclick = () => { if (A.currentTime > 2 || qi === 0) A.currentTime = 0; else { qi--; load(); } };
+$('#next').onclick = () => { if (qi < Q.length - 1) { qi++; load(); } };
+$('#back5').onclick = () => { A.currentTime = Math.max(0, A.currentTime - 5); tick(); };
+$('#fwd5').onclick = () => { A.currentTime = Math.min(A.duration || 0, A.currentTime + 5); tick(); };
+$('#rate').onclick = () => { rate = rate === 1 ? 1.25 : rate === 1.25 ? 0.85 : 1; A.playbackRate = rate; $('#rate').innerHTML = rate + '&times;'; };
+$('#voiceOff').onclick = closeDock;
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input, textarea')) return;
+  if (HASBOOK && R.open && !R.busy) {
+    if (e.key === 'ArrowRight') { turn(1); return; }
+    if (e.key === 'ArrowLeft') { turn(-1); return; }
+    if (e.key === 'Escape') { if (!$('#noteEd').classList.contains('open') && !$('#hlbar').classList.contains('open') && !$('.drawer.open')) closeBook(); hideBar(); return; }
+  }
+  if (e.key === ' ' && Q.length) { e.preventDefault(); $('#pp').click(); }
+});
+
+/* ---------- words: popover + drawer ---------- */
+let savedWords = store.get('words') || {};
+const GL = Object.fromEntries(CFG.glossary.map(g => [g.id, g]));
+function showPop(t) {
+  const g = GL[t.dataset.g] || {}, word = t.textContent.trim(), key = g.word || word;
+  const p = $('#pop');
+  p.innerHTML = `<b>${esc(word)}</b>${g.pron ? `<i>${esc(g.pron)}</i> · ` : ''}${esc(g.def || '')}<br>` +
+    (DATA.audio.includes('g_' + g.id) ? `<button class="hear">&#128266; Hear it</button>` : '') +
+    `<button class="savew">${savedWords[key] ? '&#10003; Saved to my words' : '+ Save to my words'}</button>`;
+  $('.savew', p).onclick = () => { savedWords[key] = g.def || ''; store.set('words', savedWords); $('.savew', p).innerHTML = '&#10003; Saved to my words'; if (HASBOOK) drawMarks(); updateNb(); };
+  const h = $('.hear', p); if (h) h.onclick = () => play(['g_' + g.id]);
+  p.style.display = 'block';
+  const r = t.getBoundingClientRect();
+  p.style.left = Math.max(10, Math.min(scrollX + r.left, scrollX + innerWidth - 340)) + 'px';
+  p.style.top = (scrollY + r.bottom + 8) + 'px';
+}
+function openDrawer(id) { closeDrawers(); $('#' + id).classList.add('open'); $('#scrim').classList.add('on'); if (id === 'askDrawer') { askHello(); setTimeout(() => $('#askIn').focus(), 300); } }
+function closeDrawers() { $$('.drawer').forEach(d => d.classList.remove('open')); $('#scrim').classList.remove('on'); askCtx = ''; $('#askIn').placeholder = 'Ask about the lesson'; }
+$$('.gl button').forEach(b => b.onclick = () => play([b.dataset.g]));
+
+/* ---------- quick check-in (verbatim source widget; the choice comes back later) ---------- */
+function drawCheckin() {
+  const v = store.get('checkin'), C = CFG.checkin; if (!C || !$('#checkin')) return;
+  $$('#checkin .opt').forEach(o => o.classList.toggle('picked', +o.dataset.v === v));
+  $('#checkinNote').innerHTML = v == null ? '' : esc(C.opts[v].fb) + (C.returns ? `<br><span style="color:var(--acc-d)">${esc(C.returns)}</span>` : '');
+  $$('.checkin-back').forEach(el => el.innerHTML = v == null ? '' : `<div class="coach"><img src="img/magister.jpg" alt=""><div><b>Your check-in:</b> ${esc(C.opts[v].label)}. ${esc(C.back || '')}</div></div>`);
+}
+$$('#checkin .opt').forEach(o => o.onclick = () => { store.set('checkin', +o.dataset.v); drawCheckin(); updateNb(); });
+
+/* ---------- rows widget: sort / match / name it (prompts, options, hints and feedback from the source) ---------- */
+const rowState = store.get('rows') || {};
+function rowsWidget(el) {
+  const key = el.dataset.rows, W = CFG.widgets[key]; const st = rowState[key] = rowState[key] || {};
+  function draw() {
+    el.innerHTML = W.rows.map((r, i) => {
+      const a = st[i], ok = a === r.correct, cls = a == null ? '' : ok ? 'ok' : 'no';
+      return `<div class="row ${cls}" data-i="${i}"><p class="rp">${r.prompt}</p><div class="ro">${r.opts.map((o, k) => `<button data-k="${k}" class="${a === k ? 'sel' : ''}">${o}</button>`).join('')}</div><div class="why">${a == null ? '' : ok ? '&#10003; ' + r.fb : '&#8635; ' + r.hint}</div></div>`;
+    }).join('') + `<div class="tally"></div>`;
+    $$('.ro button', el).forEach(b => b.onclick = () => { const i = +b.closest('.row').dataset.i; st[i] = +b.dataset.k; store.set('rows', rowState); draw(); updateNb(); });
+    const right = W.rows.filter((r, i) => st[i] === r.correct).length, tried = Object.keys(st).length;
+    $('.tally', el).textContent = tried ? `${right} of ${W.rows.length} right` + (right === W.rows.length ? '. All done.' : '') : '';
+  }
+  draw();
+}
+
+/* ---------- Mr. Magister mini-lessons: a visual that changes beat by beat; voiced ones follow the audio ---------- */
+const miniSeen = new Set(store.get('miniSeen') || []);
+function miniWidget(el) {
+  const id = el.dataset.mini, M = CFG.minis[id], svg = $('.ms', el), sub = $('.sub', el), n = M.beats.length;
+  const voiced = DATA.audio.includes(id);
+  let b = -1;
+  const words0 = []; let acc = 0; M.beats.forEach(bt => { words0.push(acc); acc += bt.say.split(/\s+/).length; });
+  function setBeat(k, fromAudio) {
+    if (svg?.classList.contains('idle')) { svg.classList.remove('idle'); for (let i = 0; i < n; i++) svg.classList.remove('b' + (i + 1)); }
+    b = Math.max(0, Math.min(n - 1, k));
+    for (let i = 0; i < n; i++) svg?.classList.toggle('b' + (i + 1), i <= b);
+    if (!fromAudio) sub.innerHTML = esc(M.beats[b].say);
+    else sub.innerHTML = M.beats[b].say.split(/\s+/).map((w, i) => `<span class="w" data-mw="${words0[b] + i}">${esc(w)}</span>`).join(' ');
+    $$('.dots i', el).forEach((d, i) => d.classList.toggle('on', i <= b));
+    $('.mprev', el).disabled = b <= 0; $('.mnext', el).disabled = b >= n - 1;
+    if (b === n - 1) { miniSeen.add(id); store.set('miniSeen', [...miniSeen]); updateNb(); }
+  }
+  function reset() { b = -1; for (let i = 0; i < n; i++) svg?.classList.add('b' + (i + 1)); svg?.classList.add('idle'); sub.innerHTML = `<i style="color:var(--ink2)">${voiced ? 'Play, or step through.' : 'Start, then step through.'}</i>`; $$('.dots i', el).forEach(d => d.classList.remove('on')); $('.mprev', el).disabled = true; $('.mnext', el).disabled = false; }
+  el.querySelector('.mctl').innerHTML = (voiced ? `<button class="btn small mplay">&#9654; Play</button>` : '') +
+    `<button class="btn ghost small mprev" aria-label="Back">&#8249; Back</button><button class="btn ghost small mnext">${voiced ? 'Step' : 'Start'} &#8250;</button><button class="btn ghost small mreset" aria-label="Start over">&#8635;</button><span class="dots">${'<i></i>'.repeat(n)}</span>`;
+  $('.mnext', el).onclick = () => { if (Q[qi] === id) closeDock(); setBeat(b + 1); $('.mnext', el).innerHTML = 'Next &#8250;'; };
+  $('.mprev', el).onclick = () => { if (Q[qi] === id) closeDock(); setBeat(b - 1); };
+  $('.mreset', el).onclick = () => { if (Q[qi] === id) closeDock(); reset(); };
+  if (voiced) $('.mplay', el).onclick = () => {
+    reset();
+    const T = DATA.tim[id] || [];
+    const starts = words0.map(w => (T[w] || [0])[0]);
+    play([id], 0, (t, k) => {
+      if (t === Infinity) { setBeat(n - 1); return; }
+      let bb = 0; starts.forEach((s, i) => { if (t >= s - 0.05) bb = i; });
+      if (bb !== b) setBeat(bb, true);
+      $$('.sub .w', el).forEach(w => w.classList.toggle('on', +w.dataset.mw === k));
+    });
+  };
+  reset();
+}
+
+/* ---------- assignment desks (the live Canvas assignments, worked here, submitted in Canvas) ---------- */
+const ASG = CFG.assigns || [];
+let deskAns = store.get('desks') || {}, critChk = store.get('crits') || {};
+const wcount = t => (t.trim().match(/\S+/g) || []).length;
+const dAns = (a, i) => ((deskAns[a] || {})[i] || '');
+const deskDone = a => ASG[a].steps.filter((s, i) => dAns(a, i).trim()).length;
+function deskText(a) {
+  const D = ASG[a];
+  return `${D.title}\n${CFG.kicker} · ${CFG.title}\n\n` + D.steps.map((s, i) => `${i + 1}. ${s.title}\n${dAns(a, i).trim() || '(not written yet)'}`).join('\n\n');
+}
+function drawOut(a) { const o = $(`#deskOut-${a}`); if (o) o.textContent = deskText(a); const s = $(`#deskStat-${a}`); if (s) s.textContent = `${deskDone(a)} of ${ASG[a].steps.length} parts written`; }
+function drawDesk() {
+  ASG.forEach((D, a) => {
+    const root = $(`#desk-${a}`); if (!root) return;
+    $$('textarea[data-d]', root).forEach(t => {
+      const i = +t.dataset.d; t.value = dAns(a, i);
+      const upd = () => { t.closest('.dstep').classList.toggle('has', !!t.value.trim()); t.parentElement.querySelector('.wc').textContent = wcount(t.value) + ' words'; };
+      t.oninput = () => { (deskAns[a] = deskAns[a] || {})[i] = t.value; store.set('desks', deskAns); upd(); drawOut(a); updateNb(); }; upd();
+    });
+    $$('.crit input', root).forEach(c => { const k = a + ':' + c.dataset.c; c.checked = !!critChk[k]; c.onchange = () => { critChk[k] = c.checked; store.set('crits', critChk); }; });
+    $(`#deskCopy-${a}`).onclick = async () => { const n = $(`#deskNote-${a}`); try { await navigator.clipboard.writeText(deskText(a)); n.textContent = 'Copied. Paste it into the Canvas assignment.'; } catch (e) { const r = document.createRange(); r.selectNodeContents($(`#deskOut-${a}`)); getSelection().removeAllRanges(); getSelection().addRange(r); n.textContent = 'Selected. Press Ctrl+C (or Cmd+C) to copy.'; } };
+    $(`#deskPdf-${a}`).onclick = () => deskPdf(a);
+    drawOut(a);
+  });
+}
+
+/* ---------- Ask Mr. Magister (prepared notes; opinion questions get a question back) ---------- */
+let askCtx = '';
+const NOTES = (CFG.ask?.notes || []).map(([r, a]) => [new RegExp(r, 'i'), a]);
+const BACK = (CFG.ask?.back || []).map(([r, a]) => [new RegExp(r, 'i'), a]);
+const THINK = /\b(should|would you|do you think|is it fair|fair|better|worse|worth|agree|right or wrong|good idea|bad idea|which is best|your opinion|my answer|is this right|check my)\b/i;
+function reply(q) {
+  if (THINK.test(q)) { const b = BACK.find(([r]) => r.test(q)) || (askCtx && BACK.find(([r]) => r.test(askCtx))); return "That's yours to decide. " + (b ? b[1] : CFG.ask.backDefault); }
+  const n = NOTES.find(([r]) => r.test(q)) || (askCtx && NOTES.find(([r]) => r.test(askCtx)));
+  return n ? n[1] : CFG.ask.fallback;
+}
+function say(who, t) { const m = document.createElement('div'); m.className = 'msg ' + who; m.textContent = t; $('#chat').appendChild(m); m.scrollIntoView({ block: 'end' }); }
+let helloed = false;
+function askHello() { if (!helloed) { helloed = true; say('him', CFG.ask.hello); } }
+$('#askForm').onsubmit = e => { e.preventDefault(); const q = $('#askIn').value.trim(); if (!q) return; say('me', q); $('#askIn').value = ''; setTimeout(() => say('him', reply(q)), 350); };
+function askAbout(text) {
+  openDrawer('askDrawer'); askCtx = text;
+  const m = document.createElement('div'); m.className = 'msg ctx'; m.textContent = '“' + (text.length > 220 ? text.slice(0, 220) + '…' : text) + '”';
+  $('#chat').appendChild(m); m.scrollIntoView({ block: 'end' });
+  $('#askIn').placeholder = 'Ask about this passage';
+}
+
+/* ---------- the book ---------- */
+const CHAP = CFG.chapters.map(c => [c.id, c.title]);
+const chNum = c => CHAP.findIndex(x => x[0] === c) + 1, chTitle = c => CHAP[chNum(c) - 1][1];
+const SLOTS = CFG.slots;
+const LBL = { k: 'Key idea', e: 'Evidence', n: 'Note' };
+const PARTS = CFG.parts.map(p => [p.title, p.chapters]);
+const SIZES = [17, 19, 21], LHS = [1.62, 1.95];
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const R = { open: false, busy: false, two: true, per: 2, P: 540, M: 72, col: 0, ncol: 1, words: [], wcol: [], chs: {}, pts: {}, opener: null };
+const reader = $('#reader'), book = $('#book'), flow = $('#flow'), vp = $('#vp');
+const rs = { size: store.get('rsize') ?? 1, lh: store.get('rlh') ?? 0, ruler: false };
+let hls = store.get('hls') || [], ans = store.get('ans') || {};
+const chRead = new Set(store.get('chRead') || []);
+let pend = null;
+
+const bookClips = () => $$('#flow .prose').map(p => p.dataset.clip);
+const spreadStart = c => R.two ? c - (c % 2) : c;
+const colOfEl = el => Math.floor((el.getBoundingClientRect().left - flow.getBoundingClientRect().left + 2) / R.P);
+const wordEl = (c, k) => $(`#flow .prose[data-clip="${c}"] .w[data-w="${k}"]`);
+function firstVisibleWord() { const i = R.wcol.findIndex(c => c >= R.col); return i < 0 ? null : R.words[i]; }
+const anchorOf = w => w ? [w.closest('.prose').dataset.clip, +w.dataset.w] : null;
+
+function layout(keep) {
+  const anchor = keep === true ? anchorOf(firstVisibleWord()) : null;
+  R.two = innerWidth >= 860; R.per = R.two ? 2 : 1;
+  const availH = innerHeight - 56 - (R.two ? 34 : 64) - (dock.classList.contains('show') ? (R.two ? 74 : 140) : 0), availW = innerWidth - (R.two ? 150 : 16);
+  const P = R.two ? Math.min(560, Math.floor(availW / 2)) : Math.min(620, availW);
+  const H = Math.round(R.two ? Math.min(820, availH, P * 1.5) : availH);
+  const M = R.two ? (P >= 500 ? 84 : 62) : 22;
+  Object.assign(R, { P, M, H });
+  const s = book.style;
+  s.setProperty('--P', P + 'px'); s.setProperty('--H', H + 'px'); s.setProperty('--M', M + 'px');
+  s.setProperty('--fs', (R.two ? SIZES[rs.size] : SIZES[rs.size] - 1) + 'px'); s.setProperty('--lh', LHS[rs.lh]);
+  book.classList.toggle('two', R.two); document.body.style.setProperty('--bookH', H + 'px');
+  flow.classList.remove('slide'); flow.style.transform = 'none';
+  R.words = $$('.w', flow);
+  const fl = flow.getBoundingClientRect().left;
+  R.wcol = R.words.map(w => Math.floor((w.getBoundingClientRect().left - fl + 2) / P));
+  R.ncol = Math.max(Math.max(...R.wcol), colOfEl($('.endpg .chk', flow))) + 1;
+  R.pts = {}; $$('.partpg', flow).forEach(p => R.pts[p.dataset.pt] = colOfEl($('.chk', p)));
+  R.chs = {};
+  $$('.ch', flow).forEach(c => { const ws = $$('.w', c); R.chs[c.dataset.ch] = { a: colOfEl($('.chk', c)), b: R.wcol[R.words.indexOf(ws[ws.length - 1])] }; });
+  const w = anchor && wordEl(...anchor);
+  show(w ? R.wcol[R.words.indexOf(w)] : R.col, 0);
+  updateCards();
+  drawSlips();
+}
+
+function show(c, dir) {
+  c = Math.max(0, Math.min(spreadStart(R.ncol - 1), spreadStart(c)));
+  const prev = R.col; R.col = c;
+  if (dir && !reduced && R.open) { if (R.two) turnAnim(dir, prev, c); else { flow.classList.add('slide'); } }
+  flow.style.transform = `translateX(${-c * R.P}px)`;
+  const chAt = col => { let r = null; CHAP.forEach(([id]) => { if (R.chs[id] && R.chs[id].a <= col) r = id; }); return r; };
+  const isOp = col => Object.values(R.pts).includes(col) || col >= R.ncol - 1;
+  const head = (col, left) => { const id = chAt(col); if (!id || col >= R.ncol || isOp(col)) return ''; if (R.chs[id].a === col) return ''; return left && R.two ? CFG.title : chTitle(id); };
+  $('#hL').textContent = head(c, true); $('#hR').textContent = R.two ? head(c + 1, false) : '';
+  $('#fL').textContent = c > 0 ? c : ''; $('#fR').textContent = R.two && c + 1 < R.ncol ? c + 1 : '';
+  const pt = partAt(c + R.per - 1), op = [c, c + R.per - 1].map(x => Object.keys(R.pts).find(k => R.pts[k] === x)).find(Boolean);
+  const cc = chAt(c + R.per - 1) || chAt(c);
+  if (op) { $('#rKick').textContent = 'Part ' + op; $('#rChap').textContent = PARTS[op - 1][0]; }
+  else { $('#rKick').textContent = cc ? 'Chapter ' + chNum(cc) : ''; $('#rChap').textContent = cc ? chTitle(cc) : CFG.title; }
+  if (R.open && pt && pt !== cur) { if (inBookStep(cur) && pt > cur) { done.add(cur); store.set('done', [...done]); } cur = pt; store.set('step', pt); drawStops(pt); }
+  $('#tPrev').disabled = c === 0; $('#tNext').disabled = c + R.per >= R.ncol;
+  if (R.open) {
+    let changed = false;
+    CHAP.forEach(([id]) => { const x = R.chs[id]; if (x && x.b >= c && x.b < c + R.per && !chRead.has(id)) { chRead.add(id); changed = true; } });
+    if (changed) { store.set('chRead', [...chRead]); updateCards(); }
+    store.set('pos', anchorOf(firstVisibleWord()));
+  }
+  drawRibbon(); hideBar();
+  requestAnimationFrame(() => setTimeout(drawSlips, dir && R.two && !reduced ? 0 : 340));
+}
+function turn(d) {
+  if (R.busy) return;
+  const n = spreadStart(R.col + d * R.per);
+  if (n < 0 || n >= R.ncol || n === R.col) return;
+  show(n, d);
+}
+function ensureVisible(w) {
+  const col = R.wcol[R.words.indexOf(w)];
+  if (col != null && (col < R.col || col >= R.col + R.per)) show(col, 0);
+}
+
+/* a page turn: the leaf carries the old right page over and lands as the new left page */
+function pageClone(col) {
+  const c = document.createElement('div'); c.className = 'clip';
+  const f = flow.cloneNode(true); f.removeAttribute('id'); f.classList.remove('slide');
+  f.style.transform = `translateX(${-col * R.P}px)`; c.appendChild(f); return c;
+}
+function turnAnim(dir, from, to) {
+  const leaf = $('#leaf'), lift = $('#lift'), fr = $('.lf.front', leaf), bk = $('.lf.back', leaf);
+  leaf.getAnimations().forEach(a => a.cancel());
+  fr.innerHTML = ''; bk.innerHTML = ''; lift.innerHTML = '';
+  leaf.className = 'leaf ' + (dir > 0 ? 'fwd' : 'back');
+  if (dir > 0) { fr.appendChild(pageClone(from + 1)); bk.appendChild(pageClone(to)); lift.style.left = '0'; lift.appendChild(pageClone(from)); }
+  else { fr.appendChild(pageClone(from)); bk.appendChild(pageClone(to + 1)); lift.style.left = 'var(--P)'; lift.appendChild(pageClone(from + 1)); }
+  $$('.clip', bk).forEach(c => c.style.left = 'var(--M)');
+  lift.classList.add('on');
+  const a = leaf.animate([{ transform: 'rotateY(0deg)' }, { transform: `rotateY(${dir > 0 ? -180 : 180}deg)` }], { duration: 620, easing: 'cubic-bezier(.45,.05,.25,1)' });
+  setTimeout(() => lift.classList.remove('on'), 310);
+  a.finished.then(() => { leaf.className = 'leaf'; fr.innerHTML = ''; bk.innerHTML = ''; lift.innerHTML = ''; drawSlips(); }).catch(() => {});
+}
+
+/* opening: the book flies up from the card, the cover swings open, a few pages riffle */
+async function openBook(ch, fromEl) {
+  if (R.busy) return;
+  R.opener = document.activeElement;
+  reader.classList.add('open'); reader.setAttribute('aria-hidden', 'false'); document.body.classList.add('reading-open');
+  R.open = true;
+  layout(false);
+  const pos = store.get('pos'), pw = pos && wordEl(...pos);
+  const first = !store.get('opened'); store.set('opened', 1);
+  const target = ch && /^P\d$/.test(ch) ? R.pts[ch[1]] : ch && R.chs[ch] ? R.chs[ch].a : (pw && !first ? R.wcol[R.words.indexOf(pw)] : R.pts[1]);
+  if (reduced) { show(target, 0); reader.animate([{ opacity: 0 }, { opacity: 1 }], 200); $('#rClose').focus(); return; }
+  R.busy = true;
+  const cover = $('#cover'), P = R.P, H = R.H, cx0 = R.two ? P : 0, x1 = R.two ? -P / 2 : 0;
+  show(first ? 0 : target, 0);
+  book.classList.add('closed'); cover.classList.add('on');
+  cover.style.transform = 'rotateY(0deg)'; cover.style.opacity = 1;
+  book.style.transform = 'none';
+  const b0 = book.getBoundingClientRect();
+  const fr = fromEl ? fromEl.getBoundingClientRect() : { left: b0.left + cx0 + P * .3, top: b0.top + H * .3, width: P * .4, height: H * .4 };
+  const sx = fr.width / P, sy = fr.height / H;
+  const anims = [];
+  const flyIn = book.animate([
+    { transform: `translate(${fr.left - b0.left - sx * cx0}px,${fr.top - b0.top}px) scale(${sx},${sy})`, opacity: fromEl ? 1 : 0 },
+    { transform: `translate(${x1}px,0) scale(1)`, opacity: 1 }], { duration: first ? 650 : 340, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
+  anims.push(flyIn);
+  const skip = () => anims.forEach(a => { try { a.finish(); } catch (e) {} });
+  reader.addEventListener('pointerdown', skip, { once: true });
+  await flyIn.finished.catch(() => {});
+  const dur = first ? 1100 : 520;
+  const swing = cover.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(-180deg)' }], { duration: dur, easing: 'cubic-bezier(.5,.05,.25,1)', fill: 'forwards' });
+  const slide = book.animate([{ transform: `translate(${x1}px,0)` }, { transform: 'translate(0,0)' }], { duration: dur, easing: 'cubic-bezier(.5,.05,.25,1)', fill: 'forwards' });
+  anims.push(swing, slide);
+  setTimeout(() => book.classList.remove('closed'), dur * .45);
+  await Promise.all([swing.finished, slide.finished]).catch(() => {});
+  book.classList.remove('closed');
+  const fade = cover.animate([{ opacity: 1 }, { opacity: 0 }], { duration: R.two ? (first ? 260 : 160) : 120, fill: 'forwards' }); anims.push(fade);
+  await fade.finished.catch(() => {});
+  anims.forEach(a => a.cancel()); book.style.transform = 'none'; cover.classList.remove('on');
+  if (first && R.two && target > 1) {
+    for (let i = 0; i < 2 && spreadStart(target) > R.col + 2; i++) { show(R.col + 2, 1); await new Promise(r => setTimeout(r, 260)); }
+  }
+  show(target, first && R.two && R.col !== spreadStart(target) ? 1 : 0);
+  reader.removeEventListener('pointerdown', skip);
+  R.busy = false; $('#rClose').focus();
+}
+function closeBook() {
+  if (!R.open) return;
+  hideBar(); $('#noteEd').classList.remove('open'); $('#rpanel').classList.remove('open'); $('#rset').classList.remove('open');
+  const done = () => { if (inBookStep(cur)) $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === '0')); reader.classList.remove('open'); reader.setAttribute('aria-hidden', 'true'); document.body.classList.remove('reading-open'); R.open = false; R.busy = false; updateCards(); R.opener?.focus?.(); };
+  if (reduced) return done();
+  R.busy = true;
+  reader.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220 }).finished.then(done).catch(done);
+  book.animate([{ transform: 'scale(1)' }, { transform: 'scale(.94)' }], { duration: 220 });
+}
+$('#rClose').onclick = closeBook;
+$('#tPrev').onclick = () => turn(-1);
+$('#tNext').onclick = () => turn(1);
+
+/* ---------- highlights and notes ---------- */
+const saveHls = () => { store.set('hls', hls); renderHls(); updateCards(); drawMarks(); };
+const inPart = (h, c, k) => h.parts.some(([pc, a, b]) => pc === c && k >= a && k <= b);
+const overlaps = (h, parts) => parts.some(([c, a, b]) => h.parts.some(([pc, pa, pb]) => pc === c && a <= pb && b >= pa));
+function partsFrom(ws) {
+  const m = new Map();
+  ws.forEach(w => { const c = w.closest('.prose').dataset.clip, k = +w.dataset.w; const r = m.get(c); if (!r) m.set(c, [k, k]); else { r[0] = Math.min(r[0], k); r[1] = Math.max(r[1], k); } });
+  return [...m].map(([c, [a, b]]) => [c, a, b]);
+}
+function textOf(parts) {
+  return parts.map(([c, a, b]) => {
+    const p = $(`#flow .prose[data-clip="${c}"]`), out = [];
+    for (let k = a; k <= b; k++) out.push($$(`.w[data-w="${k}"]`, p).map(w => w.textContent).join(''));
+    return out.join(' ');
+  }).join(' / ');
+}
+function renderHls() {
+  $$('#flow .hk, #flow .he, #flow .hn').forEach(e => e.classList.remove('hk', 'he', 'hn'));
+  hls.forEach(h => h.parts.forEach(([c, a, b]) => {
+    const p = $(`#flow .prose[data-clip="${c}"]`); if (!p) return;
+    $$('.w', p).forEach(w => { const k = +w.dataset.w; if (k >= a && k <= b) w.classList.add('h' + h.l); });
+    $$('.s', p).forEach(s => { const k = +s.dataset.s; if (k >= a && k < b) s.classList.add('h' + h.l); });
+  }));
+  drawSlips();
+}
+function clearPre() { $$('#flow .pre').forEach(e => e.classList.remove('pre')); }
+function selWords() {
+  const s = getSelection(); if (!s.rangeCount || s.isCollapsed) return null;
+  const r = s.getRangeAt(0); if (!flow.contains(r.commonAncestorContainer)) return null;
+  const ws = R.words.filter(w => r.intersectsNode(w));
+  return ws.length ? ws : null;
+}
+function showBar(rect, edit) {
+  const bar = $('#hlbar'); bar.classList.toggle('edit', !!edit); bar.classList.add('open');
+  const bw = bar.offsetWidth, bh = bar.offsetHeight;
+  let top = rect.top - bh - 10; if (top < 62) top = rect.bottom + 10;
+  bar.style.top = top + 'px'; bar.style.left = Math.max(8, Math.min(innerWidth - bw - 8, rect.left + rect.width / 2 - bw / 2)) + 'px';
+}
+function hideBar() { $('#hlbar')?.classList.remove('open'); clearPre(); pend = null; }
+function pendFromSelection() {
+  const ws = selWords(); if (!ws) return false;
+  const parts = partsFrom(ws);
+  pend = { parts, text: textOf(parts), ch: ws[0].closest('.ch').dataset.ch };
+  showBar(getSelection().getRangeAt(0).getBoundingClientRect(), false);
+  return true;
+}
+const ENDS = /[.?!][’”'")\]]*$/;
+function tapWord(w) {
+  const p = w.closest('.prose'), c = p.dataset.clip, k = +w.dataset.w;
+  const h = hls.find(h => inPart(h, c, k));
+  if (h) { pend = { hl: h, parts: h.parts, text: h.text, ch: h.ch }; showBar(w.getBoundingClientRect(), true); return; }
+  const n = Math.max(...$$('.w', p).map(x => +x.dataset.w)) + 1, txt = k2 => $$(`.w[data-w="${k2}"]`, p).map(x => x.textContent).join('');
+  let a = k, b = k;
+  while (a > 0 && !ENDS.test(txt(a - 1))) a--;
+  while (b < n - 1 && !ENDS.test(txt(b))) b++;
+  clearPre();
+  $$('.w', p).forEach(x => { const i = +x.dataset.w; if (i >= a && i <= b) x.classList.add('pre'); });
+  $$('.s', p).forEach(x => { const i = +x.dataset.s; if (i >= a && i < b) x.classList.add('pre'); });
+  const parts = [[c, a, b]];
+  pend = { parts, text: textOf(parts), ch: p.closest('.ch').dataset.ch };
+  const r1 = $(`.w[data-w="${a}"]`, p).getBoundingClientRect(), r2 = $(`.w[data-w="${b}"]`, p).getBoundingClientRect();
+  const top = Math.min(r1.top, r2.top), left = (r1.top === r2.top) ? r1.left : w.getBoundingClientRect().left;
+  showBar({ top, bottom: Math.max(r1.bottom, r2.bottom), left, width: r1.top === r2.top ? r2.right - r1.left : w.getBoundingClientRect().width }, false);
+}
+function makeHl(l) {
+  const old = hls.filter(h => overlaps(h, pend.parts));
+  const note = old.map(h => h.note).filter(Boolean).join(' ');
+  hls = hls.filter(h => !old.includes(h));
+  const h = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), l, parts: pend.parts, text: pend.text, ch: pend.ch, note };
+  hls.push(h); return h;
+}
+$('#hlbar').addEventListener('pointerdown', e => e.preventDefault());
+$('#hlbar').onclick = e => {
+  const b = e.target.closest('[data-hl]'); if (!b || !pend) return;
+  const act = b.dataset.hl, p = pend;
+  if (act === 'k' || act === 'e') { if (p.hl) p.hl.l = act; else makeHl(act); }
+  else if (act === 'n') { const h = p.hl || makeHl('n'); getSelection().removeAllRanges(); saveHls(); hideBar(); return openNote(h); }
+  else if (act === 'x') { hls = hls.filter(h => h !== p.hl); }
+  else if (act === 'ask') { getSelection().removeAllRanges(); hideBar(); return askAbout(p.text); }
+  getSelection().removeAllRanges(); saveHls(); hideBar();
+};
+let noteFor = null;
+function openNote(h) {
+  noteFor = h; $('#neQ').textContent = '“' + h.text + '”'; $('#neT').value = h.note || '';
+  $('#neDel').style.display = h.note ? '' : 'none';
+  $('#noteEd').classList.add('open'); setTimeout(() => $('#neT').focus(), 50);
+}
+function closeNote() { $('#noteEd').classList.remove('open'); noteFor = null; }
+$('#neSave').onclick = () => {
+  const h = noteFor; if (!h) return closeNote();
+  h.note = $('#neT').value.trim();
+  if (!h.note && h.l === 'n') hls = hls.filter(x => x !== h);
+  saveHls(); closeNote();
+};
+$('#neDel').onclick = () => { const h = noteFor; if (h) { h.note = ''; if (h.l === 'n') hls = hls.filter(x => x !== h); saveHls(); } closeNote(); };
+$('#neX').onclick = () => { const h = noteFor; if (h && h.l === 'n' && !h.note) { hls = hls.filter(x => x !== h); saveHls(); } closeNote(); };
+
+function drawSlips() {
+  const box = $('#slips'); box.innerHTML = ''; if (!R.open) return;
+  const br = book.getBoundingClientRect(), vr = vp.getBoundingClientRect(), mid = vr.left + vr.width / 2;
+  const items = hls.filter(h => h.note).map(h => {
+    const w = wordEl(h.parts[0][0], h.parts[0][1]); if (!w) return null;
+    const r = w.getBoundingClientRect(); if (r.right <= vr.left + 1 || r.left >= vr.right - 1) return null;
+    return { h, y: r.top - br.top - 2, right: R.two && r.left > mid };
+  }).filter(Boolean).sort((a, b) => a.y - b.y);
+  const last = { L: -1e9, R: -1e9 };
+  items.forEach(it => {
+    const side = it.right ? 'R' : 'L', el = document.createElement('button');
+    el.className = 'slip ' + side; el.textContent = it.h.note; el.title = it.h.note;
+    el.onclick = () => openNote(it.h); box.appendChild(el);
+    const y = Math.max(it.y, last[side] + 6); el.style.top = y + 'px'; last[side] = y + el.offsetHeight;
+  });
+}
+
+/* the frame never scrolls: focus inside the book turns to that page instead */
+vp.addEventListener('scroll', () => { if (vp.scrollLeft || vp.scrollTop) { vp.scrollLeft = 0; vp.scrollTop = 0; } });
+flow.addEventListener('focusin', e => { if (R.busy) return; const c = colOfEl(e.target);
+  if (c < R.col || c >= R.col + R.per) show(c, c > R.col ? 1 : -1); });
+
+/* pointer: tap a sentence, drag to select, swipe to turn */
+let down = null;
+vp.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY }; });
+vp.addEventListener('pointerup', e => {
+  if (!down || R.busy) return; const dx = e.clientX - down.x, dy = e.clientY - down.y; down = null;
+  if (e.target.closest('.term, .pp')) return;
+  const sel = getSelection();
+  if (Math.abs(dx) > 60 && Math.abs(dy) < 50 && (sel.isCollapsed || e.pointerType === 'touch')) { sel.removeAllRanges(); turn(dx < 0 ? 1 : -1); return; }
+  setTimeout(() => {
+    if (pendFromSelection()) return;
+    if (Math.hypot(dx, dy) < 8) { const w = e.target.closest('.w') || e.target.closest('.s')?.previousElementSibling; if (w && w.classList.contains('w')) tapWord(w); else hideBar(); }
+  }, 10);
+});
+let selT;
+document.addEventListener('selectionchange', () => {
+  if (!R.open) return; clearTimeout(selT);
+  selT = setTimeout(() => { if (!down && !pend?.hl && selWords()) pendFromSelection(); }, 450);
+});
+reader.addEventListener('pointerdown', e => {
+  if (!e.target.closest('#hlbar, #vp, #noteEd')) hideBar();
+  if (!e.target.closest('#rset, #rSetBtn')) $('#rset').classList.remove('open');
+});
+
+/* reading line */
+book.addEventListener('pointermove', e => {
+  if (!rs.ruler) return;
+  const r = $('#ruler'), rr = r.getBoundingClientRect(), band = R.two ? SIZES[rs.size] * LHS[rs.lh] * 1.15 : (SIZES[rs.size] - 1) * LHS[rs.lh] * 1.15;
+  const y = Math.max(0, Math.min(rr.height - band, e.clientY - rr.top - band / 2));
+  r.children[0].style.height = y + 'px'; r.children[1].style.height = band + 'px';
+});
+$('#rRuler').onclick = () => { rs.ruler = !rs.ruler; $('#ruler').classList.toggle('on', rs.ruler); $('#rRuler').setAttribute('aria-pressed', rs.ruler); const r = $('#ruler'); r.children[0].style.height = '30%'; r.children[1].style.height = (SIZES[rs.size] * LHS[rs.lh] * 1.15) + 'px'; };
+
+/* text settings */
+function drawSet() { $$('#rSize button').forEach(b => b.classList.toggle('on', +b.dataset.v === rs.size)); $$('#rLh button').forEach(b => b.classList.toggle('on', +b.dataset.v === rs.lh)); }
+$('#rSetBtn').onclick = () => { drawSet(); $('#rset').classList.toggle('open'); };
+$$('#rSize button').forEach(b => b.onclick = () => { rs.size = +b.dataset.v; store.set('rsize', rs.size); drawSet(); layout(true); });
+$$('#rLh button').forEach(b => b.onclick = () => { rs.lh = +b.dataset.v; store.set('rlh', rs.lh); drawSet(); layout(true); });
+
+/* ribbon */
+function drawRibbon() {
+  const a = store.get('ribbon'), w = a && wordEl(...a), col = w ? R.wcol[R.words.indexOf(w)] : -1;
+  const here = col >= R.col && col < R.col + R.per;
+  $('#ribbon').classList.toggle('on', here); $('#rRibbon').setAttribute('aria-pressed', here);
+}
+$('#rRibbon').onclick = () => { const on = $('#ribbon').classList.contains('on'); store.set('ribbon', on ? null : anchorOf(firstVisibleWord())); drawRibbon(); drawMarks(); };
+
+/* contents and my marks */
+let panel = 'toc';
+const pageOf = h => { const w = wordEl(h.parts[0][0], h.parts[0][1]); return w ? R.wcol[R.words.indexOf(w)] : 0; };
+function drawMarks() {
+  const body = $('#rpBody'); if (!body) return;
+  $$('#rpTabs button').forEach(b => b.classList.toggle('on', b.dataset.rpanel === panel));
+  if (panel === 'toc') {
+    const rib = store.get('ribbon'), rw = rib && wordEl(...rib);
+    body.innerHTML = `<button class="toc" data-col="0"><b>Title page</b><span></span></button>` +
+      CHAP.map(([id, t], i) => `<button class="toc ${chRead.has(id) ? 'read' : ''}" data-col="${R.chs[id]?.a ?? 0}"><small>Chapter ${i + 1}</small><b>${t}</b><span>p. ${R.chs[id]?.a ?? ''}</span></button>`).join('') +
+      (rw ? `<button class="toc" data-col="${R.wcol[R.words.indexOf(rw)]}"><small>Ribbon</small><b>Where you left the ribbon</b><span>p. ${R.wcol[R.words.indexOf(rw)]}</span></button>` : '');
+  } else {
+    const order = bookClips(), sorted = [...hls].sort((a, b) => order.indexOf(a.parts[0][0]) - order.indexOf(b.parts[0][0]) || a.parts[0][1] - b.parts[0][1]);
+    let html = '', lastCh = '';
+    sorted.forEach(h => {
+      if (h.ch !== lastCh) { html += `<div class="mkh">Chapter ${chNum(h.ch)} · ${chTitle(h.ch)}</div>`; lastCh = h.ch; }
+      html += `<button class="mk" data-col="${pageOf(h)}"><span class="tag ${h.l}">${LBL[h.l]}</span><em>“${esc(h.text)}”</em>${h.note ? `<span class="nt">${esc(h.note)}</span>` : ''}</button>`;
+    });
+    const words = Object.keys(savedWords);
+    if (words.length) html += `<div class="mkh">My words</div>` + words.map(w => `<div class="mk"><b>${esc(w)}</b> <span class="ui" style="font-size:14px;color:var(--ink2)">${esc(savedWords[w])}</span></div>`).join('');
+    body.innerHTML = (html || '<div class="empty">No marks yet.</div>') + `<div class="wrow" style="margin-top:18px"><button class="btn small" data-nb>&#11015; Download My Notebook</button></div>`;
+  }
+  $$('[data-col]', body).forEach(b => b.onclick = () => { $('#rpanel').classList.remove('open'); const c = +b.dataset.col; if (spreadStart(c) !== R.col) show(c, c > R.col ? 1 : -1); });
+  $$('[data-nb]', body).forEach(b => b.onclick = () => notebook());
+}
+$$('[data-rpanel]').forEach(b => b.onclick = () => { const p = $('#rpanel'); if (p.classList.contains('open') && panel === b.dataset.rpanel && b.classList.contains('rt')) { p.classList.remove('open'); return; } panel = b.dataset.rpanel; drawMarks(); p.classList.add('open'); });
+$('#rpX').onclick = () => $('#rpanel').classList.remove('open');
+
+/* ---------- read cards ---------- */
+const partAt = col => { let r = 0; Object.entries(R.pts).forEach(([k, v]) => { if (v <= col) r = Math.max(r, +k); }); return r; };
+function placeBookItems() {
+  $$('.bookhold [data-book]').forEach(el => {
+    const [kind, at] = el.dataset.book.split(':');
+    if (kind === 'fig') { el.classList.add('bfig'); $(`#flow .prose[data-clip="${at}"]`).after(el); return; }
+    if (kind === 'open') { $(`#flow .partpg[data-pt="${at}"] .pt-slot`).appendChild(el); return; }
+    if (kind === 'after') { const p = document.createElement('section'); p.className = 'plate inline'; p.appendChild(el); $(`#flow .prose[data-clip="${at}"]`).after(p); return; }
+    if (kind === 'start') { const ch = $(`#flow .ch[data-ch="${at}"]`), p = document.createElement('section'); p.className = 'plate inline'; p.appendChild(el); const anchor = $('.readfor', ch) || $('h3', ch); anchor.after(p); return; }
+    const ch = $(`#flow .ch[data-ch="${at}"]`), pl = document.createElement('section');
+    pl.className = 'plate'; pl.innerHTML = '<div class="meander"></div>'; pl.appendChild(el);
+    ch.appendChild(pl);
+  });
+}
+function buildCards() {
+  $$('#flow .readfor').forEach(el => { el.innerHTML = `<b>Read for</b>${SLOTS[el.dataset.rf][1]}`; });
+  $$('#flow .ansbox').forEach(el => {
+    const slot = el.dataset.slot;
+    el.innerHTML = `<label><span>My answer</span><em>${SLOTS[slot][1]}</em><textarea rows="3" data-ans="${slot}" placeholder="Your answer">${esc(ans[slot] || '')}</textarea></label>`;
+  });
+  $$('.readcard').forEach(el => {
+    const slot = el.dataset.slot, [chs, q] = SLOTS[slot], nums = chs.map(chNum);
+    el.innerHTML = `<button class="minibook" data-openbook="${chs[0]}" aria-label="Open the book to chapter ${nums[0]}"><span>${nums.join('&thinsp;·&thinsp;')}</span></button>
+      <div><div class="label">${chs.length > 1 ? 'Chapters ' + nums.join(' and ') : 'Chapter ' + nums[0]} · <span class="rc-pages"></span></div>
+      <h3>${chs.map(c => `<span class="chs">${chTitle(c)}</span>`).join('')}</h3>
+      <p class="readfor"><b>Read for</b>${q}</p>
+      <div class="rc-row"><button class="btn" data-openbook="${chs[0]}">&#128214; Open the book</button><span class="rc-stat"></span></div>
+      <label class="rc-ans"><span>My answer</span><textarea rows="2" data-ans="${slot}" placeholder="Your answer">${esc(ans[slot] || '')}</textarea></label></div>`;
+  });
+  $$('[data-ans]').forEach(t => t.oninput = () => { ans[t.dataset.ans] = t.value; store.set('ans', ans); updateNb(); });
+  $$('#flow .ansbox textarea').forEach(t => t.addEventListener('change', updateCards));
+}
+function updateCards() {
+  const pl = $('#partlist');
+  if (pl) pl.innerHTML = PARTS.map(([t, chs], i) => {
+    const read = chs.filter(c => chRead.has(c)).length, slots = Object.entries(SLOTS).filter(([, [c]]) => chs.includes(c[0])).map(([k]) => k), a = slots.filter(k => (ans[k] || '').trim()).length;
+    return `<button class="pl-row ${read === chs.length ? 'read' : ''}" data-go="${i + 1}"><i>${i + 1}</i><b>${t}</b><span>${read}/${chs.length} read · ${a}/${slots.length} ${slots.length > 1 ? 'answers' : 'answer'}</span></button>`;
+  }).join('');
+  $$('.readcard').forEach(el => {
+    const chs = SLOTS[el.dataset.slot][0], a = R.chs[chs[0]]?.a, b = R.chs[chs[chs.length - 1]]?.b;
+    $('.rc-pages', el).textContent = a ? (a === b ? 'Page ' + a : `Pages ${a}–${b}`) : '';
+    const read = chs.every(c => chRead.has(c)), mine = hls.filter(h => chs.includes(h.ch)), notes = mine.filter(h => h.note).length;
+    const st = $('.rc-stat', el); st.classList.toggle('done', read);
+    st.textContent = (read ? '✓ Read' : 'Not yet read') + (mine.length ? ` · ${mine.length} marked` : '') + (notes ? ` · ${notes} ${notes > 1 ? 'notes' : 'note'}` : '');
+  });
+  const n = chRead.size; const bb = $('#bookBtn span'); if (bb) bb.textContent = n ? `${CFG.bookName} · ${n}/${CHAP.length}` : CFG.bookName;
+  updateNb();
+}
+/* ---------- boot ---------- */
+function bootReader() {
+  placeBookItems(); buildCards(); renderHls(); layout(false); drawMarks(); drawSet();
+  // a widget that grows (feedback appears) pushes the pages after it along: re-measure, stay on this page
+  let roT; const ro = new ResizeObserver(() => { clearTimeout(roT); roT = setTimeout(() => { if (R.open && !R.busy) layout('col'); }, 80); });
+  $$('#flow .plate').forEach(p => ro.observe(p));
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { layout(R.open); drawSlips(); }, 150); });
+  if (document.fonts) document.fonts.ready.then(() => layout(false));
+}
+
+/* ---------- My Notebook (PDF): check-in, read-for answers, marks + margin notes, words, activities, mini-lessons, assignment draft ---------- */
+function updateNb() {
+  const el = $('#nbStats'); if (!el) return;
+  const a = HASBOOK ? Object.values(ans).filter(v => (v || '').trim()).length : 0;
+  const parts = ASG.reduce((n, D, a) => n + deskDone(a), 0), total = ASG.reduce((n, D) => n + D.steps.length, 0);
+  const H = HASBOOK ? hls : [];
+  el.innerHTML = [[a, 'answers'], [H.filter(h => h.l !== 'n').length, 'highlights'], [H.filter(h => h.note).length, 'margin notes'], [Object.keys(savedWords).length, 'words'], ...(ASG.length ? [[parts + '/' + total, 'assignment parts']] : [])]
+    .map(([n, l]) => `<div><b>${n}</b>${l}</div>`).join('');
+}
+function loadPdfLib() {
+  if (window.jspdf) return Promise.resolve();
+  return new Promise((ok, no) => { const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+}
+const LBLS = { k: 'Key idea', e: 'Evidence', n: 'Note' };
+function nbData() {
+  const order = HASBOOK ? bookClips() : [];
+  const H = HASBOOK ? [...hls].sort((a, b) => order.indexOf(a.parts[0][0]) - order.indexOf(b.parts[0][0]) || a.parts[0][1] - b.parts[0][1]) : [];
+  const v = store.get('checkin');
+  return {
+    checkin: CFG.checkin && v != null ? [CFG.checkin.q, CFG.checkin.opts[v].label] : null,
+    slots: HASBOOK ? Object.entries(SLOTS).map(([slot, [chs, q]]) => ({ title: (chs.length > 1 ? 'Chapters ' : 'Chapter ') + chs.map(chNum).join(' and ') + ': ' + chs.map(chTitle).join('; '), q, a: (ans[slot] || '').trim(), marks: H.filter(h => chs.includes(h.ch)) })) : [],
+    words: Object.entries(savedWords),
+    acts: Object.entries(CFG.widgets || {}).map(([k, W]) => { const st = rowState[k] || {}; const right = W.rows.filter((r, i) => st[i] === r.correct).length; return [W.title, `${right} of ${W.rows.length} right` + (Object.keys(st).length ? '' : ' (not tried)')]; }).concat(typeof lessonNbActs === 'function' ? lessonNbActs() : []),
+    minis: Object.entries(CFG.minis || {}).map(([k, M]) => [M.title, miniSeen.has(k) ? 'Watched to the end' : 'Not finished']),
+    desks: ASG.map((D, a) => [D.title, D.steps.map((s, i) => [`${i + 1}. ${s.title}`, dAns(a, i).trim()])]),
+    keep: $('.keep p')?.textContent || ''
+  };
+}
+function pdfKit(pdf) {
+  const L = 64, W = 612 - 128, BOT = 736, ACC = [14, 70, 48], INK = [21, 21, 21], GREY = [85, 81, 74], HI = [122, 85, 19];
+  const clean = t => String(t).replace(/[^\x20-\x7E\xA0-\xFF‘’“”–—…•]/g, '').replace(/\s+/g, ' ').trim();
+  const k = { y: 70, L, W, ACC, INK, GREY, HI };
+  k.write = (t, { size = 11, font = 'times', style = 'normal', color = INK, indent = 0, gap = 4, lh = 1.4 } = {}) => {
+    pdf.setFont(font, style); pdf.setFontSize(size); pdf.setTextColor(...color);
+    pdf.splitTextToSize(clean(t), W - indent).forEach(ln => { if (k.y + size * lh > BOT) { pdf.addPage(); k.y = 70; } pdf.text(ln, L + indent, k.y); k.y += size * lh; });
+    k.y += gap;
+  };
+  k.para = (t, o = {}) => String(t).split(/\n+/).forEach(p => k.write(p, o));
+  k.rule = (c = [216, 209, 193], w = .8) => { if (k.y + 12 > BOT) { pdf.addPage(); k.y = 70; } pdf.setDrawColor(...c); pdf.setLineWidth(w); pdf.line(L, k.y, L + W, k.y); k.y += 16; };
+  k.head = t => { if (k.y + 60 > BOT) { pdf.addPage(); k.y = 70; } k.y += 8; k.write(t, { size: 15, style: 'bold', color: INK, gap: 4 }); };
+  k.lab = t => k.write(t.toUpperCase(), { size: 8.5, font: 'helvetica', style: 'bold', color: HI, gap: 2 });
+  k.masthead = (kick, title) => {
+    k.write(kick, { size: 9, font: 'helvetica', style: 'bold', color: ACC, gap: 12 });
+    k.write(title, { size: 24, style: 'bold', gap: 2, lh: 1.25 });
+    k.write('Economics Honors · ' + CFG.kicker + ' · ' + CFG.title + ' · Optima Academy Online · ' + new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }), { size: 9, font: 'helvetica', color: GREY, gap: 10 });
+    k.rule([21, 21, 21], 2);
+  };
+  k.foot = name => { const n = pdf.getNumberOfPages(); for (let i = 1; i <= n; i++) { pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8); pdf.setTextColor(...GREY); pdf.text(`${name} · page ${i} of ${n}`, L, 762); } };
+  return k;
+}
+async function notebook() {
+  const note = $('#nbNote'); if (note) note.textContent = 'Making your notebook…';
+  try { await loadPdfLib(); } catch (e) { if (note) note.textContent = ''; return notebookHtml(); }
+  const d = nbData(), pdf = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' }), k = pdfKit(pdf);
+  k.masthead('MY NOTEBOOK', CFG.title);
+  if (d.checkin) { k.lab('Quick check-in'); k.write(d.checkin[0], { size: 11, style: 'italic', gap: 1 }); k.write(d.checkin[1], { size: 12, gap: 8 }); }
+  d.slots.forEach(s => {
+    k.head(s.title);
+    k.lab('Read for'); k.write(s.q, { size: 11.5, style: 'italic', gap: 6 });
+    k.lab('My answer'); k.write(s.a || 'No answer yet.', { size: 11.5, color: s.a ? k.INK : k.GREY, gap: 8 });
+    if (s.marks.length) {
+      k.lab('My marks and margin notes');
+      s.marks.forEach(h => {
+        k.write(LBLS[h.l].toUpperCase(), { size: 7.5, font: 'helvetica', style: 'bold', color: h.l === 'e' ? k.ACC : k.HI, indent: 12, gap: 1 });
+        k.write('“' + h.text + '”', { size: 11, style: 'italic', indent: 12, gap: h.note ? 2 : 7 });
+        if (h.note) k.write('Margin note: ' + h.note, { size: 10, font: 'helvetica', color: [90, 67, 32], indent: 12, gap: 7 });
+      });
+    }
+    k.rule();
+  });
+  if (d.words.length) { k.head('My Words'); d.words.forEach(([w, t]) => { k.write(w, { size: 12, style: 'bold', gap: 0 }); k.write(t, { size: 10.5, font: 'helvetica', color: k.GREY, gap: 6 }); }); k.rule(); }
+  if (d.minis.length || d.acts.length) { k.head('Activities'); d.minis.concat(d.acts).forEach(([t, r]) => { k.write(t, { size: 11, style: 'bold', gap: 0 }); k.write(r, { size: 10, font: 'helvetica', color: k.GREY, gap: 6 }); }); k.rule(); }
+  d.desks.forEach(([title, rows]) => { k.head('Assignment draft: ' + title); rows.forEach(([t, a]) => { k.write(t, { size: 11, style: 'bold', gap: 1 }); k.para(a || 'Not written yet.', { size: 11, color: a ? k.INK : k.GREY, gap: 6 }); }); k.rule(); });
+  if (d.keep) { k.lab('Carry this forward'); k.write(d.keep, { size: 12, style: 'italic' }); }
+  k.foot('My Notebook · ' + CFG.kicker);
+  pdf.save(CFG.nbFile + '-My-Notebook.pdf');
+  if (note) note.textContent = 'Saved: ' + CFG.nbFile + '-My-Notebook.pdf';
+}
+function notebookHtml() {
+  const d = nbData(), e = esc;
+  const html = `<!doctype html><meta charset="utf-8"><title>My Notebook</title><body style="font:16px/1.6 Georgia,serif;max-width:720px;margin:40px auto;padding:0 20px;color:#151515">
+<p style="font:700 11px sans-serif;letter-spacing:.14em;color:#0E4630">MY NOTEBOOK</p><h1>${e(CFG.title)}</h1>` +
+    (d.checkin ? `<p><i>${e(d.checkin[0])}</i><br>${e(d.checkin[1])}</p>` : '') +
+    d.slots.map(s => `<h2>${e(s.title)}</h2><p><i>Read for: ${e(s.q)}</i></p><p><b>My answer:</b> ${e(s.a || 'No answer yet.')}</p>` +
+      s.marks.map(h => `<blockquote><small>${LBLS[h.l]}</small><br><i>“${e(h.text)}”</i>${h.note ? `<br>Margin note: ${e(h.note)}` : ''}</blockquote>`).join('')).join('') +
+    (d.words.length ? '<h2>My Words</h2>' + d.words.map(([w, t]) => `<p><b>${e(w)}</b>: ${e(t)}</p>`).join('') : '') +
+    d.desks.map(([title, rows]) => `<h2>Assignment draft: ${e(title)}</h2>` + rows.map(([t, a]) => `<p><b>${e(t)}</b><br>${e(a || 'Not written yet.')}</p>`).join('')).join('') + `<p><i>${e(d.keep)}</i></p>`;
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' })); a.download = CFG.nbFile + '-My-Notebook.html'; a.click();
+  const n = $('#nbNote'); if (n) n.textContent = 'Saved: ' + CFG.nbFile + '-My-Notebook.html';
+}
+async function deskPdf(a) {
+  const D = ASG[a], note = $(`#deskNote-${a}`);
+  try { await loadPdfLib(); } catch (e) { const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([deskText(a)], { type: 'text/plain' })); a.download = CFG.nbFile + '-' + D.file + '.txt'; a.click(); note.textContent = 'Saved as a text file.'; return; }
+  const pdf = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' }), k = pdfKit(pdf);
+  k.masthead('ASSIGNMENT · ' + D.pts + ' POINTS', D.title);
+  k.lab('Focus question'); k.write(D.focus, { size: 11.5, style: 'italic', gap: 10 });
+  D.steps.forEach((s, i) => { k.write(`${i + 1}. ${s.title}`, { size: 13, style: 'bold', gap: 3 }); k.para(dAns(a, i).trim() || 'Not written yet.', { size: 11.5, gap: 8 }); });
+  k.foot(D.title + ' · ' + CFG.kicker);
+  pdf.save(CFG.nbFile + '-' + D.file + '.pdf'); note.textContent = 'Saved: ' + CFG.nbFile + '-' + D.file + '.pdf';
+}
+$('#nbBtn')?.addEventListener('click', () => notebook());
+
+/* L1 only: the zoomed-out town in the micro/macro mini-lesson (one shop stays lit: the café) */
+function lessonBoot() {
+  $$('.m2 .town').forEach(g => {
+    let h = '';
+    for (let r = 0; r < 6; r++) for (let c = 0; c < 16; c++) {
+      const x = 40 + c * 33 + (r % 2) * 8, y = 48 + r * 24, w = 18 + ((r * 7 + c * 3) % 3) * 4;
+      h += `<rect x="${x}" y="${y}" width="${w}" height="14" rx="1"${r === 3 && c === 8 ? ' class="hot"' : ''}/>`;
+    }
+    g.innerHTML = h;
+  });
+}
+
+
+HASBOOK && bootReader();
+$$('[data-rows]').forEach(rowsWidget);
+$$('.mini').forEach(miniWidget);
+drawCheckin(); drawDesk(); updateNb();
+typeof lessonBoot === 'function' && lessonBoot();
+go(store.get('step') || 0, false);
+
+</script>
+</body>
+</html>
