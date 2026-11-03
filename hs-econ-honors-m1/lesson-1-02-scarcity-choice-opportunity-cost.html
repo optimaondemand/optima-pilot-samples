@@ -451,6 +451,13 @@ body.reading-open{overflow:hidden}
 .noteed blockquote{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--hi);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink2);max-height:96px;overflow:auto}
 .noteed textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.5 Georgia,serif}
 
+/* arrive order: Magister + mini-lesson, then focus/objectives/check-in, then the Paper */
+.intro{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:start;padding:6px 0 22px}
+.intro .mag{position:sticky;top:76px}
+.intro-m .mini{margin:0}
+.intro-m .mini-h img{display:none}
+.stage0.bookrow{grid-template-columns:auto 1fr;margin:28px 0 0;padding:28px 0 8px;border-bottom:0;border-top:3px double var(--rule)}
+@media (max-width:720px){.intro{grid-template-columns:1fr;gap:14px}.intro .mag{position:static}.stage0.bookrow{grid-template-columns:1fr;justify-items:center}}
 @media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
 @media (max-width:860px){
   .rt span{display:none}.rt{padding:0 11px}.rbar{padding:0 8px 0 12px}.rtitle .kicker{display:none}.rtitle b{font-size:16px}
@@ -612,15 +619,10 @@ body.reading-open{overflow:hidden}
 
 <main class="wrap">
 <section class="step" data-step="0">
-  <div class="stage0">
+  <div class="intro">
     <div class="mag"><img src="img/magister.jpg" alt="Mr. Magister"><div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
       <div class="mag-b"><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div></div>
-    <button class="bigbook" data-openbook="" aria-label="Open The Paper"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.02</span><span>Economics Honors</span></div><div class="hl">Scarcity, Choice, and Opportunity Cost</div><div class="dk">The real price of a choice is what you give up</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></button>
-    <div class="bl-body"><div class="kicker">The Paper</div><h2>Parts 1 to 3</h2>
-      <div class="partlist" id="partlist"><button class="pl-row" data-go="1"><i>1</i><b>Scarcity and Choice</b><span></span></button><button class="pl-row" data-go="2"><i>2</i><b>Opportunity Cost</b><span></span></button><button class="pl-row" data-go="3"><i>3</i><b>The Production Possibilities Curve</b><span></span></button></div>
-      <div class="wrow"><button class="btn" data-openbook="">&#128240; Open The Paper</button><button class="btn ghost" data-go="4">Your Turn &rarr;</button></div></div>
-  </div>
-  <div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>A Shortage Ends. Scarcity Does Not.</b></div></div><svg class="ms m1" viewBox="0 0 600 366" role="img" aria-label="Two timelines. A shortage: the stock of bread on one shelf falls to empty, then a delivery refills it, so the shortage ends. Scarcity: the line for what people want and the line for what we can produce both rise, and the gap between them never closes.">
+    <div class="intro-m"><div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>A Shortage Ends. Scarcity Does Not.</b></div></div><svg class="ms m1" viewBox="0 0 600 366" role="img" aria-label="Two timelines. A shortage: the stock of bread on one shelf falls to empty, then a delivery refills it, so the shortage ends. Scarcity: the line for what people want and the line for what we can produce both rise, and the gap between them never closes.">
   <rect x="8" y="8" width="584" height="164" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
   <text x="20" y="32" class="hd">SHORTAGE · BREAD ON ONE SHELF</text>
   <path d="M60 44 V150 H570" fill="none" stroke="#151515" stroke-width="2"/>
@@ -653,11 +655,18 @@ body.reading-open{overflow:hidden}
     <g class="stamp"><rect x="320" y="262" width="140" height="28" rx="3" fill="#F5EBD5" stroke="#B4832A" stroke-width="3"/><text x="390" y="283" text-anchor="middle" class="st">SCARCITY</text></g>
   </g>
 </svg>
-<div class="sub"></div><div class="mctl"></div></div>
+<div class="sub"></div><div class="mctl"></div></div></div>
+  </div>
   <div class="minis">
     <div class="card acc"><div class="label">Today's Focus</div><p class="focusq">What is opportunity cost, and why does it matter more than the price tag?</p><p style="margin:0">Lesson 1.01 introduced economics as the study of decisions under scarcity. Today you go one layer deeper into three ideas that never stop being useful: scarcity itself, the choices it forces, and the opportunity cost hiding inside every one of those choices.</p></div>
     <details class="card objs"><summary class="label">Objectives</summary><ol class="obj"><li><span>I will be able to explain why scarcity is permanent, not a temporary shortage.</span></li><li><span>I will be able to use cost-benefit analysis and utility to describe how a choice gets made.</span></li><li><span>I will be able to identify the opportunity cost in a personal, business, or government decision.</span></li></ol></details>
     <div class="card hi"><div class="label">Quick Check-in</div><p style="margin:0 0 12px">When you hear the word &quot;scarce,&quot; what comes to mind first? (No wrong answer.)</p><div class="opts" id="checkin"><button class="opt" data-v="0">💵 Money</button><button class="opt" data-v="1">⌛ Time</button><button class="opt" data-v="2">📦 A specific item running out</button></div><div class="note" id="checkinNote"></div></div>
+  </div>
+  <div class="stage0 bookrow">
+    <button class="bigbook" data-openbook="" aria-label="Open The Paper"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.02</span><span>Economics Honors</span></div><div class="hl">Scarcity, Choice, and Opportunity Cost</div><div class="dk">The real price of a choice is what you give up</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></button>
+    <div class="bl-body"><div class="kicker">The Paper</div><h2>Parts 1 to 3</h2>
+      <div class="partlist" id="partlist"><button class="pl-row" data-go="1"><i>1</i><b>Scarcity and Choice</b><span></span></button><button class="pl-row" data-go="2"><i>2</i><b>Opportunity Cost</b><span></span></button><button class="pl-row" data-go="3"><i>3</i><b>The Production Possibilities Curve</b><span></span></button></div>
+      <div class="wrow"><button class="btn" data-openbook="">&#128240; Open The Paper</button><button class="btn ghost" data-go="4">Your Turn &rarr;</button></div></div>
   </div>
 </section><section class="bookhold" hidden><div class="card acc" data-book="plate:c3"><div class="label">TRY IT · NAME THE CONCEPT</div><p class="instr">Read each scenario and identify which economic concept it best demonstrates.</p><div class="rows" data-rows="w1"></div></div>
 <div class="card mini" data-book="start:c3" data-mini="m2" data-clip="m2"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>The Next-Best Option</b></div></div><svg class="ms m2" viewBox="0 0 600 292" role="img" aria-label="A bakery owner ranks three options: a new oven first, a delivery van second, an advertising campaign third. She buys the oven. The opportunity cost is the second-ranked option only. If the ranking changes, the opportunity cost changes.">

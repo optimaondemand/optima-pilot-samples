@@ -451,6 +451,13 @@ body.reading-open{overflow:hidden}
 .noteed blockquote{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--hi);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink2);max-height:96px;overflow:auto}
 .noteed textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.5 Georgia,serif}
 
+/* arrive order: Magister + mini-lesson, then focus/objectives/check-in, then the Paper */
+.intro{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:start;padding:6px 0 22px}
+.intro .mag{position:sticky;top:76px}
+.intro-m .mini{margin:0}
+.intro-m .mini-h img{display:none}
+.stage0.bookrow{grid-template-columns:auto 1fr;margin:28px 0 0;padding:28px 0 8px;border-bottom:0;border-top:3px double var(--rule)}
+@media (max-width:720px){.intro{grid-template-columns:1fr;gap:14px}.intro .mag{position:static}.stage0.bookrow{grid-template-columns:1fr;justify-items:center}}
 @media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
 @media (max-width:860px){
   .rt span{display:none}.rt{padding:0 11px}.rbar{padding:0 8px 0 12px}.rtitle .kicker{display:none}.rtitle b{font-size:16px}
@@ -567,15 +574,10 @@ body.reading-open{overflow:hidden}
 
 <main class="wrap">
 <section class="step" data-step="0">
-  <div class="stage0">
+  <div class="intro">
     <div class="mag"><img src="img/magister.jpg" alt="Mr. Magister"><div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
       <div class="mag-b"><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div></div>
-    <button class="bigbook" data-openbook="" aria-label="Open The Paper"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.01</span><span>Economics Honors</span></div><div class="hl">What is Economics?</div><div class="dk">Resources are limited, wants are not</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></button>
-    <div class="bl-body"><div class="kicker">The Paper</div><h2>Parts 1 to 2</h2>
-      <div class="partlist" id="partlist"><button class="pl-row" data-go="1"><i>1</i><b>Scarcity</b><span></span></button><button class="pl-row" data-go="2"><i>2</i><b>Two Ways to Zoom</b><span></span></button></div>
-      <div class="wrow"><button class="btn" data-openbook="">&#128240; Open The Paper</button><button class="btn ghost" data-go="3">Your Turn &rarr;</button></div></div>
-  </div>
-  <div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>The Problem Every Society Solves</b></div></div><svg class="ms m1" viewBox="0 0 600 340" role="img" aria-label="Scarcity: unlimited wants on one side, limited resources on the other, and the three questions every society answers">
+    <div class="intro-m"><div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>The Problem Every Society Solves</b></div></div><svg class="ms m1" viewBox="0 0 600 340" role="img" aria-label="Scarcity: unlimited wants on one side, limited resources on the other, and the three questions every society answers">
   <g class="pan wants">
     <rect x="8" y="8" width="236" height="196" rx="4" fill="#fff" stroke="#151515" stroke-width="1.5"/>
     <text x="20" y="34" class="hd">WHAT PEOPLE WANT</text>
@@ -621,11 +623,18 @@ body.reading-open{overflow:hidden}
     <marker id="ar2" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0 L0 5 L10 10 z" fill="#151515"/></marker>
   </defs>
 </svg>
-<div class="sub"></div><div class="mctl"></div></div>
+<div class="sub"></div><div class="mctl"></div></div></div>
+  </div>
   <div class="minis">
     <div class="card acc"><div class="label">Today's Focus</div><p class="focusq">How do people make decisions when they cannot have everything they want?</p><p style="margin:0">You already think like an economist more than you realize. Every time you choose one thing and give up another &mdash; a lunch, an evening, a purchase &mdash; you are wrestling with the problem this whole course is built on: resources are limited, wants are not. Economics is the discipline that studies how people, businesses, and governments handle that gap.</p></div>
     <details class="card objs"><summary class="label">Objectives</summary><ol class="obj"><li><span>I will be able to explain why scarcity forces individuals, businesses, and governments to make choices.</span></li><li><span>I will be able to distinguish microeconomics from macroeconomics and give an example of each.</span></li><li><span>I will be able to describe how opportunity cost and incentives shape a decision, large or small.</span></li></ol></details>
     <div class="card hi"><div class="label">Quick Check-in</div><p style="margin:0 0 12px">Think back to one real choice you made this week. How did you decide? (No wrong answer — just check in with yourself.)</p><div class="opts" id="checkin"><button class="opt" data-v="0">📋 I planned it out ahead of time</button><button class="opt" data-v="1">⚡ I decided in the moment</button><button class="opt" data-v="2">🤔 I tried to avoid choosing</button></div><div class="note" id="checkinNote"></div></div>
+  </div>
+  <div class="stage0 bookrow">
+    <button class="bigbook" data-openbook="" aria-label="Open The Paper"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.01</span><span>Economics Honors</span></div><div class="hl">What is Economics?</div><div class="dk">Resources are limited, wants are not</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></button>
+    <div class="bl-body"><div class="kicker">The Paper</div><h2>Parts 1 to 2</h2>
+      <div class="partlist" id="partlist"><button class="pl-row" data-go="1"><i>1</i><b>Scarcity</b><span></span></button><button class="pl-row" data-go="2"><i>2</i><b>Two Ways to Zoom</b><span></span></button></div>
+      <div class="wrow"><button class="btn" data-openbook="">&#128240; Open The Paper</button><button class="btn ghost" data-go="3">Your Turn &rarr;</button></div></div>
   </div>
 </section><section class="bookhold" hidden><div class="card acc" data-book="plate:c1"><div class="label">SORT IT · WHAT, HOW, OR FOR WHOM?</div><p class="instr">Every society has to answer three questions: what to produce, how to produce it, and for whom. Decide which question each decision answers.</p><div class="rows" data-rows="w1"></div></div>
 <div class="card acc" data-book="plate:c2"><div class="label">TRY IT · MATCH THE TERM</div><p class="instr">Match each situation to the concept it best illustrates.</p><div class="rows" data-rows="w2"></div></div>

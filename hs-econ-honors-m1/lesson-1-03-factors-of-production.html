@@ -451,6 +451,13 @@ body.reading-open{overflow:hidden}
 .noteed blockquote{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--hi);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink2);max-height:96px;overflow:auto}
 .noteed textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.5 Georgia,serif}
 
+/* arrive order: Magister + mini-lesson, then focus/objectives/check-in, then the Paper */
+.intro{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:start;padding:6px 0 22px}
+.intro .mag{position:sticky;top:76px}
+.intro-m .mini{margin:0}
+.intro-m .mini-h img{display:none}
+.stage0.bookrow{grid-template-columns:auto 1fr;margin:28px 0 0;padding:28px 0 8px;border-bottom:0;border-top:3px double var(--rule)}
+@media (max-width:720px){.intro{grid-template-columns:1fr;gap:14px}.intro .mag{position:static}.stage0.bookrow{grid-template-columns:1fr;justify-items:center}}
 @media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
 @media (max-width:860px){
   .rt span{display:none}.rt{padding:0 11px}.rbar{padding:0 8px 0 12px}.rtitle .kicker{display:none}.rtitle b{font-size:16px}
@@ -589,15 +596,10 @@ body.reading-open{overflow:hidden}
 
 <main class="wrap">
 <section class="step" data-step="0">
-  <div class="stage0">
+  <div class="intro">
     <div class="mag"><img src="img/magister.jpg" alt="Mr. Magister"><div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
       <div class="mag-b"><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div></div>
-    <button class="bigbook" data-openbook="" aria-label="Open The Paper"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.03</span><span>Economics Honors</span></div><div class="hl">Factors of Production</div><div class="dk">Four inputs behind everything that is made</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></button>
-    <div class="bl-body"><div class="kicker">The Paper</div><h2>Parts 1 to 3</h2>
-      <div class="partlist" id="partlist"><button class="pl-row" data-go="1"><i>1</i><b>Land and Labor</b><span></span></button><button class="pl-row" data-go="2"><i>2</i><b>Capital</b><span></span></button><button class="pl-row" data-go="3"><i>3</i><b>Entrepreneurship</b><span></span></button></div>
-      <div class="wrow"><button class="btn" data-openbook="">&#128240; Open The Paper</button><button class="btn ghost" data-go="4">Your Turn &rarr;</button></div></div>
-  </div>
-  <div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>Four Inputs, One Bicycle</b></div></div><svg class="ms m1" viewBox="0 0 600 340" role="img" aria-label="A bicycle assembled from four inputs: land, labor, capital, and entrepreneurship">
+    <div class="intro-m"><div class="card mini" data-mini="m1" data-clip="m1"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>Four Inputs, One Bicycle</b></div></div><svg class="ms m1" viewBox="0 0 600 340" role="img" aria-label="A bicycle assembled from four inputs: land, labor, capital, and entrepreneurship">
   <g class="tile t1"><rect x="5" y="6" width="140" height="84" rx="4"/><circle cx="22" cy="28" r="12" class="bd"/><text x="22" y="33" text-anchor="middle" class="bn">1</text><text x="39" y="34" class="tt">Land</text><text x="14" y="62" class="sm">Iron ore,</text><text x="14" y="80" class="sm">rubber</text></g>
   <g class="tile t2"><rect x="155" y="6" width="140" height="84" rx="4"/><circle cx="172" cy="28" r="12" class="bd"/><text x="172" y="33" text-anchor="middle" class="bn">2</text><text x="189" y="34" class="tt">Labor</text><text x="164" y="62" class="sm">Cut, weld,</text><text x="164" y="80" class="sm">assemble</text></g>
   <g class="tile t3"><rect x="305" y="6" width="140" height="84" rx="4"/><circle cx="322" cy="28" r="12" class="bd"/><text x="322" y="33" text-anchor="middle" class="bn">3</text><text x="339" y="34" class="tt">Capital</text><text x="314" y="62" class="sm">Welders,</text><text x="314" y="80" class="sm">factory</text></g>
@@ -626,11 +628,18 @@ body.reading-open{overflow:hidden}
       <circle cx="560" cy="262" r="12" class="bd"/><text x="560" y="267" text-anchor="middle" class="bn">4</text></g>
   </g>
 </svg>
-<div class="sub"></div><div class="mctl"></div></div>
+<div class="sub"></div><div class="mctl"></div></div></div>
+  </div>
   <div class="minis">
     <div class="card acc"><div class="label">Today's Focus</div><p class="focusq">What do you actually need to produce anything?</p><p style="margin:0">Lesson 1.02 showed that every choice involves a trade-off. Today's question is what economists say we are actually trading off: the four <strong>factors of production</strong> &mdash; land, labor, capital, and entrepreneurship &mdash; that combine to make every good and service that exists.</p></div>
     <details class="card objs"><summary class="label">Objectives</summary><ol class="obj"><li><span>I will be able to define and give an example of land, labor, capital, and entrepreneurship.</span></li><li><span>I will be able to explain why each factor is scarce and unevenly distributed.</span></li><li><span>I will be able to trace a real good or service back to the four factors that produced it.</span></li></ol></details>
     <div class="card hi"><div class="label">Quick Check-in</div><p style="margin:0 0 12px">Pick something you used today — your phone, breakfast, a bus ride. What do you think went into making it possible? (No wrong answer.)</p><div class="opts" id="checkin"><button class="opt" data-v="0">🌍 Raw materials</button><button class="opt" data-v="1">👨 People&#x27;s work</button><button class="opt" data-v="2">⚙️ Machines and tools</button></div><div class="note" id="checkinNote"></div></div>
+  </div>
+  <div class="stage0 bookrow">
+    <button class="bigbook" data-openbook="" aria-label="Open The Paper"><div class="front"><div class="mh">The Economic Ledger</div><div class="ml"><span>Lesson 1.03</span><span>Economics Honors</span></div><div class="hl">Factors of Production</div><div class="dk">Four inputs behind everything that is made</div><div class="cols"><svg viewBox="0 0 100 46" aria-hidden="true"><path d="M4 38 L18 30 L30 33 L44 20 L56 24 L70 12 L84 16 L96 6" fill="none" stroke="#151515" stroke-width="2"/><path d="M4 42 H96" stroke="#999" stroke-width=".8"/></svg><i></i><i></i><i></i><i></i></div></div></button>
+    <div class="bl-body"><div class="kicker">The Paper</div><h2>Parts 1 to 3</h2>
+      <div class="partlist" id="partlist"><button class="pl-row" data-go="1"><i>1</i><b>Land and Labor</b><span></span></button><button class="pl-row" data-go="2"><i>2</i><b>Capital</b><span></span></button><button class="pl-row" data-go="3"><i>3</i><b>Entrepreneurship</b><span></span></button></div>
+      <div class="wrow"><button class="btn" data-openbook="">&#128240; Open The Paper</button><button class="btn ghost" data-go="4">Your Turn &rarr;</button></div></div>
   </div>
 </section><section class="bookhold" hidden><div class="card mini" data-book="start:c3" data-mini="m2" data-clip="m2"><div class="mini-h"><img src="img/magister.jpg" alt=""><div class="t"><small>Mr. Magister · Mini-lesson</small><b>Capital Is Not Money</b></div></div><svg class="ms m2" viewBox="0 0 600 340" role="img" aria-label="Money does not produce anything; capital goods such as a sewing machine, a laptop, and a workshop are used to produce">
   <g class="q"><rect x="150" y="10" width="300" height="40" rx="4"/><text x="300" y="38" text-anchor="middle" class="qq">CAPITAL = MONEY?</text></g>
