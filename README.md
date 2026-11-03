@@ -435,7 +435,18 @@ _Week 1 and major projects not posted yet_
 
 ### ★ HS U.S. History: Reconstruction to Present (Social Studies · 2100310)
 
-_Week 1 and major projects not posted yet_
+#### Module 1: The League Rejected and the Red Scare
+
+**Week 1**
+
+- [Lesson 1: The League Rejected, 1919 to 1922](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-w19/l1-the-league-rejected.html)
+- [Lesson 2: Lodge, Speech Against the League of Nations](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-w19/l2-lodge-against-the-league.html)
+- [Lesson 3: Red Scare, Strikes, and the Closing Door](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-w19/l3-red-scare-and-the-closing-door.html)
+- [Lesson 4: Palmer, “The Case Against the ‘Reds’”](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-w19/l4-palmer-case-against-the-reds.html)
+
+**Major Project**
+
+- [Module 1 Project: Primary Source Report, Lodge or Palmer](https://optimaondemand.github.io/optima-pilot-samples/10th-us-history-projects/project-primary-source-report.html)
 
 ### ★ Mississippi U.S. History: 1877 to Present (Social Studies · msushist10)
 
