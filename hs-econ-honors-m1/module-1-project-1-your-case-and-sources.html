@@ -451,6 +451,13 @@ body.reading-open{overflow:hidden}
 .noteed blockquote{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--hi);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink2);max-height:96px;overflow:auto}
 .noteed textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;font:16px/1.5 Georgia,serif}
 
+/* arrive order: Magister + mini-lesson, then focus/objectives/check-in, then the Paper */
+.intro{display:grid;grid-template-columns:150px 1fr;gap:28px;align-items:start;padding:6px 0 22px}
+.intro .mag{position:sticky;top:76px}
+.intro-m .mini{margin:0}
+.intro-m .mini-h img{display:none}
+.stage0.bookrow{grid-template-columns:auto 1fr;margin:28px 0 0;padding:28px 0 8px;border-bottom:0;border-top:3px double var(--rule)}
+@media (max-width:720px){.intro{grid-template-columns:1fr;gap:14px}.intro .mag{position:static}.stage0.bookrow{grid-template-columns:1fr;justify-items:center}}
 @media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
 @media (max-width:860px){
   .rt span{display:none}.rt{padding:0 11px}.rbar{padding:0 8px 0 12px}.rtitle .kicker{display:none}.rtitle b{font-size:16px}
