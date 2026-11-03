@@ -65,7 +65,7 @@ _Week 1 and major projects not posted yet_
 
 **Major Project**
 
-- ["What Makes a Good Knight?" Comparison Essay](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-projects/module-project-what-makes-a-good-knight-comparison-essay.html) (100 pts)
+- ["What Makes a Good Knight?" Comparison Essay](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-projects/module-project-what-makes-a-good-knight-comparison-essay.html)
 
 #### Robin Hood
 
@@ -79,7 +79,7 @@ _Week 1 and major projects not posted yet_
 
 **Major Project**
 
-- [Portrait of a Hero](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-robin-hood-projects/module-project-portrait-of-a-hero.html) (100 pts)
+- [Portrait of a Hero](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-robin-hood-projects/module-project-portrait-of-a-hero.html)
 
 ### ★ M/J Grade 6 Mathematics (Mathematics · 1205010)
 
@@ -120,7 +120,7 @@ _Week 1 and major projects not posted yet_
 
 **Major Project**
 
-- [Final Project](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-call-of-the-wild-projects/cotw-final-project.html) (40 pts)
+- [Final Project](https://optimaondemand.github.io/optima-pilot-samples/7th-ela-call-of-the-wild-projects/cotw-final-project.html)
 
 ### ★ M/J Grade 7 Mathematics (Mathematics · 1205040)
 
@@ -161,7 +161,7 @@ _Week 1 and major projects not posted yet_
 
 **Major Project**
 
-- [First-Contact Story Project](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-projects/first-contact-story-project.html) (130 pts)
+- [First-Contact Story Project](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-projects/first-contact-story-project.html)
 - [Lesson: Plan Your Story (Week 6)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-projects/w6-project1-plan-your-story.html)
 - [Lesson: Write Your Story (Week 6)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-osp-projects/w6-project2-write-your-story.html)
 
@@ -176,7 +176,7 @@ _Week 1 and major projects not posted yet_
 
 **Major Project**
 
-- [Module 4 Final Essay](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/module-4-final-essay.html) (100 pts)
+- [Module 4 Final Essay](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/module-4-final-essay.html)
 - [Lesson: Build Your Case (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project1-build-your-case.html)
 - [Lesson: Write Your Essay (Week 7)](https://optimaondemand.github.io/optima-pilot-samples/8th-ela-lord-of-the-flies-projects/w7-project2-write-your-essay.html)
 
@@ -351,9 +351,9 @@ _Week 1 and major projects not posted yet_
 
 **Major Projects**
 
-- [Module 7 Lab: The Chart Room](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-7-lab-the-chart-room.html) (15 pts)
-- [Module 8 Lab: Walking the Distribution](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-8-lab-walking-the-distribution.html) (15 pts)
-- [Module 9 Lab: Inside the Bell](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-9-lab-inside-the-bell.html) (15 pts)
+- [Module 7 Lab: The Chart Room](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-7-lab-the-chart-room.html)
+- [Module 8 Lab: Walking the Distribution](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-8-lab-walking-the-distribution.html)
+- [Module 9 Lab: Inside the Bell](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-9-lab-inside-the-bell.html)
 
 ### ★ History (course to be assigned) (Grades 9–12 · Social Studies)
 
