@@ -378,7 +378,19 @@ _Not posted yet_
 
 ### ★ Algebra 1 (Mathematics · 1200310)
 
-_Week 1 and major projects not posted yet_
+#### Module 6: Algebraic Reasoning
+
+**Week 1**
+
+- [Lesson 1: Parts of an Algebraic Expression](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-lesson1-parts-of-an-algebraic-expression.html)
+- [Lesson 2: Adding and Subtracting Polynomial Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-lesson2-adding-and-subtracting-polynomial-expressions.html)
+- [Lesson 3: Multiplying Polynomial Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-lesson3-multiplying-polynomial-expressions.html)
+- [Lesson 4: Dividing a Monomial](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-lesson4-dividing-a-monomial.html)
+- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-week-1-check.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ Algebra 1 Honors (Mathematics · 1200320)
 
