@@ -386,6 +386,59 @@ body.r-focus{overflow:hidden}
   .tl-span{display:none}
 }
 
+/* ---------- Ask Dr. Mento: margin-note letters, on every tab ----------
+   Shared by the 9-12 kits; colours come from each kit's :root tokens. */
+.ask-tab{position:fixed;right:0;top:38%;z-index:88;display:flex;flex-direction:column;align-items:center;gap:10px;width:46px;padding:10px 0 14px;background:var(--slate);color:#fff;border:0;border-radius:10px 0 0 10px;box-shadow:-4px 6px 18px rgba(20,26,32,.22);font:600 13px/1 var(--ui);letter-spacing:.06em;transition:background .2s,transform .25s}
+.ask-tab:hover{background:var(--slate2)}
+.ask-tab img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.85)}
+.ask-tab span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.ask-tab.hide{transform:translateX(110%)}
+.ask-pane{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);z-index:92;display:flex;flex-direction:column;background:var(--paper);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(20,26,32,.16);transform:translateX(105%);transition:transform .32s ease;visibility:hidden}
+.ask-pane.open{transform:none;visibility:visible}
+.ask-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+.ask-head img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.ask-who{flex:1;min-width:0}
+.ask-name{font:600 15px/1.2 var(--ui);color:var(--ink)}
+.ask-scope{font:500 19px/1.2 var(--display);color:var(--ink);margin-top:2px}
+.ask-x{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);background:#fff;font:18px/1 var(--ui);color:var(--ink2)}
+.ask-x:hover{border-color:var(--ink2)}
+.ask-log{flex:1;overflow-y:auto;padding:18px 16px 10px;display:flex;flex-direction:column;gap:14px}
+.ask-empty{font:14.5px/1.55 var(--ui);color:var(--muted);text-align:center;margin:18px 10px 0}
+.ask-q{align-self:flex-end;max-width:86%;background:var(--tint);border:1px solid var(--line);border-radius:3px;padding:9px 12px;font:italic 400 16px/1.5 var(--serif);color:var(--ink);transform:rotate(.5deg);box-shadow:0 1px 3px rgba(20,26,32,.06)}
+.ask-a{align-self:flex-start;max-width:94%;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--scarlet);border-radius:3px;padding:11px 14px 9px;font:400 16px/1.6 var(--serif);color:var(--ink);box-shadow:0 2px 8px rgba(20,26,32,.06)}
+.ask-a .turn{font-weight:600}
+.ask-a .where{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.ask-a .sign{display:block;text-align:right;font:italic 500 17px/1.2 var(--display);color:var(--ink2);margin-top:6px}
+.ask-a .go{display:table;margin-top:8px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 12px;font:600 12.5px/1.2 var(--ui);color:var(--ink2)}
+.ask-a .go:hover{border-color:var(--scarlet);color:var(--scarlet)}
+.ask-a.in,.ask-q.in{animation:askin .35s ease}
+@keyframes askin{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.ask-q.in{animation:askinq .35s ease}
+@keyframes askinq{from{opacity:0;transform:translateY(6px) rotate(.5deg)}to{opacity:1;transform:rotate(.5deg)}}
+.ask-pen{align-self:flex-start;display:flex;gap:5px;padding:12px 14px}
+.ask-pen i{width:6px;height:6px;border-radius:50%;background:var(--line2);animation:askdot 1s infinite ease-in-out}
+.ask-pen i:nth-child(2){animation-delay:.15s}.ask-pen i:nth-child(3){animation-delay:.3s}
+@keyframes askdot{0%,80%,100%{opacity:.35;transform:none}40%{opacity:1;transform:translateY(-3px);background:var(--scarlet)}}
+.ask-form{padding:12px 16px 14px;background:var(--card);border-top:1px solid var(--line)}
+.ask-form label{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ask-form textarea{display:block;width:100%;min-height:64px;max-height:160px;resize:vertical;border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:400 16px/1.5 var(--serif);color:var(--ink);background:#fff}
+.ask-form textarea:focus{outline:none;border-color:var(--ink2)}
+.ask-row{display:flex;align-items:center;gap:12px;margin-top:8px}
+.ask-note{flex:1;font:12px/1.4 var(--ui);color:var(--muted)}
+.ask-send{flex:none;border:0;background:var(--slate);color:#fff;border-radius:999px;padding:9px 20px;font:600 14px/1 var(--ui)}
+.ask-send:hover{background:var(--slate2)}
+.ask-send:disabled{opacity:.5;cursor:default}
+@media (max-width:640px){
+  .ask-tab{top:auto;bottom:14px;right:12px;width:56px;height:56px;padding:0;justify-content:center;border-radius:50%;border:2px solid #fff;box-shadow:0 6px 18px rgba(20,26,32,.3)}
+  .ask-tab img{width:48px;height:48px;border:0}
+  .ask-tab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ask-tab::after{content:"?";position:absolute;right:-3px;top:-3px;width:20px;height:20px;border-radius:50%;background:var(--scarlet);color:#fff;font:700 12px/20px var(--ui);text-align:center;border:2px solid #fff}
+  .ask-tab.hide{transform:translateY(160%)}
+  .ask-pane{width:100vw;border-left:0}
+}
+@media (prefers-reduced-motion:reduce){.ask-pane,.ask-tab{transition:none}.ask-a.in,.ask-q.in{animation:none}.ask-pen i{animation:none}}
+@media print{.ask-tab,.ask-pane{display:none!important}}
+
 </style>
 <style>
 /* L4: balance visual, two-bin layout, verdict ranking, argument desk, project explainer, format cards */
@@ -1419,6 +1472,91 @@ renderStatus(); updateMarkSums();
     if (STORE.get('mori-' + card.dataset.clip) === '1') { show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished'); }
     else show(-1);
   });
+})();
+
+</script>
+<script type="application/json" id="ask-notes">{"scope": "Who Made Gregor? · Part I · the project", "intro": "Ask about the three causes, the evidence cards, your argument, the project and its formats, or any activity in this lesson.", "placeholder": {"default": "How long should my argument be?", "opening": "What are the three causes?", "case": "How do I use The Case?", "desk": "What goes in the first sentence?", "project": "What does the project have to use?", "turnin": "How do I download my week PDF?"}, "notes": [{"k": ["hello", "hi", "hey", "dear dr", "thanks", "thank you"], "w": 1, "a": "Hello. Ask me about the three causes, the evidence cards, your argument, the Module 3 Project, or any step in this lesson."}, {"k": ["three causes", "balance", "three pans", "pans", "the change", "the firm", "the family", "mini-lesson", "three causes mini", "what are the causes"], "a": "The mini-lesson pictures a balance with three pans: the change itself, which the story never explains; the firm; and the family. As you test the evidence in The Case, cards land on the pans.", "where": "Opening · Three Causes", "tab": "opening"}, {"k": ["gregor", "gregor samsa", "who is gregor", "what is part i", "what happens in part i", "part i"], "a": "Gregor Samsa wakes changed. In Part I the firm’s chief clerk comes to the flat, Gregor opens his door, and his father drives him back into his room. Your reading for this lesson is Part I, from your own copy.", "where": "Part I"}, {"k": ["wages", "debt", "parents owe", "owe", "five or six years", "stays in a job", "job he resents", "resents"], "a": "Gregor stays in a job he resents because his parents owe his boss money. He reckons on five or six more years of work to clear it. The Case has a card on this under The family.", "where": "Part I · the job", "tab": "case"}, {"k": ["chief clerk", "the clerk", "clerk", "slow season", "sales", "poor sales", "money entrusted", "entrusted", "through the door", "faults"], "a": "The chief clerk comes to the flat a little after seven. Through the door he lists faults in front of Gregor’s parents. He also speaks about a slow season. Reread the clerk’s speech in Part I and take each point on its own.", "where": "Part I · the chief clerk", "tab": "case"}, {"k": ["mother", "sister", "doctor", "worry", "first response", "ill", "sends for"], "a": "At the doors his mother and his sister respond to him, and his mother speaks of sending for a doctor. Reread what each says and does before you place the card about their first response.", "where": "Part I · voices at the doors", "tab": "case"}, {"k": ["father", "his father", "stick", "newspaper", "stamping", "bleeding", "shove", "drives him back", "the door opens"], "a": "When Gregor opens the door, his father drives him back with the clerk’s stick and a big newspaper, stamping. A shove sends Gregor bleeding into his room, and the door shuts.", "where": "Part I · the door opens", "tab": "case"}, {"k": ["voice", "his voice", "animal's noise", "speech", "long speech", "legs", "roll over", "his body", "get out of bed", "floor"], "a": "Gregor’s body and voice both change. Alone behind the locked door he struggles to get out of bed, and later his long speech reaches the clerk as an animal’s noise. Reread both stretches of Part I before you place the cards about the change.", "where": "Part I", "tab": "case"}, {"k": ["the case", "which box does", "card go in", "stick card", "evidence card", "evidence cards", "card", "lighten", "bears weight", "lightens it", "lightens", "weight", "add weight", "tap a card", "which box", "which pan", "which cause", "where does this card go", "which card", "sort", "does it bear weight"], "a": "In The Case, tap a card, then tap the box where it belongs: bears weight, or lightens it. Reread the moment each card describes in Part I and ask whether it adds weight to the cause or takes some away. Judge each card on its own. The placing is yours to make.", "where": "The Case · A–C", "go": "case", "tab": "case"}, {"k": ["verdict", "the verdict", "rank", "ranking", "rank the three", "most least", "most and least", "your verdict", "4-6 sentences", "4 6 sentences", "defend your top choice", "top choice"], "a": "In The Verdict, rank the three causes from most to least, then write 4–6 sentences stating the ranking and defending your top choice with one moment from Part I, described by what happens and where. The ranking is yours to decide.", "where": "The Case · D", "go": "case", "tab": "case"}, {"k": ["argument", "your argument", "writer's desk", "writers desk", "250", "350", "250-350", "250 to 350", "how long", "how long should", "word count", "word counter", "length", "how many words"], "a": "Your argument runs 250 to 350 words. A live word count and the checklist under the box tick as you write.", "where": "Writer’s Desk", "go": "desk", "tab": "desk"}, {"k": ["position", "first sentence", "name it in your first sentence", "claim", "thesis", "how do i start", "how do i begin", "divide the blame"], "a": "Name your position in the first sentence: the one cause you hold most responsible, or how you divide the blame among the three.", "where": "Writer’s Desk · Position", "go": "desk", "tab": "desk"}, {"k": ["two moments", "moments", "by what happens and where", "quote", "quotation", "quote a few words", "cite", "name the part", "how do i cite", "citation"], "a": "Describe two moments from Part I by what happens and where they come, such as his worry about the missed train, the chief clerk’s visit, or the father driving him back into his room. Quote a few words from your own copy only if they carry the point, and name the part. No page numbers.", "where": "Writer’s Desk · Two moments", "go": "desk", "tab": "desk"}, {"k": ["other side", "the other side", "strongest case", "rival", "counter", "counterargument", "different answer", "answer it", "state fairly"], "a": "State the strongest case for a different answer fairly, then answer it. A fair statement is one its holder would accept as theirs. Your Case evidence is where the rival moments are.", "where": "Writer’s Desk · The other side", "go": "desk", "tab": "desk"}, {"k": ["his thought", "free indirect", "free indirect sentence", "narrator's voice", "no tag", "thought sentence", "he thought"], "a": "Write one sentence that gives Gregor’s thought in the narrator’s voice, with no tag such as he thought and no quotation marks. That is free indirect discourse.", "where": "Writer’s Desk · His thought", "go": "desk", "tab": "desk"}, {"k": ["vermin", "strenuous", "subordinate", "suspicious", "diligence", "retreat", "word study", "word study words", "which words", "two words", "week's words", "vocabulary"], "a": "Use at least two of the week’s words, accurately: vermin, strenuous, subordinate, suspicious, diligence, or retreat. Use them to say something about Part I.", "where": "Writer’s Desk · Word Study", "go": "desk", "tab": "desk"}, {"k": ["checklist", "check it before", "check it before you move on", "tick", "ticks"], "a": "The checklist under your argument has five items: the position in the first sentence, two accurate moments tied to the claim, the strongest other answer stated fairly and answered, one free indirect sentence, and two Word Study words with the 250 to 350 word length.", "where": "Writer’s Desk", "go": "desk", "tab": "desk"}, {"k": ["project", "the project", "module 3 project", "one question nine weeks", "nine weeks", "module question", "what makes a monster", "what makes us human", "what is the project", "what will i make", "what do i make"], "a": "The Module 3 Project answers one question: what makes a monster, and what makes us human? You build one finished work over the module, drawing on The Metamorphosis, at least two other module texts, and two scholarly sources from JStor.", "where": "Your Project · One Question, Nine Weeks", "tab": "project"}, {"k": ["jstor", "what must the project use", "must the project use", "scholarly sources", "two sources", "sources", "other module texts", "two other texts", "what must it use", "what does it have to use"], "a": "The project draws on The Metamorphosis, at least two other module texts, and two scholarly sources from JStor. The rest of that work happens in the project itself. For now, you pick a format and say why.", "where": "Your Project", "tab": "project"}, {"k": ["rubric", "five things", "points", "how many points", "100 points", "70", "seventy", "25", "interpretation and claim", "use of the texts and research", "depth and counter-view", "craft and execution", "completion", "conventions", "mla", "process record", "how is it graded", "how is it scored"], "a": "Your teacher looks at five things: interpretation and claim, 25; use of the texts and research, 25; depth and counter-view, 20; craft and execution, 20; completion, conventions, MLA and process record, 10. The first three rows are 70 of 100 points in every format.", "where": "Your Project · rubric", "tab": "project"}, {"k": ["formats", "five formats", "format", "which format", "pick a format", "craft standard", "pick", "essay", "debate", "letters", "diary", "film", "screenplay", "podcast", "oration", "analytical", "synthesis"], "a": "Five formats are open to you: Analytical or Synthesis Essay, Debate, Letters or Diary, Short Film or Screenplay, and Podcast or Oration. In A Pick a Format, tap one and its craft standard shows below. The thinking is the same in each; only the form changes.", "where": "Your Project · A", "go": "project", "tab": "project"}, {"k": ["essay craft", "what does the essay need", "essay need", "1,200", "1600", "1,600", "1200", "words essay", "essay length"], "a": "For the Analytical or Synthesis Essay the craft standard asks for a thesis up front, logical structure, quotations framed, quoted, and explained, signal phrases for source claims, a real counterargument answered, in-text MLA citations and a Works Cited page, at about 1,200 to 1,600 words.", "where": "Your Project · A", "go": "project", "tab": "project"}, {"k": ["debate craft", "both cases", "judgment"], "a": "For the Debate the craft standard asks for both cases at full strength, each grounded in a module text and a JStor source, then a reasoned judgment that earns its conclusion. It can be written or recorded.", "where": "Your Project · A", "go": "project", "tab": "project"}, {"k": ["letters craft", "afterword", "entries", "four to six entries", "voice for each writer"], "a": "For Letters or Diary the craft standard asks for a consistent, convincing voice for each writer, each entry tied to a real moment in a text, a clear arc across four to six entries, and an analytical afterword of about 150 to 250 words that cites your sources.", "where": "Your Project · A", "go": "project", "tab": "project"}, {"k": ["film craft", "screenplay length", "four to six page", "framing", "pacing", "dialogue", "sound"], "a": "For the Short Film or Screenplay the craft standard asks for deliberate framing, pacing, dialogue, and sound that carry the interpretation: a coherent short film, or a four to six page screenplay, with a short written note naming the texts and sources behind it.", "where": "Your Project · A", "go": "project", "tab": "project"}, {"k": ["podcast craft", "5 to 8 minutes", "five to eight", "classical shape", "passage read aloud", "spoken argument"], "a": "For the Podcast or Oration the craft standard asks for a clear spoken argument with a classical shape: introduction, body, conclusion. It also asks for delivery you control, one passage read aloud to effect, and about 5 to 8 minutes, with a Works Cited page uploaded alongside.", "where": "Your Project · A", "go": "project", "tab": "project"}, {"k": ["your pick", "change it later", "can i change", "change my format", "my format", "readonly", "format box"], "a": "Your pick fills the Your Pick box when you tap a format card. You can change it later, so nothing here locks you in.", "where": "Your Project · A", "go": "project", "tab": "project"}, {"k": ["rules for the year", "year rules", "modules 2, 3, and 4", "different format", "recorded spoken", "recorded spoken component", "argument-driven", "argument driven", "boxes your pick fills", "what must module 4 be", "module 4", "module 2", "no repeats", "which box", "spoken", "count as", "counts as", "walkthrough", "walkthrough experience"], "a": "Modules 2, 3, and 4 each use a different format. Across the three, two boxes must be filled: a recorded spoken component, and an argument-driven project. A format can fill one box, both, or neither. Use the descriptions in the rules box, then work through the question yourself.", "where": "Your Project · B", "go": "project", "tab": "project"}, {"k": ["in your own words", "what will you make", "why this format", "box c", "two sentences", "one or two sentences"], "a": "In In Your Own Words, say in two sentences what you will make, as you would explain it to a friend. Then give one or two sentences on why this format: what it lets you do that the others do not.", "where": "Your Project · C", "go": "project", "tab": "project"}, {"k": ["your week", "status", "before you submit", "before you submit checklist", "turn in", "submit", "hand in", "marks and notes", "frankenstein marks", "everything saved", "not saved"], "a": "The Turn In tab lists each lesson of the week by title with its saved status, and a Before You Submit checklist. Fill in your name, finish what is not marked as saved, then download the PDF.", "where": "Turn In", "go": "turnin", "tab": "turnin"}, {"k": ["pdf", "week pdf", "download", "download your week", "save", "print", "name", "saved", "how do i download"], "a": "Type your name at the top of Turn In. Your answers and marks save in this browser as you work. To keep a copy, use Download your week PDF at the bottom of Turn In, and submit the PDF where your teacher asks.", "go": "turnin", "tab": "turnin"}, {"k": ["are you real", "are you ai", "are you a robot", "are you a bot", "are you human", "real person", "chatgpt", "who are you", "who made you"], "a": "I am an AI-generated character. My replies here come from notes written for this lesson, so I can answer about this lesson and its reading, but nothing beyond it. Your teacher is the person to ask about anything else.", "w": 1}, {"k": ["play", "audio", "listen", "transcript", "video", "mini-lesson", "sound", "captions"], "a": "Press Play on any card with my picture and the visual builds as the captions run. Use Transcript to read it all at once.", "w": 1}], "think": [{"re": "who (made|is to blame|is responsible|is at fault|caused)|who (is|was) (most )?(responsible|to blame|guilty)|which cause|which (one )?(matters|is) (most|the strongest|biggest)|what (made|caused) gregor", "back": "That is the question the whole lesson asks, and it is yours to decide. Start with The Case and reread three moments in Part I: Gregor alone behind his door, the chief clerk at the door, and the father with the stick. What does each one add to the balance?"}, {"re": "is (the|his) (family|father|mother|sister) (to blame|guilty|cruel|responsible|at fault)|is (the|his) (firm|boss|chief clerk|clerk) (to blame|guilty|cruel|responsible|at fault)|is the change (to blame|responsible|the cause)", "back": "Choose one cause and find its strongest moment in Part I. Then find the moment that most lightens it. Which of the two is harder to explain away?"}, {"re": "which (format|one) (should i|is best|is easiest|suits|would suit|do you)|what format should|what should i (pick|choose|make)|best format|easiest format", "back": "That is yours to decide. Read each craft standard in Pick a Format and ask which one lets you make an argument the way you make a point best. What does each ask you to control?"}, {"re": "what is my (position|claim)|what should (my|the) (position|claim|first sentence) (be|say)|what do i argue|what should i argue|which side should i", "back": "Look at your verdict in The Case, the ranking you wrote. Which cause did you put first, and which moment from Part I did you use to defend it? Your first sentence can start there."}, {"re": "what is the strongest (other|rival|opposing|counter)|what would (a|the) (rival|other) (side|view|reader) say|who (disagrees|would disagree)", "back": "Look at your ranking in The Verdict and find the cause you placed last. What is the best moment in Part I for it, and what would someone who holds it say?"}, {"re": "is (the|a) (misreading|plausible misreading)|what (is|are) the misreading|which (card|cards) (are|is) (the )?(misreading|trap|wrong)", "back": "In The Case, test every card on its own against Part I. Find the moment it describes. Does that moment add to the cause, or take something from it, and what in the text tells you so?"}, {"re": "does (it|the verdict|my ranking) (matter|count)|will (my )?verdict (change|count)", "back": "Your verdict is your own thinking about Part I. It becomes the base of your argument. Which ranking can you defend with two moments you can describe by what happens and where?"}, {"re": "why (does|did) (kafka|the story|the narrator) (never|not|n'?t) explain|why no (cause|explanation|reason)", "back": "Find where the story gives its calm account of the change in the first pages of Part I. What does it give you, and what does it leave out? What would a cause change?"}], "thinkAny": "what do you think|your opinion|in your opinion|what('s| is) the (right |correct )?answer|answer (to|for) (the|my|question)|tell me the answer|which (one )?is (right|correct)|is (it|this|my answer) (right|correct)|do my (work|homework|answer)|write .{0,40} for me|what should i write|give me the answers?", "thinkBack": "Which part is your question about: the evidence cards, your verdict, your argument, or your project pick? Find the moment in Part I it rests on and read it again. What happens there, and who does what?", "allowQuotes": [], "miss": "My notes on this lesson do not cover that one. Which part is it about: the three causes, an evidence card, your argument, the project, or Turn In? Find that part and ask yourself what happens there."}</script>
+<script>
+/* Ask Dr. Mento · margin-note letters on every tab (shared by the 9-12 kits; runs after core.js).
+   Replies come from prepared notes in the JSON block #ask-notes (no AI service; nothing leaves the page).
+   Notes: { scope, intro, placeholder:{default, <tab>}, notes:[{k:[keys], a:html, where, go:<tab>, tab:<tab>, w}],
+            think:[{re, back}], thinkAny, thinkBack, miss }
+   Thinking questions are turned back: "That's yours to decide." plus a question that sends the student to a moment in the reading.
+   Each fact note lists words a student might use; the best-scoring note answers (a note for the open tab scores a little higher). */
+(function initAsk(){
+  var el = document.getElementById('ask-notes'); if (!el) return;
+  var D; try { D = JSON.parse(el.textContent); } catch(e){ return; }
+  var NOTES = D.notes || [], THINK = (D.think || []).map(function(t){ return { re: new RegExp(t.re, 'i'), back: t.back }; });
+  var THINK_ANY = D.thinkAny ? new RegExp(D.thinkAny, 'i') : null;
+  var face = (window.ASSETS && ASSETS.img && ASSETS.img.mori) ? ASSETS.img.mori.src : '';
+  var faceTag = face ? '<img src="' + face + '" alt="">' : '';
+  function tabNow(){ var b = document.querySelector('.tab.on'); return b ? b.dataset.tab : ''; }
+  function tabTitle(id){ var b = document.querySelector('.tab[data-tab="' + id + '"]'); return b ? (b.dataset.title || b.textContent.trim()) : id; }
+
+  var tab = document.createElement('button');
+  tab.type = 'button'; tab.className = 'ask-tab'; tab.setAttribute('aria-label', 'Ask Dr. Mento'); tab.setAttribute('aria-expanded', 'false');
+  tab.innerHTML = faceTag + '<span>Ask Dr. Mento</span>';
+  var pane = document.createElement('aside');
+  pane.className = 'ask-pane'; pane.setAttribute('role', 'dialog'); pane.setAttribute('aria-label', 'Ask Dr. Mento');
+  pane.innerHTML = '<div class="ask-head">' + faceTag + '<div class="ask-who"><div class="ask-name">Dr. Mento · English</div><div class="ask-scope">' + (D.scope || '') + '</div></div><button class="ask-x" type="button" aria-label="Close">&times;</button></div>'
+    + '<div class="ask-log" aria-live="polite"><div class="ask-empty">' + (D.intro || 'Ask about the reading, a word, or any part of this lesson.') + '</div></div>'
+    + '<form class="ask-form"><label for="askQ">Your question</label><textarea id="askQ" maxlength="300" rows="2"></textarea>'
+    + '<div class="ask-row"><span class="ask-note">Replies come from her notes on this lesson.</span><button class="ask-send" type="submit">Send</button></div></form>';
+  document.body.appendChild(tab); document.body.appendChild(pane);
+  var log = pane.querySelector('.ask-log'), ta = pane.querySelector('textarea'), form = pane.querySelector('form'), send = pane.querySelector('.ask-send');
+
+  function ph(){ var p = D.placeholder || {}; ta.placeholder = p[tabNow()] || p['default'] || ''; }
+  function open(){ ph(); pane.classList.add('open'); tab.classList.add('hide'); tab.setAttribute('aria-expanded', 'true'); setTimeout(function(){ ta.focus(); }, 320); }
+  function close(){ pane.classList.remove('open'); tab.classList.remove('hide'); tab.setAttribute('aria-expanded', 'false'); tab.focus(); }
+  tab.addEventListener('click', open);
+  pane.querySelector('.ask-x').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && pane.classList.contains('open')) close(); });
+  document.addEventListener('tabchange', ph);
+  window.openAsk = open;
+  $$('[data-ask]').forEach(function(b){ b.addEventListener('click', function(){ open(); if (b.dataset.ask) { ta.value = b.dataset.ask; } }); });
+
+  function answer(q){
+    for (var i = 0; i < THINK.length; i++) if (THINK[i].re.test(q)) return { turn: true, a: THINK[i].back };
+    if (THINK_ANY && THINK_ANY.test(q)) return { turn: true, a: D.thinkBack };
+    var t = ' ' + q.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    var now = tabNow(), best = null, bs = 0;
+    NOTES.forEach(function(n){
+      var s = 0;
+      n.k.forEach(function(key){
+        var kk = key.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim(); if (!kk) return;
+        var re = new RegExp('\\b' + kk.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?\\b');
+        if (re.test(t)) s += 1 + kk.split(' ').length;
+      });
+      s *= (n.w || 1.5);
+      if (s && n.tab && n.tab === now) s *= 1.25;
+      if (s > bs) { bs = s; best = n; }
+    });
+    if (!best || bs < 2) return { a: D.miss };
+    return best;
+  }
+  function add(cls, html){
+    var e = log.querySelector('.ask-empty'); if (e) e.remove();
+    var d = document.createElement('div'); d.className = cls + ' in'; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = ta.value.trim(); if (!q) { ta.focus(); return; }
+    add('ask-q', esc(q).replace(/\n/g, '<br>'));
+    ta.value = ''; send.disabled = true;
+    var pen = add('ask-pen', '<i></i><i></i><i></i>');
+    var r = answer(q);
+    setTimeout(function(){
+      pen.remove();
+      var h = (r.turn ? '<span class="turn">That&rsquo;s yours to decide.</span> ' : '') + r.a;
+      if (r.where) h += '<span class="where">' + r.where + '</span>';
+      if (r.go && document.querySelector('.tab[data-tab="' + r.go + '"]')) h += '<button class="go" type="button" data-to="' + r.go + '">Go to ' + esc(tabTitle(r.go)) + ' &rarr;</button>';
+      h += '<span class="sign">Dr. Mento</span>';
+      var a = add('ask-a', h);
+      var g = a.querySelector('.go'); if (g) g.addEventListener('click', function(){ switchTab(g.dataset.to); if (window.innerWidth < 900) close(); });
+      send.disabled = false; ta.focus();
+    }, 900);
+  });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : send.click(); } });
 })();
 
 </script>

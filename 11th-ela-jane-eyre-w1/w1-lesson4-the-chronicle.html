@@ -370,6 +370,59 @@ body.r-focus{overflow:hidden}
   .tl-span{display:none}
 }
 
+/* ---------- Ask Dr. Mento: margin-note letters, on every tab ----------
+   Shared by the 9-12 kits; colours come from each kit's :root tokens. */
+.ask-tab{position:fixed;right:0;top:38%;z-index:88;display:flex;flex-direction:column;align-items:center;gap:10px;width:46px;padding:10px 0 14px;background:var(--slate);color:#fff;border:0;border-radius:10px 0 0 10px;box-shadow:-4px 6px 18px rgba(20,26,32,.22);font:600 13px/1 var(--ui);letter-spacing:.06em;transition:background .2s,transform .25s}
+.ask-tab:hover{background:var(--slate2)}
+.ask-tab img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.85)}
+.ask-tab span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.ask-tab.hide{transform:translateX(110%)}
+.ask-pane{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);z-index:92;display:flex;flex-direction:column;background:var(--paper);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(20,26,32,.16);transform:translateX(105%);transition:transform .32s ease;visibility:hidden}
+.ask-pane.open{transform:none;visibility:visible}
+.ask-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+.ask-head img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.ask-who{flex:1;min-width:0}
+.ask-name{font:600 15px/1.2 var(--ui);color:var(--ink)}
+.ask-scope{font:500 19px/1.2 var(--display);color:var(--ink);margin-top:2px}
+.ask-x{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);background:#fff;font:18px/1 var(--ui);color:var(--ink2)}
+.ask-x:hover{border-color:var(--ink2)}
+.ask-log{flex:1;overflow-y:auto;padding:18px 16px 10px;display:flex;flex-direction:column;gap:14px}
+.ask-empty{font:14.5px/1.55 var(--ui);color:var(--muted);text-align:center;margin:18px 10px 0}
+.ask-q{align-self:flex-end;max-width:86%;background:var(--tint);border:1px solid var(--line);border-radius:3px;padding:9px 12px;font:italic 400 16px/1.5 var(--serif);color:var(--ink);transform:rotate(.5deg);box-shadow:0 1px 3px rgba(20,26,32,.06)}
+.ask-a{align-self:flex-start;max-width:94%;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--scarlet);border-radius:3px;padding:11px 14px 9px;font:400 16px/1.6 var(--serif);color:var(--ink);box-shadow:0 2px 8px rgba(20,26,32,.06)}
+.ask-a .turn{font-weight:600}
+.ask-a .where{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.ask-a .sign{display:block;text-align:right;font:italic 500 17px/1.2 var(--display);color:var(--ink2);margin-top:6px}
+.ask-a .go{display:table;margin-top:8px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 12px;font:600 12.5px/1.2 var(--ui);color:var(--ink2)}
+.ask-a .go:hover{border-color:var(--scarlet);color:var(--scarlet)}
+.ask-a.in,.ask-q.in{animation:askin .35s ease}
+@keyframes askin{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.ask-q.in{animation:askinq .35s ease}
+@keyframes askinq{from{opacity:0;transform:translateY(6px) rotate(.5deg)}to{opacity:1;transform:rotate(.5deg)}}
+.ask-pen{align-self:flex-start;display:flex;gap:5px;padding:12px 14px}
+.ask-pen i{width:6px;height:6px;border-radius:50%;background:var(--line2);animation:askdot 1s infinite ease-in-out}
+.ask-pen i:nth-child(2){animation-delay:.15s}.ask-pen i:nth-child(3){animation-delay:.3s}
+@keyframes askdot{0%,80%,100%{opacity:.35;transform:none}40%{opacity:1;transform:translateY(-3px);background:var(--scarlet)}}
+.ask-form{padding:12px 16px 14px;background:var(--card);border-top:1px solid var(--line)}
+.ask-form label{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ask-form textarea{display:block;width:100%;min-height:64px;max-height:160px;resize:vertical;border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:400 16px/1.5 var(--serif);color:var(--ink);background:#fff}
+.ask-form textarea:focus{outline:none;border-color:var(--ink2)}
+.ask-row{display:flex;align-items:center;gap:12px;margin-top:8px}
+.ask-note{flex:1;font:12px/1.4 var(--ui);color:var(--muted)}
+.ask-send{flex:none;border:0;background:var(--slate);color:#fff;border-radius:999px;padding:9px 20px;font:600 14px/1 var(--ui)}
+.ask-send:hover{background:var(--slate2)}
+.ask-send:disabled{opacity:.5;cursor:default}
+@media (max-width:640px){
+  .ask-tab{top:auto;bottom:14px;right:12px;width:56px;height:56px;padding:0;justify-content:center;border-radius:50%;border:2px solid #fff;box-shadow:0 6px 18px rgba(20,26,32,.3)}
+  .ask-tab img{width:48px;height:48px;border:0}
+  .ask-tab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ask-tab::after{content:"?";position:absolute;right:-3px;top:-3px;width:20px;height:20px;border-radius:50%;background:var(--scarlet);color:#fff;font:700 12px/20px var(--ui);text-align:center;border:2px solid #fff}
+  .ask-tab.hide{transform:translateY(160%)}
+  .ask-pane{width:100vw;border-left:0}
+}
+@media (prefers-reduced-motion:reduce){.ask-pane,.ask-tab{transition:none}.ask-a.in,.ask-q.in{animation:none}.ask-pen i{animation:none}}
+@media print{.ask-tab,.ask-pane{display:none!important}}
+
 </style>
 <style>
 /* L4 (Jane Eyre): periodical page, rubric tiles, angles, poem menu, lenses */
@@ -1650,6 +1703,91 @@ renderStatus(); updateMarkSums();
     if (STORE.get('mori-' + card.dataset.clip) === '1') { show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished'); }
     else show(-1);
   });
+})();
+
+</script>
+<script type="application/json" id="ask-notes">{"scope": "The Chronicle · feature project and recitation", "intro": "Ask about the feature project, the recitation poems, or any activity in this lesson.", "placeholder": {"default": "What is a standfirst?", "opening": "What does the card build?", "feature": "What do the four angles ask?", "recite": "How do I recite with my eyes covered?", "turnin": "How long is the revised paragraph?"}, "notes": [{"k": ["hello", "hi", "hey", "dear dr", "thanks", "thank you"], "w": 1, "a": "Hello. Ask me about the feature project, the recitation, or any step in this lesson."}, {"k": ["the project", "feature", "what do i make", "what am i making", "900", "1,200", "1200", "periodical", "literary periodical", "general reader", "stranger"], "a": "You write an informative feature of 900 to 1,200 words for the general reader of a literary-cultural periodical: a subscriber who has not read the novel and wants to understand one part of Jane’s world.", "where": "The Feature · A", "go": "feature", "tab": "feature"}, {"k": ["angle", "angles", "four angles", "governess", "gothic", "coming of age", "coming-of-age", "money and law", "marriage law", "choose one angle"], "a": "There are four angles to choose from: the real position of a Victorian governess, the Gothic mode and why Brontë uses it, money and marriage law in the novel, and the shape of a coming-of-age story and how Jane Eyre fits and bends it. You choose one.", "where": "The Feature · A", "go": "feature", "tab": "feature"}, {"k": ["must have", "requirements", "lead", "headed sections", "pull-quote", "pull quote", "sidebar", "sources", "jstor", "two credible", "mla"], "a": "The feature needs a lead and headed sections with one idea each, at least one pull-quote from the novel, a sidebar, and at least two credible sources, one of them from JStor, cited in MLA.", "where": "The Feature · A", "go": "feature", "tab": "feature"}, {"k": ["rubric", "points", "scored", "scoring", "how is it graded", "graded", "50 points", "explanation and accuracy", "research and sources", "organization", "craft and mechanics", "feature graded", "feature scored"], "a": "Four rows score the feature: explanation and accuracy (15), research and sources (15), organization and reader-friendly structure (12), and craft and mechanics (8). That makes 50 points in all.", "where": "The Feature · A", "tab": "feature"}, {"k": ["opening card", "mini lesson page", "page builds", "headline standfirst lead", "the thornfield", "periodical page"], "a": "The Dr. Mento card in the Opening tab builds a periodical page in parts: headline, standfirst, lead, a headed section, a pull-quote and sidebar, and sources. Then it shows the four scoring rows.", "where": "Opening · mini-lesson", "go": "opening", "tab": "opening"}, {"k": ["headline", "what is a headline"], "a": "The headline names the subject in a few words and makes a stranger stop. Look for it on the sample page in Anatomy of a Feature.", "where": "The Feature · B", "tab": "feature"}, {"k": ["standfirst", "what is a standfirst", "35 words"], "a": "A standfirst is a short line under the headline that tells a stranger what the piece will explain. In your own, keep it to 35 words or fewer.", "where": "The Feature · C", "tab": "feature"}, {"k": ["pull quote", "pullquote", "what is a pull-quote", "a pull-quote from the novel"], "a": "A pull-quote is one exact line from the novel, set large, with its chapter. It gives the eye a place to rest.", "where": "The Feature · B", "tab": "feature"}, {"k": ["sidebar", "what is a sidebar", "small box"], "a": "A sidebar is a short box beside the text. It can hold a fact, a definition, or a timeline.", "where": "The Feature · B", "tab": "feature"}, {"k": ["anatomy", "anatomy of a feature", "numbered parts", "six parts", "which label", "which part", "tap a label", "what number", "part 1", "part 2", "part 3", "part 4", "part 5", "part 6", "sample page", "on the sample page"], "a": "In Anatomy of a Feature, look at the sample page and its six numbered parts. Tap a label, then tap the part it names. Read each part of the sample page and ask what job it does for a reader, then match the label to the part that does that job.", "where": "The Feature · B", "go": "feature", "tab": "feature"}, {"k": ["which lead", "hook", "hooks a stranger", "best lead", "lead choice", "which opening"], "a": "In Explain It to a Stranger, the choice asks which lead would hook a reader who has never met the novel. Read all four options as if you had never heard of the novel, and after each one ask what you now know and whether you want the next sentence.", "where": "The Feature · C", "go": "feature", "tab": "feature"}, {"k": ["explain it to a stranger", "dependent", "headline standfirst lead", "4 to 6 sentences", "4-6 sentences", "three labelled lines", "box c", "write the top"], "a": "In the writing box, put three labelled lines: a Headline, a Standfirst of 35 words or fewer, and a Lead paragraph of 4 to 6 sentences. Explain what “dependent” meant for Jane at Gateshead to someone who has not read the novel. Quote Brontë once, exactly, and cite it like this: (Ch. I). Look for the word in the scenes with John and with the maids.", "where": "The Feature · C", "go": "feature", "tab": "feature"}, {"k": ["your angle", "first thoughts", "which angle", "your reader", "name your reader", "box d", "3-4 sentences", "3 4 sentences"], "a": "In Your Angle, First Thoughts, name the angle, name your reader in a few words and not “everyone,” and say what that reader most needs explained first. Three to four sentences. You may change your mind later.", "where": "The Feature · D", "go": "feature", "tab": "feature"}, {"k": ["recitation", "recite", "from memory", "eyes covered", "blindfold", "how do i recite", "record yourself", "say it live"], "a": "You recite a poem from memory with your eyes covered: wear a blindfold, close your eyes, or turn away from any screen or page. You can record yourself on any device, with a caption or transcript so your teacher can check the words. Your teacher may instead hear it live, also with eyes closed.", "where": "The Recitation · A", "go": "recite", "tab": "recite"}, {"k": ["seven poems", "poem menu", "which poems", "the menu", "list of poems", "poems"], "a": "Seven poems are on the menu: The Poor Orphan Child, a love song, Life, No Coward Soul Is Mine, Dover Beach, Invictus, and the closing lines of Ulysses. Open each one in the Recitation tab and read it aloud once.", "where": "The Recitation · B", "go": "recite", "tab": "recite"}, {"k": ["orphan child", "the poor orphan child", "bessie's ballad", "bessie ballad", "ballad"], "a": "The Poor Orphan Child is the ballad Bessie sings to Jane in Chapter III. It is a whole poem of 20 lines. The text on the page is taken from the novel.", "where": "The Recitation · Poem 1", "tab": "recite"}, {"k": ["love song", "song with six stanzas", "six stanzas", "24 lines"], "a": "The second poem is a love song by Charlotte Brontë from Jane Eyre. It runs six stanzas, 24 lines. The lines are short and the rhymes close.", "where": "The Recitation · Poem 2", "tab": "recite"}, {"k": ["life", "poems by currer", "1846 poem", "rapidly merrily"], "a": "Life is a poem by Charlotte Brontë from Poems by Currer, Ellis, and Acton Bell (1846). It is a whole poem of 24 lines. The card says to listen for the quick lines of “Rapidly, merrily” against the steadier ones around them.", "where": "The Recitation · Poem 3", "tab": "recite"}, {"k": ["no coward soul", "emily bronte", "emily brontë", "28 lines"], "a": "No Coward Soul Is Mine is by Emily Brontë, written in 1846 and published in 1850. It is a whole poem of 28 lines. Every stanza is built alike, so the order is the hard part.", "where": "The Recitation · Poem 4", "tab": "recite"}, {"k": ["dover beach", "matthew arnold", "arnold", "sea of faith", "37 lines", "17 lines", "marked span"], "a": "Dover Beach is by Matthew Arnold (1867). You may recite the whole poem, 37 lines, or the marked span from “The sea of faith” to the end, 17 lines.", "where": "The Recitation · Poem 5", "tab": "recite"}, {"k": ["invictus", "henley", "william ernest henley", "16 lines", "shortest"], "a": "Invictus is by William Ernest Henley, written in 1875 and published in 1888. It is a whole poem of 16 lines, the shortest on the menu.", "where": "The Recitation · Poem 6", "tab": "recite"}, {"k": ["ulysses", "tennyson", "alfred tennyson", "closing lines", "there lies the port", "27 lines", "70 lines"], "a": "Ulysses is by Alfred Tennyson (1842). You recite the marked span, 27 lines, from “There lies the port” to the last line. The whole poem is 70 lines.", "where": "The Recitation · Poem 7", "tab": "recite"}, {"k": ["public domain", "copyright", "are the poems free"], "a": "The page notes that all seven poems are in the public domain.", "where": "The Recitation · B", "tab": "recite"}, {"k": ["recitation scoring", "accuracy of text", "vocal delivery", "interpretation", "20 points", "how is it scored", "how is the recitation scored"], "a": "The recitation is scored on three rows: accuracy of text (7), vocal delivery (7), and interpretation (6). That makes 20 points in all. Accuracy means from memory, eyes covered, faithful to the words and line order.", "where": "The Recitation · C", "go": "recite", "tab": "recite"}, {"k": ["first two", "which two", "read aloud first", "your first two", "box d recite"], "a": "In Your First Two, name two poems you will read aloud first and give a reason for each. It is not graded. Read each poem aloud once and notice which ones your breath and voice keep returning to.", "where": "The Recitation · D", "go": "recite", "tab": "recite"}, {"k": ["your draft", "revise", "turn in", "draft paragraph", "writer's desk paragraph", "before and after", "before-and-after", "one sentence"], "a": "Your Draft shows your saved paragraph on Jane’s defiance, read-only. Copy one sentence from it, label it Before, rewrite it, and label it After. Then write the whole paragraph again with your changes.", "where": "Turn In · A–C", "go": "turnin", "tab": "turnin"}, {"k": ["three lenses", "lens", "lenses", "claim", "quotation lens", "sentences lens", "checkbox", "checkboxes", "short blow", "periodic sentence"], "a": "The Three Lenses are checklists for your draft: Claim, Quotation, and Sentences. Tick each item only when your paragraph does what the question asks. The paragraph should open with a short blow of ten words or fewer and have one periodic sentence.", "where": "Turn In · B", "tab": "turnin"}, {"k": ["revised paragraph", "150-200", "150 200", "how long", "word count", "how many words"], "a": "The revised paragraph is 150–200 words. Write the whole paragraph again with your changes. The counter under the box keeps track.", "where": "Turn In · C", "go": "turnin", "tab": "turnin"}, {"k": ["no draft", "draft not showing", "nothing saved", "missing draft", "paste", "retype"], "a": "If no draft shows, nothing was saved in this browser for that box. Paste or retype your paragraph into the revision box below, then revise it.", "where": "Turn In · A", "tab": "turnin"}, {"k": ["your week", "status", "marks count", "8 marks", "4 notes", "before you submit", "submit", "my marks"], "a": "The status block shows which lessons have saved answers. Your marks count should show at least 8 marks, with at least 4 notes in your own words. Tick each item in Before You Submit when it is true.", "where": "Turn In · Before You Submit", "go": "turnin", "tab": "turnin"}, {"k": ["pdf", "download", "week pdf", "save as pdf", "name", "print", "hand in"], "a": "Type your name in Turn In, then use Download your week PDF. Your answers and marks save in this browser as you work. Submit the PDF where your teacher asks.", "go": "turnin", "tab": "turnin"}, {"k": ["play", "transcript", "captions", "caption", "voice", "mini lesson", "mini-lesson", "video"], "w": 1, "a": "The Dr. Mento card has a Play button and a Transcript button. Play runs the steps with captions while the picture changes. Transcript shows all the steps as text."}, {"k": ["are you real", "are you ai", "are you a robot", "are you a bot", "are you human", "real person", "chatgpt", "who are you", "who made you"], "w": 1, "a": "I am an AI-generated character. My replies here come from notes written for this lesson, so I can answer about this lesson and its reading, but nothing beyond it. Your teacher is the person to ask about anything else."}], "think": [{"re": "which angle (should|is|would)|what angle should i|which angle is (best|easiest|better)|what should i (write|choose|pick) (about|for)", "back": "Look back at the four angles in The Project in Brief. Which one could you explain to a stranger in a single sentence? Reread a scene from Chapters I–IV that fits it and ask what that stranger would need first."}, {"re": "(is|does) (my|this) (lead|headline|standfirst|paragraph|draft|sentence) (good|ok|okay|work|hook|fine|strong)", "back": "Read it aloud to someone who has not read the novel. Where do they slow down or lose the thread? Check it against the question each part must answer on the sample page."}, {"re": "which (two )?poems? (should|is best|is easiest|is better|would you)|which poem is (best|easiest|hardest)|what poem should i", "back": "Read each poem aloud once. Notice which ones your breath and voice keep returning to, and which ones you can hear turning. That is the decision in Your First Two."}, {"re": "what should (my|the) (headline|title|lead|standfirst) (be|say)|what (headline|title) should i", "back": "Look at the sample page in Anatomy of a Feature. What does its headline promise, and what does its standfirst add? Then say your feature’s subject in one sentence and ask what a stranger would stop for."}, {"re": "(is|was) jane'?s defiance (a )?(virtue|fault|good|bad)|virtue or (a )?fault|(is|was) jane (right|wrong)", "back": "Reread your paragraph in Your Draft. What does it claim, and which exact quotation carries the claim? Check it against the three lenses before you revise."}, {"re": "what does (dependent|a dependent) mean|what is a dependent|what did dependent mean|what was jane'?s position", "back": "Find the word in Chapters I and II: who says it, and what do they say it means about money and keep? Use those lines, then say it in your own words for a stranger."}, {"re": "why (does|do|did) (the periodical|it|they) (want|need)|is the (recitation|feature) (fair|worth|too hard)|is it worth", "back": "Look at the rubric rows on the page for the item you mean. What does each row ask you to show, and which part of your own work already shows it?"}], "thinkAny": "what do you think|your opinion|in your opinion|what('s| is) the (right |correct )?answer|answer (to|for) (the|my|question)|tell me the answer|which (one )?is (right|correct)|is (it|this|my answer) (right|correct)|do my (work|homework|answer)|write (it|my answer|this) for me|what should i write|give me the answer|just tell me", "thinkBack": "Which part of the work is your question about: the feature, a poem, or your revision? Find that part on the page and read it again. What does it ask you to do, and what does your own work already show?", "allowQuotes": ["Rapidly, merrily"], "miss": "My notes on this lesson do not cover that one. Which part is it about: the feature, the four angles, the recitation, or Turn In? Find that part and ask yourself what it asks you to do."}</script>
+<script>
+/* Ask Dr. Mento · margin-note letters on every tab (shared by the 9-12 kits; runs after core.js).
+   Replies come from prepared notes in the JSON block #ask-notes (no AI service; nothing leaves the page).
+   Notes: { scope, intro, placeholder:{default, <tab>}, notes:[{k:[keys], a:html, where, go:<tab>, tab:<tab>, w}],
+            think:[{re, back}], thinkAny, thinkBack, miss }
+   Thinking questions are turned back: "That's yours to decide." plus a question that sends the student to a moment in the reading.
+   Each fact note lists words a student might use; the best-scoring note answers (a note for the open tab scores a little higher). */
+(function initAsk(){
+  var el = document.getElementById('ask-notes'); if (!el) return;
+  var D; try { D = JSON.parse(el.textContent); } catch(e){ return; }
+  var NOTES = D.notes || [], THINK = (D.think || []).map(function(t){ return { re: new RegExp(t.re, 'i'), back: t.back }; });
+  var THINK_ANY = D.thinkAny ? new RegExp(D.thinkAny, 'i') : null;
+  var face = (window.ASSETS && ASSETS.img && ASSETS.img.mori) ? ASSETS.img.mori.src : '';
+  var faceTag = face ? '<img src="' + face + '" alt="">' : '';
+  function tabNow(){ var b = document.querySelector('.tab.on'); return b ? b.dataset.tab : ''; }
+  function tabTitle(id){ var b = document.querySelector('.tab[data-tab="' + id + '"]'); return b ? (b.dataset.title || b.textContent.trim()) : id; }
+
+  var tab = document.createElement('button');
+  tab.type = 'button'; tab.className = 'ask-tab'; tab.setAttribute('aria-label', 'Ask Dr. Mento'); tab.setAttribute('aria-expanded', 'false');
+  tab.innerHTML = faceTag + '<span>Ask Dr. Mento</span>';
+  var pane = document.createElement('aside');
+  pane.className = 'ask-pane'; pane.setAttribute('role', 'dialog'); pane.setAttribute('aria-label', 'Ask Dr. Mento');
+  pane.innerHTML = '<div class="ask-head">' + faceTag + '<div class="ask-who"><div class="ask-name">Dr. Mento · English</div><div class="ask-scope">' + (D.scope || '') + '</div></div><button class="ask-x" type="button" aria-label="Close">&times;</button></div>'
+    + '<div class="ask-log" aria-live="polite"><div class="ask-empty">' + (D.intro || 'Ask about the reading, a word, or any part of this lesson.') + '</div></div>'
+    + '<form class="ask-form"><label for="askQ">Your question</label><textarea id="askQ" maxlength="300" rows="2"></textarea>'
+    + '<div class="ask-row"><span class="ask-note">Replies come from her notes on this lesson.</span><button class="ask-send" type="submit">Send</button></div></form>';
+  document.body.appendChild(tab); document.body.appendChild(pane);
+  var log = pane.querySelector('.ask-log'), ta = pane.querySelector('textarea'), form = pane.querySelector('form'), send = pane.querySelector('.ask-send');
+
+  function ph(){ var p = D.placeholder || {}; ta.placeholder = p[tabNow()] || p['default'] || ''; }
+  function open(){ ph(); pane.classList.add('open'); tab.classList.add('hide'); tab.setAttribute('aria-expanded', 'true'); setTimeout(function(){ ta.focus(); }, 320); }
+  function close(){ pane.classList.remove('open'); tab.classList.remove('hide'); tab.setAttribute('aria-expanded', 'false'); tab.focus(); }
+  tab.addEventListener('click', open);
+  pane.querySelector('.ask-x').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && pane.classList.contains('open')) close(); });
+  document.addEventListener('tabchange', ph);
+  window.openAsk = open;
+  $$('[data-ask]').forEach(function(b){ b.addEventListener('click', function(){ open(); if (b.dataset.ask) { ta.value = b.dataset.ask; } }); });
+
+  function answer(q){
+    for (var i = 0; i < THINK.length; i++) if (THINK[i].re.test(q)) return { turn: true, a: THINK[i].back };
+    if (THINK_ANY && THINK_ANY.test(q)) return { turn: true, a: D.thinkBack };
+    var t = ' ' + q.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    var now = tabNow(), best = null, bs = 0;
+    NOTES.forEach(function(n){
+      var s = 0;
+      n.k.forEach(function(key){
+        var kk = key.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim(); if (!kk) return;
+        var re = new RegExp('\\b' + kk.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?\\b');
+        if (re.test(t)) s += 1 + kk.split(' ').length;
+      });
+      s *= (n.w || 1.5);
+      if (s && n.tab && n.tab === now) s *= 1.25;
+      if (s > bs) { bs = s; best = n; }
+    });
+    if (!best || bs < 2) return { a: D.miss };
+    return best;
+  }
+  function add(cls, html){
+    var e = log.querySelector('.ask-empty'); if (e) e.remove();
+    var d = document.createElement('div'); d.className = cls + ' in'; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = ta.value.trim(); if (!q) { ta.focus(); return; }
+    add('ask-q', esc(q).replace(/\n/g, '<br>'));
+    ta.value = ''; send.disabled = true;
+    var pen = add('ask-pen', '<i></i><i></i><i></i>');
+    var r = answer(q);
+    setTimeout(function(){
+      pen.remove();
+      var h = (r.turn ? '<span class="turn">That&rsquo;s yours to decide.</span> ' : '') + r.a;
+      if (r.where) h += '<span class="where">' + r.where + '</span>';
+      if (r.go && document.querySelector('.tab[data-tab="' + r.go + '"]')) h += '<button class="go" type="button" data-to="' + r.go + '">Go to ' + esc(tabTitle(r.go)) + ' &rarr;</button>';
+      h += '<span class="sign">Dr. Mento</span>';
+      var a = add('ask-a', h);
+      var g = a.querySelector('.go'); if (g) g.addEventListener('click', function(){ switchTab(g.dataset.to); if (window.innerWidth < 900) close(); });
+      send.disabled = false; ta.focus();
+    }, 900);
+  });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : send.click(); } });
 })();
 
 </script>

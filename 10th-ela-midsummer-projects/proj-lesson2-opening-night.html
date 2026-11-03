@@ -156,6 +156,26 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .fromtxt{white-space:pre-wrap;font:16px/1.65 var(--serif);background:#F3F1EC;border-left:3px solid var(--slate);padding:12px 16px;border-radius:4px;color:var(--ink2)}
 .fromtxt.empty{font-style:italic;color:var(--muted)}
 
+/* ---------- index cards: short capture boxes as 3x5 ruled cards (9-12 rule, 2026-11-02) ---------- */
+.ixcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:10px 0 20px}
+.ixcards.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px}
+.ixcards.one{grid-template-columns:minmax(0,1fr);max-width:480px}
+@media (max-width:860px){.ixcards,.ixcards.two{grid-template-columns:1fr;max-width:480px}}
+.ix{position:relative;background:#FFFEFA;border-radius:3px;padding:14px 16px 10px;box-shadow:0 1px 2px rgba(0,0,0,.08),0 8px 18px rgba(30,30,30,.08);transform:rotate(-.6deg);transition:transform .2s ease}
+.ix:nth-child(2){transform:rotate(.5deg)}
+.ix:nth-child(3){transform:rotate(-.3deg)}
+.ix:nth-child(4){transform:rotate(.4deg)}
+.ix:focus-within{transform:rotate(0) translateY(-2px)}
+.ix-h{display:flex;align-items:baseline;gap:10px;border-bottom:2px solid var(--scarlet);padding-bottom:7px}
+.ix-n{font:500 24px/1 var(--display);color:var(--scarlet)}
+.ix-t{font:600 15px/1.3 var(--ui);color:var(--ink)}
+.ix-k{display:block;font:600 10.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:8px 0 2px}
+.ix-hint{display:block;font:13px/1.45 var(--ui);color:var(--muted);margin:7px 0 2px}
+.ix textarea.jbox{border:0;border-radius:0;background:transparent repeating-linear-gradient(180deg,transparent 0,transparent 27px,var(--line) 27px,var(--line) 28px);background-attachment:local;line-height:28px;padding:0 2px;min-height:112px;font:italic 16.5px/28px var(--serif);box-shadow:none}
+.ix textarea.jbox:focus{box-shadow:none}
+.ix .wc{margin-top:4px}
+@media print{.ix{transform:none;box-shadow:none;border:1px solid #ccc}}
+
 /* ---------- the reader (inline + Focus) ---------- */
 .reader{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;--rs:19px;--rlh:1.75}
 .rbar{position:sticky;top:47px;z-index:20;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
@@ -358,6 +378,59 @@ body.r-focus{overflow:hidden}
   .tl-pt .ev{margin-top:2px}
   .tl-span{display:none}
 }
+
+/* ---------- Ask Dr. Mento: margin-note letters, on every tab ----------
+   Shared by the 9-12 kits; colours come from each kit's :root tokens. */
+.ask-tab{position:fixed;right:0;top:38%;z-index:88;display:flex;flex-direction:column;align-items:center;gap:10px;width:46px;padding:10px 0 14px;background:var(--slate);color:#fff;border:0;border-radius:10px 0 0 10px;box-shadow:-4px 6px 18px rgba(20,26,32,.22);font:600 13px/1 var(--ui);letter-spacing:.06em;transition:background .2s,transform .25s}
+.ask-tab:hover{background:var(--slate2)}
+.ask-tab img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.85)}
+.ask-tab span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.ask-tab.hide{transform:translateX(110%)}
+.ask-pane{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);z-index:92;display:flex;flex-direction:column;background:var(--paper);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(20,26,32,.16);transform:translateX(105%);transition:transform .32s ease;visibility:hidden}
+.ask-pane.open{transform:none;visibility:visible}
+.ask-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+.ask-head img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.ask-who{flex:1;min-width:0}
+.ask-name{font:600 15px/1.2 var(--ui);color:var(--ink)}
+.ask-scope{font:500 19px/1.2 var(--display);color:var(--ink);margin-top:2px}
+.ask-x{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);background:#fff;font:18px/1 var(--ui);color:var(--ink2)}
+.ask-x:hover{border-color:var(--ink2)}
+.ask-log{flex:1;overflow-y:auto;padding:18px 16px 10px;display:flex;flex-direction:column;gap:14px}
+.ask-empty{font:14.5px/1.55 var(--ui);color:var(--muted);text-align:center;margin:18px 10px 0}
+.ask-q{align-self:flex-end;max-width:86%;background:var(--tint);border:1px solid var(--line);border-radius:3px;padding:9px 12px;font:italic 400 16px/1.5 var(--serif);color:var(--ink);transform:rotate(.5deg);box-shadow:0 1px 3px rgba(20,26,32,.06)}
+.ask-a{align-self:flex-start;max-width:94%;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--scarlet);border-radius:3px;padding:11px 14px 9px;font:400 16px/1.6 var(--serif);color:var(--ink);box-shadow:0 2px 8px rgba(20,26,32,.06)}
+.ask-a .turn{font-weight:600}
+.ask-a .where{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.ask-a .sign{display:block;text-align:right;font:italic 500 17px/1.2 var(--display);color:var(--ink2);margin-top:6px}
+.ask-a .go{display:table;margin-top:8px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 12px;font:600 12.5px/1.2 var(--ui);color:var(--ink2)}
+.ask-a .go:hover{border-color:var(--scarlet);color:var(--scarlet)}
+.ask-a.in,.ask-q.in{animation:askin .35s ease}
+@keyframes askin{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.ask-q.in{animation:askinq .35s ease}
+@keyframes askinq{from{opacity:0;transform:translateY(6px) rotate(.5deg)}to{opacity:1;transform:rotate(.5deg)}}
+.ask-pen{align-self:flex-start;display:flex;gap:5px;padding:12px 14px}
+.ask-pen i{width:6px;height:6px;border-radius:50%;background:var(--line2);animation:askdot 1s infinite ease-in-out}
+.ask-pen i:nth-child(2){animation-delay:.15s}.ask-pen i:nth-child(3){animation-delay:.3s}
+@keyframes askdot{0%,80%,100%{opacity:.35;transform:none}40%{opacity:1;transform:translateY(-3px);background:var(--scarlet)}}
+.ask-form{padding:12px 16px 14px;background:var(--card);border-top:1px solid var(--line)}
+.ask-form label{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ask-form textarea{display:block;width:100%;min-height:64px;max-height:160px;resize:vertical;border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:400 16px/1.5 var(--serif);color:var(--ink);background:#fff}
+.ask-form textarea:focus{outline:none;border-color:var(--ink2)}
+.ask-row{display:flex;align-items:center;gap:12px;margin-top:8px}
+.ask-note{flex:1;font:12px/1.4 var(--ui);color:var(--muted)}
+.ask-send{flex:none;border:0;background:var(--slate);color:#fff;border-radius:999px;padding:9px 20px;font:600 14px/1 var(--ui)}
+.ask-send:hover{background:var(--slate2)}
+.ask-send:disabled{opacity:.5;cursor:default}
+@media (max-width:640px){
+  .ask-tab{top:auto;bottom:14px;right:12px;width:56px;height:56px;padding:0;justify-content:center;border-radius:50%;border:2px solid #fff;box-shadow:0 6px 18px rgba(20,26,32,.3)}
+  .ask-tab img{width:48px;height:48px;border:0}
+  .ask-tab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ask-tab::after{content:"?";position:absolute;right:-3px;top:-3px;width:20px;height:20px;border-radius:50%;background:var(--scarlet);color:#fff;font:700 12px/20px var(--ui);text-align:center;border:2px solid #fff}
+  .ask-tab.hide{transform:translateY(160%)}
+  .ask-pane{width:100vw;border-left:0}
+}
+@media (prefers-reduced-motion:reduce){.ask-pane,.ask-tab{transition:none}.ask-a.in,.ask-q.in{animation:none}.ask-pen i{animation:none}}
+@media print{.ask-tab,.ask-pane{display:none!important}}
 
 </style>
 <style>
@@ -1372,6 +1445,91 @@ renderStatus(); updateMarkSums();
     if (STORE.get('mori-' + card.dataset.clip) === '1') { show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished'); }
     else show(-1);
   });
+})();
+
+</script>
+<script type="application/json" id="ask-notes">{"scope": "Opening Night · Design page, call, and program", "intro": "Ask about the design page, the Director’s Call, the PDF, or any step on this page.", "placeholder": {"default": "What goes on the design page?", "design": "What is alt text?", "call": "How many instructions do I write?", "assemble": "How do I export a PDF from Word?", "turnin": "What do I submit?"}, "notes": [{"k": ["hello", "hi", "hey", "dear dr", "thanks", "thank you"], "w": 1, "a": "Hello. Ask me about the design page, the Director’s Call, the PDF, or any step on this page."}, {"k": ["design page", "what goes on the design page", "a page that shows", "setting panel", "costume panel", "panels", "what is on the design page", "what does the design page need", "page that shows", "decoration"], "a": "The design page has two panels: a setting and a costume or colour concept. Each panel has an image, a caption, a credit, alt text, and one line of rationale tied to a line you quote. Without the quoted line, the page is only decoration.", "where": "The Design Page · A Page That Shows", "tab": "design"}, {"k": ["plan the page", "setting concept", "costume concept", "colour concept", "color concept", "costume or colour", "costume or color", "setting", "costume", "rationale", "2-4 sentences", "2 4 sentences", "tied to a quoted line"], "a": "In Plan the Page, plan for your own scene. Write a setting concept, where the scene happens and how it looks, then one line of rationale tied to a quoted line. Then write a costume or colour concept, what the characters wear or the colours that run through the scene, with its own rationale. Two to four sentences each. Quote an exact line from the play and cite it, like this: (1.1).", "where": "The Design Page · A", "go": "design", "tab": "design"}, {"k": ["images", "plan the images", "where can images come from", "four places", "own drawing", "photo you took", "public domain", "public-domain", "image source", "source of image", "credit", "caption", "setting image", "costume image", "which source", "picture", "google", "internet", "online image"], "a": "Each image comes from one of four places: your own drawing, a photo you took, a public-domain image with its credit, or an AI image that is labelled. For each image, give the source, who made it, and your caption. If it is an AI image, add a sentence on what it got wrong.", "where": "The Design Page · B", "go": "design", "tab": "design"}, {"k": ["ai image", "ai label", "labelled", "labeled", "ai generated", "ai-generated", "what must sit beside it", "what must sit beside an ai image", "multiple choice", "choice question", "mcq", "sentence on what it got wrong", "got wrong", "critique"], "a": "For the AI image question, reread the four options against the rule on the page. The page states a rule for when an AI concept image may appear on the design page. Find that rule in AI and Your Program, then match it to the option.", "where": "The Design Page · B", "go": "design", "tab": "design"}, {"k": ["alt text", "alt", "alternative text", "for a reader who cannot see it", "describe the image", "edit alt text", "view alt text", "right click", "how do i add alt text"], "a": "Alt text is one sentence for each image, for a reader who cannot see it. Say what is in the image, not what you hope it means. Label them Setting and Costume. In Word, right-click the image, then Edit Alt Text. In PowerPoint, right-click, then View Alt Text.", "where": "The Design Page · B", "go": "design", "tab": "design"}, {"k": ["cast list", "one line for every character", "character notes", "who goes in the cast list", "check each name", "one-line", "one line note", "who is in my scene"], "a": "The cast list has one line for every character who speaks or appears in your scene: the name, then one line that tells the reader who this person is in your production. Check each name against the play.", "where": "The Design Page · C", "go": "design", "tab": "design"}, {"k": ["ai and your program", "ai tool", "can i use ai", "use ai", "using ai", "optional", "misstate", "invent lines", "ai notes", "what i asked", "ai policy", "chatbot"], "a": "An AI tool can write a director’s note in seconds, but it can also misstate the play, invent lines, and describe scenes that are not in the text, so check every claim against the play. Using AI is optional. If you ask for ideas, keep a short note of what you asked and what you checked yourself, and include it with your program.", "where": "The Design Page · D", "go": "design", "tab": "design"}, {"k": ["a page that shows card", "mini lesson", "mini-lesson", "play", "audio", "listen", "transcript", "video", "sound"], "w": 1, "a": "Press Play on any card with my picture and the visual builds as I talk. Use Transcript to read along instead."}, {"k": ["director's call", "directors call", "the call", "a clear call", "what is the call", "recording", "2 to 3 minutes", "2-3 minutes", "two to three minutes", "audio or video", "how long is the call"], "a": "The Director’s Call is a recording of 2 to 3 minutes, audio or video. In it you tell your cast what to do for the key moment of your scene, as a list of things a cast can act on, in an order they can follow.", "where": "The Director’s Call", "go": "call", "tab": "call"}, {"k": ["can a cast act on it", "act on it", "too vague", "vague", "actionable", "tap an instruction", "which instruction", "which instructions", "sort the instructions", "which can a cast act on", "be more emotional", "let the scene breathe", "make it more dramatic", "show that you are scared", "cast can act", "can act on", "cross to lysander", "speak almost under your breath"], "a": "In Can a Cast Act on It?, tap an instruction, then tap the box. Ask of each one: could an actor’s body do this, in a clear order? Check whether it names an action, such as stop, turn, or cross, and whether it says where or when. My card above shows one vague instruction rewritten into three actions.", "where": "The Director’s Call · A", "go": "call", "tab": "call"}, {"k": ["stop count two", "turn to hermia", "mine", "verbs", "one action each", "precise verbs", "stop", "turn", "cross", "lower", "hold"], "a": "The rewrite on my card is: Stop. Count two. Then turn to Hermia on “mine”. Each instruction starts with a verb and asks for one action. Good verbs include stop, turn, cross, lower, and hold.", "where": "The Director’s Call · A Clear Call", "tab": "call"}, {"k": ["write your call script", "call script", "script", "key moment", "the key moment", "quote the line", "your instructions", "6-10", "6 10", "how many instructions", "numbered", "in order", "start each instruction with a verb", "write it the way you will say it"], "a": "In Write Your Call Script, write it the way you will say it. Under The key moment, quote the line or lines the moment turns on, exactly as printed, cite them, and say in one sentence what the moment is. Under Your instructions, write 6–10 numbered instructions, one action each, in the order the cast will do them, each starting with a precise verb.", "where": "The Director’s Call · B", "go": "call", "tab": "call"}, {"k": ["planned pause", "pause", "where the pause falls", "how long the pause lasts", "why the moment needs it", "1-2 sentences", "1 2 sentences", "your planned pause"], "a": "In Your planned pause, say where it falls, how long it lasts, and why the moment needs it. One to two sentences.", "where": "The Director’s Call · B", "go": "call", "tab": "call"}, {"k": ["rehearse and record", "before you record", "record", "how do i record", "any device", "phone", "tablet", "webcam", "school recording tool", "recording tool", "timed a read", "time my read", "call file name", "link instead of a file", "recording file name"], "a": "Before you record, read your script aloud once, start to finish. Check that every instruction starts with a verb, the instructions are in order, you marked where the pause falls, and a timed read runs between 2 and 3 minutes. Use any device: a phone, a tablet, a computer webcam, or a school recording tool. Save the file as LastName_FirstName_PlayersCompanyCall_ELA10. If your tool gives you a link, keep the link.", "where": "The Director’s Call · C", "go": "call", "tab": "call"}, {"k": ["egeus", "egeus's complaint", "full of vexation", "full of vexation come i", "theseus", "death", "stop before the word death", "lysander", "steal forth", "stand forth", "hermia", "complaint"], "a": "The examples on this page use moments from Act 1, Scene 1. Egeus comes to Duke Theseus with a complaint about his daughter Hermia, calls Demetrius and Lysander forward, and asks for the law that would send her to her death if she refuses. Later, Lysander tells Hermia to steal out of her father’s house and meet him in the wood.", "where": "Act 1, Scene 1"}, {"k": ["assemble", "assemble and publish", "the program in order", "program order", "order of the pages", "what order", "cover", "order", "what goes in the program", "sections of the program"], "a": "The program runs in this order: Cover (title of your scene, your name, and the act and scene); the Director’s Essay (700 to 1,000 words, under headings a theatergoer can scan); the Design Page; the Cast List; and One Cited Passage from the play, exactly as printed, with its act and scene.", "where": "Assemble and Publish · A", "go": "assemble", "tab": "assemble"}, {"k": ["check the pages", "check pages", "headings", "every image has", "word for word", "no blank pages", "page check", "proofread", "checklist for pages"], "a": "Check the pages: every section has a heading a reader can find; every image has a caption beneath it, a credit, and alt text; any AI image is labelled with a sentence on what it got wrong; every quotation matches the play word for word and is cited by act and scene; and the pages run in the order above, with no blank pages.", "where": "Assemble and Publish · B", "go": "assemble", "tab": "assemble"}, {"k": ["export", "export to pdf", "pdf", "from word", "word", "save as pdf", "how do i export", "how do i make a pdf", "save a copy", "file type", "browser version", "download as pdf"], "a": "From Word: choose File, then Save As (or Save a Copy), pick PDF in the file type list, name it LastName_FirstName_PlayersCompany_ELA10.pdf, and save. In the browser version: File, then Export, then Download as PDF, and rename the download to the same name.", "where": "Assemble and Publish · C", "go": "assemble", "tab": "assemble"}, {"k": ["from powerpoint", "powerpoint", "ppt", "slides", "create pdf/xps", "create pdf xps", "export from powerpoint"], "a": "From PowerPoint: choose File, then Export, then Create PDF/XPS Document, or choose Save As and pick PDF as the file type. Name it LastName_FirstName_PlayersCompany_ELA10.pdf and save. In the browser version: File, then Export, then Download as PDF, and rename the download to the same name.", "where": "Assemble and Publish · C", "go": "assemble", "tab": "assemble"}, {"k": ["file name", "filename", "name the file", "lastname", "playerscompany", "what do i name it", "name of the pdf", "onedrive", "microsoft 365", "m365", "where do i save"], "a": "Build in your school Microsoft 365 account, and save to Optima, then ELA, then ELA10 in OneDrive. The program PDF is named LastName_FirstName_PlayersCompany_ELA10.pdf. The recording is named LastName_FirstName_PlayersCompanyCall_ELA10.", "where": "Assemble and Publish · C", "go": "assemble", "tab": "assemble"}, {"k": ["open the pdf", "scroll through", "check the pdf", "no text cut off", "every image shows", "ending in pdf", "after export", "after i export"], "a": "After you export, open the PDF and scroll through every page. Check that every image shows, no text is cut off, and the file name is exactly as shown, ending in .pdf.", "where": "Assemble and Publish · C", "go": "assemble", "tab": "assemble"}, {"k": ["turn in", "submit", "what do i submit", "hand in", "upload", "assignment", "where do i submit", "what do i turn in", "three files", "what files"], "a": "Upload three things to the assignment: your program PDF, your recording, and this Project PDF.", "where": "Turn In · Submit", "go": "turnin", "tab": "turnin"}, {"k": ["before you submit", "checklist", "check list", "what do i need", "before i submit", "requirements", "your project", "status"], "a": "The Before You Submit checklist asks you to confirm: every lesson above shows its answers saved; your program is a PDF with the exact file name; your recording is a file or a link, 2 to 3 minutes long; you saved this page as a PDF with the button; and your name is filled in.", "where": "Turn In · Before You Submit", "go": "turnin", "tab": "turnin"}, {"k": ["download", "download your project pdf", "project pdf", "save this page", "print", "name", "your name", "save this lesson", "how do i download"], "a": "Type your name at the top of Turn In. Your answers save in this browser as you work. Press Download your Project PDF at the bottom of the page and save it as a PDF. Then upload it with your program and your recording.", "go": "turnin", "tab": "turnin"}, {"k": ["are you real", "are you ai", "are you a robot", "are you a bot", "are you human", "real person", "chatgpt", "who are you", "who made you"], "a": "I am an AI-generated character. My replies here come from notes written for this lesson, so I can answer about this lesson and its reading, but nothing beyond it. Your teacher is the person to ask about anything else.", "w": 1}, {"k": ["what does", "mean", "meaning", "define", "definition", "word", "what is a"], "w": 0.6, "a": "No words are underlined on this page. If a word is new to you, try the sentence around it, then ask me the word by itself.", "go": "design"}], "think": [{"re": "(which|what) (setting|costume|colour|color|image|concept|palette) (should|do|would|is best|is better|is good|is right)|what should (my|the) (setting|costume|design|page|image)|what (colour|color)s? (should|do) i (use|pick|choose)|how (should|do) (i|my scene) (look|be designed)", "back": "Reread your scene and pick one line you can already picture. What place or what clothes does that line suggest, and which exact words make you say so?"}, {"re": "(which|what) (instruction|pause|moment|line|verb) (should|do|would|is best|is better|is good|is right)|where should (i|the) (pause|stop)|what should (my|the) (call|pause|key moment|instructions)|what is the key moment|which moment is the key", "back": "Reread your scene and find the line where it turns. What does each person do or say just before and just after it, and where would a pause make a listener notice that turn?"}, {"re": "(is|was) (my|this|that) (design|page|call|script|rationale|caption|cast list|instruction|instructions|program|pause|setting|costume) (good|ok|okay|fine|right|correct|bad|wrong|strong|weak|clear|vague)|check my (design|page|call|script|rationale|caption|cast list|instructions|program)|did i (do|get)", "back": "Read your own instruction aloud, as if you were the actor. What exactly would your body do, and in what order? Then compare with the quoted line you chose: does the line give the reason?"}, {"re": "(is|was|does|would) (egeus|theseus|hermia|lysander|demetrius) (angry|cruel|fair|right|wrong|good|bad|love|care|feel|want|speak|look)|how (does|should) egeus (feel|sound|stand|look)|what is egeus (feeling|thinking|like)", "back": "Reread Egeus’s complaint in Act 1, Scene 1, from “Full of vexation.” Which words does he use for Hermia, and which for Lysander? What do those words let a director show, and what do they leave to the actor?"}, {"re": "should i use ai|can ai (write|do|make|draw)|is it (ok|okay|allowed|cheating) to use ai|is ai (ok|okay|allowed|cheating|good|bad)", "back": "Reread AI and Your Program on the Design Page tab. What does it say an AI tool can get wrong, and what must you do about each claim before it goes in your program?"}, {"re": "focus question|what must a theatergoer see|what must a cast hear|how (do|does) (i|my) (reading|scene) (arrive|come across|show)", "back": "Choose one line in your scene that carries the layer you want to bring out. What would a theatergoer need to see on the design page, and what would a cast need to hear in the call, for that line to land?"}], "thinkAny": "what do you think|your opinion|in your opinion|what('s| is) the (right |correct )?answer|answer (to|for) (the|my|question)|tell me the answer|which (one )?is (right|correct)|is (it|this|my answer) (right|correct)|do my (work|homework|answer)|write (it|my answer|this|my script|my call|my cast list|my caption|my rationale) for me|what should i write|give me (a|an|some) (instruction|instructions|caption|rationale|example)", "thinkBack": "Which part is your question about: the design page, the call script, the PDF, or the turn-in? Find the box it points to and read it again. What do the words there ask you to do?", "allowQuotes": [], "miss": "My notes on this page do not cover that one. Which part is it about: the design page, the images, the Director’s Call, the PDF export, or the turn-in? Find that part of the page and ask yourself what it asks you to do."}</script>
+<script>
+/* Ask Dr. Mento · margin-note letters on every tab (shared by the 9-12 kits; runs after core.js).
+   Replies come from prepared notes in the JSON block #ask-notes (no AI service; nothing leaves the page).
+   Notes: { scope, intro, placeholder:{default, <tab>}, notes:[{k:[keys], a:html, where, go:<tab>, tab:<tab>, w}],
+            think:[{re, back}], thinkAny, thinkBack, miss }
+   Thinking questions are turned back: "That's yours to decide." plus a question that sends the student to a moment in the reading.
+   Each fact note lists words a student might use; the best-scoring note answers (a note for the open tab scores a little higher). */
+(function initAsk(){
+  var el = document.getElementById('ask-notes'); if (!el) return;
+  var D; try { D = JSON.parse(el.textContent); } catch(e){ return; }
+  var NOTES = D.notes || [], THINK = (D.think || []).map(function(t){ return { re: new RegExp(t.re, 'i'), back: t.back }; });
+  var THINK_ANY = D.thinkAny ? new RegExp(D.thinkAny, 'i') : null;
+  var face = (window.ASSETS && ASSETS.img && ASSETS.img.mori) ? ASSETS.img.mori.src : '';
+  var faceTag = face ? '<img src="' + face + '" alt="">' : '';
+  function tabNow(){ var b = document.querySelector('.tab.on'); return b ? b.dataset.tab : ''; }
+  function tabTitle(id){ var b = document.querySelector('.tab[data-tab="' + id + '"]'); return b ? (b.dataset.title || b.textContent.trim()) : id; }
+
+  var tab = document.createElement('button');
+  tab.type = 'button'; tab.className = 'ask-tab'; tab.setAttribute('aria-label', 'Ask Dr. Mento'); tab.setAttribute('aria-expanded', 'false');
+  tab.innerHTML = faceTag + '<span>Ask Dr. Mento</span>';
+  var pane = document.createElement('aside');
+  pane.className = 'ask-pane'; pane.setAttribute('role', 'dialog'); pane.setAttribute('aria-label', 'Ask Dr. Mento');
+  pane.innerHTML = '<div class="ask-head">' + faceTag + '<div class="ask-who"><div class="ask-name">Dr. Mento · English</div><div class="ask-scope">' + (D.scope || '') + '</div></div><button class="ask-x" type="button" aria-label="Close">&times;</button></div>'
+    + '<div class="ask-log" aria-live="polite"><div class="ask-empty">' + (D.intro || 'Ask about the reading, a word, or any part of this lesson.') + '</div></div>'
+    + '<form class="ask-form"><label for="askQ">Your question</label><textarea id="askQ" maxlength="300" rows="2"></textarea>'
+    + '<div class="ask-row"><span class="ask-note">Replies come from her notes on this lesson.</span><button class="ask-send" type="submit">Send</button></div></form>';
+  document.body.appendChild(tab); document.body.appendChild(pane);
+  var log = pane.querySelector('.ask-log'), ta = pane.querySelector('textarea'), form = pane.querySelector('form'), send = pane.querySelector('.ask-send');
+
+  function ph(){ var p = D.placeholder || {}; ta.placeholder = p[tabNow()] || p['default'] || ''; }
+  function open(){ ph(); pane.classList.add('open'); tab.classList.add('hide'); tab.setAttribute('aria-expanded', 'true'); setTimeout(function(){ ta.focus(); }, 320); }
+  function close(){ pane.classList.remove('open'); tab.classList.remove('hide'); tab.setAttribute('aria-expanded', 'false'); tab.focus(); }
+  tab.addEventListener('click', open);
+  pane.querySelector('.ask-x').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && pane.classList.contains('open')) close(); });
+  document.addEventListener('tabchange', ph);
+  window.openAsk = open;
+  $$('[data-ask]').forEach(function(b){ b.addEventListener('click', function(){ open(); if (b.dataset.ask) { ta.value = b.dataset.ask; } }); });
+
+  function answer(q){
+    for (var i = 0; i < THINK.length; i++) if (THINK[i].re.test(q)) return { turn: true, a: THINK[i].back };
+    if (THINK_ANY && THINK_ANY.test(q)) return { turn: true, a: D.thinkBack };
+    var t = ' ' + q.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    var now = tabNow(), best = null, bs = 0;
+    NOTES.forEach(function(n){
+      var s = 0;
+      n.k.forEach(function(key){
+        var kk = key.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim(); if (!kk) return;
+        var re = new RegExp('\\b' + kk.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?\\b');
+        if (re.test(t)) s += 1 + kk.split(' ').length;
+      });
+      s *= (n.w || 1.5);
+      if (s && n.tab && n.tab === now) s *= 1.25;
+      if (s > bs) { bs = s; best = n; }
+    });
+    if (!best || bs < 2) return { a: D.miss };
+    return best;
+  }
+  function add(cls, html){
+    var e = log.querySelector('.ask-empty'); if (e) e.remove();
+    var d = document.createElement('div'); d.className = cls + ' in'; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = ta.value.trim(); if (!q) { ta.focus(); return; }
+    add('ask-q', esc(q).replace(/\n/g, '<br>'));
+    ta.value = ''; send.disabled = true;
+    var pen = add('ask-pen', '<i></i><i></i><i></i>');
+    var r = answer(q);
+    setTimeout(function(){
+      pen.remove();
+      var h = (r.turn ? '<span class="turn">That&rsquo;s yours to decide.</span> ' : '') + r.a;
+      if (r.where) h += '<span class="where">' + r.where + '</span>';
+      if (r.go && document.querySelector('.tab[data-tab="' + r.go + '"]')) h += '<button class="go" type="button" data-to="' + r.go + '">Go to ' + esc(tabTitle(r.go)) + ' &rarr;</button>';
+      h += '<span class="sign">Dr. Mento</span>';
+      var a = add('ask-a', h);
+      var g = a.querySelector('.go'); if (g) g.addEventListener('click', function(){ switchTab(g.dataset.to); if (window.innerWidth < 900) close(); });
+      send.disabled = false; ta.focus();
+    }, 900);
+  });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : send.click(); } });
 })();
 
 </script>

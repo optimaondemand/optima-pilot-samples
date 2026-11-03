@@ -370,6 +370,59 @@ body.r-focus{overflow:hidden}
   .tl-span{display:none}
 }
 
+/* ---------- Ask Dr. Mento: margin-note letters, on every tab ----------
+   Shared by the 9-12 kits; colours come from each kit's :root tokens. */
+.ask-tab{position:fixed;right:0;top:38%;z-index:88;display:flex;flex-direction:column;align-items:center;gap:10px;width:46px;padding:10px 0 14px;background:var(--slate);color:#fff;border:0;border-radius:10px 0 0 10px;box-shadow:-4px 6px 18px rgba(20,26,32,.22);font:600 13px/1 var(--ui);letter-spacing:.06em;transition:background .2s,transform .25s}
+.ask-tab:hover{background:var(--slate2)}
+.ask-tab img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.85)}
+.ask-tab span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.ask-tab.hide{transform:translateX(110%)}
+.ask-pane{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);z-index:92;display:flex;flex-direction:column;background:var(--paper);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(20,26,32,.16);transform:translateX(105%);transition:transform .32s ease;visibility:hidden}
+.ask-pane.open{transform:none;visibility:visible}
+.ask-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+.ask-head img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.ask-who{flex:1;min-width:0}
+.ask-name{font:600 15px/1.2 var(--ui);color:var(--ink)}
+.ask-scope{font:500 19px/1.2 var(--display);color:var(--ink);margin-top:2px}
+.ask-x{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);background:#fff;font:18px/1 var(--ui);color:var(--ink2)}
+.ask-x:hover{border-color:var(--ink2)}
+.ask-log{flex:1;overflow-y:auto;padding:18px 16px 10px;display:flex;flex-direction:column;gap:14px}
+.ask-empty{font:14.5px/1.55 var(--ui);color:var(--muted);text-align:center;margin:18px 10px 0}
+.ask-q{align-self:flex-end;max-width:86%;background:var(--tint);border:1px solid var(--line);border-radius:3px;padding:9px 12px;font:italic 400 16px/1.5 var(--serif);color:var(--ink);transform:rotate(.5deg);box-shadow:0 1px 3px rgba(20,26,32,.06)}
+.ask-a{align-self:flex-start;max-width:94%;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--scarlet);border-radius:3px;padding:11px 14px 9px;font:400 16px/1.6 var(--serif);color:var(--ink);box-shadow:0 2px 8px rgba(20,26,32,.06)}
+.ask-a .turn{font-weight:600}
+.ask-a .where{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.ask-a .sign{display:block;text-align:right;font:italic 500 17px/1.2 var(--display);color:var(--ink2);margin-top:6px}
+.ask-a .go{display:table;margin-top:8px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 12px;font:600 12.5px/1.2 var(--ui);color:var(--ink2)}
+.ask-a .go:hover{border-color:var(--scarlet);color:var(--scarlet)}
+.ask-a.in,.ask-q.in{animation:askin .35s ease}
+@keyframes askin{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.ask-q.in{animation:askinq .35s ease}
+@keyframes askinq{from{opacity:0;transform:translateY(6px) rotate(.5deg)}to{opacity:1;transform:rotate(.5deg)}}
+.ask-pen{align-self:flex-start;display:flex;gap:5px;padding:12px 14px}
+.ask-pen i{width:6px;height:6px;border-radius:50%;background:var(--line2);animation:askdot 1s infinite ease-in-out}
+.ask-pen i:nth-child(2){animation-delay:.15s}.ask-pen i:nth-child(3){animation-delay:.3s}
+@keyframes askdot{0%,80%,100%{opacity:.35;transform:none}40%{opacity:1;transform:translateY(-3px);background:var(--scarlet)}}
+.ask-form{padding:12px 16px 14px;background:var(--card);border-top:1px solid var(--line)}
+.ask-form label{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ask-form textarea{display:block;width:100%;min-height:64px;max-height:160px;resize:vertical;border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:400 16px/1.5 var(--serif);color:var(--ink);background:#fff}
+.ask-form textarea:focus{outline:none;border-color:var(--ink2)}
+.ask-row{display:flex;align-items:center;gap:12px;margin-top:8px}
+.ask-note{flex:1;font:12px/1.4 var(--ui);color:var(--muted)}
+.ask-send{flex:none;border:0;background:var(--slate);color:#fff;border-radius:999px;padding:9px 20px;font:600 14px/1 var(--ui)}
+.ask-send:hover{background:var(--slate2)}
+.ask-send:disabled{opacity:.5;cursor:default}
+@media (max-width:640px){
+  .ask-tab{top:auto;bottom:14px;right:12px;width:56px;height:56px;padding:0;justify-content:center;border-radius:50%;border:2px solid #fff;box-shadow:0 6px 18px rgba(20,26,32,.3)}
+  .ask-tab img{width:48px;height:48px;border:0}
+  .ask-tab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ask-tab::after{content:"?";position:absolute;right:-3px;top:-3px;width:20px;height:20px;border-radius:50%;background:var(--scarlet);color:#fff;font:700 12px/20px var(--ui);text-align:center;border:2px solid #fff}
+  .ask-tab.hide{transform:translateY(160%)}
+  .ask-pane{width:100vw;border-left:0}
+}
+@media (prefers-reduced-motion:reduce){.ask-pane,.ask-tab{transition:none}.ask-a.in,.ask-q.in{animation:none}.ask-pen i{animation:none}}
+@media print{.ask-tab,.ask-pane{display:none!important}}
+
 </style>
 <style>
 /* L3 (Jane Eyre): three shapes, sort bins, word cards, writer's desk */
@@ -1424,6 +1477,91 @@ renderStatus(); updateMarkSums();
     if (STORE.get('mori-' + card.dataset.clip) === '1') { show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished'); }
     else show(-1);
   });
+})();
+
+</script>
+<script type="application/json" id="ask-notes">{"scope": "The Writer’s Desk · sentence shapes and ten words", "intro": "Ask about the three sentence shapes, a Word Study word, or any activity in this lesson.", "placeholder": {"default": "What is a periodic sentence?", "opening": "What is a short blow?", "style": "What does Write Three ask for?", "words": "What does consternation mean?", "desk": "How long is the paragraph?"}, "notes": [{"k": ["hello", "hi", "hey", "dear dr", "thanks", "thank you"], "w": 1, "a": "Hello. Ask me about sentence shapes, the ten words, or any step in this lesson."}, {"k": ["three shapes", "sentence shapes", "shapes", "mini lesson shapes", "brontë's sentences"], "a": "Brontë writes in three shapes: the periodic sentence, the cumulative sentence, and the short blow. The Dr. Mento card in the Opening tab builds one of each on screen. Then you sort six sentences and write three of your own.", "where": "Opening · Three Shapes", "go": "opening", "tab": "opening"}, {"k": ["periodic", "periodic sentence", "main clause last", "holds its main clause back", "weather sentence"], "a": "A periodic sentence holds its main clause back. Details, conditions, or time pile up first, and the point arrives last. The card’s example is the sentence about the cold winter wind and rain in the first paragraph of Chapter I.", "where": "Opening · Three Shapes", "tab": "opening"}, {"k": ["cumulative", "cumulative sentence", "main clause first", "keeps adding", "additions"], "a": "A cumulative sentence states its main clause first, then keeps adding. The card’s example is the sentence about the red-room being chill, silent, and solemn, from Chapter II.", "where": "Opening · Three Shapes", "tab": "opening"}, {"k": ["short blow", "short sentence", "short sentences", "nothing added"], "a": "The short blow is a short sentence with nothing added, over quickly. The card’s example opens Chapter I. The last step of the card shows two places a short sentence can sit.", "where": "Opening · Three Shapes", "tab": "opening"}, {"k": ["main clause", "clause", "subordinate", "independent clause", "what is a clause"], "a": "The main clause is the part of a sentence that can stand alone as a complete statement. In a periodic sentence it comes last; in a cumulative sentence it comes first.", "where": "Opening · Three Shapes", "tab": "opening"}, {"k": ["find the shape", "section a", "sort", "tap a sentence", "which bin", "bin", "bins", "which shape is", "what shape is this sentence", "which shape", "churchyard", "carriage", "fir-cones", "eerie", "singular notion", "winner of the field", "is it periodic", "is it cumulative"], "a": "In Find the Shape, tap a sentence, then tap its shape. All six come from Chapters I–IV. Read each one and notice where its main clause arrives: at the end, at the start, or the sentence is all main clause. Say it aloud if that helps.", "where": "Style Lab · A", "go": "style", "tab": "style"}, {"k": ["where the blow lands", "section b", "placement test", "made-up example", "made up example", "nobody spoke", "four short sentences", "rain fell", "blow lands", "lands", "land", "three shorts", "a list", "in for it", "why does it land"], "a": "In Where the Blow Lands, read each passage aloud and look at what comes just before and just after the short sentence. The two made-up examples are practice, not from the novel.", "where": "Style Lab · B", "go": "style", "tab": "style"}, {"k": ["write three", "section c", "your own sentences", "place you know", "label each", "read aloud", "three sentences"], "a": "In Write Three, choose one place you know well and write a periodic sentence, a cumulative sentence, and a short blow about it. The periodic needs at least three details before the main clause. The cumulative has its main clause in the first five words, then three additions. The short blow is eight words or fewer and comes directly after the periodic. Label each.", "where": "Style Lab · C", "go": "style", "tab": "style"}, {"k": ["ten words", "word cards", "tap a word", "open its card", "card"], "a": "In Word Study, tap a word to open its card. Each card gives the part of speech, a meaning, a sentence from the novel with its chapter, and the origin of the word.", "where": "Word Study · A", "go": "words", "tab": "words"}, {"k": ["match", "section b match", "meaning", "match the meaning", "which meaning", "which word means", "word means"], "a": "In Match, tap a word, then tap its meaning. The meanings are the ones on the cards in Ten Words. Open a card and compare its meaning with each option.", "where": "Word Study · B", "go": "words", "tab": "words"}, {"k": ["which word fits", "section c words", "fill in the blank", "fill in", "blank", "which word goes", "the blank"], "a": "In Which Word Fits?, read the whole sentence and then try each option in the blank. The cards in Ten Words give the meaning of each word. A word is right only when its meaning fits the situation described.", "where": "Word Study · C", "go": "words", "tab": "words"}, {"k": ["opprobrium"], "w": 2, "a": "Opprobrium (noun): public disgrace and blame heaped on someone. Jane is loaded with it in Chapter II after John strikes her. From Latin opprobrium, “reproach, disgrace,” from ob- (“against”) and probrum (“a shameful act”).", "where": "Word", "tab": "words"}, {"k": ["sanguine"], "w": 2, "a": "Sanguine (adjective): cheerful and confident by nature; in Brontë’s list it also means warm and high-spirited. Chapter II. From Latin sanguineus, “of blood.” Older medicine held that a body rich in blood made a person warm and cheerful.", "where": "Word", "tab": "words"}, {"k": ["interloper"], "w": 2, "a": "Interloper (noun): someone who pushes in where they do not belong and are not wanted. In Chapter II, “race” means family line. From English, about 1600: inter- (“between”) and loper, from Dutch lopen, “to run.”", "where": "Word", "tab": "words"}, {"k": ["consternation"], "w": 2, "a": "Consternation (noun): sudden alarm that leaves the mind in confusion. Chapter II. From Latin consternare, “to alarm, to throw into confusion.”", "where": "Word", "tab": "words"}, {"k": ["duplicity"], "w": 2, "a": "Duplicity (noun): deceit, saying or seeming one thing while meaning another. In Chapter II it is the charge Mrs. Reed believes. From Latin duplicitas, from duplex, “twofold.”", "where": "Word", "tab": "words"}, {"k": ["antipathy"], "w": 2, "a": "Antipathy (noun): a deep, settled dislike. John has one toward Jane in Chapter I. From Greek antipatheia: anti- (“against”) and pathos (“feeling”).", "where": "Word", "tab": "words"}, {"k": ["vassalage"], "w": 2, "a": "Vassalage (noun): a following of dependents who serve a powerful person; here, the household around Mrs. Reed. Chapter II. From vassal, a servant bound to a lord, from Old French and Medieval Latin.", "where": "Word", "tab": "words"}, {"k": ["impudence"], "w": 2, "a": "Impudence (noun): rude boldness toward someone who deserves respect. John Reed names Jane’s answer this way in Chapter I. From Latin impudens, “shameless.”", "where": "Word", "tab": "words"}, {"k": ["precocious"], "w": 2, "a": "Precocious (adjective): developed early; ahead of one’s years. In Chapter II it describes a power of reasoning that comes early and does not last. From Latin praecox, “ripening early.”", "where": "Word", "tab": "words"}, {"k": ["insupportable"], "w": 2, "a": "Insupportable (adjective): too much to bear; unbearable. Chapter II. From Late Latin insupportabilis, “not able to be carried.”", "where": "Word", "tab": "words"}, {"k": ["word origin", "origin", "etymology", "latin", "greek", "where does the word come from", "root"], "w": 0.8, "a": "Each Word Study card ends with the origin of the word, in the line marked Origin. Open the card for the word you are asking about.", "where": "Word Study · A", "go": "words", "tab": "words"}, {"k": ["what does", "define", "definition", "word"], "w": 0.7, "a": "The ten words each have a card in the Word Study tab. Tap one to see its meaning, the sentence from the novel, and its origin. If your word is not one of the ten, ask me its name by itself.", "go": "words"}, {"k": ["virtue or a fault", "writer's desk", "writers desk", "section desk", "defiance", "paragraph", "150-200", "150 200", "checklist", "short blow first"], "a": "In Virtue or a Fault?, write one paragraph of 150–200 words about Jane’s defiance in Chapters I–IV. The checklist asks for a short blow of ten words or fewer as your first sentence, one exact quotation with its chapter, one periodic sentence that holds your reason to the end, one Word Study word used exactly, and what the defiance gains and costs Jane.", "where": "Writer’s Desk", "go": "desk", "tab": "desk"}, {"k": ["which scenes", "where does jane defy", "moments of defiance", "evidence for defiance", "where should i look"], "a": "Jane acts against someone more powerful in several places in Chapters I–IV: in the fight with John in Chapter I, with Bessie and Miss Abbot on the way to the red-room in Chapter II, and in Chapter IV, during Mr. Brocklehurst’s visit and with Mrs. Reed after he leaves. Reread those scenes and mark what Jane gains and what follows.", "where": "Writer’s Desk", "tab": "desk"}, {"k": ["quote exactly", "exact quotation", "cite", "citation", "how do i cite", "ch iv"], "a": "Copy the words exactly as they appear, inside quotation marks, and put the chapter after in parentheses, like this: (Ch. IV). No page numbers.", "where": "Writer’s Desk", "go": "desk", "tab": "desk"}, {"k": ["how long", "word count", "how many words", "length"], "a": "The paragraph is 150–200 words. The first sentence is a short blow of ten words or fewer. The counter under the box keeps track as you type.", "where": "Writer’s Desk", "go": "desk", "tab": "desk"}, {"k": ["pdf", "save", "download", "print", "submit", "turn in", "hand in", "name"], "a": "Type your name in the Writer’s Desk tab. Your answers save in this browser as you work. To keep a copy, use Save this lesson as PDF at the bottom.", "go": "desk", "tab": "desk"}, {"k": ["play", "transcript", "captions", "caption", "voice", "mini lesson", "mini-lesson", "video"], "w": 1, "a": "The Dr. Mento card has a Play button and a Transcript button. Play runs the steps with captions while the picture changes. Transcript shows all the steps as text."}, {"k": ["are you real", "are you ai", "are you a robot", "are you a bot", "are you human", "real person", "chatgpt", "who are you", "who made you"], "w": 1, "a": "I am an AI-generated character. My replies here come from notes written for this lesson, so I can answer about this lesson and its reading, but nothing beyond it. Your teacher is the person to ask about anything else."}], "think": [{"re": "(is|was) jane'?s defiance (a )?(virtue|fault|good|bad|right|wrong)|virtue or (a )?fault|(is|was) jane (right|wrong|brave|rude|bad|good)", "back": "That is the question the paragraph asks. Reread Jane’s reply to Mrs. Reed at the end of Chapter IV and her words to John in Chapter I. What does each win her, and what does each cost her in the next scene?"}, {"re": "(is|should) (it|this|my) (be )?(periodic|cumulative|a short blow)|which (is )?better|should i use (a )?(periodic|cumulative|short)|what shape (should|is best|works best)", "back": "Read your own sentence aloud and ask where its main clause arrives. What does the reader know before that point, and what is held back? Then check it against the three shapes on the opening card."}, {"re": "does (it|the short sentence|that sentence) (land|work)|is (it|this) a (good|strong) (short blow|sentence)|why does the (short sentence|blow) land", "back": "Read the passage aloud, then read the short sentence by itself. What changes? Notice what the reader knows just before it arrives."}, {"re": "should i (use|pick|choose) (which )?word|which word (should|would) i use|what word (should|do) i use", "back": "Reread your sentence and say what situation it describes. Then open the cards in Ten Words and read each meaning. Which word’s meaning fits the situation you wrote, and which only sounds impressive?"}, {"re": "what should (my|the) (claim|position|first sentence|reason) be|what is my (claim|position)|how should i (open|start|begin)", "back": "Before you write, reread two moments in Chapters I–IV where Jane acts against someone with more power. What does she gain each time, and what follows? Your first sentence can state what you notice."}, {"re": "does (the )?(narrator|brontë|bronte|jane) (mean|want|intend)|why does (brontë|bronte|the narrator) (use|write)", "back": "Pick one of the six sentences in Find the Shape and read it aloud. What does the reader learn first, and what comes last? Notice what that order makes you feel."}, {"re": "(is|was) mrs\\.? reed (right|wrong|cruel|fair|honest)|is (john|bessie) (kind|cruel|fair)", "back": "Choose the scene you mean in Chapters I–IV. What does that person say and do there, and which exact words would you quote to support your view?"}], "thinkAny": "what do you think|your opinion|in your opinion|what('s| is) the (right |correct )?answer|answer (to|for) (the|my|question)|tell me the answer|which (one )?is (right|correct)|is (it|this|my answer) (right|correct)|do my (work|homework|answer)|write (it|my answer|this) for me|what should i write|give me the answer|just tell me", "thinkBack": "Which part of your question is about a sentence, a word, or Jane’s defiance? Find the sentence or the scene in Chapters I–IV and read it again. What does it say first, and what comes last?", "allowQuotes": ["to alarm, to throw into confusion", "not able to be carried"], "miss": "My notes on this lesson do not cover that one. Which part is it about: the three shapes, the Style Lab, one of the ten words, or the Writer’s Desk? Find that part and ask yourself what the words on the screen are doing."}</script>
+<script>
+/* Ask Dr. Mento · margin-note letters on every tab (shared by the 9-12 kits; runs after core.js).
+   Replies come from prepared notes in the JSON block #ask-notes (no AI service; nothing leaves the page).
+   Notes: { scope, intro, placeholder:{default, <tab>}, notes:[{k:[keys], a:html, where, go:<tab>, tab:<tab>, w}],
+            think:[{re, back}], thinkAny, thinkBack, miss }
+   Thinking questions are turned back: "That's yours to decide." plus a question that sends the student to a moment in the reading.
+   Each fact note lists words a student might use; the best-scoring note answers (a note for the open tab scores a little higher). */
+(function initAsk(){
+  var el = document.getElementById('ask-notes'); if (!el) return;
+  var D; try { D = JSON.parse(el.textContent); } catch(e){ return; }
+  var NOTES = D.notes || [], THINK = (D.think || []).map(function(t){ return { re: new RegExp(t.re, 'i'), back: t.back }; });
+  var THINK_ANY = D.thinkAny ? new RegExp(D.thinkAny, 'i') : null;
+  var face = (window.ASSETS && ASSETS.img && ASSETS.img.mori) ? ASSETS.img.mori.src : '';
+  var faceTag = face ? '<img src="' + face + '" alt="">' : '';
+  function tabNow(){ var b = document.querySelector('.tab.on'); return b ? b.dataset.tab : ''; }
+  function tabTitle(id){ var b = document.querySelector('.tab[data-tab="' + id + '"]'); return b ? (b.dataset.title || b.textContent.trim()) : id; }
+
+  var tab = document.createElement('button');
+  tab.type = 'button'; tab.className = 'ask-tab'; tab.setAttribute('aria-label', 'Ask Dr. Mento'); tab.setAttribute('aria-expanded', 'false');
+  tab.innerHTML = faceTag + '<span>Ask Dr. Mento</span>';
+  var pane = document.createElement('aside');
+  pane.className = 'ask-pane'; pane.setAttribute('role', 'dialog'); pane.setAttribute('aria-label', 'Ask Dr. Mento');
+  pane.innerHTML = '<div class="ask-head">' + faceTag + '<div class="ask-who"><div class="ask-name">Dr. Mento · English</div><div class="ask-scope">' + (D.scope || '') + '</div></div><button class="ask-x" type="button" aria-label="Close">&times;</button></div>'
+    + '<div class="ask-log" aria-live="polite"><div class="ask-empty">' + (D.intro || 'Ask about the reading, a word, or any part of this lesson.') + '</div></div>'
+    + '<form class="ask-form"><label for="askQ">Your question</label><textarea id="askQ" maxlength="300" rows="2"></textarea>'
+    + '<div class="ask-row"><span class="ask-note">Replies come from her notes on this lesson.</span><button class="ask-send" type="submit">Send</button></div></form>';
+  document.body.appendChild(tab); document.body.appendChild(pane);
+  var log = pane.querySelector('.ask-log'), ta = pane.querySelector('textarea'), form = pane.querySelector('form'), send = pane.querySelector('.ask-send');
+
+  function ph(){ var p = D.placeholder || {}; ta.placeholder = p[tabNow()] || p['default'] || ''; }
+  function open(){ ph(); pane.classList.add('open'); tab.classList.add('hide'); tab.setAttribute('aria-expanded', 'true'); setTimeout(function(){ ta.focus(); }, 320); }
+  function close(){ pane.classList.remove('open'); tab.classList.remove('hide'); tab.setAttribute('aria-expanded', 'false'); tab.focus(); }
+  tab.addEventListener('click', open);
+  pane.querySelector('.ask-x').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && pane.classList.contains('open')) close(); });
+  document.addEventListener('tabchange', ph);
+  window.openAsk = open;
+  $$('[data-ask]').forEach(function(b){ b.addEventListener('click', function(){ open(); if (b.dataset.ask) { ta.value = b.dataset.ask; } }); });
+
+  function answer(q){
+    for (var i = 0; i < THINK.length; i++) if (THINK[i].re.test(q)) return { turn: true, a: THINK[i].back };
+    if (THINK_ANY && THINK_ANY.test(q)) return { turn: true, a: D.thinkBack };
+    var t = ' ' + q.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    var now = tabNow(), best = null, bs = 0;
+    NOTES.forEach(function(n){
+      var s = 0;
+      n.k.forEach(function(key){
+        var kk = key.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim(); if (!kk) return;
+        var re = new RegExp('\\b' + kk.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?\\b');
+        if (re.test(t)) s += 1 + kk.split(' ').length;
+      });
+      s *= (n.w || 1.5);
+      if (s && n.tab && n.tab === now) s *= 1.25;
+      if (s > bs) { bs = s; best = n; }
+    });
+    if (!best || bs < 2) return { a: D.miss };
+    return best;
+  }
+  function add(cls, html){
+    var e = log.querySelector('.ask-empty'); if (e) e.remove();
+    var d = document.createElement('div'); d.className = cls + ' in'; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = ta.value.trim(); if (!q) { ta.focus(); return; }
+    add('ask-q', esc(q).replace(/\n/g, '<br>'));
+    ta.value = ''; send.disabled = true;
+    var pen = add('ask-pen', '<i></i><i></i><i></i>');
+    var r = answer(q);
+    setTimeout(function(){
+      pen.remove();
+      var h = (r.turn ? '<span class="turn">That&rsquo;s yours to decide.</span> ' : '') + r.a;
+      if (r.where) h += '<span class="where">' + r.where + '</span>';
+      if (r.go && document.querySelector('.tab[data-tab="' + r.go + '"]')) h += '<button class="go" type="button" data-to="' + r.go + '">Go to ' + esc(tabTitle(r.go)) + ' &rarr;</button>';
+      h += '<span class="sign">Dr. Mento</span>';
+      var a = add('ask-a', h);
+      var g = a.querySelector('.go'); if (g) g.addEventListener('click', function(){ switchTab(g.dataset.to); if (window.innerWidth < 900) close(); });
+      send.disabled = false; ta.focus();
+    }, 900);
+  });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : send.click(); } });
 })();
 
 </script>

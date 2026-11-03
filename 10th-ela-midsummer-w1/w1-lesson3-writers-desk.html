@@ -379,6 +379,59 @@ body.r-focus{overflow:hidden}
   .tl-span{display:none}
 }
 
+/* ---------- Ask Dr. Mento: margin-note letters, on every tab ----------
+   Shared by the 9-12 kits; colours come from each kit's :root tokens. */
+.ask-tab{position:fixed;right:0;top:38%;z-index:88;display:flex;flex-direction:column;align-items:center;gap:10px;width:46px;padding:10px 0 14px;background:var(--slate);color:#fff;border:0;border-radius:10px 0 0 10px;box-shadow:-4px 6px 18px rgba(20,26,32,.22);font:600 13px/1 var(--ui);letter-spacing:.06em;transition:background .2s,transform .25s}
+.ask-tab:hover{background:var(--slate2)}
+.ask-tab img{width:32px;height:32px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.85)}
+.ask-tab span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap}
+.ask-tab.hide{transform:translateX(110%)}
+.ask-pane{position:fixed;top:0;right:0;bottom:0;width:min(400px,100vw);z-index:92;display:flex;flex-direction:column;background:var(--paper);border-left:1px solid var(--line);box-shadow:-12px 0 40px rgba(20,26,32,.16);transform:translateX(105%);transition:transform .32s ease;visibility:hidden}
+.ask-pane.open{transform:none;visibility:visible}
+.ask-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-bottom:1px solid var(--line)}
+.ask-head img{width:48px;height:48px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.ask-who{flex:1;min-width:0}
+.ask-name{font:600 15px/1.2 var(--ui);color:var(--ink)}
+.ask-scope{font:500 19px/1.2 var(--display);color:var(--ink);margin-top:2px}
+.ask-x{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line2);background:#fff;font:18px/1 var(--ui);color:var(--ink2)}
+.ask-x:hover{border-color:var(--ink2)}
+.ask-log{flex:1;overflow-y:auto;padding:18px 16px 10px;display:flex;flex-direction:column;gap:14px}
+.ask-empty{font:14.5px/1.55 var(--ui);color:var(--muted);text-align:center;margin:18px 10px 0}
+.ask-q{align-self:flex-end;max-width:86%;background:var(--tint);border:1px solid var(--line);border-radius:3px;padding:9px 12px;font:italic 400 16px/1.5 var(--serif);color:var(--ink);transform:rotate(.5deg);box-shadow:0 1px 3px rgba(20,26,32,.06)}
+.ask-a{align-self:flex-start;max-width:94%;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--scarlet);border-radius:3px;padding:11px 14px 9px;font:400 16px/1.6 var(--serif);color:var(--ink);box-shadow:0 2px 8px rgba(20,26,32,.06)}
+.ask-a .turn{font-weight:600}
+.ask-a .where{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.ask-a .sign{display:block;text-align:right;font:italic 500 17px/1.2 var(--display);color:var(--ink2);margin-top:6px}
+.ask-a .go{display:table;margin-top:8px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 12px;font:600 12.5px/1.2 var(--ui);color:var(--ink2)}
+.ask-a .go:hover{border-color:var(--scarlet);color:var(--scarlet)}
+.ask-a.in,.ask-q.in{animation:askin .35s ease}
+@keyframes askin{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+.ask-q.in{animation:askinq .35s ease}
+@keyframes askinq{from{opacity:0;transform:translateY(6px) rotate(.5deg)}to{opacity:1;transform:rotate(.5deg)}}
+.ask-pen{align-self:flex-start;display:flex;gap:5px;padding:12px 14px}
+.ask-pen i{width:6px;height:6px;border-radius:50%;background:var(--line2);animation:askdot 1s infinite ease-in-out}
+.ask-pen i:nth-child(2){animation-delay:.15s}.ask-pen i:nth-child(3){animation-delay:.3s}
+@keyframes askdot{0%,80%,100%{opacity:.35;transform:none}40%{opacity:1;transform:translateY(-3px);background:var(--scarlet)}}
+.ask-form{padding:12px 16px 14px;background:var(--card);border-top:1px solid var(--line)}
+.ask-form label{display:block;font:600 11.5px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.ask-form textarea{display:block;width:100%;min-height:64px;max-height:160px;resize:vertical;border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:400 16px/1.5 var(--serif);color:var(--ink);background:#fff}
+.ask-form textarea:focus{outline:none;border-color:var(--ink2)}
+.ask-row{display:flex;align-items:center;gap:12px;margin-top:8px}
+.ask-note{flex:1;font:12px/1.4 var(--ui);color:var(--muted)}
+.ask-send{flex:none;border:0;background:var(--slate);color:#fff;border-radius:999px;padding:9px 20px;font:600 14px/1 var(--ui)}
+.ask-send:hover{background:var(--slate2)}
+.ask-send:disabled{opacity:.5;cursor:default}
+@media (max-width:640px){
+  .ask-tab{top:auto;bottom:14px;right:12px;width:56px;height:56px;padding:0;justify-content:center;border-radius:50%;border:2px solid #fff;box-shadow:0 6px 18px rgba(20,26,32,.3)}
+  .ask-tab img{width:48px;height:48px;border:0}
+  .ask-tab span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .ask-tab::after{content:"?";position:absolute;right:-3px;top:-3px;width:20px;height:20px;border-radius:50%;background:var(--scarlet);color:#fff;font:700 12px/20px var(--ui);text-align:center;border:2px solid #fff}
+  .ask-tab.hide{transform:translateY(160%)}
+  .ask-pane{width:100vw;border-left:0}
+}
+@media (prefers-reduced-motion:reduce){.ask-pane,.ask-tab{transition:none}.ask-a.in,.ask-q.in{animation:none}.ask-pen i{animation:none}}
+@media print{.ask-tab,.ask-pane{display:none!important}}
+
 </style>
 <style>
 /* L3 The Writer's Desk: inverted-line opening, pronoun key, word cards, writer's desk */
@@ -1487,6 +1540,91 @@ renderStatus(); updateMarkSums();
     if (STORE.get('mori-' + card.dataset.clip) === '1') { show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished'); }
     else show(-1);
   });
+})();
+
+</script>
+<script type="application/json" id="ask-notes">{"scope": "The Writer’s Desk · Style and Word Study", "intro": "Ask about thou and you, inverted lines, a Word Study word, or any activity in this lesson.", "placeholder": {"default": "What does edict mean?", "opening": "What is an inverted line?", "style": "What does -est go with?", "words": "What does abjure mean?", "desk": "How long should my note be?"}, "notes": [{"k": ["hello", "hi", "hey", "dear dr", "thanks", "thank you"], "w": 1, "a": "Hello. Ask me about thou and you, finding a verb, a Word Study word, or any step in this lesson."}, {"k": ["inverted", "inverted line", "inversion", "unusual order", "word order", "out of order", "plain order", "what is an inverted line", "shakespeare's order", "puts words in an unusual order"], "a": "An inverted line puts its words in an unusual order, often to put the important words first. Egeus says, “Full of vexation come I, with complaint.” In plain order it reads: I come full of vexation, with complaint. The meaning is the same, but in his order the first words you hear are the grievance.", "where": "Opening · Find the Verb", "tab": "opening"}, {"k": ["find the verb", "find the verb first", "subject", "how do i find the verb", "verb", "who does it", "how to find the subject", "action or state"], "a": "To read a line like this, find the verb first: it names the action or state. Then ask who does it. That word is the subject. Then rebuild in plain order: subject, verb, then the rest.", "where": "Opening · Find the Verb", "tab": "opening"}, {"k": ["egeus", "who is egeus", "vexation", "full of vexation", "grievance", "complaint"], "a": "Egeus is Hermia’s father. In Act 1, Scene 1, he comes to Duke Theseus with a complaint against his daughter. His complaint begins with the line used as the example in this lesson: “Full of vexation come I, with complaint.”", "where": "Act 1, Scene 1", "tab": "opening"}, {"k": ["setting", "act 1 scene 1", "where is this from", "what scene", "which scene", "where do the lines come from", "the lines come from", "what is the context"], "a": "Every line in this lesson comes from Act 1, Scene 1, in the palace of Theseus in Athens. Egeus has brought a complaint to the duke about his daughter Hermia’s marriage.", "where": "Act 1, Scene 1"}, {"k": ["thou", "thee", "thy", "thine", "thou and you", "pronoun", "pronouns", "what is thou", "modern equivalent"], "a": "The key in Thou and You: thou means you, as the subject; thee means you, as the object; thy and thine mean your and yours.", "where": "Style Lab · A", "tab": "style", "w": 2}, {"k": ["-est", "est", "lovest", "hast", "goes with thou", "-eth", "eth", "hath", "loveth", "-th", "th", "he she it", "verb ending", "verb endings", "what does -est go with", "what does -eth go with"], "a": "The key in Thou and You: the ending -est goes with thou (lovest, hast). The endings -eth and -th go with he, she, or it (hath, loveth).", "where": "Style Lab · A", "tab": "style"}, {"k": ["thou and you sort", "which line shows thee", "which line shows thou", "which form", "tap a line", "tap the form", "sort", "which form does it show", "how do i know if it is thou or thee", "subject or object", "thee or thou"], "a": "In Thou and You, tap a line, then tap the form it shows. Look for the pronoun or verb ending in each line. Ask whether the word is the one doing the action, receiving it, or owning something, and check the key above the sort.", "where": "Style Lab · A", "go": "style", "tab": "style"}, {"k": ["plain order", "rebuild", "subject and the verb", "what are the subject and the verb", "which is the subject", "subject first", "type the line", "plain order rebuild", "rebuild two lines", "put it in plain order", "with cunning hast thou", "rather your eyes", "tomorrow truly will i meet", "seemed athens as a paradise", "seem'd athens"], "a": "In Plain Order, use the three steps on the page: find the verb, ask who does it, then rebuild with the subject first, then the verb, then the rest. Say the line in your own words first if it helps. Check any word you are unsure of against the whole line in the scene.", "where": "Style Lab · B", "go": "style", "tab": "style"}, {"k": ["write two inverted lines", "two inverted lines", "two sentences", "your own inverted", "brackets", "in brackets", "move a phrase", "write about a rule", "name the subject and the verb"], "a": "In Write Two Inverted Lines, write two sentences of your own about a rule someone enforces and a choice someone makes. In each, move a phrase or the verb ahead of its subject. After each sentence, name the subject and the verb in brackets. Egeus’s opening lines are the model.", "where": "Style Lab · C", "go": "style", "tab": "style"}, {"k": ["privilege"], "a": "Privilege (noun): a right held by one person or group by law or custom. Egeus says, “I beg the ancient privilege of Athens.” The root is Latin privilegium, a law for one person, from privus, “private,” plus lex, “law.”", "where": "Word", "w": 2}, {"k": ["extenuate"], "a": "Extenuate (verb): to lessen the force of something; to soften. Theseus says the law is one “Which by no means we may extenuate.” The root is Latin extenuare, “to make thin,” from ex- plus tenuis, “thin.”", "where": "Word", "w": 2}, {"k": ["abjure"], "a": "Abjure (verb): to swear off; to renounce on oath. Theseus says Hermia must either die or give up “the society of men.” The root is Latin abjurare, “to deny on oath,” from ab-, “away,” plus jurare, “swear.”", "where": "Word", "w": 2}, {"k": ["edict"], "a": "Edict (noun): an order issued by authority; a decree. Hermia says, “It stands as an edict in destiny.” The root is Latin edictum, “a proclamation,” from edicere, “to declare.”", "where": "Word", "w": 2}, {"k": ["sovereignty"], "a": "Sovereignty (noun): supreme authority over a person or a realm. Hermia says, “My soul consents not to give sovereignty.” The root is Old French soverain, from Latin super, “above.”", "where": "Word", "w": 2}, {"k": ["consent"], "a": "Consent (noun): agreement given freely. Egeus says, “This man hath my consent to marry her.” The root is Latin consentire, “to feel together,” from com-, “together,” plus sentire, “feel.”", "where": "Word", "w": 2}, {"k": ["dramatis personae", "dramatis", "personae", "loanword", "cast list", "list of characters"], "a": "Dramatis personae is a loanword from Latin meaning “persons of the drama.” It is the list of characters in a play. A modern edition opens with it, so a reader can tell Egeus from Theseus before the first scene begins.", "where": "Word", "w": 2}, {"k": ["word study", "six words", "cards", "tap a card", "root", "roots", "latin", "the line from the scene", "which words", "list of words", "vocabulary"], "a": "Word Study has six words from the first scene: privilege, extenuate, abjure, edict, sovereignty, and consent, plus the loanword dramatis personae. Tap a card to see its sense, its root, and the line from the scene.", "where": "Word Study · A", "go": "words", "tab": "words"}, {"k": ["match", "match the words", "tap a word", "tap its meaning", "word match", "which meaning", "match six"], "a": "In Match, tap a word, then tap its meaning. The cards in Six Words and a Loanword give each word’s sense. Open each card, read the sense, and compare it with the meanings listed.", "where": "Word Study · B", "go": "words", "tab": "words"}, {"k": ["which word fits", "fits", "blank", "which word", "fill in", "fill in the blank", "a father's right", "cannot extenuate", "company of men", "official", "supreme authority over herself", "choose the word", "sentence"], "a": "In Which Word Fits?, read each sentence and test each of the four words in the blank. Use the sense on each card. Then check the line from the scene shown on the card where the word appears.", "where": "Word Study · C", "go": "words", "tab": "words"}, {"k": ["what does", "mean", "meaning", "define", "definition", "word", "what is a"], "w": 0.6, "a": "The Word Study tab has a card for each word from the first scene. Tap a card to see its sense, its root, and the line from the scene. If a word is not there, try the sentence around it, then ask me the word by itself.", "go": "words"}, {"k": ["four lines of verse", "four lines", "your task", "the task", "what do i write", "writer's desk", "writers desk", "steps", "what are the steps"], "a": "In Four Lines of Verse: name the conflict in one sentence, a family rule set against a choice you want to make. Draft 4 to 6 lines of unrhymed verse, about ten syllables and five beats a line. Make one line inverted. Write the note on where the meter bends. Use two words from Word Study, accurately.", "where": "Writer’s Desk · A", "go": "desk", "tab": "desk"}, {"k": ["conflict", "family rule", "curfew", "planned career", "rule about friends", "invent", "invented", "what can i write about", "topic", "what should i write about", "what is the conflict", "personal choice", "one sentence"], "a": "Name the conflict in one sentence: a rule your family keeps, such as a curfew, a planned career, or a rule about friends, set against a choice you want to make. It can be invented. Both sides should be clear.", "where": "Writer’s Desk · 1", "go": "desk", "tab": "desk"}, {"k": ["unrhymed", "rhyme", "can my lines rhyme", "syllables", "ten syllables", "five beats", "how many lines", "4 to 6 lines", "4 6 lines", "how long are my lines", "line length", "four to six", "beats a line", "tap out the beats", "say each line aloud", "verse lines", "start a new line"], "a": "Write 4 to 6 lines, unrhymed, with about ten syllables and five beats each. Say each line aloud and tap out the beats. Start a new line in the box for each line of verse.", "where": "Writer’s Desk · 2", "go": "desk", "tab": "desk"}, {"k": ["meter", "meter bends", "bends on purpose", "where the meter bends", "the note", "100-150", "100 150", "100 to 150", "how long should my note be", "how long is the note", "words in the note", "copy the line", "bend", "bends", "what makes a reader notice"], "a": "The note is 100–150 words. Copy the line where the meter bends on purpose. Say where the bend falls and what it makes a reader notice. Use two Word Study words.", "where": "Writer’s Desk · 3", "go": "desk", "tab": "desk"}, {"k": ["model", "egeus model", "egeus's lines", "full of vexation come i", "against my child"], "a": "The model is the start of Egeus’s complaint: “Full of vexation come I, with complaint” and “Against my child, my daughter Hermia.” The first line is inverted. Use it as your pattern, not your content.", "where": "Writer’s Desk · Model", "tab": "desk"}, {"k": ["checklist", "check list", "before i submit", "what do i need", "requirements", "what counts", "rubric", "what is graded"], "a": "The checklist on the page lists what the Four Lines need: 4 to 6 lines, unrhymed, about ten syllables and five beats each, a clear family rule and personal choice, one line in inverted order, a note that copies one line and names where the meter bends, two Word Study words used accurately, and a note of 100–150 words.", "where": "Writer’s Desk · Checklist", "go": "desk", "tab": "desk"}, {"k": ["are you real", "are you ai", "are you a robot", "are you a bot", "are you human", "real person", "chatgpt", "who are you", "who made you"], "a": "I am an AI-generated character. My replies here come from notes written for this lesson, so I can answer about this lesson and its reading, but nothing beyond it. Your teacher is the person to ask about anything else.", "w": 1}, {"k": ["play", "audio", "listen", "transcript", "video", "mini-lesson", "sound"], "a": "Press Play on any card with my picture and the visual builds as I talk. Use Transcript to read along instead.", "w": 1}, {"k": ["pdf", "save", "download", "print", "submit", "turn in", "hand in", "name", "your name"], "a": "Type your name in the box near the bottom of the Writer’s Desk, just above This Lesson. Your answers save in this browser as you work. To keep a copy, use Save this lesson as PDF at the bottom of the page.", "go": "desk", "tab": "desk"}], "think": [{"re": "why (does|did|would) (shakespeare|he|egeus|the writer) (invert|reverse|flip|swap|put|use|write|change|mix|scramble).{0,40}(order|words|verb|line|inverted)|what does (an |the )?inver(sion|ted) (order |line )?(do|show|add)|why (is|are) (the )?(order|words|lines) (so )?(odd|strange|weird|backwards|mixed|different)", "back": "Say Egeus’s line “Full of vexation come I” aloud in his order, then in plain order. Which words do you hear first each time, and what does that first word make you notice about the man speaking?"}, {"re": "(is|was) (my|this|that|the) (verse|line|lines|poem|note|sentence|draft|inverted line|meter) (good|ok|okay|fine|right|correct|bad|wrong|strong|weak|well)|how (good|am i doing)|did i (do|get)|check my (verse|lines|note|draft|poem|work)", "back": "Say each of your lines aloud and tap the beats. Where does the pattern hold, and where does it bend? Compare your inverted line with Egeus’s “Full of vexation come I”: which word comes first in each, and what does it make a reader notice?"}, {"re": "where (should|do|does|would|can) (i|the meter|my meter|it).{0,25}(bend|break|change)|which line (should|do|can) i (invert|bend|choose|use)|what should (my|the) (inverted|bent|bending) line", "back": "Look at your four to six lines. Which single word or phrase do you most want a reader to notice? Try moving it to the start of a line, and say the line aloud to hear what changes."}, {"re": "which (word|one) (is|would be) (best|better|right|correct|good)|what is the best word|which (words|word) should i (use|pick|choose)", "back": "Reread your lines and your note. Which Word Study words match something your lines are actually about? Check each card’s sense and the line from the scene before you decide."}, {"re": "why (do|did|does|would) (they|people|shakespeare|egeus|hermia|theseus).{0,20}(say|use|speak|talk).{0,15} (thou|thee|thy)|why .{0,5}(thou|thee|thy|hath|hast)", "back": "Look at the lines in Thou and You and the key above them. Which people are speaking to which, and which pronoun does each use?"}, {"re": "does (shakespeare|egeus|hermia|theseus|lysander) (mean|think|feel|want|care)|what is egeus (feeling|thinking|like)|is egeus (angry|cruel|fair|right|wrong)|what does .{0,20} show about egeus", "back": "Reread Egeus’s complaint in Scene 1, from “Full of vexation.” Which words does he put first in each sentence, and what does that order let you hear before you hear what he wants?"}, {"re": "focus question|how do (i|you) (find|read|write).{0,20}(with the same|the same) control|what makes (his|shakespeare'?s) (sentences|lines|verse) (work|good|strong|powerful)", "back": "Take one inverted line from Plain Order. Find the verb, find the subject, then ask which word is placed first and what the line makes you notice because of it."}], "thinkAny": "what do you think|your opinion|in your opinion|what('s| is) the (right |correct )?answer|answer (to|for) (the|my|question)|tell me the answer|which (one )?is (right|correct)|is (it|this|my answer) (right|correct)|do my (work|homework|answer)|write (it|my answer|this|my verse|my lines|my note) for me|what should i write|give me (a|an|some) (line|lines|verse|example)", "thinkBack": "Which part is your question about: thou and you, plain order, a Word Study word, or your own lines? Find the line or card it points to and read it again. What do you notice first?", "allowQuotes": [], "miss": "My notes on this lesson do not cover that one. Which part is it about: thou and you, plain order, a Word Study word, or the Four Lines of Verse? Find that part of the page and ask yourself what the words there do."}</script>
+<script>
+/* Ask Dr. Mento · margin-note letters on every tab (shared by the 9-12 kits; runs after core.js).
+   Replies come from prepared notes in the JSON block #ask-notes (no AI service; nothing leaves the page).
+   Notes: { scope, intro, placeholder:{default, <tab>}, notes:[{k:[keys], a:html, where, go:<tab>, tab:<tab>, w}],
+            think:[{re, back}], thinkAny, thinkBack, miss }
+   Thinking questions are turned back: "That's yours to decide." plus a question that sends the student to a moment in the reading.
+   Each fact note lists words a student might use; the best-scoring note answers (a note for the open tab scores a little higher). */
+(function initAsk(){
+  var el = document.getElementById('ask-notes'); if (!el) return;
+  var D; try { D = JSON.parse(el.textContent); } catch(e){ return; }
+  var NOTES = D.notes || [], THINK = (D.think || []).map(function(t){ return { re: new RegExp(t.re, 'i'), back: t.back }; });
+  var THINK_ANY = D.thinkAny ? new RegExp(D.thinkAny, 'i') : null;
+  var face = (window.ASSETS && ASSETS.img && ASSETS.img.mori) ? ASSETS.img.mori.src : '';
+  var faceTag = face ? '<img src="' + face + '" alt="">' : '';
+  function tabNow(){ var b = document.querySelector('.tab.on'); return b ? b.dataset.tab : ''; }
+  function tabTitle(id){ var b = document.querySelector('.tab[data-tab="' + id + '"]'); return b ? (b.dataset.title || b.textContent.trim()) : id; }
+
+  var tab = document.createElement('button');
+  tab.type = 'button'; tab.className = 'ask-tab'; tab.setAttribute('aria-label', 'Ask Dr. Mento'); tab.setAttribute('aria-expanded', 'false');
+  tab.innerHTML = faceTag + '<span>Ask Dr. Mento</span>';
+  var pane = document.createElement('aside');
+  pane.className = 'ask-pane'; pane.setAttribute('role', 'dialog'); pane.setAttribute('aria-label', 'Ask Dr. Mento');
+  pane.innerHTML = '<div class="ask-head">' + faceTag + '<div class="ask-who"><div class="ask-name">Dr. Mento · English</div><div class="ask-scope">' + (D.scope || '') + '</div></div><button class="ask-x" type="button" aria-label="Close">&times;</button></div>'
+    + '<div class="ask-log" aria-live="polite"><div class="ask-empty">' + (D.intro || 'Ask about the reading, a word, or any part of this lesson.') + '</div></div>'
+    + '<form class="ask-form"><label for="askQ">Your question</label><textarea id="askQ" maxlength="300" rows="2"></textarea>'
+    + '<div class="ask-row"><span class="ask-note">Replies come from her notes on this lesson.</span><button class="ask-send" type="submit">Send</button></div></form>';
+  document.body.appendChild(tab); document.body.appendChild(pane);
+  var log = pane.querySelector('.ask-log'), ta = pane.querySelector('textarea'), form = pane.querySelector('form'), send = pane.querySelector('.ask-send');
+
+  function ph(){ var p = D.placeholder || {}; ta.placeholder = p[tabNow()] || p['default'] || ''; }
+  function open(){ ph(); pane.classList.add('open'); tab.classList.add('hide'); tab.setAttribute('aria-expanded', 'true'); setTimeout(function(){ ta.focus(); }, 320); }
+  function close(){ pane.classList.remove('open'); tab.classList.remove('hide'); tab.setAttribute('aria-expanded', 'false'); tab.focus(); }
+  tab.addEventListener('click', open);
+  pane.querySelector('.ask-x').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && pane.classList.contains('open')) close(); });
+  document.addEventListener('tabchange', ph);
+  window.openAsk = open;
+  $$('[data-ask]').forEach(function(b){ b.addEventListener('click', function(){ open(); if (b.dataset.ask) { ta.value = b.dataset.ask; } }); });
+
+  function answer(q){
+    for (var i = 0; i < THINK.length; i++) if (THINK[i].re.test(q)) return { turn: true, a: THINK[i].back };
+    if (THINK_ANY && THINK_ANY.test(q)) return { turn: true, a: D.thinkBack };
+    var t = ' ' + q.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    var now = tabNow(), best = null, bs = 0;
+    NOTES.forEach(function(n){
+      var s = 0;
+      n.k.forEach(function(key){
+        var kk = key.toLowerCase().replace(/[\u2018\u2019]/g, "'").replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim(); if (!kk) return;
+        var re = new RegExp('\\b' + kk.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?\\b');
+        if (re.test(t)) s += 1 + kk.split(' ').length;
+      });
+      s *= (n.w || 1.5);
+      if (s && n.tab && n.tab === now) s *= 1.25;
+      if (s > bs) { bs = s; best = n; }
+    });
+    if (!best || bs < 2) return { a: D.miss };
+    return best;
+  }
+  function add(cls, html){
+    var e = log.querySelector('.ask-empty'); if (e) e.remove();
+    var d = document.createElement('div'); d.className = cls + ' in'; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d;
+  }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = ta.value.trim(); if (!q) { ta.focus(); return; }
+    add('ask-q', esc(q).replace(/\n/g, '<br>'));
+    ta.value = ''; send.disabled = true;
+    var pen = add('ask-pen', '<i></i><i></i><i></i>');
+    var r = answer(q);
+    setTimeout(function(){
+      pen.remove();
+      var h = (r.turn ? '<span class="turn">That&rsquo;s yours to decide.</span> ' : '') + r.a;
+      if (r.where) h += '<span class="where">' + r.where + '</span>';
+      if (r.go && document.querySelector('.tab[data-tab="' + r.go + '"]')) h += '<button class="go" type="button" data-to="' + r.go + '">Go to ' + esc(tabTitle(r.go)) + ' &rarr;</button>';
+      h += '<span class="sign">Dr. Mento</span>';
+      var a = add('ask-a', h);
+      var g = a.querySelector('.go'); if (g) g.addEventListener('click', function(){ switchTab(g.dataset.to); if (window.innerWidth < 900) close(); });
+      send.disabled = false; ta.focus();
+    }, 900);
+  });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : send.click(); } });
 })();
 
 </script>
