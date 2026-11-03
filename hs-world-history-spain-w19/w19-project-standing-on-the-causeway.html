@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Phyllis">
+<title>Standing on the Causeway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+<style>
+:root{
+  --page:#F6F0E4; --card:#FFFCF6; --ink:#1F1A15; --ink2:#5B5148; --line:#E3D6C0;
+  --terra:#A3431E; --terra-d:#7C3115; --terra-f:#F5E3D8;
+  --gold:#C7922C; --gold-d:#8F6516; --gold-f:#FBF1DC;
+  --navy:#0E1C42; --cyan:#55C8E8;
+  --ok:#2E7D4F; --ok-f:#E5F3EA; --bad:#B3261E; --bad-f:#FBE7E5;
+  --head:"Marcellus", Georgia, "Times New Roman", serif;
+  --ui:system-ui,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:18px/1.7 Georgia,"Times New Roman",serif;padding-bottom:90px}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--head);font-weight:400;color:var(--terra-d);line-height:1.2;margin:0}
+p{margin:0 0 12px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.label{font:700 12px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin:0 0 8px}
+
+/* chrome */
+.oao{background:var(--navy);color:#fff;font:600 14px/1 var(--ui)}
+.oao .wrap{display:flex;align-items:center;gap:10px;height:52px}
+.oao .sub{margin-left:auto;color:var(--cyan);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:#EFE5D3}
+.hero::before{content:"";position:absolute;inset:0;background:url(img/map1524-city.jpg) center 45%/cover;opacity:.22;filter:sepia(.5)}
+.hero .wrap{position:relative;padding:26px 20px 24px}
+.hero h1{font-size:38px;margin:4px 0 6px}
+.hero .meta{font:600 14px/1.4 var(--ui);color:var(--ink2);display:flex;gap:8px 18px;flex-wrap:wrap}
+.hero .meta b{color:var(--terra-d)}
+
+/* route */
+.route{position:sticky;top:0;z-index:30;background:rgba(246,240,228,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.route .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:9px;padding-bottom:9px}
+.route .wrap::-webkit-scrollbar{display:none}
+.stop{flex:none;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 13px/1 var(--ui);color:var(--ink2);display:flex;align-items:center;gap:6px;text-decoration:none}
+.stop i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);font-size:11px}
+.stop.done i{background:var(--gold);color:#fff}
+.stop.on{border-color:var(--terra);color:var(--terra-d)}
+.stop.on i{background:var(--terra);color:#fff}
+
+/* sections */
+.sec{padding:34px 0 8px;scroll-margin-top:58px}
+.sec>.wrap>h2{font-size:30px;margin-bottom:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:0 0 16px}
+.card.terra{border-top:4px solid var(--terra)}
+.card.gold{border-top:4px solid var(--gold)}
+.instr{font:16px/1.55 var(--ui);color:var(--ink2);margin:0 0 12px}
+.btn{border:0;border-radius:999px;padding:11px 18px;background:var(--terra);color:#fff;font:600 15px/1 var(--ui);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn:hover{background:var(--terra-d)}
+.btn.ghost{background:transparent;color:var(--terra-d);border:1.5px solid var(--terra)}
+.btn.ghost:hover{background:var(--terra-f)}
+.btn.small{padding:8px 13px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:default}
+.btn:focus-visible,.pin:focus-visible,.stop:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px}
+
+/* Magister intro */
+.mag{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:start;background:var(--card);border:1px solid var(--line);border-top:4px solid var(--terra);border-radius:14px;padding:20px 22px;box-shadow:0 6px 24px rgba(60,40,20,.08)}
+.mag img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--gold)}
+.mag b.nm{display:block;font-family:var(--head);font-weight:400;font-size:22px;color:var(--ink);line-height:1.2}
+.mag small{display:block;font:14px/1.3 var(--ui);color:var(--ink2);margin-bottom:12px}
+.mag p{font-size:19px;margin:0 0 10px}
+.mag p:last-child{margin:0}
+.mag .q{border-left:3px solid var(--gold);background:var(--gold-f);padding:10px 14px;border-radius:0 8px 8px 0;font-style:italic}
+
+/* turn in */
+.turn{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.turn .t{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.turn .t i{font:700 13px/1 var(--ui);font-style:normal;color:#fff;background:var(--gold-d);border-radius:50%;width:26px;height:26px;display:grid;place-items:center;margin-bottom:10px}
+.turn .t b{display:block;font-family:var(--head);font-weight:400;font-size:21px;color:var(--ink);line-height:1.2;margin-bottom:6px}
+.turn .t span{font:15px/1.5 var(--ui);color:var(--ink2)}
+.rubtiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:6px}
+.rubtiles div{background:var(--gold-f);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:14px/1.4 var(--ui)}
+.rubtiles b{display:block;font-size:13px;color:var(--gold-d);letter-spacing:.04em;margin-bottom:3px}
+
+/* pulls + index cards */
+.pulls{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:6px}
+.pull{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px}
+.pull-k{font:700 11px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);margin-bottom:4px}
+.pull-q{font:italic 15px/1.45 Georgia,serif;color:var(--ink2);margin:0 0 8px}
+.pull-v{font-size:17px;line-height:1.55;white-space:pre-wrap}
+.pull-v.empty{font:15px/1.5 var(--ui);color:var(--ink2)}
+.ixcards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:12px 0 4px}
+.ix{background:#fff;border:1px solid #d8cdb6;border-top:3px solid #C9605A;border-radius:6px;padding:8px 12px 10px;box-shadow:0 2px 6px rgba(60,40,20,.08)}
+.ix-h{font:700 12px/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--terra-d);margin:2px 0 6px}
+.ix textarea{width:100%;border:0;background:repeating-linear-gradient(transparent 0,transparent 27px,#BFD3E6 27px,#BFD3E6 28px);font:17px/28px Georgia,serif;resize:vertical;min-height:112px;padding:0;margin:0;display:block}
+.ix textarea:focus{outline:none}
+
+/* source facts */
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px;margin:0;padding:0;list-style:none}
+.facts li{font:16px/1.55 var(--ui);padding-left:18px;position:relative}
+.facts li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.facts b{color:var(--terra-d)}
+details.whole{margin-top:12px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 14px}
+details.whole summary{font:600 14px/1.5 var(--ui);color:var(--terra-d);cursor:pointer}
+details.whole img{margin:10px auto 4px;border-radius:6px}
+details.whole figcaption{font:13px/1.45 var(--ui);color:var(--ink2)}
+
+/* pin tool */
+.pintool{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:20px;align-items:start}
+.mapbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.mapbar .zoom{display:flex;gap:6px;margin-left:auto}
+.mapbar .zoom button{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--terra-d);font:700 18px/1 var(--ui)}
+.mapbar .zoom button.fit{width:auto;padding:0 12px;border-radius:999px;font-size:13px}
+.mapbar .zoom button:hover{border-color:var(--terra)}
+.mapstate{font:600 14px/1.3 var(--ui);color:var(--ink2)}
+.mapview{border:1px solid var(--line);border-radius:10px;background:#EFE5D3;overflow:auto;max-height:720px;overscroll-behavior:contain}
+.mapin{position:relative;width:100%;cursor:crosshair;touch-action:pan-x pan-y pinch-zoom}
+.mapin img{width:100%;height:auto;display:block;user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
+.pin{position:absolute;width:32px;height:32px;margin:-16px 0 0 -16px;border-radius:50%;border:3px solid #fff;background:var(--terra);color:#fff;font:700 15px/1 var(--ui);display:grid;place-items:center;box-shadow:0 2px 8px rgba(0,0,0,.45);padding:0;touch-action:none;cursor:grab}
+.pin.sel{background:var(--navy);box-shadow:0 0 0 3px var(--gold),0 2px 8px rgba(0,0,0,.45);z-index:2}
+.pin:active{cursor:grabbing}
+.mapcap{font:13px/1.45 var(--ui);color:var(--ink2);margin:8px 2px 0}
+.pcards{display:flex;flex-direction:column;gap:12px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;border-left:4px solid var(--line)}
+.pcard.sel{border-left-color:var(--navy);box-shadow:0 0 0 2px var(--gold-f)}
+.pcard.empty{background:transparent;border-style:dashed;color:var(--ink2);font:15px/1.5 var(--ui)}
+.pcard .ph{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.pcard .pn{width:28px;height:28px;border-radius:50%;background:var(--terra);color:#fff;font:700 14px/1 var(--ui);display:grid;place-items:center;flex:none}
+.pcard.sel .pn{background:var(--navy)}
+.pcard .ph b{font:700 13px/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.pcard .ph .rm{margin-left:auto;border:0;background:transparent;color:var(--bad);font:600 13px/1 var(--ui);padding:6px}
+.pcard label{display:block;font:600 13px/1.3 var(--ui);color:var(--ink2);margin:8px 0 4px}
+.pcard textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;font:16px/1.5 Georgia,serif;background:#fff;resize:vertical;min-height:64px}
+.pcard textarea:focus{border-color:var(--terra)}
+.toast{font:600 14px/1.4 var(--ui);color:var(--ok);min-height:1.4em;margin-top:6px}
+
+/* draft */
+.draft{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:20px;align-items:start}
+.qbox{background:var(--gold-f);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 16px;font-size:19px;line-height:1.5;margin-bottom:12px}
+.draft textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font:18px/1.6 Georgia,serif;background:#fff;resize:vertical;min-height:280px}
+.draft textarea:focus{border-color:var(--terra)}
+.wc{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:8px;font:600 14px/1.3 var(--ui)}
+.wc .n{font-size:22px;font-family:var(--head);color:var(--ink)}
+.wc .st{padding:4px 10px;border-radius:999px;background:var(--line);color:var(--ink2)}
+.wc .st.ok{background:var(--ok-f);color:var(--ok)}
+.wc .st.bad{background:var(--bad-f);color:var(--bad)}
+.bar{height:8px;border-radius:999px;background:var(--line);overflow:hidden;position:relative;flex:1 1 140px;min-width:120px}
+.bar i{display:block;height:100%;background:var(--gold);border-radius:999px;width:0}
+.bar i.ok{background:var(--ok)}
+.bar i.bad{background:var(--bad)}
+.ins{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 8px;align-items:center;font:600 13px/1 var(--ui);color:var(--ink2)}
+.recap .pcard{padding:10px 12px}
+.recap .pcard p{font:15px/1.45 var(--ui);margin:0 0 4px}
+.recap .pcard p b{color:var(--terra-d)}
+
+/* check */
+.checks{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.checks label{display:grid;grid-template-columns:28px 1fr auto;gap:12px;align-items:start;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font:17px/1.5 Georgia,serif;cursor:pointer}
+.checks input{width:22px;height:22px;margin:3px 0 0;accent-color:var(--terra)}
+.checks .det{font:600 12px/1.3 var(--ui);color:var(--ink2);background:var(--line);padding:4px 9px;border-radius:999px;white-space:nowrap}
+.checks .det.ok{background:var(--ok-f);color:var(--ok)}
+
+/* download */
+.dl{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+.nameline{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.nameline label{font:600 14px/1 var(--ui);color:var(--ink2)}
+.nameline input{border:1.5px solid var(--line);border-radius:8px;padding:9px 12px;font:16px/1.2 Georgia,serif;background:#fff;min-width:240px;flex:1}
+.status{font:600 14px/1.4 var(--ui);color:var(--ink2);min-height:1.4em;margin-top:10px}
+.status.ok{color:var(--ok)}.status.bad{color:var(--bad)}
+.steps{counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;display:grid;grid-template-columns:30px 1fr;gap:12px;margin:0 0 10px;font:16px/1.55 var(--ui)}
+.steps li::before{content:counter(s);width:26px;height:26px;border-radius:50%;background:var(--gold);color:#fff;font:700 13px/1 var(--ui);display:grid;place-items:center;margin-top:2px}
+.photo{margin-top:12px;font:14px/1.5 var(--ui);color:var(--ink2)}
+.photo input{display:block;margin-top:6px;font:14px var(--ui)}
+
+footer{margin:40px auto 0;max-width:1040px;padding:0 20px;font:13px/1.5 var(--ui);color:var(--ink2)}
+
+@media (max-width:820px){
+  body{font-size:17px}
+  .hero h1{font-size:30px}
+  .mag{grid-template-columns:64px 1fr;gap:14px;padding:16px}
+  .mag img{width:64px;height:64px}
+  .mag p{font-size:17px}
+  .turn,.pulls,.ixcards,.facts,.rubtiles,.pintool,.draft,.dl{grid-template-columns:1fr}
+  .sec>.wrap>h2{font-size:26px}
+  .mapview{max-height:520px}
+  .nameline input{min-width:0}
+}
+@media (max-width:520px){.mag{grid-template-columns:1fr}.mag img{width:56px;height:56px;justify-self:start}.checks label{grid-template-columns:28px 1fr}.checks .det{grid-column:2;justify-self:start}}
+@media print{.route,.btn,.oao{display:none}}
+</style>
+</head>
+<body>
+
+<div class="oao"><div class="wrap"><span>Optima Academy Online</span><span class="sub">World History · Spain's Silver Empire</span></div></div>
+
+<header class="hero" data-std="FL:SS.912.W.4.13,SS.912.W.1.3 TX:113.42(d)(6)(B),113.42(d)(28)(C) MS:DJ.SS.NA.7">
+  <div class="wrap">
+    <div class="label">Project · 16 points</div>
+    <h1>Standing on the Causeway</h1>
+    <div class="meta"><span><b>Map</b> Tenochtitlan, printed 1524</span><span><b>Pins</b> 3 places</span><span><b>Paragraph</b> 150 to 200 words</span></div>
+  </div>
+</header>
+
+<nav class="route" aria-label="Project steps"><div class="wrap" id="route">
+  <a class="stop" href="#intro" data-k="intro"><i>&#9679;</i>Project</a>
+  <a class="stop" href="#turnin" data-k="turnin"><i>&#9679;</i>Turn in</a>
+  <a class="stop" href="#prep" data-k="prep"><i>1</i>Prep</a>
+  <a class="stop" href="#source" data-k="source"><i>2</i>The map</a>
+  <a class="stop" href="#pins" data-k="pins"><i>3</i>Pin it</a>
+  <a class="stop" href="#draft" data-k="draft"><i>4</i>Draft</a>
+  <a class="stop" href="#check" data-k="check"><i>5</i>Check</a>
+  <a class="stop" href="#record" data-k="record"><i>6</i>Download</a>
+</div></nav>
+
+<!-- ============ PROJECT EXPLAINED ============ -->
+<section class="sec" id="intro" data-std="FL:SS.912.W.4.13,SS.912.W.4.11 TX:113.42(d)(6)(B),113.42(d)(7)(A) MS:DJ.SS.NA.7">
+<div class="wrap">
+  <div class="mag">
+    <img src="img/magister.jpg" alt="Mr. Magister">
+    <div>
+      <b class="nm">Mr. Magister</b><small>Your history teacher</small>
+      <p>In 1519, Moctezuma met Cortés on a causeway and let the Spaniards into Tenochtitlan. You will judge that choice from the city's own layout.</p>
+      <p>Your evidence is a map. It was printed in Nuremberg in 1524 and shows the Mexica capital as Europeans first saw it in print. You will pin three places on it where the layout mattered for defending the city or for entering it. At each pin you write what you see and what it made easy or dangerous for a defender or for an invader.</p>
+      <p>Then you write one paragraph that answers this question, and you cite your pins as evidence.</p>
+      <p class="q">What does the layout of the city suggest about the choice Moctezuma made, and about how easily it could have gone another way?</p>
+      <p>A printed map from 1524 is also a source with limits. Your paragraph must say at least one thing the map cannot tell us.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ WHAT YOU TURN IN ============ -->
+<section class="sec" id="turnin" data-std="FL:SS.912.W.1.4 TX:113.42(d)(30)(B),113.42(d)(30)(C) MS:DJ.SS.NA.7">
+<div class="wrap">
+  <h2>What you will turn in</h2>
+  <div class="turn">
+    <div class="t"><i>1</i><b>Three pins</b><span>Three numbered places on the map, each with a note: what you see, and what it made easy or dangerous for a defender or an invader.</span></div>
+    <div class="t"><i>2</i><b>One paragraph</b><span>150 to 200 words answering the question, citing at least two of your pins by number and naming one limit of the map.</span></div>
+    <div class="t"><i>3</i><b>A PDF process record</b><span>This page builds it for you: your map with the pins drawn on it, your notes, and your paragraph. You upload it to the Canvas item.</span></div>
+  </div>
+  <div class="card gold" style="margin-top:16px">
+    <div class="label">How it is scored (16 points)</div>
+    <div class="rubtiles">
+      <div><b>UNDERSTANDING · 4</b>Accurate use of the lessons and of details from your pins</div>
+      <div><b>REASONING · 4</b>An argument built from at least two pins</div>
+      <div><b>CLARITY · 4</b>Clear sentences that name which pin supports each point</div>
+      <div><b>HONESTY · 4</b>What a 1524 printed map can and cannot tell us</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ 1 PREP ============ -->
+<section class="sec" id="prep" data-std="FL:SS.912.W.1.3,SS.912.W.4.13 TX:113.42(d)(28)(C),113.42(d)(6)(B) MS:DJ.SS.NA.7">
+<div class="wrap">
+  <div class="label">Step 1</div>
+  <h2>Prep from the lessons</h2>
+  <p class="instr">Two lessons hold what you need. Lesson 1, Part 4 "On the Causeway" explains the choice. Lesson 3 is Bernal Díaz's own account of Cortés entering Tenochtitlán. Your saved answers appear below if you wrote them in this browser.</p>
+  <div class="pulls">
+    <div class="pull"><div class="pull-k">Lesson 1 · Part 4 "On the Causeway"</div>
+      <p class="pull-q">What choice did Moctezuma make on the causeway, and what did it cost him?</p>
+      <div class="pull-v" data-pull="wh19-l1-v1:ans.r4" data-empty="Nothing saved yet. Open Lesson 1, Part 4 in this browser and answer the question there, or write the facts in the card below."></div></div>
+    <div class="pull"><div class="pull-k">Lesson 1 · The Verdict</div>
+      <p class="pull-q">How could about five hundred Spaniards bring down the largest empire in the Americas?</p>
+      <div class="pull-v" data-pull="wh19-l1-v1:final" data-empty="Nothing saved yet."></div></div>
+    <div class="pull" id="l3pull" style="grid-column:1/-1"><div class="pull-k">Lesson 3 · Bernal Díaz, Cortés enters Tenochtitlán</div>
+      <div class="pull-v" data-pull="wh19-l3-v1:final" data-pull-more="wh19-l3-v1:ans" data-empty="Nothing saved from Lesson 3 in this browser yet. Read Lesson 3, then write what Díaz saw on the causeway in the card below."></div></div>
+  </div>
+  <div class="ixcards">
+    <div class="ix"><div class="ix-h">A fact from Lesson 1 I can use</div><textarea id="fact1" aria-label="A fact from Lesson 1 I can use" placeholder=""></textarea></div>
+    <div class="ix"><div class="ix-h">A detail from Lesson 3 I can use</div><textarea id="fact2" aria-label="A detail from Lesson 3 I can use" placeholder=""></textarea></div>
+  </div>
+</div>
+</section>
+
+<!-- ============ 2 THE MAP AS A SOURCE ============ -->
+<section class="sec" id="source" data-std="FL:SS.912.W.1.3,SS.912.W.1.4 TX:113.42(d)(28)(B),113.42(d)(28)(D),113.42(d)(29)(B) MS:DJ.SS.NA.7">
+<div class="wrap">
+  <div class="label">Step 2</div>
+  <h2>Know what this map is</h2>
+  <div class="card terra">
+    <ul class="facts">
+      <li><b>Printed in Nuremberg, 1524.</b> A woodcut printed by Friedrich Peypus in a Latin edition of Cortés's second letter to Emperor Charles V.</li>
+      <li><b>Copied from a drawing.</b> The printer worked from a drawing that came with the letter, not from the city itself.</li>
+      <li><b>The maker is unknown.</b> The original drawing may have been made by a Mexica artist or by a Spaniard. Historians are not sure.</li>
+      <li><b>Not drawn with north at the top.</b> The Gulf of Mexico sketch on the same sheet has Florida at the bottom. Use the map's own features to find your way, not compass directions.</li>
+      <li><b>Labels are in Latin,</b> and some are upside down.</li>
+      <li><b>A European print.</b> The houses and towers are drawn in a style that looks European, whatever the buildings were really like.</li>
+    </ul>
+    <details class="whole"><summary>See the whole printed sheet</summary>
+      <img src="img/map1524.jpg" alt="The full 1524 printed sheet: a sketch map of the Gulf of Mexico coast on the left and the island city of Tenochtitlan in its lake on the right" loading="lazy">
+      <figcaption>The whole sheet. Friedrich Peypus, Nuremberg, 1524. Image: Wikimedia Commons, public domain.</figcaption></details>
+  </div>
+</div>
+</section>
+
+<!-- ============ 3 PIN THE MAP ============ -->
+<section class="sec" id="pins" data-std="FL:SS.912.W.1.3,SS.912.W.1.4 TX:113.42(d)(29)(B),113.42(d)(28)(E),113.42(d)(26)(B) MS:DJ.SS.NA.7">
+<div class="wrap">
+  <div class="label">Step 3</div>
+  <h2>Pin three places</h2>
+  <p class="instr">Choose three places that matter most for defending the city or entering it. Look at the roads across the water, where those roads meet the shore, the lake itself, and the walled square at the center. Tap the map to drop a numbered pin. Drag a pin to move it. Use the plus button to zoom in.</p>
+  <div class="pintool">
+    <div>
+      <div class="mapbar">
+        <span class="mapstate" id="mapstate" aria-live="polite">Tap the map to drop pin 1.</span>
+        <span class="zoom"><button type="button" id="zout" aria-label="Zoom out">&minus;</button><button type="button" id="zin" aria-label="Zoom in">+</button><button type="button" class="fit" id="zfit">Fit</button></span>
+      </div>
+      <div class="mapview" id="mapview" tabindex="0" aria-label="Map of Tenochtitlan. Tap to drop a pin.">
+        <div class="mapin" id="mapin"><img id="mapimg" src="img/map1524-city.jpg" alt="The island city of Tenochtitlan in its lake, with straight causeways running to the shore and a walled square at the center. Woodcut, Nuremberg, 1524." draggable="false"></div>
+      </div>
+      <p class="mapcap">Tenochtitlan, detail of the 1524 Nuremberg woodcut. Friedrich Peypus. Image: Wikimedia Commons, public domain.</p>
+    </div>
+    <div>
+      <div class="pcards" id="pcards"></div>
+      <div class="toast" id="toast" aria-live="polite"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ 4 DRAFT ============ -->
+<section class="sec" id="draft" data-std="FL:SS.912.W.1.4,SS.912.W.4.13 TX:113.42(d)(28)(F),113.42(d)(30)(B),113.42(d)(6)(B) MS:DJ.SS.NA.7">
+<div class="wrap">
+  <div class="label">Step 4</div>
+  <h2>Write the paragraph</h2>
+  <div class="draft">
+    <div>
+      <div class="qbox">What does the layout of the city suggest about the choice Moctezuma made, and about how easily it could have gone another way?</div>
+      <div class="ins"><span>Insert a citation:</span><button type="button" class="btn ghost small" data-ins="1">Pin 1</button><button type="button" class="btn ghost small" data-ins="2">Pin 2</button><button type="button" class="btn ghost small" data-ins="3">Pin 3</button></div>
+      <textarea id="para" aria-label="Your paragraph" placeholder=""></textarea>
+      <div class="wc"><span class="n" id="wcn">0</span><span>words</span><span class="bar"><i id="wcbar"></i></span><span class="st" id="wcst">150 to 200 needed</span></div>
+    </div>
+    <div class="recap">
+      <div class="label">Your pins</div>
+      <div class="pcards" id="recap"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ============ 5 SELF-CHECK ============ -->
+<section class="sec" id="check" data-std="FL:SS.912.W.1.3,SS.912.W.1.4 TX:113.42(d)(28)(D),113.42(d)(30)(B) MS:DJ.SS.NA.7">
+<div class="wrap">
+  <div class="label">Step 5</div>
+  <h2>Check your work</h2>
+  <ul class="checks" id="checks"></ul>
+</div>
+</section>
+
+<!-- ============ 6 DOWNLOAD ============ -->
+<section class="sec" id="record" data-std="FL:SS.912.W.1.4 TX:113.42(d)(30)(C),113.42(d)(29)(A) MS:DJ.SS.NA.7">
+<div class="wrap">
+  <div class="label">Step 6</div>
+  <h2>Download your process record</h2>
+  <div class="dl">
+    <div class="card terra">
+      <div class="nameline"><label for="nm">Your name</label><input id="nm" type="text" autocomplete="name"></div>
+      <p class="instr">The PDF holds your map with the pins drawn on it, your three notes, your paragraph, and your two prep facts. Upload it to the Canvas item. If the upload does not work, paste your paragraph into the text box there and list your three pins with their notes.</p>
+      <div class="photo"><label for="photo">Add a photo of your whiteboard or paper map (optional)</label><input id="photo" type="file" accept="image/*"></div>
+      <div class="wrow"><button type="button" class="btn" id="pdfBtn">Download PDF record</button></div>
+      <div class="status" id="pdfStatus" role="status"></div>
+    </div>
+    <div class="card gold" id="vr" data-std="FL:SS.912.W.1.3 TX:113.42(d)(29)(B) MS:DJ.SS.NA.7">
+      <div class="label">Optional: work on paper or in VR first</div>
+      <ol class="steps">
+        <li><span>Download the map with one of the buttons below. It saves as an image file on your device.</span></li>
+        <li><span>Paper: print it and circle three places in pencil, numbered 1 to 3. VR: add the image file to a whiteboard in your space, put numbered sticky notes on three places, and take a picture.</span></li>
+        <li><span>Come back to this page and drop the same three pins in Step 3. What you turn in is the same either way.</span></li>
+      </ol>
+      <div class="wrow">
+        <a class="btn ghost small" href="img/map1524-city.jpg" download="Tenochtitlan-1524-city.jpg">Download the city map</a>
+        <a class="btn ghost small" href="img/map1524.jpg" download="Tenochtitlan-1524-whole-sheet.jpg">Download the whole sheet</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer>Map: Friedrich Peypus, Nuremberg, 1524, after a drawing sent with the second letter of Hernán Cortés to Charles V. Wikimedia Commons, public domain. Your work saves in this browser.</footer>
+
+<script>
+(function(){
+'use strict';
+var KEY='wh19-proj-causeway-v1', MAXP=3;
+var S={name:'',pins:[],paragraph:'',fact1:'',fact2:'',checks:{},sel:-1,zoom:1};
+try{var raw=localStorage.getItem(KEY); if(raw){var o=JSON.parse(raw); if(o&&typeof o==='object'){for(var k in S){if(o[k]!==undefined)S[k]=o[k];}}}}catch(e){}
+if(!Array.isArray(S.pins))S.pins=[];
+S.pins=S.pins.slice(0,MAXP);
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}}
+function $(s,r){return (r||document).querySelector(s);}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));}
+function el(t,c,txt){var e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e;}
+function words(t){var m=(t||'').trim().match(/\S+/g);return m?m.length:0;}
+
+/* ---------- live pulls from the lessons ---------- */
+function readPath(spec){
+  var p=spec.split(':'),key=p[0],path=p[1].split('.'),o={};
+  try{o=JSON.parse(localStorage.getItem(key)||'{}')||{};}catch(e){o={};}
+  var v=o;for(var i=0;i<path.length;i++){v=(v&&typeof v==='object')?v[path[i]]:undefined;}
+  return v;
+}
+function pulls(){
+  $$('[data-pull]').forEach(function(box){
+    var parts=[],v=readPath(box.getAttribute('data-pull'));
+    if(typeof v==='string'&&v.trim())parts.push(v.trim());
+    var more=box.getAttribute('data-pull-more');
+    if(more){var m=readPath(more);if(m&&typeof m==='object'){Object.keys(m).forEach(function(k){if(typeof m[k]==='string'&&m[k].trim())parts.push(m[k].trim());});}}
+    box.textContent='';
+    if(parts.length){box.classList.remove('empty');parts.forEach(function(t,i){var d=el('div',null,t);if(i)d.style.marginTop='8px';box.appendChild(d);});}
+    else{box.classList.add('empty');box.textContent=box.getAttribute('data-empty')||'';}
+  });
+}
+
+/* ---------- pin tool ---------- */
+var mapin=$('#mapin'),mapimg=$('#mapimg'),mapview=$('#mapview');
+var ZOOMS=[1,1.6,2.4,3.4];
+function applyZoom(){
+  var z=ZOOMS.indexOf(S.zoom)<0?1:S.zoom;
+  mapin.style.width=(z*100)+'%';
+  $('#zout').disabled=z===ZOOMS[0];$('#zin').disabled=z===ZOOMS[ZOOMS.length-1];
+}
+function zoomBy(d){
+  var i=ZOOMS.indexOf(S.zoom);if(i<0)i=0;i=Math.max(0,Math.min(ZOOMS.length-1,i+d));
+  var cx=(mapview.scrollLeft+mapview.clientWidth/2)/mapin.offsetWidth,cy=(mapview.scrollTop+mapview.clientHeight/2)/mapin.offsetHeight;
+  S.zoom=ZOOMS[i];applyZoom();
+  mapview.scrollLeft=cx*mapin.offsetWidth-mapview.clientWidth/2;mapview.scrollTop=cy*mapin.offsetHeight-mapview.clientHeight/2;save();
+}
+$('#zin').onclick=function(){zoomBy(1);};
+$('#zout').onclick=function(){zoomBy(-1);};
+$('#zfit').onclick=function(){S.zoom=1;applyZoom();mapview.scrollLeft=0;mapview.scrollTop=0;save();};
+
+function drawPins(){
+  $$('.pin',mapin).forEach(function(p){p.remove();});
+  S.pins.forEach(function(p,i){
+    var b=el('button','pin'+(i===S.sel?' sel':''),String(i+1));
+    b.type='button';b.style.left=(p.x*100)+'%';b.style.top=(p.y*100)+'%';
+    b.setAttribute('aria-label','Pin '+(i+1)+'. Arrow keys move it.');
+    b.dataset.i=i;
+    mapin.appendChild(b);
+  });
+  var n=S.pins.length;
+  $('#mapstate').textContent=n<MAXP?('Tap the map to drop pin '+(n+1)+'.'):'Three pins placed. Drag a pin to move it.';
+}
+var drag=null,moved=false;
+mapin.addEventListener('pointerdown',function(e){
+  var b=e.target.closest&&e.target.closest('.pin');if(!b)return;
+  drag={i:+b.dataset.i,id:e.pointerId,b:b};moved=false;
+  try{b.setPointerCapture(e.pointerId);}catch(x){}
+  S.sel=drag.i;
+  e.preventDefault();
+});
+mapin.addEventListener('pointermove',function(e){
+  if(!drag||e.pointerId!==drag.id)return;
+  var r=mapimg.getBoundingClientRect();
+  var x=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width)),y=Math.max(0,Math.min(1,(e.clientY-r.top)/r.height));
+  moved=true;S.pins[drag.i].x=x;S.pins[drag.i].y=y;
+  drag.b.style.left=(x*100)+'%';drag.b.style.top=(y*100)+'%';
+});
+function endDrag(e){
+  if(!drag||e.pointerId!==drag.id)return;
+  drag=null;save();drawPins();cards();
+}
+mapin.addEventListener('pointerup',endDrag);
+mapin.addEventListener('pointercancel',endDrag);
+mapin.addEventListener('click',function(e){
+  if(moved){moved=false;return;}
+  var b=e.target.closest&&e.target.closest('.pin');
+  if(b){S.sel=+b.dataset.i;drawPins();cards();return;}
+  if(S.pins.length>=MAXP){toast('Three pins are placed. Drag one to move it, or remove one in its note card.');return;}
+  var r=mapimg.getBoundingClientRect();
+  var x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+  if(x<0||x>1||y<0||y>1)return;
+  S.pins.push({x:x,y:y,see:'',effect:''});S.sel=S.pins.length-1;save();drawPins();cards();
+  toast('Pin '+S.pins.length+' dropped. Write its note in the card'+(window.innerWidth<=820?' below the map.':' beside the map.'));
+});
+mapin.addEventListener('keydown',function(e){
+  var b=e.target.closest&&e.target.closest('.pin');if(!b)return;
+  var d={ArrowLeft:[-.01,0],ArrowRight:[.01,0],ArrowUp:[0,-.01],ArrowDown:[0,.01]}[e.key];if(!d)return;
+  e.preventDefault();var p=S.pins[+b.dataset.i];
+  p.x=Math.max(0,Math.min(1,p.x+d[0]));p.y=Math.max(0,Math.min(1,p.y+d[1]));
+  S.sel=+b.dataset.i;save();drawPins();cards();
+  var nb=$('.pin[data-i="'+b.dataset.i+'"]',mapin);if(nb)nb.focus();
+});
+var tt;function toast(m){var t=$('#toast');t.textContent=m;clearTimeout(tt);tt=setTimeout(function(){t.textContent='';},5000);}
+
+function cards(){
+  var box=$('#pcards'),keep=document.activeElement&&document.activeElement.dataset?document.activeElement.dataset.f+':'+document.activeElement.dataset.i:null,sel=null;
+  box.textContent='';
+  for(let i=0;i<MAXP;i++){
+    var p=S.pins[i];
+    if(!p){var e=el('div','pcard empty','Pin '+(i+1)+': tap the map to place it.');box.appendChild(e);continue;}
+    var c=el('div','pcard'+(i===S.sel?' sel':''));c.dataset.i=i;
+    var h=el('div','ph');h.appendChild(el('span','pn',String(i+1)));h.appendChild(el('b',null,'Pin '+(i+1)));
+    var rm=el('button','rm','Remove');rm.type='button';rm.dataset.i=i;rm.setAttribute('aria-label','Remove pin '+(i+1));h.appendChild(rm);c.appendChild(h);
+    [['see','What I see here'],['effect','What it made easy or dangerous, and for whom (defender or invader)']].forEach(function(f){
+      var id='pn'+i+f[0];var l=el('label',null,f[1]);l.htmlFor=id;
+      var t=el('textarea');t.id=id;t.rows=2;t.value=p[f[0]]||'';t.dataset.f=f[0];t.dataset.i=i;
+      t.addEventListener('input',function(){S.pins[i][f[0]]=t.value;save();recap();checks();state();});
+      t.addEventListener('focus',function(){if(S.sel!==i){S.sel=i;drawPins();$$('.pcard',box).forEach(function(x){x.classList.toggle('sel',+x.dataset.i===i);});}});
+      c.appendChild(l);c.appendChild(t);
+    });
+    rm.onclick=function(){S.pins.splice(i,1);S.sel=-1;save();drawPins();cards();recap();checks();state();};
+    box.appendChild(c);
+  }
+  recap();checks();state();
+}
+function recap(){
+  var box=$('#recap');box.textContent='';
+  if(!S.pins.length){box.appendChild(el('div','pcard empty','No pins yet. Place them on the map in Step 3.'));return;}
+  S.pins.forEach(function(p,i){
+    var c=el('div','pcard');var h=el('div','ph');h.appendChild(el('span','pn',String(i+1)));h.appendChild(el('b',null,'Pin '+(i+1)));c.appendChild(h);
+    var a=el('p');a.appendChild(el('b',null,'See: '));a.appendChild(document.createTextNode(p.see||'(no note yet)'));c.appendChild(a);
+    var b=el('p');b.appendChild(el('b',null,'Effect: '));b.appendChild(document.createTextNode(p.effect||'(no note yet)'));c.appendChild(b);
+    box.appendChild(c);
+  });
+}
+
+/* ---------- paragraph + word count ---------- */
+var para=$('#para');
+function citedPins(t){var s={},m;
+  var re2=/\bpin\s*#?\s*([1-3])\b/gi;while((m=re2.exec(t))){s[m[1]]=1;}
+  var re3=/\bpins\s*#?\s*([1-3])(?:\s*(?:,|and|&)\s*#?([1-3]))?(?:\s*(?:,|and|&)\s*#?([1-3]))?/gi;
+  while((m=re3.exec(t))){[m[1],m[2],m[3]].forEach(function(x){if(x)s[x]=1;});}
+  return Object.keys(s).sort();}
+function wc(){
+  var n=words(para.value);$('#wcn').textContent=n;
+  var st=$('#wcst'),bar=$('#wcbar');st.className='st';bar.className='';
+  bar.style.width=Math.min(100,n/200*100)+'%';
+  if(n===0){st.textContent='150 to 200 needed';}
+  else if(n<150){st.textContent=(150-n)+' more to reach 150';}
+  else if(n<=200){st.textContent='In range';st.classList.add('ok');bar.className='ok';}
+  else{st.textContent=(n-200)+' over 200';st.classList.add('bad');bar.className='bad';}
+  checks();state();
+}
+para.addEventListener('input',function(){S.paragraph=para.value;save();wc();});
+$$('[data-ins]').forEach(function(b){b.onclick=function(){
+  var t='(Pin '+b.dataset.ins+')',s=para.selectionStart==null?para.value.length:para.selectionStart,e=para.selectionEnd==null?s:para.selectionEnd;
+  if(s>0&&!/\s/.test(para.value.charAt(s-1)))t=' '+t;
+  para.value=para.value.slice(0,s)+t+para.value.slice(e);para.focus();para.selectionStart=para.selectionEnd=s+t.length;
+  S.paragraph=para.value;save();wc();};});
+
+/* ---------- self-check ---------- */
+var CHK=[
+ {id:'c1',t:'I chose three places that matter most for how the city could be defended or entered.',det:function(){return {ok:S.pins.length===3,t:S.pins.length+' of 3 pins'};}},
+ {id:'c2',t:'Each pin has a note: what I see, and what it made easy or dangerous for a defender or an invader.',det:function(){var n=S.pins.filter(function(p){return (p.see||'').trim()&&(p.effect||'').trim();}).length;return {ok:n===3,t:n+' of 3 notes complete'};}},
+ {id:'c3',t:'My paragraph uses at least two of my pins as evidence and names them by number.',det:function(){var c=citedPins(para.value);return {ok:c.length>=2,t:c.length?('Pins named: '+c.join(', ')):'No pins named yet'};}},
+ {id:'c4',t:'My paragraph connects what I saw on the map to what I read in Lesson 1 or Lesson 3.',det:null},
+ {id:'c5',t:'My paragraph says at least one thing a printed map from 1524 cannot tell us, and I do not claim more than the map shows.',det:null},
+ {id:'c6',t:'I wrote in complete sentences and kept to 150 to 200 words.',det:function(){var n=words(para.value);return {ok:n>=150&&n<=200,t:n+' words'};}}
+];
+function checks(){
+  var ul=$('#checks');
+  if(!ul.children.length){
+    CHK.forEach(function(c){
+      var li=el('li');var l=el('label');var i=el('input');i.type='checkbox';i.id=c.id;i.checked=!!S.checks[c.id];
+      i.addEventListener('change',function(){S.checks[c.id]=i.checked;save();state();});
+      l.appendChild(i);l.appendChild(el('span',null,c.t));var d=el('span','det');d.id='d_'+c.id;l.appendChild(d);li.appendChild(l);ul.appendChild(li);
+    });
+  }
+  CHK.forEach(function(c){var d=$('#d_'+c.id);if(!c.det){d.style.display='none';return;}var r=c.det();d.textContent=r.t;d.className='det'+(r.ok?' ok':'');});
+}
+
+/* ---------- prep cards, name ---------- */
+$('#fact1').value=S.fact1||'';$('#fact2').value=S.fact2||'';
+$('#fact1').addEventListener('input',function(e){S.fact1=e.target.value;save();state();});
+$('#fact2').addEventListener('input',function(e){S.fact2=e.target.value;save();state();});
+$('#nm').value=S.name||'';$('#nm').addEventListener('input',function(e){S.name=e.target.value;save();});
+para.value=S.paragraph||'';
+
+/* ---------- route state ---------- */
+function state(){
+  var done={
+    prep:!!((S.fact1||'').trim()||(S.fact2||'').trim()),
+    pins:S.pins.length===3&&S.pins.every(function(p){return (p.see||'').trim()&&(p.effect||'').trim();}),
+    draft:(function(){var n=words(S.paragraph);return n>=150&&n<=200;})(),
+    check:CHK.every(function(c){return S.checks[c.id];})
+  };
+  $$('#route .stop').forEach(function(a){a.classList.toggle('done',!!done[a.dataset.k]);});
+}
+var secs=$$('section.sec');
+function onscroll(){
+  var y=window.scrollY+120,cur=secs[0].id;
+  secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id;});
+  if(window.innerHeight+window.scrollY>=document.body.scrollHeight-4)cur=secs[secs.length-1].id;
+  $$('#route .stop').forEach(function(a){var on=a.dataset.k===cur||(cur==='record'&&a.dataset.k==='record');
+    a.classList.toggle('on',on);
+    if(on&&a.scrollIntoView&&a.offsetParent){var w=$('#route');var x=a.offsetLeft-w.clientWidth/2+a.offsetWidth/2;w.scrollLeft=x;}});
+}
+window.addEventListener('scroll',onscroll,{passive:true});
+
+/* ---------- PDF ---------- */
+var photoData=null;
+$('#photo').addEventListener('change',function(e){
+  var f=e.target.files&&e.target.files[0];photoData=null;if(!f)return;
+  var r=new FileReader();r.onload=function(){photoData=r.result;};r.readAsDataURL(f);
+});
+function loadPdfLib(){
+  if(window.jspdf)return Promise.resolve();
+  return new Promise(function(ok,no){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';s.onload=ok;s.onerror=no;document.head.appendChild(s);});
+}
+function clean(t){
+  return String(t==null?'':t).replace(/[‘’]/g,"'").replace(/[“”]/g,'"').replace(/[–—]/g,'-').replace(/…/g,'...')
+   .replace(/[^\x09\x0A\x0D\x20-\x7E -ÿ]/g,'?');
+}
+function imgToCanvas(img){
+  var c=document.createElement('canvas');c.width=img.naturalWidth;c.height=img.naturalHeight;
+  var g=c.getContext('2d');g.drawImage(img,0,0);
+  var r=Math.round(c.width*0.026);
+  S.pins.forEach(function(p,i){
+    var x=p.x*c.width,y=p.y*c.height;
+    g.beginPath();g.arc(x,y,r,0,Math.PI*2);g.fillStyle='#A3431E';g.fill();g.lineWidth=Math.round(r*0.22);g.strokeStyle='#fff';g.stroke();
+    g.fillStyle='#fff';g.font='bold '+Math.round(r*1.15)+'px Arial,Helvetica,sans-serif';g.textAlign='center';g.textBaseline='middle';g.fillText(String(i+1),x,y+r*0.05);
+  });
+  return c;
+}
+function whenImg(img){return new Promise(function(ok){if(img.complete&&img.naturalWidth)ok();else{img.onload=ok;img.onerror=ok;}});}
+function buildPdf(){
+  var J=window.jspdf.jsPDF,pdf=new J({unit:'pt',format:'letter'}),W=612,H=792,M=54,CW=W-2*M,y=M;
+  var TERRA=[124,49,21],INK=[31,26,21],GREY=[91,81,72];
+  function ensure(h){if(y+h>H-M){pdf.addPage();y=M;}}
+  function write(t,o){o=o||{};var size=o.size||11,lh=o.lh||size*1.38;pdf.setFont(o.font||'times',o.style||'normal');pdf.setFontSize(size);pdf.setTextColor.apply(pdf,o.color||INK);
+    var lines=pdf.splitTextToSize(clean(t),o.w||CW);lines.forEach(function(l){ensure(lh);pdf.text(l,(o.x||M),y+size);y+=lh;});y+=(o.gap==null?6:o.gap);}
+  function head(t){ensure(40);y+=6;write(t,{font:'helvetica',style:'bold',size:11,color:TERRA,gap:4});}
+  write('WORLD HISTORY  |  SPAIN\'S SILVER EMPIRE  |  PROCESS RECORD',{font:'helvetica',style:'bold',size:9,color:GREY,gap:4});
+  write('Standing on the Causeway',{font:'times',style:'bold',size:24,color:TERRA,gap:4});
+  write('Name: '+(S.name.trim()||'(not entered)')+'     Date: '+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),{font:'helvetica',size:10.5,color:GREY,gap:10});
+  return whenImg(mapimg).then(function(){
+    var mw=400,mh=mw*mapimg.naturalHeight/mapimg.naturalWidth,uri=null;
+    try{uri=imgToCanvas(mapimg).toDataURL('image/jpeg',0.86);}catch(e){uri=null;}
+    if(uri){ensure(mh+24);pdf.addImage(uri,'JPEG',M,y,mw,mh);y+=mh+6;}
+    else{write('[The map image could not be drawn here. Open the project page from the course site to include it. Pin positions: '+S.pins.map(function(p,i){return 'Pin '+(i+1)+' at '+Math.round(p.x*100)+'% across, '+Math.round(p.y*100)+'% down';}).join('; ')+'.]',{font:'helvetica',size:9.5,color:GREY});}
+    write('Tenochtitlan, detail of the 1524 Nuremberg woodcut by Friedrich Peypus. Wikimedia Commons, public domain.',{font:'helvetica',size:8.5,color:GREY,gap:8});
+    head('MY THREE PINS');
+    if(!S.pins.length)write('No pins placed.',{color:GREY});
+    S.pins.forEach(function(p,i){
+      ensure(60);write('Pin '+(i+1),{font:'helvetica',style:'bold',size:10.5,gap:2});
+      write('What I see: '+(p.see||'(blank)'),{x:M+12,w:CW-12,size:11,gap:2});
+      write('What it made easy or dangerous: '+(p.effect||'(blank)'),{x:M+12,w:CW-12,size:11,gap:8});
+    });
+    head('MY PARAGRAPH  ('+words(S.paragraph)+' words)');
+    write(S.paragraph.trim()||'(blank)',{size:12,lh:17,gap:8});
+    head('FROM THE LESSONS');
+    write('Lesson 1: '+((S.fact1||'').trim()||'(blank)'),{size:11,gap:3});
+    write('Lesson 3: '+((S.fact2||'').trim()||'(blank)'),{size:11,gap:8});
+    if(photoData){
+      pdf.addPage();y=M;write('MY WHITEBOARD OR PAPER MAP',{font:'helvetica',style:'bold',size:11,color:TERRA,gap:8});
+      try{var pr=pdf.getImageProperties(photoData),pw=CW,ph=pw*pr.height/pr.width;if(ph>H-2*M-30){ph=H-2*M-30;pw=ph*pr.width/pr.height;}
+        pdf.addImage(photoData,pr.fileType||'JPEG',M,y,pw,ph);}catch(e){write('(The photo could not be added.)',{color:GREY});}
+    }
+    return pdf;
+  });
+}
+$('#pdfBtn').onclick=function(){
+  var st=$('#pdfStatus');st.className='status';st.textContent='Building the PDF...';
+  loadPdfLib().then(buildPdf).then(function(pdf){pdf.save('Standing-on-the-Causeway-Process-Record.pdf');st.className='status ok';st.textContent='Downloaded. Upload it to the Canvas item.';})
+  .catch(function(e){st.className='status bad';st.textContent='The PDF could not be built here. Paste your paragraph and your three pin notes into the Canvas text box instead.';if(window.console)console.warn(e);});
+};
+
+/* ---------- init ---------- */
+applyZoom();pulls();drawPins();cards();wc();checks();state();onscroll();
+window.addEventListener('focus',pulls);
+document.addEventListener('visibilitychange',function(){if(!document.hidden)pulls();});
+})();
+</script>
+</body>
+</html>

@@ -394,7 +394,18 @@ _Week 1 and major projects not posted yet_
 
 ### ★ HS World History: Fall of Rome to Present (Social Studies · 2109310)
 
-_Week 1 and major projects not posted yet_
+#### Spain's Silver Empire (Spring, Week 19)
+
+**Week 1**
+
+- [Cortés and the Fall of the Aztec Empire](https://optimaondemand.github.io/optima-pilot-samples/hs-world-history-spain-w19/w19-lesson-1-cortes-and-the-fall-of-the-aztec-empire.html)
+- [Pizarro, the Inca, and the Silver of Potosí](https://optimaondemand.github.io/optima-pilot-samples/hs-world-history-spain-w19/w19-lesson-2-pizarro-the-inca-and-the-silver-of-potosi.html)
+- [Primary Source: Bernal Díaz, Cortés Enters Tenochtitlan](https://optimaondemand.github.io/optima-pilot-samples/hs-world-history-spain-w19/w19-lesson-3-bernal-diaz-cortes-enters-tenochtitlan.html)
+- [Primary Source: Las Casas, The Destruction of the Indies](https://optimaondemand.github.io/optima-pilot-samples/hs-world-history-spain-w19/w19-lesson-4-las-casas-destruction-of-the-indies.html)
+
+**Major Project**
+
+- [Standing on the Causeway](https://optimaondemand.github.io/optima-pilot-samples/hs-world-history-spain-w19/w19-project-standing-on-the-causeway.html)
 
 ## Grade 10
 
