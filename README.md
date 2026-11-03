@@ -226,6 +226,18 @@ _Week 1 and major projects not posted yet_
 
 ### ★ English 1 (English Language Arts · 1001310)
 
+#### Short Stories
+
+**Week 1**
+
+_Not posted yet_
+
+**Major Project**
+
+- [Module 5 Project: Final Story + Craft Reflection](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/module-5-project.html)
+- [Lesson: Shape Your Story](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m5-project1-shape-your-story.html)
+- [Lesson: Write Your Story](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m5-project2-write-your-story.html)
+
 #### The Scarlet Letter
 
 **Week 1**
@@ -237,7 +249,35 @@ _Week 1 and major projects not posted yet_
 
 **Major Project**
 
+- [Module 6 Project: Literary Analysis Essay](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/module-6-project.html)
+- [Lesson: Build Your Case](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m6-project1-build-your-case.html)
+- [Lesson: Write Your Essay](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m6-project2-write-your-essay.html)
+
+#### The Crucible
+
+**Week 1**
+
 _Not posted yet_
+
+**Major Project**
+
+- [Module 7 Project: The Examined Conscience](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/module-7-project.html)
+- [Module 7 Presentation: Closing Statement](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/module-7-presentation.html)
+- [Lesson: Weigh Two Consciences](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m7-project1-weigh-two-consciences.html)
+- [Lesson: Write and Speak](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m7-project2-write-and-speak.html)
+
+#### American Seminal Documents (Mississippi alternate)
+
+**Week 1**
+
+_Not posted yet_
+
+**Major Project**
+
+- [Module 7B Project: The Promise and the Story](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/module-7b-project.html)
+- [Module 7B Presentation: Your Findings, in Four Minutes](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/module-7b-presentation.html)
+- [Lesson: Find the Promise](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m7b-project1-find-the-promise.html)
+- [Lesson: Write Your Findings](https://optimaondemand.github.io/optima-pilot-samples/9th-ela-projects/m7b-project2-write-your-findings.html)
 
 ### ★ Algebra 1 (Mathematics · 1200310)
 
@@ -263,7 +303,20 @@ _Week 1 and major projects not posted yet_
 
 ### ★ English 2 (English Language Arts · 1001340)
 
-_Week 1 and major projects not posted yet_
+#### A Midsummer Night's Dream
+
+**Week 1**
+
+- [Lesson 1: The Law of Athens](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-w1/w1-lesson1-the-law-of-athens.html)
+- [Lesson 2: The Mechanicals Cast a Play](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-w1/w1-lesson2-the-mechanicals.html)
+- [Lesson 3: The Writer's Desk](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-w1/w1-lesson3-writers-desk.html)
+- [Lesson 4: The Company](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-w1/w1-lesson4-the-company.html)
+
+**Major Project**
+
+- [Module 3 Project: The Players' Company](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-projects/module-3-project-players-company.html)
+- [Lesson: The Director's Program](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-projects/proj-lesson1-the-directors-program.html)
+- [Lesson: Opening Night](https://optimaondemand.github.io/optima-pilot-samples/10th-ela-midsummer-projects/proj-lesson2-opening-night.html)
 
 ### ★ English 2 (Mississippi) (English Language Arts · 1001340ms)
 
