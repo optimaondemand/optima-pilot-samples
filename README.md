@@ -14,6 +14,18 @@ _Week 1 and major projects not posted yet_
 
 ## Grade 4
 
+### ★ 4th Grade ELA (English Language Arts)
+
+#### Anne of Green Gables
+
+**Sample Lesson**
+
+- [Lesson 8.1: Anne of Green Gables (Ch. 6)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-1-anne-ch6.html)
+
+**Major Project**
+
+- [Anne’s Growing-Up Scrapbook](https://optimaondemand.github.io/optima-4th-ela/lesson-14-scrapbook.html)
+
 ### ★ 4th Grade Math (Mathematics)
 
 #### Measurement (Pixel Quest)
