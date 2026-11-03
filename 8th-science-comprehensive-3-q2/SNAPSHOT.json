@@ -1,0 +1,32 @@
+{
+ "source": "https://optimaondemand.github.io/OAO-Science/",
+ "snapshot_of": "OAO-Science @ c9eebe3",
+ "files": [
+  "sci8/q2w01/a1-organizer.html",
+  "sci8/q2w01/a2-scientist.html",
+  "sci8/q2w01/a3-checkpoint.html",
+  "sci8/q2w01/audio/sci8-q2w01-a1-p0.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a1-p1.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a1-p2.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a1-p3.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a2-p0.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a2-p1.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a2-p2.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a2-p3.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a3-p0.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a3-p1.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-a3-p2.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-l1-p0.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-l1-p1.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-l1-p2.mp3",
+  "sci8/q2w01/audio/sci8-q2w01-l1-p3.mp3",
+  "sci8/q2w01/images/owl.png",
+  "sci8/q2w01/images/sci8-variables-organizer.jpg",
+  "sci8/q2w01/l1-reading.html",
+  "sci8/q2w01/r1-variables-guide.html"
+ ],
+ "missing": [
+  "sci8/q2w01/current.svg"
+ ],
+ "dead_html_links": []
+}

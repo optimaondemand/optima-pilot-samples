@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 10.1: Vague, but Exciting — Digital Discoveries</title>
+<link rel="stylesheet" href="../_shared/lesson.css">
+<style>
+  .web-code{font-family:Consolas,Menlo,monospace;background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:.6rem .9rem;color:var(--binary-blue);white-space:pre-line;margin:.5rem 0;font-size:.93rem}
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<div class="wrap">
+<!-- STANDARDS METADATA (teacher/audit only — not shown to students)
+  SC.7.PE.1.7 foundations — how webpages (online content) are built.
+  Embedded: ELA.K12.EE.2.1 (read complex text), EE.3.1, EE.4.1 (discussion board). -->
+<div class="standards-meta" data-lesson="10.1" data-benchmarks="SC.7.PE.1.7,ELA.K12.EE.2.1,ELA.K12.EE.3.1,ELA.K12.EE.4.1" hidden></div>
+
+<main id="main" data-readaloud-root>
+
+<!-- OPTIMA READ-ALOUD PLAYER (Web Speech API) -->
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD &mdash; LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- END OPTIMA READ-ALOUD PLAYER -->
+
+<header class="lesson-head">
+  <p class="kicker">Unit 10 · Lesson 1</p>
+  <h1>Vague, but Exciting</h1>
+  <p class="eq">A memo, a scrawled note — and the Web was born.</p>
+</header>
+
+<h2>The proposal</h2>
+<p>Berners-Lee's 1989 memo solved a real problem: CERN's thousands of researchers kept losing each
+other's information. His idea joined two old friends of ours — <strong>documents</strong> and
+<strong>links</strong> (remember Vannevar Bush's memex from Unit 2?) — into one system anyone could
+join: pages, connected by hyperlinks, readable by any computer. He did not patent it. He gave it
+away, and the whole world built on it — including this course, served to you over his invention.</p>
+
+<h2>How a webpage works</h2>
+<p>Every webpage you have ever seen — including this one — is a text file written in
+<span class="vocab">HTML</span> (HyperText Markup Language). HTML wraps content in
+<span class="vocab">tags</span> that say what each piece <em>is</em>:</p>
+<div class="web-code">&lt;h1&gt;My Rabbit Meadow Findings&lt;/h1&gt;
+&lt;p&gt;This year I tested a hypothesis about food and population.&lt;/p&gt;
+&lt;img src="meadow-chart.png" alt="Chart: the herd settling at 20 rabbits"&gt;
+&lt;a href="project.html"&gt;See the full investigation&lt;/a&gt;</div>
+<p>A heading, a paragraph, an image (with <strong>alt text</strong> for screen readers — accessibility
+is built into good HTML, as we learned in Unit 1), and a link. The
+<span class="vocab">browser</span> reads the tags and draws the page. Design tools like Google Sites
+write the HTML for you — but a maker who can read it is never at the tool's mercy.</p>
+
+<div class="hands-on" id="ho-tags">
+  <h3>Hands-on: What does each tag do?</h3>
+  <p class="ho-instructions">Match each HTML tag to its job.</p>
+  <ul class="ho-list" id="tg-list" aria-label="Match each tag to its job"></ul>
+  <div class="ho-controls">
+    <button type="button" class="ho-primary" id="tg-check">Check my matches</button>
+    <p class="ho-score" id="tg-score" role="status" aria-live="polite"></p>
+  </div>
+</div>
+
+<div class="hands-on" id="ho-read">
+  <h3>Hands-on: Read the page</h3>
+  <p class="ho-instructions">Using the HTML sample above, answer each question.</p>
+  <ul class="ho-list" id="rd-list" aria-label="Reading questions"></ul>
+  <p class="ho-score" id="rd-score" role="status" aria-live="polite"></p>
+</div>
+
+<div class="discuss">
+  <span class="callout-title"><span class="pill online">Online · Discussion board</span> "Vague, but exciting"</span>
+  Read the opening of the 1989 proposal. Post to the class discussion board (see this lesson's
+  discussion assignment): what problem was Berners-Lee solving, and why do you think his boss called
+  it vague <em>and</em> exciting? Reply to a classmate.
+</div>
+
+<div class="check">
+  <span class="callout-title">Check for understanding</span>
+  <ol>
+    <li>What problem was the 1989 proposal trying to solve?</li>
+    <li>What does an HTML tag do? Name three tags and their jobs.</li>
+    <li>Why does the image tag carry alt text?</li>
+  </ol>
+</div>
+</main>
+</div>
+<script>
+(function(){
+  var JOBS=["a big heading","a paragraph of text","an image (with alt text)","a link to another page"];
+  var TAGS=[
+    {t:'<h1> … </h1>', ans:0},{t:'<p> … </p>', ans:1},
+    {t:'<img src="…" alt="…">', ans:2},{t:'<a href="…"> … </a>', ans:3}
+  ];
+  var list=document.getElementById('tg-list'), score=document.getElementById('tg-score');
+  TAGS.forEach(function(tag,i){
+    var li=document.createElement('li'); li.className='ho-row'; li.id='tg-'+i;
+    var lab=document.createElement('span'); lab.className='ho-label'; lab.textContent=tag.t; li.appendChild(lab);
+    var sel=document.createElement('select'); sel.className='ho-select'; sel.id='ts-'+i;
+    sel.setAttribute('aria-label','Job of '+tag.t);
+    var d=document.createElement('option'); d.value=''; d.textContent='— choose its job —'; sel.appendChild(d);
+    JOBS.forEach(function(j,ji){var o=document.createElement('option'); o.value=String(ji); o.textContent=j; sel.appendChild(o);});
+    li.appendChild(sel); list.appendChild(li);
+  });
+  document.getElementById('tg-check').onclick=function(){
+    var right=0, answered=0;
+    TAGS.forEach(function(tag,i){
+      var li=document.getElementById('tg-'+i); li.classList.remove('correct','wrong');
+      var old=li.querySelector('.ho-fb'); if(old) old.remove();
+      var val=document.getElementById('ts-'+i).value; if(val==='') return; answered++;
+      var ok=(parseInt(val,10)===tag.ans); if(ok) right++;
+      li.classList.add(ok?'correct':'wrong');
+      var fb=document.createElement('p'); fb.className='ho-fb';
+      fb.textContent=ok?'✅ That is its job.':'❌ Look at the sample page again.';
+      li.appendChild(fb);
+    });
+    score.textContent = answered<TAGS.length ? 'Match every tag, then check again.'
+      : (right===TAGS.length ? '✅ All matched — you can read the Web’s native language.' : 'Score: '+right+' of '+TAGS.length+'. Fix the red ones and check again.');
+  };
+
+  var Q=[
+    {t:'What heading will the browser show largest?', opts:['My Rabbit Meadow Findings','See the full investigation','meadow-chart.png'], ans:0, why:'The <h1> tag marks the main heading.'},
+    {t:'What happens when a reader clicks “See the full investigation”?', opts:['the image zooms','the browser follows the link to project.html','nothing — it is decoration'], ans:1, why:'<a href="project.html"> is a hyperlink — Berners-Lee’s whole idea.'},
+    {t:'A blind student’s screen reader reaches the image. What does it say?', opts:['nothing','“meadow-chart.png”','“Chart: the herd settling at 20 rabbits”'], ans:2, why:'It reads the alt text — which is why we always write it.'}
+  ];
+  var rlist=document.getElementById('rd-list'), rscore=document.getElementById('rd-score'); var done=0, correct=0;
+  Q.forEach(function(q,i){
+    var li=document.createElement('li'); li.className='ho-row'; li.id='rd-'+i;
+    var lab=document.createElement('span'); lab.className='ho-label'; lab.textContent=q.t; li.appendChild(lab);
+    q.opts.forEach(function(opt,oi){
+      var b=document.createElement('button'); b.type='button'; b.className='ho-btn'; b.textContent=opt;
+      b.onclick=function(){
+        if(li.dataset.done) return; li.dataset.done='1'; done++;
+        var right=(oi===q.ans); if(right) correct++;
+        li.classList.add(right?'correct':'wrong');
+        var fb=document.createElement('p'); fb.className='ho-fb'; fb.textContent=(right?'✅ ':'❌ ')+q.why; li.appendChild(fb);
+        li.querySelectorAll('.ho-btn').forEach(function(x){x.disabled=true;});
+        rscore.textContent='Score: '+correct+' of '+done+(done===Q.length?' — all done!':'');
+      };
+      li.appendChild(b);
+    });
+    rlist.appendChild(li);
+  });
+})();
+</script>
+</body>
+</html>

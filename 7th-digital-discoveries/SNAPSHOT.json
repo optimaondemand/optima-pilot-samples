@@ -1,0 +1,27 @@
+{
+ "source": "https://facevedooe.github.io/oao-digital-discoveries-gr7/",
+ "snapshot_of": "Pages",
+ "files": [
+  "canvas/_shared/lesson.css",
+  "canvas/unit-01/assessment.html",
+  "canvas/unit-01/index.html",
+  "canvas/unit-01/lesson-01-what-is-computing.html",
+  "canvas/unit-01/lesson-02-hardware-software.html",
+  "canvas/unit-01/lesson-03-interaction.html",
+  "canvas/unit-01/lesson-04-adaptive-engelbart.html",
+  "canvas/unit-01/reading-engelbart.html",
+  "canvas/unit-10/assessment.html",
+  "canvas/unit-10/index.html",
+  "canvas/unit-10/lesson-01-the-proposal.html",
+  "canvas/unit-10/lesson-02-design-tools.html",
+  "canvas/unit-10/lesson-03-portfolio.html",
+  "canvas/unit-10/lesson-04-polish.html",
+  "canvas/unit-10/lesson-05-presentation.html"
+ ],
+ "missing": [
+  "canvas/unit-10/meadow-chart.png"
+ ],
+ "dead_html_links": [
+  "canvas/unit-10/project.html"
+ ]
+}

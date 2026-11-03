@@ -1,0 +1,84 @@
+/* Shared lesson styling for Canvas pages — derived from /shared/theme.css.
+   Linked (relative) for standalone preview; the /build script INLINES this into
+   each page when packaging the .imscc (Canvas may strip <link>/<style>, so the
+   build also inlines critical rules). Keep selectors generic & robust. */
+@import url('https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root{
+  --binary-blue:#0E1C42; --bitstream-blue:#55C8E8; --gateway-gold:#C7922C;
+  --dark-bitstream:#0E5568; --portal-purple:#67308F; --gamer-green:#76C043;
+  --paper:#fff; --paper-2:#F4F7FB; --line:#D5DEEA; --muted:#4A5568;
+  --font-display:"Wix Madefor Display","Segoe UI",system-ui,sans-serif;
+  --font-text:"Wix Madefor Text","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{font-family:var(--font-text);color:#000;background:var(--paper);line-height:1.65;margin:0}
+.wrap{max-width:80ch;margin:0 auto;padding:1.5rem}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:1rem;top:1rem;background:#fff;padding:.5rem;border:2px solid var(--gateway-gold);border-radius:8px;z-index:10}
+
+.lesson-head{background:var(--binary-blue);color:#fff;border-radius:14px;padding:1.5rem;margin-bottom:1.5rem}
+.lesson-head .kicker{color:var(--bitstream-blue);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;margin:0}
+.lesson-head h1{font-family:var(--font-display);font-weight:800;font-size:1.8rem;margin:.3rem 0;color:#fff;line-height:1.15}
+.lesson-head .eq{color:#dce6f5;font-style:italic;margin:.4rem 0 0}
+
+h2{font-family:var(--font-display);color:var(--binary-blue);border-bottom:3px solid var(--bitstream-blue);padding-bottom:.3rem;margin-top:2rem}
+h3{font-family:var(--font-display);color:var(--dark-bitstream);margin-bottom:.25rem}
+a{color:var(--dark-bitstream)}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--gateway-gold);outline-offset:2px}
+
+.card{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:1rem 1.25rem;margin:1.25rem 0}
+.anchor{border-left:4px solid var(--bitstream-blue);background:#eef9fd;padding:.75rem 1rem;border-radius:10px;margin:1.25rem 0}
+.virtue{border-left:4px solid var(--portal-purple);background:#faf7fc;padding:.75rem 1rem;border-radius:10px;margin:1.25rem 0}
+.check{border-left:4px solid var(--gamer-green);background:#f3fbed;padding:.75rem 1rem;border-radius:10px;margin:1.25rem 0}
+.discuss{border-left:4px solid var(--dark-bitstream);background:#eef7fa;padding:.75rem 1rem;border-radius:10px;margin:1.25rem 0}
+.unplugged{border-left:4px solid var(--gateway-gold);background:#fff8ec;padding:.75rem 1rem;border-radius:10px;margin:1.25rem 0}
+.callout-title{font-family:var(--font-display);font-weight:700;display:block;margin-bottom:.25rem}
+
+.pill{display:inline-block;font-size:.75rem;font-weight:700;padding:.12rem .55rem;border-radius:999px;text-transform:uppercase;letter-spacing:.04em;vertical-align:middle}
+.pill.web{background:#e3f5fb;color:var(--dark-bitstream)} .pill.online{background:#e3f5fb;color:var(--dark-bitstream)}
+
+.iframe-wrap{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:1.25rem 0;background:var(--paper-2)}
+.iframe-wrap iframe{display:block;width:100%;height:560px;border:0}
+.iframe-fallback{padding:.6rem 1rem;font-size:.9rem;color:var(--muted)}
+
+table{border-collapse:collapse;width:100%;margin:1rem 0}
+th,td{border:1px solid var(--line);padding:.55rem .65rem;text-align:left;vertical-align:top}
+thead th{background:var(--binary-blue);color:#fff;font-family:var(--font-display)}
+tbody tr:nth-child(even){background:var(--paper-2)}
+
+/* ---- Inline hands-on activities (run on GitHub Pages inside the Canvas iframe) ---- */
+.hands-on{border:2px solid var(--bitstream-blue);background:#f2fbfe;border-radius:12px;padding:1rem 1.25rem;margin:1.5rem 0}
+.hands-on h3{margin-top:0}
+.hands-on .ho-instructions{color:var(--muted);margin:.25rem 0 1rem}
+.ho-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+.ho-row{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;border:1px solid var(--line);border-radius:10px;padding:.55rem .75rem;background:#fff}
+.ho-row .ho-label{flex:1 1 55%;font-weight:600;color:var(--binary-blue)}
+.ho-btn{background:#fff;border:2px solid var(--line);border-radius:8px;padding:.35rem .7rem;cursor:pointer;font-family:var(--font-text);font-size:.95rem;color:var(--binary-blue)}
+.ho-btn:hover{border-color:var(--bitstream-blue)}
+.ho-btn:focus-visible{outline:3px solid var(--gateway-gold);outline-offset:2px}
+.ho-btn[aria-pressed="true"]{border-color:var(--gateway-gold);background:#fff8ec}
+.ho-row.correct{border-color:var(--gamer-green);background:#f3fbed}
+.ho-row.wrong{border-color:#c0392b;background:#fdecea}
+.ho-fb{flex-basis:100%;font-size:.9rem;color:var(--muted);margin:0}
+.ho-controls{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.9rem;align-items:center}
+.ho-primary{background:var(--binary-blue);color:#fff;border:0;border-radius:10px;padding:.5rem 1rem;font-family:var(--font-display);font-weight:600;cursor:pointer}
+.ho-primary:focus-visible{outline:3px solid var(--gateway-gold);outline-offset:2px}
+.ho-ghost{background:#fff;border:2px solid var(--line);border-radius:10px;padding:.5rem 1rem;cursor:pointer;font-family:var(--font-text)}
+.ho-score{font-family:var(--font-display);font-weight:700;color:var(--binary-blue);min-height:1.4em;margin:0}
+.ho-order{list-style:none;margin:0;padding:0;counter-reset:step}
+.ho-order li{display:flex;align-items:center;gap:.6rem;border:1px solid var(--line);border-radius:10px;padding:.5rem .7rem;background:#fff;margin:.4rem 0}
+.ho-order li .step-text{flex:1;color:var(--binary-blue)}
+.ho-order li .move{display:flex;gap:.25rem}
+.ho-move-btn{width:2rem;height:2rem;border:2px solid var(--line);border-radius:8px;background:#fff;cursor:pointer;font-weight:700;color:var(--binary-blue)}
+.ho-move-btn:focus-visible{outline:3px solid var(--gateway-gold);outline-offset:2px}
+select.ho-select{font-family:var(--font-text);font-size:.95rem;padding:.35rem .5rem;border:2px solid var(--line);border-radius:8px;color:var(--binary-blue);background:#fff}
+select.ho-select:focus-visible{outline:3px solid var(--gateway-gold);outline-offset:2px}
+
+.nav{display:flex;justify-content:space-between;gap:1rem;margin-top:2.5rem;border-top:1px solid var(--line);padding-top:1rem;font-size:.95rem}
+.vocab{font-weight:700;color:var(--binary-blue)}
+ul,ol{padding-left:1.25rem} li{margin:.25rem 0}
+.muted{color:var(--muted)}
+[hidden]{display:none !important}
+
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}

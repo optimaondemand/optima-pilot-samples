@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lesson 1.2: Hardware &amp; Software — Digital Discoveries</title>
+<link rel="stylesheet" href="../_shared/lesson.css">
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<div class="wrap">
+<!-- STANDARDS METADATA (teacher/audit only — not shown to students)
+  SC.7.CO.1.3 — Describe the relationship between hardware and software.
+    Clarification 1: Hardware and software including basic input/output systems (BIOS),
+    operating systems and firmware.
+  Embedded: SC.K12.CTR.3.1 -->
+<div class="standards-meta" data-lesson="1.2" data-benchmarks="SC.7.CO.1.3,SC.K12.CTR.3.1" hidden></div>
+
+<main id="main" data-readaloud-root>
+
+<!-- OPTIMA READ-ALOUD PLAYER (Web Speech API) -->
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD &mdash; LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- END OPTIMA READ-ALOUD PLAYER -->
+
+<header class="lesson-head">
+  <p class="kicker">Unit 1 · Lesson 2</p>
+  <h1>Hardware &amp; Software</h1>
+  <p class="eq">A machine is metal and silicon. What makes it <em>do</em> anything?</p>
+</header>
+
+<h2>Two halves of one whole</h2>
+<p>Every computer is the partnership of two things:</p>
+<ul>
+  <li><span class="vocab">Hardware</span> — the physical parts you could touch: the processor, memory,
+    storage, the screen, the keyboard. Hardware can do a great deal, but on its own it does nothing —
+    it waits for instructions.</li>
+  <li><span class="vocab">Software</span> — the instructions themselves: the programs that tell the
+    hardware what to do, step by step. Software cannot do anything alone either; it needs hardware to
+    run on.</li>
+</ul>
+<p>Neither is useful without the other. This partnership is the heart of today's lesson: to
+<strong>describe the relationship between hardware and software</strong>.</p>
+
+<h2>Waking a computer: firmware, BIOS, and the operating system</h2>
+<p>When you press the power button, the hardware cannot simply "start working" — it needs instructions
+immediately. Those first instructions are a special kind of software:</p>
+<ul>
+  <li><span class="vocab">Firmware</span> — software stored permanently on a chip inside the hardware.
+    It is the bridge between pure hardware and ordinary software.</li>
+  <li><span class="vocab">BIOS</span> (Basic Input/Output System) — firmware that powers up the machine,
+    checks that the hardware is healthy, and begins the start-up process.</li>
+  <li><span class="vocab">Operating system</span> (OS) — the large piece of software that then takes
+    charge: it manages all the hardware and other software and gives you something to work with.</li>
+</ul>
+<p>So the order matters: <strong>firmware/BIOS → operating system → the applications you use.</strong>
+Hardware needed software before it could come alive.</p>
+
+<h2><span class="pill web">Web / independent</span> Explore: Inside the Machine</h2>
+<p>Use the interactive below. First <strong>explore the parts</strong> and note which are hardware and
+which are software. Then open <strong>Boot it up</strong> and step through the layers — watch the order
+in which a computer wakes. Finish with <strong>Test yourself</strong>.</p>
+<div class="iframe-wrap">
+  <iframe src="../../interactives/inside-the-machine/"
+          title="Inside the Machine: an interactive explorer of computer hardware, software, and the boot sequence"
+          loading="lazy"></iframe>
+  <p class="iframe-fallback">If the interactive does not appear, open it directly:
+    <a href="../../interactives/inside-the-machine/">Inside the Machine</a>.
+    (Canvas administrators: the <code>github.io</code> domain may need to be allowlisted.)</p>
+</div>
+
+<div class="unplugged">
+  <span class="callout-title"><span class="pill web">Unplugged</span> Be the Computer</span>
+  Lay out five number cards on your desk and write a tiny <em>program</em> — a few numbered lines for
+  sorting them. Then be the machine: read one line at a time and do <em>exactly</em> what it says.
+  Your hands are the <em>CPU</em>, a sticky note you may glance at is <em>RAM</em>, and a folder set
+  aside is <em>storage</em>. Feel how software (the program) directs hardware (the parts you played),
+  and how nothing happens until an instruction is given.
+</div>
+
+<div class="discuss">
+  <span class="callout-title"><span class="pill online">Online</span> Look inside on your own</span>
+  Return to the <em>Inside the Machine</em> explorer above. Find each part again and step through the
+  boot sequence, following a signal from storage, into memory, to the processor — software moving
+  through hardware. Then complete the Lesson 2 activity.
+</div>
+
+<div class="check">
+  <span class="callout-title">Check for understanding</span>
+  <ol>
+    <li>Explain, in two or three sentences, how hardware and software depend on each other.</li>
+    <li>Put these in the order a computer uses them when it turns on: operating system, BIOS/firmware, applications.</li>
+    <li>Is firmware hardware or software? Why is it a little tricky to classify?</li>
+  </ol>
+</div>
+
+</main>
+</div>
+</body>
+</html>

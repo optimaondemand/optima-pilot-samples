@@ -87,7 +87,25 @@ _Week 1 and major projects not posted yet_
 
 ### ★ M/J Comprehensive Science 1 (Science · 2002040)
 
-_Week 1 and major projects not posted yet_
+#### Quarter 2: Forces, Motion & the Science Fair
+
+**Week 1**
+
+- [Q2 Week 1: Redefining the Scientist, Beyond the Lab Coat](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/l0-map.html)
+- [Lesson: The Three Questions Every Experiment Asks](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/l1-variables.html)
+- [Weekly Reading: How Scientists Plan a Fair Test](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/l2-reading.html)
+- [Variables in Experiments: Quick Reference Guide](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/r1-variables-guide.html)
+- [Graphic Organizer: Variables (printable)](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/r2-organizer.html)
+- [Assignment: Science Graphic Organizer: Variables](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/a1-organizer.html)
+- [Assignment: What Is a Scientist? AI Creation Assignment](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/a2-scientist.html)
+- [Assignment: Science Fair Mini-Experiments, Checkpoint 1](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/a3-checkpoint.html)
+
+**Major Project: Science Fair Video (Week 7)**
+
+- [Q2 Week 7: Lights, Camera, Experiment! Science Fair Spotlight](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w07/l0-map.html)
+- [Weekly Reading: Teach It Without Being There](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w07/l1-reading.html)
+- [Science Fair Videos: Quick Reference Guide](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w07/r1-videos-guide.html)
+- [Assignment: Science Fair Mini-Experiments, Final Video Presentation](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w07/a1-final-video.html)
 
 ### ★ M/J World History (Social Studies · 2109010)
 
@@ -95,7 +113,17 @@ _Week 1 and major projects not posted yet_
 
 ### M/J Grade 6 Digital Discoveries (Computer Science · 0200021)
 
-_Week 1 and major projects not posted yet_
+#### Digital Foundations to Capstone
+
+**Week 1**
+
+- [Week 1 — Digital Communication Basics](https://optimaondemand.github.io/optima-pilot-samples/6th-digital-discoveries/Unit1/week-01-reading.html)
+- [Week 1 Activity — Pick the Right Channel](https://optimaondemand.github.io/optima-pilot-samples/6th-digital-discoveries/Unit1/week-01-activity.html)
+
+**Major Project: Year-End Capstone**
+
+- [Week 36 — Year-End Capstone & Course Final](https://optimaondemand.github.io/optima-pilot-samples/6th-digital-discoveries/Unit5/week-36-reading.html)
+- [Week 36 Activity — Year-End Capstone Project Guide](https://optimaondemand.github.io/optima-pilot-samples/6th-digital-discoveries/Unit5/week-36-activity.html)
 
 ### M/J Fitness - Grade 6 (Physical Education · 1508000)
 
@@ -128,7 +156,23 @@ _Week 1 and major projects not posted yet_
 
 ### ★ M/J Comprehensive Science 2 (Science · 2002070)
 
-_Week 1 and major projects not posted yet_
+#### Quarter 2: Life, Earth & Space Science
+
+**Week 1**
+
+- [Q2 Week 1 Overview: Redefining the Scientist, Beyond the Lab Coat](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w01/l0-map.html)
+- [Weekly Reading: Understanding Variables in Scientific Experiments](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w01/l1-reading.html)
+- [Variables in Experiments: Quick Reference Guide](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w01/r1-variables-guide.html)
+- [Quarter 2 Science Fair Project: Choose Your Investigation](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w01/r2-science-fair.html)
+- [Assignment: What Is a Scientist?! AI Creation Assignment](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w01/a1-scientist.html)
+- [Assignment: Science Fair Checkpoint 1, Choose Your Project](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w01/a2-checkpoint.html)
+
+**Major Project: Science Fair Video (Week 7)**
+
+- [Q2 Week 7 Overview: Lights, Camera, Experiment! Science Fair Spotlight](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w07/l0-map.html)
+- [Weekly Reading: Make It Teach](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w07/l1-reading.html)
+- [Science Fair Videos: Quick Reference Guide](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w07/r1-videos-guide.html)
+- [Science Fair Final Video Presentation](https://optimaondemand.github.io/optima-pilot-samples/7th-science-comprehensive-2-q2/sci7/q2w07/a1-final-video.html)
 
 ### ★ Grade 7 Texas History (Social Studies · txhist7)
 
@@ -140,7 +184,23 @@ _Week 1 and major projects not posted yet_
 
 ### M/J Grade 7 Digital Discoveries (Computer Science · 0200022)
 
-_Week 1 and major projects not posted yet_
+#### Unit 1: The Machine & the Human
+
+**Week 1**
+
+- [Unit 1: The Machine & the Human](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-01/index.html)
+- [Unit 1 Viewing — Engelbart's "Mother of All Demos"](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-01/reading-engelbart.html)
+- [Lesson 1.1: What Is Computing?](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-01/lesson-01-what-is-computing.html)
+- [Lesson 1.2: Hardware & Software](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-01/lesson-02-hardware-software.html)
+
+**Major Project: Unit 10, Weaving The Web**
+
+- [Unit 10: Weaving the Web](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-10/index.html)
+- [Lesson 10.1: Vague, but Exciting](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-10/lesson-01-the-proposal.html)
+- [Lesson 10.2: The Craftsman's Tools](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-10/lesson-02-design-tools.html)
+- [Lesson 10.3: Gathering the Year](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-10/lesson-03-portfolio.html)
+- [Lesson 10.4: Polish & Peers](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-10/lesson-04-polish.html)
+- [Lesson 10.5: The Presentation](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-10/lesson-05-presentation.html)
 
 ### M/J Visual Art 2 (Visual Arts · 0101110)
 
@@ -186,7 +246,19 @@ _Week 1 and major projects not posted yet_
 
 ### ★ M/J Comprehensive Science 3 (Science · 2002100)
 
-_Week 1 and major projects not posted yet_
+#### Quarter 2: Matter & Chemistry
+
+**Week 1**
+
+- [Weekly Reading: How Scientists Plan a Fair Test](https://optimaondemand.github.io/optima-pilot-samples/8th-science-comprehensive-3-q2/sci8/q2w01/l1-reading.html)
+- [Variables in Experiments: Quick Reference Guide](https://optimaondemand.github.io/optima-pilot-samples/8th-science-comprehensive-3-q2/sci8/q2w01/r1-variables-guide.html)
+- [Assignment: Science Graphic Organizer: Variables](https://optimaondemand.github.io/optima-pilot-samples/8th-science-comprehensive-3-q2/sci8/q2w01/a1-organizer.html)
+- [Assignment: What Is a Scientist? AI Creation Assignment](https://optimaondemand.github.io/optima-pilot-samples/8th-science-comprehensive-3-q2/sci8/q2w01/a2-scientist.html)
+- [Assignment: Science Fair Mini-Experiments, Checkpoint 1](https://optimaondemand.github.io/optima-pilot-samples/8th-science-comprehensive-3-q2/sci8/q2w01/a3-checkpoint.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ M/J Civics: U.S. Government (Social Studies · 2106010)
 
@@ -194,7 +266,17 @@ _Week 1 and major projects not posted yet_
 
 ### M/J Grade 8 Digital Discoveries (Computer Science · 0200023)
 
-_Week 1 and major projects not posted yet_
+#### Digital Identity to Capstone
+
+**Week 1**
+
+- [Week 1 — Your Digital Identity](https://optimaondemand.github.io/optima-pilot-samples/8th-digital-discoveries/Unit1/week-01-reading.html)
+- [Week 1 Activity — Audit Your Digital Identity](https://optimaondemand.github.io/optima-pilot-samples/8th-digital-discoveries/Unit1/week-01-activity.html)
+
+**Major Project: Capstone**
+
+- [Week 36 — Capstone Project & Course Final](https://optimaondemand.github.io/optima-pilot-samples/8th-digital-discoveries/Unit6/week-36-reading.html)
+- [Week 36 Activity — Capstone Submission Audit](https://optimaondemand.github.io/optima-pilot-samples/8th-digital-discoveries/Unit6/week-36-activity.html)
 
 ### M/J Visual Art 3 (Visual Arts · 0101120)
 
@@ -446,7 +528,17 @@ _Week 1 and major projects not posted yet_
 
 ### Driver Education/Traffic Safety Classroom (Grades 9–12 · Driver Education · 1900310)
 
-_Week 1 and major projects not posted yet_
+#### Unit 1
+
+**Unit 1 Opening Lessons**
+
+- [Lesson 1.1 — What Does It Really Mean to Drive?](https://optimaondemand.github.io/optima-pilot-samples/hs-drivers-ed/unit1/lesson-1-1-reading.html)
+- [Lesson 1.2 — The IPDE Process: Your Decision-Making Superpower](https://optimaondemand.github.io/optima-pilot-samples/hs-drivers-ed/unit1/lesson-1-2-reading.html)
+- [Lesson 1.3 — Sharing the Road: Everyone Belongs](https://optimaondemand.github.io/optima-pilot-samples/hs-drivers-ed/unit1/lesson-1-3-reading.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### Semantics and Logic Honors (Grades 9–12 · Electives · 1004300)
 

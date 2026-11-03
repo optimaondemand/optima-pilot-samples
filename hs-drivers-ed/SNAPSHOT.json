@@ -1,0 +1,14 @@
+{
+ "source": "https://facevedooe.github.io/OAO-drivers-ed/",
+ "snapshot_of": "Pages",
+ "files": [
+  "unit1/lesson-1-1-reading.html",
+  "unit1/lesson-1-2-reading.html",
+  "unit1/lesson-1-3-reading.html"
+ ],
+ "missing": [],
+ "dead_html_links": [],
+ "demo_changes": [
+  "Removed the DETS identity-verification script (assets/validation-system.js) from the demo copies; the live course keeps it."
+ ]
+}

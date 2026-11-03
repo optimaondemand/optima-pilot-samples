@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson 1.1 — What Does It Really Mean to Drive?</title>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ========== OAO DESIGN SYSTEM ========== */
+:root {
+  --binary-blue: #0E1C42;
+  --bitstream-blue: #55C8E8;
+  --gateway-gold: #C7922C;
+  --portal-purple: #67308F;
+  --pixel-pink: #A53E97;
+  --gamer-green: #76C043;
+  --odyssey-orange: #F78F1E;
+  --dark-bitstream: #0E5568;
+  --font-display: 'Wix Madefor Display', sans-serif;
+  --font-text: 'Wix Madefor Text', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.7;
+  color: #374151;
+  background: #f8f9fa;
+}
+
+/* ========== HEADER ========== */
+.oao-header {
+  background: var(--binary-blue);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 20px rgba(14,28,66,0.3);
+}
+.oao-header-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.oao-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.oao-logo-area svg { height: 40px; width: auto; }
+.oao-header-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.2);
+}
+.oao-header-course {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--bitstream-blue);
+  font-weight: 600;
+}
+.oao-header-sub { font-size: 12px; color: rgba(255,255,255,0.7); }
+.oao-xp-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--gateway-gold);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: var(--font-display);
+}
+
+/* ========== BREADCRUMB ========== */
+.breadcrumb-bar {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+.breadcrumb-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #6b7280;
+  flex-wrap: wrap;
+}
+.breadcrumb-inner a {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb-inner a:hover { color: var(--bitstream-blue); }
+.breadcrumb-inner .current {
+  color: var(--binary-blue);
+  font-weight: 600;
+}
+.breadcrumb-sep {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: #9ca3af;
+  stroke-width: 2;
+}
+
+/* ========== LESSON CONTAINER ========== */
+.lesson-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* ========== LESSON HEADER ========== */
+.lesson-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  background: var(--bitstream-blue);
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+.lesson-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--binary-blue);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.lesson-description {
+  font-size: 18px;
+  color: #6b7280;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* ========== CONTENT BLOCKS ========== */
+.content-block {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.2s;
+}
+.content-block:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.block-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.block-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.block-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--binary-blue);
+}
+.block-body { color: #374151; line-height: 1.8; }
+.block-body p { margin-bottom: 16px; }
+.block-body p:last-child { margin-bottom: 0; }
+
+/* Block type styles */
+.block-read { background: white; border-color: #e5e7eb; }
+.block-watch { background: linear-gradient(135deg, #faf5ff, #fdf2f8); border-color: var(--portal-purple); }
+.block-interactive { background: linear-gradient(135deg, #eff6ff, #ecfeff); border-color: var(--bitstream-blue); }
+.block-think { background: linear-gradient(135deg, #fffbeb, #fff7ed); border-color: var(--odyssey-orange); }
+.block-check { background: linear-gradient(135deg, #f0fdf4, #ecfdf5); border-color: var(--gamer-green); }
+.block-achievement { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-color: var(--gateway-gold); }
+.block-fact { background: linear-gradient(135deg, #eff6ff, #e0f2fe); border-color: var(--bitstream-blue); }
+.block-law { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-color: var(--gateway-gold); }
+
+/* ========== HIGHLIGHT / KEY TERM ========== */
+.key-term {
+  background: rgba(199,146,44,0.15);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 600;
+  color: var(--binary-blue);
+}
+
+/* ========== STATS CALLOUT ========== */
+.stat-callout {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.stat-card {
+  flex: 1;
+  min-width: 140px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--binary-blue);
+  line-height: 1.2;
+}
+.stat-label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+.stat-card.blue { border-color: var(--bitstream-blue); }
+.stat-card.blue .stat-number { color: var(--bitstream-blue); }
+.stat-card.gold { border-color: var(--gateway-gold); }
+.stat-card.gold .stat-number { color: var(--gateway-gold); }
+.stat-card.orange { border-color: var(--odyssey-orange); }
+.stat-card.orange .stat-number { color: var(--odyssey-orange); }
+
+/* ========== FLORIDA LAW SPOTLIGHT ========== */
+.law-spotlight {
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border-left: 4px solid var(--gateway-gold);
+  border-radius: 0 12px 12px 0;
+  padding: 24px;
+  margin: 32px 0;
+}
+.law-spotlight-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.law-spotlight-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--gateway-gold);
+}
+
+/* ========== DID YOU KNOW ========== */
+.did-you-know {
+  background: linear-gradient(135deg, #eff6ff, #e0f2fe);
+  border-left: 4px solid var(--bitstream-blue);
+  border-radius: 0 12px 12px 0;
+  padding: 24px;
+  margin: 32px 0;
+}
+.did-you-know-header {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--bitstream-blue);
+  margin-bottom: 8px;
+}
+
+/* ========== VOCABULARY LIST ========== */
+.vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+.vocab-card {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.vocab-card:hover {
+  border-color: var(--bitstream-blue);
+  box-shadow: 0 4px 12px rgba(85,200,232,0.15);
+}
+.vocab-term {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--binary-blue);
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+.vocab-def {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ========== HERO IMAGE AREA ========== */
+.hero-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--binary-blue) 0%, var(--dark-bitstream) 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+  overflow: hidden;
+  position: relative;
+}
+.hero-image svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ========== OBJECTIVES BOX ========== */
+.objectives-box {
+  background: linear-gradient(135deg, #eff6ff, #ecfeff);
+  border: 2px solid var(--bitstream-blue);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 32px;
+}
+.objectives-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--binary-blue);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.objective-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.objective-item:last-child { margin-bottom: 0; }
+.objective-check {
+  width: 24px;
+  height: 24px;
+  background: rgba(85,200,232,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.objective-check svg { width: 14px; height: 14px; }
+
+/* ========== SECTION DIVIDER ========== */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+.section-divider::before,
+.section-divider::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+}
+.section-divider-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--binary-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.section-divider-icon svg { width: 20px; height: 20px; fill: white; }
+
+/* ========== BOTTOM NAV ========== */
+.bottom-nav {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 2px solid #e5e7eb;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--bitstream-blue), var(--dark-bitstream));
+  color: white;
+}
+.btn-primary:hover {
+  box-shadow: 0 4px 16px rgba(85,200,232,0.4);
+  transform: translateY(-1px);
+}
+.btn-secondary {
+  background: white;
+  color: var(--binary-blue);
+  border: 2px solid #d1d5db;
+}
+.btn-secondary:hover { border-color: #9ca3af; }
+.btn-ghost {
+  background: transparent;
+  color: var(--bitstream-blue);
+}
+.btn-ghost:hover { color: var(--dark-bitstream); }
+.btn svg { width: 18px; height: 18px; }
+
+/* ========== STANDARDS ALIGNMENT ========== */
+.standards-box {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: #6b7280;
+}
+.standards-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--binary-blue);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .lesson-title { font-size: 28px; }
+  .lesson-container { padding: 24px 16px 60px; }
+  .stat-callout { flex-direction: column; }
+  .stat-card { min-width: 100%; }
+  .vocab-grid { grid-template-columns: 1fr; }
+  .bottom-nav { flex-direction: column; }
+  .bottom-nav .btn { width: 100%; justify-content: center; }
+  .oao-header-inner { padding: 0 16px; }
+}
+
+/* ========== ANIMATION ========== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-in {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* ========== PRO TIP ========== */
+.pro-tip {
+  background: #eff6ff;
+  border-left: 4px solid var(--bitstream-blue);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.pro-tip-label {
+  font-weight: 700;
+  color: var(--binary-blue);
+  margin-bottom: 4px;
+}
+
+/* Logo + wordmark (DD-style) */
+.oao-logo { height: 44px; width: auto; display: block; }
+.oao-wordmark { line-height: 1.1; }
+.oao-wordmark-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+.oao-wordmark-sub {
+  font-family: var(--font-display);
+  font-size: 8px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* === DD canonical header (appended last, wins by cascade order) === */
+.oao-header { background: var(--binary-blue); color: #fff; position: sticky; top: 0; z-index: 50; box-shadow: 0 4px 20px rgba(14,28,66,0.3); padding: 0; margin: 0; border-radius: 0; border: 0; flex-wrap: nowrap; gap: 0; }
+.oao-header-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.oao-logo-area { display: flex; align-items: center; gap: 14px; }
+.oao-logo-area > svg { display: none; }
+.oao-logo { height: 44px; width: auto; display: block; background: transparent; border-radius: 0; padding: 0; font-size: inherit; font-weight: inherit; color: inherit; }
+.oao-wordmark { line-height: 1.1; }
+.oao-wordmark-name { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
+.oao-wordmark-sub { font-family: var(--font-display); font-size: 8px; font-weight: 500; color: rgba(255,255,255,0.7); letter-spacing: 0.18em; text-transform: uppercase; margin-top: 2px; }
+.oao-header-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.2); }
+.oao-header-course { font-family: var(--font-display); font-size: 14px; color: var(--bitstream-blue); font-weight: 600; }
+.oao-header-sub { font-size: 12px; color: rgba(255,255,255,0.7); }
+.oao-week-badge { display: flex; align-items: center; gap: 8px; background: var(--gateway-gold); color: #fff; padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.04em; border: 0; }
+@media (max-width: 768px) {
+  .oao-header-inner { padding: 0 16px; }
+  .oao-header-sub { display: none; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="oao-header">
+  <div class="oao-header-inner">
+    <div class="oao-logo-area">
+      <img src="data:image/png;base64,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" alt="Optima Academy Online" class="oao-logo">
+      <div class="oao-wordmark">
+        <div class="oao-wordmark-name">Optima</div>
+        <div class="oao-wordmark-sub">Academy Online</div>
+      </div>
+      <div class="oao-header-divider"></div>
+      <div>
+        <div class="oao-header-course">Driver's Education</div>
+        <div class="oao-header-sub">Florida High School</div>
+      </div>
+    </div>
+    <div class="oao-week-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      UNIT 1 · LESSON 1.1
+    </div>
+  </div>
+</header>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main class="lesson-container" data-readaloud-root>
+
+<!-- OPTIMA READ-ALOUD PLAYER (Web Speech API) -->
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD &mdash; LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- END OPTIMA READ-ALOUD PLAYER -->
+
+
+  <!-- Lesson Header -->
+  <div class="animate-in">
+    <div class="lesson-badge">UNIT 1 • LESSON 1</div>
+    <h1 class="lesson-title">What Does It Really Mean to Drive?</h1>
+    <p class="lesson-description">Driving is more than pressing the gas pedal — it's a privilege, a responsibility, and one of the most complex things you'll ever do. Let's explore what that really means for you as a new Florida driver.</p>
+  </div>
+
+  <!-- Standards Alignment -->
+  <div class="standards-box animate-in delay-1">
+    <div class="standards-label">Florida Standards Alignment</div>
+    Demonstrate knowledge of traffic laws and safe driving practices. Describe hazard identification, prediction, decision, and execution (IPDE).
+  </div>
+
+  <!-- Learning Objectives -->
+  <div class="objectives-box animate-in delay-2">
+    <div class="objectives-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--bitstream-blue)" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="var(--bitstream-blue)"/></svg>
+      Learning Objectives
+    </div>
+    <div class="objective-item">
+      <div class="objective-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--bitstream-blue)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span>Explain why driving is considered a privilege, not a right, in Florida</span>
+    </div>
+    <div class="objective-item">
+      <div class="objective-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--bitstream-blue)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span>Identify the leading causes of teen crashes in Florida</span>
+    </div>
+    <div class="objective-item">
+      <div class="objective-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--bitstream-blue)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span>Describe why defensive driving is essential for new drivers</span>
+    </div>
+    <div class="objective-item">
+      <div class="objective-check">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--bitstream-blue)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span>Analyze real-world driving scenarios for risk factors</span>
+    </div>
+  </div>
+
+ 
+  <!-- READ BLOCK: Introduction -->
+  <div class="content-block block-read animate-in delay-4">
+    <div class="block-header">
+      <svg class="block-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="4" width="24" height="24" rx="4" stroke="var(--bitstream-blue)" stroke-width="2"/>
+        <path d="M16 8v16M10 12h12M10 16h12M10 20h8" stroke="var(--bitstream-blue)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h2 class="block-title">Driving: A Privilege, Not a Right</h2>
+    </div>
+    <div class="block-body">
+      <p>Here's something that might surprise you: <span class="key-term">driving is a privilege, not a right</span>. Unlike the rights listed in the U.S. Constitution, the ability to operate a motor vehicle is something you earn — and it can be taken away.</p>
+
+      <p>In Florida, you'll go through a <span class="key-term">Graduated Driver Licensing (GDL)</span> system that eases you into full driving privileges step by step. This isn't meant to frustrate you — it's designed to keep you alive. Seriously. Teen drivers between 16 and 19 are nearly three times more likely to be in a fatal crash than drivers aged 20 and older.</p>
+
+      <p>But here's the good news: this course is your first step toward being a safe, confident driver. You'll learn the skills, laws, and habits that separate good drivers from dangerous ones. And by the end, you'll have something most teens don't — a real understanding of what it takes to share the road responsibly.</p>
+    </div>
+  </div>
+
+  <!-- STAT CALLOUT: Florida Teen Crash Statistics -->
+  <div class="animate-in delay-5">
+    <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--binary-blue); margin-bottom: 16px;">Florida Teen Driving: By the Numbers</h2>
+    <div class="stat-callout">
+      <div class="stat-card blue">
+        <div class="stat-number">~3,000</div>
+        <div class="stat-label">Teen crashes in Florida each year</div>
+      </div>
+      <div class="stat-card orange">
+        <div class="stat-number">1 in 3</div>
+        <div class="stat-label">Teen deaths involve motor vehicles</div>
+      </div>
+      <div class="stat-card gold">
+        <div class="stat-number">94%</div>
+        <div class="stat-label">Crashes caused by human error</div>
+      </div>
+    </div>
+    <p style="font-size: 14px; color: #9ca3af; margin-top: 8px;">Source: Florida DHSMV, NHTSA</p>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-icon">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+  </div>
+
+  <!-- READ BLOCK: Florida's Driving Ecosystem -->
+  <div class="content-block block-read">
+    <div class="block-header">
+      <svg class="block-icon" viewBox="0 0 32 32" fill="none">
+        <rect x="4" y="4" width="24" height="24" rx="4" stroke="var(--bitstream-blue)" stroke-width="2"/>
+        <path d="M16 8v16M10 12h12M10 16h12M10 20h8" stroke="var(--bitstream-blue)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h2 class="block-title">Florida's Driving Ecosystem</h2>
+    </div>
+    <div class="block-body">
+      <p>Florida is one of the most unique driving environments in the country. With over <strong>15 million licensed drivers</strong> and millions of tourists on the road at any given time, you're sharing pavement with people from all over the world — many of whom may be unfamiliar with local roads.</p>
+
+      <p>Add to that Florida's signature <span class="key-term">afternoon thunderstorms</span>, flat terrain with limited visibility at times, heavy pedestrian areas, and a large elderly driving population, and you've got a state where defensive driving isn't optional — it's survival.</p>
+
+      <p>Here's what makes Florida roads different from many other states:</p>
+
+      <ul style="margin: 16px 0; padding-left: 24px;">
+        <li style="margin-bottom: 10px;"><strong>Tourist traffic:</strong> Millions of visitors each year unfamiliar with Florida roads and intersections</li>
+        <li style="margin-bottom: 10px;"><strong>Weather extremes:</strong> Sudden storms, standing water, hydroplaning risk, and intense sun glare</li>
+        <li style="margin-bottom: 10px;"><strong>Diverse road users:</strong> Pedestrians, cyclists, motorcyclists, scooters, golf carts, and commercial trucks all sharing space</li>
+        <li style="margin-bottom: 10px;"><strong>High-speed highways:</strong> Interstates with 70 mph limits alongside residential zones at 25 mph</li>
+        <li style="margin-bottom: 10px;"><strong>Night driving challenges:</strong> Many roads without street lighting outside of cities</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DID YOU KNOW -->
+  <div class="did-you-know">
+    <div class="did-you-know-header">💡 Did You Know?</div>
+    <p>Florida has more registered vehicles than the entire populations of 30 U.S. states. In 2023, there were over <strong>17 million registered vehicles</strong> on Florida roads. That's a lot of traffic — and a lot of reasons to be a skilled, defensive driver.</p>
+  </div>
+
+  <!-- READ BLOCK: Why This Course Matters -->
+  <div class="content-block block-read">
+    <div class="block-header">
+      <svg class="block-icon" viewBox="0 0 32 32" fill="none">
+        <rect x="4" y="4" width="24" height="24" rx="4" stroke="var(--bitstream-blue)" stroke-width="2"/>
+        <path d="M16 8v16M10 12h12M10 16h12M10 20h8" stroke="var(--bitstream-blue)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h2 class="block-title">Why This Course Matters</h2>
+    </div>
+    <div class="block-body">
+      <p>You might be thinking, <em>"I just want to get my license — do I really need all this?"</em></p>
+
+      <p>Yes. And here's why: <span class="key-term">motor vehicle crashes are the #1 cause of death for U.S. teens</span>. Not illness, not violence — crashes. And the data is clear that the biggest factor isn't bad luck or bad roads — it's <strong>inexperience and poor decision-making</strong>.</p>
+
+      <p>This course doesn't just prepare you for a written test. It teaches you how to think like a safe driver. You'll learn to:</p>
+
+      <ul style="margin: 16px 0; padding-left: 24px;">
+        <li style="margin-bottom: 10px;"><strong>Anticipate danger</strong> before it becomes a crisis</li>
+        <li style="margin-bottom: 10px;"><strong>Make split-second decisions</strong> based on training, not panic</li>
+        <li style="margin-bottom: 10px;"><strong>Understand Florida laws</strong> that protect you and everyone else on the road</li>
+        <li style="margin-bottom: 10px;"><strong>Build habits</strong> that will keep you safe for a lifetime of driving</li>
+      </ul>
+
+      <p>By the time you finish this unit, you'll already be thinking differently about every car ride — even as a passenger. That awareness? That's the start of becoming a great driver.</p>
+    </div>
+  </div>
+
+  <!-- FLORIDA LAW SPOTLIGHT -->
+  <div class="law-spotlight">
+    <div class="law-spotlight-header">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gateway-gold)" stroke-width="2">
+        <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6L23 9l-11-6z"/>
+        <path d="M12 21V12M5 11.18V17"/>
+      </svg>
+      <span class="law-spotlight-title">⚖️ Florida Law Spotlight</span>
+    </div>
+    <p style="margin-bottom: 8px;"><strong>Florida Statute 322.05 — Persons Not to Be Licensed</strong></p>
+    <p>Florida law establishes specific requirements you must meet before receiving a driver's license, including minimum age, completion of an approved driver education course (this course — the Driver Education Traffic Safety, or DETS, course required of applicants under 18), and passing both written and driving tests. Your license can be suspended or revoked for violations — reinforcing that driving is a privilege maintained by following the law.</p>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-icon">
+      <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 016.5 17H20M4 19.5V5a2 2 0 012-2h14v14H6.5A2.5 2.5 0 004 19.5z"/></svg>
+    </div>
+  </div>
+
+  <!-- VOCABULARY SECTION -->
+  <h2 style="font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--binary-blue); margin-bottom: 16px;">📘 Key Vocabulary</h2>
+  <div class="vocab-grid">
+    <div class="vocab-card">
+      <div class="vocab-term">Privilege</div>
+      <div class="vocab-def">A special right or advantage earned and maintained by meeting certain conditions — not guaranteed by law.</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term">Defensive Driving</div>
+      <div class="vocab-def">A set of driving skills and strategies that allow you to identify and respond to hazards, reducing risk on the road.</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term">GDL (Graduated Driver Licensing)</div>
+      <div class="vocab-def">Florida's system that grants driving privileges in stages — learner's license, Class E license with under-18 nighttime restrictions, and unrestricted Class E license at 18 — based on age and experience.</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term">DETS</div>
+      <div class="vocab-def">Driver Education Traffic Safety — the minimum 6-hour course (this one!) that a first-time Florida applicant under 18 must complete before taking the Class E Knowledge Exam, under F.S. 322.1615(1)(c). A first-time applicant 18 or older takes the 4-hour Traffic Law and Substance Abuse Education (TLSAE) course instead.</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term">IPDE Process</div>
+      <div class="vocab-def">Identify, Predict, Decide, Execute — the four-step decision-making process that safe drivers use continuously while behind the wheel.</div>
+    </div>
+    <div class="vocab-card">
+      <div class="vocab-term">Risk Factor</div>
+      <div class="vocab-def">Any condition or behavior that increases the likelihood of a crash or negative driving outcome.</div>
+    </div>
+  </div>
+
+  <!-- REFLECTION PROMPT -->
+  <div class="content-block block-think" style="margin-top: 32px;">
+    <div class="block-header">
+      <svg class="block-icon" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="12" r="8" stroke="var(--odyssey-orange)" stroke-width="2"/>
+        <path d="M13 22h6M14 25h4" stroke="var(--odyssey-orange)" stroke-width="2" stroke-linecap="round"/>
+        <path d="M16 8v2M12 10l1 1M20 10l-1 1" stroke="var(--odyssey-orange)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+      <h2 class="block-title">💭 Reflection</h2>
+    </div>
+    <div class="block-body">
+      <p><strong>Think about the last time you were a passenger in a car.</strong> What did you notice about the driver's behavior? Were they focused? Distracted? Did anything happen that made you feel unsafe?</p>
+      <p>Now imagine <em>you</em> were the one driving. How would you want to handle that same situation? Write 2–3 sentences about what you'd do differently (or the same) and why.</p>
+      <p style="font-size: 14px; color: #9ca3af; margin-top: 8px;"><em>This reflection is for your own growth — there are no wrong answers.</em></p>
+    </div>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div class="content-block block-achievement" style="margin-top: 32px;">
+    <div class="block-header">
+      <svg class="block-icon" viewBox="0 0 32 32" fill="none">
+        <path d="M16 4l4 8 8 1.5-5.5 5.5 1 8.5L16 23.5 8.5 27.5l1-8.5L4 13.5 12 12z" stroke="var(--gateway-gold)" stroke-width="2" fill="rgba(199,146,44,0.15)"/>
+      </svg>
+      <h2 class="block-title">✅ Lesson Complete — What's Next?</h2>
+    </div>
+    <div class="block-body">
+      <p>You've completed the reading for <strong>Lesson 1.1</strong>! Here's your path forward:</p>
+      <ol style="margin: 12px 0; padding-left: 24px;">
+        <li style="margin-bottom: 8px;"><strong>Complete the "Rate the Risk" Activity</strong> — an interactive scenario-ranking activity</li>
+        <li style="margin-bottom: 8px;"><strong>Take the Knowledge Check</strong> — a 5-question formative quiz on this lesson</li>
+        <li style="margin-bottom: 8px;"><strong>Move to Lesson 1.2</strong> — The IPDE Process: Your Decision-Making Superpower</li>
+      </ol>
+      <p style="font-size: 14px; color: var(--gateway-gold); font-weight: 600;">+100 XP for completing this reading!</p>
+    </div>
+  </div>

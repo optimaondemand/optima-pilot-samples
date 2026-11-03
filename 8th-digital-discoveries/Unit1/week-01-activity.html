@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 Activity — Audit Your Digital Identity | Digital Discoveries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body style="margin:0;padding:0;background:#0a0a14;font-family:'Wix Madefor Text',system-ui,sans-serif;color:#e2e8f0;line-height:1.6;min-height:100vh;">
+
+<div id="app-root" style="max-width:820px;margin:0 auto;padding:20px;" data-readaloud-root>
+
+<!-- OPTIMA READ-ALOUD PLAYER (Web Speech API) -->
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+<style>
+    #optima-read-aloud { background: #111122; border-color: #1e2a4a; border-left-color: #55C8E8; }
+    #optima-read-aloud .ora-kicker { color: #55C8E8; }
+    #optima-read-aloud .ora-speed { color: #c8d6e8; }
+    #ora-status { color: #c8d6e8; }
+    #ora-play { background: #55C8E8; border-color: #55C8E8; color: #0E1C42; }
+    #ora-play:hover:enabled { background: #7dd6ee; }
+    #ora-play:disabled { background: #2a3350; border-color: #2a3350; color: #55687a; }
+    #ora-stop { background: #111122; color: #c8d6e8; border-color: #2a3350; }
+    #ora-stop:hover:enabled { background: #1a2038; border-color: #55C8E8; }
+    #ora-rate { background: #111122; color: #c8d6e8; border-color: #2a3350; }
+    .ora-highlight { background: #1d2a52 !important; box-shadow: inset 4px 0 0 #55C8E8; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD &mdash; LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- END OPTIMA READ-ALOUD PLAYER -->
+
+
+  <!-- HEADER -->
+  <div style="background:#0E1C42;border-radius:14px;padding:20px 24px;margin-bottom:18px;border:1px solid #1e2a4a;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:10px;">
+      <div style="background:#F78F1E;color:#0E1C42;padding:5px 12px;border-radius:14px;font-family:'Wix Madefor Display',sans-serif;font-weight:800;font-size:11px;letter-spacing:0.14em;">🎮 ACTIVITY</div>
+      <div style="color:#55C8E8;font-family:'Wix Madefor Display',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;">Unit 1 · Week 1</div>
+    </div>
+    <h1 style="font-family:'Wix Madefor Display',sans-serif;font-size:28px;font-weight:800;color:#ffffff;margin:0 0 6px;line-height:1.2;">Audit Your Digital Identity</h1>
+    <p style="margin:0;color:#c8d6e8;font-size:14px;">10 real scenarios about who you are online. Pick the most intentional move for each and earn XP. You can retry as many times as you want.</p>
+  </div>
+
+  <!-- PROGRESS + XP BAR -->
+  <div id="status-bar" style="background:#111122;border:1px solid #1e2a4a;border-radius:12px;padding:14px 20px;margin-bottom:18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:220px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="color:#55C8E8;font-family:'Wix Madefor Display',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">Progress</span>
+        <span id="progress-text" style="color:#ffffff;font-family:'Wix Madefor Display',sans-serif;font-size:13px;font-weight:700;">Question 1 of 10</span>
+      </div>
+      <div style="background:#0a0a14;border-radius:10px;height:10px;overflow:hidden;">
+        <div id="progress-fill" style="background:linear-gradient(90deg,#55C8E8,#76C043);height:100%;width:0%;transition:width 0.4s ease;"></div>
+      </div>
+    </div>
+    <div style="background:linear-gradient(135deg,#C7922C,#8a6620);padding:8px 16px;border-radius:10px;display:flex;align-items:center;gap:8px;">
+      <span style="font-size:18px;">⚡</span>
+      <span style="color:#ffffff;font-family:'Wix Madefor Display',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">XP</span>
+      <span id="xp-text" style="color:#ffffff;font-family:'Wix Madefor Display',sans-serif;font-size:18px;font-weight:800;">0</span>
+    </div>
+  </div>
+
+  <!-- QUESTION CONTAINER -->
+  <div id="question-container"></div>
+
+  <!-- FOOTER NOTE -->
+  <div style="text-align:center;color:#55687a;font-size:12px;margin-top:24px;padding:12px;">
+    Digital Discoveries · Optima Academy Online · Grade 8 Computer Science
+  </div>
+
+</div>
+
+<script>
+// ═════════════════════════════════════════════════════════════
+// QUESTION BANK — 10 scenario-based items
+// ═════════════════════════════════════════════════════════════
+const QUESTIONS = [
+  {
+    id: 1,
+    tag: 'Profile Audit',
+    tagColor: '#55C8E8',
+    status: 'blue',
+    icon: '📷',
+    scenario: "You're applying to a summer engineering camp that asks for a public profile link. Scrolling your Instagram, you spot a silly meme from a year ago — not who you are now — sitting as your third post. Best move?",
+    options: [
+      { text: "Leave it — it was funny at the time", correct: false, why: "Profile basics shape first impressions in seconds. A reviewer scrolling for 10 seconds will see that post before anything else." },
+      { text: "Archive or delete the post, then double-check the next 5 visible posts are the version of you that matches the application", correct: true, why: "Curating the visible top of your profile is exactly the right call. You're being intentional about what reviewers see first." },
+      { text: "Make the whole account private and hope they don't notice", correct: false, why: "Hiding doesn't help — the reviewer may need to see your work. And cached versions of public posts often linger in search results anyway." },
+      { text: "Spin up a fake second account just for the camp", correct: false, why: "A separate persona is fine, but deceiving the application by hiding your real account isn't — they may catch the inconsistency." }
+    ]
+  },
+  {
+    id: 2,
+    tag: 'Persona Basics',
+    tagColor: '#76C043',
+    status: 'green',
+    icon: '🪪',
+    scenario: "You're creating a portfolio site to showcase your art for high school applications. Which username should you choose?",
+    options: [
+      { text: "ImTheBest_2010 — your gaming handle since 5th grade", correct: false, why: "Gaming handles often don't translate well to professional contexts. Apply 'persona by context' — different spaces, appropriate names." },
+      { text: "Your real first and last name, or a clean variation of it", correct: true, why: "For school, applications, and future work, your real name is searchable and trustworthy. It signals 'this is the real me.'" },
+      { text: "X_DEATH_KNIGHT_69_X — the username you use on every site", correct: false, why: "Same problem — a username built for one space (gaming) rarely fits another (art portfolio)." },
+      { text: "No name at all — just call it 'anonymous'", correct: false, why: "Hiding your name on a portfolio means reviewers can't credit you for your own work. Curating is not the same as hiding." }
+    ]
+  },
+  {
+    id: 3,
+    tag: 'Data Trails',
+    tagColor: '#F78F1E',
+    status: 'amber',
+    icon: '📡',
+    scenario: "You've been falling asleep watching gaming livestreams late at night. Your YouTube recommendations have shifted dramatically — mostly competitive shooter content, even though you also like art tutorials and music. Why is this happening?",
+    options: [
+      { text: "YouTube is broken", correct: false, why: "Not broken — working exactly as designed. The recommendation algorithm responds to patterns of watch time." },
+      { text: "The algorithm built an inferred identity for you based on what you watch most. Watch time matters more than what you 'say' you like.", correct: true, why: "Exactly. Algorithms read patterns, not promises. Hours of watch time outweigh anything you set in your profile bio." },
+      { text: "Someone hacked your account", correct: false, why: "Possible but rare. Far more often, your own real activity is the driver of the shift." },
+      { text: "Your inferred identity matches your curated one perfectly", correct: false, why: "Often it doesn't! The gap between what you say you like and what you actually watch is exactly what algorithms key on." }
+    ]
+  },
+  {
+    id: 4,
+    tag: 'Audience Control',
+    tagColor: '#67308F',
+    status: 'red',
+    icon: '📸',
+    scenario: "A friend asks to screenshot a private group chat where you said something kind of harsh about a classmate. 'Just for evidence — I won't share it.' Best response?",
+    options: [
+      { text: "Sure, I trust you", correct: false, why: "Screenshots are permanent and can leave your friend's device in a single share. 'Just for evidence' often becomes 'just one share' becomes 'all over Snapchat by lunch.'" },
+      { text: "No — and I should probably DM that classmate to clear the air", correct: true, why: "Right call. Screenshots make private moments permanent and public. Even more important: own the moment with the person you talked about." },
+      { text: "Sure, but only if you take the message OUT of context", correct: false, why: "Distorting the message makes things worse, not better — and it shows in the screenshot." },
+      { text: "Delete the original message and pretend I never said it", correct: false, why: "Even if you delete it on your side, others have already seen it. Permanence is the rule online. Better to address it directly." }
+    ]
+  },
+  {
+    id: 5,
+    tag: 'Permanence',
+    tagColor: '#C7922C',
+    status: 'amber',
+    icon: '🗑️',
+    scenario: "You delete an embarrassing 6th-grade post from your account. Two weeks later it shows up in a Google search result. How is that possible?",
+    options: [
+      { text: "Google made a mistake", correct: false, why: "Search engines cache content. Deletion on the original platform doesn't always remove the cached copy from search results." },
+      { text: "Search engines, screenshots, and other sites often archive content. 'Delete' is rarely a true erase.", correct: true, why: "Right — permanence is the default online. Once content is public for even a short time, copies can persist in caches, screenshots, and third-party archives." },
+      { text: "Someone re-uploaded it", correct: false, why: "Possible, but a more common cause is automatic caching and archiving — not deliberate re-upload." },
+      { text: "The post wasn't actually deleted on the platform", correct: false, why: "Sometimes true, but even confirmed-deleted posts can still appear in search results because the cache hasn't refreshed yet." }
+    ]
+  },
+  {
+    id: 6,
+    tag: 'Curated vs Inferred',
+    tagColor: '#A53E97',
+    status: 'green',
+    icon: '🧩',
+    scenario: "Your Instagram bio says 'aspiring artist.' Your TikTok For You feed and watch history show you mostly watch pranks and sports clips — barely any art content. Which version of you does the recommendation algorithm believe?",
+    options: [
+      { text: "The bio version — algorithms read text first", correct: false, why: "Algorithms weigh watch time and engagement far more than self-description text in a bio." },
+      { text: "The inferred version — what you actually do, repeated over time", correct: true, why: "Right. Algorithms key on behavior, not labels. Your data shadow is built from clicks, not captions. To shift it, you have to shift your actual viewing pattern." },
+      { text: "Neither — algorithms don't have opinions", correct: false, why: "Algorithms absolutely categorize users into audience buckets. That's how recommendations and ads work." },
+      { text: "Both equally", correct: false, why: "Algorithms strongly weight behavior over self-description. Bios are almost a footnote." }
+    ]
+  },
+  {
+    id: 7,
+    tag: 'Tags & Mentions',
+    tagColor: '#55C8E8',
+    status: 'blue',
+    icon: '🏷️',
+    scenario: "A classmate keeps tagging you in low-effort meme posts where you're barely involved. The tags pile up under your name. Best move?",
+    options: [
+      { text: "Untag yourself from the posts, then politely ask the classmate to stop", correct: true, why: "Right — your name has weight. Untagging removes the link from your profile, and a direct conversation can prevent future tags. Most social platforms let you control tags in settings." },
+      { text: "Make a big public post calling the classmate out", correct: false, why: "Public callouts often spiral and become part of your own digital identity. Direct private conversations are usually more effective and more dignified." },
+      { text: "Leave the tags up — you don't want to seem rude", correct: false, why: "Politeness doesn't require letting other people define your online identity. You can be both kind and assertive." },
+      { text: "Block the classmate immediately without saying anything", correct: false, why: "Blocking is for genuine harassment, not minor annoyances. Try a direct ask first." }
+    ]
+  },
+  {
+    id: 8,
+    tag: 'Protection',
+    tagColor: '#76C043',
+    status: 'red',
+    icon: '🛡️',
+    scenario: "You and a close friend share a streaming account. Your friend asks if their cousin — whom you've never met — can also use your password. What's the BIGGEST identity risk?",
+    options: [
+      { text: "Streaming services don't care about sharing", correct: false, why: "Many do — but the bigger issue isn't terms of service. It's identity safety." },
+      { text: "Passwords reused across sites are a major identity risk. If you use that streaming password anywhere else (email, social media), the cousin now has access to those too.", correct: true, why: "Right — most account breaches happen because people reuse passwords. One leaked password becomes the key to every account that shares it." },
+      { text: "There's no risk if the cousin is family", correct: false, why: "Trust is about who can see and forward your data, not who is related by blood. And the password might unlock other accounts if you reused it." },
+      { text: "Your friend will protect you", correct: false, why: "Once your password leaves your circle, you can't control where it goes — even when everyone has good intentions." }
+    ]
+  },
+  {
+    id: 9,
+    tag: 'Reputation Math',
+    tagColor: '#0E5568',
+    status: 'blue',
+    icon: '🪞',
+    scenario: "A scholarship reviewer searches your full name and finds one comment you made on a Reddit thread when you were 11 — a clumsy joke that doesn't sound great today. What's the MOST likely impact on the reviewer's decision?",
+    options: [
+      { text: "They will immediately reject you", correct: false, why: "Most reviewers know teens grow up. One isolated old post is rarely a deal-breaker on its own." },
+      { text: "They will look for more context — your current posts, your portfolio, your school presence. The pattern matters more than any one comment.", correct: true, why: "Right — reviewers weigh patterns. One old post is one data point. If everything else about you is strong and current, that one comment fades into the background." },
+      { text: "It won't affect the decision at all", correct: false, why: "It can influence the decision. What matters most is the pattern of evidence around it." },
+      { text: "They will assume your account was hacked", correct: false, why: "Reviewers rarely assume that. The most likely interpretation is the most obvious one — that the comment came from you." }
+    ]
+  },
+  {
+    id: 10,
+    tag: 'Authenticity',
+    tagColor: '#76C043',
+    status: 'green',
+    icon: '🚀',
+    scenario: "You want to start a YouTube channel about model rockets — a genuine hobby of yours. You're nervous classmates will tease you. What's the most resilient approach to building this part of your digital identity?",
+    options: [
+      { text: "Don't start the channel — wait until classmates won't notice", correct: false, why: "Hiding parts of yourself is usually more exhausting than the brief discomfort of being seen. Authenticity scales — performance doesn't." },
+      { text: "Start the channel under your real interests with thoughtful content. Authentic identity attracts a real audience and earns respect over time.", correct: true, why: "Right — authenticity is the foundation of a resilient digital identity. People who post genuinely about their actual interests find communities and earn trust faster than people who curate for approval." },
+      { text: "Pretend the channel belongs to a fake older sibling", correct: false, why: "Deception adds work and risk. If anyone connects it to you later, the cover story damages trust more than the original content ever would have." },
+      { text: "Make it private so only you can watch your own videos", correct: false, why: "That's not a channel — that's a notebook. If you don't share the work, you don't get the benefits of an audience." }
+    ]
+  }
+];
+
+// ═════════════════════════════════════════════════════════════
+// STATE
+// ═════════════════════════════════════════════════════════════
+const POINTS_PER_CORRECT = 10;
+let currentIndex = 0;
+let totalXP = 0;
+let correctCount = 0;
+let answered = false;
+
+// ═════════════════════════════════════════════════════════════
+// RENDERING
+// ═════════════════════════════════════════════════════════════
+const STATUS_COLORS = {
+  red:   '#ff6b6b',
+  amber: '#F78F1E',
+  green: '#76C043',
+  blue:  '#55C8E8'
+};
+
+function renderQuestion() {
+  const q = QUESTIONS[currentIndex];
+  answered = false;
+  updateStatusBar();
+
+  const container = document.getElementById('question-container');
+  container.innerHTML = `
+    <div style="background:#111122;border:1px solid #1e2a4a;border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.4);">
+      <div style="background:linear-gradient(135deg,#0E1C42,#1a2a5e);padding:20px 24px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #1e2a4a;">
+        <div style="width:12px;height:12px;border-radius:50%;background:${STATUS_COLORS[q.status]};box-shadow:0 0 12px ${STATUS_COLORS[q.status]};flex-shrink:0;"></div>
+        <div style="background:${q.tagColor};color:#0E1C42;padding:4px 10px;border-radius:10px;font-family:'Wix Madefor Display',sans-serif;font-weight:800;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;">${q.tag}</div>
+        <div style="margin-left:auto;font-size:28px;">${q.icon}</div>
+      </div>
+      <div style="padding:24px;">
+        <div style="color:#55C8E8;font-family:'Wix Madefor Display',sans-serif;font-size:10px;font-weight:800;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:10px;">Scenario ${q.id}</div>
+        <p style="color:#ffffff;font-size:17px;line-height:1.55;margin:0 0 22px;">${q.scenario}</p>
+        <div id="options-list" style="display:flex;flex-direction:column;gap:10px;"></div>
+        <div id="feedback-zone" style="margin-top:18px;"></div>
+      </div>
+    </div>
+  `;
+
+  const list = document.getElementById('options-list');
+  q.options.forEach((opt, idx) => {
+    const btn = document.createElement('button');
+    btn.setAttribute('data-idx', idx);
+    btn.style.cssText = `
+      background:#0a0a14;border:2px solid #1e2a4a;border-radius:10px;
+      padding:14px 18px;color:#e2e8f0;font-family:inherit;font-size:15px;
+      text-align:left;cursor:pointer;transition:all 0.2s ease;
+      display:flex;gap:12px;align-items:flex-start;
+    `;
+    btn.innerHTML = `
+      <div style="flex-shrink:0;width:28px;height:28px;border-radius:50%;background:#1e2a4a;color:#55C8E8;font-family:'Wix Madefor Display',sans-serif;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;">${String.fromCharCode(65+idx)}</div>
+      <div style="flex:1;padding-top:4px;">${opt.text}</div>
+    `;
+    btn.addEventListener('mouseenter', () => {
+      if (!answered) { btn.style.borderColor = '#55C8E8'; btn.style.background = '#111933'; }
+    });
+    btn.addEventListener('mouseleave', () => {
+      if (!answered) { btn.style.borderColor = '#1e2a4a'; btn.style.background = '#0a0a14'; }
+    });
+    btn.addEventListener('click', () => handleAnswer(idx));
+    list.appendChild(btn);
+  });
+}
+
+function handleAnswer(selectedIdx) {
+  if (answered) return;
+  answered = true;
+
+  const q = QUESTIONS[currentIndex];
+  const chosen = q.options[selectedIdx];
+  const buttons = document.querySelectorAll('#options-list button');
+
+  buttons.forEach((btn, i) => {
+    btn.style.cursor = 'default';
+    btn.disabled = true;
+    const opt = q.options[i];
+    if (opt.correct) {
+      btn.style.borderColor = '#76C043';
+      btn.style.background = 'rgba(118,192,67,0.12)';
+      btn.querySelector('div').style.background = '#76C043';
+      btn.querySelector('div').style.color = '#0E1C42';
+    } else if (i === selectedIdx && !opt.correct) {
+      btn.style.borderColor = '#ff6b6b';
+      btn.style.background = 'rgba(255,107,107,0.10)';
+      btn.querySelector('div').style.background = '#ff6b6b';
+      btn.querySelector('div').style.color = '#ffffff';
+    } else {
+      btn.style.opacity = '0.55';
+    }
+  });
+
+  if (chosen.correct) {
+    totalXP += POINTS_PER_CORRECT;
+    correctCount++;
+  }
+  updateStatusBar();
+
+  const fb = document.getElementById('feedback-zone');
+  const color = chosen.correct ? '#76C043' : '#ff6b6b';
+  const bgColor = chosen.correct ? 'rgba(118,192,67,0.10)' : 'rgba(255,107,107,0.08)';
+  const label = chosen.correct ? '✅ CORRECT  ·  +' + POINTS_PER_CORRECT + ' XP' : '❌ NOT QUITE';
+  fb.innerHTML = `
+    <div style="background:${bgColor};border:1px solid ${color};border-left:4px solid ${color};border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:14px;">
+      <div style="color:${color};font-family:'Wix Madefor Display',sans-serif;font-size:11px;font-weight:800;letter-spacing:0.18em;margin-bottom:8px;">${label}</div>
+      <div style="color:#e2e8f0;font-size:14px;line-height:1.6;">${chosen.why}</div>
+    </div>
+    <button id="next-btn" style="width:100%;background:linear-gradient(135deg,#55C8E8,#0E5568);border:none;border-radius:10px;padding:14px 18px;color:#ffffff;font-family:'Wix Madefor Display',sans-serif;font-weight:800;font-size:15px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s ease;">
+      ${currentIndex < QUESTIONS.length - 1 ? 'Next Scenario →' : 'See Your Results →'}
+    </button>
+  `;
+
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.addEventListener('mouseenter', () => { nextBtn.style.transform = 'translateY(-2px)'; nextBtn.style.boxShadow = '0 6px 20px rgba(85,200,232,0.4)'; });
+  nextBtn.addEventListener('mouseleave', () => { nextBtn.style.transform = 'translateY(0)'; nextBtn.style.boxShadow = 'none'; });
+  nextBtn.addEventListener('click', () => {
+    currentIndex++;
+    if (currentIndex < QUESTIONS.length) {
+      renderQuestion();
+    } else {
+      renderResults();
+    }
+  });
+}
+
+function updateStatusBar() {
+  document.getElementById('progress-text').textContent = `Question ${Math.min(currentIndex+1, QUESTIONS.length)} of ${QUESTIONS.length}`;
+  const pct = ((answered ? currentIndex + 1 : currentIndex) / QUESTIONS.length) * 100;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('xp-text').textContent = totalXP;
+}
+
+function renderResults() {
+  const maxXP = POINTS_PER_CORRECT * QUESTIONS.length;
+  const pct = Math.round((totalXP / maxXP) * 100);
+  let message, emoji, color;
+  if (pct === 100) {
+    message = "A resilient digital citizen! You're making intentional, authentic decisions about who you are online.";
+    emoji = "🏆"; color = "#C7922C";
+  } else if (pct >= 80) {
+    message = "Excellent work! You're thinking carefully about audience, permanence, and the patterns that build a digital identity.";
+    emoji = "⭐"; color = "#76C043";
+  } else if (pct >= 60) {
+    message = "Good progress. Review the scenarios you missed — especially the ones about inferred identity and permanence — and try again to level up.";
+    emoji = "💪"; color = "#55C8E8";
+  } else {
+    message = "Keep going! Re-read the Week 1 lesson on digital identity and try again — auditing your online presence is a skill that grows with practice.";
+    emoji = "📚"; color = "#67308F";
+  }
+
+  document.getElementById('progress-fill').style.width = '100%';
+  document.getElementById('progress-text').textContent = 'Complete!';
+
+  document.getElementById('question-container').innerHTML = `
+    <div style="background:linear-gradient(135deg,#111122,#0E1C42);border:1px solid ${color};border-radius:14px;padding:36px 28px;text-align:center;box-shadow:0 12px 48px rgba(0,0,0,0.5);">
+      <div style="font-size:72px;margin-bottom:12px;">${emoji}</div>
+      <div style="color:${color};font-family:'Wix Madefor Display',sans-serif;font-size:12px;font-weight:800;letter-spacing:0.24em;text-transform:uppercase;margin-bottom:10px;">Activity Complete</div>
+      <h2 style="font-family:'Wix Madefor Display',sans-serif;color:#ffffff;font-size:32px;font-weight:800;margin:0 0 8px;">${totalXP} / ${maxXP} XP</h2>
+      <div style="color:#c8d6e8;font-size:16px;margin-bottom:6px;">${correctCount} of ${QUESTIONS.length} correct · ${pct}%</div>
+      <p style="color:#e2e8f0;font-size:16px;line-height:1.55;max-width:520px;margin:16px auto 28px;">${message}</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button id="retry-btn" style="background:linear-gradient(135deg,#55C8E8,#0E5568);border:none;border-radius:10px;padding:14px 26px;color:#ffffff;font-family:'Wix Madefor Display',sans-serif;font-weight:800;font-size:14px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:transform 0.2s;">
+          ↻ Try Again
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('retry-btn').addEventListener('click', () => {
+    currentIndex = 0; totalXP = 0; correctCount = 0;
+    renderQuestion();
+  });
+
+  // Canvas grade passback via postMessage
+  try {
+    window.parent.postMessage({
+      type: 'canvas-grade',
+      score: totalXP,
+      maxScore: maxXP,
+      percent: pct,
+      correctCount: correctCount,
+      totalQuestions: QUESTIONS.length,
+      activity: 'week-01-activity'
+    }, '*');
+  } catch (e) { /* no-op */ }
+}
+
+// Kick off
+renderQuestion();
+</script>
+
+</body>
+</html>
