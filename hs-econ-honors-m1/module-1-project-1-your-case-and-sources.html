@@ -876,7 +876,7 @@ input.name{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:1
   <div class="stops" id="stops"></div>
   <div class="tools">
     
-    <button class="btn ghost small" data-open="glossDrawer">&#128214; <span>Words</span></button>
+    <button class="btn ghost small" data-open="glossDrawer">&#128214; <span>Vocab</span></button>
     <button class="askme" data-open="askDrawer" aria-label="Ask Mr. Magister" title="Ask Mr. Magister"><img src="img/magister.jpg" alt=""><i aria-hidden="true">?</i></button>
   </div>
 </div></nav>
@@ -1543,8 +1543,8 @@ input.name{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:1
 </div>
 
 <div class="scrim" id="scrim"></div>
-<aside class="drawer" id="glossDrawer" aria-label="Words">
-  <header><h3>Words</h3><button class="x" data-close>&times;</button></header>
+<aside class="drawer" id="glossDrawer" aria-label="Vocab">
+  <header><h3>Vocab</h3><button class="x" data-close>&times;</button></header>
   <div class="body"><div class="glh">Subject vocabulary</div>
 <div class="gl"><button data-g="g_incentive" aria-label="Hear Incentive">&#128266;</button><b>Incentive</b><span>A reward or reason that pushes people toward one choice over another.</span></div>
 <div class="gl"><button data-g="g_opportunity-cost" aria-label="Hear Opportunity Cost">&#128266;</button><b>Opportunity Cost</b><span>The value of the next-best choice you give up when you decide.</span></div>
@@ -1684,8 +1684,8 @@ function showPop(t) {
   const p = $('#pop');
   p.innerHTML = `<b>${esc(word)}</b>${g.pron ? `<i>${esc(g.pron)}</i> · ` : ''}${esc(g.def || '')}<br>` +
     (DATA.audio.includes('g_' + g.id) ? `<button class="hear">&#128266; Hear it</button>` : '') +
-    `<button class="savew">${savedWords[key] ? '&#10003; Saved to my words' : '+ Save to my words'}</button>`;
-  $('.savew', p).onclick = () => { savedWords[key] = g.def || ''; store.set('words', savedWords); $('.savew', p).innerHTML = '&#10003; Saved to my words'; if (HASBOOK) drawMarks(); updateNb(); };
+    `<button class="savew">${savedWords[key] ? '&#10003; Saved to my vocab' : '+ Save to my vocab'}</button>`;
+  $('.savew', p).onclick = () => { savedWords[key] = g.def || ''; store.set('words', savedWords); $('.savew', p).innerHTML = '&#10003; Saved to my vocab'; if (HASBOOK) drawMarks(); updateNb(); };
   const h = $('.hear', p); if (h) h.onclick = () => play(['g_' + g.id]);
   p.style.display = 'block';
   const r = t.getBoundingClientRect();
@@ -1811,7 +1811,7 @@ function updateNb() {
   const a = HASBOOK ? Object.values(ans).filter(v => (v || '').trim()).length : 0;
   const parts = ASG.reduce((n, D, a) => n + deskDone(a), 0), total = ASG.reduce((n, D) => n + D.steps.length, 0);
   const H = HASBOOK ? hls : [];
-  el.innerHTML = [[a, 'answers'], [H.filter(h => h.l !== 'n').length, 'highlights'], [H.filter(h => h.note).length, 'margin notes'], [Object.keys(savedWords).length, 'words'], ...(ASG.length ? [[parts + '/' + total, 'assignment parts']] : [])]
+  el.innerHTML = [[a, 'answers'], [H.filter(h => h.l !== 'n').length, 'highlights'], [H.filter(h => h.note).length, 'margin notes'], [Object.keys(savedWords).length, 'vocab'], ...(ASG.length ? [[parts + '/' + total, 'assignment parts']] : [])]
     .map(([n, l]) => `<div><b>${n}</b>${l}</div>`).join('');
 }
 function loadPdfLib() {
@@ -1875,7 +1875,7 @@ async function notebook() {
     }
     k.rule();
   });
-  if (d.words.length) { k.head('My Words'); d.words.forEach(([w, t]) => { k.write(w, { size: 12, style: 'bold', gap: 0 }); k.write(t, { size: 10.5, font: 'helvetica', color: k.GREY, gap: 6 }); }); k.rule(); }
+  if (d.words.length) { k.head('My Vocab'); d.words.forEach(([w, t]) => { k.write(w, { size: 12, style: 'bold', gap: 0 }); k.write(t, { size: 10.5, font: 'helvetica', color: k.GREY, gap: 6 }); }); k.rule(); }
   if (d.minis.length || d.acts.length) { k.head('Activities'); d.minis.concat(d.acts).forEach(([t, r]) => { k.write(t, { size: 11, style: 'bold', gap: 0 }); k.write(r, { size: 10, font: 'helvetica', color: k.GREY, gap: 6 }); }); k.rule(); }
   d.desks.forEach(([title, rows]) => { k.head('Assignment draft: ' + title); rows.forEach(([t, a]) => { k.write(t, { size: 11, style: 'bold', gap: 1 }); k.para(a || 'Not written yet.', { size: 11, color: a ? k.INK : k.GREY, gap: 6 }); }); k.rule(); });
   if (d.keep) { k.lab('Carry this forward'); k.write(d.keep, { size: 12, style: 'italic' }); }
@@ -1890,7 +1890,7 @@ function notebookHtml() {
     (d.checkin ? `<p><i>${e(d.checkin[0])}</i><br>${e(d.checkin[1])}</p>` : '') +
     d.slots.map(s => `<h2>${e(s.title)}</h2><p><i>Read for: ${e(s.q)}</i></p><p><b>My answer:</b> ${e(s.a || 'No answer yet.')}</p>` +
       s.marks.map(h => `<blockquote><small>${LBLS[h.l]}</small><br><i>“${e(h.text)}”</i>${h.note ? `<br>Margin note: ${e(h.note)}` : ''}</blockquote>`).join('')).join('') +
-    (d.words.length ? '<h2>My Words</h2>' + d.words.map(([w, t]) => `<p><b>${e(w)}</b>: ${e(t)}</p>`).join('') : '') +
+    (d.words.length ? '<h2>My Vocab</h2>' + d.words.map(([w, t]) => `<p><b>${e(w)}</b>: ${e(t)}</p>`).join('') : '') +
     d.desks.map(([title, rows]) => `<h2>Assignment draft: ${e(title)}</h2>` + rows.map(([t, a]) => `<p><b>${e(t)}</b><br>${e(a || 'Not written yet.')}</p>`).join('')).join('') + `<p><i>${e(d.keep)}</i></p>`;
   const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' })); a.download = CFG.nbFile + '-My-Notebook.html'; a.click();
   const n = $('#nbNote'); if (n) n.textContent = 'Saved: ' + CFG.nbFile + '-My-Notebook.html';
