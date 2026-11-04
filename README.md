@@ -499,7 +499,18 @@ _Not posted yet_
 
 ### ★ Biology 1 (Grades 9–10 · Science · 2000310)
 
-_Week 1 and major projects not posted yet_
+#### Module 6: Evolution and Natural Selection
+
+**Week 1**
+
+- [Lesson 1: Reading the Rocks](https://optimaondemand.github.io/optima-pilot-samples/hs-biology-1-w1/w1-lesson1-reading-the-rocks.html)
+- [Lesson 2: The Same Bones](https://optimaondemand.github.io/optima-pilot-samples/hs-biology-1-w1/w1-lesson2-the-same-bones.html)
+- [Lesson 3: Life’s Address](https://optimaondemand.github.io/optima-pilot-samples/hs-biology-1-w1/w1-lesson3-lifes-address.html)
+- [Lesson 4: Written in the Molecules](https://optimaondemand.github.io/optima-pilot-samples/hs-biology-1-w1/w1-lesson4-written-in-the-molecules.html)
+
+**Major Project**
+
+- [Module 6 Project: Three Witnesses, One Story](https://optimaondemand.github.io/optima-pilot-samples/hs-biology-1-projects/module-6-project-three-witnesses-one-story.html)
 
 ### ★ Integrated Science 1 (Science · 2002400)
 
