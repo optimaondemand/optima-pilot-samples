@@ -1,0 +1,1686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Phyllis">
+<title>Module 8 Project: The Twelfth Root of Two · Algebra 2 Honors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Algebra 1 integrated lesson · core look. Same frame as the 9th ELA pilot (Inter labels, Source Serif text, focus + objectives,
+   numbered tabs, teacher card); math keeps its graph-paper ground and Binary Blue ink. Two accents: blue (working), red (marks). */
+:root{
+  --paper:#F7F9F5; --card:#FFFFFF; --ink:#0E1C42; --ink2:#38434F; --muted:#65707C; --line:#DCE3EA; --line2:#C3CED9;
+  --grid:#E2EAF3; --grid2:#C9D8E8;
+  --blue:#1E5AA0; --blue-t:#E8F0FA; --red:#C43D27; --red-t:#FBEBE7;
+  --ok:#2F6B4F; --ok-t:#EAF3EE;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif; --ui:Inter, "Segoe UI", system-ui, sans-serif;
+  --r:10px; --wrap:1000px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:17px/1.65 var(--serif);-webkit-font-smoothing:antialiased;background-color:var(--paper);
+  background-image:linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:100px 100px,100px 100px,20px 20px,20px 20px}
+img{max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* ---------- header ---------- */
+.hero{padding:22px 0 8px}
+.brand{display:flex;align-items:center;gap:10px;font:600 12px/1.2 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);padding-bottom:16px;border-bottom:1.5px solid var(--ink)}
+.brand img{width:28px;height:28px}
+.hero-g{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;padding-top:26px}
+@media (max-width:760px){.hero-g{grid-template-columns:1fr;gap:20px}}
+.kicker{font:600 12px/1.3 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.hero h1{font:700 clamp(34px,5.4vw,50px)/1.06 var(--ui);letter-spacing:-.02em;margin:10px 0 14px;max-width:16ch}
+.focusq{border-left:3px solid var(--red);padding:2px 0 2px 16px}
+.label{font:600 11.5px/1.3 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.focusq p{margin:6px 0 0;font:400 20px/1.45 var(--serif);color:var(--ink)}
+.objs{margin:10px 0 0}
+.objs summary{font:600 13px/1.4 var(--ui);color:var(--ink2);cursor:pointer;list-style:none}
+.objs summary::-webkit-details-marker{display:none}
+.objs summary::before{content:"+ ";color:var(--red)}
+.objs[open] summary::before{content:"– "}
+.objs ul{margin:8px 0 0;padding-left:18px;font-size:15.5px;color:var(--ink2)}
+.figcard{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:16px 18px;box-shadow:0 1px 2px rgba(14,28,66,.05),0 10px 24px rgba(14,28,66,.06)}
+.figcard svg{display:block;width:100%;height:auto}
+.figcard .cap{font:12.5px/1.4 var(--ui);color:var(--muted);margin-top:8px}
+
+/* ---------- tabs + tools ---------- */
+.tabs{position:sticky;top:0;z-index:30;background:rgba(247,249,245,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line2);margin-top:26px}
+.tabs .wrap{display:flex;align-items:center;gap:4px}
+.tabs .tl{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.tabs .tl::-webkit-scrollbar{display:none}
+.tab{flex:none;border:0;background:none;padding:14px 12px 12px;font:600 14px/1 var(--ui);color:var(--muted);border-bottom:2px solid transparent;display:flex;gap:8px;align-items:baseline;white-space:nowrap}
+.tab .n{font:500 12px/1 var(--ui);color:var(--line2);letter-spacing:.06em}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);border-bottom-color:var(--blue)}
+.tab.on .n{color:var(--blue)}
+.tab.seen .n::after{content:" ✓";color:var(--ok)}
+.tools{display:flex;gap:6px;flex:none;padding-left:8px;border-left:1px solid var(--line)}
+.tool{display:flex;align-items:center;gap:7px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 11px 5px 6px;font:600 12.5px/1 var(--ui);color:var(--ink)}
+.tool:hover,.tool.on{border-color:var(--ink)}
+.tool .ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font:700 12px/1 var(--ui)}
+.tool img.ic{object-fit:cover;background:none}
+@media (max-width:700px){.tool .tx{display:none}.tool{padding:5px}}
+.tabs .wrap:has(.tab:nth-child(5)) .tool .tx{display:none}
+.tabs .wrap:has(.tab:nth-child(5)) .tool{padding:5px}
+.tabs .wrap:has(.tab:nth-child(5)) .tab{padding-left:10px;padding-right:10px}
+.panel{display:none;padding:30px 0 60px;animation:rise .35s ease}
+.panel.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- sections ---------- */
+.sec{margin:0 0 38px}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.sec-h .num{font:600 13px/1 var(--ui);color:var(--red);letter-spacing:.08em}
+.sec-h h2{font:700 26px/1.2 var(--ui);letter-spacing:-.01em;margin:0}
+.sec h3{font:600 17px/1.3 var(--ui);margin:22px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.card + .card{margin-top:14px}
+@media (max-width:600px){.card{padding:16px}}
+.hint{font:13.5px/1.5 var(--ui);color:var(--muted)}
+.prose{max-width:68ch}
+.prose p{margin:0 0 12px}
+
+/* ---------- math typesetting (HTML, no MathJax) ---------- */
+.m{font-family:var(--serif);white-space:nowrap}
+.m i{font-style:italic}
+.m sup{font-size:.68em;line-height:0}
+.mb{display:block;text-align:center;font:400 24px/1.5 var(--serif);margin:14px 0;white-space:normal}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.92em;line-height:1.15;margin:0 2px}
+.fr > span:first-child{border-bottom:1.2px solid currentColor;padding:0 3px}
+.fr > span:last-child{padding:0 3px}
+.hl{background:var(--blue-t);border-radius:3px;padding:0 2px}
+.hl-r{background:var(--red-t);border-radius:3px;padding:0 2px}
+
+/* worked example: steps that open one at a time */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;margin:0 0 16px}
+.ex-h{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ex-h .label{color:var(--red)}
+.ex-q{font:400 21px/1.45 var(--serif)}
+.ex ol.steps{list-style:none;counter-reset:s;margin:12px 0 0;padding:0}
+.ex ol.steps li{counter-increment:s;position:relative;padding:8px 0 8px 36px;border-top:1px dashed var(--line);display:none}
+.ex ol.steps li.on{display:block;animation:rise .3s ease}
+.ex ol.steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:50%;background:var(--blue-t);color:var(--blue);font:700 12px/22px var(--ui);text-align:center}
+.ex .more{margin-top:10px}
+.ex.done .more{display:none}
+
+/* video, tucked */
+details.watch{margin:6px 0 30px;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+details.watch summary{list-style:none;cursor:pointer;padding:11px 16px;font:600 13.5px/1.3 var(--ui);color:var(--ink2);display:flex;gap:10px;align-items:center}
+details.watch summary::-webkit-details-marker{display:none}
+details.watch summary::before{content:"▶";font-size:10px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none}
+details.watch[open] summary::before{content:"▾";font-size:13px}
+details.watch summary span{font-weight:400;color:var(--muted)}
+details.watch video{display:block;width:100%;max-height:520px;background:#000;border-radius:0 0 var(--r) var(--r)}
+
+/* word list (reference) */
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.word{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font:15px/1.5 var(--serif)}
+.word b{display:block;font:600 14.5px/1.3 var(--ui);color:var(--ink);margin-bottom:2px}
+details.gloss{margin:0 0 26px}
+details.gloss > summary{list-style:none;cursor:pointer;font:600 13.5px/1.4 var(--ui);color:var(--ink2);padding:6px 0}
+details.gloss > summary::-webkit-details-marker{display:none}
+details.gloss > summary::before{content:"+ ";color:var(--red)}
+details.gloss[open] > summary::before{content:"– "}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:999px;padding:9px 18px;font:600 14px/1 var(--ui)}
+.btn:hover{background:#1F3266}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line2)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.small{padding:7px 13px;font-size:13px}
+.btn[disabled]{opacity:.45;cursor:default}
+.next{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line2)}
+
+/* ---------- typed answers (words) ---------- */
+.field{margin:14px 0 20px}
+.field .q{font:600 16px/1.45 var(--serif);margin:0 0 8px}
+textarea.jbox,input.name{width:100%;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:12px 14px;font:16.5px/1.6 var(--serif);color:var(--ink);resize:vertical;min-height:100px}
+input.name{min-height:0;font-family:var(--ui);font-size:15px;max-width:360px}
+textarea.jbox:focus,input.name:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.wc{font:12.5px/1 var(--ui);color:var(--muted);margin-top:6px;text-align:right}
+.wc.met{color:var(--ok)}
+
+/* ---------- choices ---------- */
+.mcq,.mq{margin:0 0 24px}
+.stem{font-weight:600;margin:0 0 10px}
+.stem .qn{display:inline-block;min-width:26px;font:700 13px/1 var(--ui);color:var(--blue)}
+.opts{display:grid;gap:8px}
+.opts.row{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.opt{text-align:left;border:1px solid var(--line2);background:#fff;border-radius:8px;padding:10px 14px;font:16px/1.45 var(--serif);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--ink)}
+.opt.no{background:#F3F4F2;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+.opt.yes{border-color:var(--ok);background:var(--ok-t)}
+.mcq.done .opt:not(.yes){opacity:.55;pointer-events:none}
+.fb{font:15px/1.5 var(--serif);margin-top:10px;padding:10px 14px;border-radius:8px;display:none}
+.fb.show{display:block}
+.fb.good{background:var(--ok-t);border-left:3px solid var(--ok)}
+.fb.try{background:#F3F4F2;border-left:3px solid var(--line2)}
+.shake{animation:shake .32s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+/* ---------- typed math (checked by value, not by spelling) ---------- */
+.mq-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.mq-in{flex:1;min-width:200px;max-width:440px;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:10px 13px;font:17px/1.3 var(--serif);color:var(--ink)}
+.mq-in:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.mq.done .mq-in{border-color:var(--ok);background:var(--ok-t)}
+.mq-prev{font:15px/1.4 var(--serif);color:var(--muted);min-height:1.4em;margin-top:6px}
+.mq-prev .m{color:var(--ink)}
+.mq-keys{font:12.5px/1.4 var(--ui);color:var(--muted);margin:0 0 14px}
+.mq-keys code{font:600 12.5px/1 var(--ui);background:#fff;border:1px solid var(--line2);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* ---------- place (tap a card, tap a bin) ---------- */
+.place .bank{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;min-height:44px}
+.chip{border:1px solid var(--line2);background:#fff;border-radius:8px;padding:8px 13px;font:16px/1.4 var(--serif);text-align:left;max-width:100%;transition:transform .15s,border-color .15s,box-shadow .15s}
+.chip.sel{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-t);transform:translateY(-2px)}
+.chip.placed{pointer-events:none;cursor:default;border-color:transparent;background:transparent;padding:4px 0;font-size:15px}
+.chip.placed::before{content:"✓ ";color:var(--ok)}
+.bins{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.bin{border:1px dashed var(--line2);border-radius:var(--r);padding:12px 14px;background:#fff;min-height:70px;transition:border-color .15s,background .15s}
+.bin.armed{border-color:var(--ink);background:var(--blue-t);cursor:pointer}
+.bin h4{margin:0 0 4px;font:600 12px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tally{font:600 13px/1.4 var(--ui);color:var(--muted);margin-top:8px}
+.tally.done{color:var(--ok)}
+
+/* ---------- problem set + PDF ---------- */
+.pset-top{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-end;justify-content:space-between;margin:0 0 22px}
+.score{display:flex;gap:26px;font:600 12.5px/1.3 var(--ui);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.score b{display:block;font:700 30px/1.05 var(--ui);color:var(--ink);letter-spacing:-.01em;text-transform:none}
+.pdfbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px;padding:16px 18px;background:var(--card);border:1px solid var(--line2);border-radius:var(--r)}
+.print-note{display:none;font:13.5px/1.5 var(--ui);color:var(--red)}
+.print-note.show{display:block}
+.checks{list-style:none;padding:0;margin:8px 0}
+.checks li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer}
+.checks li .bx{flex:none;width:20px;height:20px;border:1.5px solid var(--line2);border-radius:5px;margin-top:3px;display:grid;place-items:center;font:700 13px/1 var(--ui);color:#fff}
+.checks li.on .bx{background:var(--ink);border-color:var(--ink)}
+
+/* ---------- side box (optional work, kept quiet) ---------- */
+.aside{border-left:3px solid var(--blue);background:rgba(255,255,255,.75);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;margin:0 0 22px}
+.aside .label{color:var(--blue);display:block;margin-bottom:4px}
+
+/* ---------- drawers: calculator + Ask ---------- */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100vw);z-index:60;background:#fff;border-left:1px solid var(--line2);box-shadow:-12px 0 30px rgba(14,28,66,.16);display:flex;flex-direction:column;transform:translateX(105%);visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}
+.drawer.open{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.dr-head{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line2)}
+.dr-head img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.dr-head div{flex:1}
+.dr-head small{display:block;font:600 10.5px/1.2 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dr-head b{display:block;font:600 16px/1.3 var(--ui)}
+.dr-x{background:none;border:0;font-size:26px;line-height:1;padding:0 6px;color:var(--ink2)}
+.calc-frame{flex:1;width:100%;border:0;background:#fff}
+.dr-foot{font:12.5px/1.4 var(--ui);color:var(--muted);padding:8px 14px;border-top:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px}
+.dr-foot a{color:var(--blue)}
+.letters{flex:1;overflow:auto;padding:16px 14px;background:var(--paper)}
+.letter{background:#fff;border:1px solid var(--line2);border-radius:10px;padding:10px 13px;margin:0 0 12px;font:15px/1.55 var(--serif)}
+.letter.mine{margin-left:34px;border-color:var(--blue);background:var(--blue-t)}
+.letter.his{margin-right:24px}
+.letter .who{font:600 12px/1.3 var(--ui);color:var(--muted);margin-bottom:3px}
+.letters .empty{font:14px/1.5 var(--ui);color:var(--muted)}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.quick button{border:1px solid var(--line2);background:#fff;border-radius:999px;font:13px/1.3 var(--ui);padding:5px 11px;text-align:left}
+.quick button:hover{border-color:var(--ink)}
+.compose{padding:12px 14px 14px;border-top:1px solid var(--line2)}
+.compose textarea{width:100%;min-height:64px;border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:15px/1.5 var(--serif);resize:vertical}
+.compose .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px}
+.compose .pg-note{font:11.5px/1.35 var(--ui);color:var(--muted)}
+@media (max-width:760px){.drawer{top:auto;height:84vh;width:100%;border-left:0;border-top:1px solid var(--line2);transform:translateY(105%)}}
+@media print{.tabs,.drawer{display:none!important}}
+
+footer.foot{border-top:1px solid var(--line2);padding:22px 0 40px;font:12.5px/1.5 var(--ui);color:var(--muted);background:rgba(247,249,245,.9)}
+footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ---------- problem-set bands: each question is its own soft band, alternating, so a long set doesn't read as one wall ---------- */
+.pset .mq,.pset .mcq{padding:14px 16px 16px;margin:0 -10px 8px;border-radius:10px}
+.pset :is(.mq,.mcq):nth-child(even of .mq,.mcq){background:#F2F6FB;box-shadow:inset 0 0 0 1px #E3EBF4}
+.pset :is(.mq,.mcq) .fb.try{background:#fff}
+@media (max-width:600px){.pset .mq,.pset .mcq{padding:12px 12px 14px;margin:0 -6px 8px}}
+
+/* ---------- Dr. Usborne mini-lesson card (same card as the 9th ELA teacher) ---------- */
+.vo{background:var(--card);border:1px solid var(--line2);border-radius:14px;overflow:hidden;margin:0 0 30px;box-shadow:0 1px 2px rgba(14,28,66,.04),0 10px 26px rgba(14,28,66,.06)}
+.vo-head{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.vo-face{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.vo-who{flex:1;min-width:0}
+.vo-name{font:600 15px/1.2 var(--ui);color:var(--ink)}
+.vo-title{font:600 20px/1.25 var(--ui);letter-spacing:-.01em;color:var(--ink);margin-top:2px}
+.vo-note{font:11.5px/1.3 var(--ui);color:var(--muted);margin-top:2px}
+.vo-ctl{display:flex;align-items:center;gap:10px;flex:none}
+.vo-time{font:12.5px/1 var(--ui);color:var(--muted)}
+.vo-stage{position:relative;padding:24px 22px 18px;min-height:220px;background-color:#FBFCFE;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px}
+.vo-cap{min-height:3.2em;padding:14px 22px 6px;font:400 19px/1.5 var(--serif);color:var(--ink);max-width:62ch}
+.vo-cap.in{animation:capin .45s ease}
+@keyframes capin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.vo:not(.started) .vo-cap::before{content:"Press Play. The picture builds as he talks.";color:var(--muted);font:14px/1.5 var(--ui)}
+.vo-foot{display:flex;align-items:center;gap:14px;padding:6px 22px 16px}
+.vo-bar{flex:1;height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.vo-fill{height:100%;width:0;background:var(--blue);transition:width .25s linear}
+.vo-dots{display:flex;gap:5px}
+.vo-dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--line2);background:#fff;padding:0}
+.vo-dots button.on{background:var(--ink);border-color:var(--ink)}
+.vo-tbtn{border:0;background:none;font:600 12.5px/1 var(--ui);color:var(--muted);padding:4px 0}
+.vo-trans{display:none;padding:0 22px 18px;font:15px/1.6 var(--serif);color:var(--ink2)}
+.vo.show-trans .vo-trans{display:block}
+.vo-trans p{margin:0 0 6px}
+/* step-driven visuals: anything with data-step fades in when he reaches it; .now is the beat he is on */
+.vo-stage [data-step]{opacity:.18;transition:opacity .6s ease,transform .6s ease,color .4s,background .4s,border-color .4s,box-shadow .4s}
+.vo-stage [data-step].on{opacity:1}
+.vo-stage [data-step].now{box-shadow:0 0 0 3px var(--blue-t)}
+.vo-stage svg [data-step].now,.vo-stage .nohalo.now{box-shadow:none}
+.vo.finished .vo-stage [data-step],.vo:not(.started) .vo-stage [data-step].keep{opacity:1}
+.vo.finished .vo-stage [data-step].now{box-shadow:none}
+@media (max-width:600px){ .vo-head{flex-wrap:wrap} .vo-ctl{width:100%;justify-content:space-between} .vo-cap{font-size:17.5px;padding:12px 16px 4px} .vo-stage{padding:18px 12px 14px} .vo-foot{padding:6px 16px 14px} }
+
+</style>
+<style>
+/* fraction exponents: sup.ef is one stacked fraction; sup.ec holds a sum or product of them; .f is a stacked fraction at text size */
+.ef,.f{display:inline-flex;flex-direction:column;text-align:center;line-height:1.08;font-style:normal;vertical-align:middle}
+.ef b,.f b{font-weight:400;font-style:normal;padding:0 1px}
+.ef b:first-child,.f b:first-child{border-bottom:1.2px solid currentColor}
+.m sup.ef,sup.ef{font-size:.7em;line-height:1;vertical-align:baseline;position:relative;top:-1.6em;margin-left:1px}
+.m:has(sup.ef){display:inline-block;padding-top:.75em;vertical-align:baseline}
+.ex .m,.stem .m,.ex-q .m{white-space:normal}
+.stem,.ex-q,.ex ol.steps li{line-height:1.9}
+.ex ol.steps li::before{top:calc(50% - 11px)}
+
+/* radicals as HTML: overline radicand, small raised index */
+.rt{white-space:nowrap}
+.ov{text-decoration:overline;text-decoration-thickness:1.2px;padding:0 2px}
+.rt sup.ix{font-size:.6em;line-height:0;margin-right:-.1em;vertical-align:.7em}
+.rt sup{font-size:.62em;line-height:0}
+.cr{color:var(--red)}
+.cb{color:var(--blue)}
+
+/* hero figure */
+.hfx{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:6px 12px;font:400 34px/1.5 var(--serif);padding:14px 2px 2px}
+.hfx .op{color:var(--muted);font-size:26px}
+.hfx .b{color:var(--blue)}
+.hfx .r{color:var(--red)}
+.hfx .m:has(sup.ef){padding-top:0}
+@media (max-width:420px){.hfx{font-size:28px}}
+
+/* teacher card visual */
+.oct{max-width:560px;margin:0 auto}
+.oct svg{display:block;width:100%;height:auto}
+.oct .bar{fill:#fff;stroke:var(--blue);stroke-width:1.6}
+.oct .bar.k{fill:var(--blue-t)}
+.oct .bar.hi{fill:var(--blue);stroke:var(--blue)}
+.oct text{font-family:Inter,"Segoe UI",system-ui,sans-serif;fill:var(--ink)}
+.oct .ax{font-size:14px;fill:var(--muted)}
+.oct .nt{font-size:16px;font-weight:600}
+.oct .rd{fill:var(--red)}
+.oct .bl{fill:var(--blue)}
+.zoom{max-width:560px;margin:8px auto 0}
+.zoom svg{display:block;width:100%;height:auto}
+.zoom text{font-family:Inter,"Segoe UI",system-ui,sans-serif;fill:var(--ink);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:12px 0 0}
+.tg{font:600 14px/1.3 var(--ui);padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--line2)}
+.tg.d{color:var(--blue);border-color:var(--blue)}
+.tg.n{color:var(--red);border-color:var(--red)}
+
+/* lists */
+.mk{margin:0;padding-left:0;list-style:none;counter-reset:mk}
+.mk li{counter-increment:mk;position:relative;padding:8px 0 8px 40px;border-top:1px dashed var(--line)}
+.mk li:first-child{border-top:0}
+.mk li::before{content:counter(mk);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:50%;background:var(--blue-t);color:var(--blue);font:700 13px/26px var(--ui);text-align:center}
+.mats{margin:0;padding-left:20px}
+.mats li{padding:3px 0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 14px}
+@media (max-width:700px){.two{grid-template-columns:1fr}}
+.two .card{margin:0}
+.two h3{margin:0 0 8px!important}
+
+/* rubric */
+.rub{width:100%;border-collapse:collapse;font:14.5px/1.5 var(--serif);background:#fff;border:1px solid var(--line2)}
+.rub th,.rub td{border:1px solid var(--line2);padding:10px 12px;vertical-align:top;text-align:left}
+.rub thead th{font:600 11.5px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;background:var(--blue-t);color:var(--blue)}
+.rub tbody th{font:600 14.5px/1.35 var(--ui);width:17%;background:#FBFCFE}
+.rub .pts{display:block;font:600 12px/1.3 var(--ui);color:var(--red);margin-top:6px}
+.rub .sub{display:block;font:400 13px/1.4 var(--serif);color:var(--muted);margin-top:4px}
+@media (max-width:760px){
+  .rub thead{display:none}
+  .rub,.rub tbody,.rub tr,.rub th,.rub td{display:block;width:100%}
+  .rub{border:0;background:none}
+  .rub tr{margin:0 0 14px;border:1px solid var(--line2);border-radius:10px;overflow:hidden;background:#fff}
+  .rub th,.rub td{border:0;border-bottom:1px solid var(--line)}
+  .rub tbody th{width:100%}
+  .rub td::before{content:attr(data-l);display:block;font:600 11px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:2px}
+}
+
+/* steps header: a number, a title */
+.sec-h .num{min-width:20px}
+.sec p.lead{margin:0 0 12px}
+.sec .keyrule{border:1px solid var(--blue);background:var(--blue-t);border-radius:var(--r);padding:12px 16px;margin:14px 0}
+.keyrule .m{display:block;font-size:clamp(19px,4.8vw,26px);text-align:center;margin-top:6px;white-space:normal}
+.keyrule .m:has(sup.ef){display:block;padding-top:.6em}
+.from{font:600 11.5px/1.3 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.from i{text-transform:none;letter-spacing:0;font:italic 400 14px/1.3 var(--serif);color:var(--ink2)}
+.rules{margin:0 0 12px;padding-left:20px}
+.rules li{padding:2px 0}
+
+/* tables of numbers */
+.tscroll{overflow-x:auto;margin:0 0 14px;-webkit-overflow-scrolling:touch}
+table.nums{border-collapse:collapse;width:100%;min-width:480px;background:#fff;font:15px/1.4 var(--serif)}
+table.nums th,table.nums td{border:1px solid var(--line2);padding:7px 10px;text-align:right;white-space:nowrap}
+table.nums th{font:600 11.5px/1.3 var(--ui);letter-spacing:.06em;text-transform:uppercase;background:var(--blue-t);color:var(--blue);text-align:right;white-space:normal}
+table.nums td:first-child,table.nums th:first-child{text-align:center}
+table.nums td.l{text-align:left}
+table.nums.n4{min-width:0}
+table.nums .neg{color:var(--red)}
+table.nums td .m{white-space:nowrap}
+table.nums td:has(sup.ef){padding-top:.9em}
+
+/* calculator */
+.calc{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:18px 20px;margin:0 0 18px}
+.cg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 16px;margin:0 0 14px}
+@media (max-width:640px){.cg{grid-template-columns:1fr 1fr}}
+.cf{display:block}
+.cf .label{display:block;margin-bottom:4px}
+.cf input,.cf select{width:100%;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:9px 11px;font:16px/1.3 var(--ui);color:var(--ink)}
+.cf input:focus,.cf select:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.pq{display:flex;align-items:center;gap:6px}
+.pq input{min-width:0}
+.pq span{font:600 16px var(--ui);color:var(--muted)}
+.cout{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+@media (max-width:640px){.cout{grid-template-columns:1fr}}
+.co{border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:#FBFCFE}
+.co .label{display:block;margin-bottom:2px}
+.co .big{font:400 24px/1.5 var(--serif);color:var(--ink)}
+.co.et .big{color:var(--blue)}
+.co.ju .big{color:var(--red)}
+.co .sm{font:14px/1.5 var(--serif);color:var(--ink2)}
+.co .m:has(sup.ef){padding-top:.8em}
+.gapline{margin:10px 0 0;font:600 14px/1.5 var(--ui);color:var(--ink2)}
+
+/* live preview */
+.pv{background:#FBFCFE;border:1px solid var(--line);border-radius:var(--r);padding:12px 8px 6px;margin:0 0 14px}
+.pv svg{display:block;width:100%;height:auto;max-width:620px;margin:0 auto}
+.pv text{font-family:Inter,"Segoe UI",system-ui,sans-serif;fill:var(--ink2);font-size:12px}
+.pvkey{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;font:600 12.5px/1.4 var(--ui);color:var(--ink2);padding:2px 0 8px}
+.pvkey i{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:6px}
+.pvkey .a{background:var(--blue)}
+.pvkey .b{background:var(--red)}
+
+/* cut list + measuring log */
+.cut select,.meas input{border:1px solid var(--line2);border-radius:6px;background:#fff;padding:6px 8px;font:15px/1.2 var(--ui);color:var(--ink)}
+.meas input{width:92px;text-align:right}
+.badge{display:inline-block;font:600 12px/1 var(--ui);padding:4px 9px;border-radius:999px;border:1px solid var(--line2);color:var(--muted);background:#fff}
+.badge.g{color:var(--ok);border-color:var(--ok);background:var(--ok-t)}
+.badge.r{color:var(--red);border-color:var(--red);background:#fff}
+.tot{font:600 14px/1.5 var(--ui);color:var(--ink2);margin:0 0 6px}
+
+.fin-g{font:600 11.5px/1.3 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--blue);margin:20px 0 2px}
+.handin{font:15px/1.5 var(--serif);color:var(--ink2);margin:14px 0 0}
+</style>
+
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div class="brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="">Optima Academy Online</div>
+  <div class="hero-g">
+    <div>
+      <div class="kicker">Algebra 2 Honors &middot; Rational Exponents and Radicals</div>
+      <h1>Module 8 Project: The Twelfth Root of Two</h1>
+      <div class="focusq"><div class="label">Driving question</div><p>Why does a piano sound almost, but not quite, in tune, and which tuning is &ldquo;right&rdquo;?</p></div>
+      <details class="objs"><summary>Objectives</summary><ul>
+        <li>Rewrite a power with a fractional exponent as a radical, and the reverse, and reduce the exponent.</li>
+        <li>Use the laws of exponents and the properties of radicals to combine, simplify and compare multipliers such as 2<sup>7/12</sup>.</li>
+        <li>Model a length that is inversely proportional to a frequency, and compute it to the nearest tenth of a millimeter.</li>
+        <li>Build and measure a one-octave instrument and judge its accuracy against your computed lengths.</li>
+        <li>Argue for a choice that has more than one defensible answer, using numbers as evidence.</li>
+      </ul></details>
+    </div>
+    <figure class="figcard" style="margin:0">
+      <div class="hfx" aria-label="The twelfth root of two equals two to the one twelfth, about 1.0595">
+        <span class="m b"><span class="rt"><sup class="ix">12</sup>&radic;<span class="ov">2</span></span></span><span class="op">=</span><span class="m r">2<sup class="ef"><b>1</b><b>12</b></sup></span><span class="op">&asymp;</span><span class="m">1.0595</span>
+      </div>
+      <div class="cap">One semitone multiplies a frequency by this number.</div>
+    </figure>
+  </div>
+</div></header>
+
+<nav class="tabs" aria-label="Project sections"><div class="wrap"><div class="tl" role="tablist">
+  <button class="tab" data-tab="project" role="tab"><span class="n">01</span>The Project</button>
+  <button class="tab" data-tab="have" role="tab"><span class="n">02</span>What You Already Have</button>
+  <button class="tab" data-tab="numbers" role="tab"><span class="n">03</span>Build It: The Numbers</button>
+  <button class="tab" data-tab="instrument" role="tab"><span class="n">04</span>Build It: The Instrument</button>
+  <button class="tab" data-tab="finish" role="tab"><span class="n">05</span>Finish</button>
+</div></div></nav>
+
+<main class="wrap">
+
+<!-- ═════════ 01 THE PROJECT ═════════ -->
+<section class="panel" id="tab-project" role="tabpanel">
+  <div class="vo" data-clip="proj_intro">
+    <div class="vo-head">
+      <img class="vo-face" alt="">
+      <div class="vo-who"><div class="vo-name"></div><div class="vo-title">Twelve Equal Steps</div><div class="vo-note">An AI-generated character and voice.</div></div>
+      <div class="vo-ctl"><span class="vo-time"></span><button class="btn small vo-play" type="button">&#9654; Play</button></div>
+    </div>
+    <div class="vo-stage">
+      <div class="oct">
+        <svg viewBox="0 -8 520 246" role="img" aria-label="Thirteen bars for 0 to 12 semitones. Each bar is the frequency multiplier 2 to the n over 12, rising from 1 to 2. A red line marks the ratio 3 to 2, which the bar for 7 semitones almost reaches.">
+          <g data-step="0"><line x1="14" y1="196" x2="506" y2="196" stroke="#C3CED9" stroke-width="1.4"/>
+            <rect class="bar" x="22" y="106.0" width="24" height="90.0"/><rect class="bar" x="478" y="16.0" width="24" height="180.0"/>
+            <text class="ax" x="34" y="214" text-anchor="middle">0</text><text class="ax" x="490" y="214" text-anchor="middle">12</text>
+            <text class="nt" x="34" y="98" text-anchor="middle">&times;1</text><text class="nt" x="490" y="8" text-anchor="middle">&times;2</text></g>
+          <g data-step="1">
+            <rect class="bar k" x="60" y="100.6" width="24" height="95.4"/><rect class="bar k" x="98" y="95.0" width="24" height="101.0"/><rect class="bar k" x="136" y="89.0" width="24" height="107.0"/>
+            <rect class="bar k" x="174" y="82.6" width="24" height="113.4"/><rect class="bar k" x="212" y="75.9" width="24" height="120.1"/><rect class="bar k" x="250" y="68.7" width="24" height="127.3"/>
+            <rect class="bar k" x="288" y="61.2" width="24" height="134.8"/><rect class="bar k" x="326" y="53.1" width="24" height="142.9"/><rect class="bar k" x="364" y="44.6" width="24" height="151.4"/>
+            <rect class="bar k" x="402" y="35.6" width="24" height="160.4"/><rect class="bar k" x="440" y="26.1" width="24" height="169.9"/>
+            <text class="ax" x="72" y="214" text-anchor="middle">1</text><text class="ax" x="110" y="214" text-anchor="middle">2</text><text class="ax" x="148" y="214" text-anchor="middle">3</text>
+            <text class="ax" x="186" y="214" text-anchor="middle">4</text><text class="ax" x="224" y="214" text-anchor="middle">5</text><text class="ax" x="262" y="214" text-anchor="middle">6</text>
+            <text class="ax" x="300" y="214" text-anchor="middle">7</text><text class="ax" x="338" y="214" text-anchor="middle">8</text><text class="ax" x="376" y="214" text-anchor="middle">9</text>
+            <text class="ax" x="414" y="214" text-anchor="middle">10</text><text class="ax" x="452" y="214" text-anchor="middle">11</text>
+            <text class="nt" x="20" y="22">12 equal steps, &times;1 to &times;2</text></g>
+          <g data-step="2"><text class="nt bl" x="20" y="44">n steps up: multiply by 2<tspan dy="-7" font-size="11">n/12</tspan></text></g>
+          <g data-step="3"><line x1="14" y1="61" x2="506" y2="61" stroke="#C43D27" stroke-width="1.8" stroke-dasharray="6 5"/><text class="nt rd" x="20" y="78">3 to 2 = 1.5000</text></g>
+          <g data-step="4"><rect class="bar hi" x="288" y="61.2" width="24" height="134.8"/><text class="nt bl" x="300" y="52" text-anchor="middle">1.4983</text></g>
+        </svg>
+      </div>
+      <div class="zoom" data-step="4">
+        <svg viewBox="0 0 520 96" role="img" aria-label="A number line from 1.495 to 1.505 magnified. The ratio 2 to the 7 over 12, about 1.4983, sits just left of 3 over 2, which is 1.5000. They are 0.0017 apart.">
+          <line x1="30" y1="44" x2="490" y2="44" stroke="#C3CED9" stroke-width="2"/>
+          <line x1="182.1" y1="30" x2="182.1" y2="58" stroke="#1E5AA0" stroke-width="3.4"/>
+          <line x1="260" y1="30" x2="260" y2="58" stroke="#C43D27" stroke-width="3.4"/>
+          <text x="176" y="22" text-anchor="end" style="fill:#1E5AA0;font-weight:600">2<tspan dy="-6" font-size="11">7/12</tspan><tspan dy="6"> &asymp; 1.4983</tspan></text>
+          <text x="266" y="22" style="fill:#C43D27;font-weight:600">3/2 = 1.5000</text>
+          <path d="M182.1 66 V72 H260 V66" fill="none" stroke="#0E1C42" stroke-width="1.4"/>
+          <text x="221" y="90" text-anchor="middle">0.0017 apart</text>
+          <text x="30" y="90" style="fill:#65707C;font-size:12px">1.495</text><text x="490" y="90" text-anchor="end" style="fill:#65707C;font-size:12px">1.505</text>
+        </svg>
+      </div>
+      <div class="chips"><span class="tg" data-step="5">Equal steps or whole-number ratios?</span><span class="tg d" data-step="6">Build &middot; measure &middot; argue</span></div>
+    </div>
+    <div class="vo-cap" aria-live="polite"></div>
+    <div class="vo-foot"><div class="vo-bar"><div class="vo-fill"></div></div><div class="vo-dots"></div><button class="vo-tbtn" type="button" aria-expanded="false">Transcript</button></div>
+    <div class="vo-trans"></div>
+    <script type="application/json" class="vo-script">{"steps":[
+      "A piano key makes a string shake some number of times a second. Twelve keys up, that number doubles. That is an octave.",
+      "If twelve equal steps must multiply to two, each step multiplies by the same number: the twelfth root of two.",
+      "That number is about one point oh five nine five. Go n steps up and you multiply by two to the n over twelve.",
+      "Another way to tune uses whole-number ratios. A perfect fifth is exactly three to two, which is one point five.",
+      "Seven steps up in equal temperament multiplies by two to the seven twelfths, about one point four nine eight three. Close, but not equal.",
+      "So which tuning is right? Musicians have argued about that for a long time, and there is more than one defensible answer.",
+      "You will build eight notes of one octave, measure each against its computed length, and argue for the tuning you choose."
+    ]}</script>
+  </div>
+
+  <details class="gloss"><summary>Words for this project</summary>
+    <div class="words">
+      <div class="word"><b>Frequency</b>How many times a vibrating string or column of air repeats each second. A higher frequency is a higher note.</div>
+      <div class="word"><b>Octave</b>The interval from one note to the note with exactly twice its frequency.</div>
+      <div class="word"><b>Semitone</b>One step on a piano, from a key to the next key. Twelve semitones make an octave.</div>
+      <div class="word"><b>Equal temperament</b>A tuning in which every semitone multiplies the frequency by the same number, <span class="m"><span class="rt"><sup class="ix">12</sup>&radic;<span class="ov">2</span></span></span>.</div>
+      <div class="word"><b>Whole-number ratio</b>A tuning that sets an interval to a ratio of small whole numbers, such as 3 to 2 for a perfect fifth.</div>
+      <div class="word"><b>Perfect fifth, major third, fourth</b>Intervals 7, 4 and 5 semitones above a note. Their frequency ratios are written 3/2, 5/4 and 4/3 in whole-number tuning.</div>
+      <div class="word"><b>Monochord</b>One string stretched over a board, with marks along it so you can shorten the sounding length.</div>
+      <div class="word"><b>Inverse proportion</b>Two quantities whose product stays the same: when one doubles, the other is cut in half.</div>
+    </div>
+  </details>
+
+  <div class="sec" id="proj-make">
+    <div class="sec-h"><span class="num">A</span><h2>What You Will Make</h2></div>
+    <div class="card">
+      <ol class="mk">
+        <li>A one-octave instrument with eight notes: straw pan pipes or a one-string monochord, cut to lengths you computed.</li>
+        <li>A tuning report, typed in this page: every multiplier written as a power and as a radical, a table of lengths, and a log of what you measured.</li>
+        <li>A written argument for the tuning you would choose for a song of your own choice.</li>
+        <li>A reflection, and photos of the finished instrument.</li>
+      </ol>
+    </div>
+    <h3>A question with more than one answer</h3>
+    <div class="card prose">
+      <p>Some intervals come out closer to a whole-number ratio than others, and some land closer in one tuning than in the other. You will find out which ones. Nobody can hand you the answer: your choice has to stand on numbers you computed and measured, and you have to say what it costs.</p>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-mat">
+    <div class="sec-h"><span class="num">B</span><h2>Materials</h2></div>
+    <div class="card">
+      <ul class="mats">
+        <li>For pan pipes: at least eight drinking straws of the same width and a little tape.</li>
+        <li>For a monochord: a box, tray or board, a length of string, thread or a thin rubber band, and two things to hold it tight, such as two nails, pegs or taped pencils.</li>
+        <li>A ruler marked in millimeters, a pencil, scissors, and a marker for labels.</li>
+        <li>Paper or cardboard to mount your instrument on.</li>
+        <li>Any phone or camera for photos.</li>
+        <li>Optional: a keyboard, piano or recording to listen to a fifth or a major third beside your own notes.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-rubric">
+    <div class="sec-h"><span class="num">C</span><h2>The Rubric</h2></div>
+    <table class="rub">
+      <thead><tr><th>Criterion</th><th>Exceeds (4)</th><th>Meets (3)</th><th>Approaching (2)</th><th>Beginning (1)</th></tr></thead>
+      <tbody>
+        <tr id="proj-r1" data-std="FL:MA.912.NSO.1.3 FL:MA.912.NSO.1.5 TX:111.40(c)(7)(G) MS:DJ.MATH.NA.5.2 MS:DJ.MATH.NA.5.6 MS:DJ.MATH.NA.5.7">
+          <th>Mathematical accuracy<span class="pts">30 of 100</span><span class="sub">Exponent and radical forms, lengths</span></th>
+          <td data-l="Exceeds (4)">Every multiplier is correct as a power and as a radical, every exponent is reduced, and every computed length is correct to 0.1 mm with units.</td>
+          <td data-l="Meets (3)">Forms and lengths are correct except for one or two slips, such as one unreduced exponent or one rounding error.</td>
+          <td data-l="Approaching (2)">Several forms or lengths are wrong, or the length rule is turned the wrong way round for some notes.</td>
+          <td data-l="Beginning (1)">Most forms or lengths are missing or incorrect.</td>
+        </tr>
+        <tr id="proj-r2" data-std="FL:MA.K12.MTR.4.1 TX:111.40(c)(1)(D) TX:111.40(c)(1)(G)">
+          <th>Reasoning and argument<span class="pts">25 of 100</span><span class="sub">The tuning you defend</span></th>
+          <td data-l="Exceeds (4)">Chooses a tuning for a named song, defends it with at least three numbers from the tables, and answers one honest objection to the choice.</td>
+          <td data-l="Meets (3)">Defends the choice with at least two numbers, and the reasoning follows from them.</td>
+          <td data-l="Approaching (2)">States a choice with one number or with opinion only; the link to the math is thin.</td>
+          <td data-l="Beginning (1)">No choice is made, or the numbers are not used.</td>
+        </tr>
+        <tr id="proj-r3" data-std="FL:MA.K12.MTR.6.1 FL:MA.K12.MTR.7.1 TX:111.40(c)(1)(A) TX:111.40(c)(1)(B)">
+          <th>Instrument craftsmanship<span class="pts">30 of 100</span><span class="sub">Care, accuracy, finish</span></th>
+          <td data-l="Exceeds (4)">All eight notes are made and labeled with note number and length; every measured length is within 1 mm of its computed length; ends are cut square and the instrument is mounted neatly and can be played.</td>
+          <td data-l="Meets (3)">All eight notes are made; every length is within 2 mm; neat, with minor flaws in squareness or labels.</td>
+          <td data-l="Approaching (2)">Every length is within 4 mm, or one or two notes are missing or unlabeled; the finish is rough.</td>
+          <td data-l="Beginning (1)">Fewer than six notes, or lengths off by more than 4 mm.</td>
+        </tr>
+        <tr id="proj-r4" data-std="FL:MA.K12.MTR.2.1 TX:111.40(c)(1)(E) TX:111.40(c)(1)(G)">
+          <th>Communication<span class="pts">15 of 100</span><span class="sub">Typed work, reflection, photos</span></th>
+          <td data-l="Exceeds (4)">Typed work is complete and in order; every number has units; the reflection explains where measured and computed lengths differ and why; photos show the whole instrument and a close-up of its labels.</td>
+          <td data-l="Meets (3)">Complete, with minor gaps in units or explanation; photos are present.</td>
+          <td data-l="Approaching (2)">Parts are missing or hard to follow; photos are unclear.</td>
+          <td data-l="Beginning (1)">Little typed work, or no photos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="next"><span></span><button class="btn" data-go="have" type="button">Next: What You Already Have &rarr;</button></div>
+</section>
+
+<!-- ═════════ 02 WHAT YOU ALREADY HAVE ═════════ -->
+<section class="panel" id="tab-have" role="tabpanel">
+  <p class="mq-keys">Type exponents in parentheses: <code>2^(5/12)</code>. Type whole numbers and decimals as digits.</p>
+
+  <div class="sec" id="proj-ska" data-std="FL:MA.912.NSO.1.3 TX:111.40(c)(7)(G) MS:DJ.MATH.NA.5.6 MS:DJ.MATH.NA.5.7">
+    <div class="sec-h"><span class="num">A</span><h2>Rational Exponents</h2></div>
+    <div class="from">From <i>Rational Exponents</i></div>
+    <div class="keyrule"><b>The fraction in an exponent is a root and a power.</b> The bottom number is the root and the top number is the power.
+      <span class="m"><i>x</i><sup class="ef"><b><i>m</i></b><b><i>n</i></b></sup> = <span class="rt"><sup class="ix"><i>n</i></sup>&radic;<span class="ov"><i>x</i><sup><i>m</i></sup></span></span></span></div>
+    <ul class="rules">
+      <li>Same base, multiplying: add the exponents. Same base, dividing: subtract them.</li>
+      <li>A power raised to a power: multiply the exponents.</li>
+      <li>Reduce a fraction exponent like any fraction.</li>
+    </ul>
+    <div class="ex" id="proj-exa">
+      <div class="ex-h"><span class="label">Example</span><span class="ex-q">Write <span class="m">2<sup class="ef"><b>7</b><b>12</b></sup></span> as a radical, and write <span class="m">2<sup class="ef"><b>6</b><b>12</b></sup></span> in simplest form.</span></div>
+      <ol class="steps">
+        <li>The denominator 12 is the root and the numerator 7 is the power on the 2: <span class="m"><span class="rt"><sup class="ix">12</sup>&radic;<span class="ov">2<sup>7</sup></span></span></span>.</li>
+        <li>For the second one, reduce the exponent first. Divide 6 and 12 by 6 to get one half.</li>
+        <li>An exponent of one half is a square root: <span class="m">2<sup class="ef"><b>6</b><b>12</b></sup> = 2<sup class="ef"><b>1</b><b>2</b></sup> = <span class="rt">&radic;<span class="ov">2</span></span></span>.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <div class="mcq" data-qid="proj-a1">
+        <p class="stem"><span class="qn">1</span>Which expression equals <span class="m">2<sup class="ef"><b>7</b><b>12</b></sup></span>?</p>
+        <div class="opts">
+          <button class="opt" data-fb="The root and the power are swapped. The denominator, 12, is the root."><span class="m"><span class="rt"><sup class="ix">7</sup>&radic;<span class="ov">2<sup>12</sup></span></span></span></button>
+          <button class="opt" data-fb="A fraction in an exponent does not divide the base. It names a root and a power."><span class="m">2<sup>7</sup> &divide; 12</span></button>
+          <button class="opt" data-ok="1" data-fb="Right. The 12 on the bottom is the root, and the 7 on top is the power on the 2."><span class="m"><span class="rt"><sup class="ix">12</sup>&radic;<span class="ov">2<sup>7</sup></span></span></span></button>
+          <button class="opt" data-fb="Under the root goes 2 raised to the 7, not 2 times 7."><span class="m"><span class="rt"><sup class="ix">12</sup>&radic;<span class="ov">2 &middot; 7</span></span></span></button>
+        </div>
+      </div>
+      <div class="mq" data-qid="proj-a2" data-ans="2^(5/12)" data-vars="" data-ph="a power of 2" data-miss='[["2^(1/36)","Same base, multiplying: the exponents add. Multiplying them is the rule for a power raised to a power."],["2^(5/24)","Adding fractions: with the same denominator, keep it and add only the numerators."]]' data-hint="Same base, multiplying. Add the two exponents."><p class="stem"><span class="qn">2</span>Simplify: <span class="m">2<sup class="ef"><b>1</b><b>12</b></sup> &middot; 2<sup class="ef"><b>4</b><b>12</b></sup></span></p></div>
+      <div class="mq" data-qid="proj-a3" data-ans="2^(2/3)" data-vars="" data-ph="a power of 2" data-miss='[["2^(4/12)","Reducing divides the top and the bottom by the same number. Only one of them changed."],["2^(12/8)","Keep the order: the 8 stays on top and the 12 on the bottom."]]' data-hint="Divide the top and the bottom of 8/12 by their common factor."><p class="stem"><span class="qn">3</span>Reduce the exponent: <span class="m">2<sup class="ef"><b>8</b><b>12</b></sup></span></p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-skb" data-std="FL:MA.912.NSO.1.3 TX:111.40(c)(7)(G) MS:DJ.MATH.NA.5.7 MS:DJ.MATH.NA.6.10">
+    <div class="sec-h"><span class="num">B</span><h2>The Number e</h2></div>
+    <div class="from">From <i>The Number e</i></div>
+    <p class="lead">The number <i>e</i> is an irrational constant, about 2.71828. It shows up wherever growth is continuous, such as continuously compounded interest. Your project uses base 2, but what carries over is this: the laws of exponents work the same way for every base, <i>e</i> included.</p>
+    <div class="ex" id="proj-exb">
+      <div class="ex-h"><span class="label">Example</span><span class="ex-q">Simplify <span class="m"><i>e</i><sup class="ef"><b>7</b><b>6</b></sup> &middot; <i>e</i><sup class="ef"><b>1</b><b>3</b></sup></span>.</span></div>
+      <ol class="steps">
+        <li>Same base, multiplying: add the exponents. The denominators are 6 and 3, so rewrite one third as two sixths.</li>
+        <li>Add: <span class="m">7/6 + 2/6 = 9/6</span>. Reduce 9/6 by dividing top and bottom by 3.</li>
+        <li>The result is <span class="m"><b><i>e</i><sup class="ef"><b>3</b><b>2</b></sup></b></span>.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <div class="mq" data-qid="proj-b1" data-ans="e^(5/6)" data-vars="e" data-ph="a power of e" data-miss='[["e^(1/6)","Same base, multiplying: the exponents add. You multiplied them."],["e^(2/5)","Adding fractions: add the tops over a common denominator. The denominators are not added."]]' data-hint="Same base, multiplying. Rewrite both fractions with the denominator 6, then add."><p class="stem"><span class="qn">1</span>Simplify: <span class="m"><i>e</i><sup class="ef"><b>1</b><b>2</b></sup> &middot; <i>e</i><sup class="ef"><b>1</b><b>3</b></sup></span></p></div>
+      <div class="mcq" data-qid="proj-b2">
+        <p class="stem"><span class="qn">2</span>Which is the approximate value of <i>e</i>?</p>
+        <div class="opts row">
+          <button class="opt" data-fb="That is pi, the constant from circles. The constant <i>e</i> comes from continuous growth.">About 3.1416</button>
+          <button class="opt" data-ok="1" data-fb="Right. <i>e</i> is about 2.71828.">About 2.7183</button>
+          <button class="opt" data-fb="That number is a different constant. <i>e</i> is a little over 2.7.">About 1.6180</button>
+          <button class="opt" data-fb="That is the square root of 2. <i>e</i> is larger than 2.">About 1.4142</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-skc" data-std="FL:MA.912.NSO.1.3 FL:MA.912.NSO.1.5 TX:111.40(c)(7)(G) MS:DJ.MATH.NA.5.1 MS:DJ.MATH.NA.5.2">
+    <div class="sec-h"><span class="num">C</span><h2>Radical Expressions</h2></div>
+    <div class="from">From <i>Radical Expressions</i></div>
+    <div class="keyrule"><b>A radical is a root.</b> It is simplified when no perfect power of its index is left under it. For nonnegative <i>a</i> and <i>b</i>, the root of a product is the product of the roots.
+      <span class="m"><span class="rt">&radic;<span class="ov"><i>ab</i></span></span> = <span class="rt">&radic;<span class="ov"><i>a</i></span></span> &middot; <span class="rt">&radic;<span class="ov"><i>b</i></span></span></span></div>
+    <div class="ex" id="proj-exc">
+      <div class="ex-h"><span class="label">Example</span><span class="ex-q">Simplify <span class="m"><span class="rt">&radic;<span class="ov">72</span></span></span>.</span></div>
+      <ol class="steps">
+        <li>Look for the largest perfect square that divides 72. It is 36, because 72 = 36 &middot; 2.</li>
+        <li>Split the root: <span class="m"><span class="rt">&radic;<span class="ov">36 &middot; 2</span></span> = <span class="rt">&radic;<span class="ov">36</span></span> &middot; <span class="rt">&radic;<span class="ov">2</span></span></span>.</li>
+        <li>The square root of 36 is 6. The answer is <span class="m"><b>6<span class="rt">&radic;<span class="ov">2</span></span></b></span>.</li>
+      </ol>
+    </div>
+    <p class="lead">In this project, <span class="m">2<sup class="ef"><b>4</b><b>12</b></sup></span> reduces to <span class="m">2<sup class="ef"><b>1</b><b>3</b></sup></span>, which is the cube root of 2.</p>
+    <div class="card">
+      <div class="mcq" data-qid="proj-c1">
+        <p class="stem"><span class="qn">1</span>Which radical equals <span class="m">2<sup class="ef"><b>4</b><b>12</b></sup></span> in simplest form?</p>
+        <div class="opts row">
+          <button class="opt" data-fb="That is 2 to the one fourth. Reduce 4/12 first, and see what is left on the bottom."><span class="m"><span class="rt"><sup class="ix">4</sup>&radic;<span class="ov">2</span></span></span></button>
+          <button class="opt" data-ok="1" data-fb="Right. 4/12 reduces to 1/3, and an exponent of one third is a cube root."><span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2</span></span></span></button>
+          <button class="opt" data-fb="The cube root of 4 is 2 to the two thirds. Check the numerator after you reduce."><span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">4</span></span></span></button>
+          <button class="opt" data-fb="That is 2 to the one twelfth, a single step. Four steps are four twelfths."><span class="m"><span class="rt"><sup class="ix">12</sup>&radic;<span class="ov">2</span></span></span></button>
+        </div>
+      </div>
+      <div class="mcq" data-qid="proj-c2">
+        <p class="stem"><span class="qn">2</span>Which is <span class="m"><span class="rt">&radic;<span class="ov">72</span></span></span> in fully simplified form?</p>
+        <div class="opts row">
+          <button class="opt" data-fb="The square root of 36 is 6, so 36 comes out of the radical as 6."><span class="m">36<span class="rt">&radic;<span class="ov">2</span></span></span></button>
+          <button class="opt" data-fb="Equal in value, but 8 still hides the perfect square 4. Keep simplifying."><span class="m">3<span class="rt">&radic;<span class="ov">8</span></span></span></button>
+          <button class="opt" data-ok="1" data-fb="Right. 72 = 36 &middot; 2 and the root of 36 is 6."><span class="m">6<span class="rt">&radic;<span class="ov">2</span></span></span></button>
+          <button class="opt" data-fb="72 does have a perfect-square factor, 36, so it can be simplified.">It is already simplified</button>
+        </div>
+      </div>
+      <div class="mq" data-qid="proj-c3" data-ans="1.4142" data-vars="" data-form="any" data-ph="a decimal" data-miss='[["1","Half of 2 is not the idea. An exponent of one half is a square root."],["1.4","Round to four decimal places. The project needs that precision."]]' data-hint="Type 2^(1/2) into the calculator, then round to four decimal places."><p class="stem"><span class="qn">3</span>Write <span class="m">2<sup class="ef"><b>1</b><b>2</b></sup></span> as a decimal to four places.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-skd" data-std="FL:MA.912.NSO.1.5 TX:111.40(c)(7)(G) MS:DJ.MATH.NA.5.3">
+    <div class="sec-h"><span class="num">D</span><h2>Adding and Subtracting Radicals</h2></div>
+    <div class="from">From <i>Adding and Subtracting Radical Expressions</i></div>
+    <div class="keyrule"><b>Only like radicals combine.</b> Like radicals have the same index and the same radicand. Add or subtract their coefficients and keep the radical. If the radicals look unlike, simplify each one first.
+      <span class="m">3<span class="rt">&radic;<span class="ov">2</span></span> + 5<span class="rt">&radic;<span class="ov">2</span></span> = 8<span class="rt">&radic;<span class="ov">2</span></span></span></div>
+    <div class="ex" id="proj-exd">
+      <div class="ex-h"><span class="label">Example</span><span class="ex-q">Simplify <span class="m"><span class="rt">&radic;<span class="ov">8</span></span> + <span class="rt">&radic;<span class="ov">2</span></span></span>.</span></div>
+      <ol class="steps">
+        <li>The radicands differ, so simplify first. <span class="m"><span class="rt">&radic;<span class="ov">8</span></span> = <span class="rt">&radic;<span class="ov">4 &middot; 2</span></span> = 2<span class="rt">&radic;<span class="ov">2</span></span></span>.</li>
+        <li>Now both terms have <span class="m"><span class="rt">&radic;<span class="ov">2</span></span></span>. A plain <span class="m"><span class="rt">&radic;<span class="ov">2</span></span></span> has a coefficient of 1.</li>
+        <li>Add the coefficients: 2 + 1 = 3. The answer is <span class="m"><b>3<span class="rt">&radic;<span class="ov">2</span></span></b></span>.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <div class="mcq" data-qid="proj-d1">
+        <p class="stem"><span class="qn">1</span>Simplify <span class="m"><span class="rt">&radic;<span class="ov">18</span></span> + <span class="rt">&radic;<span class="ov">2</span></span></span>.</p>
+        <div class="opts row">
+          <button class="opt" data-fb="Radicands are not added. Simplify the first radical and look for a like radical."><span class="m"><span class="rt">&radic;<span class="ov">20</span></span></span></button>
+          <button class="opt" data-fb="Radicands multiply only in a product. This is a sum."><span class="m"><span class="rt">&radic;<span class="ov">36</span></span></span></button>
+          <button class="opt" data-ok="1" data-fb="Right. The root of 18 is 3 times the root of 2, and 3 + 1 = 4."><span class="m">4<span class="rt">&radic;<span class="ov">2</span></span></span></button>
+          <button class="opt" data-fb="The second radical counts too: a plain root of 2 has a coefficient of 1."><span class="m">3<span class="rt">&radic;<span class="ov">2</span></span></span></button>
+        </div>
+      </div>
+      <div class="mq" data-qid="proj-d2" data-ans="150" data-vars="" data-ph="a whole number" data-miss='[["5000","Multiplying coefficients is for a product. Adding like radicals adds the coefficients."],["50","These two lengths are added, not subtracted."]]' data-hint="Both terms have the same radical. Add the numbers in front."><p class="stem"><span class="qn">2</span>Two pipes, each 6 semitones above the first note of its own set, need <span class="m">100<span class="rt">&radic;<span class="ov">2</span></span></span> mm and <span class="m">50<span class="rt">&radic;<span class="ov">2</span></span></span> mm of straw. The total is <span class="m">?<span class="rt">&radic;<span class="ov">2</span></span></span> mm. Type the number that replaces ?.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-ske" data-std="FL:MA.912.NSO.1.5 TX:111.40(c)(7)(G) MS:DJ.MATH.NA.5.4 MS:DJ.MATH.NA.5.5">
+    <div class="sec-h"><span class="num">E</span><h2>Multiplying and Dividing Radicals</h2></div>
+    <div class="from">Needed for the lengths in this project</div>
+    <div class="keyrule"><b>Radicals with the same index multiply and divide under one root.</b> The radicands do not have to match. After combining, simplify.
+      <span class="m"><span class="rt">&radic;<span class="ov"><i>a</i></span></span> &middot; <span class="rt">&radic;<span class="ov"><i>b</i></span></span> = <span class="rt">&radic;<span class="ov"><i>ab</i></span></span></span>
+      <span class="m"><span class="rt">&radic;<span class="ov"><i>a</i></span></span> &divide; <span class="rt">&radic;<span class="ov"><i>b</i></span></span> = <span class="rt">&radic;<span class="ov"><i>a</i> &divide; <i>b</i></span></span></span></div>
+    <p class="lead">Standard form leaves no radical in a denominator. To <b>rationalize the denominator</b>, multiply the top and the bottom by the radical that is in the bottom. This gives a perfect square there.</p>
+    <div class="ex" id="proj-exe">
+      <div class="ex-h"><span class="label">Example</span><span class="ex-q">A pipe is <span class="m">100 &divide; <span class="rt">&radic;<span class="ov">2</span></span></span> mm long. Rewrite it with no radical in the denominator.</span></div>
+      <ol class="steps">
+        <li>Multiply the top and the bottom by <span class="m"><span class="rt">&radic;<span class="ov">2</span></span></span>. This does not change the value, because it multiplies by 1.</li>
+        <li>The bottom becomes <span class="m"><span class="rt">&radic;<span class="ov">2</span></span> &middot; <span class="rt">&radic;<span class="ov">2</span></span> = <span class="rt">&radic;<span class="ov">4</span></span> = 2</span>. The top becomes <span class="m">100<span class="rt">&radic;<span class="ov">2</span></span></span>.</li>
+        <li>Reduce 100 over 2. The answer is <span class="m"><b>50<span class="rt">&radic;<span class="ov">2</span></span></b></span> mm.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <div class="mq" data-qid="proj-e1" data-ans="4" data-vars="" data-ph="a whole number" data-miss='[["16","16 is what is under the root after multiplying. The root is still there."],["10","Under one root the radicands multiply. They do not add."]]' data-hint="Multiply the radicands under one root, then take the square root."><p class="stem"><span class="qn">1</span>Simplify: <span class="m"><span class="rt">&radic;<span class="ov">2</span></span> &middot; <span class="rt">&radic;<span class="ov">8</span></span></span></p></div>
+      <div class="mcq" data-qid="proj-e2">
+        <p class="stem"><span class="qn">2</span>Which equals <span class="m"><span class="fr"><span>1</span><span><span class="rt">&radic;<span class="ov">2</span></span></span></span></span> with no radical in the denominator?</p>
+        <div class="opts row">
+          <button class="opt" data-fb="The top became the root of 2, but the bottom is now 2, and it still belongs in the fraction."><span class="m"><span class="rt">&radic;<span class="ov">2</span></span></span></button>
+          <button class="opt" data-ok="1" data-fb="Right. Top and bottom were both multiplied by the root of 2."><span class="m"><span class="fr"><span><span class="rt">&radic;<span class="ov">2</span></span></span><span>2</span></span></span></button>
+          <button class="opt" data-fb="Dropping the radical changes the value. One over the root of 2 is about 0.7071, not 0.5."><span class="m"><span class="fr"><span>1</span><span>2</span></span></span></button>
+          <button class="opt" data-fb="That multiplies the top by 2 but the bottom is not cleared. Use the root of 2 itself."><span class="m"><span class="fr"><span>2<span class="rt">&radic;<span class="ov">2</span></span></span><span>2</span></span></span></button>
+        </div>
+      </div>
+      <div class="mq" data-qid="proj-e3" data-ans="2" data-vars="" data-ph="a whole number" data-miss='[["8","8 is what is under the root after multiplying. The cube root is still to come."],["6","The three factors are multiplied. They are not added as 2 + 2 + 2."]]' data-hint="Multiply the radicands under one cube root, then take the cube root."><p class="stem"><span class="qn">3</span>Simplify: <span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2</span></span> &middot; <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2</span></span> &middot; <span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2</span></span></span></p></div>
+    </div>
+  </div>
+
+  <div class="next"><button class="btn ghost" data-go="project" type="button">&larr; The Project</button><button class="btn" data-go="numbers" type="button">Next: Build It, The Numbers &rarr;</button></div>
+</section>
+
+<!-- ═════════ 03 BUILD IT: THE NUMBERS ═════════ -->
+<section class="panel" id="tab-numbers" role="tabpanel">
+
+  <div class="sec" id="proj-s1" data-std="FL:MA.K12.MTR.7.1 TX:111.40(c)(1)(A)">
+    <div class="sec-h"><span class="num">1</span><h2>Look First</h2></div>
+    <p class="lead">Before you design anything, see how real instruments are made, so your design does not default to the first idea. Go to the websites of these three museums and look for instruments built from pipes or strings of different lengths:</p>
+    <ul class="mats">
+      <li>the Musical Instrument Museum in Phoenix, Arizona</li>
+      <li>the Metropolitan Museum of Art, in its musical instruments collection</li>
+      <li>the Horniman Museum and Gardens in London</li>
+    </ul>
+    <p class="lead" style="margin-top:12px">Copy down only what the museum itself says. Do not fill gaps with guesses.</p>
+    <div class="field"><p class="q">Research notes: for each of three instruments, write the museum, the instrument&rsquo;s name, and what you notice about how its lengths change from note to note.</p>
+      <textarea class="jbox" id="proj-research" data-label="Step 1. Research notes: three instruments, from museum websites" data-min="40"></textarea></div>
+    <div class="aside"><span class="label">Optional</span>If a keyboard, a piano or a recording is within reach, listen to a perfect fifth and a major third. Notice whether you can hear anything that the numbers below will show.</div>
+  </div>
+
+  <div class="sec" id="proj-s2" data-std="FL:MA.K12.MTR.7.1 TX:111.40(c)(1)(A) TX:111.40(c)(1)(B)">
+    <div class="sec-h"><span class="num">2</span><h2>Choose Your Instrument and Base Length</h2></div>
+    <p class="lead"><b>Pan pipes:</b> eight straws, each sealed at the bottom, played by blowing across the top. <b>Monochord:</b> one string with eight marks, played by pressing at a mark and plucking. Your longest length is <b>L</b>, the length of the first note. Pick an L between 100 and 400 mm that your longest straw or your board can hold.</p>
+    <div class="calc" id="proj-setup">
+      <div class="cg">
+        <label class="cf"><span class="label">Instrument</span><select id="proj-type"><option value="pipes">Straw pan pipes</option><option value="string">One-string monochord</option></select></label>
+        <label class="cf"><span class="label">Longest length L (mm)</span><input id="proj-L" type="number" min="60" max="600" step="1" inputmode="numeric" value="240"></label>
+      </div>
+      <div class="pv"><svg id="proj-pv" viewBox="0 0 620 250" role="img" aria-label="Preview of your instrument"></svg>
+        <div class="pvkey"><span><i class="a"></i>equal-tempered length</span><span><i class="b"></i>whole-number length</span></div></div>
+    </div>
+    <div class="field"><p class="q">My choice: which instrument, what L, and what I will do differently from the instruments I looked at.</p>
+      <textarea class="jbox" id="proj-plan" data-label="Step 2. My instrument, my base length L, and why" data-min="25"></textarea></div>
+  </div>
+
+  <div class="sec" id="proj-s3" data-std="FL:MA.912.NSO.1.3 TX:111.40(c)(7)(G) MS:DJ.MATH.NA.5.6">
+    <div class="sec-h"><span class="num">3</span><h2>Write the Multipliers Two Ways</h2></div>
+    <p class="lead">The eight notes of a major scale sit 0, 2, 4, 5, 7, 9, 11 and 12 semitones above the first. Note by note, the frequency is multiplied by <span class="m">2<sup class="ef"><b><i>n</i></b><b>12</b></sup></span>. Each one can be written as a power and as a radical, and it should be reduced. These are done for you:</p>
+    <div class="tscroll"><table class="nums n4">
+      <thead><tr><th>n</th><th>Power</th><th>Reduced</th><th>Radical</th></tr></thead>
+      <tbody>
+        <tr><td>7</td><td><span class="m">2<sup class="ef"><b>7</b><b>12</b></sup></span></td><td><span class="m">2<sup class="ef"><b>7</b><b>12</b></sup></span></td><td class="l"><span class="m"><span class="rt"><sup class="ix">12</sup>&radic;<span class="ov">2<sup>7</sup></span></span></span></td></tr>
+        <tr><td>6</td><td><span class="m">2<sup class="ef"><b>6</b><b>12</b></sup></span></td><td><span class="m">2<sup class="ef"><b>1</b><b>2</b></sup></span></td><td class="l"><span class="m"><span class="rt">&radic;<span class="ov">2</span></span></span></td></tr>
+        <tr><td>4</td><td><span class="m">2<sup class="ef"><b>4</b><b>12</b></sup></span></td><td><span class="m">2<sup class="ef"><b>1</b><b>3</b></sup></span></td><td class="l"><span class="m"><span class="rt"><sup class="ix">3</sup>&radic;<span class="ov">2</span></span></span></td></tr>
+      </tbody>
+    </table></div>
+    <div class="card">
+      <div class="mq" data-qid="proj-n1" data-ans="2^(1/6)" data-vars="" data-ph="a power of 2" data-miss='[["2^(1/12)","The exponent has 2 on top, not 1. Reduce by dividing the top and the bottom by the same number."],["2^(2/6)","Reducing divides the top and the bottom. Only the bottom changed."]]' data-hint="Divide the top and the bottom of 2/12 by 2."><p class="stem"><span class="qn">1</span>The second note is 2 semitones up. Reduce the exponent: <span class="m">2<sup class="ef"><b>2</b><b>12</b></sup></span></p></div>
+      <div class="mq" data-qid="proj-n2" data-ans="2^(3/4)" data-vars="" data-ph="a power of 2" data-miss='[["2^(9/4)","Reducing divides the top and the bottom. The top stayed at 9."],["2^(3/12)","Reducing divides the top and the bottom. The bottom stayed at 12."]]' data-hint="Find a number that divides both 9 and 12."><p class="stem"><span class="qn">2</span>The sixth note is 9 semitones up. Reduce the exponent: <span class="m">2<sup class="ef"><b>9</b><b>12</b></sup></span></p></div>
+      <div class="mcq" data-qid="proj-n3">
+        <p class="stem"><span class="qn">3</span>The fourth note is 5 semitones up. Which radical equals <span class="m">2<sup class="ef"><b>5</b><b>12</b></sup></span>?</p>
+        <div class="opts row">
+          <button class="opt" data-fb="The root and the power are swapped. The denominator, 12, is the root."><span class="m"><span class="rt"><sup class="ix">5</sup>&radic;<span class="ov">2<sup>12</sup></span></span></span></button>
+          <button class="opt" data-ok="1" data-fb="Right. The 12 is the root and the 5 is the power on the 2."><span class="m"><span class="rt"><sup class="ix">12</sup>&radic;<span class="ov">2<sup>5</sup></span></span></span></button>
+          <button class="opt" data-fb="That is 2 to the one fifth. The 12 still belongs in the exponent."><span class="m"><span class="rt"><sup class="ix">5</sup>&radic;<span class="ov">2</span></span></span></button>
+        </div>
+      </div>
+      <div class="mcq" data-qid="proj-n4">
+        <p class="stem"><span class="qn">4</span>Which number of semitones <i>n</i> makes <span class="m">2<sup class="ef"><b><i>n</i></b><b>12</b></sup></span> equal to the cube root of 2?</p>
+        <div class="opts row">
+          <button class="opt" data-fb="3 over 12 reduces to 1 over 4, which is a fourth root.">3</button>
+          <button class="opt" data-ok="1" data-fb="Right. 4 over 12 reduces to 1 over 3.">4</button>
+          <button class="opt" data-fb="6 over 12 reduces to 1 over 2, which is a square root.">6</button>
+          <button class="opt" data-fb="8 over 12 reduces to 2 over 3, which is the cube root of 4.">8</button>
+        </div>
+      </div>
+    </div>
+    <div class="field"><p class="q">Now write all eight notes: for each n (0, 2, 4, 5, 7, 9, 11, 12), the power 2<sup>n/12</sup> with its exponent reduced, then the radical form, simplified. Write exponents like 2^(7/12) and radicals like 12th root of 2^7.</p>
+      <textarea class="jbox" id="proj-forms" data-label="Step 3. All eight multipliers, as a reduced power and as a radical" data-min="40"></textarea></div>
+  </div>
+
+  <div class="sec" id="proj-s4" data-std="FL:MA.912.NSO.1.3 FL:MA.K12.MTR.5.1 MS:DJ.MATH.NA.5.7">
+    <div class="sec-h"><span class="num">4</span><h2>Set Them Beside Whole-Number Ratios</h2></div>
+    <p class="lead">Whole-number tuning gives each of the eight notes a ratio of small whole numbers. Here they are beside the equal-tempered multipliers, to four decimals. The last column is whole-number minus equal.</p>
+    <div class="tscroll"><table class="nums">
+      <thead><tr><th>Note</th><th>n</th><th>Whole-number ratio</th><th>As a decimal</th><th><span class="m">2<sup class="ef"><b><i>n</i></b><b>12</b></sup></span></th><th>Difference</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>0</td><td>1</td><td>1.0000</td><td>1.0000</td><td>0.0000</td></tr>
+        <tr><td>2</td><td>2</td><td>9/8</td><td>1.1250</td><td>1.1225</td><td>+0.0025</td></tr>
+        <tr><td>3</td><td>4</td><td>5/4</td><td>1.2500</td><td>1.2599</td><td class="neg">&minus;0.0099</td></tr>
+        <tr><td>4</td><td>5</td><td>4/3</td><td>1.3333</td><td>1.3348</td><td class="neg">&minus;0.0015</td></tr>
+        <tr><td>5</td><td>7</td><td>3/2</td><td>1.5000</td><td>1.4983</td><td>+0.0017</td></tr>
+        <tr><td>6</td><td>9</td><td>5/3</td><td>1.6667</td><td>1.6818</td><td class="neg">&minus;0.0151</td></tr>
+        <tr><td>7</td><td>11</td><td>15/8</td><td>1.8750</td><td>1.8877</td><td class="neg">&minus;0.0127</td></tr>
+        <tr><td>8</td><td>12</td><td>2</td><td>2.0000</td><td>2.0000</td><td>0.0000</td></tr>
+      </tbody>
+    </table></div>
+    <div class="card">
+      <div class="mcq" data-qid="proj-t1">
+        <p class="stem"><span class="qn">1</span>Which of these notes has the smallest gap between its two tunings in the table?</p>
+        <div class="opts row">
+          <button class="opt" data-fb="The gap for note 3 is 0.0099, about six times the smallest of the four.">Note 3, the major third</button>
+          <button class="opt" data-ok="1" data-fb="Right. The gap for note 4 is 0.0015, the smallest of the four.">Note 4, the fourth</button>
+          <button class="opt" data-fb="The fifth is close, but 0.0017 is a little larger than the gap for note 4.">Note 5, the fifth</button>
+          <button class="opt" data-fb="The gap for note 6 is 0.0151, the largest of the four.">Note 6</button>
+        </div>
+      </div>
+      <div class="mq" data-qid="proj-t2" data-ans="1.9531" data-vars="" data-form="any" data-ph="a decimal" data-miss='[["3.75","Stacking three thirds multiplies the three ratios together. It does not add them."],["1.25","That is only one third. Three thirds stacked means three factors."]]' data-hint="Multiply 5/4 by itself three times, then round to four decimal places."><p class="stem"><span class="qn">2</span>Stack three whole-number major thirds, each 5/4. What is the total multiplier, to four decimals?</p></div>
+      <div class="mq" data-qid="proj-t3" data-ans="2" data-vars="" data-ph="a whole number" data-miss='[["1.9531","That is three whole-number thirds, 5/4 each. Equal temperament uses a different number for each third."],["8","Cubing the multiplier is a power of a power: multiply the exponent by 3. The base stays 2."]]' data-hint="Each equal-tempered major third is 2^(4/12). Multiply three of them, or raise it to the third power."><p class="stem"><span class="qn">3</span>Now stack three equal-tempered major thirds, each <span class="m">2<sup class="ef"><b>4</b><b>12</b></sup></span>. What is the total multiplier?</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-s5" data-std="TX:111.40(c)(6)(L) FL:MA.912.AR.8.3 FL:MA.912.NSO.1.5 MS:DJ.MATH.NA.5.5">
+    <div class="sec-h"><span class="num">5</span><h2>Length Runs Opposite to Frequency</h2></div>
+    <div class="keyrule"><b>Working model:</b> the length of a pipe or string is inversely proportional to its frequency. Double the frequency and you halve the length. A note whose frequency is multiplied by <i>r</i> needs the length
+      <span class="m"><i>L</i><sub><i>n</i></sub> = <span class="fr"><span><i>L</i></span><span><i>r</i></span></span> = <i>L</i> &middot; 2<sup class="ef"><b>&minus;<i>n</i></b><b>12</b></sup></span></div>
+    <p class="lead">A real pipe or string drifts a little from this model. The gap you measure later is part of your report, not a mistake to hide.</p>
+    <div class="calc" id="proj-calc">
+      <div class="cg">
+        <label class="cf"><span class="label">Base length L (mm)</span><input id="proj-cL" type="number" min="1" step="0.1" inputmode="decimal" value="240"></label>
+        <label class="cf"><span class="label">Semitones up, n</span><select id="proj-cn"><option>0</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option selected>7</option><option>8</option><option>9</option><option>10</option><option>11</option><option>12</option></select></label>
+        <div class="cf"><span class="label">Whole-number ratio</span><div class="pq"><input id="proj-cp" type="number" min="1" step="1" inputmode="numeric" aria-label="Ratio numerator"><span>/</span><input id="proj-cq" type="number" min="1" step="1" inputmode="numeric" aria-label="Ratio denominator"></div></div>
+      </div>
+      <div class="cout"><div class="co et" id="proj-co-et"></div><div class="co ju" id="proj-co-ju"></div></div>
+      <p class="gapline" id="proj-co-gap" aria-live="polite"></p>
+    </div>
+    <div class="card">
+      <div class="mq" data-qid="proj-l1" data-ans="160.2" data-vars="" data-form="any" data-ph="millimeters, one decimal" data-miss='[["160","160 mm is the length for the whole-number ratio 3/2. This asks for the equal-tempered multiplier."],["359.6","Longer lengths sound lower. Divide by the multiplier; do not multiply."]]' data-hint="The multiplier is 2^(7/12). Divide L by it, then round to one decimal place."><p class="stem"><span class="qn">1</span>With L = 240 mm, what length gives the note 7 semitones up in equal temperament? Give mm to one decimal place.</p></div>
+      <div class="mcq" data-qid="proj-l2">
+        <p class="stem"><span class="qn">2</span>The note 12 semitones up has a frequency twice the first note&rsquo;s. Its length is:</p>
+        <div class="opts">
+          <button class="opt" data-fb="Higher notes have shorter lengths. Frequency and length are inversely proportional.">twice L</button>
+          <button class="opt" data-ok="1" data-fb="Right. Twice the frequency, half the length.">half of L</button>
+          <button class="opt" data-fb="Length does not drop by a fixed number of millimeters per semitone. It is multiplied.">L minus 12 mm</button>
+        </div>
+      </div>
+      <div class="mq" data-qid="proj-l3" data-ans="100" data-vars="" data-ph="a whole number" data-miss='[["200","That is the base length. The tritone pipe is shorter than L."],["141.42","That is the decimal value. Keep the radical and type the number in front of it."]]' data-hint="Rationalize 200 over the square root of 2: multiply the top and the bottom by the square root of 2, then reduce."><p class="stem"><span class="qn">3</span>With L = 200 mm, the pipe 6 semitones up is <span class="m">200 &divide; <span class="rt">&radic;<span class="ov">2</span></span></span> mm. With no radical in the denominator it is <span class="m">?<span class="rt">&radic;<span class="ov">2</span></span></span> mm. Type the number that replaces ?.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-s6" data-std="TX:111.40(c)(5)(B) FL:MA.912.AR.5.7 MS:DJ.MATH.NA.5.7">
+    <div class="sec-h"><span class="num">6</span><h2>Your Cut List</h2></div>
+    <p class="lead">These lengths come from the L you chose in Step 2. For each note, choose which tuning you will cut it to. You may use one tuning for every note or mix them; be ready to say why in Step 10.</p>
+    <div class="tscroll"><table class="nums">
+      <thead><tr><th>Note</th><th>n</th><th>Equal (mm)</th><th>Ratio</th><th>Whole-number (mm)</th><th>Gap (mm)</th><th>Cut from</th></tr></thead>
+      <tbody id="proj-cutbody"></tbody>
+    </table></div>
+    <p class="tot" id="proj-tot"></p>
+  </div>
+
+  <div class="next"><button class="btn ghost" data-go="have" type="button">&larr; What You Already Have</button><button class="btn" data-go="instrument" type="button">Next: Build It, The Instrument &rarr;</button></div>
+</section>
+
+<!-- ═════════ 04 BUILD IT: THE INSTRUMENT ═════════ -->
+<section class="panel" id="tab-instrument" role="tabpanel">
+
+  <div class="sec" id="proj-s7" data-std="FL:MA.K12.MTR.3.1 FL:MA.K12.MTR.6.1 TX:111.40(c)(1)(B) TX:111.40(c)(1)(C)">
+    <div class="sec-h"><span class="num">7</span><h2>Cut and Label</h2></div>
+    <div class="two">
+      <div class="card">
+        <h3>Straw pan pipes</h3>
+        <ol class="mk">
+          <li>Lay a straw flat with its open end at the 0 mark of your ruler. Mark the cut length from your cut list, in millimeters.</li>
+          <li>Cut about 2 mm long, then trim to the mark. A pipe can be made shorter but never longer.</li>
+          <li>Seal the other end with a small piece of tape folded flat, so no air leaks. The length is measured from the open top to the sealed end.</li>
+          <li>Write the note number and the length on each pipe.</li>
+          <li>Tape the pipes side by side on a strip of paper or cardboard, longest to shortest, with the open tops level.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>One-string monochord</h3>
+        <ol class="mk">
+          <li>Stretch the string tight between two fixed points exactly L mm apart. Measure with your ruler, and keep the same tension throughout.</li>
+          <li>Starting at the left fixed point, measure each cut length along the string and mark it on the board with a pencil.</li>
+          <li>Write the note number and the length beside each mark.</li>
+          <li>To play a note, press the string firmly to the board at its mark and pluck the part between the mark and the left fixed point.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-s8" data-std="FL:MA.K12.MTR.6.1 TX:111.40(c)(1)(B)">
+    <div class="sec-h"><span class="num">8</span><h2>Play and Check</h2></div>
+    <div class="card prose">
+      <p>Play the eight notes in order from the longest length to the shortest. They should rise in steps. If one note sounds out of place, measure it again before you change anything. A shorter pipe or string sounds higher, so a note that is too low is too long. If you have a keyboard or a recording, compare your fifth and your major third to it.</p>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-s9" data-std="FL:MA.K12.MTR.6.1 TX:111.40(c)(1)(B) TX:111.40(c)(1)(E)">
+    <div class="sec-h"><span class="num">9</span><h2>Measure What You Made</h2></div>
+    <p class="lead">Measure each pipe or mark with your ruler, to the nearest 0.1 mm if you can, and type it in. The page compares it to the length you computed.</p>
+    <div class="tscroll"><table class="nums meas">
+      <thead><tr><th>Note</th><th>Tuning</th><th>Computed (mm)</th><th>Measured (mm)</th><th>Difference</th><th>Within</th></tr></thead>
+      <tbody id="proj-measbody"></tbody>
+    </table></div>
+    <div class="field"><p class="q">What does your log show? Which notes are furthest from their computed lengths, and what in your building could explain it?</p>
+      <textarea class="jbox" id="proj-meastxt" data-label="Step 9. What my measurements show" data-min="30"></textarea></div>
+  </div>
+
+  <div class="sec" id="proj-s10" data-std="FL:MA.K12.MTR.4.1 TX:111.40(c)(1)(D) TX:111.40(c)(1)(G)">
+    <div class="sec-h"><span class="num">10</span><h2>Argue for a Tuning</h2></div>
+    <p class="lead">Choose a song, then choose the tuning you would use to play it on this instrument. There is no single right answer, so the argument is the work.</p>
+    <ul class="mats">
+      <li>Name your song and the notes or intervals it leans on most.</li>
+      <li>Use at least three numbers from your tables: multipliers, gaps, lengths or the stacked thirds.</li>
+      <li>Say what your choice gives up, and answer one objection to it.</li>
+    </ul>
+    <div class="field" style="margin-top:14px"><p class="q">My song, and the notes or intervals it leans on.</p>
+      <textarea class="jbox" id="proj-song" data-label="Step 10. My song and the intervals it leans on" data-min="20"></textarea></div>
+    <div class="field"><p class="q">My tuning and why.</p>
+      <textarea class="jbox" id="proj-argue" data-label="Step 10. My argument for a tuning" data-min="90"></textarea></div>
+  </div>
+
+  <div class="next"><button class="btn ghost" data-go="numbers" type="button">&larr; Build It, The Numbers</button><button class="btn" data-go="finish" type="button">Next: Finish &rarr;</button></div>
+</section>
+
+<!-- ═════════ 05 FINISH ═════════ -->
+<section class="panel" id="tab-finish" role="tabpanel">
+  <div class="pset" id="proj-fin" data-std="FL:MA.K12.MTR.4.1 TX:111.40(c)(1)(G)">
+    <div class="pset-top">
+      <label class="field" style="margin:0"><span class="label">Your name</span><br><input class="name" type="text" autocomplete="name" placeholder="First and last name"></label>
+      <div class="score"><div><b data-score="done">0</b>checks solved</div><div><b data-score="first">0</b>first try</div></div>
+    </div>
+
+    <div class="fin-g">Mathematical accuracy</div>
+    <ul class="checks">
+      <li data-ck="proj-k1">All eight multipliers are written as a reduced power and as a radical.</li>
+      <li data-ck="proj-k2">Every length is L divided by the multiplier, to 0.1 mm, with units.</li>
+      <li data-ck="proj-k3">Every checkpoint is answered, and any miss is reworked.</li>
+    </ul>
+    <div class="fin-g">Reasoning and argument</div>
+    <ul class="checks">
+      <li data-ck="proj-k4">My song is named and my tuning choice is clear, note by note or as a whole.</li>
+      <li data-ck="proj-k5">I used at least three numbers from my tables.</li>
+      <li data-ck="proj-k6">I answered one objection to my choice.</li>
+    </ul>
+    <div class="fin-g">Instrument craftsmanship</div>
+    <ul class="checks">
+      <li data-ck="proj-k7">All eight notes are made and labeled with note number and length.</li>
+      <li data-ck="proj-k8">Every measured length is logged, and I know which tolerance I am claiming.</li>
+      <li data-ck="proj-k9">Ends are cut square, the instrument is mounted neatly, and it can be played.</li>
+    </ul>
+    <div class="fin-g">Communication</div>
+    <ul class="checks">
+      <li data-ck="proj-k10">My typed work is complete and in order, and every number has units.</li>
+      <li data-ck="proj-k11">My reflection explains how measured and computed lengths differ.</li>
+      <li data-ck="proj-k12">I have photos of the whole instrument, a close-up of its labels, and a ruler against one pipe or mark.</li>
+    </ul>
+
+    <div class="field" style="margin-top:22px"><p class="q">Reflection. Where did your measured lengths differ from your computed lengths, and why? What would you change in your design or your tuning if you built it again?</p>
+      <textarea class="jbox" id="proj-reflect" data-label="Reflection: measured against computed, and what I would change" data-min="80"></textarea></div>
+
+    <div class="pdfbar"><button class="btn" data-pdf type="button">Download my work (PDF)</button><span class="hint">Lists your checkpoints, cut list, measurements and typed work.</span><span class="print-note"></span></div>
+    <p class="handin">Your teacher will tell you where to hand in the PDF and the photos of your work.</p>
+  </div>
+  <div class="next"><button class="btn ghost" data-go="instrument" type="button">&larr; Build It, The Instrument</button><span></span></div>
+</section>
+
+</main>
+
+<script type="application/json" id="std-map">{
+ "proj-r1": ["FL:MA.912.NSO.1.3", "FL:MA.912.NSO.1.5", "TX:111.40(c)(7)(G)", "MS:DJ.MATH.NA.5.2", "MS:DJ.MATH.NA.5.6", "MS:DJ.MATH.NA.5.7"],
+ "proj-r2": ["FL:MA.K12.MTR.4.1", "TX:111.40(c)(1)(D)", "TX:111.40(c)(1)(G)"],
+ "proj-r3": ["FL:MA.K12.MTR.6.1", "FL:MA.K12.MTR.7.1", "TX:111.40(c)(1)(A)", "TX:111.40(c)(1)(B)"],
+ "proj-r4": ["FL:MA.K12.MTR.2.1", "TX:111.40(c)(1)(E)", "TX:111.40(c)(1)(G)"],
+ "proj-ska": ["FL:MA.912.NSO.1.3", "TX:111.40(c)(7)(G)", "MS:DJ.MATH.NA.5.6", "MS:DJ.MATH.NA.5.7"],
+ "proj-skb": ["FL:MA.912.NSO.1.3", "TX:111.40(c)(7)(G)", "MS:DJ.MATH.NA.5.7", "MS:DJ.MATH.NA.6.10"],
+ "proj-skc": ["FL:MA.912.NSO.1.3", "FL:MA.912.NSO.1.5", "TX:111.40(c)(7)(G)", "MS:DJ.MATH.NA.5.1", "MS:DJ.MATH.NA.5.2"],
+ "proj-skd": ["FL:MA.912.NSO.1.5", "TX:111.40(c)(7)(G)", "MS:DJ.MATH.NA.5.3"],
+ "proj-ske": ["FL:MA.912.NSO.1.5", "TX:111.40(c)(7)(G)", "MS:DJ.MATH.NA.5.4", "MS:DJ.MATH.NA.5.5"],
+ "proj-s1": ["FL:MA.K12.MTR.7.1", "TX:111.40(c)(1)(A)"],
+ "proj-s2": ["FL:MA.K12.MTR.7.1", "TX:111.40(c)(1)(A)", "TX:111.40(c)(1)(B)"],
+ "proj-s3": ["FL:MA.912.NSO.1.3", "TX:111.40(c)(7)(G)", "MS:DJ.MATH.NA.5.6"],
+ "proj-s4": ["FL:MA.912.NSO.1.3", "FL:MA.K12.MTR.5.1", "MS:DJ.MATH.NA.5.7"],
+ "proj-s5": ["TX:111.40(c)(6)(L)", "FL:MA.912.AR.8.3", "FL:MA.912.NSO.1.5", "MS:DJ.MATH.NA.5.5"],
+ "proj-s6": ["TX:111.40(c)(5)(B)", "FL:MA.912.AR.5.7", "MS:DJ.MATH.NA.5.7"],
+ "proj-s7": ["FL:MA.K12.MTR.3.1", "FL:MA.K12.MTR.6.1", "TX:111.40(c)(1)(B)", "TX:111.40(c)(1)(C)"],
+ "proj-s8": ["FL:MA.K12.MTR.6.1", "TX:111.40(c)(1)(B)"],
+ "proj-s9": ["FL:MA.K12.MTR.6.1", "TX:111.40(c)(1)(B)", "TX:111.40(c)(1)(E)"],
+ "proj-s10": ["FL:MA.K12.MTR.4.1", "TX:111.40(c)(1)(D)", "TX:111.40(c)(1)(G)"],
+ "proj-fin": ["FL:MA.K12.MTR.4.1", "TX:111.40(c)(1)(G)"]
+}</script>
+
+<footer class="foot"><div class="wrap"><span>Optima Academy Online · Algebra 2 Honors</span><span>Academic Design and Curriculum (AcDC) · © Optima Academy Online</span></div></footer>
+<script type="application/json" id="page-config">{"key": "alg2h-w1-proj", "title": "Module 8 Project: The Twelfth Root of Two", "course": "Algebra 2 Honors", "teacher": {"full": "Dr. Oswaldo Usborne", "short": "Dr. Usborne"}, "footer": "Algebra 2 Honors · Module 8 Project: The Twelfth Root of Two", "pdfTag": "Alg2H_W1_PROJ"}</script>
+<script type="application/json" id="page-assets">{"img": {"usb": {"src": "data:image/jpeg;base64,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", "alt": ""}}, "proj_intro": {}}</script>
+<script>
+window.ASK = {
+  scope: 'the Twelfth Root of Two project: fractional exponents, radicals, tuning ratios and pipe lengths',
+  quick: ['What does 2^(n/12) mean?', 'How do I turn a ratio into a length?', 'What should my argument include?'],
+  practice: /(2\s*\^?\s*\(?\s*(7|5|4|3|2|1|8|9)\s*\/\s*(12|6|3|4|2)\b|e\s*\^?\s*\(?\s*1\s*\/\s*[23]|sqrt\s*\(?\s*(72|18|8)|\b72\b|\b18\b|three (whole-number|equal-tempered|just)?\s*(major )?thirds|stack|240\s*mm|200\s*mm|\b160|cube root of 2|which number of semitones|smallest gap|rationaliz|100\s*(\/|over|divided)|\b150\b|smallest gap|tritone)/i,
+  guide: 'That one is a checkpoint, so here are my questions instead of the answer. Which law of exponents or property of radicals fits? What does it do to the exponents or the radicands? Do you need to reduce a fraction at the end? Try it, then press Check.',
+  notes: [
+    { k: ['twelfth root','12th root','2^(1/12)','semitone','one step','each step'], w: 1.4, a: 'In equal temperament one semitone multiplies the frequency by the twelfth root of 2, which is 2^(1/12), about 1.0595. Twelve of them multiply to 2, the octave. n semitones up multiply by 2^(n/12).' },
+    { k: ['equal temperament','equal tempered','equal-tempered'], a: 'Equal temperament makes every semitone multiply the frequency by the same number, 2^(1/12). It makes every octave exactly double, and every interval the same size in every key.' },
+    { k: ['whole number','whole-number','just','ratio','3/2','5/4','4/3'], a: 'A whole-number tuning sets intervals to ratios like 3/2 for a fifth, 5/4 for a major third and 4/3 for a fourth. The page shows each beside its equal-tempered number so you can see the gaps.' },
+    { k: ['exponent form','radical form','rewrite','convert','root and power'], w: 1.3, a: 'In x^(m/n), the denominator n is the root and the numerator m is the power: x^(m/n) is the nth root of x^m. So 2^(7/12) is the 12th root of 2^7.' },
+    { k: ['reduce','simplify','lowest terms','reduced'], a: 'Reduce a fraction exponent like any fraction: divide the top and the bottom by a common factor. 6/12 becomes 1/2, which is a square root, and 4/12 becomes 1/3, which is a cube root.' },
+    { k: ['laws of exponents','add exponents','multiply exponents','same base','power rule','product rule'], a: 'Same base, multiplying: add the exponents. Same base, dividing: subtract them. A power raised to a power: multiply the exponents. These work for fractions too, and for base e as well as base 2.' },
+    { k: ['length','inverse','inversely','proportional','opposite'], w: 1.4, a: 'The working model: length is inversely proportional to frequency. Double the frequency, halve the length. For a multiplier r, the length is L divided by r, which is L times 2^(-n/12) in equal temperament.' },
+    { k: ['calculator','compute length','how do i get the length','cut list'], a: 'In the interval calculator, enter your base length L and the number of semitones n. It shows the equal-tempered length and the whole-number length side by side, and the gap in millimeters. The cut list does all eight notes at once.' },
+    { k: ['rationalize','radical in the denominator','denominator'], a: 'To rationalize, multiply the top and the bottom by the radical in the bottom. The bottom becomes a whole number. One over the square root of 2 becomes the square root of 2 over 2.' },
+    { k: ['like radicals','add radicals','adding radicals','combine'], a: 'Only like radicals combine: same index and same radicand. Add the coefficients and keep the radical. If they look unlike, simplify each radical first.' },
+    { k: ['multiply radicals','product property','under one root'], a: 'Radicals with the same index multiply under one root, and the radicands do not have to match. Afterward, simplify by taking out any perfect powers.' },
+    { k: ['e','euler','natural base','2.718'], a: 'The number e is about 2.71828, an irrational constant that appears in continuous growth. Your project uses base 2, but the laws of exponents work the same for e.' },
+    { k: ['measure','tolerance','within','accuracy','difference'], a: 'The log compares each measured length to its computed length. Within 1 mm earns the top level for craft, within 2 mm the next, within 4 mm the next. Measure to the nearest 0.1 mm if you can, and measure twice.' },
+    { k: ['argument','argue','choose a tuning','which tuning','what should i include'], a: 'Name a song, say which intervals it leans on, use at least three numbers from your tables, say what your choice gives up, and answer one objection. There is no single right answer; the numbers are your evidence.' },
+    { k: ['pdf','hand in','photos','turn in','submit'], a: 'On the Finish tab, press Download my work (PDF). It lists your checkpoints, cut list, measurements and typed work. Your teacher will tell you where to hand in the PDF and the photos of your work.' }
+  ]
+};
+</script>
+
+<script>
+/* Algebra 1 integrated lesson · core engine (shell shared with the 9th ELA kit).
+   CFG (#page-config): { key, n, title, course, footer, pdfTag, teacher:{full,short} }
+   Page may define window.ASK = { scope, notes:[{k:[...], a:"..."}], practice:/regex/, quick:[...] } before this script. */
+var CFG = (function(){ try { return JSON.parse(document.getElementById('page-config').textContent); } catch(e){ return { key:'alg1-x', title:'' }; } })();
+var TEACHER = CFG.teacher || { full: 'Dr. Oswaldo Usborne', short: 'Dr. Usborne' };
+var PREFIX = CFG.key + '-';
+var ASSETS = (function(){ var el = document.getElementById('page-assets'); try { return el ? JSON.parse(el.textContent) : {}; } catch(e){ return {}; } })();
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+var STORE = (function(){
+  var mem = {}, s = null;
+  try { var t = window.localStorage; t.setItem('__t', '1'); t.removeItem('__t'); s = t; } catch(e){ s = null; }
+  function rget(k){ try { return s ? s.getItem(k) : (k in mem ? mem[k] : null); } catch(e){ return null; } }
+  function rset(k, v){ try { if (s) s.setItem(k, v); else mem[k] = v; } catch(e){ mem[k] = v; } }
+  return { get: function(k){ return rget(PREFIX + k); }, set: function(k, v){ rset(PREFIX + k, v); }, rawGet: rget, rawSet: rset };
+})();
+function jget(k, d){ try { var v = STORE.get(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
+function jset(k, v){ STORE.set(k, JSON.stringify(v)); }
+function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ---------- images from the asset pack ---------- */
+$$('[data-img]').forEach(function(el){
+  var a = (ASSETS.img || {})[el.dataset.img]; if (!a) return;
+  if (el.tagName === 'IMG') { el.src = a.src; if (!el.alt) el.alt = a.alt || ''; } else el.style.backgroundImage = 'url("' + a.src + '")';
+});
+
+/* ---------- tabs ---------- */
+var TABS = $$('.tab').map(function(b){ return b.dataset.tab; });
+function switchTab(id, noScroll){
+  if (TABS.indexOf(id) < 0) id = TABS[0];
+  $$('.tab').forEach(function(b){ var on = b.dataset.tab === id; b.classList.toggle('on', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+  $$('.panel').forEach(function(p){ p.classList.toggle('on', p.id === 'tab-' + id); });
+  STORE.set('tab', id);
+  var seen = (STORE.get('seen') || '').split(',').filter(Boolean);
+  if (seen.indexOf(id) < 0) { seen.push(id); STORE.set('seen', seen.join(',')); }
+  $$('.tab').forEach(function(b){ b.classList.toggle('seen', seen.indexOf(b.dataset.tab) > -1 && b.dataset.tab !== id); });
+  if (!noScroll) { var t = $('.tabs'); if (t && window.scrollY > t.offsetTop) window.scrollTo({ top: t.offsetTop, behavior: 'smooth' }); }
+  document.dispatchEvent(new CustomEvent('tabchange', { detail: id }));
+  psetScore();
+}
+$$('.tab').forEach(function(b){ b.addEventListener('click', function(){ switchTab(b.dataset.tab); }); });
+$$('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ switchTab(b.dataset.go); }); });
+
+/* ---------- typed answers (words) ---------- */
+function words(s){ return (s.trim().match(/\S+/g) || []).length; }
+$$('textarea.jbox').forEach(function(el){
+  var v = STORE.get('j-' + el.id); if (v !== null) el.value = v;
+  var d = document.createElement('div'); d.className = 'wc'; el.parentNode.insertBefore(d, el.nextSibling);
+  function wc(){ var n = words(el.value), min = +(el.dataset.min || 0); d.textContent = n + (n === 1 ? ' word' : ' words') + (min ? ' · aim for ' + min + '+' : ''); d.classList.toggle('met', min > 0 && n >= min); }
+  wc(); el.addEventListener('input', function(){ STORE.set('j-' + el.id, el.value); wc(); });
+});
+$$('input.name').forEach(function(el){
+  var v = STORE.rawGet('alg1-name'); if (v) el.value = v;
+  el.addEventListener('input', function(){ STORE.rawSet('alg1-name', el.value); });
+});
+
+/* ---------- worked examples: one step at a time ---------- */
+$$('.ex').forEach(function(ex, xi){
+  var lis = $$('ol.steps > li', ex); if (!lis.length) return;
+  var key = 'ex-' + (ex.id || xi), n = +(STORE.get(key) || 0);
+  var b = document.createElement('button'); b.type = 'button'; b.className = 'btn ghost small more';
+  ex.appendChild(b);
+  function draw(){ lis.forEach(function(li, i){ li.classList.toggle('on', i < n); }); ex.classList.toggle('done', n >= lis.length); b.textContent = n ? 'Next step' : 'Show the first step'; }
+  b.addEventListener('click', function(){ n = Math.min(lis.length, n + 1); STORE.set(key, n); draw(); });
+  draw();
+});
+
+/* ---------- choices (data-ok="1" on the right option; data-fb on any option) ---------- */
+$$('.mcq').forEach(function(q){
+  var id = q.dataset.qid, fb = $('.fb', q), opts = $$('.opt', q);
+  if (!fb) { fb = document.createElement('div'); fb.className = 'fb'; q.appendChild(fb); }
+  function show(o, quiet){
+    var good = o.dataset.ok === '1';
+    if (good) { o.classList.add('yes'); q.classList.add('done'); }
+    else { o.classList.add('no'); if (!quiet) { o.classList.remove('shake'); void o.offsetWidth; o.classList.add('shake'); } }
+    fb.innerHTML = o.dataset.fb || (good ? 'Right.' : 'Not this one. Look again.'); fb.className = 'fb show ' + (good ? 'good' : 'try');
+  }
+  opts.forEach(function(o, i){
+    o.type = 'button';
+    o.addEventListener('click', function(){
+      if (q.classList.contains('done')) return;
+      show(o);
+      var r = jget('c-' + id, { tried: [] }); if (r.tried.indexOf(i) < 0) r.tried.push(i);
+      r.ok = o.dataset.ok === '1'; if (r.first === undefined) r.first = r.ok; r.v = o.textContent.trim(); jset('c-' + id, r); psetScore();
+    });
+  });
+  jget('c-' + id, { tried: [] }).tried.forEach(function(i){ if (opts[i]) show(opts[i], true); });
+});
+
+/* ---------- typed math: checked by value at random points, then for simplified form ---------- */
+var MATH = (function(){
+  var SUP = { '⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁻':'-' };
+  function norm(s){
+    s = String(s).toLowerCase().replace(/[−–—]/g, '-').replace(/[×·∙]/g, '*').replace(/÷/g, '/').replace(/\s+/g, '');
+    s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, function(m){ return '^' + m.split('').map(function(c){ return SUP[c]; }).join(''); });
+    s = s.replace(/\^\((-?\d+)\)/g, '^$1');
+    return s;
+  }
+  function tokens(s){
+    var t = [], m, re = /\d+\.?\d*|\.\d+|[a-z]|[-+*/^()]/g, used = 0;
+    while ((m = re.exec(s))) { if (m.index !== used) return null; t.push(m[0]); used = re.lastIndex; }
+    return used === s.length ? t : null;
+  }
+  function parse(src){
+    var t = tokens(norm(src)); if (!t || !t.length) return null;
+    var p = 0, err = null;
+    function peek(){ return t[p]; }
+    function isNum(x){ return x !== undefined && /^[\d.]/.test(x); }
+    function isVar(x){ return x !== undefined && /^[a-z]$/.test(x); }
+    function expr(){
+      var f = term();
+      while (peek() === '+' || peek() === '-') { var op = t[p++], g = term(); f = (function(a, b, o){ return o === '+' ? function(e){ return a(e) + b(e); } : function(e){ return a(e) - b(e); }; })(f, g, op); }
+      return f;
+    }
+    function term(){
+      var f = unary();
+      for (;;) {
+        var x = peek();
+        if (x === '*' || x === '/') { p++; var g = unary(); f = (function(a, b, o){ return o === '*' ? function(e){ return a(e) * b(e); } : function(e){ return a(e) / b(e); }; })(f, g, x); }
+        else if (isVar(x) || x === '(') { var h = power(); f = (function(a, b){ return function(e){ return a(e) * b(e); }; })(f, h); }
+        else if (isNum(x)) { err = 'digits'; p++; }
+        else break;
+      }
+      return f;
+    }
+    function unary(){
+      if (peek() === '-') { p++; var f = unary(); return function(e){ return -f(e); }; }
+      if (peek() === '+') { p++; return unary(); }
+      return power();
+    }
+    function power(){
+      var b = atom();
+      if (peek() === '^') { p++; var x = unary(); return function(e){ return Math.pow(b(e), x(e)); }; }
+      return b;
+    }
+    function atom(){
+      var x = t[p++];
+      if (isNum(x)) { var v = parseFloat(x); return function(){ return v; }; }
+      if (isVar(x)) return function(e){ return e[x]; };
+      if (x === '(') { var f = expr(); if (t[p++] !== ')') err = 'paren'; return f; }
+      err = 'syntax'; return function(){ return NaN; };
+    }
+    var f;
+    try { f = expr(); } catch(e){ return null; }
+    if (p !== t.length || err) return { err: err || 'syntax' };
+    return { f: f };
+  }
+  var PTS = [[1.37, 2.11, 0.73], [2.59, 0.81, 1.93], [0.67, 1.71, 2.37], [3.13, 1.29, 0.59]];
+  function same(a, b, vars){
+    var A = parse(a), B = parse(b); if (!A || !B || !A.f || !B.f) return false;
+    for (var k = 0; k < PTS.length; k++) {
+      var e = {}; 'abcdefghijklmnopqrstuvwxyz'.split('').forEach(function(c, i){ e[c] = PTS[k][i % 3] + i * 0.013; });
+      (vars || '').split('').forEach(function(c, i){ e[c] = PTS[k][i % 3]; });
+      var x = A.f(e), y = B.f(e);
+      if (!isFinite(x) || !isFinite(y) || Math.abs(x - y) > 1e-7 * Math.max(1, Math.abs(y))) return false;
+    }
+    return true;
+  }
+  /* top-level terms; each must be one coefficient and each variable at most once; parentheses only in a denominator */
+  function terms(s){
+    s = norm(s); var out = [], depth = 0, cur = '';
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i];
+      if (c === '(') depth++; if (c === ')') depth--;
+      if ((c === '+' || c === '-') && depth === 0 && i > 0 && !/[\^*/(]/.test(s[i - 1])) { out.push(cur); cur = c === '-' ? '-' : ''; }
+      else cur += c;
+    }
+    out.push(cur); return out.filter(function(x){ return x !== '' && x !== '-'; });
+  }
+  function simple(s){
+    var T = terms(s);
+    for (var i = 0; i < T.length; i++) {
+      var t = T[i].replace(/^-/, '').replace(/\^\((-?\d+)\/(\d+)\)/g, function(m0, a, b){
+        a = Math.abs(+a); b = +b; var g = a, h = b; while (h) { var r = g % h; g = h; h = r; }
+        return (g === 1 && b !== 1) ? '^1' : '^(unreduced'; }), num = t.split('/')[0], den = t.split('/').slice(1).join('/');
+      if (/[()]/.test(num)) return false;
+      var core = num.replace(/\^-?\d+(\.\d+)?/g, '').replace(/\*/g, '');
+      var nums = core.match(/\d+\.?\d*|\.\d+/g) || [];
+      if (nums.length > 1 || (nums.length === 1 && core.indexOf(nums[0]) !== 0)) return false;
+      var letters = core.replace(/[\d.]/g, '').split('');
+      if (letters.some(function(c, k){ return letters.indexOf(c) !== k; })) return false;
+    }
+    return true;
+  }
+  function pretty(s){
+    var n = norm(s); if (!n) return '';
+    var h = esc(n).replace(/\^\(([^()]*)\)/g, '<sup>$1</sup>').replace(/\^(-?\d+(?:\.\d+)?)/g, '<sup>$1</sup>').replace(/([a-z])/g, '<i>$1</i>').replace(/\*/g, '·').replace(/-/g, ' − ').replace(/\+/g, ' + ').replace(/^ − /, '−').replace(/\( − /g, '(−').replace(/<sup> − /g, '<sup>−');
+    return '<span class="m">' + h + '</span>';
+  }
+  return { parse: parse, same: same, terms: terms, simple: simple, pretty: pretty, norm: norm };
+})();
+
+$$('.mq').forEach(function(q){
+  var id = q.dataset.qid, ans = q.dataset.ans, vars = q.dataset.vars || 'x', form = q.dataset.form || 'simp';
+  var miss = []; try { miss = JSON.parse(q.dataset.miss || '[]'); } catch(e){}
+  if (!$('.mq-row', q)) q.insertAdjacentHTML('beforeend', '<div class="mq-row"><input class="mq-in" type="text" autocomplete="off" spellcheck="false" aria-label="Your answer" placeholder="' + esc(q.dataset.ph || 'type your answer') + '"><button class="btn small" type="button">Check</button></div><div class="mq-prev" aria-live="polite"></div><div class="fb"></div>');
+  var inp = $('.mq-in', q), go = $('.mq-row button', q), prev = $('.mq-prev', q), fb = $('.fb', q);
+  var r = jget('m-' + id, null);
+  function say(ok, msg){ fb.innerHTML = msg; fb.className = 'fb show ' + (ok ? 'good' : 'try'); }
+  function preview(){ var v = inp.value.trim(); prev.innerHTML = v ? 'Reads as: ' + MATH.pretty(v) : ''; }
+  function check(quiet){
+    var v = inp.value.trim(); if (!v) { inp.focus(); return; }
+    var P = MATH.parse(v);
+    if (!P) { say(false, 'I can&rsquo;t read that yet. Use <code>^</code> for powers, like <code>x^2</code>.'); return; }
+    if (P.err === 'digits') { say(false, 'A number right after a letter is ambiguous. Write powers with <code>^</code>: <code>x^2</code>, not <code>x2</code>.'); return; }
+    if (P.err) { say(false, 'Check your parentheses and signs; I can&rsquo;t read that yet.'); return; }
+    var eq = MATH.same(v, ans, vars), ok = eq && (form !== 'simp' || (MATH.simple(v) && MATH.terms(v).length === MATH.terms(ans).length));
+    var msg;
+    if (ok) msg = q.dataset.fb || 'Right.';
+    else if (eq) msg = 'That&rsquo;s equal in value, but not simplified yet. Combine like terms and clear the parentheses.';
+    else {
+      msg = q.dataset.hint || 'Not equal yet. Check each like term: its sign, then its coefficient.';
+      for (var i = 0; i < miss.length; i++) if (MATH.same(v, miss[i][0], vars)) { msg = miss[i][1]; break; }
+    }
+    say(ok, msg);
+    if (quiet) return;
+    var rec = jget('m-' + id, { tries: 0 }); rec.tries++; rec.v = v; rec.ok = ok; if (rec.first === undefined) rec.first = ok;
+    jset('m-' + id, rec);
+    if (ok) { q.classList.add('done'); } else { inp.classList.remove('shake'); void inp.offsetWidth; inp.classList.add('shake'); }
+    psetScore();
+  }
+  inp.addEventListener('input', preview);
+  inp.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); check(); } });
+  go.addEventListener('click', function(){ check(); });
+  if (r && r.v) { inp.value = r.v; preview(); check(true); if (r.ok) q.classList.add('done'); }
+});
+
+/* ---------- place: tap a card, then tap its bin ---------- */
+$$('.place').forEach(function(g){
+  var id = g.id, fb = $('.place-fb', g), tally = $('.tally', g), chips = $$('.chip', g), sel = null;
+  function count(){ var n = $$('.chip.placed', g).length; if (tally) { tally.textContent = n + ' of ' + chips.length + ' placed'; tally.classList.toggle('done', n === chips.length); } }
+  function arm(on){ $$('.bin', g).forEach(function(b){ b.classList.toggle('armed', on); }); }
+  function put(c, b, quiet){ c.classList.remove('sel'); c.classList.add('placed'); c.tabIndex = -1; $('.drop', b).appendChild(c); if (!quiet && fb) fb.innerHTML = '<div class="fb show good">' + (c.dataset.fb || 'Right.') + '</div>'; }
+  chips.forEach(function(c){
+    c.type = 'button';
+    c.addEventListener('click', function(){
+      if (c.classList.contains('placed')) return;
+      if (sel === c) { c.classList.remove('sel'); sel = null; arm(false); return; }
+      if (sel) sel.classList.remove('sel'); sel = c; c.classList.add('sel'); arm(true);
+    });
+  });
+  $$('.bin', g).forEach(function(b){
+    b.addEventListener('click', function(){
+      if (!sel) return; var c = sel; sel = null; arm(false);
+      if (c.dataset.ans === b.dataset.bin) { put(c, b); var d = (STORE.get('p-' + id) || '').split(',').filter(Boolean); d.push(c.dataset.k); STORE.set('p-' + id, d.join(',')); }
+      else { c.classList.remove('sel', 'shake'); void c.offsetWidth; c.classList.add('shake'); if (fb) fb.innerHTML = '<div class="fb show try">' + (c.dataset.miss || 'Not there. Look again.') + '</div>'; }
+      count();
+    });
+  });
+  (STORE.get('p-' + id) || '').split(',').filter(Boolean).forEach(function(k){ var c = $('.chip[data-k="' + k + '"]', g); if (c) { var b = $('.bin[data-bin="' + c.dataset.ans + '"]', g); if (b) put(c, b, true); } });
+  count();
+});
+
+/* ---------- checklists ---------- */
+$$('.checks li').forEach(function(li){
+  li.insertAdjacentHTML('afterbegin', '<span class="bx" aria-hidden="true"></span>');
+  li.setAttribute('role', 'checkbox'); li.tabIndex = 0;
+  function set(on){ li.classList.toggle('on', on); li.setAttribute('aria-checked', on ? 'true' : 'false'); $('.bx', li).textContent = on ? '✓' : ''; }
+  set(STORE.get('ck-' + li.dataset.ck) === '1');
+  function tog(){ var on = !li.classList.contains('on'); set(on); STORE.set('ck-' + li.dataset.ck, on ? '1' : '0'); }
+  li.addEventListener('click', tog);
+  li.addEventListener('keydown', function(e){ if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); tog(); } });
+});
+
+/* ---------- problem set score ---------- */
+function itemRec(el){ return el.classList.contains('mq') ? jget('m-' + el.dataset.qid, null) : jget('c-' + el.dataset.qid, null); }
+function psetItems(){ return $$('.pset .mq, .pset .mcq'); }
+function psetScore(){
+  var it = psetItems(), done = 0, first = 0;
+  it.forEach(function(el){ var r = itemRec(el); if (r && r.ok) done++; if (r && r.first) first++; });
+  $$('[data-score="done"]').forEach(function(b){ b.textContent = done + ' / ' + it.length; });
+  $$('[data-score="first"]').forEach(function(b){ b.textContent = first + ' / ' + it.length; });
+}
+
+/* ---------- PDF (print window: no library needed) ---------- */
+function studentFile(){
+  var nm = (STORE.rawGet('alg1-name') || '').trim().split(/\s+/).filter(Boolean);
+  var who = nm.length >= 2 ? nm[nm.length - 1] + '_' + nm.slice(0, -1).join('') : (nm[0] || 'LastName_FirstName');
+  return who + '_' + (CFG.pdfTag || 'Alg1');
+}
+function stemText(el){ var s = $('.stem', el); if (!s) return ''; var c = s.cloneNode(true); $$('.qn', c).forEach(function(x){ x.remove(); }); return c.innerHTML.trim(); }
+function pdfHtml(){
+  var h = '<h2>Problem set</h2><table class="ps"><tr><th>#</th><th>Problem</th><th>My answer</th><th>Result</th></tr>';
+  psetItems().forEach(function(el, i){
+    var r = itemRec(el), a = !r || !r.v ? '<span class="missing">(not answered)</span>' : (el.classList.contains('mq') ? MATH.pretty(r.v) : esc(r.v));
+    var res = !r ? '' : r.ok ? (r.first ? '✓ first try' : '✓ after ' + ((r.tries || (r.tried || []).length) - 1) + ' more') : '✗ not yet';
+    h += '<tr><td>' + (i + 1) + '</td><td>' + stemText(el) + '</td><td>' + a + '</td><td>' + res + '</td></tr>';
+  });
+  h += '</table>';
+  var js = $$('textarea.jbox');
+  if (js.length) {
+    h += '<h2>Written answers</h2>';
+    js.forEach(function(el){ var v = (STORE.get('j-' + el.id) || '').trim(); h += '<div class="q">' + esc(el.dataset.label || el.id) + '</div>' + (v ? '<div class="a">' + esc(v) + '</div>' : '<div class="a missing">(no answer saved)</div>'); });
+  }
+  var ck = $$('.pset .checks li');
+  if (ck.length) { h += '<h2>Checklist</h2>'; ck.forEach(function(li){ h += '<div class="a">' + (li.classList.contains('on') ? '☑ ' : '☐ ') + esc(li.textContent.replace(/^✓/, '').trim()) + '</div>'; }); }
+  return h;
+}
+function openPrint(){
+  psetScore();
+  var nm = (STORE.rawGet('alg1-name') || '').trim(), file = studentFile();
+  var done = ($('[data-score="done"]') || {}).textContent || '', first = ($('[data-score="first"]') || {}).textContent || '';
+  var css = 'body{font:14.5px/1.55 Georgia,serif;color:#0E1C42;max-width:760px;margin:0 auto;padding:28px 36px}' +
+    'h1{font:700 22px/1.2 Arial,sans-serif;margin:0 0 4px}.sub{font:12.5px/1.4 Arial,sans-serif;color:#65707C;margin-bottom:6px}' +
+    '.sc{font:700 12.5px/1.4 Arial,sans-serif;margin:0 0 18px}h2{font:700 11px/1.3 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#C43D27;margin:22px 0 6px;padding-top:10px;border-top:2px solid #0E1C42}' +
+    'table.ps{border-collapse:collapse;width:100%;font-size:13.5px}table.ps th{font:700 10.5px/1.3 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:#65707C;border-bottom:1px solid #C3CED9;padding:4px 8px 4px 0}' +
+    'table.ps td{vertical-align:top;border-bottom:1px solid #E2EAF3;padding:6px 8px 6px 0}table.ps td:last-child{white-space:nowrap;font:12px Arial,sans-serif}' +
+    '.q{font:700 13px/1.45 Arial,sans-serif;margin-top:10px}.a{white-space:pre-wrap;margin:3px 0 0}.missing{color:#C43D27;font-style:italic}.m{white-space:nowrap}sup{font-size:.7em}.fr{display:inline-block;text-align:center;vertical-align:middle}.fr>span{display:block}.fr>span:first-child{border-bottom:1px solid}';
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + esc(file) + '<\/title>\x3cstyle>' + css + '<\/style><\/head><body><h1>' + esc(CFG.title) + '<\/h1><div class="sub">' + (nm ? esc(nm) + ' · ' : '') + esc(CFG.footer || '') + '<\/div><div class="sc">Solved: ' + esc(done) + ' · First try: ' + esc(first) + '<\/div>' + pdfHtml() + '<\/body><\/html>';
+  var win = window.open('', '_blank');
+  if (!win) { $$('.print-note').forEach(function(n){ n.textContent = 'The PDF window was blocked. Allow pop-ups for this page and try again.'; n.classList.add('show'); }); return; }
+  win.document.write(html); win.document.close();
+  setTimeout(function(){ win.focus(); win.print(); }, 400);
+}
+$$('[data-pdf]').forEach(function(b){ b.addEventListener('click', openPrint); });
+
+/* ---------- tools: calculator + Ask Dr. Usborne (two buttons in the tab bar, drawers on the right) ---------- */
+(function(){
+  var bar = $('.tabs .wrap'); if (!bar) return;
+  var face = ASSETS.img && ASSETS.img.usb ? ASSETS.img.usb.src : '';
+  if (document.getElementById('obj-calc')) {
+    /* desk objects on the right edge: a calculator and an "Ask Dr. Usborne" sticky note */
+    document.body.insertAdjacentHTML('beforeend', '<div class="rail" aria-label="Tools">' +
+      '<button type="button" id="tCalc" class="obj-calc" aria-controls="calcDrawer" aria-label="Open the calculator" title="Calculator"><svg viewBox="0 0 100 150" aria-hidden="true"><use href="#obj-calc"/></svg></button>' +
+      '<button type="button" id="tAsk" class="obj-note" aria-controls="askDrawer" aria-label="Ask ' + esc(TEACHER.full) + '"><span class="pin" aria-hidden="true"></span><span class="k">Questions?</span><span class="h">Ask ' + esc(TEACHER.short) + '</span>' +
+      '<img class="face" src="' + face + '" alt="">' +
+      '<svg class="plane" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 20c6-2 9-6 13-6" fill="none" stroke="#0E1C42" stroke-width="1.2" stroke-dasharray="2 2.5"/><path d="M15 12 38 3l-8 18-5-6z" fill="#fff" stroke="#0E1C42" stroke-width="1.4" stroke-linejoin="round"/><path d="M38 3 25 15l-2 6" fill="none" stroke="#0E1C42" stroke-width="1.2"/></svg></button></div>');
+  } else {
+  bar.insertAdjacentHTML('beforeend', '<div class="tools"><button class="tool" id="tCalc" type="button" aria-controls="calcDrawer" aria-label="Calculator" title="Calculator"><span class="ic" aria-hidden="true">+−</span><span class="tx">Calculator</span></button>' +
+    '<button class="tool" id="tAsk" type="button" aria-controls="askDrawer" aria-label="Ask ' + esc(TEACHER.short) + '" title="Ask ' + esc(TEACHER.short) + '"><img class="ic" src="' + face + '" alt=""><span class="tx">Ask ' + esc(TEACHER.short) + '</span></button></div>');
+  }
+  var A = window.ASK || {};
+  document.body.insertAdjacentHTML('beforeend',
+    '<div class="drawer" id="calcDrawer" role="dialog" aria-label="Calculator"><div class="dr-head"><div><small>Tool</small><b>Scientific calculator</b></div><button class="dr-x" type="button" aria-label="Close">&times;</button></div>' +
+    '<iframe class="calc-frame" id="calcFrame" title="Desmos Scientific Calculator" loading="lazy"></iframe><div class="dr-foot"><span>Desmos Scientific Calculator</span><a href="https://www.desmos.com/scientific" target="_blank" rel="noopener">open in a new tab ↗</a></div></div>' +
+    '<div class="drawer" id="askDrawer" role="dialog" aria-label="Ask ' + esc(TEACHER.full) + '"><div class="dr-head"><img src="' + face + '" alt=""><div><small>Questions</small><b>Ask ' + esc(TEACHER.full) + '</b></div><button class="dr-x" type="button" aria-label="Close">&times;</button></div>' +
+    '<div class="letters" id="letters"><div class="empty">Ask about ' + esc(A.scope || 'this lesson') + '. He answers from his notes on this page.<div class="quick">' + (A.quick || []).map(function(q){ return '<button type="button">' + esc(q) + '</button>'; }).join('') + '</div></div></div>' +
+    '<div class="compose"><textarea id="askQ" maxlength="300" aria-label="Your question" placeholder="Type a question"></textarea><div class="row"><span class="pg-note">An AI-generated character. Replies come from prepared notes.</span><button class="btn small" id="askSend" type="button">Send</button></div></div></div>');
+  var map = { calc: ['#tCalc', '#calcDrawer'], ask: ['#tAsk', '#askDrawer'] };
+  function open(name){
+    Object.keys(map).forEach(function(k){ var on = k === name; $(map[k][1]).classList.toggle('open', on); $(map[k][0]).classList.toggle('on', on); $(map[k][0]).setAttribute('aria-expanded', on ? 'true' : 'false'); });
+    if (name === 'calc') { var f = $('#calcFrame'); if (!f.getAttribute('src')) f.src = 'https://www.desmos.com/scientific'; }
+    if (name === 'ask') setTimeout(function(){ $('#askQ').focus(); }, 350);
+  }
+  Object.keys(map).forEach(function(k){
+    $(map[k][0]).addEventListener('click', function(){ $(map[k][1]).classList.contains('open') ? open(null) : open(k); });
+    $('.dr-x', $(map[k][1])).addEventListener('click', function(){ open(null); });
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') open(null); });
+  $$('[data-open]').forEach(function(b){ b.addEventListener('click', function(){ open(b.dataset.open); }); });
+
+  var BASE = [
+    { k: ['hello','hi','hey','who are you','your name'], w: 1, a: 'Hello! I teach algebra. Ask me about anything on this page, and I will answer from my notes.' },
+    { k: ['pdf','download','submit','turn in','hand in','save'], a: 'Finish the problem set, then press "Download my work (PDF)". It lists each answer and whether you had it on the first try. Your teacher will tell you where to hand it in.' },
+    { k: ['type','typing','exponent','power','squared','cubed','caret','^'], a: 'Type powers with the caret: x^2 for x squared, x^3 for x cubed. Under the box, "Reads as" shows how I read what you typed, so check it before you press Check.' },
+    { k: ['calculator','desmos'], a: 'The Calculator button in the bar at the top opens a scientific calculator. It helps with the arithmetic on coefficients; the algebra is still yours.' }
+  ];
+  var NOTES = BASE.concat(A.notes || []);
+  function answer(q){
+    var t = ' ' + q.toLowerCase().replace(/[^a-z0-9^',= ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    if (A.practice && A.practice.test(q)) return A.guide || 'That one is from your practice, so I will give you my questions instead of the answer. Which terms are like terms? What happens to the sign of each one? Try it, then press Check.';
+    var best = null, bs = 0;
+    NOTES.forEach(function(n){
+      var s = 0;
+      n.k.forEach(function(key){ var re = new RegExp('(^|[^a-z])' + key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?([^a-z]|$)'); if (re.test(t)) s += key.indexOf(' ') > 0 ? 3 : 2; });
+      s *= (n.w || 1.5); if (s > bs) { bs = s; best = n; }
+    });
+    if (!best || bs < 2) return 'Good question, but my notes only cover ' + (A.scope || 'this lesson') + '. Bring that one to your teacher.';
+    return best.a;
+  }
+  var list = $('#letters'), ta = $('#askQ'), send = $('#askSend'), LOG = jget('ask', []);
+  function letter(cls, who, text){ var e = $('.empty', list); if (e) e.remove(); var d = document.createElement('div'); d.className = 'letter ' + cls; d.innerHTML = '<div class="who">' + esc(who) + '</div>' + esc(text); list.appendChild(d); list.scrollTop = list.scrollHeight; }
+  LOG.forEach(function(m){ letter('mine', 'You', m.q); letter('his', TEACHER.short, m.a); });
+  function ask(q){
+    q = q.trim(); if (!q) { ta.focus(); return; }
+    letter('mine', 'You', q); ta.value = '';
+    var a = answer(q); setTimeout(function(){ letter('his', TEACHER.short, a); }, 350);
+    LOG.push({ q: q, a: a }); if (LOG.length > 20) LOG.shift(); jset('ask', LOG);
+  }
+  send.addEventListener('click', function(){ ask(ta.value); });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(ta.value); } });
+  $$('.quick button', list).forEach(function(b){ b.addEventListener('click', function(){ ask(b.textContent); }); });
+})();
+
+/* ---------- boot ---------- */
+switchTab(STORE.get('tab') || TABS[0], true);
+psetScore();
+
+</script>
+<script>
+/* Dr. Usborne mini-lessons: a short talk that moves a visual step by step (same engine as the 9th ELA teacher card).
+   <div class="vo" data-clip="v_parts"> … <div class="vo-stage"> [data-step="n"] elements … </div> … a JSON block (.vo-script) holding {"steps":[…]}
+   With audio (ASSETS[clip] = {audio, words:[[s,e,t],…]}) steps follow his words; without it, Play steps through on a reading-pace timer.
+   Each new step fires document event "vo-step" {detail:{card, clip, i}} so a page can animate beyond fade-ins. */
+(function(){
+  $$('.vo').forEach(function(card){
+    var sc; try { sc = JSON.parse(card.querySelector('.vo-script').textContent); } catch(e){ return; }
+    var steps = sc.steps, clip = ASSETS[card.dataset.clip] || {}, audio = null, timer = null, cur = -1, playing = false, t0 = 0, elapsed = 0;
+    var cap = card.querySelector('.vo-cap'), btn = card.querySelector('.vo-play'), fill = card.querySelector('.vo-fill'), dots = card.querySelector('.vo-dots'), stage = card.querySelector('.vo-stage');
+    var face = card.querySelector('.vo-face'); if (face && ASSETS.img && ASSETS.img.usb) { face.src = ASSETS.img.usb.src; face.alt = ''; }
+    var nm = card.querySelector('.vo-name'); if (nm && !nm.textContent.trim()) nm.textContent = TEACHER.short;
+    var wc = steps.map(function(s){ return (s.match(/\S+/g) || []).length; });
+    var bounds = [], acc = 0;
+    if (clip.audio && clip.words && clip.words.length) {
+      audio = new Audio(clip.audio); audio.preload = 'none';
+      steps.forEach(function(s, i){ var w = clip.words[Math.min(acc, clip.words.length - 1)]; bounds.push(w ? w[0] : 0); acc += wc[i]; });
+    } else {
+      steps.forEach(function(s, i){ bounds.push(acc); acc += Math.max(2.4, wc[i] / 2.6); });
+    }
+    var total = audio ? (clip.words[clip.words.length - 1][1] + .4) : acc;
+    var sEl = card.querySelector('.vo-time'); if (sEl) sEl.textContent = fmt(total);
+    dots.innerHTML = steps.map(function(s, i){ return '<button type="button" aria-label="Step ' + (i + 1) + '" data-i="' + i + '"></button>'; }).join('');
+    var tr = card.querySelector('.vo-trans'); if (tr) tr.innerHTML = steps.map(function(s){ return '<p>' + esc(s) + '</p>'; }).join('');
+
+    function fmt(s){ s = Math.round(s); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+    function show(i){
+      if (i === cur) return; cur = i;
+      stage.querySelectorAll('[data-step]').forEach(function(el){
+        var ks = String(el.dataset.step).split(/[ ,]+/).map(Number), k = ks[0];
+        el.classList.toggle('on', k <= i); el.classList.toggle('now', ks.indexOf(i) > -1);
+      });
+      cap.textContent = i >= 0 ? steps[i] : '';
+      cap.classList.remove('in'); void cap.offsetWidth; cap.classList.add('in');
+      dots.querySelectorAll('button').forEach(function(d, k){ d.classList.toggle('on', k <= i); });
+      card.classList.toggle('started', i >= 0);
+      document.dispatchEvent(new CustomEvent('vo-step', { detail: { card: card, clip: card.dataset.clip, i: i } }));
+    }
+    function at(t){ var i = -1; bounds.forEach(function(b, k){ if (t >= b - .05) i = k; }); return i; }
+    function tick(){
+      var t = audio ? audio.currentTime : elapsed + (performance.now() - t0) / 1000;
+      show(at(t)); fill.style.width = Math.min(100, t / total * 100) + '%';
+      if (t >= total) { finish(); return; }
+      if (playing) timer = requestAnimationFrame(tick);
+    }
+    function play(){
+      if (card.classList.contains('finished')) reset();
+      playing = true; card.classList.add('playing'); btn.innerHTML = '&#10074;&#10074; Pause';
+      document.dispatchEvent(new CustomEvent('vo-play', { detail: card }));
+      if (audio) { audio.play().catch(function(){}); } else t0 = performance.now();
+      tick();
+    }
+    function pause(){
+      playing = false; card.classList.remove('playing'); btn.innerHTML = '&#9654; Resume';
+      if (audio) audio.pause(); else elapsed += (performance.now() - t0) / 1000;
+      cancelAnimationFrame(timer);
+    }
+    function finish(){
+      playing = false; card.classList.remove('playing'); cancelAnimationFrame(timer);
+      show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished');
+      STORE.set('vo-' + card.dataset.clip, '1');
+    }
+    function reset(){ elapsed = 0; if (audio) audio.currentTime = 0; cur = -2; show(-1); fill.style.width = '0'; card.classList.remove('finished'); }
+    function jump(i){
+      var t = bounds[i]; if (audio) audio.currentTime = t; else { elapsed = t; t0 = performance.now(); }
+      card.classList.remove('finished'); show(i); fill.style.width = (t / total * 100) + '%';
+      if (!playing) { btn.innerHTML = '&#9654; Resume'; }
+    }
+    btn.addEventListener('click', function(){ playing ? pause() : play(); });
+    dots.addEventListener('click', function(e){ var d = e.target.closest('button'); if (d) jump(+d.dataset.i); });
+    var tb = card.querySelector('.vo-tbtn'); if (tb) tb.addEventListener('click', function(){ var o = card.classList.toggle('show-trans'); tb.setAttribute('aria-expanded', o ? 'true' : 'false'); tb.textContent = o ? 'Hide transcript' : 'Transcript'; });
+    if (audio) audio.addEventListener('ended', finish);
+    document.addEventListener('vo-play', function(e){ if (e.detail !== card && playing) pause(); });
+    document.addEventListener('tabchange', function(){ if (playing) pause(); });
+    if (STORE.get('vo-' + card.dataset.clip) === '1') { show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished'); }
+    else show(-1);
+  });
+})();
+
+</script>
+<script>
+/* proj: tuning helpers (interval calculator, live pipe preview, cut list, measuring log) + a PDF that carries all of it */
+(function(){
+  var NOTES = [[0,1,1],[2,9,8],[4,5,4],[5,4,3],[7,3,2],[9,5,3],[11,15,8],[12,2,1]];   // semitones n, whole-number ratio p/q
+  var JUST = {}; NOTES.forEach(function(r){ JUST[r[0]] = [r[1], r[2]]; });
+  function el(id){ return document.getElementById(id); }
+  function gcd(a, b){ while (b) { var t = a % b; a = b; b = t; } return a; }
+  function f1(x){ return (Math.round(x * 10) / 10).toFixed(1); }
+  function f4(x){ return (Math.round(x * 10000) / 10000).toFixed(4); }
+  function sg(x){ var s = f1(x); return (x > 0.049 ? '+' : '') + s; }
+  function et(n){ return Math.pow(2, n / 12); }
+  function nv(id, d){ var v = parseFloat(el(id).value); return isFinite(v) ? v : d; }
+  function Lval(){ return Math.max(60, Math.min(600, nv('proj-L', 240))); }
+  function typ(){ return el('proj-type').value; }
+  function ef(a, b){ return '2<sup class="ef"><b>' + a + '</b><b>' + b + '</b></sup>'; }
+  function rad(idx, inner){ return '<span class="rt">' + (idx === 2 ? '' : '<sup class="ix">' + idx + '</sup>') + '&radic;<span class="ov">' + inner + '</span></span>'; }
+
+  /* ---------- interval calculator ---------- */
+  function calc(){
+    var L = nv('proj-cL', 240), n = +el('proj-cn').value, p = nv('proj-cp', 0), q = nv('proj-cq', 0);
+    var r = et(n), d = gcd(n, 12) || 1, a = n / d, b = 12 / d, form, rads;
+    if (n === 0) { form = '2<sup>0</sup> = 1'; rads = 'No root: the multiplier is exactly 1.'; }
+    else if (b === 1) { form = '2<sup>' + a + '</sup> = ' + Math.pow(2, a); rads = 'No root: the multiplier is exactly ' + Math.pow(2, a) + '.'; }
+    else {
+      form = ef(a, b) + ' &asymp; ' + f4(r);
+      rads = (n === 12 ? '' : 'Radical form: ' + (a === 1 ? rad(b, '2') : rad(b, '2<sup>' + a + '</sup>') + ' = ' + rad(b, Math.pow(2, a))) + (d > 1 ? '. Reduced from 2<sup>' + n + '/12</sup>.' : ''));
+    }
+    var Le = L / r;
+    el('proj-co-et').innerHTML = '<span class="label">Equal temperament</span><div class="big"><span class="m">' + form + '</span></div><div class="sm">Length: <b>' + f1(Le) + ' mm</b> (L &divide; multiplier)</div><div class="sm">' + rads + '</div>';
+    var ju = el('proj-co-ju'), gap = el('proj-co-gap');
+    if (p > 0 && q > 0) {
+      var Lj = L * q / p, rj = p / q;
+      ju.innerHTML = '<span class="label">Whole-number ratio</span><div class="big"><span class="m">' + p + '/' + q + ' = ' + f4(rj) + '</span></div><div class="sm">Length: <b>' + f1(Lj) + ' mm</b> (L &times; ' + q + '/' + p + ')</div>';
+      var diff = Lj - Le;
+      gap.textContent = Math.abs(diff) < 0.05 ? 'The two lengths agree to the nearest 0.1 mm.' : 'The whole-number length is ' + f1(Math.abs(diff)) + ' mm ' + (diff > 0 ? 'longer' : 'shorter') + ' than the equal-tempered length.';
+    } else {
+      ju.innerHTML = '<span class="label">Whole-number ratio</span><div class="big sm">Type a ratio p over q to compare.</div>';
+      gap.textContent = '';
+    }
+  }
+  function fillRatio(){
+    var n = +el('proj-cn').value, j = JUST[n];
+    el('proj-cp').value = j ? j[0] : ''; el('proj-cq').value = j ? j[1] : '';
+  }
+
+  /* ---------- live preview ---------- */
+  function preview(){
+    var L = Lval(), s = el('proj-pv'), h = '', i, N;
+    if (typ() === 'pipes') {
+      s.setAttribute('viewBox', '0 0 620 266');
+      var k = 170 / L;
+      for (i = 0; i < 8; i++) {
+        N = NOTES[i]; var x = 38 + i * 70, le = L / et(N[0]), lj = L * N[2] / N[1];
+        h += '<rect x="' + x + '" y="20" width="38" height="' + (le * k).toFixed(1) + '" rx="3" fill="#E8F0FA" stroke="#1E5AA0" stroke-width="1.6"/>';
+        h += '<line x1="' + (x - 6) + '" x2="' + (x + 44) + '" y1="' + (20 + lj * k).toFixed(1) + '" y2="' + (20 + lj * k).toFixed(1) + '" stroke="#C43D27" stroke-width="2.4"/>';
+        h += '<text x="' + (x + 19) + '" y="230" text-anchor="middle" style="font-size:24px;font-weight:600;fill:#0E1C42">' + (i + 1) + '</text>';
+        h += '<text x="' + (x + 19) + '" y="258" text-anchor="middle" style="font-size:19px;fill:#1E5AA0">' + f1(le) + '</text>';
+      }
+      h += '<line x1="20" x2="600" y1="20" y2="20" stroke="#C3CED9" stroke-width="1.4"/>';
+      s.setAttribute('aria-label', 'Eight pipes, open ends level at the top, with each equal-tempered length drawn from your base length of ' + L + ' millimeters and each whole-number length marked in red.');
+    } else {
+      s.setAttribute('viewBox', '0 0 620 176');
+      var m = 540 / L;
+      h += '<line x1="40" x2="580" y1="92" y2="92" stroke="#0E1C42" stroke-width="2"/>';
+      h += '<rect x="34" y="78" width="8" height="28" fill="#0E1C42"/><rect x="578" y="78" width="8" height="28" fill="#0E1C42"/>';
+      h += '<text x="38" y="134" text-anchor="start" style="font-size:20px">fixed end</text><text x="582" y="134" text-anchor="end" style="font-size:20px">fixed end</text>';
+      for (i = 0; i < 8; i++) {
+        N = NOTES[i]; var xe = 40 + (L / et(N[0])) * m, xj = 40 + (L * N[2] / N[1]) * m;
+        h += '<line x1="' + xe.toFixed(1) + '" x2="' + xe.toFixed(1) + '" y1="56" y2="92" stroke="#1E5AA0" stroke-width="2.6"/>';
+        h += '<line x1="' + xj.toFixed(1) + '" x2="' + xj.toFixed(1) + '" y1="92" y2="116" stroke="#C43D27" stroke-width="2.6"/>';
+        h += '<text x="' + xe.toFixed(1) + '" y="' + (i % 2 ? 50 : 26) + '" text-anchor="middle" style="font-size:24px;font-weight:600;fill:#0E1C42">' + (i + 1) + '</text>';
+      }
+      h += '<text x="310" y="168" text-anchor="middle" style="font-size:20px">Lengths run from the left fixed end, in mm.</text>';
+      s.setAttribute('aria-label', 'A string of ' + L + ' millimeters with eight marks measured from the left end: equal-tempered marks above the string in blue, whole-number marks below it in red.');
+    }
+    s.innerHTML = h;
+  }
+
+  /* ---------- cut list + measuring log ---------- */
+  function choice(i){ return STORE.get('cut-' + i) === 'j' ? 'j' : 'e'; }
+  function cutLen(i){ var L = Lval(), N = NOTES[i]; return choice(i) === 'j' ? L * N[2] / N[1] : L / et(N[0]); }
+  function renderCut(){
+    var L = Lval(), h = '', tot = 0;
+    NOTES.forEach(function(N, i){
+      var le = L / et(N[0]), lj = L * N[2] / N[1], c = choice(i); tot += c === 'j' ? lj : le;
+      var gp = lj - le;
+      h += '<tr><td>' + (i + 1) + '</td><td>' + N[0] + '</td><td>' + f1(le) + '</td><td>' + N[1] + '/' + N[2] + '</td><td>' + f1(lj) + '</td><td' + (gp < -0.049 ? ' class="neg"' : '') + '>' + sg(gp) + '</td><td class="cut"><select data-i="' + i + '" aria-label="Cut note ' + (i + 1) + ' from"><option value="e"' + (c === 'e' ? ' selected' : '') + '>Equal</option><option value="j"' + (c === 'j' ? ' selected' : '') + '>Whole-number</option></select></td></tr>';
+    });
+    el('proj-cutbody').innerHTML = h;
+    Array.prototype.forEach.call(el('proj-cutbody').querySelectorAll('select'), function(sel){
+      sel.addEventListener('change', function(){ STORE.set('cut-' + sel.dataset.i, sel.value); renderCut(); renderMeas(); });
+    });
+    el('proj-tot').textContent = typ() === 'pipes' ? 'Total straw for the eight pipes: ' + f1(tot) + ' mm.' : 'The two fixed points are ' + f1(L) + ' mm apart. Mark each length from the left fixed end.';
+  }
+  function tol(d){
+    var a = Math.abs(d);
+    return a <= 1.0001 ? '<span class="badge g">within 1 mm</span>' : a <= 2.0001 ? '<span class="badge g">within 2 mm</span>' : a <= 4.0001 ? '<span class="badge">within 4 mm</span>' : '<span class="badge r">over 4 mm</span>';
+  }
+  function measRow(i){
+    var v = parseFloat(el('proj-m' + i).value), c = cutLen(i), d = el('proj-md' + i), t = el('proj-mt' + i);
+    if (!isFinite(v)) { d.textContent = ''; t.innerHTML = '<span class="badge">not measured</span>'; return; }
+    d.textContent = sg(v - c); t.innerHTML = tol(v - c);
+  }
+  function renderMeas(){
+    var h = '';
+    NOTES.forEach(function(N, i){
+      var v = STORE.get('meas-' + i);
+      h += '<tr><td>' + (i + 1) + '</td><td>' + (choice(i) === 'j' ? 'whole-number' : 'equal') + '</td><td>' + f1(cutLen(i)) + '</td><td><input id="proj-m' + i + '" type="number" step="0.1" min="0" inputmode="decimal" aria-label="Measured length of note ' + (i + 1) + ' in millimeters" value="' + (v === null ? '' : v) + '"></td><td id="proj-md' + i + '"></td><td id="proj-mt' + i + '"></td></tr>';
+    });
+    el('proj-measbody').innerHTML = h;
+    NOTES.forEach(function(N, i){
+      el('proj-m' + i).addEventListener('input', function(){ STORE.set('meas-' + i, el('proj-m' + i).value); measRow(i); });
+      measRow(i);
+    });
+  }
+
+  function all(){ preview(); calc(); renderCut(); renderMeas(); }
+  var t0 = STORE.get('type'); if (t0) el('proj-type').value = t0;
+  var L0 = STORE.get('L'); if (L0) el('proj-L').value = L0;
+  var c0 = STORE.get('cn'); if (c0 !== null) el('proj-cn').value = c0;
+  el('proj-cL').value = STORE.get('cL') || el('proj-L').value;
+  if (STORE.get('cp') !== null) { el('proj-cp').value = STORE.get('cp'); el('proj-cq').value = STORE.get('cq'); } else fillRatio();
+  el('proj-type').addEventListener('change', function(){ STORE.set('type', typ()); all(); });
+  el('proj-L').addEventListener('input', function(){ STORE.set('L', el('proj-L').value); el('proj-cL').value = el('proj-L').value; STORE.set('cL', el('proj-L').value); all(); });
+  el('proj-cL').addEventListener('input', function(){ STORE.set('cL', el('proj-cL').value); calc(); });
+  el('proj-cn').addEventListener('change', function(){ STORE.set('cn', el('proj-cn').value); fillRatio(); STORE.set('cp', el('proj-cp').value); STORE.set('cq', el('proj-cq').value); calc(); });
+  ['proj-cp', 'proj-cq'].forEach(function(id){ el(id).addEventListener('input', function(){ STORE.set(id.slice(5), el(id).value); calc(); }); });
+  all();
+
+  /* ---------- score + PDF: every checkpoint on the page counts, and the PDF carries the made things too ---------- */
+  psetItems = function(){ return $$('.mq, .mcq'); };
+  function pq(s){
+    return s.replace(/<sup class="ef"><b>([^<]*)<\/b><b>([^<]*)<\/b><\/sup>/g, '<sup>$1/$2</sup>').replace(/<span class="ov">/g, '<span style="text-decoration:overline">').replace(/<sup class="ix">/g, '<sup>');
+  }
+  pdfHtml = function(){
+    var L = Lval(), h = '<h2>My instrument</h2><div class="a">' + (typ() === 'pipes' ? 'Straw pan pipes' : 'One-string monochord') + ', longest length L = ' + f1(L) + ' mm</div>';
+    h += '<h2>Cut list and measurements</h2><table class="ps"><tr><th>Note</th><th>n</th><th>Tuning</th><th>Cut length (mm)</th><th>Measured (mm)</th><th>Difference (mm)</th></tr>';
+    NOTES.forEach(function(N, i){
+      var v = parseFloat(STORE.get('meas-' + i)), c = cutLen(i);
+      h += '<tr><td>' + (i + 1) + '</td><td>' + N[0] + '</td><td>' + (choice(i) === 'j' ? 'whole-number ' + N[1] + '/' + N[2] : 'equal') + '</td><td>' + f1(c) + '</td><td>' + (isFinite(v) ? f1(v) : '<span class="missing">(not measured)</span>') + '</td><td>' + (isFinite(v) ? sg(v - c) : '') + '</td></tr>';
+    });
+    h += '</table><h2>Checkpoints</h2><table class="ps"><tr><th>#</th><th>Checkpoint</th><th>My answer</th><th>Result</th></tr>';
+    psetItems().forEach(function(e, i){
+      var r = itemRec(e), a = !r || !r.v ? '<span class="missing">(not answered)</span>' : (e.classList.contains('mq') ? MATH.pretty(r.v) : esc(r.v));
+      var res = !r ? '' : r.ok ? (r.first ? '&#10003; first try' : '&#10003; after ' + ((r.tries || (r.tried || []).length) - 1) + ' more') : '&#10007; not yet';
+      h += '<tr><td>' + (i + 1) + '</td><td>' + pq(stemText(e)) + '</td><td>' + pq(a) + '</td><td>' + res + '</td></tr>';
+    });
+    h += '</table><h2>Written work</h2>';
+    $$('textarea.jbox').forEach(function(e){ var v = (STORE.get('j-' + e.id) || '').trim(); h += '<div class="q">' + esc(e.dataset.label || e.id) + '</div>' + (v ? '<div class="a">' + esc(v) + '</div>' : '<div class="a missing">(no answer saved)</div>'); });
+    var ck = $$('.pset .checks li');
+    if (ck.length) { h += '<h2>Checklist</h2>'; ck.forEach(function(li){ h += '<div class="a">' + (li.classList.contains('on') ? '&#9745; ' : '&#9744; ') + esc(li.textContent.replace(/^✓/, '').trim()) + '</div>'; }); }
+    return h;
+  };
+  psetScore();
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Phyllis">
+<title>Focus Assignment 6.11: Trigonometry in the Field · Precalculus Honors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Algebra 1 integrated lesson · core look. Same frame as the 9th ELA pilot (Inter labels, Source Serif text, focus + objectives,
+   numbered tabs, teacher card); math keeps its graph-paper ground and Binary Blue ink. Two accents: blue (working), red (marks). */
+:root{
+  --paper:#F7F9F5; --card:#FFFFFF; --ink:#0E1C42; --ink2:#38434F; --muted:#65707C; --line:#DCE3EA; --line2:#C3CED9;
+  --grid:#E2EAF3; --grid2:#C9D8E8;
+  --blue:#1E5AA0; --blue-t:#E8F0FA; --red:#C43D27; --red-t:#FBEBE7;
+  --ok:#2F6B4F; --ok-t:#EAF3EE;
+  --serif:"Source Serif 4", Georgia, "Times New Roman", serif; --ui:Inter, "Segoe UI", system-ui, sans-serif;
+  --r:10px; --wrap:1000px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font:17px/1.65 var(--serif);-webkit-font-smoothing:antialiased;background-color:var(--paper);
+  background-image:linear-gradient(var(--grid2) 1px,transparent 1px),linear-gradient(90deg,var(--grid2) 1px,transparent 1px),linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+  background-size:100px 100px,100px 100px,20px 20px,20px 20px}
+img{max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* ---------- header ---------- */
+.hero{padding:22px 0 8px}
+.brand{display:flex;align-items:center;gap:10px;font:600 12px/1.2 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);padding-bottom:16px;border-bottom:1.5px solid var(--ink)}
+.brand img{width:28px;height:28px}
+.hero-g{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center;padding-top:26px}
+@media (max-width:760px){.hero-g{grid-template-columns:1fr;gap:20px}}
+.kicker{font:600 12px/1.3 var(--ui);letter-spacing:.16em;text-transform:uppercase;color:var(--blue)}
+.hero h1{font:700 clamp(34px,5.4vw,50px)/1.06 var(--ui);letter-spacing:-.02em;margin:10px 0 14px;max-width:16ch}
+.focusq{border-left:3px solid var(--red);padding:2px 0 2px 16px}
+.label{font:600 11.5px/1.3 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.focusq p{margin:6px 0 0;font:400 20px/1.45 var(--serif);color:var(--ink)}
+.objs{margin:10px 0 0}
+.objs summary{font:600 13px/1.4 var(--ui);color:var(--ink2);cursor:pointer;list-style:none}
+.objs summary::-webkit-details-marker{display:none}
+.objs summary::before{content:"+ ";color:var(--red)}
+.objs[open] summary::before{content:"– "}
+.objs ul{margin:8px 0 0;padding-left:18px;font-size:15.5px;color:var(--ink2)}
+.figcard{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:16px 18px;box-shadow:0 1px 2px rgba(14,28,66,.05),0 10px 24px rgba(14,28,66,.06)}
+.figcard svg{display:block;width:100%;height:auto}
+.figcard .cap{font:12.5px/1.4 var(--ui);color:var(--muted);margin-top:8px}
+
+/* ---------- tabs + tools ---------- */
+.tabs{position:sticky;top:0;z-index:30;background:rgba(247,249,245,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line2);margin-top:26px}
+.tabs .wrap{display:flex;align-items:center;gap:4px}
+.tabs .tl{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.tabs .tl::-webkit-scrollbar{display:none}
+.tab{flex:none;border:0;background:none;padding:14px 12px 12px;font:600 14px/1 var(--ui);color:var(--muted);border-bottom:2px solid transparent;display:flex;gap:8px;align-items:baseline;white-space:nowrap}
+.tab .n{font:500 12px/1 var(--ui);color:var(--line2);letter-spacing:.06em}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--ink);border-bottom-color:var(--blue)}
+.tab.on .n{color:var(--blue)}
+.tab.seen .n::after{content:" ✓";color:var(--ok)}
+.tools{display:flex;gap:6px;flex:none;padding-left:8px;border-left:1px solid var(--line)}
+.tool{display:flex;align-items:center;gap:7px;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:5px 11px 5px 6px;font:600 12.5px/1 var(--ui);color:var(--ink)}
+.tool:hover,.tool.on{border-color:var(--ink)}
+.tool .ic{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font:700 12px/1 var(--ui)}
+.tool img.ic{object-fit:cover;background:none}
+@media (max-width:700px){.tool .tx{display:none}.tool{padding:5px}}
+.tabs .wrap:has(.tab:nth-child(5)) .tool .tx{display:none}
+.tabs .wrap:has(.tab:nth-child(5)) .tool{padding:5px}
+.tabs .wrap:has(.tab:nth-child(5)) .tab{padding-left:10px;padding-right:10px}
+.panel{display:none;padding:30px 0 60px;animation:rise .35s ease}
+.panel.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------- sections ---------- */
+.sec{margin:0 0 38px}
+.sec-h{display:flex;align-items:baseline;gap:12px;margin:0 0 14px}
+.sec-h .num{font:600 13px/1 var(--ui);color:var(--red);letter-spacing:.08em}
+.sec-h h2{font:700 26px/1.2 var(--ui);letter-spacing:-.01em;margin:0}
+.sec h3{font:600 17px/1.3 var(--ui);margin:22px 0 8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
+.card + .card{margin-top:14px}
+@media (max-width:600px){.card{padding:16px}}
+.hint{font:13.5px/1.5 var(--ui);color:var(--muted)}
+.prose{max-width:68ch}
+.prose p{margin:0 0 12px}
+
+/* ---------- math typesetting (HTML, no MathJax) ---------- */
+.m{font-family:var(--serif);white-space:nowrap}
+.m i{font-style:italic}
+.m sup{font-size:.68em;line-height:0}
+.mb{display:block;text-align:center;font:400 24px/1.5 var(--serif);margin:14px 0;white-space:normal}
+.fr{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;font-size:.92em;line-height:1.15;margin:0 2px}
+.fr > span:first-child{border-bottom:1.2px solid currentColor;padding:0 3px}
+.fr > span:last-child{padding:0 3px}
+.hl{background:var(--blue-t);border-radius:3px;padding:0 2px}
+.hl-r{background:var(--red-t);border-radius:3px;padding:0 2px}
+
+/* worked example: steps that open one at a time */
+.ex{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 22px;margin:0 0 16px}
+.ex-h{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.ex-h .label{color:var(--red)}
+.ex-q{font:400 21px/1.45 var(--serif)}
+.ex ol.steps{list-style:none;counter-reset:s;margin:12px 0 0;padding:0}
+.ex ol.steps li{counter-increment:s;position:relative;padding:8px 0 8px 36px;border-top:1px dashed var(--line);display:none}
+.ex ol.steps li.on{display:block;animation:rise .3s ease}
+.ex ol.steps li::before{content:counter(s);position:absolute;left:0;top:9px;width:22px;height:22px;border-radius:50%;background:var(--blue-t);color:var(--blue);font:700 12px/22px var(--ui);text-align:center}
+.ex .more{margin-top:10px}
+.ex.done .more{display:none}
+
+/* video, tucked */
+details.watch{margin:6px 0 30px;border:1px solid var(--line);border-radius:var(--r);background:var(--card)}
+details.watch summary{list-style:none;cursor:pointer;padding:11px 16px;font:600 13.5px/1.3 var(--ui);color:var(--ink2);display:flex;gap:10px;align-items:center}
+details.watch summary::-webkit-details-marker{display:none}
+details.watch summary::before{content:"▶";font-size:10px;width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none}
+details.watch[open] summary::before{content:"▾";font-size:13px}
+details.watch summary span{font-weight:400;color:var(--muted)}
+details.watch video{display:block;width:100%;max-height:520px;background:#000;border-radius:0 0 var(--r) var(--r)}
+
+/* word list (reference) */
+.words{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:10px}
+.word{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 14px;font:15px/1.5 var(--serif)}
+.word b{display:block;font:600 14.5px/1.3 var(--ui);color:var(--ink);margin-bottom:2px}
+details.gloss{margin:0 0 26px}
+details.gloss > summary{list-style:none;cursor:pointer;font:600 13.5px/1.4 var(--ui);color:var(--ink2);padding:6px 0}
+details.gloss > summary::-webkit-details-marker{display:none}
+details.gloss > summary::before{content:"+ ";color:var(--red)}
+details.gloss[open] > summary::before{content:"– "}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);background:var(--ink);color:#fff;border-radius:999px;padding:9px 18px;font:600 14px/1 var(--ui)}
+.btn:hover{background:#1F3266}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line2)}
+.btn.ghost:hover{border-color:var(--ink)}
+.btn.small{padding:7px 13px;font-size:13px}
+.btn[disabled]{opacity:.45;cursor:default}
+.next{display:flex;justify-content:space-between;gap:12px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line2)}
+
+/* ---------- typed answers (words) ---------- */
+.field{margin:14px 0 20px}
+.field .q{font:600 16px/1.45 var(--serif);margin:0 0 8px}
+textarea.jbox,input.name{width:100%;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:12px 14px;font:16.5px/1.6 var(--serif);color:var(--ink);resize:vertical;min-height:100px}
+input.name{min-height:0;font-family:var(--ui);font-size:15px;max-width:360px}
+textarea.jbox:focus,input.name:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.wc{font:12.5px/1 var(--ui);color:var(--muted);margin-top:6px;text-align:right}
+.wc.met{color:var(--ok)}
+
+/* ---------- choices ---------- */
+.mcq,.mq{margin:0 0 24px}
+.stem{font-weight:600;margin:0 0 10px}
+.stem .qn{display:inline-block;min-width:26px;font:700 13px/1 var(--ui);color:var(--blue)}
+.opts{display:grid;gap:8px}
+.opts.row{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.opt{text-align:left;border:1px solid var(--line2);background:#fff;border-radius:8px;padding:10px 14px;font:16px/1.45 var(--serif);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--ink)}
+.opt.no{background:#F3F4F2;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line2)}
+.opt.yes{border-color:var(--ok);background:var(--ok-t)}
+.mcq.done .opt:not(.yes){opacity:.55;pointer-events:none}
+.fb{font:15px/1.5 var(--serif);margin-top:10px;padding:10px 14px;border-radius:8px;display:none}
+.fb.show{display:block}
+.fb.good{background:var(--ok-t);border-left:3px solid var(--ok)}
+.fb.try{background:#F3F4F2;border-left:3px solid var(--line2)}
+.shake{animation:shake .32s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+/* ---------- typed math (checked by value, not by spelling) ---------- */
+.mq-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.mq-in{flex:1;min-width:200px;max-width:440px;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:10px 13px;font:17px/1.3 var(--serif);color:var(--ink)}
+.mq-in:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.mq.done .mq-in{border-color:var(--ok);background:var(--ok-t)}
+.mq-prev{font:15px/1.4 var(--serif);color:var(--muted);min-height:1.4em;margin-top:6px}
+.mq-prev .m{color:var(--ink)}
+.mq-keys{font:12.5px/1.4 var(--ui);color:var(--muted);margin:0 0 14px}
+.mq-keys code{font:600 12.5px/1 var(--ui);background:#fff;border:1px solid var(--line2);border-radius:4px;padding:1px 5px;color:var(--ink)}
+
+/* ---------- place (tap a card, tap a bin) ---------- */
+.place .bank{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px;min-height:44px}
+.chip{border:1px solid var(--line2);background:#fff;border-radius:8px;padding:8px 13px;font:16px/1.4 var(--serif);text-align:left;max-width:100%;transition:transform .15s,border-color .15s,box-shadow .15s}
+.chip.sel{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-t);transform:translateY(-2px)}
+.chip.placed{pointer-events:none;cursor:default;border-color:transparent;background:transparent;padding:4px 0;font-size:15px}
+.chip.placed::before{content:"✓ ";color:var(--ok)}
+.bins{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.bin{border:1px dashed var(--line2);border-radius:var(--r);padding:12px 14px;background:#fff;min-height:70px;transition:border-color .15s,background .15s}
+.bin.armed{border-color:var(--ink);background:var(--blue-t);cursor:pointer}
+.bin h4{margin:0 0 4px;font:600 12px/1.3 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2)}
+.tally{font:600 13px/1.4 var(--ui);color:var(--muted);margin-top:8px}
+.tally.done{color:var(--ok)}
+
+/* ---------- problem set + PDF ---------- */
+.pset-top{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:flex-end;justify-content:space-between;margin:0 0 22px}
+.score{display:flex;gap:26px;font:600 12.5px/1.3 var(--ui);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.score b{display:block;font:700 30px/1.05 var(--ui);color:var(--ink);letter-spacing:-.01em;text-transform:none}
+.pdfbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:26px;padding:16px 18px;background:var(--card);border:1px solid var(--line2);border-radius:var(--r)}
+.print-note{display:none;font:13.5px/1.5 var(--ui);color:var(--red)}
+.print-note.show{display:block}
+.checks{list-style:none;padding:0;margin:8px 0}
+.checks li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;cursor:pointer}
+.checks li .bx{flex:none;width:20px;height:20px;border:1.5px solid var(--line2);border-radius:5px;margin-top:3px;display:grid;place-items:center;font:700 13px/1 var(--ui);color:#fff}
+.checks li.on .bx{background:var(--ink);border-color:var(--ink)}
+
+/* ---------- side box (optional work, kept quiet) ---------- */
+.aside{border-left:3px solid var(--blue);background:rgba(255,255,255,.75);padding:12px 16px;border-radius:0 8px 8px 0;font-size:16px;margin:0 0 22px}
+.aside .label{color:var(--blue);display:block;margin-bottom:4px}
+
+/* ---------- drawers: calculator + Ask ---------- */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100vw);z-index:60;background:#fff;border-left:1px solid var(--line2);box-shadow:-12px 0 30px rgba(14,28,66,.16);display:flex;flex-direction:column;transform:translateX(105%);visibility:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s .35s}
+.drawer.open{transform:none;visibility:visible;transition:transform .35s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.dr-head{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line2)}
+.dr-head img{width:40px;height:40px;border-radius:50%;object-fit:cover}
+.dr-head div{flex:1}
+.dr-head small{display:block;font:600 10.5px/1.2 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.dr-head b{display:block;font:600 16px/1.3 var(--ui)}
+.dr-x{background:none;border:0;font-size:26px;line-height:1;padding:0 6px;color:var(--ink2)}
+.calc-frame{flex:1;width:100%;border:0;background:#fff}
+.dr-foot{font:12.5px/1.4 var(--ui);color:var(--muted);padding:8px 14px;border-top:1px solid var(--line2);display:flex;justify-content:space-between;gap:10px}
+.dr-foot a{color:var(--blue)}
+.letters{flex:1;overflow:auto;padding:16px 14px;background:var(--paper)}
+.letter{background:#fff;border:1px solid var(--line2);border-radius:10px;padding:10px 13px;margin:0 0 12px;font:15px/1.55 var(--serif)}
+.letter.mine{margin-left:34px;border-color:var(--blue);background:var(--blue-t)}
+.letter.his{margin-right:24px}
+.letter .who{font:600 12px/1.3 var(--ui);color:var(--muted);margin-bottom:3px}
+.letters .empty{font:14px/1.5 var(--ui);color:var(--muted)}
+.quick{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.quick button{border:1px solid var(--line2);background:#fff;border-radius:999px;font:13px/1.3 var(--ui);padding:5px 11px;text-align:left}
+.quick button:hover{border-color:var(--ink)}
+.compose{padding:12px 14px 14px;border-top:1px solid var(--line2)}
+.compose textarea{width:100%;min-height:64px;border:1px solid var(--line2);border-radius:8px;padding:9px 11px;font:15px/1.5 var(--serif);resize:vertical}
+.compose .row{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px}
+.compose .pg-note{font:11.5px/1.35 var(--ui);color:var(--muted)}
+@media (max-width:760px){.drawer{top:auto;height:84vh;width:100%;border-left:0;border-top:1px solid var(--line2);transform:translateY(105%)}}
+@media print{.tabs,.drawer{display:none!important}}
+
+footer.foot{border-top:1px solid var(--line2);padding:22px 0 40px;font:12.5px/1.5 var(--ui);color:var(--muted);background:rgba(247,249,245,.9)}
+footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+/* ---------- problem-set bands: each question is its own soft band, alternating, so a long set doesn't read as one wall ---------- */
+.pset .mq,.pset .mcq{padding:14px 16px 16px;margin:0 -10px 8px;border-radius:10px}
+.pset :is(.mq,.mcq):nth-child(even of .mq,.mcq){background:#F2F6FB;box-shadow:inset 0 0 0 1px #E3EBF4}
+.pset :is(.mq,.mcq) .fb.try{background:#fff}
+@media (max-width:600px){.pset .mq,.pset .mcq{padding:12px 12px 14px;margin:0 -6px 8px}}
+
+/* ---------- Dr. Usborne mini-lesson card (same card as the 9th ELA teacher) ---------- */
+.vo{background:var(--card);border:1px solid var(--line2);border-radius:14px;overflow:hidden;margin:0 0 30px;box-shadow:0 1px 2px rgba(14,28,66,.04),0 10px 26px rgba(14,28,66,.06)}
+.vo-head{display:flex;align-items:center;gap:14px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.vo-face{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 0 0 1px var(--line2)}
+.vo-who{flex:1;min-width:0}
+.vo-name{font:600 15px/1.2 var(--ui);color:var(--ink)}
+.vo-title{font:600 20px/1.25 var(--ui);letter-spacing:-.01em;color:var(--ink);margin-top:2px}
+.vo-note{font:11.5px/1.3 var(--ui);color:var(--muted);margin-top:2px}
+.vo-ctl{display:flex;align-items:center;gap:10px;flex:none}
+.vo-time{font:12.5px/1 var(--ui);color:var(--muted)}
+.vo-stage{position:relative;padding:24px 22px 18px;min-height:220px;background-color:#FBFCFE;
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:20px 20px}
+.vo-cap{min-height:3.2em;padding:14px 22px 6px;font:400 19px/1.5 var(--serif);color:var(--ink);max-width:62ch}
+.vo-cap.in{animation:capin .45s ease}
+@keyframes capin{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.vo:not(.started) .vo-cap::before{content:"Press Play. The picture builds as he talks.";color:var(--muted);font:14px/1.5 var(--ui)}
+.vo-foot{display:flex;align-items:center;gap:14px;padding:6px 22px 16px}
+.vo-bar{flex:1;height:3px;background:var(--line);border-radius:2px;overflow:hidden}
+.vo-fill{height:100%;width:0;background:var(--blue);transition:width .25s linear}
+.vo-dots{display:flex;gap:5px}
+.vo-dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--line2);background:#fff;padding:0}
+.vo-dots button.on{background:var(--ink);border-color:var(--ink)}
+.vo-tbtn{border:0;background:none;font:600 12.5px/1 var(--ui);color:var(--muted);padding:4px 0}
+.vo-trans{display:none;padding:0 22px 18px;font:15px/1.6 var(--serif);color:var(--ink2)}
+.vo.show-trans .vo-trans{display:block}
+.vo-trans p{margin:0 0 6px}
+/* step-driven visuals: anything with data-step fades in when he reaches it; .now is the beat he is on */
+.vo-stage [data-step]{opacity:.18;transition:opacity .6s ease,transform .6s ease,color .4s,background .4s,border-color .4s,box-shadow .4s}
+.vo-stage [data-step].on{opacity:1}
+.vo-stage [data-step].now{box-shadow:0 0 0 3px var(--blue-t)}
+.vo-stage svg [data-step].now,.vo-stage .nohalo.now{box-shadow:none}
+.vo.finished .vo-stage [data-step],.vo:not(.started) .vo-stage [data-step].keep{opacity:1}
+.vo.finished .vo-stage [data-step].now{box-shadow:none}
+@media (max-width:600px){ .vo-head{flex-wrap:wrap} .vo-ctl{width:100%;justify-content:space-between} .vo-cap{font-size:17.5px;padding:12px 16px 4px} .vo-stage{padding:18px 12px 14px} .vo-foot{padding:6px 16px 14px} }
+
+</style>
+<style>
+.hero-fig{display:block;width:100%;max-width:280px;margin:0 auto;height:auto}
+.from{font:600 12px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin:0 0 6px}
+.from em{font-style:normal;letter-spacing:.04em;text-transform:none;font-size:13.5px}
+
+/* teacher-card stage */
+.disp{display:inline-flex;gap:10px;align-items:baseline;border:1px solid var(--line2);background:#fff;border-radius:999px;padding:6px 14px;font:600 13px/1.3 var(--ui);color:var(--ink);margin:0 0 14px}
+.disp .label{color:var(--red)}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.pn{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:8px 8px 6px}
+.pn svg{display:block;width:100%;height:auto}
+.pn svg text{font:600 11px var(--ui);fill:var(--ink2)}
+.pn svg text.blue{fill:var(--blue);font-weight:700}
+.pn svg text.red{fill:var(--red);font-weight:700}
+.pn svg text.b{fill:var(--ink);font-weight:700;font-size:13px}
+.pn svg text.s{fill:var(--muted)}
+.pn .pc{font:600 12.5px/1.3 var(--ui);color:var(--ink);text-align:center;padding-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips span{border:1px solid var(--blue);color:var(--blue);background:var(--blue-t);border-radius:999px;padding:5px 13px;font:600 13px/1.2 var(--ui)}
+@media (max-width:700px){.trio{grid-template-columns:1fr}.pn{max-width:380px;margin:0 auto;width:100%}}
+
+/* project text */
+ol.six{margin:14px 0 0;padding-left:22px;font:16.5px/1.55 var(--serif)}
+ol.six li{margin:3px 0}
+ol.six li b{font:700 12px/1.3 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-right:8px}
+.ptext{margin:0 0 12px;font-size:18px;line-height:1.6}
+.tagm{display:inline-block;font:700 11.5px/1.2 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--red);border-radius:999px;padding:5px 12px;margin:0 0 10px}
+ol.parts{list-style:none;counter-reset:pp;margin:0 0 14px;padding:0}
+ol.parts li{counter-increment:pp;position:relative;padding:6px 0 6px 36px}
+ol.parts li::before{content:counter(pp);position:absolute;left:0;top:8px;width:24px;height:24px;border-radius:50%;background:var(--blue-t);color:var(--blue);font:700 12.5px/24px var(--ui);text-align:center}
+.photos{margin-top:14px;padding:14px 18px;border:1px dashed var(--line2);border-radius:var(--r);background:rgba(255,255,255,.7)}
+.photos p{margin:4px 0 0;font-size:16px}
+
+/* reference grid */
+.refgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0 14px}
+.qd{border:1px solid var(--line2);border-radius:8px;background:#fff;padding:8px 10px;display:grid;gap:2px;font:14.5px/1.4 var(--serif)}
+.qd b{font:700 12px/1.3 var(--ui);letter-spacing:.1em;color:var(--red)}
+.qd span:last-child{font:600 12.5px/1.3 var(--ui);color:var(--blue)}
+@media (max-width:600px){.refgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* rubric table */
+.tblwrap{padding:8px 14px}
+.rub{width:100%;border-collapse:collapse;font:14.5px/1.5 var(--serif)}
+.rub th{font:600 11.5px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px;border-bottom:2px solid var(--ink)}
+.rub td{vertical-align:top;padding:12px 10px;border-bottom:1px solid var(--line)}
+.rub td.cr{font:700 15px/1.35 var(--ui);width:150px}
+.rub td.cr small{display:block;font:600 11.5px/1.4 var(--ui);color:var(--red);margin-top:4px}
+.rub tr.tot td{border-bottom:0;font:700 15px/1.3 var(--ui)}
+.rub tr.tot td.tt{text-align:right;color:var(--ink)}
+@media (max-width:760px){
+  .rub thead{display:none}
+  .rub,.rub tbody{display:block}
+  .rub tr{display:block;padding:10px 0;border-bottom:2px solid var(--line2)}
+  .rub td{display:block;border:0;padding:5px 0;width:auto!important}
+  .rub td[data-l]::before{content:attr(data-l);display:block;font:600 11px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
+  .rub tr.tot td.tt{text-align:left}
+}
+
+/* calculators */
+.calc{border:1px solid var(--line2);border-radius:var(--r);background:#FBFCFE;padding:14px 16px}
+.cin{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cin label,.lg label{display:block;font:600 12.5px/1.3 var(--ui);color:var(--ink2)}
+.cin label .u,.lg label .u{display:block;font:400 11.5px/1.3 var(--ui);color:var(--muted)}
+.cin input,.lg input{width:100%;margin-top:4px;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:8px 10px;font:16px/1.3 var(--serif);color:var(--ink)}
+.cin input:focus,.lg input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.cout{margin:12px 0 6px;font:16px/1.55 var(--serif)}
+.cout .row{display:flex;flex-wrap:wrap;gap:6px 22px}
+.cout .kv b{display:block;font:600 11px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.cout .kv span{font:700 20px/1.3 var(--ui);color:var(--ink)}
+.cout .bad{color:var(--red);font:600 14px/1.5 var(--ui)}
+.cout .note{font:13.5px/1.5 var(--ui);color:var(--muted);margin-top:6px}
+.cvs{display:block;width:100%;max-width:560px;margin:8px auto 0;height:auto}
+.cvs text{font:600 12.5px var(--ui);fill:var(--ink2)}
+.cvs text.red{fill:var(--red);font-weight:700}
+.cvs text.blue{fill:var(--blue);font-weight:700}
+.cvs text.b{fill:var(--ink);font-weight:700}
+.legs{display:grid;gap:10px}
+.lg{display:grid;grid-template-columns:62px minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:end;padding:8px 0;border-bottom:1px dashed var(--line)}
+.lg .ln{font:700 12px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--red);padding-bottom:10px}
+.lg .rd{grid-column:1/-1;font:14.5px/1.5 var(--serif);color:var(--ink2);min-height:1.5em}
+.lg .rd b{font:700 13px var(--ui);color:var(--ink)}
+@media (max-width:600px){.cin{grid-template-columns:1fr 1fr}.cin label:last-child{grid-column:1/-1}.lg{grid-template-columns:52px minmax(0,1fr) minmax(0,1fr)}}
+</style>
+
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div class="brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="">Optima Academy Online</div>
+  <div class="hero-g">
+    <div>
+      <div class="kicker">Precalculus Honors &middot; Right Triangle Trigonometry</div>
+      <h1>Focus Assignment 6.11: Trigonometry in the Field</h1>
+      <div class="focusq"><div class="label">Focus</div><p>A dispatcher who never sees the field will act on your numbers alone. What must your page contain so that a stranger could verify your answer, and trust it, without asking you a single question?</p></div>
+      <details class="objs"><summary>Objectives</summary><ul>
+        <li>Solve multi-step navigation and surveying problems that combine right-triangle ratios, the unit circle, and reference angles.</li>
+        <li>Convert a compass heading into a standard-position angle correctly, and use reference angles to find the signed displacement components it produces.</li>
+        <li>Document a field computation to a professional standard: declared setup, every step shown, units carried throughout, and a check that the answer is physically reasonable.</li>
+        <li>Explain why the two sightings of a two-station survey must be solved together, and what goes wrong when a heading is used without converting it.</li>
+      </ul></details>
+    </div>
+    <figure class="figcard" style="margin:0">
+      <svg class="hero-fig" viewBox="0 0 200 140" role="img" aria-label="A north and east axis with an arrow at compass heading 40 degrees. A red arc measures the heading clockwise from north and a blue arc measures the standard angle, 50 degrees, counterclockwise from east.">
+        <path d="M75 126 V14" stroke="#5B6B80" stroke-width="1.6" fill="none"/>
+        <path d="M14 106 H186" stroke="#5B6B80" stroke-width="1.6" fill="none"/>
+        <text x="75" y="10" font-size="11" font-weight="700" fill="#0E1C42" font-family="sans-serif" text-anchor="middle">N</text>
+        <text x="192" y="110" font-size="11" font-weight="700" fill="#0E1C42" font-family="sans-serif">E</text>
+        <path d="M75 106 L126.4 44.7" stroke="#0E1C42" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M126.4 44.7 L117.6 48.2 M126.4 44.7 L125.6 54.2" stroke="#0E1C42" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M75 78 A28 28 0 0 1 93 84.6" stroke="#C43D27" stroke-width="2.5" fill="none"/>
+        <path d="M121 106 A46 46 0 0 0 104.6 70.7" stroke="#1E5AA0" stroke-width="2.5" fill="none"/>
+        <text x="80" y="70" font-size="11" font-weight="700" fill="#C43D27" font-family="sans-serif">40&deg;</text>
+        <text x="126" y="96" font-size="11" font-weight="700" fill="#1E5AA0" font-family="sans-serif">50&deg;</text>
+      </svg>
+      <div class="cap"><b style="color:var(--red)">Red:</b> heading, clockwise from north. <b style="color:var(--blue)">Blue:</b> standard angle, counterclockwise from east.</div>
+    </figure>
+  </div>
+</div></header>
+
+<nav class="tabs" aria-label="Project sections"><div class="wrap"><div class="tl" role="tablist">
+  <button class="tab" data-tab="project" role="tab"><span class="n">01</span>The Project</button>
+  <button class="tab" data-tab="prep" role="tab"><span class="n">02</span>What You Already Have</button>
+  <button class="tab" data-tab="survey" role="tab"><span class="n">03</span>Build It: Survey</button>
+  <button class="tab" data-tab="report" role="tab"><span class="n">04</span>Build It: Headings</button>
+  <button class="tab" data-tab="finish" role="tab"><span class="n">05</span>Finish</button>
+</div></div></nav>
+
+<main class="wrap">
+
+<!-- ═════════ 01 THE PROJECT ═════════ -->
+<section class="panel" id="tab-project" role="tabpanel">
+  <div class="vo" data-clip="proj_card">
+    <div class="vo-head">
+      <img class="vo-face" alt="">
+      <div class="vo-who"><div class="vo-name"></div><div class="vo-title">The Field Report</div><div class="vo-note">An AI-generated character and voice.</div></div>
+      <div class="vo-ctl"><span class="vo-time"></span><button class="btn small vo-play" type="button">&#9654; Play</button></div>
+    </div>
+    <div class="vo-stage">
+      <div class="disp keep" data-step="0"><span class="label">Dispatcher</span> sees only your page</div>
+      <div class="trio">
+        <div class="pn" data-step="1">
+          <svg viewBox="0 0 200 130" role="img" aria-label="A drone 150 meters above the ground with an angle of depression of 24 degrees down to a landmark">
+            <path d="M10 112 H190" stroke="#5B6B80" stroke-width="1.6" fill="none"/>
+            <rect x="19" y="46" width="22" height="7" rx="3" fill="#0E1C42"/>
+            <path d="M22 44 H38" stroke="#0E1C42" stroke-width="2" stroke-linecap="round"/>
+            <path d="M30 56 V112" stroke="#1E5AA0" stroke-width="2" stroke-dasharray="4 3" fill="none"/>
+            <path d="M30 52 H122" stroke="#5B6B80" stroke-width="1.4" stroke-dasharray="4 3" fill="none"/>
+            <path d="M30 52 L165 112" stroke="#C43D27" stroke-width="2.5" fill="none"/>
+            <path d="M70 52 A40 40 0 0 1 66.5 68.3" stroke="#C43D27" stroke-width="2" fill="none"/>
+            <circle cx="165" cy="112" r="4.5" fill="#1E5AA0"/>
+            <text x="36" y="90" class="blue">150 m</text>
+            <text x="76" y="68" class="red">24&deg;</text>
+            <text x="98" y="127" class="s" text-anchor="middle">distance = ?</text>
+          </svg>
+          <div class="pc"><b>Depression</b></div>
+        </div>
+        <div class="pn" data-step="2">
+          <svg viewBox="0 0 200 130" role="img" aria-label="A radio tower seen from two stations on the ground, 41 degrees from the near station and 26 degrees from the far one, with the stations 55 meters apart">
+            <path d="M10 112 H190" stroke="#5B6B80" stroke-width="1.6" fill="none"/>
+            <path d="M176 112 V51" stroke="#0E1C42" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M51 112 L176 51" stroke="#C43D27" stroke-width="2" fill="none"/>
+            <path d="M105.7 112 L176 51" stroke="#C43D27" stroke-width="2" fill="none"/>
+            <path d="M131.7 112 A26 26 0 0 0 125.3 94.9" stroke="#C43D27" stroke-width="2" fill="none"/>
+            <path d="M85 112 A34 34 0 0 0 81.6 97.1" stroke="#C43D27" stroke-width="2" fill="none"/>
+            <circle cx="105.7" cy="112" r="3.5" fill="#1E5AA0"/><circle cx="51" cy="112" r="3.5" fill="#1E5AA0"/>
+            <path d="M51 121 H105.7" stroke="#1E5AA0" stroke-width="1.6" fill="none"/>
+            <path d="M105.7 121 H176" stroke="#5B6B80" stroke-width="1.6" fill="none"/>
+            <text x="138" y="106" class="red">41&deg;</text>
+            <text x="90" y="104" class="red">26&deg;</text>
+            <text x="78" y="129" class="blue" text-anchor="middle">55 m</text>
+            <text x="141" y="129" class="s" text-anchor="middle">x</text>
+            <text x="184" y="86" class="b"><tspan font-style="italic">h</tspan></text>
+          </svg>
+          <div class="pc"><b>Two stations</b></div>
+        </div>
+        <div class="pn" data-step="3">
+          <svg viewBox="0 0 200 130" role="img" aria-label="A boat leaves a marina on heading 128 degrees for 18 nautical miles, then heading 205 degrees for 12 nautical miles, drawn on north and east axes">
+            <path d="M60 48 V10" stroke="#5B6B80" stroke-width="1.4" fill="none"/><path d="M60 48 H150" stroke="#5B6B80" stroke-width="1.4" fill="none"/>
+            <text x="60" y="8" class="s" text-anchor="middle">N</text><text x="154" y="52" class="s">E</text>
+            <path data-step="3" d="M60 48 L91.2 72.4" stroke="#1E5AA0" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path data-step="3" d="M91.2 72.4 L80 96.3" stroke="#0E1C42" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <circle cx="60" cy="48" r="4" fill="#0E1C42"/>
+            <text data-step="3" x="100" y="70" class="blue">18 nm</text>
+            <text data-step="3" x="92" y="94" class="b">12 nm</text>
+            <path data-step="4" d="M60 26 A22 22 0 0 1 77.3 61.5" stroke="#C43D27" stroke-width="2" fill="none"/>
+            <text data-step="4" x="22" y="30" class="red">128&deg;</text>
+            <text data-step="4" x="100" y="112" class="s" text-anchor="middle">standard = 90&deg; &minus; heading</text>
+            <path data-step="5" d="M60 48 L80 96.3" stroke="#C43D27" stroke-width="2.2" stroke-dasharray="5 4" fill="none"/>
+            <text data-step="5" x="100" y="125" class="red" text-anchor="middle">distance and bearing home</text>
+          </svg>
+          <div class="pc"><b>Headings</b></div>
+        </div>
+      </div>
+      <div class="chips" data-step="6"><span>Understanding</span><span>Reasoning</span><span>Precision</span><span>Honesty</span></div>
+    </div>
+    <div class="vo-cap" aria-live="polite"></div>
+    <div class="vo-foot"><div class="vo-bar"><div class="vo-fill"></div></div><div class="vo-dots"></div><button class="vo-tbtn" type="button" aria-expanded="false">Transcript</button></div>
+    <div class="vo-trans"></div>
+    <script type="application/json" class="vo-script">{"steps":[
+      "A harbor dispatcher cannot see the field. She will act on your numbers alone, so your page must let a stranger check every one.",
+      "Part one is a drone. Its altitude and one angle of depression give the horizontal distance to a landmark, using a single right triangle.",
+      "Part two is a radio tower sighted from two stations. Two angles and a walk of fifty-five meters give two equations and two unknowns.",
+      "Part three is a rescue boat sailing two legs. Each leg has a compass heading, measured clockwise from north, which the unit circle does not use.",
+      "So you convert on purpose. Ninety degrees minus the heading gives the standard angle, and its reference angle and signs give the east and north components.",
+      "Add the components, find the straight line distance, then name the bearing home. A radar hazard in the honors stretch uses the same method.",
+      "Your teacher grades understanding, reasoning, precision and honesty. Declare every variable, show every conversion, and check each answer against the real world."
+    ]}</script>
+  </div>
+
+  <div class="sec" id="project-make">
+    <div class="sec-h"><span class="num">A</span><h2>What You Will Make</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p>A <b>field report</b>: six problems worked by hand on paper in neat vertical form, with one step per line, equals signs aligned, and every final answer labeled with units. Two of the six are <b>method problems</b>, full reports on a two-station survey and on a boat&rsquo;s headings. Your teacher reads them the way a dispatcher would read a surveyor&rsquo;s notebook: every variable declared before it is used, every conversion shown, every answer checked for physical reasonableness. Nothing is skipped because it felt obvious.</p>
+        <p>The whole assignment is worth <b>16 points</b>. The rubric below is applied to the two method problems. The other four are checked for honest completion, and the honors stretch counts as a problem to attempt like the rest.</p>
+      </div>
+      <ol class="six">
+        <li><b>Warmup</b> Elevation and depression with a drone.</li>
+        <li><b>Warmup</b> Converting a compass heading.</li>
+        <li><b>Method problem</b> The two-station survey of a radio tower.</li>
+        <li><b>Method problem</b> The heading report for a rescue boat.</li>
+        <li><b>The cross-examination</b> Judging a check of your own work.</li>
+        <li><b>Honors stretch</b> A hazard on a ship&rsquo;s radar.</li>
+      </ol>
+    </div>
+    <div class="aside"><span class="label">Where the idea comes from</span>In 1792, Jean-Baptiste Delambre and Pierre M&eacute;chain set out to measure the distance from Dunkirk to Barcelona along the meridian through Paris, because the proposed metric system needed a meter that belonged to no king and no nation: one ten-millionth of the distance from the North Pole to the equator. They spent seven years carrying that survey across a war-torn countryside, station by station, each leg a triangle solved with right-triangle trigonometry. One sloppy angle, uncaught, would have carried into every triangle after it. Their survey was not perfect: the Earth is not a perfect sphere, so the model they assumed was slightly off, not their mathematics. Even an imperfect model, honestly documented, can serve for generations. Carry your survey across one page, checked the same way.</div>
+  </div>
+
+  <div class="sec" id="project-research" data-std="FL:MA.K12.MTR.7.1 TX:111.42(c)(1)(F)">
+    <div class="sec-h"><span class="num">B</span><h2>Look Before You Write</h2></div>
+    <div class="card">
+      <div class="prose"><p>Real measurements come with records. Open one public record from an agency&rsquo;s own website, for example a station datasheet from the NOAA National Geodetic Survey or a nautical chart from the NOAA Office of Coast Survey. You are reading for its <em>format</em>, not its numbers: what does the record state so that a stranger who was never there can trust the number?</p></div>
+      <div class="field"><p class="q">Research notes: name the record you opened, list every item it gives a reader, and say which of those items your own report will copy.</p>
+        <textarea class="jbox" id="proj-j-research" data-label="Research notes: what a stranger needs" data-min="30"></textarea></div>
+    </div>
+  </div>
+
+  <div class="sec" id="project-materials">
+    <div class="sec-h"><span class="num">C</span><h2>Materials</h2></div>
+    <div class="card"><div class="prose"><p>Plain or lined paper, a pencil, an eraser and a ruler. A scientific calculator set to <b>degree mode</b>; the calculator button at the top of this page works. A protractor is welcome for sketching but is not needed. Nothing has to be bought or printed.</p></div></div>
+    <details class="gloss"><summary>Words you will use</summary>
+      <div class="words">
+        <div class="word"><b>Angle of elevation / depression</b>The angle between a horizontal line of sight and a line of sight up to a higher object (elevation) or down to a lower one (depression). The two are equal by alternate interior angles whenever the sightlines connect the same two points.</div>
+        <div class="word"><b>Bearing / heading</b>A direction given as an angle measured <em>clockwise from north</em>, from 0&deg; to 360&deg;. It is the convention navigators and surveyors use, and it differs from the standard-position angle, which is measured counterclockwise from the positive <i>x</i>-axis, that is, from east.</div>
+        <div class="word"><b>Heading-to-standard conversion</b>The formula <span class="m"><i>&theta;</i><sub>standard</sub> = 90&deg; &minus; heading</span>, plus or minus 360&deg; to land between 0&deg; and 360&deg;. It translates a compass heading into the angle the unit circle expects, because north sits at standard-position 90&deg;, not 0&deg;.</div>
+        <div class="word"><b>Traverse</b>A surveyed path made of straight legs, each with its own distance and heading. Its total displacement comes from adding every leg&rsquo;s east&ndash;west and north&ndash;south components separately.</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="sec" id="project-rubric">
+    <div class="sec-h"><span class="num">D</span><h2>The Rubric</h2></div>
+    <div class="card tblwrap">
+      <table class="rub">
+        <thead><tr><th>Criteria</th><th>Excellent (4)</th><th>Proficient (3)</th><th>Developing (2)</th><th>Beginning (1)</th></tr></thead>
+        <tbody>
+          <tr id="proj-rub-understanding" data-std="FL:MA.912.T.1.8 FL:MA.912.T.2.5 FL:MA.912.NSO.3.2 TX:111.42(c)(4)(E) TX:111.42(c)(4)(F) MS:DJ.MATH.NA.F-TF.2 MS:DJ.MATH.NA.G-SRT.1">
+            <td class="cr">Understanding of the material<small>4 pts</small></td>
+            <td data-l="Excellent (4)">Method fits the problem exactly; heading conversions, reference angles, and system-solving all applied correctly.</td>
+            <td data-l="Proficient (3)">Method is sound with a minor conceptual slip that does not derail the solution.</td>
+            <td data-l="Developing (2)">Partial grasp; the approach starts correctly but loses the thread.</td>
+            <td data-l="Beginning (1)">The method does not match the mathematics being asked.</td></tr>
+          <tr id="proj-rub-reasoning" data-std="FL:MA.K12.MTR.4.1 FL:MA.K12.MTR.6.1 FL:ELA.K12.EE.1.1 TX:111.42(c)(1)(B) TX:111.42(c)(1)(G) MS:DJ.MATH.NA.F-TF.2">
+            <td class="cr">Quality of reasoning<small>4 pts</small></td>
+            <td data-l="Excellent (4)">Every step follows from the last; the <em>why</em> is stated, and the verification or reasonableness check is actually performed.</td>
+            <td data-l="Proficient (3)">Reasoning is mostly explicit; one link in the chain is asserted rather than shown.</td>
+            <td data-l="Developing (2)">Steps are present but read as recipe-following; explanations restate <em>what</em> without <em>why</em>.</td>
+            <td data-l="Beginning (1)">Answer appears with little or no supporting reasoning.</td></tr>
+          <tr id="proj-rub-precision" data-std="FL:MA.K12.MTR.2.1 TX:111.42(c)(1)(D) TX:111.42(c)(1)(E)">
+            <td class="cr">Presentation &amp; precision<small>4 pts &middot; care, accuracy, finish</small></td>
+            <td data-l="Excellent (4)">Clean vertical layout, aligned equals signs, labeled answers with units throughout; the field report reads as a document a stranger could act on.</td>
+            <td data-l="Proficient (3)">Organized and legible with small lapses in labeling or alignment.</td>
+            <td data-l="Developing (2)">Readable but disorderly; the grader must hunt for the thread.</td>
+            <td data-l="Beginning (1)">Work is scattered or illegible; steps cannot be followed.</td></tr>
+          <tr id="proj-rub-honesty" data-std="FL:MA.K12.MTR.6.1 FL:MA.K12.MTR.4.1 TX:111.42(c)(1)(G)">
+            <td class="cr">Intellectual honesty<small>4 pts</small></td>
+            <td data-l="Excellent (4)">All work shown faithfully as done; uncertainty and gaps are named plainly; the reasonableness check tells the whole truth, including if something seemed off.</td>
+            <td data-l="Proficient (3)">Work is genuine; one rough patch is smoothed over rather than acknowledged.</td>
+            <td data-l="Developing (2)">Some steps appear reverse-engineered from the answer rather than worked.</td>
+            <td data-l="Beginning (1)">The page misrepresents how the work was actually done.</td></tr>
+          <tr class="tot"><td class="cr">Total</td><td colspan="4" class="tt">16 pts</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="next"><span></span><button class="btn" data-go="prep" type="button">Next: What You Already Have &rarr;</button></div>
+</section>
+
+<!-- ═════════ 02 WHAT YOU ALREADY HAVE ═════════ -->
+<section class="panel" id="tab-prep" role="tabpanel">
+
+  <div class="sec" id="proj-prep-angles" data-std="FL:MA.912.T.2.1 TX:111.42(c)(4)(C) MS:DJ.MATH.NA.F-TF.1">
+    <div class="sec-h"><span class="num">1</span><h2>Angles in Standard Position</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p class="from">From <em>Angles in Degrees and Radians</em></p>
+        <p>An angle in <b>standard position</b> has its vertex at the origin and starts on the positive <i>x</i>-axis, which points east. Positive angles turn counterclockwise. The quadrants are: I from 0&deg; to 90&deg;, II from 90&deg; to 180&deg;, III from 180&deg; to 270&deg;, IV from 270&deg; to 360&deg;. Example: 150&deg; is a little less than a half turn, so it lands in Quadrant II.</p>
+      </div>
+      <div class="mcq" data-qid="proj-c1"><p class="stem"><span class="qn">a</span>In which quadrant does an angle of 110&deg; land in standard position?</p><div class="opts row">
+        <button class="opt" data-fb="Quadrant I stops at 90&deg;. This angle has turned past the vertical axis.">Quadrant I</button>
+        <button class="opt" data-ok="1" data-fb="Right. 110&deg; is between 90&deg; and 180&deg;.">Quadrant II</button>
+        <button class="opt" data-fb="Quadrant III starts at 180&deg;, a half turn.">Quadrant III</button>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-prep-coterminal" data-std="FL:MA.912.T.2.1 TX:111.42(c)(4)(C) MS:DJ.MATH.NA.F-TF.1">
+    <div class="sec-h"><span class="num">2</span><h2>Coterminal Angles</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p class="from">From <em>Coterminal Angles, Arc Length, and Sectors</em></p>
+        <p>Two angles are <b>coterminal</b> when they end on the same ray. They differ by whole turns, so add or subtract 360&deg; until the angle lands between 0&deg; and 360&deg;. Example: <span class="m">&minus;160&deg; + 360&deg; = 200&deg;</span>. A negative angle is a clockwise turn.</p>
+      </div>
+      <div class="mq" data-qid="proj-c2" data-ans="250" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. &minus;110&deg; + 360&deg; = 250&deg;." data-miss='[["110","That drops the minus sign. &minus;110&deg; is a clockwise turn, so it needs a full turn added."],["70","That subtracts from 180&deg;. Coterminal angles differ by whole turns of 360&deg;."]]' data-hint="Add one full turn to the negative angle."><p class="stem"><span class="qn">b</span>Type the angle between 0&deg; and 360&deg; that is coterminal with &minus;110&deg;.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-prep-ratios" data-std="FL:MA.912.T.1.8 TX:111.42(c)(4)(E) MS:DJ.MATH.NA.G-SRT.1">
+    <div class="sec-h"><span class="num">3</span><h2>Sine, Cosine and Tangent in a Right Triangle</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p class="from">From <em>Right Triangle Trigonometry</em></p>
+        <p>For an acute angle <span class="m"><i>&theta;</i></span>: sine is opposite over hypotenuse, cosine is adjacent over hypotenuse, tangent is opposite over adjacent (SOH-CAH-TOA). To find a side, name the side you know and the side you want, pick the ratio that links them, then solve. When the unknown is on top of the ratio, multiply; when it is on the bottom, divide. Keep the calculator in degree mode.</p>
+        <p>Example: from 20 m away, the angle of elevation to a roof is 30&deg;. Then <span class="m">tan 30&deg; = <span class="fr"><span><i>h</i></span><span>20</span></span></span>, so <span class="m"><i>h</i> = 20 tan 30&deg; &asymp; 11.5 m</span>.</p>
+      </div>
+      <div class="mq" data-qid="proj-c3" data-ans="46.9" data-form="any" data-vars="" data-ph="meters, nearest tenth" data-fb="Right. The height is opposite and the 60 m is adjacent, so tangent: 60 tan 38&deg; &asymp; 46.9 m." data-miss='[["76.8","That divides 60 by tan 38&deg;. The unknown height is on top of tan 38&deg; = <i>h</i>/60, so multiply."],["36.9","That uses sine, which needs the hypotenuse. Here you know the adjacent side."]]' data-hint="You know the adjacent side and want the opposite side. Which ratio links them?"><p class="stem"><span class="qn">c</span>From a point 60 m from a flagpole&rsquo;s base, the angle of elevation to the top is 38&deg;. Find the flagpole&rsquo;s height to the nearest tenth of a meter.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-prep-elevation" data-std="FL:MA.912.T.1.8 FL:MA.K12.MTR.7.1 TX:111.42(c)(4)(E) MS:DJ.MATH.NA.G-SRT.1">
+    <div class="sec-h"><span class="num">4</span><h2>Elevation, Depression and Two Stations</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p class="from">From <em>Solving with Right Triangles</em></p>
+        <p>The angle of elevation is measured up from the horizontal; the angle of depression is measured down from it. They are equal for the same two points, because the horizontal lines are parallel (alternate interior angles). So a depression angle from a high point is also the angle at the bottom of the right triangle.</p>
+        <p>A <b>two-station survey</b> has two unknowns, a height and a distance, so one sighting is never enough. Each station gives one equation for the same height, and the two equations are solved together.</p>
+      </div>
+      <div class="mcq" data-qid="proj-c4"><p class="stem"><span class="qn">d</span>From a hilltop, the angle of depression to a boat is 30&deg;. What is the angle of elevation from the boat up to the hilltop?</p><div class="opts row">
+        <button class="opt" data-fb="That is the complement. Elevation and depression are equal by alternate interior angles, not complementary.">60&deg;</button>
+        <button class="opt" data-ok="1" data-fb="Right. The horizontal lines are parallel, so the two angles are equal.">30&deg;</button>
+        <button class="opt" data-fb="That is 180&deg; minus the angle. The two sightline angles are equal, not supplementary.">150&deg;</button>
+      </div></div>
+      <div class="ex" id="proj-ex1">
+        <div class="ex-h"><span class="label">Worked example</span><span class="ex-q">A surveyor measures the angle of elevation to the top of a tower as 35&deg;. She walks 40 m directly away and measures again: 20&deg;. Find the tower&rsquo;s height.</span></div>
+        <ol class="steps">
+          <li>Declare: let <span class="m"><i>x</i></span> be the distance from the first point to the base, and <span class="m"><i>h</i></span> the tower&rsquo;s height.</li>
+          <li>First point: <span class="m">tan 35&deg; = <span class="fr"><span><i>h</i></span><span><i>x</i></span></span></span>. Second point, 40 m farther back: <span class="m">tan 20&deg; = <span class="fr"><span><i>h</i></span><span><i>x</i> + 40</span></span></span>.</li>
+          <li>Both equations describe the same <span class="m"><i>h</i></span>, so <span class="m"><i>x</i> tan 35&deg; = (<i>x</i> + 40) tan 20&deg;</span>. Collect the <span class="m"><i>x</i></span> terms: <span class="m"><i>x</i>(tan 35&deg; &minus; tan 20&deg;) = 40 tan 20&deg;</span>.</li>
+          <li><span class="m"><i>x</i>(0.7002 &minus; 0.3640) = 40(0.3640)</span>, so <span class="m"><i>x</i>(0.3362) = 14.559</span> and <span class="m"><i>x</i> &asymp; 43.30 m</span>.</li>
+          <li><span class="m"><i>h</i> = <i>x</i> tan 35&deg; &asymp; 43.30(0.7002) &asymp; 30.32 m</span>.</li>
+          <li>Verify with the other station: <span class="m">(<i>x</i> + 40) tan 20&deg; = 83.30(0.3640) &asymp; 30.32 m</span>, a match. <span class="m"><b>The tower is about 30.3 m tall.</b></span></li>
+        </ol>
+      </div>
+      <div class="ex" id="proj-ex3">
+        <div class="ex-h"><span class="label">Worked example</span><span class="ex-q">An aircraft flies level at 3.2 km. The angle of depression to the nearer boat is 52&deg;, and to the farther boat, 29&deg;. Find the distance between the boats.</span></div>
+        <ol class="steps">
+          <li>The depression angle equals the elevation angle at each boat, so for each boat <span class="m">tan(angle) = <span class="fr"><span>altitude</span><span>horizontal distance</span></span></span>.</li>
+          <li>Solve for the distance: <span class="m">horizontal distance = <span class="fr"><span>altitude</span><span>tan(angle)</span></span></span>.</li>
+          <li>Near boat: <span class="m"><i>d</i><sub>near</sub> = <span class="fr"><span>3.2</span><span>tan 52&deg;</span></span> &asymp; <span class="fr"><span>3.2</span><span>1.2799</span></span> &asymp; 2.500 km</span>. Far boat: <span class="m"><i>d</i><sub>far</sub> = <span class="fr"><span>3.2</span><span>tan 29&deg;</span></span> &asymp; <span class="fr"><span>3.2</span><span>0.5543</span></span> &asymp; 5.773 km</span>.</li>
+          <li>Subtract: <span class="m">5.773 &minus; 2.500 &asymp; <b>3.27 km</b></span>. The steeper angle belongs to the nearer boat. If your two distances came out reversed, check which is near and which is far.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-prep-unitcircle" data-std="FL:MA.912.T.2.2 FL:MA.912.T.2.4 FL:MA.912.T.2.5 TX:111.42(c)(4)(A) TX:111.42(c)(4)(C) MS:DJ.MATH.NA.F-TF.2">
+    <div class="sec-h"><span class="num">5</span><h2>Reference Angles and Signs Around the Circle</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p>For an angle <span class="m"><i>&theta;</i></span> in standard position, the point where its ray meets the unit circle is <span class="m">(cos <i>&theta;</i>, sin <i>&theta;</i>)</span>. Cosine is the <i>x</i>-coordinate and sine is the <i>y</i>-coordinate. The <b>reference angle</b> is the acute angle between the ray and the <i>x</i>-axis, so the values match those of the reference angle up to a sign.</p>
+      </div>
+      <div class="refgrid">
+        <div class="qd"><b>QI</b><span class="m">ref = <i>&theta;</i></span><span>cos +, sin +</span></div>
+        <div class="qd"><b>QII</b><span class="m">ref = 180&deg; &minus; <i>&theta;</i></span><span>cos &minus;, sin +</span></div>
+        <div class="qd"><b>QIII</b><span class="m">ref = <i>&theta;</i> &minus; 180&deg;</span><span>cos &minus;, sin &minus;</span></div>
+        <div class="qd"><b>QIV</b><span class="m">ref = 360&deg; &minus; <i>&theta;</i></span><span>cos +, sin &minus;</span></div>
+      </div>
+      <div class="prose"><p>This sign pattern is often remembered as ASTC: in Quadrant I <b>A</b>ll are positive, in II <b>S</b>ine, in III <b>T</b>angent, in IV <b>C</b>osine. Example: 140&deg; is in Quadrant II, reference angle <span class="m">180&deg; &minus; 140&deg; = 40&deg;</span>, so <span class="m">cos 140&deg; = &minus;cos 40&deg;</span> (negative) and <span class="m">sin 140&deg; = sin 40&deg;</span> (positive).</p></div>
+      <div class="mq" data-qid="proj-c5" data-ans="60" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. 300&deg; is in Quadrant IV, so the reference angle is 360&deg; &minus; 300&deg; = 60&deg;." data-miss='[["120","That is the distance from 180&deg; in the other direction. 300&deg; is in Quadrant IV, where the reference angle is 360&deg; minus the angle."],["30","That is the distance past 270&deg;. A reference angle is measured to the <i>x</i>-axis."]]' data-hint="Which quadrant is 300&deg; in, and what is the reference rule there?"><p class="stem"><span class="qn">e</span>Type the reference angle of 300&deg;.</p></div>
+      <div class="mcq" data-qid="proj-c6"><p class="stem"><span class="qn">f</span>For an angle of 200&deg;, what are the signs of cosine and sine?</p><div class="opts row">
+        <button class="opt" data-fb="That pattern belongs to Quadrant IV. 200&deg; is in Quadrant III.">cosine +, sine &minus;</button>
+        <button class="opt" data-ok="1" data-fb="Right. In Quadrant III both coordinates of the point are negative.">both negative</button>
+        <button class="opt" data-fb="That pattern belongs to Quadrant II. 200&deg; is in Quadrant III.">cosine &minus;, sine +</button>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-prep-heading" data-std="FL:MA.912.NSO.3.2 FL:MA.912.T.2.5 TX:111.42(c)(4)(F) MS:DJ.MATH.NA.F-TF.2 MS:DJ.MATH.NA.N-VM.1">
+    <div class="sec-h"><span class="num">6</span><h2>From a Compass Heading to East and North</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p>A navigator&rsquo;s heading is measured clockwise from north. The unit circle&rsquo;s standard position is measured counterclockwise from east. The two do not line up by accident, so convert on purpose, every time:</p>
+      </div>
+      <p class="mb"><i>&theta;</i><sub>standard</sub> = 90&deg; &minus; heading (add 360&deg; if the result is negative)</p>
+      <div class="prose">
+        <p>After traveling distance <span class="m"><i>d</i></span> on that heading, the <b>east component</b> is <span class="m"><i>d</i> cos <i>&theta;</i><sub>standard</sub></span> and the <b>north component</b> is <span class="m"><i>d</i> sin <i>&theta;</i><sub>standard</sub></span>. A negative value means west or south, exactly as the signs of the quadrant dictate. Skip the conversion, and every sign and quadrant after it is wrong.</p>
+      </div>
+      <div class="ex" id="proj-ex2">
+        <div class="ex-h"><span class="label">Worked example</span><span class="ex-q">A ship holds a compass heading of 250&deg; for 200 nautical miles. Find its eastward and northward displacement.</span></div>
+        <ol class="steps">
+          <li><b>Convert first.</b> <span class="m"><i>&theta;</i><sub>standard</sub> = 90&deg; &minus; 250&deg; = &minus;160&deg;</span>, which is coterminal with <span class="m">&minus;160&deg; + 360&deg; = 200&deg;</span>.</li>
+          <li><b>Locate and reduce.</b> 200&deg; is in Quadrant III, reference angle <span class="m">200&deg; &minus; 180&deg; = 20&deg;</span>. In Quadrant III cosine and sine are both negative.</li>
+          <li><span class="m">cos 200&deg; = &minus;cos 20&deg; &asymp; &minus;0.9397</span> and <span class="m">sin 200&deg; = &minus;sin 20&deg; &asymp; &minus;0.3420</span>.</li>
+          <li>East: <span class="m">200(&minus;0.9397) &asymp; &minus;187.9 nm</span>. North: <span class="m">200(&minus;0.3420) &asymp; &minus;68.4 nm</span>.</li>
+          <li>The ship moves about <b>187.9 nm west and 68.4 nm south</b>. The minus signs give direction, not error.</li>
+          <li>Sanity check: a heading of 250&deg; lies between due south (180&deg;) and due west (270&deg;), closer to west, and the components agree. A displacement that came out mostly northward would signal a conversion mistake before a single sign was checked.</li>
+        </ol>
+      </div>
+      <div class="mq" data-qid="proj-c7" data-ans="140" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. 90&deg; &minus; 310&deg; = &minus;220&deg;, and &minus;220&deg; + 360&deg; = 140&deg;, in Quadrant II with a 40&deg; reference angle." data-miss='[["220","That drops the sign. 90&deg; &minus; 310&deg; is &minus;220&deg;, a clockwise turn, so a full turn must be added."],["-220","That is the same direction, but not yet between 0&deg; and 360&deg;. Add a full turn."]]' data-hint="Subtract the heading from 90&deg;, then add 360&deg; if the result is negative."><p class="stem"><span class="qn">g</span>Convert a compass heading of 310&deg; to a standard-position angle between 0&deg; and 360&deg;.</p></div>
+      <div class="mcq" data-qid="proj-c8"><p class="stem"><span class="qn">h</span>That standard angle, 140&deg;, is in Quadrant II. For a boat on heading 310&deg;, what are the signs of the east and north components?</p><div class="opts">
+        <button class="opt" data-fb="That pattern is Quadrant IV. Check the quadrant of the converted angle, 140&deg;.">east positive, north negative</button>
+        <button class="opt" data-ok="1" data-fb="Right. Quadrant II has a negative cosine and a positive sine, so the boat goes west and north, matching a heading of 310&deg; pointing northwest.">east negative, north positive</button>
+        <button class="opt" data-fb="Both positive is Quadrant I, a heading between 0&deg; and 90&deg;.">both positive</button>
+      </div></div>
+      <div class="aside"><span class="label">Common mistake</span>Feeding a compass heading straight into cosine and sine. A heading and a standard angle start from different rays (north, east) and turn in opposite directions (clockwise, counterclockwise). Using one as the other gives numbers of the right size attached to the wrong directions, which is more dangerous than an obviously wrong answer because it looks plausible until someone checks it against a compass.</div>
+      <div class="aside"><span class="label">AI check, factual</span>A student asked an AI tool for the east and north components of a 400 m displacement on heading 155&deg;. It answered: east &asymp; &minus;362.5 m, north &asymp; 169.0 m, &ldquo;about 362.5 m west and 169.0 m north.&rdquo; The arithmetic was flawless, but the tool put the heading straight into cosine and sine and skipped <span class="m">90&deg; &minus; 155&deg; = &minus;65&deg; &equiv; 295&deg;</span>. A heading of 155&deg; lies between due east and due south, so the displacement should be southeast. The correct values are about 169.0 m east and 362.5 m south: the right magnitudes, attached to the wrong directions. A tool can compute correctly and still skip a step, and it cannot see the field, so check any displacement, yours or a machine&rsquo;s, against the compass. No tool is required for this project.</div>
+      <div class="mcq" data-qid="proj-c9"><p class="stem"><span class="qn">i</span>In that AI answer, what was the slip?</p><div class="opts">
+        <button class="opt" data-ok="1" data-fb="Right. The conversion to standard position was skipped, so every direction came out wrong.">Fed the heading straight into cosine and sine</button>
+        <button class="opt" data-fb="The magnitudes, 362.5 and 169.0, were exactly right. The directions were the problem.">Rounded the two answers too early in the work</button>
+        <button class="opt" data-fb="The mode was not the issue. The same two magnitudes appear in the correct answer.">Used radian mode on a calculator set for degrees</button>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-prep-traverse" data-std="FL:MA.912.NSO.3.8 FL:MA.912.NSO.3.9 TX:111.42(c)(4)(I) TX:111.42(c)(4)(K) MS:DJ.MATH.NA.N-VM.1">
+    <div class="sec-h"><span class="num">7</span><h2>Adding Legs: Totals, Distance and the Bearing Home</h2></div>
+    <div class="card">
+      <div class="prose">
+        <p>To combine legs, add all the east components together and all the north components together. The straight-line distance is <span class="m">&radic;<span style="text-decoration:overline">(east total)<sup>2</sup> + (north total)<sup>2</sup></span></span>. The compass bearing of the total displacement is the angle measured clockwise from north. The <b>reciprocal bearing</b>, the course that sails <em>back</em>, is that bearing plus or minus 180&deg;.</p>
+        <p>Example: a total of 30 nm east and 40 nm north has distance <span class="m">&radic;<span style="text-decoration:overline">30<sup>2</sup> + 40<sup>2</sup></span> = 50 nm</span>. Its bearing is about 37&deg; (a little east of north), so the way back is about 217&deg;.</p>
+      </div>
+      <div class="mq" data-qid="proj-c10" data-ans="50" data-form="any" data-vars="" data-ph="nautical miles" data-fb="Right. 900 + 1600 = 2500, and the square root is 50." data-miss='[["70","That adds the two components. Distance is the hypotenuse: square each, add, then take the square root."]]' data-hint="The two components are the legs of a right triangle."><p class="stem"><span class="qn">j</span>A boat ends 30 nm east and 40 nm north of where it started. How far is it, in a straight line, from its start?</p></div>
+      <div class="mcq" data-qid="proj-c11"><p class="stem"><span class="qn">k</span>The boat in that example is on a bearing of about 37&deg; from its start. What bearing would sail it back?</p><div class="opts row">
+        <button class="opt" data-fb="That is the same direction it already went. The way back points the opposite way.">37&deg;</button>
+        <button class="opt" data-fb="That is 180&deg; minus the bearing, a reflection rather than a reversal. Reverse by adding or subtracting 180&deg;.">143&deg;</button>
+        <button class="opt" data-ok="1" data-fb="Right. 37&deg; + 180&deg; = 217&deg;, exactly opposite.">217&deg;</button>
+      </div></div>
+    </div>
+  </div>
+  <div class="next"><button class="btn ghost" data-go="project" type="button">&larr; The Project</button><button class="btn" data-go="survey" type="button">Next: Build It: Survey &rarr;</button></div>
+</section>
+
+<!-- ═════════ 03 BUILD IT: SURVEY ═════════ -->
+<section class="panel" id="tab-survey" role="tabpanel">
+
+  <div class="sec" id="proj-build-setup" data-std="FL:MA.K12.MTR.2.1 TX:111.42(c)(1)(D) TX:111.42(c)(1)(E)">
+    <div class="sec-h"><span class="num">1</span><h2>Set Up Your Pages</h2></div>
+    <div class="card"><div class="prose">
+      <p>Use a fresh sheet for each problem. Write the problem number, then work in neat vertical form: one step per line, equals signs aligned, a labeled answer with units at the end. On the method problems, declare every variable before you use it. Typed boxes and checkpoints on this page record your thinking and your results; the field report itself is your handwritten work.</p>
+      <p>Keep full calculator values until the last step, then round once. Rounding the tangent first can shift the last digit.</p>
+    </div></div>
+  </div>
+
+  <div class="sec" id="proj-build-p1" data-std="FL:MA.912.T.1.8 FL:MA.K12.MTR.7.1 TX:111.42(c)(4)(E) MS:DJ.MATH.NA.G-SRT.1">
+    <div class="sec-h"><span class="num">2</span><h2>Problem 1: Warmup, Elevation and Depression</h2></div>
+    <div class="card">
+      <p class="ptext">A drone hovers at an altitude of 150 m. The angle of depression to a landmark on the ground is 24&deg;. Find the horizontal distance from the point directly below the drone to the landmark.</p>
+      <p class="mq-keys">Type decimals with a point, like <code>12.5</code>.</p>
+      <div class="mq" data-qid="proj-b1" data-ans="336.9" data-form="any" data-vars="" data-ph="meters, nearest tenth" data-fb="Right. The depression angle equals the angle at the landmark, so tan 24&deg; = 150/<i>d</i>, and <i>d</i> = 150 / tan 24&deg; &asymp; 336.9 m." data-miss='[["66.8","That multiplies 150 by tan 24&deg;. The distance is on the bottom of tan 24&deg; = 150/<i>d</i>, so divide."],["368.8","That divides by sin 24&deg;, which gives the sightline length, not the horizontal distance."]]' data-hint="Draw the right triangle: 150 m is the vertical side. Which ratio links it to the horizontal side?"><p class="stem"><span class="qn">1</span>Checkpoint: the horizontal distance, to the nearest tenth of a meter.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-build-p2" data-std="FL:MA.912.T.2.1 FL:MA.912.T.2.4 TX:111.42(c)(4)(C) TX:111.42(c)(4)(F) MS:DJ.MATH.NA.F-TF.2">
+    <div class="sec-h"><span class="num">3</span><h2>Problem 2: Warmup, Heading Conversion</h2></div>
+    <div class="card">
+      <p class="ptext">Convert a compass heading of 205&deg; to standard position, showing the formula and the quadrant it lands in. State the reference angle, and state (without computing exact values) the sign of each displacement component.</p>
+      <div class="mq" data-qid="proj-b2" data-ans="245" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. 90&deg; &minus; 205&deg; = &minus;115&deg;, and &minus;115&deg; + 360&deg; = 245&deg;." data-miss='[["-115","That is the right turn, but not yet between 0&deg; and 360&deg;. Add a full turn."],["115","That is 205&deg; &minus; 90&deg;, subtracted the wrong way round. The formula is 90&deg; minus the heading."]]' data-hint="Subtract the heading from 90&deg;, then add 360&deg; if it is negative."><p class="stem"><span class="qn">2a</span>Checkpoint: the standard-position angle, between 0&deg; and 360&deg;.</p></div>
+      <div class="mcq" data-qid="proj-b3"><p class="stem"><span class="qn">2b</span>Checkpoint: the quadrant of that angle.</p><div class="opts row">
+        <button class="opt" data-fb="Quadrant II covers 90&deg; to 180&deg;. This angle is past a half turn.">Quadrant II</button>
+        <button class="opt" data-ok="1" data-fb="Right. 245&deg; is between 180&deg; and 270&deg;.">Quadrant III</button>
+        <button class="opt" data-fb="Quadrant IV starts at 270&deg;. This angle has not reached it.">Quadrant IV</button>
+      </div></div>
+      <div class="mq" data-qid="proj-b4" data-ans="65" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. In Quadrant III the reference angle is 245&deg; &minus; 180&deg; = 65&deg;." data-miss='[["115","That is 360&deg; &minus; 245&deg;, the Quadrant IV rule. In Quadrant III subtract 180&deg;."],["25","That is 270&deg; &minus; 245&deg;. A reference angle is measured to the <i>x</i>-axis, which is at 180&deg;."]]' data-hint="Which quadrant is it in, and what is the reference rule there?"><p class="stem"><span class="qn">2c</span>Checkpoint: the reference angle.</p></div>
+      <div class="mcq" data-qid="proj-b5"><p class="stem"><span class="qn">2d</span>Checkpoint: the signs of the east and north components.</p><div class="opts">
+        <button class="opt" data-fb="East positive and north negative is Quadrant IV. Check the quadrant of the converted angle.">east positive, north negative</button>
+        <button class="opt" data-ok="1" data-fb="Right. In Quadrant III cosine and sine are both negative, so the displacement is west and south.">east negative, north negative</button>
+        <button class="opt" data-fb="East negative and north positive is Quadrant II. Check the quadrant of the converted angle.">east negative, north positive</button>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-build-p3" data-std="FL:MA.912.T.1.8 FL:MA.K12.MTR.6.1 TX:111.42(c)(4)(E) TX:111.42(c)(1)(B) MS:DJ.MATH.NA.G-SRT.1">
+    <div class="sec-h"><span class="num">4</span><h2>Problem 3: The Two-Station Survey</h2></div>
+    <div class="card">
+      <span class="tagm">Method problem &middot; graded with the rubric</span>
+      <p class="ptext">From a point, the angle of elevation to the top of a radio tower is 41&deg;. The surveyor then walks 55 m directly away from the tower and measures the angle of elevation a second time: 26&deg;.</p>
+      <ol class="parts">
+        <li><b>Declare your variables</b> (let the height be <span class="m"><i>h</i></span> and the original distance from the base be <span class="m"><i>x</i></span>) and <b>set up both equations</b>, one per station.</li>
+        <li><b>Solve the system</b> for <span class="m"><i>x</i></span> and <span class="m"><i>h</i></span>, every algebraic step shown.</li>
+        <li><b>Verify</b> your height using the <em>other</em> station&rsquo;s equation, the one you did not solve with first.</li>
+        <li>State the tower&rsquo;s height with units, and add one sentence of physical reasonableness: does this height make sense for a radio tower, and does the second station&rsquo;s distance exceed the first by exactly 55 m as the problem requires?</li>
+      </ol>
+      <div class="field"><p class="q">Planning box: your declared variables, both equations, and your reasonableness sentence.</p>
+        <textarea class="jbox" id="proj-j-p3" data-label="Problem 3: variables, both equations, and the reasonableness sentence" data-min="30"></textarea></div>
+      <p class="mq-keys">Checkpoints, to the nearest tenth of a meter. Solve by hand first, then check.</p>
+      <div class="mq" data-qid="proj-b6" data-ans="70.3" data-form="any" data-vars="" data-ph="meters, nearest tenth" data-fb="Right. <i>x</i>(tan 41&deg; &minus; tan 26&deg;) = 55 tan 26&deg;, so <i>x</i> &asymp; 70.3 m." data-miss='[["19.8","That adds the two tangents. Moving <i>x</i> tan 26&deg; to the left side gives a minus sign."],["125.3","That is the second station&rsquo;s distance, <i>x</i> + 55. The unknown <i>x</i> is measured from the first station."]]' data-hint="Set <i>x</i> tan 41&deg; equal to (<i>x</i> + 55) tan 26&deg;, then collect the <i>x</i> terms on one side."><p class="stem"><span class="qn">4a</span>The original distance <span class="m"><i>x</i></span> from the base.</p></div>
+      <div class="mq" data-qid="proj-b7" data-ans="61.1" data-form="any" data-vars="" data-ph="meters, nearest tenth" data-fb="Right. <i>h</i> = <i>x</i> tan 41&deg; &asymp; 61.1 m, and the other station agrees." data-miss='[["34.3","That pairs the first station&rsquo;s distance with the second station&rsquo;s angle. Each distance goes with its own angle."],["108.9","That pairs the second station&rsquo;s distance with the first station&rsquo;s angle. Each distance goes with its own angle."]]' data-hint="Use the first station: its distance and its angle."><p class="stem"><span class="qn">4b</span>The tower&rsquo;s height <span class="m"><i>h</i></span>.</p></div>
+      <div class="mq" data-qid="proj-b8" data-ans="125.3" data-form="any" data-vars="" data-ph="meters, nearest tenth" data-fb="Right. 70.3 + 55 = 125.3 m, and 125.3 tan 26&deg; gives the same 61.1 m." data-miss='[["70.3","That is the first station&rsquo;s distance. The surveyor walked 55 m farther back."]]' data-hint="The second station is 55 m farther from the tower than the first."><p class="stem"><span class="qn">4c</span>The second station&rsquo;s distance from the base.</p></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-build-check2" data-std="FL:MA.912.T.1.8 TX:111.42(c)(4)(E)">
+    <div class="sec-h"><span class="num">5</span><h2>Check Any Two-Station Survey</h2></div>
+    <div class="card">
+      <div class="prose"><p>Type the near angle, the far angle and the distance walked. The page solves the pair of equations, redraws the survey to scale, and tests the height from both stations. It starts with a 35&deg;, 20&deg;, 40 m survey. Use it to confirm a hand solution, not to replace one.</p></div>
+      <div class="calc" id="proj-two">
+        <div class="cin">
+          <label>Near station angle<span class="u">degrees</span><input id="proj-t-a1" type="text" inputmode="decimal" value="35"></label>
+          <label>Far station angle<span class="u">degrees</span><input id="proj-t-a2" type="text" inputmode="decimal" value="20"></label>
+          <label>Distance walked<span class="u">meters</span><input id="proj-t-d" type="text" inputmode="decimal" value="40"></label>
+        </div>
+        <div class="cout" id="proj-t-out" aria-live="polite"></div>
+        <svg id="proj-t-svg" class="cvs" viewBox="0 0 400 200" role="img" aria-label="The two-station survey drawn from the numbers typed above"></svg>
+      </div>
+    </div>
+  </div>
+  <div class="next"><button class="btn ghost" data-go="prep" type="button">&larr; What You Already Have</button><button class="btn" data-go="report" type="button">Next: Build It: Headings &rarr;</button></div>
+</section>
+
+<!-- ═════════ 04 BUILD IT: HEADINGS ═════════ -->
+<section class="panel" id="tab-report" role="tabpanel">
+
+  <div class="sec" id="proj-build-p4" data-std="FL:MA.912.NSO.3.2 FL:MA.912.NSO.3.9 FL:MA.912.T.2.5 TX:111.42(c)(4)(F) TX:111.42(c)(4)(K) MS:DJ.MATH.NA.F-TF.2 MS:DJ.MATH.NA.N-VM.1">
+    <div class="sec-h"><span class="num">6</span><h2>Problem 4: The Heading Report</h2></div>
+    <div class="card">
+      <span class="tagm">Method problem &middot; graded with the rubric</span>
+      <p class="ptext">A rescue boat departs its marina on a heading of 128&deg; for 18 nautical miles, then changes to a heading of 205&deg; for 12 nautical miles.</p>
+      <ol class="parts">
+        <li><b>Convert both headings</b> to standard position, showing the formula each time, and state each resulting quadrant and reference angle.</li>
+        <li><b>Find the east and north displacement components</b> of each leg, four numbers in total, each with its sign explained by ASTC.</li>
+        <li><b>Sum the components</b> to find the boat&rsquo;s total displacement from the marina.</li>
+        <li><b>Find the straight-line distance</b> from the marina to the boat&rsquo;s final position, and the <b>reciprocal compass bearing</b> (the course a rescue vessel would need to sail <em>back</em> to the marina), to the nearest degree.</li>
+        <li>Close with a two-sentence <b>field report</b>, written as if for a harbor dispatcher who must act on your numbers without re-deriving them: state the total distance and the reciprocal bearing plainly.</li>
+      </ol>
+      <p class="mq-keys">Checkpoints for parts 1 and 2, to the nearest tenth. Type a minus sign for west or south. Do the hand work first.</p>
+      <div class="mq" data-qid="proj-b9" data-ans="322" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. 90&deg; &minus; 128&deg; = &minus;38&deg;, and &minus;38&deg; + 360&deg; = 322&deg;, in Quadrant IV." data-miss='[["-38","That is the right turn, but not yet between 0&deg; and 360&deg;. Add a full turn."],["218","That is 90&deg; + 128&deg;. The formula subtracts the heading from 90&deg;."]]' data-hint="90&deg; minus the heading, then add 360&deg; if negative."><p class="stem"><span class="qn">6a</span>Leg 1: the standard angle of heading 128&deg;.</p></div>
+      <div class="mq" data-qid="proj-b10" data-ans="38" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. In Quadrant IV the reference angle is 360&deg; &minus; 322&deg; = 38&deg;." data-miss='[["52","That is 90&deg; &minus; 38&deg;, the complement. A reference angle is measured to the <i>x</i>-axis."],["142","That is 180&deg; &minus; 38&deg;. In Quadrant IV the reference angle is 360&deg; minus the angle."]]' data-hint="Which quadrant is 322&deg; in, and what is the reference rule there?"><p class="stem"><span class="qn">6b</span>Leg 1: the reference angle.</p></div>
+      <div class="mq" data-qid="proj-b11" data-ans="14.2" data-form="any" data-vars="" data-ph="nautical miles" data-fb="Right. 18 cos 322&deg; = 18 cos 38&deg; &asymp; 14.2 nm east." data-miss='[["-11.1","That is 18 cos 128&deg;, the heading fed straight into cosine. Convert to standard position first."],["11.1","That is the size of the north component. East goes with cosine of the standard angle."]]' data-hint="East is distance times cosine of the standard angle."><p class="stem"><span class="qn">6c</span>Leg 1: the east component.</p></div>
+      <div class="mq" data-qid="proj-b12" data-ans="-11.1" data-form="any" data-vars="" data-ph="nautical miles" data-fb="Right. 18 sin 322&deg; = &minus;18 sin 38&deg; &asymp; &minus;11.1 nm, which is south." data-miss='[["14.2","That is 18 sin 128&deg;, the heading fed straight into sine. Convert to standard position first."],["11.1","The size is right, but sine is negative in Quadrant IV, so the boat moved south."]]' data-hint="North is distance times sine of the standard angle. Check the sign in Quadrant IV."><p class="stem"><span class="qn">6d</span>Leg 1: the north component.</p></div>
+      <div class="mq" data-qid="proj-b13" data-ans="-5.1" data-form="any" data-vars="" data-ph="nautical miles" data-fb="Right. 12 cos 245&deg; = &minus;12 cos 65&deg; &asymp; &minus;5.1 nm, which is west." data-miss='[["5.1","The size is right, but cosine is negative in Quadrant III, so the boat moved west."],["-10.9","That is the other component. East goes with cosine of the standard angle."]]' data-hint="Leg 2 is the heading you converted in the warmup. East is 12 times cosine of its standard angle."><p class="stem"><span class="qn">6e</span>Leg 2: the east component (heading 205&deg;).</p></div>
+      <div class="mq" data-qid="proj-b14" data-ans="-10.9" data-form="any" data-vars="" data-ph="nautical miles" data-fb="Right. 12 sin 245&deg; = &minus;12 sin 65&deg; &asymp; &minus;10.9 nm, which is south." data-miss='[["10.9","The size is right, but sine is negative in Quadrant III, so the boat moved south."],["-5.1","That is the other component. North goes with sine of the standard angle."]]' data-hint="North is 12 times sine of the standard angle. Check the sign in Quadrant III."><p class="stem"><span class="qn">6f</span>Leg 2: the north component.</p></div>
+      <p class="mq-keys">Checkpoints for parts 3 and 4. Carry full calculator values until the end; rounding the components first can shift the last degree.</p>
+      <div class="mq" data-qid="proj-b15" data-ans="9.1" data-form="any" data-vars="" data-ph="nautical miles" data-fb="Right. 14.2 + (&minus;5.1) &asymp; 9.1 nm east." data-miss='[["19.3","That adds the sizes and ignores the sign. Leg 2 went west, so it subtracts."]]' data-hint="Add the two east components, signs included."><p class="stem"><span class="qn">6g</span>The total east displacement.</p></div>
+      <div class="mq" data-qid="proj-b16" data-ans="-22" data-form="any" data-vars="" data-ph="nautical miles" data-fb="Right. &minus;11.1 + (&minus;10.9) &asymp; &minus;22.0 nm, which is 22.0 nm south." data-miss='[["22.0","The size is right, but both legs went south, so the total is negative."],["-0.2","That subtracts the two north components. Both are negative, so they add."]]' data-hint="Add the two north components, signs included."><p class="stem"><span class="qn">6h</span>The total north displacement.</p></div>
+      <div class="mq" data-qid="proj-b17" data-ans="23.8" data-form="any" data-vars="" data-ph="nautical miles" data-fb="Right. &radic;(9.1<sup>2</sup> + 22.0<sup>2</sup>) &asymp; 23.8 nm." data-miss='[["31.1","That adds the two totals. Distance is the hypotenuse: square each, add, take the square root."]]' data-hint="The two totals are the legs of a right triangle."><p class="stem"><span class="qn">6i</span>The straight-line distance from the marina.</p></div>
+      <div class="mcq" data-qid="proj-b18"><p class="stem"><span class="qn">6j</span>The boat sits about 9.1 nm east and 22.0 nm south of the marina, a bearing near 157&deg;. Which course sails it back, to the nearest degree?</p><div class="opts row">
+        <button class="opt" data-fb="That is the bearing from the marina to the boat. The way back is 180&deg; different.">157&deg;</button>
+        <button class="opt" data-ok="1" data-fb="Right. 157&deg; + 180&deg; = 337&deg;, northwest, back toward the marina. With full calculator values the bearing back is about 337.46&deg;, which rounds to 337&deg;. Rounding the totals to tenths first gives 338&deg;, which is why you round only once, at the end.">337&deg;</button>
+        <button class="opt" data-fb="That is 270&deg; minus the bearing. It is neither the bearing nor its reverse.">113&deg;</button>
+      </div></div>
+      <div class="field"><p class="q">Part 5: your two-sentence field report for the harbor dispatcher.</p>
+        <textarea class="jbox" id="proj-j-p4" data-label="Problem 4: the two-sentence field report" data-min="20"></textarea></div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-build-traverse" data-std="FL:MA.912.NSO.3.8 TX:111.42(c)(4)(J) MS:DJ.MATH.NA.N-VM.1">
+    <div class="sec-h"><span class="num">7</span><h2>Check Any Traverse</h2></div>
+    <div class="card">
+      <div class="prose"><p>Type up to four legs, each with a distance and a heading. The page converts every heading, finds the components, adds them, and plots the legs tip to tail. It starts with a three-leg hiking traverse of 500 m on heading 070&deg;, 350 m on 140&deg; and 620 m on 200&deg;. Replace the rows with your own legs to check a hand computation. The picture or the table confirms; your hand computation convinces.</p></div>
+      <div class="calc" id="proj-tr">
+        <div class="legs" id="proj-tr-legs"></div>
+        <div class="cout" id="proj-tr-out" aria-live="polite"></div>
+        <svg id="proj-tr-svg" class="cvs" viewBox="0 0 400 260" role="img" aria-label="The traverse drawn tip to tail from the legs typed above"></svg>
+      </div>
+      <div class="aside"><span class="label">Optional</span>A spreadsheet can build the same table, one row per leg, with columns for distance, heading, standard angle, east and north, and a final row that sums the components. Or plot each leg in a free graphing calculator as a vector from the origin, tip to tail, and read the final position off the graph. Either way, compare its total to your hand computation.</div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-build-p5" data-std="FL:MA.K12.MTR.4.1 FL:MA.K12.MTR.6.1 FL:ELA.K12.EE.1.1 TX:111.42(c)(1)(G)">
+    <div class="sec-h"><span class="num">8</span><h2>Problem 5: The Cross-Examination</h2></div>
+    <div class="card">
+      <p class="ptext">Get a second check of your finished Problem 4 work from someone or something other than you. The instruction to give the checker: <em>&ldquo;Check my heading-to-standard conversions and tell me whether my displacement directions make physical sense.&rdquo;</em> Copy the checker&rsquo;s response onto your page (two or three sentences of it), then write your own verdict: is the check correct? Verify every claim it makes before you rule. If it catches something real, say what you fixed. If its check is itself wrong, refute it with the conversion formula or a compass-direction sanity check. Either outcome earns full credit; what is graded is the judging.</p>
+      <div class="field"><p class="q">The check you received (two or three sentences) and your verdict.</p>
+        <textarea class="jbox" id="proj-j-p5" data-label="Problem 5: the check I received, and my verdict" data-min="40"></textarea></div>
+      <div class="aside"><span class="label">Who can check</span>A classmate, a family member, or anyone else who can follow your work counts. An AI tool is also an option if you choose one, and it is never required. A tool can do correct arithmetic and still miss a step, and it cannot see your page the way a dispatcher would, so its answer is a claim to verify, not a ruling.</div>
+    </div>
+  </div>
+
+  <div class="sec" id="proj-build-p6" data-std="FL:MA.912.T.2.4 FL:MA.912.T.2.5 TX:111.42(c)(4)(C) TX:111.42(c)(4)(F) MS:DJ.MATH.NA.F-TF.2">
+    <div class="sec-h"><span class="num">9</span><h2>Problem 6: Honors Stretch</h2></div>
+    <div class="card">
+      <p class="ptext">A ship&rsquo;s radar detects a hazard on a true bearing of 313&deg; at a distance of 8.5 nautical miles.</p>
+      <ol class="parts">
+        <li>Convert this bearing to standard position, showing the quadrant and reference angle.</li>
+        <li>Find the hazard&rsquo;s position relative to the ship in (east, north) coordinates, to the nearest tenth of a nautical mile.</li>
+        <li>In two sentences, explain what would go wrong for a navigator who plotted this bearing directly as a standard-position angle without converting it first. Be specific about which direction the error would send the plotted point.</li>
+      </ol>
+      <div class="mq" data-qid="proj-b19" data-ans="137" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. 90&deg; &minus; 313&deg; = &minus;223&deg;, and &minus;223&deg; + 360&deg; = 137&deg;, in Quadrant II." data-miss='[["-223","That is the right turn, but not yet between 0&deg; and 360&deg;. Add a full turn."],["223","That drops the sign. 90&deg; &minus; 313&deg; is &minus;223&deg;, a clockwise turn."]]' data-hint="90&deg; minus the bearing, then add 360&deg;."><p class="stem"><span class="qn">9a</span>Checkpoint: the standard angle.</p></div>
+      <div class="mq" data-qid="proj-b20" data-ans="43" data-form="any" data-vars="" data-ph="degrees" data-fb="Right. In Quadrant II the reference angle is 180&deg; &minus; 137&deg; = 43&deg;." data-miss='[["47","That is 137&deg; &minus; 90&deg;. A reference angle is measured to the <i>x</i>-axis, which is at 180&deg; here."],["317","That is 360&deg; &minus; 43&deg;, the Quadrant IV angle that shares this reference angle, not the reference angle itself."]]' data-hint="Which quadrant is 137&deg; in, and what is the reference rule there?"><p class="stem"><span class="qn">9b</span>Checkpoint: the reference angle.</p></div>
+      <div class="mq" data-qid="proj-b21" data-ans="-6.2" data-form="any" data-vars="" data-ph="nautical miles, nearest tenth" data-fb="Right. 8.5 cos 137&deg; = &minus;8.5 cos 43&deg; &asymp; &minus;6.2 nm, which is west." data-miss='[["5.8","That is 8.5 cos 313&deg;, the bearing fed straight into cosine. Convert to standard position first."],["6.2","The size is right, but cosine is negative in Quadrant II, so the hazard is west."]]' data-hint="East is distance times cosine of the standard angle. Check the sign in Quadrant II."><p class="stem"><span class="qn">9c</span>Checkpoint: the east coordinate.</p></div>
+      <div class="mq" data-qid="proj-b22" data-ans="5.8" data-form="any" data-vars="" data-ph="nautical miles, nearest tenth" data-fb="Right. 8.5 sin 137&deg; = 8.5 sin 43&deg; &asymp; 5.8 nm, which is north." data-miss='[["-6.2","That is 8.5 sin 313&deg;, the bearing fed straight into sine. Convert to standard position first."],["-5.8","The size is right, but sine is positive in Quadrant II, so the hazard is north."]]' data-hint="North is distance times sine of the standard angle."><p class="stem"><span class="qn">9d</span>Checkpoint: the north coordinate.</p></div>
+      <div class="field"><p class="q">Part 3: in two sentences, what goes wrong if the bearing is plotted unconverted?</p>
+        <textarea class="jbox" id="proj-j-p6" data-label="Problem 6: what goes wrong without the conversion" data-min="25"></textarea></div>
+    </div>
+  </div>
+  <div class="next"><button class="btn ghost" data-go="survey" type="button">&larr; Build It: Survey</button><button class="btn" data-go="finish" type="button">Next: Finish &rarr;</button></div>
+</section>
+
+<!-- ═════════ 05 FINISH ═════════ -->
+<section class="panel" id="tab-finish" role="tabpanel">
+  <div class="pset" id="proj-finish" data-std="FL:MA.K12.MTR.4.1 FL:MA.K12.MTR.6.1 TX:111.42(c)(1)(G)">
+    <div class="pset-top">
+      <label class="field" style="margin:0"><span class="label">Your name</span><br><input class="name" type="text" autocomplete="name" placeholder="First and last name"></label>
+      <div class="score"><div><b data-score="done">0</b>checkpoints solved</div><div><b data-score="first">0</b>first try</div></div>
+    </div>
+
+    <div class="card">
+      <div class="sec-h" style="margin-top:0"><span class="num">A</span><h2>Check Your Report Against the Rubric</h2></div>
+      <ul class="checks">
+        <li data-ck="proj-ck1">I attempted every problem, including the honors stretch, with visible work.</li>
+        <li data-ck="proj-ck2">On the two method problems, every variable is declared before it is used, every heading conversion is shown, and the answer is verified against an independent equation or a physical-reasonableness check.</li>
+        <li data-ck="proj-ck3">Units are carried through every computation and appear on every final answer.</li>
+        <li data-ck="proj-ck4">Where I got stuck, I named the gap honestly on the page instead of leaving a blank or bluffing, including in my verdict on the check of my work.</li>
+        <li data-ck="proj-ck5">My layout is clean: one step per line, equals signs aligned, answers labeled, pages in order and legible.</li>
+        <li data-ck="proj-ck6">My field report could be acted on by a stranger who never saw the field.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="sec-h" style="margin-top:0"><span class="num">B</span><h2>Reflection</h2></div>
+      <div class="field"><p class="q">Answer two of these in two or three sentences each. (1) Why must the two equations of the survey be solved together instead of treating each sighting as its own problem? (2) Why does a heading need the conversion formula, and what goes wrong if it is skipped? (3) What does documenting work to a professional standard mean in a surveyor&rsquo;s table, and why does presentation and precision matter more here than in a purely academic exercise? (4) Name one moment where right-triangle ratios, the unit circle and reference angles were each doing real work inside a single problem.</p>
+        <textarea class="jbox" id="proj-j-end" data-label="Reflection: two of the four questions, plus where I got stuck" data-min="50"></textarea></div>
+    </div>
+
+    <div class="pdfbar"><button class="btn" data-pdf type="button">Download my work (PDF)</button><span class="hint">Lists your typed notes, every checkpoint result, and the checklist. Your teacher will tell you where to hand in the PDF and the photos of your work.</span><span class="print-note"></span></div>
+    <div class="photos">
+      <span class="label">Photos of your work</span>
+      <p>Photograph or scan every handwritten page of the field report, pages in order, so a teacher can read it the way a dispatcher would.</p>
+    </div>
+  </div>
+  <div class="next"><button class="btn ghost" data-go="report" type="button">&larr; Build It: Headings</button><span></span></div>
+</section>
+
+</main>
+
+<script type="application/json" id="std-map">{
+  "proj-rub-understanding": "FL:MA.912.T.1.8 MA.912.T.2.5 MA.912.NSO.3.2 | TX:111.42(c)(4)(E) 111.42(c)(4)(F) | MS:DJ.MATH.NA.F-TF.2 DJ.MATH.NA.G-SRT.1",
+  "proj-rub-reasoning": "FL:MA.K12.MTR.4.1 MA.K12.MTR.6.1 ELA.K12.EE.1.1 | TX:111.42(c)(1)(B) 111.42(c)(1)(G) | MS:DJ.MATH.NA.F-TF.2",
+  "proj-rub-precision": "FL:MA.K12.MTR.2.1 | TX:111.42(c)(1)(D) 111.42(c)(1)(E)",
+  "proj-rub-honesty": "FL:MA.K12.MTR.6.1 MA.K12.MTR.4.1 | TX:111.42(c)(1)(G)",
+  "project-research": "FL:MA.K12.MTR.7.1 | TX:111.42(c)(1)(F)",
+  "proj-prep-angles": "FL:MA.912.T.2.1 | TX:111.42(c)(4)(C) | MS:DJ.MATH.NA.F-TF.1",
+  "proj-prep-coterminal": "FL:MA.912.T.2.1 | TX:111.42(c)(4)(C) | MS:DJ.MATH.NA.F-TF.1",
+  "proj-prep-ratios": "FL:MA.912.T.1.8 | TX:111.42(c)(4)(E) | MS:DJ.MATH.NA.G-SRT.1",
+  "proj-prep-elevation": "FL:MA.912.T.1.8 MA.K12.MTR.7.1 | TX:111.42(c)(4)(E) | MS:DJ.MATH.NA.G-SRT.1",
+  "proj-prep-unitcircle": "FL:MA.912.T.2.2 MA.912.T.2.4 MA.912.T.2.5 | TX:111.42(c)(4)(A) 111.42(c)(4)(C) | MS:DJ.MATH.NA.F-TF.2",
+  "proj-prep-heading": "FL:MA.912.NSO.3.2 MA.912.T.2.5 | TX:111.42(c)(4)(F) | MS:DJ.MATH.NA.F-TF.2 DJ.MATH.NA.N-VM.1",
+  "proj-prep-traverse": "FL:MA.912.NSO.3.8 MA.912.NSO.3.9 | TX:111.42(c)(4)(I) 111.42(c)(4)(K) | MS:DJ.MATH.NA.N-VM.1",
+  "proj-build-setup": "FL:MA.K12.MTR.2.1 | TX:111.42(c)(1)(D) 111.42(c)(1)(E)",
+  "proj-build-p1": "FL:MA.912.T.1.8 MA.K12.MTR.7.1 | TX:111.42(c)(4)(E) | MS:DJ.MATH.NA.G-SRT.1",
+  "proj-build-p2": "FL:MA.912.T.2.1 MA.912.T.2.4 | TX:111.42(c)(4)(C) 111.42(c)(4)(F) | MS:DJ.MATH.NA.F-TF.2",
+  "proj-build-p3": "FL:MA.912.T.1.8 MA.K12.MTR.6.1 | TX:111.42(c)(4)(E) 111.42(c)(1)(B) | MS:DJ.MATH.NA.G-SRT.1",
+  "proj-build-check2": "FL:MA.912.T.1.8 | TX:111.42(c)(4)(E)",
+  "proj-build-p4": "FL:MA.912.NSO.3.2 MA.912.NSO.3.9 MA.912.T.2.5 | TX:111.42(c)(4)(F) 111.42(c)(4)(K) | MS:DJ.MATH.NA.F-TF.2 DJ.MATH.NA.N-VM.1",
+  "proj-build-traverse": "FL:MA.912.NSO.3.8 | TX:111.42(c)(4)(J) | MS:DJ.MATH.NA.N-VM.1",
+  "proj-build-p5": "FL:MA.K12.MTR.4.1 MA.K12.MTR.6.1 ELA.K12.EE.1.1 | TX:111.42(c)(1)(G)",
+  "proj-build-p6": "FL:MA.912.T.2.4 MA.912.T.2.5 | TX:111.42(c)(4)(C) 111.42(c)(4)(F) | MS:DJ.MATH.NA.F-TF.2",
+  "proj-finish": "FL:MA.K12.MTR.4.1 MA.K12.MTR.6.1 | TX:111.42(c)(1)(G)"
+}</script>
+
+<footer class="foot"><div class="wrap"><span>Optima Academy Online · Precalculus Honors</span><span>Academic Design and Curriculum (AcDC) · © Optima Academy Online</span></div></footer>
+<script type="application/json" id="page-config">{"key": "pch-w19-proj", "title": "Focus Assignment 6.11: Trigonometry in the Field", "course": "Precalculus Honors", "teacher": {"full": "Dr. Oswaldo Usborne", "short": "Dr. Usborne"}, "footer": "Precalculus Honors · Focus Assignment 6.11: Trigonometry in the Field", "pdfTag": "PrecalcH_W19_PROJ"}</script>
+<script type="application/json" id="page-assets">{"img": {"usb": {"src": "data:image/jpeg;base64,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", "alt": ""}}, "proj_card": {}}</script>
+<script>
+window.ASK = {
+  scope: 'the field report: elevation and depression, two-station surveys, converting compass headings, reference angles and signs, adding legs, and how the rubric is graded',
+  quick: ['Why convert a heading?', 'How do I set up two stations?', 'What does the rubric look for?'],
+  practice: /(150 m|\b24\b|\b205\b|\b41\b|\b55\b|\b26\b|\b128\b|\b313\b|8\.5|\b245\b|\b310\b|\b38\b|\b155\b|\b110\b|\b300\b|\b322\b|\b137\b|336\.9|70\.3|61\.1|125\.3|23\.8|337|9\.1|22\.0|14\.2|11\.1|10\.9|5\.1|6\.2|5\.8)/i,
+  guide: 'That one is from your checkpoints, so here are my questions instead of the answer. Which angle is the problem giving you, and from which starting line? Which ratio links the sides you know? Try it by hand, then press Check.',
+  notes: [
+    { k: ['convert','conversion','heading to standard','90 minus','why convert','standard angle','standard position'], w: 1.4, a: 'A heading is measured clockwise from north. The unit circle measures counterclockwise from east. So theta_standard = 90 - heading, adding 360 if the result is negative. Skip it and every sign and quadrant after it is wrong.' },
+    { k: ['heading','bearing','compass','clockwise','north'], a: 'Headings and bearings run clockwise from north, 0 to 360 degrees. Standard-position angles run counterclockwise from east. They are different systems, so convert on purpose.' },
+    { k: ['east','north','component','components','displacement','cos','sin'], w: 1.3, a: 'After converting, the east component is d cos(theta_standard) and the north component is d sin(theta_standard). A negative value means west or south.' },
+    { k: ['reference angle','reference','astc','quadrant','sign','signs'], a: 'The reference angle is the acute angle to the x-axis. Quadrant I: theta. II: 180 - theta. III: theta - 180. IV: 360 - theta. Cosine is negative in II and III, sine is negative in III and IV.' },
+    { k: ['coterminal','negative angle','add 360','full turn'], a: 'Coterminal angles end on the same ray and differ by whole turns. Add 360 to a negative angle until it lands between 0 and 360. For example, -160 + 360 = 200.' },
+    { k: ['two station','two stations','two equations','two unknowns','system','two sightings'], w: 1.4, a: 'One sighting has two unknowns, the distance and the height. Each station gives one equation for the same height, so write both and solve them together. Then verify with the equation you did not solve with first.' },
+    { k: ['elevation','depression','alternate interior','parallel'], a: 'The angle of elevation and the angle of depression for the same two points are equal, because the horizontal lines are parallel (alternate interior angles).' },
+    { k: ['tan','tangent','multiply','divide','which ratio'], a: 'Name the side you know and the side you want, relative to the angle. Opposite and adjacent means tangent. If the unknown is on top of the ratio, multiply; if it is on the bottom, divide.' },
+    { k: ['reciprocal','back','return','sail back','way back'], a: 'The reciprocal bearing is the bearing plus or minus 180 degrees, whichever lands between 0 and 360. It is the course that sails back to the start.' },
+    { k: ['distance','straight line','pythagorean','total','sum','traverse'], a: 'For a traverse, add all the east components and all the north components separately. The straight-line distance is the square root of (east total squared plus north total squared).' },
+    { k: ['rubric','grade','graded','points','criteria','16'], a: 'The rubric has four rows of 4 points each, 16 in all, applied to the two method problems: understanding, reasoning, presentation and precision, and intellectual honesty. The other problems are checked for honest completion.' },
+    { k: ['reasonable','reasonableness','sanity','check','verify','physically'], a: 'A reasonableness check asks whether the answer fits the world: does a tower that height make sense, does the boat head the way the compass says? Perform the check and say what you found, even if something seemed off.' },
+    { k: ['honest','honesty','stuck','gap','bluff'], a: 'Name the gap plainly on the page. A rough patch you admit is worth more than one you smooth over, and the rubric rewards the true account of how the work was done.' },
+    { k: ['round','rounding','decimal','tenth','degree mode','calculator'], a: 'Set the calculator to degree mode. Keep full values until the last step, then round once. Rounding the components first can shift the last digit of a bearing.' },
+    { k: ['pdf','photos','photo','hand in','submit','turn in'], a: 'Press Download my work (PDF) on the last tab for your typed notes, checkpoint results and checklist. Your teacher will tell you where to hand in the PDF and the photos of your handwritten work.' }
+  ]
+};
+</script>
+
+<script>
+/* Algebra 1 integrated lesson · core engine (shell shared with the 9th ELA kit).
+   CFG (#page-config): { key, n, title, course, footer, pdfTag, teacher:{full,short} }
+   Page may define window.ASK = { scope, notes:[{k:[...], a:"..."}], practice:/regex/, quick:[...] } before this script. */
+var CFG = (function(){ try { return JSON.parse(document.getElementById('page-config').textContent); } catch(e){ return { key:'alg1-x', title:'' }; } })();
+var TEACHER = CFG.teacher || { full: 'Dr. Oswaldo Usborne', short: 'Dr. Usborne' };
+var PREFIX = CFG.key + '-';
+var ASSETS = (function(){ var el = document.getElementById('page-assets'); try { return el ? JSON.parse(el.textContent) : {}; } catch(e){ return {}; } })();
+var $ = function(s, r){ return (r || document).querySelector(s); };
+var $$ = function(s, r){ return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+var STORE = (function(){
+  var mem = {}, s = null;
+  try { var t = window.localStorage; t.setItem('__t', '1'); t.removeItem('__t'); s = t; } catch(e){ s = null; }
+  function rget(k){ try { return s ? s.getItem(k) : (k in mem ? mem[k] : null); } catch(e){ return null; } }
+  function rset(k, v){ try { if (s) s.setItem(k, v); else mem[k] = v; } catch(e){ mem[k] = v; } }
+  return { get: function(k){ return rget(PREFIX + k); }, set: function(k, v){ rset(PREFIX + k, v); }, rawGet: rget, rawSet: rset };
+})();
+function jget(k, d){ try { var v = STORE.get(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
+function jset(k, v){ STORE.set(k, JSON.stringify(v)); }
+function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ---------- images from the asset pack ---------- */
+$$('[data-img]').forEach(function(el){
+  var a = (ASSETS.img || {})[el.dataset.img]; if (!a) return;
+  if (el.tagName === 'IMG') { el.src = a.src; if (!el.alt) el.alt = a.alt || ''; } else el.style.backgroundImage = 'url("' + a.src + '")';
+});
+
+/* ---------- tabs ---------- */
+var TABS = $$('.tab').map(function(b){ return b.dataset.tab; });
+function switchTab(id, noScroll){
+  if (TABS.indexOf(id) < 0) id = TABS[0];
+  $$('.tab').forEach(function(b){ var on = b.dataset.tab === id; b.classList.toggle('on', on); b.setAttribute('aria-selected', on ? 'true' : 'false'); });
+  $$('.panel').forEach(function(p){ p.classList.toggle('on', p.id === 'tab-' + id); });
+  STORE.set('tab', id);
+  var seen = (STORE.get('seen') || '').split(',').filter(Boolean);
+  if (seen.indexOf(id) < 0) { seen.push(id); STORE.set('seen', seen.join(',')); }
+  $$('.tab').forEach(function(b){ b.classList.toggle('seen', seen.indexOf(b.dataset.tab) > -1 && b.dataset.tab !== id); });
+  if (!noScroll) { var t = $('.tabs'); if (t && window.scrollY > t.offsetTop) window.scrollTo({ top: t.offsetTop, behavior: 'smooth' }); }
+  document.dispatchEvent(new CustomEvent('tabchange', { detail: id }));
+  psetScore();
+}
+$$('.tab').forEach(function(b){ b.addEventListener('click', function(){ switchTab(b.dataset.tab); }); });
+$$('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ switchTab(b.dataset.go); }); });
+
+/* ---------- typed answers (words) ---------- */
+function words(s){ return (s.trim().match(/\S+/g) || []).length; }
+$$('textarea.jbox').forEach(function(el){
+  var v = STORE.get('j-' + el.id); if (v !== null) el.value = v;
+  var d = document.createElement('div'); d.className = 'wc'; el.parentNode.insertBefore(d, el.nextSibling);
+  function wc(){ var n = words(el.value), min = +(el.dataset.min || 0); d.textContent = n + (n === 1 ? ' word' : ' words') + (min ? ' · aim for ' + min + '+' : ''); d.classList.toggle('met', min > 0 && n >= min); }
+  wc(); el.addEventListener('input', function(){ STORE.set('j-' + el.id, el.value); wc(); });
+});
+$$('input.name').forEach(function(el){
+  var v = STORE.rawGet('alg1-name'); if (v) el.value = v;
+  el.addEventListener('input', function(){ STORE.rawSet('alg1-name', el.value); });
+});
+
+/* ---------- worked examples: one step at a time ---------- */
+$$('.ex').forEach(function(ex, xi){
+  var lis = $$('ol.steps > li', ex); if (!lis.length) return;
+  var key = 'ex-' + (ex.id || xi), n = +(STORE.get(key) || 0);
+  var b = document.createElement('button'); b.type = 'button'; b.className = 'btn ghost small more';
+  ex.appendChild(b);
+  function draw(){ lis.forEach(function(li, i){ li.classList.toggle('on', i < n); }); ex.classList.toggle('done', n >= lis.length); b.textContent = n ? 'Next step' : 'Show the first step'; }
+  b.addEventListener('click', function(){ n = Math.min(lis.length, n + 1); STORE.set(key, n); draw(); });
+  draw();
+});
+
+/* ---------- choices (data-ok="1" on the right option; data-fb on any option) ---------- */
+$$('.mcq').forEach(function(q){
+  var id = q.dataset.qid, fb = $('.fb', q), opts = $$('.opt', q);
+  if (!fb) { fb = document.createElement('div'); fb.className = 'fb'; q.appendChild(fb); }
+  function show(o, quiet){
+    var good = o.dataset.ok === '1';
+    if (good) { o.classList.add('yes'); q.classList.add('done'); }
+    else { o.classList.add('no'); if (!quiet) { o.classList.remove('shake'); void o.offsetWidth; o.classList.add('shake'); } }
+    fb.innerHTML = o.dataset.fb || (good ? 'Right.' : 'Not this one. Look again.'); fb.className = 'fb show ' + (good ? 'good' : 'try');
+  }
+  opts.forEach(function(o, i){
+    o.type = 'button';
+    o.addEventListener('click', function(){
+      if (q.classList.contains('done')) return;
+      show(o);
+      var r = jget('c-' + id, { tried: [] }); if (r.tried.indexOf(i) < 0) r.tried.push(i);
+      r.ok = o.dataset.ok === '1'; if (r.first === undefined) r.first = r.ok; r.v = o.textContent.trim(); jset('c-' + id, r); psetScore();
+    });
+  });
+  jget('c-' + id, { tried: [] }).tried.forEach(function(i){ if (opts[i]) show(opts[i], true); });
+});
+
+/* ---------- typed math: checked by value at random points, then for simplified form ---------- */
+var MATH = (function(){
+  var SUP = { '⁰':'0','¹':'1','²':'2','³':'3','⁴':'4','⁵':'5','⁶':'6','⁷':'7','⁸':'8','⁹':'9','⁻':'-' };
+  function norm(s){
+    s = String(s).toLowerCase().replace(/[−–—]/g, '-').replace(/[×·∙]/g, '*').replace(/÷/g, '/').replace(/\s+/g, '');
+    s = s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻]+/g, function(m){ return '^' + m.split('').map(function(c){ return SUP[c]; }).join(''); });
+    s = s.replace(/\^\((-?\d+)\)/g, '^$1');
+    return s;
+  }
+  function tokens(s){
+    var t = [], m, re = /\d+\.?\d*|\.\d+|[a-z]|[-+*/^()]/g, used = 0;
+    while ((m = re.exec(s))) { if (m.index !== used) return null; t.push(m[0]); used = re.lastIndex; }
+    return used === s.length ? t : null;
+  }
+  function parse(src){
+    var t = tokens(norm(src)); if (!t || !t.length) return null;
+    var p = 0, err = null;
+    function peek(){ return t[p]; }
+    function isNum(x){ return x !== undefined && /^[\d.]/.test(x); }
+    function isVar(x){ return x !== undefined && /^[a-z]$/.test(x); }
+    function expr(){
+      var f = term();
+      while (peek() === '+' || peek() === '-') { var op = t[p++], g = term(); f = (function(a, b, o){ return o === '+' ? function(e){ return a(e) + b(e); } : function(e){ return a(e) - b(e); }; })(f, g, op); }
+      return f;
+    }
+    function term(){
+      var f = unary();
+      for (;;) {
+        var x = peek();
+        if (x === '*' || x === '/') { p++; var g = unary(); f = (function(a, b, o){ return o === '*' ? function(e){ return a(e) * b(e); } : function(e){ return a(e) / b(e); }; })(f, g, x); }
+        else if (isVar(x) || x === '(') { var h = power(); f = (function(a, b){ return function(e){ return a(e) * b(e); }; })(f, h); }
+        else if (isNum(x)) { err = 'digits'; p++; }
+        else break;
+      }
+      return f;
+    }
+    function unary(){
+      if (peek() === '-') { p++; var f = unary(); return function(e){ return -f(e); }; }
+      if (peek() === '+') { p++; return unary(); }
+      return power();
+    }
+    function power(){
+      var b = atom();
+      if (peek() === '^') { p++; var x = unary(); return function(e){ return Math.pow(b(e), x(e)); }; }
+      return b;
+    }
+    function atom(){
+      var x = t[p++];
+      if (isNum(x)) { var v = parseFloat(x); return function(){ return v; }; }
+      if (isVar(x)) return function(e){ return e[x]; };
+      if (x === '(') { var f = expr(); if (t[p++] !== ')') err = 'paren'; return f; }
+      err = 'syntax'; return function(){ return NaN; };
+    }
+    var f;
+    try { f = expr(); } catch(e){ return null; }
+    if (p !== t.length || err) return { err: err || 'syntax' };
+    return { f: f };
+  }
+  var PTS = [[1.37, 2.11, 0.73], [2.59, 0.81, 1.93], [0.67, 1.71, 2.37], [3.13, 1.29, 0.59]];
+  function same(a, b, vars){
+    var A = parse(a), B = parse(b); if (!A || !B || !A.f || !B.f) return false;
+    for (var k = 0; k < PTS.length; k++) {
+      var e = {}; 'abcdefghijklmnopqrstuvwxyz'.split('').forEach(function(c, i){ e[c] = PTS[k][i % 3] + i * 0.013; });
+      (vars || '').split('').forEach(function(c, i){ e[c] = PTS[k][i % 3]; });
+      var x = A.f(e), y = B.f(e);
+      if (!isFinite(x) || !isFinite(y) || Math.abs(x - y) > 1e-7 * Math.max(1, Math.abs(y))) return false;
+    }
+    return true;
+  }
+  /* top-level terms; each must be one coefficient and each variable at most once; parentheses only in a denominator */
+  function terms(s){
+    s = norm(s); var out = [], depth = 0, cur = '';
+    for (var i = 0; i < s.length; i++) {
+      var c = s[i];
+      if (c === '(') depth++; if (c === ')') depth--;
+      if ((c === '+' || c === '-') && depth === 0 && i > 0 && !/[\^*/(]/.test(s[i - 1])) { out.push(cur); cur = c === '-' ? '-' : ''; }
+      else cur += c;
+    }
+    out.push(cur); return out.filter(function(x){ return x !== '' && x !== '-'; });
+  }
+  function simple(s){
+    var T = terms(s);
+    for (var i = 0; i < T.length; i++) {
+      var t = T[i].replace(/^-/, '').replace(/\^\((-?\d+)\/(\d+)\)/g, function(m0, a, b){
+        a = Math.abs(+a); b = +b; var g = a, h = b; while (h) { var r = g % h; g = h; h = r; }
+        return (g === 1 && b !== 1) ? '^1' : '^(unreduced'; }), num = t.split('/')[0], den = t.split('/').slice(1).join('/');
+      if (/[()]/.test(num)) return false;
+      var core = num.replace(/\^-?\d+(\.\d+)?/g, '').replace(/\*/g, '');
+      var nums = core.match(/\d+\.?\d*|\.\d+/g) || [];
+      if (nums.length > 1 || (nums.length === 1 && core.indexOf(nums[0]) !== 0)) return false;
+      var letters = core.replace(/[\d.]/g, '').split('');
+      if (letters.some(function(c, k){ return letters.indexOf(c) !== k; })) return false;
+    }
+    return true;
+  }
+  function pretty(s){
+    var n = norm(s); if (!n) return '';
+    var h = esc(n).replace(/\^\(([^()]*)\)/g, '<sup>$1</sup>').replace(/\^(-?\d+(?:\.\d+)?)/g, '<sup>$1</sup>').replace(/([a-z])/g, '<i>$1</i>').replace(/\*/g, '·').replace(/-/g, ' − ').replace(/\+/g, ' + ').replace(/^ − /, '−').replace(/\( − /g, '(−').replace(/<sup> − /g, '<sup>−');
+    return '<span class="m">' + h + '</span>';
+  }
+  return { parse: parse, same: same, terms: terms, simple: simple, pretty: pretty, norm: norm };
+})();
+
+$$('.mq').forEach(function(q){
+  var id = q.dataset.qid, ans = q.dataset.ans, vars = q.dataset.vars || 'x', form = q.dataset.form || 'simp';
+  var miss = []; try { miss = JSON.parse(q.dataset.miss || '[]'); } catch(e){}
+  if (!$('.mq-row', q)) q.insertAdjacentHTML('beforeend', '<div class="mq-row"><input class="mq-in" type="text" autocomplete="off" spellcheck="false" aria-label="Your answer" placeholder="' + esc(q.dataset.ph || 'type your answer') + '"><button class="btn small" type="button">Check</button></div><div class="mq-prev" aria-live="polite"></div><div class="fb"></div>');
+  var inp = $('.mq-in', q), go = $('.mq-row button', q), prev = $('.mq-prev', q), fb = $('.fb', q);
+  var r = jget('m-' + id, null);
+  function say(ok, msg){ fb.innerHTML = msg; fb.className = 'fb show ' + (ok ? 'good' : 'try'); }
+  function preview(){ var v = inp.value.trim(); prev.innerHTML = v ? 'Reads as: ' + MATH.pretty(v) : ''; }
+  function check(quiet){
+    var v = inp.value.trim(); if (!v) { inp.focus(); return; }
+    var P = MATH.parse(v);
+    if (!P) { say(false, 'I can&rsquo;t read that yet. Use <code>^</code> for powers, like <code>x^2</code>.'); return; }
+    if (P.err === 'digits') { say(false, 'A number right after a letter is ambiguous. Write powers with <code>^</code>: <code>x^2</code>, not <code>x2</code>.'); return; }
+    if (P.err) { say(false, 'Check your parentheses and signs; I can&rsquo;t read that yet.'); return; }
+    var eq = MATH.same(v, ans, vars), ok = eq && (form !== 'simp' || (MATH.simple(v) && MATH.terms(v).length === MATH.terms(ans).length));
+    var msg;
+    if (ok) msg = q.dataset.fb || 'Right.';
+    else if (eq) msg = 'That&rsquo;s equal in value, but not simplified yet. Combine like terms and clear the parentheses.';
+    else {
+      msg = q.dataset.hint || 'Not equal yet. Check each like term: its sign, then its coefficient.';
+      for (var i = 0; i < miss.length; i++) if (MATH.same(v, miss[i][0], vars)) { msg = miss[i][1]; break; }
+    }
+    say(ok, msg);
+    if (quiet) return;
+    var rec = jget('m-' + id, { tries: 0 }); rec.tries++; rec.v = v; rec.ok = ok; if (rec.first === undefined) rec.first = ok;
+    jset('m-' + id, rec);
+    if (ok) { q.classList.add('done'); } else { inp.classList.remove('shake'); void inp.offsetWidth; inp.classList.add('shake'); }
+    psetScore();
+  }
+  inp.addEventListener('input', preview);
+  inp.addEventListener('keydown', function(e){ if (e.key === 'Enter') { e.preventDefault(); check(); } });
+  go.addEventListener('click', function(){ check(); });
+  if (r && r.v) { inp.value = r.v; preview(); check(true); if (r.ok) q.classList.add('done'); }
+});
+
+/* ---------- place: tap a card, then tap its bin ---------- */
+$$('.place').forEach(function(g){
+  var id = g.id, fb = $('.place-fb', g), tally = $('.tally', g), chips = $$('.chip', g), sel = null;
+  function count(){ var n = $$('.chip.placed', g).length; if (tally) { tally.textContent = n + ' of ' + chips.length + ' placed'; tally.classList.toggle('done', n === chips.length); } }
+  function arm(on){ $$('.bin', g).forEach(function(b){ b.classList.toggle('armed', on); }); }
+  function put(c, b, quiet){ c.classList.remove('sel'); c.classList.add('placed'); c.tabIndex = -1; $('.drop', b).appendChild(c); if (!quiet && fb) fb.innerHTML = '<div class="fb show good">' + (c.dataset.fb || 'Right.') + '</div>'; }
+  chips.forEach(function(c){
+    c.type = 'button';
+    c.addEventListener('click', function(){
+      if (c.classList.contains('placed')) return;
+      if (sel === c) { c.classList.remove('sel'); sel = null; arm(false); return; }
+      if (sel) sel.classList.remove('sel'); sel = c; c.classList.add('sel'); arm(true);
+    });
+  });
+  $$('.bin', g).forEach(function(b){
+    b.addEventListener('click', function(){
+      if (!sel) return; var c = sel; sel = null; arm(false);
+      if (c.dataset.ans === b.dataset.bin) { put(c, b); var d = (STORE.get('p-' + id) || '').split(',').filter(Boolean); d.push(c.dataset.k); STORE.set('p-' + id, d.join(',')); }
+      else { c.classList.remove('sel', 'shake'); void c.offsetWidth; c.classList.add('shake'); if (fb) fb.innerHTML = '<div class="fb show try">' + (c.dataset.miss || 'Not there. Look again.') + '</div>'; }
+      count();
+    });
+  });
+  (STORE.get('p-' + id) || '').split(',').filter(Boolean).forEach(function(k){ var c = $('.chip[data-k="' + k + '"]', g); if (c) { var b = $('.bin[data-bin="' + c.dataset.ans + '"]', g); if (b) put(c, b, true); } });
+  count();
+});
+
+/* ---------- checklists ---------- */
+$$('.checks li').forEach(function(li){
+  li.insertAdjacentHTML('afterbegin', '<span class="bx" aria-hidden="true"></span>');
+  li.setAttribute('role', 'checkbox'); li.tabIndex = 0;
+  function set(on){ li.classList.toggle('on', on); li.setAttribute('aria-checked', on ? 'true' : 'false'); $('.bx', li).textContent = on ? '✓' : ''; }
+  set(STORE.get('ck-' + li.dataset.ck) === '1');
+  function tog(){ var on = !li.classList.contains('on'); set(on); STORE.set('ck-' + li.dataset.ck, on ? '1' : '0'); }
+  li.addEventListener('click', tog);
+  li.addEventListener('keydown', function(e){ if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); tog(); } });
+});
+
+/* ---------- problem set score ---------- */
+function itemRec(el){ return el.classList.contains('mq') ? jget('m-' + el.dataset.qid, null) : jget('c-' + el.dataset.qid, null); }
+function psetItems(){ return $$('.pset .mq, .pset .mcq'); }
+function psetScore(){
+  var it = psetItems(), done = 0, first = 0;
+  it.forEach(function(el){ var r = itemRec(el); if (r && r.ok) done++; if (r && r.first) first++; });
+  $$('[data-score="done"]').forEach(function(b){ b.textContent = done + ' / ' + it.length; });
+  $$('[data-score="first"]').forEach(function(b){ b.textContent = first + ' / ' + it.length; });
+}
+
+/* ---------- PDF (print window: no library needed) ---------- */
+function studentFile(){
+  var nm = (STORE.rawGet('alg1-name') || '').trim().split(/\s+/).filter(Boolean);
+  var who = nm.length >= 2 ? nm[nm.length - 1] + '_' + nm.slice(0, -1).join('') : (nm[0] || 'LastName_FirstName');
+  return who + '_' + (CFG.pdfTag || 'Alg1');
+}
+function stemText(el){ var s = $('.stem', el); if (!s) return ''; var c = s.cloneNode(true); $$('.qn', c).forEach(function(x){ x.remove(); }); return c.innerHTML.trim(); }
+function pdfHtml(){
+  var h = '<h2>Problem set</h2><table class="ps"><tr><th>#</th><th>Problem</th><th>My answer</th><th>Result</th></tr>';
+  psetItems().forEach(function(el, i){
+    var r = itemRec(el), a = !r || !r.v ? '<span class="missing">(not answered)</span>' : (el.classList.contains('mq') ? MATH.pretty(r.v) : esc(r.v));
+    var res = !r ? '' : r.ok ? (r.first ? '✓ first try' : '✓ after ' + ((r.tries || (r.tried || []).length) - 1) + ' more') : '✗ not yet';
+    h += '<tr><td>' + (i + 1) + '</td><td>' + stemText(el) + '</td><td>' + a + '</td><td>' + res + '</td></tr>';
+  });
+  h += '</table>';
+  var js = $$('textarea.jbox');
+  if (js.length) {
+    h += '<h2>Written answers</h2>';
+    js.forEach(function(el){ var v = (STORE.get('j-' + el.id) || '').trim(); h += '<div class="q">' + esc(el.dataset.label || el.id) + '</div>' + (v ? '<div class="a">' + esc(v) + '</div>' : '<div class="a missing">(no answer saved)</div>'); });
+  }
+  var ck = $$('.pset .checks li');
+  if (ck.length) { h += '<h2>Checklist</h2>'; ck.forEach(function(li){ h += '<div class="a">' + (li.classList.contains('on') ? '☑ ' : '☐ ') + esc(li.textContent.replace(/^✓/, '').trim()) + '</div>'; }); }
+  return h;
+}
+function openPrint(){
+  psetScore();
+  var nm = (STORE.rawGet('alg1-name') || '').trim(), file = studentFile();
+  var done = ($('[data-score="done"]') || {}).textContent || '', first = ($('[data-score="first"]') || {}).textContent || '';
+  var css = 'body{font:14.5px/1.55 Georgia,serif;color:#0E1C42;max-width:760px;margin:0 auto;padding:28px 36px}' +
+    'h1{font:700 22px/1.2 Arial,sans-serif;margin:0 0 4px}.sub{font:12.5px/1.4 Arial,sans-serif;color:#65707C;margin-bottom:6px}' +
+    '.sc{font:700 12.5px/1.4 Arial,sans-serif;margin:0 0 18px}h2{font:700 11px/1.3 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#C43D27;margin:22px 0 6px;padding-top:10px;border-top:2px solid #0E1C42}' +
+    'table.ps{border-collapse:collapse;width:100%;font-size:13.5px}table.ps th{font:700 10.5px/1.3 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-align:left;color:#65707C;border-bottom:1px solid #C3CED9;padding:4px 8px 4px 0}' +
+    'table.ps td{vertical-align:top;border-bottom:1px solid #E2EAF3;padding:6px 8px 6px 0}table.ps td:last-child{white-space:nowrap;font:12px Arial,sans-serif}' +
+    '.q{font:700 13px/1.45 Arial,sans-serif;margin-top:10px}.a{white-space:pre-wrap;margin:3px 0 0}.missing{color:#C43D27;font-style:italic}.m{white-space:nowrap}sup{font-size:.7em}.fr{display:inline-block;text-align:center;vertical-align:middle}.fr>span{display:block}.fr>span:first-child{border-bottom:1px solid}';
+  var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + esc(file) + '<\/title>\x3cstyle>' + css + '<\/style><\/head><body><h1>' + esc(CFG.title) + '<\/h1><div class="sub">' + (nm ? esc(nm) + ' · ' : '') + esc(CFG.footer || '') + '<\/div><div class="sc">Solved: ' + esc(done) + ' · First try: ' + esc(first) + '<\/div>' + pdfHtml() + '<\/body><\/html>';
+  var win = window.open('', '_blank');
+  if (!win) { $$('.print-note').forEach(function(n){ n.textContent = 'The PDF window was blocked. Allow pop-ups for this page and try again.'; n.classList.add('show'); }); return; }
+  win.document.write(html); win.document.close();
+  setTimeout(function(){ win.focus(); win.print(); }, 400);
+}
+$$('[data-pdf]').forEach(function(b){ b.addEventListener('click', openPrint); });
+
+/* ---------- tools: calculator + Ask Dr. Usborne (two buttons in the tab bar, drawers on the right) ---------- */
+(function(){
+  var bar = $('.tabs .wrap'); if (!bar) return;
+  var face = ASSETS.img && ASSETS.img.usb ? ASSETS.img.usb.src : '';
+  if (document.getElementById('obj-calc')) {
+    /* desk objects on the right edge: a calculator and an "Ask Dr. Usborne" sticky note */
+    document.body.insertAdjacentHTML('beforeend', '<div class="rail" aria-label="Tools">' +
+      '<button type="button" id="tCalc" class="obj-calc" aria-controls="calcDrawer" aria-label="Open the calculator" title="Calculator"><svg viewBox="0 0 100 150" aria-hidden="true"><use href="#obj-calc"/></svg></button>' +
+      '<button type="button" id="tAsk" class="obj-note" aria-controls="askDrawer" aria-label="Ask ' + esc(TEACHER.full) + '"><span class="pin" aria-hidden="true"></span><span class="k">Questions?</span><span class="h">Ask ' + esc(TEACHER.short) + '</span>' +
+      '<img class="face" src="' + face + '" alt="">' +
+      '<svg class="plane" viewBox="0 0 40 24" aria-hidden="true"><path d="M2 20c6-2 9-6 13-6" fill="none" stroke="#0E1C42" stroke-width="1.2" stroke-dasharray="2 2.5"/><path d="M15 12 38 3l-8 18-5-6z" fill="#fff" stroke="#0E1C42" stroke-width="1.4" stroke-linejoin="round"/><path d="M38 3 25 15l-2 6" fill="none" stroke="#0E1C42" stroke-width="1.2"/></svg></button></div>');
+  } else {
+  bar.insertAdjacentHTML('beforeend', '<div class="tools"><button class="tool" id="tCalc" type="button" aria-controls="calcDrawer" aria-label="Calculator" title="Calculator"><span class="ic" aria-hidden="true">+−</span><span class="tx">Calculator</span></button>' +
+    '<button class="tool" id="tAsk" type="button" aria-controls="askDrawer" aria-label="Ask ' + esc(TEACHER.short) + '" title="Ask ' + esc(TEACHER.short) + '"><img class="ic" src="' + face + '" alt=""><span class="tx">Ask ' + esc(TEACHER.short) + '</span></button></div>');
+  }
+  var A = window.ASK || {};
+  document.body.insertAdjacentHTML('beforeend',
+    '<div class="drawer" id="calcDrawer" role="dialog" aria-label="Calculator"><div class="dr-head"><div><small>Tool</small><b>Scientific calculator</b></div><button class="dr-x" type="button" aria-label="Close">&times;</button></div>' +
+    '<iframe class="calc-frame" id="calcFrame" title="Desmos Scientific Calculator" loading="lazy"></iframe><div class="dr-foot"><span>Desmos Scientific Calculator</span><a href="https://www.desmos.com/scientific" target="_blank" rel="noopener">open in a new tab ↗</a></div></div>' +
+    '<div class="drawer" id="askDrawer" role="dialog" aria-label="Ask ' + esc(TEACHER.full) + '"><div class="dr-head"><img src="' + face + '" alt=""><div><small>Questions</small><b>Ask ' + esc(TEACHER.full) + '</b></div><button class="dr-x" type="button" aria-label="Close">&times;</button></div>' +
+    '<div class="letters" id="letters"><div class="empty">Ask about ' + esc(A.scope || 'this lesson') + '. He answers from his notes on this page.<div class="quick">' + (A.quick || []).map(function(q){ return '<button type="button">' + esc(q) + '</button>'; }).join('') + '</div></div></div>' +
+    '<div class="compose"><textarea id="askQ" maxlength="300" aria-label="Your question" placeholder="Type a question"></textarea><div class="row"><span class="pg-note">An AI-generated character. Replies come from prepared notes.</span><button class="btn small" id="askSend" type="button">Send</button></div></div></div>');
+  var map = { calc: ['#tCalc', '#calcDrawer'], ask: ['#tAsk', '#askDrawer'] };
+  function open(name){
+    Object.keys(map).forEach(function(k){ var on = k === name; $(map[k][1]).classList.toggle('open', on); $(map[k][0]).classList.toggle('on', on); $(map[k][0]).setAttribute('aria-expanded', on ? 'true' : 'false'); });
+    if (name === 'calc') { var f = $('#calcFrame'); if (!f.getAttribute('src')) f.src = 'https://www.desmos.com/scientific'; }
+    if (name === 'ask') setTimeout(function(){ $('#askQ').focus(); }, 350);
+  }
+  Object.keys(map).forEach(function(k){
+    $(map[k][0]).addEventListener('click', function(){ $(map[k][1]).classList.contains('open') ? open(null) : open(k); });
+    $('.dr-x', $(map[k][1])).addEventListener('click', function(){ open(null); });
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') open(null); });
+  $$('[data-open]').forEach(function(b){ b.addEventListener('click', function(){ open(b.dataset.open); }); });
+
+  var BASE = [
+    { k: ['hello','hi','hey','who are you','your name'], w: 1, a: 'Hello! I teach algebra. Ask me about anything on this page, and I will answer from my notes.' },
+    { k: ['pdf','download','submit','turn in','hand in','save'], a: 'Finish the problem set, then press "Download my work (PDF)". It lists each answer and whether you had it on the first try. Your teacher will tell you where to hand it in.' },
+    { k: ['type','typing','exponent','power','squared','cubed','caret','^'], a: 'Type powers with the caret: x^2 for x squared, x^3 for x cubed. Under the box, "Reads as" shows how I read what you typed, so check it before you press Check.' },
+    { k: ['calculator','desmos'], a: 'The Calculator button in the bar at the top opens a scientific calculator. It helps with the arithmetic on coefficients; the algebra is still yours.' }
+  ];
+  var NOTES = BASE.concat(A.notes || []);
+  function answer(q){
+    var t = ' ' + q.toLowerCase().replace(/[^a-z0-9^',= ]+/g, ' ').replace(/\s+/g, ' ') + ' ';
+    if (A.practice && A.practice.test(q)) return A.guide || 'That one is from your practice, so I will give you my questions instead of the answer. Which terms are like terms? What happens to the sign of each one? Try it, then press Check.';
+    var best = null, bs = 0;
+    NOTES.forEach(function(n){
+      var s = 0;
+      n.k.forEach(function(key){ var re = new RegExp('(^|[^a-z])' + key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/ /g, '\\s+') + '(s|es|ed|ing)?([^a-z]|$)'); if (re.test(t)) s += key.indexOf(' ') > 0 ? 3 : 2; });
+      s *= (n.w || 1.5); if (s > bs) { bs = s; best = n; }
+    });
+    if (!best || bs < 2) return 'Good question, but my notes only cover ' + (A.scope || 'this lesson') + '. Bring that one to your teacher.';
+    return best.a;
+  }
+  var list = $('#letters'), ta = $('#askQ'), send = $('#askSend'), LOG = jget('ask', []);
+  function letter(cls, who, text){ var e = $('.empty', list); if (e) e.remove(); var d = document.createElement('div'); d.className = 'letter ' + cls; d.innerHTML = '<div class="who">' + esc(who) + '</div>' + esc(text); list.appendChild(d); list.scrollTop = list.scrollHeight; }
+  LOG.forEach(function(m){ letter('mine', 'You', m.q); letter('his', TEACHER.short, m.a); });
+  function ask(q){
+    q = q.trim(); if (!q) { ta.focus(); return; }
+    letter('mine', 'You', q); ta.value = '';
+    var a = answer(q); setTimeout(function(){ letter('his', TEACHER.short, a); }, 350);
+    LOG.push({ q: q, a: a }); if (LOG.length > 20) LOG.shift(); jset('ask', LOG);
+  }
+  send.addEventListener('click', function(){ ask(ta.value); });
+  ta.addEventListener('keydown', function(e){ if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); ask(ta.value); } });
+  $$('.quick button', list).forEach(function(b){ b.addEventListener('click', function(){ ask(b.textContent); }); });
+})();
+
+/* ---------- boot ---------- */
+switchTab(STORE.get('tab') || TABS[0], true);
+psetScore();
+
+</script>
+<script>
+/* Dr. Usborne mini-lessons: a short talk that moves a visual step by step (same engine as the 9th ELA teacher card).
+   <div class="vo" data-clip="v_parts"> … <div class="vo-stage"> [data-step="n"] elements … </div> … a JSON block (.vo-script) holding {"steps":[…]}
+   With audio (ASSETS[clip] = {audio, words:[[s,e,t],…]}) steps follow his words; without it, Play steps through on a reading-pace timer.
+   Each new step fires document event "vo-step" {detail:{card, clip, i}} so a page can animate beyond fade-ins. */
+(function(){
+  $$('.vo').forEach(function(card){
+    var sc; try { sc = JSON.parse(card.querySelector('.vo-script').textContent); } catch(e){ return; }
+    var steps = sc.steps, clip = ASSETS[card.dataset.clip] || {}, audio = null, timer = null, cur = -1, playing = false, t0 = 0, elapsed = 0;
+    var cap = card.querySelector('.vo-cap'), btn = card.querySelector('.vo-play'), fill = card.querySelector('.vo-fill'), dots = card.querySelector('.vo-dots'), stage = card.querySelector('.vo-stage');
+    var face = card.querySelector('.vo-face'); if (face && ASSETS.img && ASSETS.img.usb) { face.src = ASSETS.img.usb.src; face.alt = ''; }
+    var nm = card.querySelector('.vo-name'); if (nm && !nm.textContent.trim()) nm.textContent = TEACHER.short;
+    var wc = steps.map(function(s){ return (s.match(/\S+/g) || []).length; });
+    var bounds = [], acc = 0;
+    if (clip.audio && clip.words && clip.words.length) {
+      audio = new Audio(clip.audio); audio.preload = 'none';
+      steps.forEach(function(s, i){ var w = clip.words[Math.min(acc, clip.words.length - 1)]; bounds.push(w ? w[0] : 0); acc += wc[i]; });
+    } else {
+      steps.forEach(function(s, i){ bounds.push(acc); acc += Math.max(2.4, wc[i] / 2.6); });
+    }
+    var total = audio ? (clip.words[clip.words.length - 1][1] + .4) : acc;
+    var sEl = card.querySelector('.vo-time'); if (sEl) sEl.textContent = fmt(total);
+    dots.innerHTML = steps.map(function(s, i){ return '<button type="button" aria-label="Step ' + (i + 1) + '" data-i="' + i + '"></button>'; }).join('');
+    var tr = card.querySelector('.vo-trans'); if (tr) tr.innerHTML = steps.map(function(s){ return '<p>' + esc(s) + '</p>'; }).join('');
+
+    function fmt(s){ s = Math.round(s); return Math.floor(s / 60) + ':' + ('0' + s % 60).slice(-2); }
+    function show(i){
+      if (i === cur) return; cur = i;
+      stage.querySelectorAll('[data-step]').forEach(function(el){
+        var ks = String(el.dataset.step).split(/[ ,]+/).map(Number), k = ks[0];
+        el.classList.toggle('on', k <= i); el.classList.toggle('now', ks.indexOf(i) > -1);
+      });
+      cap.textContent = i >= 0 ? steps[i] : '';
+      cap.classList.remove('in'); void cap.offsetWidth; cap.classList.add('in');
+      dots.querySelectorAll('button').forEach(function(d, k){ d.classList.toggle('on', k <= i); });
+      card.classList.toggle('started', i >= 0);
+      document.dispatchEvent(new CustomEvent('vo-step', { detail: { card: card, clip: card.dataset.clip, i: i } }));
+    }
+    function at(t){ var i = -1; bounds.forEach(function(b, k){ if (t >= b - .05) i = k; }); return i; }
+    function tick(){
+      var t = audio ? audio.currentTime : elapsed + (performance.now() - t0) / 1000;
+      show(at(t)); fill.style.width = Math.min(100, t / total * 100) + '%';
+      if (t >= total) { finish(); return; }
+      if (playing) timer = requestAnimationFrame(tick);
+    }
+    function play(){
+      if (card.classList.contains('finished')) reset();
+      playing = true; card.classList.add('playing'); btn.innerHTML = '&#10074;&#10074; Pause';
+      document.dispatchEvent(new CustomEvent('vo-play', { detail: card }));
+      if (audio) { audio.play().catch(function(){}); } else t0 = performance.now();
+      tick();
+    }
+    function pause(){
+      playing = false; card.classList.remove('playing'); btn.innerHTML = '&#9654; Resume';
+      if (audio) audio.pause(); else elapsed += (performance.now() - t0) / 1000;
+      cancelAnimationFrame(timer);
+    }
+    function finish(){
+      playing = false; card.classList.remove('playing'); cancelAnimationFrame(timer);
+      show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished');
+      STORE.set('vo-' + card.dataset.clip, '1');
+    }
+    function reset(){ elapsed = 0; if (audio) audio.currentTime = 0; cur = -2; show(-1); fill.style.width = '0'; card.classList.remove('finished'); }
+    function jump(i){
+      var t = bounds[i]; if (audio) audio.currentTime = t; else { elapsed = t; t0 = performance.now(); }
+      card.classList.remove('finished'); show(i); fill.style.width = (t / total * 100) + '%';
+      if (!playing) { btn.innerHTML = '&#9654; Resume'; }
+    }
+    btn.addEventListener('click', function(){ playing ? pause() : play(); });
+    dots.addEventListener('click', function(e){ var d = e.target.closest('button'); if (d) jump(+d.dataset.i); });
+    var tb = card.querySelector('.vo-tbtn'); if (tb) tb.addEventListener('click', function(){ var o = card.classList.toggle('show-trans'); tb.setAttribute('aria-expanded', o ? 'true' : 'false'); tb.textContent = o ? 'Hide transcript' : 'Transcript'; });
+    if (audio) audio.addEventListener('ended', finish);
+    document.addEventListener('vo-play', function(e){ if (e.detail !== card && playing) pause(); });
+    document.addEventListener('tabchange', function(){ if (playing) pause(); });
+    if (STORE.get('vo-' + card.dataset.clip) === '1') { show(steps.length - 1); fill.style.width = '100%'; btn.innerHTML = '&#8635; Replay'; card.classList.add('finished'); }
+    else show(-1);
+  });
+})();
+
+</script>
+<script>
+/* proj: in-page checkers (two-station survey, traverse) + project-wide checkpoint score and PDF */
+(function(){
+  var R = Math.PI / 180;
+  function num(v){ var x = parseFloat(String(v).replace(',', '.')); return isFinite(x) ? x : NaN; }
+  function f1(x){ return (Math.round(x * 10) / 10).toFixed(1); }
+  function sg(x){ return (x < 0 ? '−' : '+') + f1(Math.abs(x)); }
+  function n1(x){ return Math.round(x * 10) / 10; }
+  function arc(cx, cy, r, deg){
+    var a = deg * R;
+    return '<path d="M' + n1(cx + r) + ' ' + n1(cy) + ' A' + r + ' ' + r + ' 0 0 0 ' + n1(cx + r * Math.cos(a)) + ' ' + n1(cy - r * Math.sin(a)) + '" stroke="#C43D27" stroke-width="2.2" fill="none"/>';
+  }
+  function kv(k, v){ return '<div class="kv"><b>' + k + '</b><span>' + v + '</span></div>'; }
+
+  /* ---------- two-station survey ---------- */
+  function two(){
+    var a1 = num($('#proj-t-a1').value), a2 = num($('#proj-t-a2').value), d = num($('#proj-t-d').value), out = $('#proj-t-out'), svg = $('#proj-t-svg');
+    if (!(a1 > 0 && a1 < 90 && a2 > 0 && a2 < 90 && d > 0)) { out.innerHTML = '<div class="bad">Each angle must be between 0 and 90 degrees, and the distance walked must be positive.</div>'; svg.innerHTML = ''; return; }
+    if (!(a1 > a2)) { out.innerHTML = '<div class="bad">The near station sees the top higher, so its angle must be larger than the far station&rsquo;s angle.</div>'; svg.innerHTML = ''; return; }
+    var t1 = Math.tan(a1 * R), t2 = Math.tan(a2 * R), x = d * t2 / (t1 - t2), h = x * t1, h2 = (x + d) * t2;
+    out.innerHTML = '<div class="row">' + kv('Distance x to base', f1(x) + ' m') + kv('Height h', f1(h) + ' m') + kv('Far station distance', f1(x + d) + ' m') + kv('Height from far station', f1(h2) + ' m') + '</div>' +
+      '<div class="note">Near station: tan ' + a1 + '&deg; = h / x. Far station: tan ' + a2 + '&deg; = h / (x + ' + d + '). The two heights agree, as they must.</div>';
+    var gy = 160, tx = 372, s = Math.min(330 / (x + d), 120 / h), p1 = tx - x * s, p2 = tx - (x + d) * s, ty = gy - h * s, o = '';
+    o += '<path d="M10 ' + gy + ' H392" stroke="#5B6B80" stroke-width="1.6" fill="none"/>';
+    o += '<path d="M' + tx + ' ' + gy + ' V' + n1(ty) + '" stroke="#0E1C42" stroke-width="5" stroke-linecap="round" fill="none"/>';
+    o += '<path d="M' + n1(p2) + ' ' + gy + ' L' + tx + ' ' + n1(ty) + '" stroke="#C43D27" stroke-width="2" fill="none"/>';
+    o += '<path d="M' + n1(p1) + ' ' + gy + ' L' + tx + ' ' + n1(ty) + '" stroke="#C43D27" stroke-width="2" fill="none"/>';
+    var r1 = Math.max(14, Math.min(34, (tx - p1) * 0.4)), r2 = Math.max(14, Math.min(48, (p1 - p2) * 0.6));
+    o += arc(p1, gy, r1, a1) + arc(p2, gy, r2, a2);
+    o += '<text class="red" x="' + n1(p1 + (r1 + 6) * Math.cos(a1 / 2 * R)) + '" y="' + n1(gy - (r1 + 6) * Math.sin(a1 / 2 * R) + 4) + '">' + a1 + '&deg;</text>';
+    o += '<text class="red" x="' + n1(p2 + (r2 + 6) * Math.cos(a2 / 2 * R)) + '" y="' + n1(gy - (r2 + 6) * Math.sin(a2 / 2 * R) + 4) + '">' + a2 + '&deg;</text>';
+    o += '<circle cx="' + n1(p1) + '" cy="' + gy + '" r="4" fill="#1E5AA0"/><circle cx="' + n1(p2) + '" cy="' + gy + '" r="4" fill="#1E5AA0"/>';
+    o += '<path d="M' + n1(p2) + ' ' + (gy + 16) + ' H' + n1(p1) + '" stroke="#1E5AA0" stroke-width="1.6" fill="none"/><path d="M' + n1(p1) + ' ' + (gy + 16) + ' H' + tx + '" stroke="#5B6B80" stroke-width="1.6" fill="none"/>';
+    o += '<text class="blue" x="' + n1((p1 + p2) / 2) + '" y="' + (gy + 32) + '" text-anchor="middle">' + d + ' m walked</text>';
+    o += '<text x="' + n1((p1 + tx) / 2) + '" y="' + (gy + 32) + '" text-anchor="middle">x = ' + f1(x) + ' m</text>';
+    o += '<text class="b" x="' + (tx - 10) + '" y="' + n1((gy + ty) / 2) + '" text-anchor="end">h = ' + f1(h) + ' m</text>';
+    svg.setAttribute('viewBox', '0 0 400 200'); svg.innerHTML = o;
+  }
+  ['#proj-t-a1', '#proj-t-a2', '#proj-t-d'].forEach(function(id){ $(id).addEventListener('input', two); });
+  two();
+
+  /* ---------- traverse ---------- */
+  var DEF = [[500, 70], [350, 140], [620, 200], ['', '']], legsEl = $('#proj-tr-legs');
+  DEF.forEach(function(v, i){
+    legsEl.insertAdjacentHTML('beforeend', '<div class="lg"><div class="ln">Leg ' + (i + 1) + '</div>' +
+      '<label>Distance<span class="u">any unit</span><input type="text" inputmode="decimal" data-k="d" data-i="' + i + '" value="' + v[0] + '" aria-label="Leg ' + (i + 1) + ' distance"></label>' +
+      '<label>Heading<span class="u">degrees clockwise from north</span><input type="text" inputmode="decimal" data-k="h" data-i="' + i + '" value="' + v[1] + '" aria-label="Leg ' + (i + 1) + ' heading"></label>' +
+      '<div class="rd" id="proj-tr-rd' + i + '"></div></div>');
+  });
+  function quad(s){
+    if (s % 90 === 0) return 'on an axis';
+    return s < 90 ? 'Quadrant I' : s < 180 ? 'Quadrant II' : s < 270 ? 'Quadrant III' : 'Quadrant IV';
+  }
+  function ref(s){
+    if (s % 90 === 0) return (s % 180 === 0 ? 0 : 90) + '&deg;';
+    return (s < 90 ? s : s < 180 ? 180 - s : s < 270 ? s - 180 : 360 - s) + '&deg;';
+  }
+  function trav(){
+    var inp = $$('#proj-tr-legs input'), pts = [[0, 0]], E = 0, N = 0, nl = 0, out = $('#proj-tr-out'), svg = $('#proj-tr-svg'), bad = '';
+    for (var i = 0; i < DEF.length; i++) {
+      var d = num(inp[i * 2].value), h = num(inp[i * 2 + 1].value), rd = $('#proj-tr-rd' + i);
+      if (inp[i * 2].value.trim() === '' && inp[i * 2 + 1].value.trim() === '') { rd.innerHTML = ''; continue; }
+      if (!(d >= 0) || !(h >= 0 && h <= 360)) { rd.innerHTML = '<span style="color:var(--red)">Type a distance of 0 or more and a heading from 0 to 360.</span>'; bad = '1'; continue; }
+      var s = ((90 - h) % 360 + 360) % 360, e = d * Math.cos(s * R), n = d * Math.sin(s * R);
+      if (Math.abs(e) < 1e-9) e = 0; if (Math.abs(n) < 1e-9) n = 0;
+      rd.innerHTML = '<b>standard</b> ' + (Math.round(s * 100) / 100) + '&deg; &middot; ' + quad(s) + ' &middot; <b>reference</b> ' + ref(Math.round(s * 100) / 100) + ' &middot; <b>east</b> ' + sg(e) + ' &middot; <b>north</b> ' + sg(n);
+      E += e; N += n; nl++; pts.push([E, N]);
+    }
+    if (!nl) { out.innerHTML = '<div class="bad">Type at least one leg.</div>'; svg.innerHTML = ''; return; }
+    var dist = Math.sqrt(E * E + N * N), brg = (Math.atan2(E, N) / R + 360) % 360, back = (brg + 180) % 360;
+    out.innerHTML = '<div class="row">' + kv('Total east', sg(E)) + kv('Total north', sg(N)) + kv('Straight-line distance', f1(dist)) +
+      (dist > 1e-9 ? kv('Bearing out', f1(brg) + '&deg;') + kv('Bearing back', f1(back) + '&deg;') : '') + '</div>' +
+      (bad ? '<div class="note">Rows with a problem are left out of the totals.</div>' : '<div class="note">Bearing back is the reciprocal: the course that returns to the start. Round to the nearest degree only at the end.</div>');
+    var minx = 0, maxx = 0, miny = 0, maxy = 0;
+    pts.forEach(function(p){ minx = Math.min(minx, p[0]); maxx = Math.max(maxx, p[0]); miny = Math.min(miny, p[1]); maxy = Math.max(maxy, p[1]); });
+    var sp = Math.max(maxx - minx, 1e-6), sq = Math.max(maxy - miny, 1e-6), sc = Math.min(300 / sp, 190 / sq);
+    var ox = 60 + (320 - sp * sc) / 2, oy = 232 - (200 - sq * sc) / 2;
+    function X(v){ return n1(ox + (v - minx) * sc); }
+    function Y(v){ return n1(oy - (v - miny) * sc); }
+    var o = '<path d="M26 56 V22" stroke="#5B6B80" stroke-width="2" fill="none"/><path d="M26 22 l-5 9 M26 22 l5 9" stroke="#5B6B80" stroke-width="2" fill="none"/><text class="b" x="26" y="16" text-anchor="middle">N</text>';
+    for (var k = 1; k < pts.length; k++) {
+      o += '<path d="M' + X(pts[k - 1][0]) + ' ' + Y(pts[k - 1][1]) + ' L' + X(pts[k][0]) + ' ' + Y(pts[k][1]) + '" stroke="' + (k % 2 ? '#1E5AA0' : '#0E1C42') + '" stroke-width="3.2" stroke-linecap="round" fill="none"/>';
+    }
+    if (pts.length > 2 && dist > 1e-9) o += '<path d="M' + X(0) + ' ' + Y(0) + ' L' + X(E) + ' ' + Y(N) + '" stroke="#C43D27" stroke-width="2.2" stroke-dasharray="6 5" fill="none"/>';
+    for (var j = 0; j < pts.length; j++) {
+      o += '<circle cx="' + X(pts[j][0]) + '" cy="' + Y(pts[j][1]) + '" r="' + (j === 0 ? 5.5 : 4) + '" fill="' + (j === 0 ? '#0E1C42' : '#fff') + '" stroke="#0E1C42" stroke-width="2"/>';
+      if (j > 0) o += '<text x="' + n1(+X(pts[j][0]) + 8) + '" y="' + n1(+Y(pts[j][1]) - 8) + '">' + j + '</text>';
+    }
+    o += '<text class="b" x="' + n1(+X(0) + 9) + '" y="' + n1(+Y(0) + 17) + '">start</text>';
+    svg.setAttribute('viewBox', '0 0 400 260'); svg.innerHTML = o;
+  }
+  $$('#proj-tr-legs input').forEach(function(el){ el.addEventListener('input', trav); });
+  trav();
+
+  /* ---------- score and PDF cover every checkpoint on the page ---------- */
+  window.psetItems = function(){ return $$('.mq, .mcq'); };
+  var basePdf = window.pdfHtml;
+  window.pdfHtml = function(){ return basePdf().replace('<h2>Problem set</h2>', '<h2>Checkpoints</h2>').replace('<th>Problem</th>', '<th>Checkpoint</th>'); };
+  psetScore();
+})();
+</script>
+
+</body>
+</html>

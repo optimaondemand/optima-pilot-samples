@@ -416,11 +416,23 @@ _Not posted yet_
 
 **Major Project**
 
-_Not posted yet_
+- [Module 6 Project: The Walkway Problem](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/module-6-project-the-walkway-problem.html)
 
 ### ★ Algebra 1 Honors (Mathematics · 1200320)
 
-_Week 1 and major projects not posted yet_
+#### Module 6: Algebraic Reasoning
+
+**Week 1**
+
+- [Lesson 1: Parts of an Algebraic Expression](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-lesson1-parts-of-an-algebraic-expression.html)
+- [Lesson 2: Adding and Subtracting Polynomial Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-lesson2-adding-and-subtracting-polynomial-expressions.html)
+- [Lesson 3: Multiplying Polynomial Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-lesson3-multiplying-polynomial-expressions.html)
+- [Lesson 4: Dividing a Monomial](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-lesson4-dividing-a-monomial.html)
+- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/w1-week-1-check.html)
+
+**Major Project**
+
+- [Module 6 Project: The Walkway Problem](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-1-w1/module-6-project-the-walkway-problem.html)
 
 ### ★ Biology 1 (Grades 9–10 · Science · 2000310)
 
@@ -489,7 +501,7 @@ _Week 1 and major projects not posted yet_
 
 **Major Project**
 
-_Not posted yet_
+- [Module 7 Project: Design a Rose Window](https://optimaondemand.github.io/optima-pilot-samples/hs-geometry-honors-w1/module-7-project-design-a-rose-window.html)
 
 ### ★ Chemistry I Honors (Science · 2003350)
 
@@ -530,7 +542,19 @@ _Week 1 and major projects not posted yet_
 
 ### ★ Algebra 2 Honors (Mathematics · 1200340)
 
-_Week 1 and major projects not posted yet_
+#### Module 8: Rational Exponents and Radical Expressions
+
+**Week 1**
+
+- [Lesson 1: Rational Exponents](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson1-rational-exponents.html)
+- [Lesson 2: The Number e](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson2-the-number-e.html)
+- [Lesson 3: Radical Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson3-radical-expressions.html)
+- [Lesson 4: Adding and Subtracting Radical Expressions](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-lesson4-adding-and-subtracting-radical-expressions.html)
+- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/w1-week-1-check.html)
+
+**Major Project**
+
+- [Module 8 Project: The Twelfth Root of Two](https://optimaondemand.github.io/optima-pilot-samples/hs-algebra-2-honors-w1/module-8-project-the-twelfth-root-of-two.html)
 
 ### ★ Anatomy and Physiology (Grades 11–12 · Science · 2000350)
 
@@ -594,7 +618,7 @@ _Week 1 and major projects not posted yet_
 
 **Major Project**
 
-_Not posted yet_
+- [Module 1 Challenge](https://optimaondemand.github.io/optima-pilot-samples/hs-calculus-honors-w1/module-1-challenge.html)
 
 ### ★ Precalculus Honors (Grades 9–12 · Mathematics · 1202340)
 
@@ -609,7 +633,7 @@ _Not posted yet_
 
 **Major Project**
 
-_Not posted yet_
+- [Focus Assignment 6.11: Trigonometry in the Field](https://optimaondemand.github.io/optima-pilot-samples/hs-precalculus-honors-w19/unit-6-focus-assignment-6-11-trigonometry-in-the-field.html)
 
 ### ★ Probability and Statistics Honors (Grades 9–12 · Mathematics · 1210300)
 
@@ -623,9 +647,9 @@ _Not posted yet_
 
 **Major Projects**
 
-- [Module 7 Lab: The Chart Room](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-7-lab-the-chart-room.html)
-- [Module 8 Lab: Walking the Distribution](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-8-lab-walking-the-distribution.html)
-- [Module 9 Lab: Inside the Bell](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-q3/module-9-lab-inside-the-bell.html)
+- [Module 7 Lab: The Chart Room](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-w19/module-7-lab-the-chart-room.html)
+- [Module 8 Lab: Walking the Distribution](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-w19/module-8-lab-walking-the-distribution.html)
+- [Module 9 Lab: Inside the Bell](https://optimaondemand.github.io/optima-pilot-samples/hs-prob-stats-w19/module-9-lab-inside-the-bell.html)
 
 ### ★ History (course to be assigned) (Grades 9–12 · Social Studies)
 

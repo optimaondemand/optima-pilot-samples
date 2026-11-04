@@ -908,7 +908,9 @@ var MATH = (function(){
   function simple(s){
     var T = terms(s);
     for (var i = 0; i < T.length; i++) {
-      var t = T[i].replace(/^-/, '').replace(/\^\(-?[\d.]+\/[\d.]+\)/g, '^1'), num = t.split('/')[0], den = t.split('/').slice(1).join('/');
+      var t = T[i].replace(/^-/, '').replace(/\^\((-?\d+)\/(\d+)\)/g, function(m0, a, b){
+        a = Math.abs(+a); b = +b; var g = a, h = b; while (h) { var r = g % h; g = h; h = r; }
+        return (g === 1 && b !== 1) ? '^1' : '^(unreduced'; }), num = t.split('/')[0], den = t.split('/').slice(1).join('/');
       if (/[()]/.test(num)) return false;
       var core = num.replace(/\^-?\d+(\.\d+)?/g, '').replace(/\*/g, '');
       var nums = core.match(/\d+\.?\d*|\.\d+/g) || [];
