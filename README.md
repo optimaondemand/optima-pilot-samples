@@ -135,7 +135,22 @@ _Week 1 and major projects not posted yet_
 
 ### ★ M/J World History (Social Studies · 2109010)
 
-_Week 1 and major projects not posted yet_
+#### Week 19: The Rise of the Polis
+
+**Week 1**
+
+- [Lesson 1: Mountains and Sea: Why Greece Became Many Cities](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-w19/w19-lesson-1-mountains-and-sea.html)
+- [Lesson 2: Hesiod, Works and Days](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-w19/w19-lesson-2-hesiod-works-and-days.html)
+- [Lesson 3: Sparta: A Polis Built for War](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-w19/w19-lesson-3-sparta-a-polis-built-for-war.html)
+- [Lesson 4: Plutarch, Life of Lycurgus](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-w19/w19-lesson-4-plutarch-life-of-lycurgus.html)
+
+**Major Project**
+
+- [Critical Questions: Hesiod, Works and Days](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-assessments/19-1-critical-questions-hesiod.html)
+- [Primary Source Exercise: Plutarch, Life of Lycurgus](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-assessments/19-2-primary-source-exercise-plutarch.html)
+- [Reading Quiz: Mountains and Sea](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-assessments/19-1-reading-quiz-mountains-and-sea.html)
+- [Reading Quiz: Sparta, a Polis Built for War](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-assessments/19-2-reading-quiz-sparta.html)
+- [Quarter 3 Exam: Greece from the City-States to Alexander's Heirs](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-assessments/quarter-3-exam.html)
 
 ### M/J Grade 6 Digital Discoveries (Computer Science · 0200021)
 
