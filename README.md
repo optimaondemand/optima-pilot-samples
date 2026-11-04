@@ -230,11 +230,42 @@ _Week 1 and major projects not posted yet_
 
 ### ★ Grade 7 Texas History (Social Studies · txhist7)
 
-_Week 1 and major projects not posted yet_
+#### Week 19: The Mexican-American War
+
+**Week 1**
+
+- [Lesson 1: President Polk and The Nueces Crisis](https://optimaondemand.github.io/optima-pilot-samples/7th-texas-history-w19/w19-lesson-1-polk-and-the-nueces-crisis.html)
+- [Lesson 2: Winfield Scott Captures the Halls of Montezuma](https://optimaondemand.github.io/optima-pilot-samples/7th-texas-history-w19/w19-lesson-2-scott-captures-the-halls-of-montezuma.html)
+- [Lesson 3: Polk and the Treaty](https://optimaondemand.github.io/optima-pilot-samples/7th-texas-history-w19/w19-lesson-3-polk-and-the-treaty.html)
+
+**Major Project**
+
+- [Week 19 Reading Quiz](https://optimaondemand.github.io/optima-pilot-samples/7th-texas-history-assessments/w19-reading-quiz.html)
+- [Week 19 Primary Source Assessment](https://optimaondemand.github.io/optima-pilot-samples/7th-texas-history-assessments/w19-primary-source-assessment.html)
+- [Week 27 Quarter 3 Capstone](https://optimaondemand.github.io/optima-pilot-samples/7th-texas-history-assessments/w27-quarter-3-capstone.html)
+- [Week 27 Quarter 3 Exam](https://optimaondemand.github.io/optima-pilot-samples/7th-texas-history-assessments/w27-quarter-3-exam.html)
 
 ### ★ M/J U.S. History: 1492-Reconstruction (Social Studies · 2100010)
 
-_Week 1 and major projects not posted yet_
+#### Founding Era: The Republic Learns to Disagree
+
+**Week 1**
+
+- [Lesson 1: Hamilton Builds a National Economy; Jefferson Organizes the Opposition](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-w19/w19-lesson-1-hamilton-builds-a-national-economy.html)
+- [Lesson 2: Jefferson and Hamilton, Opinions on the Constitutionality of a National Bank](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-w19/w19-lesson-2-hamilton-and-jefferson-on-the-bank.html)
+- [Lesson 3: Adams Avoids War with France; Federalists Silence Their Critics](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-w19/w19-lesson-3-adams-avoids-war-with-france.html)
+- [Lesson 4: Congress, The Sedition Act](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-w19/w19-lesson-4-the-sedition-act.html)
+
+**Major Project**
+
+- [Reading Quiz: Lessons F.1 and F.2](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-assessments/19-reading-quiz-f1-f2.html)
+- [Critical Questions: Hamilton and Jefferson on the National Bank (1791)](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-assessments/19-critical-questions-bank.html)
+- [Primary Source Exercise: The Alien and Sedition Acts (1798)](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-assessments/19-ps-exercise-alien-and-sedition-acts.html)
+- [Reading Quiz: Lessons F.3 and F.4](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-assessments/20-reading-quiz-f3-f4.html)
+- [Critical Questions: Jefferson's First Inaugural Address (1801)](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-assessments/20-critical-questions-first-inaugural.html)
+- [Primary Source Report: Marshall in Marbury v. Madison (1803)](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-assessments/20-primary-source-report-marbury.html)
+- [Quarter 3 Capstone: Crossroads, A Turning-Point Dossier](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-assessments/quarter-3-capstone-crossroads.html)
+- [Quarter 3 Exam: A Republic Divides Over What It Is Building](https://optimaondemand.github.io/optima-pilot-samples/7th-us-history-assessments/quarter-3-exam.html)
 
 ### M/J Grade 7 Digital Discoveries (Computer Science · 0200022)
 
@@ -316,7 +347,24 @@ _Not posted yet_
 
 ### ★ M/J Civics: U.S. Government (Social Studies · 2106010)
 
-_Week 1 and major projects not posted yet_
+#### Module 6: The Citizen
+
+**Week 1**
+
+- [Lesson 1: Dred Scott to the 14th Amendment: Who Counts as a Citizen](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-w19/w19-lesson-1-dred-scott-to-the-14th-amendment.html)
+- [Lesson 2: Taney, Dred Scott v. Sandford](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-w19/w19-lesson-2-taney-dred-scott-v-sandford.html)
+- [Lesson 3: Duties and Responsibilities: Jury, Draft, and Virtue](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-w19/w19-lesson-3-duties-and-responsibilities.html)
+- [Lesson 4: Washington, Farewell Address](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-w19/w19-lesson-4-washington-farewell-address.html)
+
+**Major Project**
+
+- [6.2 Reading Quiz: Dred Scott to the 14th Amendment: Who Counts as a Citizen](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-assessments/6-2-reading-quiz-dred-scott-to-the-14th-amendment.html)
+- [6.4 Critical Questions: Taney, Dred Scott](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-assessments/6-4-critical-questions-taney-dred-scott.html)
+- [6.7 Reading Quiz: Duties and Responsibilities: Jury, Draft, and Virtue](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-assessments/6-7-reading-quiz-duties-and-responsibilities.html)
+- [6.8 Critical Questions: Washington, Farewell Address](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-assessments/6-8-critical-questions-washington-farewell-address.html)
+- [6.17 Primary Source Report: Declaration of Sentiments (1848)](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-assessments/6-17-primary-source-report-declaration-of-sentiments.html)
+- [6.37 Primary Source Report: The Sedition Act of 1798](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-assessments/6-37-primary-source-report-sedition-act-of-1798.html)
+- [8.11 Quarter 3 Exam: The Republic’s Upkeep](https://optimaondemand.github.io/optima-pilot-samples/8th-civics-assessments/8-11-quarter-3-exam-the-republics-upkeep.html)
 
 ### M/J Grade 8 Digital Discoveries (Computer Science · 0200023)
 
