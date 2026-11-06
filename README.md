@@ -53,6 +53,19 @@ _Not posted yet_
 - [10.02 VR: Two Plots](https://optimaondemand.github.io/optima-4th-science/vr-10-02.html)
 - [12.01 VR: Sense Stations](https://optimaondemand.github.io/optima-4th-science/vr-12-01.html)
 
+### ★ 4th Grade Social Studies (Social Studies)
+
+#### Florida History (Florida Files)
+
+**Sample Lessons**
+
+- [Lesson 4.04.02: Motives for European Expeditions](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-04_02-motives-for-european-expeditions.html)
+- [Lesson 4.10.01: Technological Advances and Florida Growth](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-10-01-technological-advances-and-florida-growth.html)
+
+**Major Project**
+
+_Not posted yet_
+
 ### Music Intermediate 2 (Music · 5013100)
 
 _Week 1 and major projects not posted yet_
@@ -608,7 +621,25 @@ _Week 1 and major projects not posted yet_
 
 ### ★ English III (English Language Arts · 1001370)
 
-_Week 1 and major projects not posted yet_
+#### Jane Eyre
+
+**Week 1**
+
+- [Lesson 1: The Red-Room](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson1-the-red-room.html)
+- [Lesson 2: “I Am Not Deceitful”](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson2-i-am-not-deceitful.html)
+- [Lesson 3: The Writer's Desk](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson3-writers-desk.html)
+- [Lesson 4: The Chronicle](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-w1/w1-lesson4-the-chronicle.html)
+
+**Major Project**
+
+- [Module 3 Project: The Thornfield Chronicle](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/module-3-project-thornfield-chronicle.html)
+- [Lesson: The Workshop](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/proj-lesson1-the-workshop.html)
+- [Lesson: Going to Press](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/proj-lesson2-going-to-press.html)
+- [Chronicle Audio Minute](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/audio-minute.html)
+- [The Chronicle Online](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/the-chronicle-online.html)
+- [Graded Recitation](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/graded-recitation.html)
+- [Recorded Reading & Reflection: Module 3](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/recorded-reading-reflection.html)
+- [Quarterly Reading Check: Module 3](https://optimaondemand.github.io/optima-pilot-samples/11th-ela-jane-eyre-projects/quarterly-reading-check.html)
 
 ### ★ English III Honors (English Language Arts · 1001380)
 
