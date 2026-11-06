@@ -872,10 +872,26 @@ _Week 1 and major projects not posted yet_
 
 ### French 1 (Grades 9–12 · World Languages · 0701320)
 
-_Week 1 and major projects not posted yet_
+#### Semester 2 · Module 5 · La ville
+
+**Sample Lesson**
+
+- [Lesson 5.01: En ville](https://optimaondemand.github.io/french1-lessons/s2/m05/lesson-5-01.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### Spanish 1 (Grades 9–12 · World Languages · 0708340)
 
-_Week 1 and major projects not posted yet_
+#### Semester 2 · Módulo 1 · El tiempo y los planes
+
+**Sample Lesson**
+
+- [Lesson 1.01: ¿Qué tiempo hace?](https://optimaondemand.github.io/hsspanish1-lessons/s2/m01/lesson-1-01.html)
+
+**Major Project**
+
+_Not posted yet_
 
 Academic Design and Curriculum (AcDC)
