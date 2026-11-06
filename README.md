@@ -527,7 +527,18 @@ _Not posted yet_
 
 ### ★ Integrated Science 1 (Science · 2002400)
 
-_Week 1 and major projects not posted yet_
+#### Module 6: Evolution, Classification, and Taxonomy
+
+**Week 1**
+
+- [Lesson 1: Bones and Stone](https://optimaondemand.github.io/optima-pilot-samples/hs-integrated-science-w16/w16-lesson1-bones-and-stone.html)
+- [Lesson 2: Maps and Molecules](https://optimaondemand.github.io/optima-pilot-samples/hs-integrated-science-w16/w16-lesson2-maps-and-molecules.html)
+- [Lesson 3: The Logic of Natural Selection](https://optimaondemand.github.io/optima-pilot-samples/hs-integrated-science-w16/w16-lesson3-natural-selection.html)
+- [Lesson 4: What Adaptation Means](https://optimaondemand.github.io/optima-pilot-samples/hs-integrated-science-w16/w16-lesson4-adaptation.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ HS World History: Fall of Rome to Present (Social Studies · 2109310)
 
