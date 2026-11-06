@@ -122,7 +122,20 @@ _Week 1 and major projects not posted yet_
 
 ### ★ M/J Grade 6 Mathematics (Mathematics · 1205010)
 
-_Week 1 and major projects not posted yet_
+#### Module 6: Algebraic Expressions
+
+**Week 1**
+
+- [Lesson 1: Translating Real-World Contexts into Algebraic Expressions](https://optimaondemand.github.io/optima-pilot-samples/6th-math-w1/w1-lesson1-real-world-expressions.html)
+- [Lesson 2: Translating Mathematical Descriptions into Algebraic Expressions](https://optimaondemand.github.io/optima-pilot-samples/6th-math-w1/w1-lesson2-word-phrases-to-expressions.html)
+- [Lesson 3: Writing Descriptions for Algebraic Expressions](https://optimaondemand.github.io/optima-pilot-samples/6th-math-w1/w1-lesson3-describing-expressions-in-words.html)
+- [Lesson 4: The Distributive Property on Algebraic Expressions](https://optimaondemand.github.io/optima-pilot-samples/6th-math-w1/w1-lesson4-the-distributive-property.html)
+- [Lesson 5: Combining Like Terms](https://optimaondemand.github.io/optima-pilot-samples/6th-math-w1/w1-lesson5-combining-like-terms.html)
+- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/6th-math-w1/w1-week-1-check.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ M/J Comprehensive Science 1 (Science · 2002040)
 
