@@ -592,7 +592,17 @@ _Week 1 and major projects not posted yet_
 
 ### ★ Chemistry I Honors (Science · 2003350)
 
-_Week 1 and major projects not posted yet_
+#### Module 1: Intro to Chemistry: The Science of Matter
+
+**Week 1**
+
+- [Lesson 1: Chemistry in Context](https://optimaondemand.github.io/optima-pilot-samples/hs-chemistry-1-honors-w1/w1-lesson1-chemistry-in-context.html)
+- [Lesson 2: Phases and Classification of Matter (Lab)](https://optimaondemand.github.io/optima-pilot-samples/hs-chemistry-1-honors-w1/w1-lesson2-phases-and-classification.html)
+- [Lesson 3: Physical and Chemical Properties (Lab)](https://optimaondemand.github.io/optima-pilot-samples/hs-chemistry-1-honors-w1/w1-lesson3-physical-and-chemical-properties.html)
+
+**Major Project**
+
+- [Module 1 Lab Project: Density of an Unknown Material](https://optimaondemand.github.io/optima-pilot-samples/hs-chemistry-1-honors-projects/module-1-project-density-of-an-unknown.html)
 
 ### ★ HS U.S. History: Reconstruction to Present (Social Studies · 2100310)
 
