@@ -18,9 +18,12 @@ _Week 1 and major projects not posted yet_
 
 #### Anne of Green Gables
 
-**Sample Lesson**
+**Week 8 Lessons**
 
 - [Lesson 8.1: Anne of Green Gables (Ch. 6)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-1-anne-ch6.html)
+- [Lesson 8.2: Anne of Green Gables (Ch. 7–8)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-2-anne-ch7-8.html)
+- [Lesson 8.3: Anne of Green Gables (Ch. 9)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-3-anne-ch9.html)
+- [Lesson 8.4: Anne of Green Gables (Ch. 10)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-4-anne-ch10.html)
 
 **Major Project**
 
