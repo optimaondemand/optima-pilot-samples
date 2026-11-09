@@ -4,13 +4,112 @@ Week 1 and major-project samples for every 2026-27 course, grades 3–12. Live p
 
 ## Grade 3
 
+### ★ 3rd Grade ELA (English Language Arts)
+
+#### The Whipping Boy · Week 18
+
+**Week 18 Lessons**
+
+- [Lesson 18.1: The Whipping Boy (Ch. 1–2)](https://optimaondemand.github.io/optima-3rd-ela/lesson-18-1-wb.html)
+- [Lesson 18.2: The Whipping Boy (Ch. 3–4)](https://optimaondemand.github.io/optima-3rd-ela/lesson-18-2-wb.html)
+- [Lesson 18.3: The Whipping Boy (Ch. 5)](https://optimaondemand.github.io/optima-3rd-ela/lesson-18-3-wb.html)
+- [Lesson 18.4: Look Back (Ch. 1–5)](https://optimaondemand.github.io/optima-3rd-ela/lesson-18-4-wb.html)
+- [Week 18 Fluency](https://optimaondemand.github.io/optima-3rd-ela/lesson-18-fluency.html)
+
+**VR Reading Road Stop**
+
+- [18.2 VR: The Runaways’ Ride](https://optimaondemand.github.io/optima-3rd-ela/vr-18.html)
+
+**Family Guides**
+
+- [Week 18 Family Guide: The Boy Who Takes the Blame](https://optimaondemand.github.io/optima-3rd-ela/parent-guide-week-18.html)
+- [The Whipping Boy Unit Guide](https://optimaondemand.github.io/optima-3rd-ela/parent-guide-wb-unit.html)
+
+**Major Project**
+
+- [Wanted! and a Letter to the King (The Whipping Boy Unit Project)](https://optimaondemand.github.io/optima-3rd-ela/lesson-22-wb-project.html)
+
+### ★ 3rd Grade Math (Mathematics)
+
+#### Fractions (Storybook)
+
+**Unit 9 Lessons**
+
+- [Lesson 3.09.01: Fractions of a Whole](https://optimaondemand.github.io/optima-3rd-math/math-lesson-3-09-01-fractions-of-a-whole.html)
+- [Lesson 3.09.02: Fractions on a Number Line](https://optimaondemand.github.io/optima-3rd-math/math-lesson-3-09-02-fractions-on-a-number-line.html)
+- [Lesson 3.09.03: Comparing Fractions with Like Denominators](https://optimaondemand.github.io/optima-3rd-math/math-lesson-3-09-03-comparing-fractions-like-denominators.html)
+- [Lesson 3.09.04: Comparing Fractions with Like Numerators](https://optimaondemand.github.io/optima-3rd-math/math-lesson-3-09-04-comparing-fractions-like-numerators.html)
+
+**VR Field Trip**
+
+- [3.09.04 VR: Pie Night](https://optimaondemand.github.io/optima-3rd-math/vr-19.html)
+
+**Family Guides**
+
+- [Unit 9 Family Guide: Fractions](https://optimaondemand.github.io/optima-3rd-math/parent-guide-unit-9.html)
+
+**Major Project**
+
+_Not posted yet_
+
+### ★ 3rd Grade Science (Science)
+
+#### Fossils (Wonder Films)
+
+**Sample Lessons**
+
+- [Lesson 17.01: What Can Fossils Tell Us?](https://optimaondemand.github.io/optima-3rd-science/lesson-17-01-what-can-fossils-tell-us.html)
+- [Lesson 17.02: Investigation — Fossil Dig Simulation](https://optimaondemand.github.io/optima-3rd-science/lesson-17-02-fossil-dig-simulation.html)
+
+**VR On Location**
+
+- [17.01 VR: The Lost Sea](https://optimaondemand.github.io/optima-3rd-science/vr-17.html)
+
+**Family Guides**
+
+- [Unit 6 Family Guide: Fossils & Earth History](https://optimaondemand.github.io/optima-3rd-science/parent-guide-unit-6.html)
+
+**Major Project**
+
+_Not posted yet_
+
+### ★ 3rd Grade Social Studies (Social Studies)
+
+#### North America (Museum)
+
+**Sample Lessons**
+
+- [Lesson 3.06.01: Canada, the United States, Mexico, and the Caribbean](https://optimaondemand.github.io/optima-3rd-social-studies/ss-3-06.01-canada-us-mexico-caribbean.html)
+- [Lesson 3.06.02: Physical Features of North America & the Caribbean](https://optimaondemand.github.io/optima-3rd-social-studies/ss-3-06.02-physical-features-north-america-caribbean.html)
+- [Lesson 3.06.05: Natural Resources and How People Use Them](https://optimaondemand.github.io/optima-3rd-social-studies/ss-3-06.05-natural-resources.html)
+
+**VR Build the Diorama**
+
+- [3.06.06 VR: Longhouse Diorama](https://optimaondemand.github.io/optima-3rd-social-studies/vr-17.html)
+
+**Family Guides**
+
+- [Unit 6 Family Guide: North America & the Caribbean](https://optimaondemand.github.io/optima-3rd-social-studies/parent-guide-unit-6.html)
+
+**Major Project**
+
+_Not posted yet_
+
 ### Music Intermediate 1 (Music · 5013090)
 
 _Week 1 and major projects not posted yet_
 
 ### Physical Education - Grade 3 (Physical Education · 5015050)
 
-_Week 1 and major projects not posted yet_
+#### Mission: Move!
+
+**Sample Lesson**
+
+- [Unit 1.1: Intro to P.E. — You Are a Movement Superstar](https://optimaondemand.github.io/OAO-PE/3rd-Grade/lessons/unit-1-1-intro.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ## Grade 4
 
@@ -85,19 +184,38 @@ _Not posted yet_
 - [Lesson 10.02: Ecosystem Balance](https://optimaondemand.github.io/optima-4th-science/lesson-10-02-ecosystem-balance.html)
 - [Lesson 12.01: Sensing the World](https://optimaondemand.github.io/optima-4th-science/lesson-12-01-sensing-the-world.html)
 
-**Vr Field Missions**
+**VR Field Missions**
 
 - [10.02 VR: Two Plots](https://optimaondemand.github.io/optima-4th-science/vr-10-02.html)
 - [12.01 VR: Sense Stations](https://optimaondemand.github.io/optima-4th-science/vr-12-01.html)
+
+**Family Guides**
+
+- [Unit 3 Family Guide: Life Systems & Ecosystems](https://optimaondemand.github.io/optima-4th-science/parent-guide-unit-3.html)
+
+#### Energy and Collisions (Field Station)
+
+**Sample Lesson**
+
+- [Lesson 21.02: Investigation — Predicting Collisions](https://optimaondemand.github.io/optima-4th-science/lesson-21-02-investigation-predicting-collisions.html)
+
+**Family Guides**
+
+- [Unit 5 Family Guide: Energy, Motion & Collisions](https://optimaondemand.github.io/optima-4th-science/parent-guide-unit-5.html)
 
 ### ★ 4th Grade Social Studies (Social Studies)
 
 #### Florida History (Florida Files)
 
-**Sample Lessons**
+**Module 4 Lessons**
 
+- [Lesson 4.04.01: Explorers Who Came to Florida](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-04_01-explorers-who-came-to-florida.html)
 - [Lesson 4.04.02: Motives for European Expeditions](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-04_02-motives-for-european-expeditions.html)
-- [Lesson 4.10.01: Technological Advances and Florida Growth](https://optimaondemand.github.io/optima-4th-social-studies/ss-4-10-01-technological-advances-and-florida-growth.html)
+
+**Family Guides**
+
+- [Week 10 Family Guide (Lessons 4.04.01–4.04.02)](https://optimaondemand.github.io/optima-4th-social-studies/parent-guide-week-10.html)
+- [Unit 4 Family Guide: New Spain and Exploration](https://optimaondemand.github.io/optima-4th-social-studies/parent-guide-unit-4.html)
 
 **Major Project**
 
@@ -109,9 +227,92 @@ _Week 1 and major projects not posted yet_
 
 ### Physical Education - Grade 4 (Physical Education · 5015060)
 
-_Week 1 and major projects not posted yet_
+#### Mission: Move!
+
+**Sample Lesson**
+
+- [Week 1: Your Body Is Built to Move](https://optimaondemand.github.io/OAO-PE/4th-Grade/lessons/week-1-intro.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ## Grade 5
+
+### ★ 5th Grade ELA (English Language Arts)
+
+#### How I Became a Ghost · Week 18
+
+**Week 18 Lessons**
+
+- [Lesson 18.1: How I Became a Ghost (Ch. 1–2)](https://optimaondemand.github.io/optima-5th-ela/lesson-18-1-hbg-ch4.html)
+- [Lesson 18.2: How I Became a Ghost (Ch. 3–4)](https://optimaondemand.github.io/optima-5th-ela/lesson-18-2-hbg-ch5.html)
+- [Lesson 18.3: How I Became a Ghost (Ch. 5–6)](https://optimaondemand.github.io/optima-5th-ela/lesson-18-3-hbg-ch6.html)
+- [Lesson 18.4: How I Became a Ghost (Ch. 7)](https://optimaondemand.github.io/optima-5th-ela/lesson-18-4-hbg-ch7.html)
+- [Week 18 Fluency](https://optimaondemand.github.io/optima-5th-ela/lesson-18-fluency.html)
+
+**Family Guides**
+
+- [Week 18 Family Guide: A Ghost Tells the Story](https://optimaondemand.github.io/optima-5th-ela/parent-guide-week-18.html)
+- [How I Became a Ghost Unit Guide](https://optimaondemand.github.io/optima-5th-ela/parent-guide-hbg-unit.html)
+
+**Major Project**
+
+_Not posted yet_
+
+### ★ 5th Grade Math (Mathematics)
+
+#### Decimals (Master Builders)
+
+**Sample Lessons**
+
+- [Lesson 5.09.01: Thousandths](https://optimaondemand.github.io/optima-5th-math/math-lesson-5-09-01-thousandths.html)
+- [Lesson 5.09.02: Place Value to Thousandths](https://optimaondemand.github.io/optima-5th-math/math-lesson-5-09-02-place-value-to-thousandths.html)
+- [Lesson 5.09.03: Comparing Decimals](https://optimaondemand.github.io/optima-5th-math/math-lesson-5-09-03-comparing-decimals.html)
+- [Lesson 5.09.04: Rounding Decimals](https://optimaondemand.github.io/optima-5th-math/math-lesson-5-09-04-rounding-decimals.html)
+
+**VR On Site**
+
+- [5.09.03 VR: Chisel Check](https://optimaondemand.github.io/optima-5th-math/vr-17.html)
+
+**Family Guides**
+
+- [Unit 9 Family Guide: Decimals](https://optimaondemand.github.io/optima-5th-math/parent-guide-unit-9.html)
+
+**Major Project**
+
+_Not posted yet_
+
+### ★ 5th Grade Science (Science)
+
+#### Plants and Matter (Notebook Chain)
+
+**Week 17 Lessons**
+
+- [Lesson 17.01: What Materials Do Plants Need to Grow?](https://optimaondemand.github.io/optima-5th-science/lesson-17-01-what-materials-do-plants-need-to-grow.html)
+- [Lesson 17.02: Argument from Evidence: Plant Growth Materials](https://optimaondemand.github.io/optima-5th-science/lesson-17-02-argument-from-evidence-plant-growth-materials.html)
+
+**VR Field Plate**
+
+- [17.01 VR: Finish Hales’s Sunflower (Plate 17)](https://optimaondemand.github.io/optima-5th-science/vr-17.html)
+
+**Major Project**
+
+_Not posted yet_
+
+### ★ 5th Grade Social Studies (Social Studies)
+
+#### The Thirteen Colonies (Republic Gazette)
+
+**Sample Lessons**
+
+- [Lesson 5.07.01: Motives for Colonial Settlement](https://optimaondemand.github.io/optima-5th-social-studies/ss-5-07.01-motives-for-colonial-settlement.html)
+- [Lesson 5.07.02: New England Colonies](https://optimaondemand.github.io/optima-5th-social-studies/ss-5-07.02-new-england-colonies.html)
+- [Lesson 5.07.05: Daily Life in the Thirteen Colonies](https://optimaondemand.github.io/optima-5th-social-studies/ss-5-07.05-daily-life-in-the-thirteen-colonies.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### Music Intermediate 3 (Music · 5013110)
 
@@ -119,7 +320,15 @@ _Week 1 and major projects not posted yet_
 
 ### Physical Education - Grade 5 (Physical Education · 5015070)
 
-_Week 1 and major projects not posted yet_
+#### Mission: Move!
+
+**Sample Lesson**
+
+- [Unit 1.1: Welcome, Athlete in Training](https://optimaondemand.github.io/OAO-PE/5th-Grade/lessons/unit-1-1-intro.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ## Grade 6
 
@@ -269,7 +478,21 @@ _Not posted yet_
 
 ### ★ M/J Grade 7 Mathematics (Mathematics · 1205040)
 
-_Week 1 and major projects not posted yet_
+#### Module 6: Representing Statistical Data
+
+**Week 1**
+
+- [Lesson 1: Find and Interpret Measures of Variation](https://optimaondemand.github.io/optima-pilot-samples/7th-math-w1/w1-lesson1-measures-of-variation.html)
+- [Lesson 2: Find and Interpret Measures of Center](https://optimaondemand.github.io/optima-pilot-samples/7th-math-w1/w1-lesson2-measures-of-center.html)
+- [Lesson 3: Effects of Addition or Removal of Data Values](https://optimaondemand.github.io/optima-pilot-samples/7th-math-w1/w1-lesson3-adding-or-removing-data.html)
+- [Lesson 4: Effects of Outliers on Measures](https://optimaondemand.github.io/optima-pilot-samples/7th-math-w1/w1-lesson4-outliers.html)
+- [Lesson 5: Appropriate Measures of Center](https://optimaondemand.github.io/optima-pilot-samples/7th-math-w1/w1-lesson5-choosing-a-measure-of-center.html)
+- [Lesson 6: Appropriate Measures of Variation](https://optimaondemand.github.io/optima-pilot-samples/7th-math-w1/w1-lesson6-choosing-a-measure-of-variation.html)
+- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/7th-math-w1/w1-week-1-check.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ M/J Comprehensive Science 2 (Science · 2002070)
 
@@ -341,7 +564,7 @@ _Week 1 and major projects not posted yet_
 - [Lesson 1.1: What Is Computing?](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-01/lesson-01-what-is-computing.html)
 - [Lesson 1.2: Hardware & Software](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-01/lesson-02-hardware-software.html)
 
-**Major Project: Unit 10, Weaving The Web**
+**Major Project: Unit 10, Weaving the Web**
 
 - [Unit 10: Weaving the Web](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-10/index.html)
 - [Lesson 10.1: Vague, but Exciting](https://optimaondemand.github.io/optima-pilot-samples/7th-digital-discoveries/canvas/unit-10/lesson-01-the-proposal.html)
@@ -390,7 +613,19 @@ _Week 1 and major projects not posted yet_
 
 ### ★ M/J Grade 8 Pre-Algebra (Mathematics · 1205070)
 
-_Week 1 and major projects not posted yet_
+#### Module 7: Systems of Equations
+
+**Week 1**
+
+- [Lesson 1: Identifying Ordered Pairs that Satisfy a System of Equations](https://optimaondemand.github.io/optima-pilot-samples/8th-math-w1/w1-lesson1-ordered-pairs-that-satisfy-a-system.html)
+- [Lesson 2: Examining Graphs to Determine the Number of Solutions](https://optimaondemand.github.io/optima-pilot-samples/8th-math-w1/w1-lesson2-number-of-solutions-from-a-graph.html)
+- [Lesson 3: Graphing Systems of Equations to Determine the Solution](https://optimaondemand.github.io/optima-pilot-samples/8th-math-w1/w1-lesson3-graphing-systems-to-find-the-solution.html)
+- [Lesson 4: Graphing Systems in Real-World Problems](https://optimaondemand.github.io/optima-pilot-samples/8th-math-w1/w1-lesson4-graphing-systems-in-real-world-problems.html)
+- [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/8th-math-w1/w1-week-1-check.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### ★ M/J Comprehensive Science 3 (Science · 2002100)
 
