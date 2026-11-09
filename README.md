@@ -18,12 +18,22 @@ _Week 1 and major projects not posted yet_
 
 #### Anne of Green Gables
 
-**Week 8 Lessons**
+**Week 7 Lessons**
 
-- [Lesson 8.1: Anne of Green Gables (Ch. 6)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-1-anne-ch6.html)
-- [Lesson 8.2: Anne of Green Gables (Ch. 7–8)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-2-anne-ch7-8.html)
-- [Lesson 8.3: Anne of Green Gables (Ch. 9)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-3-anne-ch9.html)
-- [Lesson 8.4: Anne of Green Gables (Ch. 10)](https://optimaondemand.github.io/optima-4th-ela/lesson-8-4-anne-ch10.html)
+- [Lesson 7.1: Anne of Green Gables (Ch. 1)](https://optimaondemand.github.io/optima-4th-ela/lesson-7-1-anne-ch1.html)
+- [Lesson 7.2: Anne of Green Gables (Ch. 2)](https://optimaondemand.github.io/optima-4th-ela/lesson-7-2-anne-ch2.html)
+- [Lesson 7.3: Anne of Green Gables (Ch. 3–4)](https://optimaondemand.github.io/optima-4th-ela/lesson-7-3-anne-ch3-4.html)
+- [Lesson 7.4: Anne of Green Gables (Ch. 5)](https://optimaondemand.github.io/optima-4th-ela/lesson-7-4-anne-ch5.html)
+- [Week 7 Fluency](https://optimaondemand.github.io/optima-4th-ela/lesson-7-fluency.html)
+
+**VR Scope for Imagination**
+
+- [7.2 VR: The White Way of Delight](https://optimaondemand.github.io/optima-4th-ela/vr-7.html)
+
+**Family Guides**
+
+- [Week 7 Family Guide: Anne Arrives](https://optimaondemand.github.io/optima-4th-ela/parent-guide-week-7.html)
+- [Anne of Green Gables Unit Guide](https://optimaondemand.github.io/optima-4th-ela/parent-guide-anne-unit.html)
 
 **Major Project**
 
