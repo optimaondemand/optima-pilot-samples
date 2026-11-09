@@ -68,6 +68,10 @@ _Not posted yet_
 
 - [4.11.03 VR: The Castle Floor](https://optimaondemand.github.io/optima-4th-math/vr-20.html)
 
+**Family Guides**
+
+- [Unit 11 Family Guide: Area](https://optimaondemand.github.io/optima-4th-math/parent-guide-unit-11.html)
+
 **Major Project**
 
 _Not posted yet_
