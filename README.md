@@ -48,6 +48,26 @@ _Week 1 and major projects not posted yet_
 - [Lesson 4.10.01: Metric Units](https://optimaondemand.github.io/optima-4th-math/math-lesson-4-10-01-metric-units.html)
 - [Lesson 4.10.02: Customary Length](https://optimaondemand.github.io/optima-4th-math/math-lesson-4-10-02-customary-length.html)
 
+**Family Guides**
+
+- [Unit 10 Family Guide: Measurement](https://optimaondemand.github.io/optima-4th-math/parent-guide-unit-10.html)
+
+**Major Project**
+
+_Not posted yet_
+
+#### Area (Classical Guide)
+
+**Module 11 Lessons**
+
+- [Lesson 4.11.01: Area of Rectangles, Part 1](https://optimaondemand.github.io/optima-4th-math/math-lesson-4-11-01-area-of-rectangles-pt-1.html)
+- [Lesson 4.11.02: Area of Rectangles, Part 2](https://optimaondemand.github.io/optima-4th-math/math-lesson-4-11-02-area-of-rectangles-pt-2.html)
+- [Lesson 4.11.03: Area of Composite Figures](https://optimaondemand.github.io/optima-4th-math/math-lesson-4-11-03-area-of-composite-figures.html)
+
+**VR Commission**
+
+- [4.11.03 VR: The Castle Floor](https://optimaondemand.github.io/optima-4th-math/vr-20.html)
+
 **Major Project**
 
 _Not posted yet_
