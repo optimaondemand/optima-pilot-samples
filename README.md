@@ -706,7 +706,9 @@ _Week 1 and major projects not posted yet_
 
 ### M/J Comprehensive Physical Education Grade 7/8 (Grades 7–8 · Physical Education · 1508070)
 
-_Week 1 and major projects not posted yet_
+**Mission: Move!**
+
+- Sample Lesson · Interactive: [Unit 1.1 · Week 1: Intro to Physical Education](https://optimaondemand.github.io/OAO-PE/7th8th-Grade/lessons/week-1-intro.html)
 
 ## Grade 9
 
