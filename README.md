@@ -33,10 +33,6 @@ Week 1 and major-project samples for every 2026-27 course, grades 3–12. Live p
 
 #### Fractions (Storybook)
 
-**Start Here**
-
-- [How a Lesson Works (1-minute video with Opti)](https://optimaondemand.github.io/optima-3rd-math/assets/video/g3math-howto.mp4)
-
 **Unit 9 Lessons**
 
 - [Lesson 3.09.01: Fractions of a Whole](https://optimaondemand.github.io/optima-3rd-math/math-lesson-3-09-01-fractions-of-a-whole.html)
