@@ -1190,4 +1190,14 @@ _Not posted yet_
 
 _Not posted yet_
 
+#### Semester 2 · Módulo 2 · La casa
+
+**Sample Lesson**
+
+- [Lesson 2.03: Verbos de cambio radical (with the game Los molinos de viento)](https://optimaondemand.github.io/hsspanish1-lessons/s2/m02/lesson-2-03.html)
+
+**Major Project**
+
+_Not posted yet_
+
 Academic Design and Curriculum (AcDC)
