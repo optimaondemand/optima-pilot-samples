@@ -348,6 +348,10 @@ _Not posted yet_
 - [Lesson 3: The Writer's Bench](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-w1/w1-lesson3-writers-bench.html)
 - [Lesson 4: Fit to Be King](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-w1/w1-lesson4-fit-to-be-king.html)
 
+**VR Castle Build**
+
+- [VR: The Crown and the Stone](https://optimaondemand.github.io/optima-pilot-samples/6th-vr-w1/ela-vr-the-crown-and-the-stone.html)
+
 **Major Project**
 
 - ["What Makes a Good Knight?" Comparison Essay](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-king-arthur-projects/module-project-what-makes-a-good-knight-comparison-essay.html)
@@ -379,6 +383,10 @@ _Not posted yet_
 - [Lesson 5: Combining Like Terms](https://optimaondemand.github.io/optima-pilot-samples/6th-math-w1/w1-lesson5-combining-like-terms.html)
 - [Week 1 Check](https://optimaondemand.github.io/optima-pilot-samples/6th-math-w1/w1-week-1-check.html)
 
+**VR Tile Build**
+
+- [VR: Two Groups, One Expression](https://optimaondemand.github.io/optima-pilot-samples/6th-vr-w1/math-vr-two-groups-one-expression.html)
+
 **Major Project**
 
 _Not posted yet_
@@ -398,6 +406,10 @@ _Not posted yet_
 - [Assignment: What Is a Scientist? AI Creation Assignment](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/a2-scientist.html)
 - [Assignment: Science Fair Mini-Experiments, Checkpoint 1](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w01/a3-checkpoint.html)
 
+**VR Field Plot**
+
+- [VR: The Fair Test Garden](https://optimaondemand.github.io/optima-pilot-samples/6th-vr-w1/science-vr-the-fair-test-garden.html)
+
 **Major Project: Science Fair Video (Week 7)**
 
 - [Q2 Week 7: Lights, Camera, Experiment! Science Fair Spotlight](https://optimaondemand.github.io/optima-pilot-samples/6th-science-comprehensive-1-q2/sci6/q2w07/l0-map.html)
@@ -415,6 +427,10 @@ _Not posted yet_
 - [Lesson 2: Hesiod, Works and Days](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-w19/w19-lesson-2-hesiod-works-and-days.html)
 - [Lesson 3: Sparta: A Polis Built for War](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-w19/w19-lesson-3-sparta-a-polis-built-for-war.html)
 - [Lesson 4: Plutarch, Life of Lycurgus](https://optimaondemand.github.io/optima-pilot-samples/6th-world-history-w19/w19-lesson-4-plutarch-life-of-lycurgus.html)
+
+**VR On the Field**
+
+- [VR: Hold the Line](https://optimaondemand.github.io/optima-pilot-samples/6th-vr-w1/history-vr-hold-the-line.html)
 
 **Major Project**
 

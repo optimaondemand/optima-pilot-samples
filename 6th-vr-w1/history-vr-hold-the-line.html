@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VR: Hold the Line · 6th Grade World History</title>
+<meta name="author" content="Phyllis">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+<style>
+:root{--a1:#A3431E;--a2:#C7922C;--a2d:#8F6516;--page:#F6F0E4;--card:#FFFCF6;--ink:#1F1A15;--ink2:#5B5148;--line:#E3D6C0;--tint:#F5E3D8;--tint2:#FBF1DC;--ok:#2E7D4F;--head:Marcellus,Georgia,serif}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
+img{max-width:100%}
+.wrap{max-width:880px;margin:0 auto;padding:0 16px}
+.top{background:var(--a1);color:#fff;padding:18px 0 22px;border-bottom:5px solid var(--a2)}
+.brand{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.25}
+.brand img{width:38px;height:38px;border-radius:50%;background:#fff}
+.brand small{display:block;opacity:.8;font-size:12px}
+.kicker{margin-top:16px;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+h1{font-family:var(--head);font-weight:600;font-size:clamp(28px,5vw,40px);line-height:1.12;margin:4px 0 8px}
+.meta{display:flex;flex-wrap:wrap;gap:8px;font-size:14px}
+.meta span{border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:2px 11px}
+main{padding:22px 0 50px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px}
+h2{font-family:var(--head);font-size:26px;line-height:1.2;margin:0 0 8px;color:var(--a1)}
+h3{font-size:18px;margin:0 0 6px;color:var(--ink)}
+p{margin:0 0 10px}
+.q{font-size:19px;font-weight:600;margin:0 0 10px}
+.lab{font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--a2d);margin:0 0 4px}
+.facts{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.facts li{border-left:4px solid var(--a2);background:var(--tint);padding:8px 12px;border-radius:0 8px 8px 0}
+.facts b{color:var(--a1)}
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 18px}
+.paths button{font:inherit;text-align:left;cursor:pointer;background:var(--card);color:var(--ink);border:2px solid var(--line);
+  border-radius:12px;padding:12px 14px;line-height:1.3}
+.paths button b{display:block;font-size:17px}
+.paths button small{color:var(--ink2);font-size:14px}
+.paths button[aria-selected="true"]{border-color:var(--a1);box-shadow:inset 0 -4px 0 var(--a2)}
+.paths button:focus-visible,.step input:focus-visible,.btn:focus-visible,.opts button:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+.job{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:10px 0 14px;font-size:15px}
+.job span{background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
+.job span b{color:var(--a1)}
+.job i{font-style:normal;color:var(--ink2)}
+.headrow{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.seal{flex:0 0 auto;width:96px;height:96px;border-radius:50%;border:3px double var(--a2);color:var(--a2d);background:var(--card);
+  display:flex;align-items:center;justify-content:center;text-align:center;font:700 11.5px/1.2 system-ui,sans-serif;
+  letter-spacing:.06em;text-transform:uppercase;padding:10px;opacity:.45}
+.seal.on{opacity:1;background:var(--tint2);box-shadow:0 0 0 4px var(--tint2)}
+.prog{font-size:14.5px;color:var(--ink2);margin:0 0 6px}
+.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:0 0 16px}
+.bar i{display:block;height:100%;width:0;background:var(--a2);transition:width .25s}
+.grp{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:20px 0 8px;
+  padding-top:12px;border-top:1px solid var(--line)}
+.step{display:grid;grid-template-columns:34px 1fr;gap:4px 10px;padding:12px 0}
+.step + .step{border-top:1px dashed var(--line)}
+.step input{width:24px;height:24px;margin:3px 0 0;accent-color:var(--a1);cursor:pointer}
+.step h3 small{font-weight:600;color:var(--ink2);font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;display:block}
+.step.done h3{color:var(--ink2)}
+.step ol,.step ul{margin:4px 0 8px;padding-left:22px}
+.step li{margin:3px 0}
+.tip{background:var(--tint);border-radius:8px;padding:8px 12px;font-size:15.5px;margin:8px 0 0}
+.say{border:2px solid var(--a2);border-radius:10px;padding:10px 14px;margin:8px 0 0;font-size:18px;background:var(--card)}
+.say .lab{margin-bottom:2px}
+.extra{border:1px dashed var(--a1);border-radius:10px;padding:10px 14px;margin:6px 0 4px 44px;font-size:16px}
+.extra b.tag{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--a1);display:block}
+kbd{font:600 15px/1 ui-monospace,Consolas,monospace;background:#EDEFF2;color:#1b2330;border:1px solid #C9CFD8;border-bottom-width:2px;
+  border-radius:6px;padding:2px 7px;white-space:nowrap}
+.models{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:8px 0}
+.model{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card)}
+.model b{display:block;font-size:16.5px}
+.model .n{float:right;font-weight:700;color:var(--a1);font-size:15px}
+.model p{margin:4px 0 0;font-size:15px;color:var(--ink2)}
+.model .type{font-size:14.5px;margin-top:6px}
+.plan{border:1px solid var(--line);border-radius:12px;background:var(--tint);padding:14px;margin:10px 0 4px;overflow-x:auto}
+.plan .lab{margin-bottom:8px}
+.planrow{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
+.pc{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;line-height:1.2;text-align:center;color:var(--ink2);max-width:120px}
+.pb{display:flex;align-items:center;justify-content:center;border:2px solid var(--a1);background:var(--card);color:var(--a1);
+  font-weight:700;border-radius:6px;min-width:44px;height:44px;padding:0 6px;font-size:15px}
+.pb.alt{border-color:var(--a2);color:var(--a2d)}
+.pb.ghost{border-style:dashed;background:transparent}
+.pb.tall{height:70px}
+.pb.sm{min-width:30px;height:30px;font-size:13px}
+.pgap{width:18px}
+.pc.wide{max-width:none}
+.pc .planrow{flex-wrap:nowrap;align-items:center;gap:6px}
+.full{border-left:5px solid var(--a1);background:var(--tint2);border-radius:0 10px 10px 0;padding:10px 14px;margin:16px 0 0}
+.full b{color:var(--a1)}
+.earned{display:none;margin:14px 0 0;padding:12px 14px;border-radius:10px;background:var(--tint2);border:1px solid var(--a2)}
+.earned.on{display:block}
+details.help{margin:18px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+details.help summary{cursor:pointer;padding:12px 16px;font-weight:700;color:var(--a1);list-style:none;display:flex;justify-content:space-between;gap:10px}
+details.help summary::-webkit-details-marker{display:none}
+details.help summary small{font-weight:400;color:var(--ink2);display:block;font-size:14px}
+details.help[open] summary .chev{transform:rotate(180deg)}
+.hd-body{padding:0 16px 16px}
+.hd-frame{position:relative;width:100%;aspect-ratio:16/9;background:#0E1C42;border-radius:10px;overflow:hidden}
+.hd-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.hd-cap{font-size:13.5px;color:var(--ink2);margin:4px 0 10px}
+.hd-note{font-size:15px;background:var(--tint);border-radius:8px;padding:8px 12px}
+.hd-group{font-size:15px;margin:16px 0 8px;color:var(--a1)}
+.hd-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.hd-step{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);font-size:15px}
+.hd-step img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#dde3ec}
+.hd-step div{padding:8px 12px 10px}
+.hd-step p{margin:4px 0 0}
+.hd-n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--a1);color:#fff;
+  font-weight:700;font-size:13px;margin-right:6px}
+.hd-alt{font-size:15px;margin-top:12px}
+/* no-headset path */
+.nh-block{padding:14px 0;border-top:1px dashed var(--line)}
+.nh-block:first-of-type{border-top:0}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:8px 0}
+.opts button,.btn{font:inherit;cursor:pointer;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);
+  padding:9px 12px;text-align:left;line-height:1.3}
+.opts button[aria-pressed="true"]{border-color:var(--a1);background:var(--tint2);font-weight:600}
+.btn{display:inline-block;text-align:center;font-weight:600}
+.btn.pri{background:var(--a1);border-color:var(--a1);color:#fff;padding:11px 18px}
+.btn.sm{padding:5px 10px;font-size:15px}
+.lights{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:5px;font-size:15.5px}
+.lights li{padding-left:26px;position:relative;color:var(--ink2)}
+.lights li::before{content:"";position:absolute;left:2px;top:5px;width:14px;height:14px;border-radius:50%;border:2px solid var(--line);background:var(--card)}
+.lights li.on{color:var(--ink)}
+.lights li.on::before{background:var(--ok);border-color:var(--ok)}
+textarea,input[type=text],select{font:inherit;width:100%;border:2px solid var(--line);border-radius:10px;padding:9px 12px;background:#fff;color:var(--ink)}
+textarea{min-height:150px;resize:vertical}
+textarea:focus,input[type=text]:focus,select:focus{outline:0;border-color:var(--a1)}
+label.f{display:block;font-weight:600;font-size:15.5px;margin:10px 0 4px}
+.count{font-size:14.5px;color:var(--ink2);margin:4px 0 0}
+.turnin{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-top:12px}
+.turnin > div{flex:1 1 220px}
+footer{border-top:1px solid var(--line);padding:16px 0 30px;font-size:13.5px;color:var(--ink2)}
+#printout{display:none}
+[hidden]{display:none!important}
+@media (max-width:560px){
+  body{font-size:16.5px}.card{padding:16px 14px}.paths{grid-template-columns:1fr}.seal{width:78px;height:78px;font-size:10px}
+  .extra{margin-left:0}.step{grid-template-columns:30px 1fr}
+}
+@media print{
+  body{background:#fff}
+  .top,main,footer{display:none!important}
+  #printout{display:block;padding:24px;font:12.5pt/1.5 Georgia,serif;color:#000}
+  #printout h1{font:700 18pt Georgia,serif;margin:0 0 4px}
+  #printout h2{font:700 12pt system-ui,sans-serif;margin:16px 0 4px;color:#000}
+  #printout p,#printout li{margin:0 0 6px}
+  #printout .w{white-space:pre-wrap;border:1px solid #999;padding:10px;border-radius:6px}
+}
+
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div>
+  <div class="kicker">6th Grade World History · The Rise of the Polis</div>
+  <h1>Hold the Line</h1>
+  <div class="meta"><span>Week 19 · VR</span><span>The hoplite phalanx</span><span>About 15 minutes</span></div>
+</div></header>
+<main class="wrap">
+<section class="card">
+  <h2>What happens when one man leaves the line?</h2>
+  <p class="q">Achilles won his glory alone. The polis asked for a different kind of courage.</p>
+<p>Build a line of hoplites, then send one man charging ahead. Your photo shows what his glory costs the men he left.</p>
+<ul class="facts">
+<li>A <b>hoplite</b> was a Greek citizen who fought as a heavily armed foot soldier. Many were farmers who owned enough land to pay for their own gear.</li>
+<li>A <b>phalanx</b> was a tight block of men standing shoulder to shoulder, rows deep.</li>
+<li>Each man’s shield covered his own left side and part of his neighbor’s. Each man had to trust the man beside him.</li>
+<li>If one soldier ran, the whole line could break. Glory belonged to the whole line.</li>
+</ul>
+</section>
+
+<div class="paths" role="tablist" aria-label="Choose how you will do this assignment">
+  <button type="button" role="tab" data-path="vr" aria-selected="true"><b>On the Field</b><small>In your headset. Earns the Olive Wreath.</small></button>
+  <button type="button" role="tab" data-path="nh" aria-selected="false"><b>No headset? At the Map Table</b><small>On your computer. Ends in a PDF.</small></button>
+</div>
+
+<section class="card" id="vr">
+  <div class="headrow"><div><p class="lab">On the Field · VR</p><h2>Build the line, then break it</h2></div><div class="seal" id="seal">Olive Wreath</div></div>
+  <div class="job"><span><b>1</b> Build</span> <i>→</i> <span><b>2</b> Take a photo</span> <i>→</i> <span><b>3</b> Submit to Canvas</span></div>
+  <p class="prog" id="prog"></p><div class="bar"><i id="bar"></i></div>
+  <div class="plan"><p class="lab">What your photo shows</p>
+<div class="planrow" style="justify-content:center;margin-bottom:14px"><div class="pc"><span class="pb alt tall">Runs</span>ten steps ahead, alone</div></div>
+<div class="planrow" style="justify-content:center">
+<span class="pb tall">Stands</span><span class="pb tall">Stands</span><div class="pc"><span class="pb ghost tall">gap</span></div><span class="pb tall">Stands</span><span class="pb tall">Stands</span><span class="pb tall">Stands</span>
+</div><p style="text-align:center;font-size:13px;color:var(--ink2);margin:6px 0 0">one line, shoulder to shoulder, with one empty place</p></div>
+  <p class="grp">Before you put on your headset</p>
+  <div class="step"><input type="checkbox" id="s1" aria-label="Step 1 done"><div><h3><small>Step 1 of 7</small>Know your models</h3><p>Type the word shown in the <b>Filter models</b> box, then pick the model with this exact name.</p><div class="models"><div class="model"><span class="n">5</span><b>Greek Mercenary Standing</b><p>the hoplites who hold their place</p><div class="type">Type <kbd>Greek</kbd></div></div><div class="model"><span class="n">1</span><b>Greek Mercenary Running</b><p>the one who charges ahead alone</p><div class="type">Type <kbd>Greek</kbd></div></div></div><p class="tip">This list is also in VR: open your menu, click the <b>Canvas</b> tab, then pick <b>VR: Hold the Line</b>.</p></div></div>
+  <p class="grp">In VR</p>
+  <div class="step"><input type="checkbox" id="s2" aria-label="Step 2 done"><div><h3><small>Step 2 of 7</small>Go in</h3><p class="tip">First time only: connect Canvas at <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> on a computer. The steps are in <b>Having trouble in VR?</b> below.</p><ol><li>Put on your headset and open the <b>On-Demand</b> app.</li><li>Click <b>Explore</b>. Type <kbd>Olympus</kbd> in the <b>Filter environments</b> box.</li><li>Click <b>Mount Olympus</b>, then click <b>Begin Solo</b>.</li></ol></div></div>
+<div class="step"><input type="checkbox" id="s3" aria-label="Step 3 done"><div><h3><small>Step 3 of 7</small>Build the line</h3><p>Set five <b>Greek Mercenary Standing</b> models in one row, all facing the same way, close enough that their shoulders nearly touch. Leave one empty place in the row, as wide as one man.</p><p class="tip">To bring out a model: press the <b>top button</b> on your right controller, click <b>Models</b>, and type the word in the <b>Filter models</b> box. Grab a model with the <b>palm trigger</b> (under your middle finger). Turn and move it with the <b>thumbstick</b>. Use both palm triggers to make it bigger or smaller.</p></div></div>
+<div class="step"><input type="checkbox" id="s4" aria-label="Step 4 done"><div><h3><small>Step 4 of 7</small>Send one man ahead</h3><p>Bring out one <b>Greek Mercenary Running</b>. Set him about ten steps in front of the empty place, facing away from the line.</p></div></div>
+<div class="step"><input type="checkbox" id="s5" aria-label="Step 5 done"><div><h3><small>Step 5 of 7</small>Read your own model</h3><p>Stand in the empty place and look left and right at the men beside it.</p>
+<div class="say"><p class="lab">Say it out loud</p>“When one man leaves the line, ___. The polis needed ___ because ___.”</div></div></div>
+<div class="extra"><b class="tag">Extra · VR only · if you have time</b>Bring out a <b>Spartan Helmet</b> (type <kbd>Spartan</kbd>). Set it on the ground in front of the soldier whose courage you would rather have.</div>
+<div class="step"><input type="checkbox" id="s6" aria-label="Step 6 done"><div><h3><small>Step 6 of 7</small>Take the photo and submit it</h3><ol><li>Stand back until you can see the whole line, the empty place and the runner.</li><li>Open your menu. Click <b>Library</b>, then <b>Camera</b>. Move the tablet until it all fits, then click <b>Take photo</b>.</li><li>Click the <b>Canvas</b> tab and pick <b>VR: Hold the Line</b>.</li><li>Click <b>Choose from My Files</b>, pick your photo, then click <b>Use this file</b>.</li><li>Click <b>Submit to Canvas</b>. Look for the green <b>Submitted</b> tag.</li></ol><p class="tip">The photo is the only thing you turn in. To fix something, move the models, take a new photo and submit again.</p></div></div>
+  <p class="grp">After</p>
+  <div class="step"><input type="checkbox" id="s7" aria-label="Step 7 done"><div><h3><small>Step 7 of 7</small>Check and leave</h3><p>Press the <b>Meta button</b> on your right controller, then click <b>Quit</b>. Take off your headset and open the Canvas assignment. Your photo should be there. If it is not, open <b>Having trouble in VR?</b> below for two other ways to turn it in.</p></div></div>
+  <p class="full"><b>Full credit:</b> Your photo shows five standing soldiers in one tight row with one empty place, and one running soldier alone in front of that place.</p>
+  <p class="earned" id="earned"><b>Olive Wreath earned.</b> Only students who build the line in VR earn this wreath.</p>
+  <details class="help" id="vr-help">
+    <summary><span>Having trouble in VR?<small>Steps with pictures, and a how-to video</small></span><span class="chev" aria-hidden="true">▾</span></summary>
+    <div class="hd-body">
+      <div class="hd-frame" data-src="https://www.youtube-nocookie.com/embed/slDH-WN4scY?rel=0"></div><p class="hd-cap">How-to video: Optima On-Demand and Canvas</p>
+      <p class="hd-note">These pictures come from other maps. Your map will be <b>Mount Olympus</b>, but the buttons are the same.</p>
+      <h4 class="hd-group">First time only: connect Canvas (on your computer)</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-01-login.jpg" alt="The Optima On Demand login page, with the Sign In button circled."><div><span class="hd-n">1</span><b>Log in</b><p>Go to <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> on your computer. Log in with the same login you use in VR.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-02-authorize.jpg" alt="The Canvas box that asks to connect, with the Authorize button circled."><div><span class="hd-n">2</span><b>Connect to Canvas</b><p>Click <b>Connect to Canvas</b>. Log in with your usual Canvas username and password, then click <b>Authorize</b>. You will see <b>Canvas connection completed</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-03-connected.jpg" alt="The Canvas page on the website, with the Canvas button and the list of assignments circled."><div><span class="hd-n">3</span><b>Find our class</b><p>Click <b>Canvas</b> on the left and pick our class. Our assignments show up. You only do this part one time.</p></div></li></ol><h4 class="hd-group">In the headset</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-05-explore.jpg" alt="The Explore tab in the headset, with the tab and the filter box circled."><div><span class="hd-n">4</span><b>Explore tab</b><p>Put on your headset. Click the <b>Explore</b> tab and type the map’s name in <b>Filter environments</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-06-begin-solo.jpg" alt="A map is picked and the Begin Solo button is circled."><div><span class="hd-n">5</span><b>Begin Solo</b><p>Click the map, then click <b>Begin Solo</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-07-canvas.jpg" alt="The Canvas tab in the headset, with the tab and the assignment box circled."><div><span class="hd-n">6</span><b>Read the assignment</b><p>Press the <b>top button on your right controller</b> to open your menu. Click the <b>Canvas</b> tab and pick our assignment to read the directions. Tip: point at a mint side grip and squeeze to pull the tablet to your hand.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-08-models.jpg" alt="The Models tab open in an ocean map, with a list of models."><div><span class="hd-n">7</span><b>Bring out the models</b><p>Click <b>Models</b>. Type the exact name in the search box, or scroll with your thumbstick. Click a model to bring it out.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-08b-move.jpg" alt="A controller moving a fish model in an ocean map."><div><span class="hd-n">8</span><b>Move and resize</b><p>Grab a model with the <b>palm trigger</b>. Turn and move it with the thumbstick. Use <b>both</b> palm triggers to make it bigger or smaller.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-10-camera.jpg" alt="The Library camera, with the Height slider and the Take photo button circled."><div><span class="hd-n">9</span><b>Take a photo</b><p>Click <b>Library</b>, then <b>Camera</b>. Move the tablet until your whole model fits. Slide <b>Height</b> or the zoom bar if you need to. Click <b>Take photo</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-11-choose.jpg" alt="The My Files list in the headset, with the newest file circled."><div><span class="hd-n">10</span><b>Pick your photo</b><p>Click the <b>Canvas</b> tab and pick our assignment. Click <b>Choose from My Files</b>, pick your newest photo, then click <b>Use this file</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-12-submitted.jpg" alt="The Canvas tab after submitting, with the green Submitted tag circled."><div><span class="hd-n">11</span><b>Submit to Canvas</b><p>Click <b>Submit to Canvas</b> and look for the green <b>Submitted</b> tag. To leave VR, press the <b>Meta button</b> on your right controller, then click <b>Quit</b>.</p></div></li></ol><h4 class="hd-group">Didn’t work in VR? Two other ways</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-13-portal-submit.jpg" alt="The Canvas page on the website, with the Choose from My Files button circled."><div><span class="hd-n">12</span><b>Use the website</b><p>Go to <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> and click <b>Canvas</b>. Pick our assignment, click <b>Choose from My Files</b>, pick your photo and submit it.</p></div></li></ol><p class="hd-alt">Your photos save to <b>My Files</b> at xr.optimaed.com on their own. You can also download your photo there and upload it to the Canvas assignment yourself.</p>
+    </div>
+  </details>
+</section>
+
+<section class="card" id="nh" hidden>
+  <p class="lab">At the Map Table · no headset</p><h2>Break the line on the page</h2>
+  <div class="job"><span><b>1</b> Test the line</span> <i>→</i> <span><b>2</b> Write</span> <i>→</i> <span><b>3</b> Upload your PDF to Canvas</span></div>
+  <div class="nh-block"><h3>1 · Send one hoplite ahead</h3>
+<p>Six hoplites hold the line. Tap one to send him charging ahead. Tap him again to call him back.</p>
+<div class="plan"><div class="planrow" id="ahead" style="justify-content:center;min-height:78px;margin-bottom:12px"></div>
+<div class="planrow" id="line" style="flex-wrap:nowrap;width:max-content;margin:0 auto;gap:6px"></div>
+<p id="linenote" style="text-align:center;font-size:15px;margin:10px 0 0"></p></div></div>
+<div class="nh-block"><h3>2 · Which courage did the polis need more?</h3>
+<div class="opts" data-group="courage">
+<button type="button" data-v="charging ahead alone for glory">Charging ahead alone for glory</button>
+<button type="button" data-v="holding a place in the line">Holding a place in the line</button>
+</div></div>
+  <div class="nh-block"><h3>3 · Write</h3>
+    <label class="f" for="w">Which kind of courage did the polis need more, and why? Answer in 3 or 4 sentences. Use at least two details about the hoplite and the phalanx.</label>
+    <textarea id="w"></textarea><p class="count" id="wc"></p>
+    <ul class="lights" id="lights"></ul>
+  </div>
+  <p class="full"><b>Full credit:</b> Both lights are on. Your writing has 50 words or more and uses two details about the hoplite and the phalanx.</p>
+  <div class="turnin"><div><label class="f" for="nm">First name</label><input type="text" id="nm" autocomplete="off"></div>
+    <div><button type="button" class="btn pri" id="pdf">Download my work (PDF)</button></div></div>
+  <p class="count">Choose <b>Save as PDF</b>, then upload that file to <b>VR: Hold the Line</b> in Canvas.</p>
+</section>
+</main>
+<footer><div class="wrap">Optima Academy Online · Academic Design and Curriculum (AcDC)</div></footer>
+<div id="printout"></div>
+<script>
+window.PAGE = {id:"hist", title:"VR: Hold the Line", course:"6th Grade World History", nhName:"At the Map Table", minWords:50};
+(function(){ var P = window.PAGE;
+
+P.init = function(S){
+  document.getElementById('line').addEventListener('click', go); document.getElementById('ahead').addEventListener('click', go);
+  function go(e){ var b = e.target.closest('button[data-h]'); if (!b) return;
+    S.nh.out = (S.nh.out === b.dataset.h) ? '' : b.dataset.h; if (S.nh.out) S.nh.tried = true; VR6.save(); VR6.refresh(); }
+};
+P.draw = function(S){
+  var out = S.nh.out ? +S.nh.out : 0, h = '';
+  for (var i = 1; i <= 6; i++) {
+    if (i === out) h += '<span class="pb ghost tall">gap</span>';
+    else h += '<button type="button" class="pb tall' + (out && Math.abs(i - out) === 1 ? ' alt' : '') + '" data-h="' + i + '" style="cursor:pointer;font:inherit;font-weight:700">' +
+              (out && Math.abs(i - out) === 1 ? 'Open side' : 'Stands') + '</button>';
+  }
+  document.getElementById('line').innerHTML = h;
+  document.getElementById('ahead').innerHTML = out ? '<button type="button" class="pb alt tall" data-h="' + out + '" style="cursor:pointer;font:inherit;font-weight:700">Runs</button>' : '';
+  document.getElementById('linenote').textContent = out ? 'One place is empty. The men beside it have lost part of their cover.' : 'Six shields, one wall.';
+};
+P.lights = function(S){ return [[!!S.nh.tried, 'You sent one hoplite ahead'], [!!S.nh.courage, 'You chose a kind of courage']]; };
+P.summary = function(S){
+  return ['Line test: ' + (S.nh.tried ? 'sent one hoplite ahead and saw the gap' : '(not tried)'), 'The polis needed more: ' + (S.nh.courage || '(not chosen)')];
+};
+
+})();
+</script>
+<script>
+(function(){
+  var P = window.PAGE, KEY = 'vr6-' + P.id, S = {steps:{}, path:'vr', nh:{}, w:'', name:''};
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch(e){}
+  function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
+  function $(q, r){ return (r||document).querySelector(q); }
+  function $$(q, r){ return Array.prototype.slice.call((r||document).querySelectorAll(q)); }
+  window.VR6 = {S:S, save:save, $:$, $$:$$, refresh:refresh};
+
+  /* paths */
+  function showPath(p){
+    S.path = p; save();
+    $$('.paths button').forEach(function(b){ b.setAttribute('aria-selected', String(b.dataset.path === p)); });
+    $('#vr').hidden = p !== 'vr'; $('#nh').hidden = p !== 'nh';
+  }
+  $$('.paths button').forEach(function(b){ b.addEventListener('click', function(){ showPath(b.dataset.path); }); });
+
+  /* VR step checklist */
+  var boxes = $$('#vr .step input[type=checkbox]');
+  function steps(){
+    var n = 0;
+    boxes.forEach(function(c){ var on = !!S.steps[c.id]; c.checked = on; c.closest('.step').classList.toggle('done', on); if (on) n++; });
+    $('#prog').textContent = n + ' of ' + boxes.length + ' steps done';
+    $('#bar').style.width = (100 * n / boxes.length) + '%';
+    var all = n === boxes.length;
+    $('#seal').classList.toggle('on', all); $('#earned').classList.toggle('on', all);
+  }
+  boxes.forEach(function(c){ c.addEventListener('change', function(){ S.steps[c.id] = c.checked; save(); steps(); }); });
+
+  /* help drawer video loads only when opened */
+  var d = $('#vr-help');
+  d.addEventListener('toggle', function(){
+    var f = $('.hd-frame', d);
+    if (d.open && !f.firstChild) {
+      var i = document.createElement('iframe'); i.src = f.dataset.src; i.title = 'How-to video: Optima On-Demand and Canvas';
+      i.allow = 'encrypted-media; picture-in-picture; fullscreen'; i.allowFullscreen = true; f.appendChild(i);
+    }
+  });
+
+  /* no-headset: option groups, plain fields, writing */
+  $$('#nh .opts').forEach(function(g){
+    $$('button', g).forEach(function(b){
+      b.addEventListener('click', function(){ S.nh[g.dataset.group] = b.dataset.v; save(); refresh(); });
+    });
+  });
+  $$('#nh [data-k]').forEach(function(el){
+    if (S.nh[el.dataset.k] != null) el.value = S.nh[el.dataset.k];
+    el.addEventListener('input', function(){ S.nh[el.dataset.k] = el.value; save(); refresh(); });
+    el.addEventListener('change', function(){ S.nh[el.dataset.k] = el.value; save(); refresh(); });
+  });
+  var w = $('#w'), nm = $('#nm');
+  w.value = S.w || ''; nm.value = S.name || '';
+  w.addEventListener('input', function(){ S.w = w.value; save(); refresh(); });
+  nm.addEventListener('input', function(){ S.name = nm.value; save(); });
+  function words(t){ t = (t||'').trim(); return t ? t.split(/\s+/).length : 0; }
+
+  function refresh(){
+    $$('#nh .opts').forEach(function(g){
+      $$('button', g).forEach(function(b){ b.setAttribute('aria-pressed', String(S.nh[g.dataset.group] === b.dataset.v)); });
+    });
+    var n = words(S.w);
+    $('#wc').textContent = n + ' of ' + P.minWords + ' words';
+    var lights = P.lights ? P.lights(S) : [];
+    lights.push([n >= P.minWords, 'Your writing has ' + P.minWords + ' words or more']);
+    $('#lights').innerHTML = lights.map(function(l){ return '<li class="' + (l[0] ? 'on' : '') + '">' + l[1] + '</li>'; }).join('');
+    if (P.draw) P.draw(S);
+  }
+  function esc(t){ return String(t).replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+  $('#pdf').addEventListener('click', function(){
+    var lines = P.summary ? P.summary(S) : [];
+    $('#printout').innerHTML = '<h1>' + esc(P.title) + '</h1><p>' + esc(P.course) + ' · ' + esc(P.nhName) + '</p>' +
+      '<p><b>Name:</b> ' + esc(S.name || '') + '</p><h2>My work</h2><ul>' +
+      lines.map(function(l){ return '<li>' + esc(l) + '</li>'; }).join('') + '</ul><h2>My writing</h2><div class="w">' + esc(S.w || '') + '</div>';
+    window.print();
+  });
+  if (P.init) P.init(S);
+  if (location.hash === '#nh') S.path = 'nh';
+  showPath(S.path === 'nh' ? 'nh' : 'vr'); steps(); refresh();
+})();
+</script>
+</body>
+</html>
