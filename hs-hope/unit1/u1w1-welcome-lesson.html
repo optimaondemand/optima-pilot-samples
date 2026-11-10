@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1 — Welcome to HOPE | HOPE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* ========== OAO DESIGN SYSTEM ========== */
+:root{
+  --binary-blue:#0E1C42; --bitstream-blue:#55C8E8; --dark-bitstream:#0E5568;
+  --gateway-gold:#C7922C; --portal-purple:#67308F; --pixel-pink:#A53E97;
+  --gamer-green:#76C043; --odyssey-orange:#F78F1E;
+  --gold-lt:#e0b65a;
+  --dk-bg:#0a1124; --dk-card:#13203f; --dk-inset:#0b1430; --dk-border:#23335c; --dk-ink:#e9eef7; --dk-muted:#9db0cb; --red:#f87171;
+  --font-display:'Wix Madefor Display',sans-serif; --font-text:'Wix Madefor Text',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font-text);font-size:16px;line-height:1.7;color:#374151;background:#f8f9fa;}
+
+/* HEADER */
+.oao-header{background:var(--binary-blue);color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 4px 20px rgba(14,28,66,0.3);}
+.oao-header-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;min-height:64px;flex-wrap:wrap;gap:12px;}
+.oao-logo-area{display:flex;align-items:center;gap:14px;}
+.oao-logo{height:44px;width:auto;display:block;}
+.oao-wordmark{line-height:1.1;}
+.oao-wordmark-name{font-family:var(--font-display);font-size:18px;font-weight:800;color:#fff;letter-spacing:-0.01em;}
+.oao-wordmark-sub{font-size:8px;font-weight:500;color:rgba(255,255,255,0.7);letter-spacing:0.18em;text-transform:uppercase;margin-top:2px;}
+.oao-header-divider{width:1px;height:32px;background:rgba(255,255,255,0.2);}
+.oao-header-course{font-size:14px;font-weight:600;color:var(--bitstream-blue);}
+.oao-header-sub{font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px;}
+.oao-week-badge{background:var(--gateway-gold);color:#fff;padding:6px 14px;border-radius:8px;font-weight:700;font-size:13px;letter-spacing:0.04em;white-space:nowrap;display:flex;align-items:center;gap:7px;}
+.hdr-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.hdr-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.08);}
+.hdr-progress div{height:100%;width:0;background:linear-gradient(90deg,var(--bitstream-blue),var(--gamer-green));transition:width .6s ease;}
+
+/* LESSON */
+.lesson-container{max-width:900px;margin:0 auto;padding:38px 24px 60px;}
+.lesson-badge{display:inline-block;background:rgba(85,200,232,0.16);color:var(--dark-bitstream);font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:6px 12px;border-radius:14px;margin-bottom:14px;}
+.lesson-title{font-family:var(--font-display);font-size:38px;font-weight:800;color:var(--binary-blue);line-height:1.12;letter-spacing:-0.02em;margin-bottom:12px;}
+.lesson-description{font-size:18px;color:#4b5563;max-width:680px;margin-bottom:30px;}
+
+/* OBJECTIVES */
+.objectives-box{background:#fff;border:1px solid #e5e7eb;border-left:4px solid var(--bitstream-blue);border-radius:12px;padding:26px 28px;margin-bottom:34px;box-shadow:0 1px 3px rgba(0,0,0,0.04);}
+.objectives-title{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--binary-blue);margin-bottom:14px;}
+.objective-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:12px;}
+.objective-num{flex-shrink:0;width:30px;height:30px;border-radius:8px;color:#fff;font-family:var(--font-display);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+.c1{background:var(--bitstream-blue);color:var(--binary-blue);} .c2{background:var(--gateway-gold);} .c3{background:var(--gamer-green);color:var(--binary-blue);} .c4{background:var(--portal-purple);}
+
+/* SECTION HEADER */
+.section-header{margin:40px 0 14px;}
+.section-row{display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+.section-num{width:44px;height:44px;min-width:44px;border-radius:10px;background:var(--bitstream-blue);color:var(--binary-blue);text-align:center;line-height:44px;font-family:var(--font-display);font-weight:800;font-size:20px;}
+.section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dark-bitstream);font-weight:700;}
+.section-title{font-family:var(--font-display);font-size:25px;font-weight:700;color:var(--binary-blue);line-height:1.2;}
+p.body{margin:0 0 16px;}
+.key{background:rgba(199,146,44,0.18);padding:1px 6px;border-radius:4px;font-weight:600;color:var(--binary-blue);}
+
+/* CALLOUTS */
+.callout{border-radius:8px;padding:14px 18px;margin:18px 0;}
+.callout-head{font-weight:700;font-size:13px;letter-spacing:0.4px;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:7px;}
+.callout-head .em{font-size:16px;}
+.co-activity{border-left:5px solid var(--bitstream-blue);background:#f0fbff;} .co-activity .callout-head{color:var(--dark-bitstream);}
+.co-check{border-left:5px solid var(--gateway-gold);background:#fef9ef;} .co-check .callout-head{color:#8a6418;}
+.co-think{border-left:5px solid var(--portal-purple);background:#f7f0fc;} .co-think .callout-head{color:var(--portal-purple);}
+.co-dyk{border-left:5px solid var(--odyssey-orange);background:#fff5ea;} .co-dyk .callout-head{color:#b15c00;}
+.co-real{border-left:5px solid var(--gamer-green);background:#f1faea;} .co-real .callout-head{color:#4d8a1f;}
+.co-next{border-left:5px solid var(--gateway-gold);background:#fff8e8;} .co-next .callout-head{color:#8a6418;}
+
+/* GRIDS / CARDS */
+.trait-grid{display:flex;flex-wrap:wrap;gap:12px;margin:18px 0;}
+.trait{flex:1 1 220px;min-width:200px;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px 18px;}
+.trait .ico{font-size:26px;display:block;margin-bottom:8px;}
+.trait .name{font-weight:700;font-size:16px;color:var(--binary-blue);margin-bottom:4px;}
+.trait .desc{font-size:14px;color:#46506b;}
+.step{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;margin-bottom:10px;}
+.step .n{flex-shrink:0;width:40px;height:40px;border-radius:9px;background:var(--bitstream-blue);color:var(--binary-blue);font-family:var(--font-display);font-weight:800;display:flex;align-items:center;justify-content:center;}
+.step .t{font-weight:700;color:var(--binary-blue);} .step .d{font-size:14px;color:#46506b;}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0;}
+.vocab{flex:1 1 250px;min-width:220px;background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:16px 20px;}
+.vocab .term{font-weight:700;font-size:15px;color:var(--binary-blue);margin-bottom:5px;}
+.vocab .def{font-size:14px;color:#46506b;}
+
+/* FOOTER */
+.lesson-footer{border-top:1px solid #e5e7eb;margin-top:40px;padding-top:22px;text-align:center;color:#8a93a6;font-size:13px;}
+.lesson-footer .owl{font-size:18px;}
+
+/* ========== REVAMP ADDITIONS (Unit 1 · Week 1 pilot) ========== */
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .55s ease,transform .55s ease;}
+.reveal.in{opacity:1;transform:none;}
+.stagger>*{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;}
+.stagger.in>*{opacity:1;transform:none;}
+.stagger.in>*:nth-child(2){transition-delay:.08s}.stagger.in>*:nth-child(3){transition-delay:.16s}.stagger.in>*:nth-child(4){transition-delay:.24s}.stagger.in>*:nth-child(5){transition-delay:.32s}.stagger.in>*:nth-child(6){transition-delay:.4s}
+.section-num{transition:box-shadow .5s ease;}
+.section-header.in .section-num{box-shadow:0 0 0 6px rgba(85,200,232,.18);}
+
+/* journey strip: the weekly rhythm, with this page's two moves lit */
+.journey{background:var(--binary-blue);color:#fff;border-radius:14px;padding:18px 20px 16px;margin:0 0 18px;box-shadow:0 10px 30px rgba(14,28,66,.25);position:relative;overflow:hidden;}
+.journey::before{content:"";position:absolute;inset:0;background:radial-gradient(500px 160px at 0% 0%,rgba(85,200,232,.18),transparent 70%),radial-gradient(400px 160px at 100% 100%,rgba(118,192,67,.12),transparent 70%);pointer-events:none;}
+.journey-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px;position:relative;}
+.journey-kicker{font-family:var(--font-display);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--bitstream-blue);}
+.journey-sub{font-size:13px;color:rgba(255,255,255,.72);}
+.journey-track{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:6px;position:relative;}
+.journey-track::before{content:"";position:absolute;left:10%;right:10%;top:22px;height:2px;background:rgba(255,255,255,.14);}
+.jnode{position:relative;text-align:center;padding-top:2px;}
+.jicon{display:flex;width:44px;height:44px;margin:0 auto;border-radius:50%;background:#13203f;border:2px solid rgba(255,255,255,.18);align-items:center;justify-content:center;font-size:20px;position:relative;transition:border-color .3s,background .3s;}
+.jnode.now .jicon{border-color:var(--bitstream-blue);animation:jpulse 2.2s ease-in-out infinite;}
+.jnode.done .jicon{border-color:var(--gamer-green);background:rgba(118,192,67,.16);animation:none;box-shadow:none;}
+.jnode.done .jicon::after{content:"✓";position:absolute;right:-5px;top:-5px;width:18px;height:18px;border-radius:50%;background:var(--gamer-green);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+.jnode.ready .jicon{border-color:var(--gold-lt);box-shadow:0 0 0 6px rgba(199,146,44,.18);}
+@keyframes jpulse{0%,100%{box-shadow:0 0 0 4px rgba(85,200,232,.14)}50%{box-shadow:0 0 0 9px rgba(85,200,232,.05)}}
+.jlabel{display:block;margin-top:8px;font-family:var(--font-display);font-weight:800;font-size:13px;}
+.jsub{display:block;font-size:11px;color:rgba(255,255,255,.6);line-height:1.3;}
+@media(max-width:560px){.journey-track{gap:2px}.jsub{display:none}.jicon{width:38px;height:38px;font-size:17px}.journey-track::before{top:19px}}
+
+/* lesson progress rail */
+.rail{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px 16px;margin:0 0 22px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.rail-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.rail-label{font-family:var(--font-display);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--dark-bitstream);}
+.rail-count{font-size:13px;color:#46506b;} .rail-count b{color:var(--binary-blue);font-size:15px;}
+.rail-reset{margin-left:auto;background:none;border:1px solid #d0d9e8;color:#6b7a99;border-radius:8px;padding:5px 10px;font:inherit;font-size:12px;cursor:pointer;}
+.rail-reset:hover{border-color:var(--bitstream-blue);color:var(--binary-blue);}
+.rail-bar{height:8px;border-radius:4px;background:#eef1f5;margin-top:10px;overflow:hidden;}
+.rail-fill{height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--bitstream-blue),var(--gamer-green));transition:width .6s ease;}
+
+/* coach voice blocks */
+.coach{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,#fff 0%,#f0fbff 100%);border:1px solid #cfe9f2;border-left:5px solid var(--bitstream-blue);border-radius:12px;padding:14px 16px;margin:26px 0 14px;}
+.coach-avatar{flex:0 0 46px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--binary-blue),var(--dark-bitstream));color:#fff;font-family:var(--font-display);font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(14,28,66,.25);position:relative;}
+.coach.playing .coach-avatar::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--bitstream-blue);animation:jpulse 1.4s ease-in-out infinite;}
+.coach-body{flex:1;min-width:0;}
+.coach-kicker{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dark-bitstream);margin-bottom:4px;}
+.coach-hook{font-family:var(--font-display);font-weight:700;color:var(--binary-blue);font-size:16px;margin:0 0 8px;}
+.coach-ctl{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.coach-play{background:var(--binary-blue);color:#fff;border:1.5px solid var(--binary-blue);border-radius:8px;padding:7px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;}
+.coach-play:hover{background:#1B2D5E;}
+.coach-read{background:#fff;color:var(--binary-blue);border:1.5px solid #d0d9e8;border-radius:8px;padding:7px 12px;font:inherit;font-size:13px;cursor:pointer;}
+.coach-read:hover{border-color:var(--bitstream-blue);}
+.coach-note{font-size:12px;color:#6b7a99;}
+.coach-script{margin:10px 0 0;font-size:14px;color:#46506b;background:#fff;border:1px solid #e5e7eb;border-radius:8px;padding:10px 12px;}
+.coach-script[hidden]{display:none;}
+
+/* activity cue legend */
+.cue-legend{margin-top:12px;background:#fff;border:1px solid #d5ecf5;border-radius:10px;padding:12px 14px;}
+.cue-title{font-family:var(--font-display);font-weight:800;color:var(--binary-blue);font-size:14px;}
+.cue-desc{font-size:13px;color:#46506b;margin:4px 0 8px;}
+.cue-chips{display:flex;flex-wrap:wrap;gap:6px;}
+.cue-chips .chip{font-size:12px;background:#f0fbff;border:1px solid #cfe9f2;color:var(--dark-bitstream);border-radius:999px;padding:4px 10px;font-weight:600;}
+.cue-chips .chip.new{background:#fff8e8;border-color:#f1dea8;color:#8a6418;}
+
+/* dark "Do" panels (the activity's gamified look, now inline) */
+.do-panel{background:var(--dk-card);border:1px solid var(--dk-border);border-radius:16px;padding:24px 26px;margin:22px 0;color:var(--dk-ink);box-shadow:0 12px 32px rgba(14,28,66,.2);position:relative;overflow:hidden;}
+.do-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(420px 200px at 100% 0%,rgba(85,200,232,.10),transparent 70%);pointer-events:none;}
+.do-panel>*{position:relative;}
+.do-tag{display:inline-block;background:rgba(85,200,232,.16);color:var(--bitstream-blue);padding:5px 12px;border-radius:20px;font-size:.72em;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;font-family:var(--font-display);}
+.do-tag.gold{background:rgba(199,146,44,.16);color:var(--gold-lt);}
+.do-tag.green{background:rgba(118,192,67,.16);color:#9ad96a;}
+.do-tag.orange{background:rgba(247,143,30,.16);color:#ffb469;}
+.do-panel h2{color:#fff;font-family:var(--font-display);font-size:1.3em;margin:0 0 6px;line-height:1.25;}
+.do-panel h3{color:#fff;font-family:var(--font-display);font-size:1.05em;margin:0 0 8px;}
+.do-panel .sub{color:var(--dk-muted);font-size:.92em;margin:0 0 18px;}
+.do-panel .qtext{font-weight:600;color:#fff;margin-bottom:12px;}
+.cdots{display:flex;gap:8px;margin:0 0 16px;}
+.cdot{flex:1;height:6px;border-radius:3px;background:var(--dk-inset);transition:.3s;}
+.cdot.on{background:linear-gradient(90deg,var(--bitstream-blue),var(--gateway-gold));}
+.opt{display:block;width:100%;text-align:left;background:var(--dk-inset);border:1px solid var(--dk-border);color:var(--dk-ink);padding:13px 16px;border-radius:10px;margin-bottom:9px;cursor:pointer;font-size:.95em;font-family:inherit;transition:.15s;}
+.opt:hover{border-color:var(--bitstream-blue);}
+.opt.correct{background:rgba(118,192,67,.14);border-color:var(--gamer-green);color:#dff3cf;}
+.opt.wrong{background:rgba(248,113,113,.12);border-color:var(--red);color:#ffd9d9;}
+.fb{font-size:.9em;margin-top:8px;padding:11px 14px;border-radius:9px;display:none;}
+.fb.show{display:block;}
+.fb.good{background:rgba(118,192,67,.10);border:1px solid rgba(118,192,67,.35);color:#dff3cf;}
+.fb.try{background:rgba(199,146,44,.10);border:1px solid rgba(199,146,44,.35);color:#f3e2bf;}
+.do-panel label{display:block;font-weight:600;color:#fff;font-size:.92em;margin:14px 0 6px;}
+.do-panel input,.do-panel select,.do-panel textarea{width:100%;background:var(--dk-inset);border:1px solid var(--dk-border);color:var(--dk-ink);padding:11px 13px;border-radius:9px;font-family:inherit;font-size:.95em;}
+.do-panel input:focus,.do-panel select:focus,.do-panel textarea:focus{outline:none;border-color:var(--bitstream-blue);}
+.do-panel textarea{resize:vertical;min-height:70px;}
+.do-panel .hint{color:var(--dk-muted);font-size:.82em;margin-top:4px;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:520px){.row2{grid-template-columns:1fr;}}
+.do-btn{background:linear-gradient(135deg,var(--bitstream-blue),#2f9fc4);color:#06243a;border:none;padding:13px 24px;border-radius:10px;font-weight:700;font-size:.95em;cursor:pointer;font-family:var(--font-display);margin-top:18px;box-shadow:0 4px 12px rgba(85,200,232,.25);}
+.do-btn:hover{filter:brightness(1.06);}
+.do-btn:disabled{opacity:.45;cursor:default;filter:none;}
+.do-btn.ghost{background:transparent;border:1px solid var(--dk-border);color:var(--dk-muted);box-shadow:none;}
+.do-btn.gold{background:linear-gradient(135deg,var(--gold-lt),var(--gateway-gold));color:#2a1d05;box-shadow:0 4px 12px rgba(199,146,44,.25);}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.btn-row .do-btn{margin-top:14px;}
+.result{display:none;margin-top:18px;background:var(--dk-inset);border:1px solid var(--gamer-green);border-left:4px solid var(--gamer-green);border-radius:10px;padding:18px;}
+.result.show{display:block;}
+.result h3{color:var(--gamer-green);margin:0 0 8px;font-size:1.05em;}
+.result .line{font-size:.95em;color:#dde8f2;margin:4px 0;}
+.result .line b{color:#fff;}
+.coach-line{margin-top:12px;font-style:italic;color:var(--gold-lt);font-size:.93em;}
+.keep-note{margin-top:10px;font-size:.8em;color:var(--dk-muted);}
+.err{color:var(--red);font-size:.85em;margin-top:8px;display:none;}
+.err.show{display:block;}
+.status{font-size:.9em;color:var(--dk-muted);margin-top:12px;min-height:1.4em;}
+.status.ok{color:#9ad96a;} .status.bad{color:#ffb4b4;}
+
+/* HELP in action: tap a situation, tap a letter */
+.sort-pool{display:grid;gap:8px;margin:10px 0 14px;}
+.token{text-align:left;background:var(--dk-inset);border:1px solid var(--dk-border);color:var(--dk-ink);padding:11px 14px;border-radius:10px;cursor:pointer;font:inherit;font-size:.93em;transition:.15s;}
+.token:hover{border-color:var(--bitstream-blue);}
+.token[aria-pressed="true"]{border-color:var(--gold-lt);box-shadow:0 0 0 2px rgba(224,182,90,.35);background:rgba(224,182,90,.08);}
+.pool-empty{font-size:.9em;color:var(--dk-muted);padding:8px 2px;}
+.buckets{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+@media(max-width:640px){.buckets{grid-template-columns:repeat(2,1fr);}}
+.bucket{background:var(--dk-inset);border:1px dashed var(--dk-border);border-radius:12px;padding:10px;min-height:96px;cursor:pointer;color:var(--dk-ink);transition:.15s;}
+.bucket:hover,.bucket:focus-visible{border-color:var(--bitstream-blue);outline:none;}
+.bucket.armed{border-color:var(--gold-lt);border-style:solid;}
+.bucket .bl{font-family:var(--font-display);font-weight:800;color:var(--bitstream-blue);font-size:1.25em;line-height:1;}
+.bucket .bn{font-size:.72em;color:var(--dk-muted);letter-spacing:.08em;text-transform:uppercase;font-weight:700;margin-top:4px;}
+.placed{display:block;width:100%;text-align:left;margin-top:8px;font:inherit;font-size:.82em;line-height:1.4;padding:8px;border-radius:8px;background:var(--dk-card);border:1px solid var(--dk-border);color:var(--dk-ink);cursor:pointer;}
+.placed.right{border-color:var(--gamer-green);background:rgba(118,192,67,.12);}
+.placed.wrong{border-color:var(--red);background:rgba(248,113,113,.12);}
+
+/* routine planner */
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:10px 0;}
+.day{background:var(--dk-inset);border:1px solid var(--dk-border);color:var(--dk-ink);border-radius:10px;padding:12px 0;font:inherit;font-weight:700;cursor:pointer;transition:.15s;}
+.day:hover{border-color:var(--bitstream-blue);}
+.day[aria-pressed="true"]{background:rgba(118,192,67,.16);border-color:var(--gamer-green);color:#dff3cf;}
+.times{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.time{background:var(--dk-inset);border:1px solid var(--dk-border);color:var(--dk-ink);border-radius:20px;padding:8px 14px;font:inherit;font-size:.9em;cursor:pointer;transition:.15s;}
+.time:hover{border-color:var(--bitstream-blue);}
+.time[aria-pressed="true"]{background:rgba(199,146,44,.16);border-color:var(--gold-lt);color:#f3e2bf;}
+.plan-out{margin-top:14px;background:var(--dk-inset);border:1px solid var(--dk-border);border-left:4px solid var(--gold-lt);border-radius:10px;padding:14px 16px;font-family:var(--font-display);font-size:1.1em;color:#fff;}
+.plan-out.dim{color:var(--dk-muted);font-family:var(--font-text);font-size:.95em;border-left-color:var(--dk-border);}
+@media(max-width:480px){.days{grid-template-columns:repeat(4,1fr);}}
+
+/* talk test */
+.ecg{background:var(--dk-inset);border:1px solid var(--dk-border);border-radius:12px;overflow:hidden;position:relative;height:110px;}
+.ecg svg{width:100%;height:100%;display:block;}
+.ecg-track{animation:ecgMove var(--beat,1.15s) linear infinite;}
+@keyframes ecgMove{from{transform:translateX(0)}to{transform:translateX(-160px)}}
+.ecg .hb{position:absolute;right:14px;top:10px;font-size:22px;animation:beat var(--beat,1.15s) ease-in-out infinite;transform-origin:center;}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.25)}28%{transform:scale(1)}42%{transform:scale(1.15)}60%{transform:scale(1)}}
+.ecg .lvl{position:absolute;left:14px;top:10px;font-family:var(--font-display);font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--bitstream-blue);}
+.tt-slider{width:100%;accent-color:var(--bitstream-blue);margin:14px 0 2px;cursor:pointer;}
+.tt-labels{display:flex;justify-content:space-between;}
+.tt-labels button{background:none;border:0;color:var(--dk-muted);font:inherit;font-weight:700;cursor:pointer;padding:4px 6px;border-radius:6px;}
+.tt-labels button.on{color:var(--bitstream-blue);}
+.tt-phrase{font-family:var(--font-display);font-size:1.25em;color:var(--gold-lt);margin:10px 0 4px;}
+.tt-read{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px;}
+@media(max-width:600px){.tt-read{grid-template-columns:1fr;}}
+.tt-card{background:var(--dk-inset);border:1px solid var(--dk-border);border-radius:10px;padding:12px 14px;}
+.tt-card .k{font-size:.72em;letter-spacing:.1em;text-transform:uppercase;color:var(--dk-muted);font-weight:700;margin-bottom:4px;}
+.tt-card .v{color:#fff;font-weight:600;font-size:.95em;}
+
+/* carry it forward */
+.gather-rows{display:grid;gap:8px;margin:8px 0 14px;}
+.grow{display:flex;gap:10px;align-items:flex-start;background:var(--dk-inset);border:1px solid var(--dk-border);border-radius:10px;padding:10px 12px;font-size:.93em;}
+.grow .gk{flex:0 0 140px;color:var(--dk-muted);font-size:.74em;text-transform:uppercase;letter-spacing:.08em;font-weight:700;padding-top:4px;}
+.grow .gv{color:#fff;min-width:0;}
+.grow.empty .gv{color:var(--dk-muted);font-style:italic;}
+@media(max-width:520px){.grow{flex-direction:column;gap:4px;}}
+.gather-pre{white-space:pre-wrap;background:var(--dk-inset);border:1px solid var(--dk-border);border-radius:10px;padding:12px 14px;font-size:.86em;color:#dde8f2;margin-top:14px;width:100%;min-height:120px;font-family:inherit;resize:vertical;}
+.turnin{margin:14px 0 0;padding-left:20px;color:#dde8f2;font-size:.93em;}
+.turnin li{margin:4px 0;}
+
+/* success checklist (light) */
+.checklist{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:18px 22px;margin:18px 0;list-style:none;}
+.checklist li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid #f0f2f5;color:#46506b;font-size:15px;}
+.checklist li:last-child{border-bottom:0;}
+.checklist .ck{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid #d1d5db;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;transition:.25s;}
+.checklist li.done{color:var(--binary-blue);font-weight:600;}
+.checklist li.done .ck{background:var(--gamer-green);border-color:var(--gamer-green);}
+.checklist-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:22px 0 8px;}
+.checklist-head h3{font-family:var(--font-display);font-size:18px;color:var(--binary-blue);}
+.checklist-count{font-size:13px;color:#46506b;} .checklist-count b{color:var(--binary-blue);}
+
+/* mark part complete */
+.part-foot{display:flex;justify-content:flex-end;margin:12px 0 6px;}
+.markbtn{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #d0d9e8;color:var(--binary-blue);border-radius:999px;padding:9px 16px;font:inherit;font-weight:700;font-size:.9em;cursor:pointer;transition:.15s;}
+.markbtn:hover{border-color:var(--bitstream-blue);}
+.markbtn .tick{width:20px;height:20px;border-radius:50%;border:2px solid #c2ccd7;display:inline-flex;align-items:center;justify-content:center;font-size:11px;}
+.markbtn[aria-pressed="true"]{background:#f1faea;border-color:var(--gamer-green);}
+.markbtn[aria-pressed="true"] .tick{background:var(--gamer-green);border-color:var(--gamer-green);color:#fff;}
+
+/* vocabulary self-test */
+.vocab-tools{display:flex;justify-content:flex-end;margin:0 0 4px;}
+.vocab-toggle{background:#fff;border:1.5px solid #d0d9e8;color:var(--binary-blue);border-radius:999px;padding:7px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;}
+.vocab-toggle:hover{border-color:var(--bitstream-blue);}
+.vocab-grid.quiz .vocab{cursor:pointer;}
+.vocab-grid.quiz .vocab .def{filter:blur(6px);opacity:.35;transition:.25s;user-select:none;}
+.vocab-grid.quiz .vocab.show .def{filter:none;opacity:1;}
+.vocab-grid.quiz .vocab::after{content:"Tap to reveal";display:block;margin-top:8px;font-size:11px;color:var(--dark-bitstream);font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+.vocab-grid.quiz .vocab.show::after{content:"Got it";color:#4d8a1f;}
+
+.aside{font-size:13px;color:#8a93a6;text-align:center;margin:22px 0 0;}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:var(--binary-blue);color:#fff;padding:10px 18px;border-radius:999px;font-weight:700;font-size:.9em;opacity:0;transition:.25s;z-index:900;pointer-events:none;box-shadow:0 8px 24px rgba(14,28,66,.35);max-width:92vw;text-align:center;}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+.confetti{position:fixed;inset:0;pointer-events:none;z-index:950;display:none;}
+
+@media (prefers-reduced-motion:reduce){
+  .reveal,.stagger>*{opacity:1;transform:none;transition:none;}
+  *,*::before,*::after{animation:none!important;}
+  .rail-fill,.hdr-progress div{transition:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- THE PULSE: cinematic intro (plays once per device; Skip from frame one; Replay in the header) -->
+<script src="../assets/hope-intro.js"
+  data-eyebrow="Unit 1 · Week 1 · Welcome"
+  data-title="Welcome to HOPE"
+  data-words="HEALTH|EVERYONE|LIFETIME|PERSONAL"
+  data-key="hope-intro-u1w1"
+  data-sub="You bring the effort. The course brings the game plan."></script>
+
+<!-- ===== OAO HEADER ===== -->
+<header class="oao-header">
+  <div class="oao-header-inner">
+    <div class="oao-logo-area">
+      <img src="../assets/oao-logo.png" alt="Optima Academy Online" class="oao-logo">
+      <div class="oao-wordmark">
+        <div class="oao-wordmark-name">Optima</div>
+        <div class="oao-wordmark-sub">Academy Online</div>
+      </div>
+      <div class="oao-header-divider"></div>
+      <div>
+        <div class="oao-header-course">HOPE</div>
+        <div class="oao-header-sub">High School · HOPE</div>
+      </div>
+    </div>
+    <div class="hdr-right" data-intro-replay>
+      <div class="oao-week-badge">🦉 UNIT 1 · WEEK 1</div>
+    </div>
+  </div>
+  <div class="hdr-progress" aria-hidden="true"><div id="hdrFill"></div></div>
+</header>
+
+<!-- ===== LESSON ===== -->
+<main class="lesson-container" data-readaloud-root>
+
+<!-- OPTIMA READ-ALOUD PLAYER (Web Speech API) -->
+<div id="optima-read-aloud">
+<style>
+    #optima-read-aloud { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 14px 18px; margin: 0 0 20px 0; }
+    #optima-read-aloud .ora-kicker { font-size: 11px; color: #1B6A94; letter-spacing: 0.4px; margin-bottom: 10px; }
+    #optima-read-aloud .ora-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    #optima-read-aloud .ora-controls button { border-radius: 8px; padding: 8px 16px; font-size: 14px; cursor: pointer; font-family: inherit; transition: all 0.15s; }
+    #ora-play { background: #0E1C42; color: #FFFFFF; border: 1.5px solid #0E1C42; }
+    #ora-play:hover:enabled { background: #1B2D5E; }
+    #ora-play:disabled { background: #D0D9E8; border-color: #D0D9E8; color: #6b7a99; cursor: default; }
+    #ora-stop { background: #FFFFFF; color: #0E1C42; border: 1.5px solid #D0D9E8; }
+    #ora-stop:hover:enabled { background: #F4F6FA; border-color: #55C8E8; }
+    #ora-stop:disabled { color: #999; border-color: #E4E9F2; cursor: default; }
+    #optima-read-aloud .ora-speed { font-size: 12px; color: #6b7a99; display: flex; align-items: center; gap: 6px; }
+    #ora-rate { font-family: inherit; font-size: 13px; color: #0E1C42; border: 1.5px solid #D0D9E8; border-radius: 6px; padding: 5px 8px; background: #FFFFFF; }
+    #ora-status { font-size: 12px; color: #666; }
+    .ora-highlight { background: #FDF3E3 !important; box-shadow: inset 4px 0 0 #C7922C; border-radius: 4px; transition: background 0.2s; }
+</style>
+    <div class="ora-kicker">&#128266; READ ALOUD &mdash; LISTEN TO THIS PAGE</div>
+    <div class="ora-controls">
+        <button id="ora-play" type="button" aria-label="Listen to this page">&#9654;&#65039; Listen</button>
+        <button id="ora-stop" type="button" aria-label="Stop reading" disabled>&#9632; Stop</button>
+        <label class="ora-speed">Speed
+            <select id="ora-rate" aria-label="Reading speed">
+                <option value="0.8">Slower</option>
+                <option value="1" selected>Normal</option>
+                <option value="1.25">Faster</option>
+            </select>
+        </label>
+        <span id="ora-status" role="status" aria-live="polite"></span>
+    </div>
+<script>
+(function () {
+    "use strict";
+    var playBtn  = document.getElementById("ora-play");
+    var stopBtn  = document.getElementById("ora-stop");
+    var rateSel  = document.getElementById("ora-rate");
+    var statusEl = document.getElementById("ora-status");
+
+    if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
+        playBtn.disabled = true;
+        rateSel.disabled = true;
+        statusEl.textContent = "Read-aloud is not supported in this browser.";
+        return;
+    }
+
+    var LABEL_PLAY   = "▶️ Listen";
+    var LABEL_PAUSE  = "⏸️ Pause";
+    var LABEL_RESUME = "▶️ Resume";
+    var BLOCK_SEL = "p, li, h1, h2, h3, h4, h5, h6, blockquote, td, th, dt, dd, figcaption, div";
+    var SKIP_SEL  = "#optima-read-aloud, [data-ra-skip], button, script, style, select, noscript, iframe";
+
+    var queue = [];        // [{ el, text }] — one entry per sentence
+    var idx = 0;
+    var playing = false, paused = false, stopping = false;
+    var currentBlock = null;
+    var currentUtterance = null;  // held to dodge a Chrome garbage-collection bug
+
+    var voices = [];
+    function loadVoices() { voices = window.speechSynthesis.getVoices(); }
+    loadVoices();
+    if ("onvoiceschanged" in window.speechSynthesis) {
+        window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
+    function pickVoice() {
+        if (!voices.length) loadVoices();
+        var en = voices.filter(function (v) { return /^en/i.test(v.lang); });
+        return en.filter(function (v) { return /natural/i.test(v.name); })[0]
+            || en.filter(function (v) { return /google us english/i.test(v.name); })[0]
+            || en.filter(function (v) { return v.default; })[0]
+            || en[0] || null;
+    }
+
+    function isVisible(el) {
+        return !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length);
+    }
+
+    // Walk text nodes, attach each to its nearest block ancestor, split into sentences.
+    function collectQueue() {
+        var root = document.querySelector("[data-readaloud-root]")
+                || document.querySelector(".canvas-frame")
+                || document.body;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var items = [];   // [{ el, text }] — one entry per block, in reading order
+        var node;
+        while ((node = walker.nextNode())) {
+            if (!/\S/.test(node.textContent)) continue;
+            var el = node.parentElement;
+            if (!el || el.closest(SKIP_SEL)) continue;
+            if (!isVisible(el)) continue;
+            var block = el.closest(BLOCK_SEL) || root;
+            var last = items[items.length - 1];
+            if (last && last.el === block) last.text += " " + node.textContent;
+            else items.push({ el: block, text: node.textContent });
+        }
+        var q = [];
+        items.forEach(function (item) {
+            var clean = item.text.replace(/\s+/g, " ").trim();
+            if (!clean) return;
+            var sentences = clean.match(/[^.!?]+[.!?]+[”"')\]]*\s*|[^.!?]+$/g) || [clean];
+            sentences.forEach(function (s) {
+                s = s.trim();
+                if (s) q.push({ el: item.el, text: s });
+            });
+        });
+        return q;
+    }
+
+    function highlight(el) {
+        if (el === currentBlock) return;
+        clearHighlight();
+        currentBlock = el;
+        if (el && el !== document.body) {
+            el.classList.add("ora-highlight");
+            try { el.scrollIntoView({ behavior: "smooth", block: "nearest" }); } catch (e) {}
+        }
+    }
+    function clearHighlight() {
+        if (currentBlock) currentBlock.classList.remove("ora-highlight");
+        currentBlock = null;
+    }
+
+    function speakNext() {
+        if (idx >= queue.length) { finish("Finished reading this page."); return; }
+        var item = queue[idx];
+        highlight(item.el);
+        var u = new SpeechSynthesisUtterance(item.text);
+        u.rate = parseFloat(rateSel.value) || 1;
+        var v = pickVoice();
+        if (v) u.voice = v;
+        u.onend = function () {
+            if (stopping) return;
+            idx++;
+            speakNext();
+        };
+        u.onerror = function (e) {
+            if (stopping || e.error === "canceled" || e.error === "interrupted") return;
+            idx++;
+            speakNext();
+        };
+        currentUtterance = u;
+        window.speechSynthesis.speak(u);
+        statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+    }
+
+    function finish(message) {
+        playing = false;
+        paused = false;
+        clearHighlight();
+        playBtn.textContent = LABEL_PLAY;
+        stopBtn.disabled = true;
+        statusEl.textContent = message || "";
+        currentUtterance = null;
+    }
+
+    playBtn.addEventListener("click", function () {
+        if (playing && !paused) {
+            window.speechSynthesis.pause();
+            paused = true;
+            playBtn.textContent = LABEL_RESUME;
+            statusEl.textContent = "Paused";
+            return;
+        }
+        if (playing && paused) {
+            window.speechSynthesis.resume();
+            paused = false;
+            playBtn.textContent = LABEL_PAUSE;
+            statusEl.textContent = "Reading… " + (idx + 1) + " / " + queue.length;
+            return;
+        }
+        queue = collectQueue();
+        if (!queue.length) { statusEl.textContent = "Nothing to read on this page."; return; }
+        idx = 0;
+        stopping = false;
+        playing = true;
+        paused = false;
+        window.speechSynthesis.cancel();
+        playBtn.textContent = LABEL_PAUSE;
+        stopBtn.disabled = false;
+        speakNext();
+    });
+
+    stopBtn.addEventListener("click", function () {
+        stopping = true;
+        window.speechSynthesis.cancel();
+        finish("");
+    });
+
+    // Changing speed mid-read restarts the current sentence at the new rate.
+    rateSel.addEventListener("change", function () {
+        if (!playing || paused) return;
+        stopping = true;
+        window.speechSynthesis.cancel();
+        setTimeout(function () { stopping = false; speakNext(); }, 60);
+    });
+
+    window.addEventListener("pagehide", function () { window.speechSynthesis.cancel(); });
+})();
+</script>
+</div>
+<!-- END OPTIMA READ-ALOUD PLAYER -->
+
+  <div class="lesson-badge">Unit 1 · Week 1 · Lesson</div>
+  <h1 class="lesson-title">Welcome to HOPE</h1>
+  <p class="lesson-description">This is the start of a full year of getting stronger, healthier, and more in control of your own life — at your own pace. Let's talk about how this works, and how you're going to win at it.</p>
+
+  <!-- THIS WEEK'S RHYTHM: the five moves every HOPE week makes; Read and Do live on this page -->
+  <section class="journey reveal" data-ra-skip aria-label="This week's rhythm">
+    <div class="journey-head"><span class="journey-kicker">This week's rhythm</span><span class="journey-sub">Every HOPE week runs the same five moves. The first two happen right here.</span></div>
+    <ol class="journey-track">
+      <li class="jnode now" data-node="read"><span class="jicon">📖</span><span class="jlabel">Read</span><span class="jsub">this page</span></li>
+      <li class="jnode now" data-node="do"><span class="jicon">🎮</span><span class="jlabel">Do</span><span class="jsub">this page</span></li>
+      <li class="jnode" data-node="immerse"><span class="jicon">🥽</span><span class="jlabel">Immerse</span><span class="jsub">VR assignment · in Canvas</span></li>
+      <li class="jnode" data-node="log"><span class="jicon">🏃</span><span class="jlabel">Log</span><span class="jsub">activity log · in Canvas</span></li>
+      <li class="jnode" data-node="reflect"><span class="jicon">📝</span><span class="jlabel">Reflect</span><span class="jsub">Your Starting Line · in Canvas</span></li>
+    </ol>
+  </section>
+
+  <!-- LESSON PROGRESS RAIL -->
+  <div class="rail reveal" data-ra-skip>
+    <div class="rail-top"><span class="rail-label">Lesson progress</span><span class="rail-count"><b id="railN">0</b> of 5 parts</span><button type="button" class="rail-reset" id="resetAll" title="Clear saved progress on this device">Reset</button></div>
+    <div class="rail-bar"><div class="rail-fill" id="railFill"></div></div>
+  </div>
+
+  <!-- COACH · opener -->
+  <div class="coach reveal" data-ra-skip data-audio="audio/hope-u1w1-p0.mp3">
+    <div class="coach-avatar" aria-hidden="true">DO</div>
+    <div class="coach-body">
+      <div class="coach-kicker">Coach Dani Ortiz · Athletic trainer · 30 sec</div>
+      <p class="coach-hook">What would winning at a health class even look like for you?</p>
+      <div class="coach-ctl"><button type="button" class="coach-play">▶ Play</button><button type="button" class="coach-read" aria-expanded="false">Read the script</button><span class="coach-note"></span></div>
+      <p class="coach-script" hidden>Hey, I'm Coach Dani Ortiz. I've spent years in weight rooms, on tracks, and in health classrooms, and here's what I've learned: the students who win at this aren't the fittest ones on day one. They're the ones who show up for themselves. This page is your orientation. Read it, do the checks, make your first log entry. Before you scroll: what would winning at a health class even look like for you?</p>
+    </div>
+  </div>
+
+  <!-- OBJECTIVES -->
+  <div class="objectives-box reveal">
+    <div class="objectives-title">🎯 Learning Objectives</div>
+    <p style="margin-bottom:14px;color:#4b5563;">By the end of this week, you will be able to:</p>
+    <div class="objective-item"><div class="objective-num c1">1</div><div><strong style="color:var(--binary-blue);">Explain what HOPE is</strong> and why it combines physical education with health.</div></div>
+    <div class="objective-item"><div class="objective-num c2">2</div><div><strong style="color:var(--binary-blue);">Describe the HELP philosophy</strong> that the whole course is built on.</div></div>
+    <div class="objective-item"><div class="objective-num c3">3</div><div><strong style="color:var(--binary-blue);">Explain what "self-paced" really means</strong> — and the habits that make it work.</div></div>
+    <div class="objective-item"><div class="objective-num c4">4</div><div><strong style="color:var(--binary-blue);">Use the activity log</strong> to record your physical activity all year.</div></div>
+  </div>
+
+  <!-- ACTIVITY CUE (the practice pieces are woven into the parts below) -->
+  <div class="callout co-activity reveal" style="margin-top:0;">
+    <div class="callout-head"><span class="em">🏃</span>Activity Cue</div>
+    <p>Time to practice. Do the <strong>Orientation Check + Practice Log</strong> below — a no-stakes warm-up. Prove you know how the course works, then make your very first practice activity-log entry. Nothing here is graded.</p>
+    <div class="cue-legend" data-ra-skip>
+      <div class="cue-title">Orientation Check + Practice Log</div>
+      <div class="cue-desc">A no-stakes warm-up: prove you know how the course works, then make your very first practice activity-log entry. Nothing here is graded — retry as much as you want.</div>
+      <div class="cue-chips"><span class="chip">✅ Check 1 · Part 1</span><span class="chip">✅ Check 2 · Part 2</span><span class="chip">✅ Check 3 · Part 3</span><span class="chip">🏃 Practice log · Part 4</span><span class="chip new">✨ plus a HELP sort, a day planner, and a talk test along the way</span></div>
+    </div>
+  </div>
+
+  <!-- ============ PART 1 ============ -->
+  <div class="part" data-part="1">
+
+  <div class="coach reveal" data-ra-skip data-audio="audio/hope-u1w1-p1.mp3">
+    <div class="coach-avatar" aria-hidden="true">DO</div>
+    <div class="coach-body">
+      <div class="coach-kicker">Coach Dani Ortiz · Part 1 · 25 sec</div>
+      <p class="coach-hook">Two sides of HOPE. Look for both.</p>
+      <div class="coach-ctl"><button type="button" class="coach-play">▶ Play</button><button type="button" class="coach-read" aria-expanded="false">Read the script</button><span class="coach-note"></span></div>
+      <p class="coach-script" hidden>A lot of people hear "PE online" and picture a worksheet about push-ups. Not here. This course asks you to move, and then to think about how it felt. As you read this first part, I want you to notice two sides of HOPE: the fitness side and the health side. Look for both. Which one do you think you'll find easier, and which one might surprise you?</p>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-row"><div class="section-num">01</div><div class="section-label">Section 1 · What This Course Is</div></div>
+    <h2 class="section-title">So… what is this course?</h2>
+  </div>
+  <p class="body">HOPE stands for <strong>Health Opportunities through Physical Education</strong>. It's a year-long course that does two things at once: it gets your <span class="key">body moving</span>, and it gives you the real information you need to make smart calls about your health — now and for the rest of your life.</p>
+  <p class="body">Here's the part that makes this different from a class where you just read and take quizzes: <strong>you're going to actually move.</strong> You'll plan workouts, do them, log them, and reflect on how they felt. The "PE" in HOPE is real. You bring the effort; the course gives you the game plan.</p>
+  <p class="body">On the <strong>fitness side</strong>, you'll test where you're starting from, set goals, and design activity plans you actually follow. On the <strong>health side</strong>, you'll dig into nutrition, mental health, staying safe online, avoiding substances, healthy relationships, and more. By June, this all adds up to one thing: a plan for staying healthy for life — and your one PE credit toward graduation.</p>
+
+  <div class="callout co-real reveal">
+    <div class="callout-head"><span class="em">🌎</span>No gym? No problem.</div>
+    <p>You don't need a gym, fancy equipment, or any sports background to crush this course. Every activity has options for small spaces and no equipment. Wherever you're starting from is the right place to start — we build from there.</p>
+  </div>
+
+  <!-- CHECK 1 of 3 (original question 2) -->
+  <div class="do-panel reveal">
+    <span class="do-tag">Orientation check · 1 of 3</span>
+    <h2>Do you have the game plan?</h2>
+    <p class="sub">Three quick questions about how HOPE works. Pick an answer to see instant feedback — there's no penalty, this is just to make sure it clicked.</p>
+    <div class="cdots" aria-hidden="true"><div class="cdot"></div><div class="cdot"></div><div class="cdot"></div></div>
+    <div class="q" data-q="1">
+      <div class="qtext">You don't have a gym or equipment. What does that mean for this course?</div>
+      <button class="opt" type="button" data-correct="false">You won't be able to complete the activity parts.</button>
+      <button class="opt" type="button" data-correct="false">You'll need to buy equipment before you start.</button>
+      <button class="opt" type="button" data-correct="true">Nothing — every activity has no-equipment, small-space options.</button>
+      <div class="fb" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="part-foot" data-ra-skip><button type="button" class="markbtn" data-mark="1" aria-pressed="false"><span class="tick" aria-hidden="true">○</span> Mark part complete</button></div>
+  </div><!-- /part 1 -->
+
+  <!-- ============ PART 2 ============ -->
+  <div class="part" data-part="2">
+
+  <div class="coach reveal" data-ra-skip data-audio="audio/hope-u1w1-p2.mp3">
+    <div class="coach-avatar" aria-hidden="true">DO</div>
+    <div class="coach-body">
+      <div class="coach-kicker">Coach Dani Ortiz · Part 2 · 30 sec</div>
+      <p class="coach-hook">Four letters, four promises.</p>
+      <div class="coach-ctl"><button type="button" class="coach-play">▶ Play</button><button type="button" class="coach-read" aria-expanded="false">Read the script</button><span class="coach-note"></span></div>
+      <p class="coach-script" hidden>Every coach has a philosophy. Mine fits in four letters, and you're about to see them: H, E, L, P. Don't just memorize what they stand for. Each letter is a promise about how this course treats you. Read the four cards, then try the sort underneath, where I give you four situations and you tell me which letter is doing the work. Which letter do you think matters most for you right now?</p>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-row"><div class="section-num">02</div><div class="section-label">Section 2 · The Core Idea</div></div>
+    <h2 class="section-title">The big idea behind everything: HELP</h2>
+  </div>
+  <p class="body">This whole course runs on one simple philosophy, and it spells out a word you'll see all year: <strong>HELP</strong>. It's the reason we do things the way we do.</p>
+  <div class="trait-grid stagger">
+    <div class="trait"><span class="ico">❤️</span><div class="name">H — Health</div><div class="desc">The goal isn't a trophy or a certain look. It's <em>health</em> — energy, feeling good, lowering your risk down the road.</div></div>
+    <div class="trait"><span class="ico">🤝</span><div class="name">E — Everyone</div><div class="desc">For every body type, ability, and fitness level — not just athletes. Find what works for <em>you</em>.</div></div>
+    <div class="trait"><span class="ico">♾️</span><div class="name">L — Lifetime</div><div class="desc">We're building habits you'll use at 25, 45, and 75 — not cramming for one fitness test.</div></div>
+    <div class="trait"><span class="ico">🎯</span><div class="name">P — Personal</div><div class="desc">Your plan is <em>yours</em>: your goals, your schedule, your favorite ways to move.</div></div>
+  </div>
+
+  <!-- HELP IN ACTION: classifying four situations proves each letter means something specific -->
+  <div class="do-panel reveal" id="sortPanel">
+    <span class="do-tag green">Do · HELP in action</span>
+    <h2>Which letter is doing the work?</h2>
+    <p class="sub">Tap a situation, then tap the letter it belongs to. Every one of these comes straight from the four cards above. When all four are placed, tap Check.</p>
+    <div class="sort-pool" id="sortPool"></div>
+    <div class="buckets" id="buckets">
+      <div class="bucket" role="button" tabindex="0" data-b="H"><div class="bl">H</div><div class="bn">Health</div><div class="placed-wrap"></div></div>
+      <div class="bucket" role="button" tabindex="0" data-b="E"><div class="bl">E</div><div class="bn">Everyone</div><div class="placed-wrap"></div></div>
+      <div class="bucket" role="button" tabindex="0" data-b="L"><div class="bl">L</div><div class="bn">Lifetime</div><div class="placed-wrap"></div></div>
+      <div class="bucket" role="button" tabindex="0" data-b="P"><div class="bl">P</div><div class="bn">Personal</div><div class="placed-wrap"></div></div>
+    </div>
+    <div class="btn-row"><button type="button" class="do-btn" id="sortCheck">Check</button><button type="button" class="do-btn ghost" id="sortReset">Start over</button></div>
+    <div class="status" id="sortStatus" aria-live="polite">Four situations, four letters.</div>
+  </div>
+
+  <div class="callout co-think reveal">
+    <div class="callout-head"><span class="em">💭</span>Think About It</div>
+    <p>Put simply: <strong>Health is for Everyone, for a Lifetime, and it's Personal.</strong> Keep that in your back pocket. When an assignment asks you to choose, choose what fits <em>your</em> life.</p>
+  </div>
+
+  <!-- CHECK 2 of 3 (original question 1) -->
+  <div class="do-panel reveal">
+    <span class="do-tag">Orientation check · 2 of 3</span>
+    <div class="cdots" aria-hidden="true"><div class="cdot"></div><div class="cdot"></div><div class="cdot"></div></div>
+    <div class="q" data-q="0">
+      <div class="qtext">What does the "HELP" philosophy stand for?</div>
+      <button class="opt" type="button" data-correct="false">Hard Exercise Lifts People</button>
+      <button class="opt" type="button" data-correct="true">Health is for Everyone, for a Lifetime, and it's Personal</button>
+      <button class="opt" type="button" data-correct="false">Health Experts Lead the Program</button>
+      <div class="fb" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="part-foot" data-ra-skip><button type="button" class="markbtn" data-mark="2" aria-pressed="false"><span class="tick" aria-hidden="true">○</span> Mark part complete</button></div>
+  </div><!-- /part 2 -->
+
+  <!-- ============ PART 3 ============ -->
+  <div class="part" data-part="3">
+
+  <div class="coach reveal" data-ra-skip data-audio="audio/hope-u1w1-p3.mp3">
+    <div class="coach-avatar" aria-hidden="true">DO</div>
+    <div class="coach-body">
+      <div class="coach-kicker">Coach Dani Ortiz · Part 3 · 30 sec</div>
+      <p class="coach-hook">Freedom is a trap without a routine.</p>
+      <div class="coach-ctl"><button type="button" class="coach-play">▶ Play</button><button type="button" class="coach-read" aria-expanded="false">Read the script</button><span class="coach-note"></span></div>
+      <p class="coach-script" hidden>Here's the honest part. Self-paced sounds like freedom, and it is, but I've watched strong students fall three weeks behind without noticing, because "later" never showed up. The fix isn't willpower. It's a routine you can see. Read how a HOPE week runs, then use the planner to pick your two days and actually put them on a calendar. Which two days could you protect, even on a busy week?</p>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-row"><div class="section-num">03</div><div class="section-label">Section 3 · How You'll Work</div></div>
+    <h2 class="section-title">What "self-paced" really means</h2>
+  </div>
+  <p class="body">This course is <strong>online and self-paced</strong>. That's a gift and a trap at the same time. The gift: you control when and where you work. The trap: nobody's standing over you, so it's easy to fall behind without noticing.</p>
+  <p class="body">The honest truth — students who do great in self-paced courses aren't the smartest or the fittest. They're the ones who build a <span class="key">routine</span>. Every week of HOPE follows the same rhythm:</p>
+  <div class="stagger">
+    <div class="step"><div class="n">1</div><div><div class="t">📖 Read</div><div class="d">A short lesson like this one.</div></div></div>
+    <div class="step"><div class="n">2</div><div><div class="t">🎮 Do</div><div class="d">An interactive activity or simulation to practice.</div></div></div>
+    <div class="step"><div class="n">3</div><div><div class="t">🥽 Immerse</div><div class="d">One VR / hands-on assignment each week.</div></div></div>
+    <div class="step"><div class="n">4</div><div><div class="t">🏃 Log</div><div class="d">Record your physical activity.</div></div></div>
+    <div class="step"><div class="n">5</div><div><div class="t">📝 Reflect</div><div class="d">Make the learning yours.</div></div></div>
+  </div>
+  <div class="callout co-check reveal">
+    <div class="callout-head"><span class="em">✅</span>Check for Understanding</div>
+    <p>Right now, pick <strong>two days a week</strong> you'll do your HOPE coursework — and put them in your phone. "Tuesday and Thursday after dinner." When it's scheduled, it gets done. When it's "whenever," it doesn't.</p>
+  </div>
+
+  <!-- ROUTINE PLANNER: turns "pick two days" into a real, calendar-ready appointment -->
+  <div class="do-panel reveal" id="planPanel" data-ra-skip>
+    <span class="do-tag gold">Do · Your two HOPE days</span>
+    <h2>Pick two days and put them in your phone</h2>
+    <p class="sub">Tap two days, pick a time, and this becomes your weekly HOPE appointment. Add it to your calendar before you scroll on.</p>
+    <div class="days" id="days" role="group" aria-label="Pick two days"></div>
+    <div class="times" id="times" role="group" aria-label="Pick a time"></div>
+    <div class="plan-out dim" id="planOut" aria-live="polite">Pick two days to start.</div>
+    <div class="btn-row"><button type="button" class="do-btn gold" id="planIcs" disabled>📅 Add to my calendar</button><button type="button" class="do-btn ghost" id="planCopy" disabled>Copy</button></div>
+    <div class="status" id="planStatus" aria-live="polite"></div>
+  </div>
+
+  <!-- CHECK 3 of 3 (original question 3) -->
+  <div class="do-panel reveal">
+    <span class="do-tag">Orientation check · 3 of 3</span>
+    <div class="cdots" aria-hidden="true"><div class="cdot"></div><div class="cdot"></div><div class="cdot"></div></div>
+    <div class="q" data-q="2">
+      <div class="qtext">What's the single best predictor of success in a self-paced course?</div>
+      <button class="opt" type="button" data-correct="true">Building a weekly routine you actually stick to.</button>
+      <button class="opt" type="button" data-correct="false">Being naturally athletic.</button>
+      <button class="opt" type="button" data-correct="false">Finishing the whole course in the first week.</button>
+      <div class="fb" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="part-foot" data-ra-skip><button type="button" class="markbtn" data-mark="3" aria-pressed="false"><span class="tick" aria-hidden="true">○</span> Mark part complete</button></div>
+  </div><!-- /part 3 -->
+
+  <!-- ============ PART 4 ============ -->
+  <div class="part" data-part="4">
+
+  <div class="coach reveal" data-ra-skip data-audio="audio/hope-u1w1-p4.mp3">
+    <div class="coach-avatar" aria-hidden="true">DO</div>
+    <div class="coach-body">
+      <div class="coach-kicker">Coach Dani Ortiz · Part 4 · 30 sec</div>
+      <p class="coach-hook">If it isn't written down, it didn't happen.</p>
+      <div class="coach-ctl"><button type="button" class="coach-play">▶ Play</button><button type="button" class="coach-read" aria-expanded="false">Read the script</button><span class="coach-note"></span></div>
+      <p class="coach-script" hidden>In my gym, if it isn't written down, it didn't happen. Your activity log is how you prove you're moving, but it's also how you learn what works for your body. Try the talk test slider first and feel the difference between light, moderate, and vigorous. Then make a practice log entry for something you did this week. Even a walk counts. What's the last thing that got your heart rate up?</p>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-row"><div class="section-num">04</div><div class="section-label">Section 4 · Showing Your Work</div></div>
+    <h2 class="section-title">How you'll prove you're moving: the activity log</h2>
+  </div>
+  <p class="body">Since this is real PE, a big part of your grade comes from <strong>actually being active</strong> — not just reading about it. The way you show that is your <span class="key">activity log</span>. Think of it like a workout diary you'll keep all year. Each time you're active, you'll record four things:</p>
+  <div class="trait-grid stagger">
+    <div class="trait"><span class="ico">🏷️</span><div class="name">What you did</div><div class="desc">Walked, danced, played soccer, lifted, cleaned hard — it all counts.</div></div>
+    <div class="trait"><span class="ico">⏱️</span><div class="name">How long</div><div class="desc">Minutes of activity. Even 10-minute chunks add up.</div></div>
+    <div class="trait"><span class="ico">🔥</span><div class="name">How hard</div><div class="desc">Light, moderate, or vigorous — how much it raised your heart rate.</div></div>
+    <div class="trait"><span class="ico">💬</span><div class="name">How it felt</div><div class="desc">A quick note. This is how you learn what works for you.</div></div>
+  </div>
+
+  <!-- TALK TEST: the student feels the three intensity levels before rating a log entry -->
+  <div class="do-panel reveal" id="ttPanel">
+    <span class="do-tag orange">Do · The talk test</span>
+    <h2>How hard is hard?</h2>
+    <p class="sub">Slide between light, moderate, and vigorous. Watch the heartbeat and read the talk test — it's how you'll rate every log entry all year.</p>
+    <div class="ecg" aria-hidden="true">
+      <span class="lvl" id="ttLvl">Moderate</span><span class="hb">❤️</span>
+      <svg viewBox="0 0 480 110" preserveAspectRatio="xMidYMid slice">
+        <g class="ecg-track"><path d="M0 60 H40 L48 52 L56 60 H70 L76 70 L86 20 L96 96 L104 60 H200 L208 52 L216 60 H230 L236 70 L246 20 L256 96 L264 60 H360 L368 52 L376 60 H390 L396 70 L406 20 L416 96 L424 60 H520 L528 52 L536 60 H550 L556 70 L566 20 L576 96 L584 60 H680 L688 52 L696 60 H710 L716 70 L726 20 L736 96 L744 60 H800" fill="none" stroke="#76C043" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="filter:drop-shadow(0 0 5px rgba(118,192,67,.7))"/></g>
+      </svg>
+    </div>
+    <input type="range" class="tt-slider" id="ttRange" min="0" max="2" step="1" value="1" aria-label="Intensity: light, moderate, or vigorous">
+    <div class="tt-labels" data-ra-skip><button type="button" data-tt="0">Light</button><button type="button" data-tt="1" class="on">Moderate</button><button type="button" data-tt="2">Vigorous</button></div>
+    <div class="tt-phrase" id="ttPhrase">Moderate — could talk, not sing</div>
+    <div class="tt-read">
+      <div class="tt-card"><div class="k">What it feels like</div><div class="v" id="ttFeel"></div></div>
+      <div class="tt-card"><div class="k">Heart rate</div><div class="v" id="ttHeart"></div></div>
+      <div class="tt-card"><div class="k">Looks like</div><div class="v" id="ttEx"></div></div>
+      <div class="tt-card"><div class="k">Does it count?</div><div class="v" id="ttCount"></div></div>
+    </div>
+  </div>
+
+  <div class="callout co-dyk reveal">
+    <div class="callout-head"><span class="em">💡</span>Did You Know?</div>
+    <p>Federal guidelines recommend teens get <strong>moderate-to-vigorous activity on 5 or more days a week</strong>. Don't panic if you're not there yet — that's the goal we build toward, not where you have to start. In this week's activity, you'll do a practice log entry so you've got it down before it counts.</p>
+  </div>
+
+  <!-- PRACTICE LOG (the original Part 2, verbatim) -->
+  <div class="do-panel reveal" id="logPanel">
+    <span class="do-tag gold">Practice Log</span>
+    <h2>Make your first activity-log entry</h2>
+    <p class="sub">This is a practice run — nothing is saved or graded. Fill it in for something active you did recently (or plan to do today) so you've got the hang of it before it counts. Even a 10-minute walk works.</p>
+
+    <label for="act">What did you do?</label>
+    <input id="act" type="text" placeholder="e.g., Walked the dog, danced, played basketball, cleaned the garage…">
+    <p class="hint">Remember: if it got your body moving, it counts.</p>
+
+    <div class="row2">
+      <div>
+        <label for="min">How long? (minutes)</label>
+        <input id="min" type="number" min="1" max="600" placeholder="e.g., 20">
+      </div>
+      <div>
+        <label for="intensity">How hard?</label>
+        <select id="intensity">
+          <option value="">Choose one…</option>
+          <option value="Light">Light — could easily sing</option>
+          <option value="Moderate">Moderate — could talk, not sing</option>
+          <option value="Vigorous">Vigorous — hard to talk</option>
+        </select>
+      </div>
+    </div>
+
+    <label for="feel">How did it feel?</label>
+    <textarea id="feel" placeholder="A quick note — energized? tired? fun? This is how you learn what works for you."></textarea>
+
+    <div class="err" id="err">Add at least what you did, how long, and how hard before you log it. 💪</div>
+    <button class="do-btn" id="logBtn" type="button">Log It ▸</button>
+
+    <div class="result" id="result">
+      <h3>✅ Nice — that's a complete log entry!</h3>
+      <div class="line"><b>Activity:</b> <span id="rAct"></span></div>
+      <div class="line"><b>Duration:</b> <span id="rMin"></span> minutes</div>
+      <div class="line"><b>Intensity:</b> <span id="rInt"></span></div>
+      <div class="line"><b>How it felt:</b> <span id="rFeel"></span></div>
+      <div class="coach-line" id="coachLine"></div>
+      <p class="keep-note">Kept on this device so you can carry it into your reflection below. Not submitted, not graded.</p>
+    </div>
+  </div>
+
+  <div class="part-foot" data-ra-skip><button type="button" class="markbtn" data-mark="4" aria-pressed="false"><span class="tick" aria-hidden="true">○</span> Mark part complete</button></div>
+  </div><!-- /part 4 -->
+
+  <!-- ============ PART 5 ============ -->
+  <div class="part" data-part="5">
+
+  <div class="coach reveal" data-ra-skip data-audio="audio/hope-u1w1-p5.mp3">
+    <div class="coach-avatar" aria-hidden="true">DO</div>
+    <div class="coach-body">
+      <div class="coach-kicker">Coach Dani Ortiz · Part 5 · 25 sec</div>
+      <p class="coach-hook">Carry it forward.</p>
+      <div class="coach-ctl"><button type="button" class="coach-play">▶ Play</button><button type="button" class="coach-read" aria-expanded="false">Read the script</button><span class="coach-note"></span></div>
+      <p class="coach-script" hidden>You just did the whole rhythm in miniature: you read, you checked yourself, you planned, and you logged. One more move: carry it forward. Your reflection this week is your starting line, an honest snapshot of where you are today. Copy your practice entry and your two days, and use them as evidence. No fancy words needed. So, honestly: where are you starting from?</p>
+    </div>
+  </div>
+
+  <div class="section-header reveal">
+    <div class="section-row"><div class="section-num">05</div><div class="section-label">Part 5 · Carry It Forward</div></div>
+    <h2 class="section-title">Take it to your reflection</h2>
+  </div>
+  <p class="body">Your reflection this week is called <strong>Your Starting Line</strong>: four honest prompts about where you are today. Everything you just did on this page is evidence. Copy your notes, open the reflection in Canvas, and paste them into the text box before you answer the prompts in your own words.</p>
+
+  <div class="do-panel reveal" id="gatherPanel" data-ra-skip>
+    <span class="do-tag green">Carry it forward</span>
+    <h2>Your Week 1 notes</h2>
+    <p class="sub">Built from what you did above. Nothing here is written for you.</p>
+    <div class="gather-rows" id="gatherRows"></div>
+    <label for="gatherPre">What you'll paste into Canvas</label>
+    <textarea class="gather-pre" id="gatherPre" readonly aria-label="Your notes, ready to copy"></textarea>
+    <div class="btn-row"><button type="button" class="do-btn gold" id="gatherCopy">📋 Copy my notes for the reflection</button></div>
+    <div class="status" id="gatherStatus" aria-live="polite">Answered: <b class="ans-n">0</b> / 3 orientation questions so far.</div>
+    <h3 style="margin-top:18px;">How to turn it in</h3>
+    <ol class="turnin">
+      <li>Open <strong>Your Starting Line</strong> in Canvas (the Week 1 reflection).</li>
+      <li>Paste your notes into the text box.</li>
+      <li>Answer the four prompts in your own words. Your notes are the evidence.</li>
+    </ol>
+  </div>
+
+  <div class="checklist-head" data-ra-skip><h3>Success checklist</h3><span class="checklist-count"><b id="ckN">0</b> of 6 done</span></div>
+  <ul class="checklist reveal" id="checklist" data-ra-skip>
+    <li data-ck="checks"><span class="ck">✓</span><span>Answered all three orientation questions</span></li>
+    <li data-ck="sort"><span class="ck">✓</span><span>Sorted the four HELP situations</span></li>
+    <li data-ck="planner"><span class="ck">✓</span><span>Picked your two HOPE days and a time</span></li>
+    <li data-ck="tt"><span class="ck">✓</span><span>Tried the talk test</span></li>
+    <li data-ck="log"><span class="ck">✓</span><span>Logged a practice entry</span></li>
+    <li data-ck="copied"><span class="ck">✓</span><span>Copied your notes for the reflection</span></li>
+  </ul>
+
+  <div class="part-foot" data-ra-skip><button type="button" class="markbtn" data-mark="5" aria-pressed="false"><span class="tick" aria-hidden="true">○</span> Mark part complete</button></div>
+  </div><!-- /part 5 -->
+
+  <!-- VOCAB -->
+  <div class="section-header reveal">
+    <div class="section-row"><div class="section-num" style="font-size:22px;">📚</div><div class="section-label">Key Vocabulary</div></div>
+  </div>
+  <div class="vocab-tools" data-ra-skip><button type="button" class="vocab-toggle" id="vocabToggle" aria-pressed="false">Hide the definitions and quiz me</button></div>
+  <div class="vocab-grid stagger" id="vocabGrid">
+    <div class="vocab"><div class="term">HOPE</div><div class="def">Health Opportunities through Physical Education — a year-long course combining PE and health into one credit.</div></div>
+    <div class="vocab"><div class="term">HELP Philosophy</div><div class="def">The course's core idea: Health is for Everyone, for a Lifetime, and it's Personal.</div></div>
+    <div class="vocab"><div class="term">Self-Paced</div><div class="def">A course you move through on your own schedule — your routine is what keeps you on track.</div></div>
+    <div class="vocab"><div class="term">Activity Log</div><div class="def">Your ongoing record of physical activity: what you did, how long, how hard, and how it felt.</div></div>
+    <div class="vocab"><div class="term">MVPA</div><div class="def">Moderate-to-Vigorous Physical Activity — the kind that raises your heart rate. Target: 5+ days a week.</div></div>
+    <div class="vocab"><div class="term">Wellness</div><div class="def">Overall well-being across many areas of life — not just physical fitness. (More in Week 2.)</div></div>
+  </div>
+
+  <!-- WHAT'S NEXT -->
+  <div class="callout co-next reveal">
+    <div class="callout-head"><span class="em">→</span>What's Next</div>
+    <p>In <strong>Week 2</strong> we'll zoom out to the <strong>six dimensions of wellness</strong> and start your digital-safety baseline so you know how to protect yourself online. You'll also create your <strong>Wellness Self-Portrait</strong> — your personal starting line for the year.</p>
+  </div>
+
+  <p class="aside" data-ra-skip>Checkmarks, step progress, and notes are saved only in this browser. They are not submitted or graded.</p>
+
+  <div class="lesson-footer">
+    <span class="owl">🦉</span><br>
+    Optima Academy Online — HOPE · Physical Education (Core)<br>
+    Unit 1 · Orientation &amp; Dimensions of Wellness
+  </div>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+<script>
+(function(){
+"use strict";
+var P="hope-u1w1-";
+var store={
+  get:function(k,d){try{var v=localStorage.getItem(P+k);return v==null?d:JSON.parse(v)}catch(e){return d}},
+  set:function(k,v){try{localStorage.setItem(P+k,JSON.stringify(v))}catch(e){}},
+  clearAll:function(){try{var ks=[];for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.indexOf(P)===0)ks.push(k)}ks.forEach(function(k){localStorage.removeItem(k)})}catch(e){}}
+};
+var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function $(id){return document.getElementById(id)}
+
+/* ---------- toast ---------- */
+var toastEl=$("toast"),toastT=0;
+function toast(msg){toastEl.textContent=msg;toastEl.classList.add("show");clearTimeout(toastT);toastT=setTimeout(function(){toastEl.classList.remove("show")},2800)}
+
+/* ---------- state (this device only) ---------- */
+var S={
+  parts:store.get("parts",{}),
+  checks:store.get("checks",{}),
+  sort:store.get("sort",{}),
+  sortChecked:store.get("sortChecked",false),
+  sortDone:store.get("sortDone",false),
+  days:store.get("days",[]),
+  time:store.get("time",""),
+  tt:store.get("tt",1),
+  ttTried:store.get("ttTried",false),
+  log:store.get("log",null),
+  copied:store.get("copied",false)
+};
+function save(k){store.set(k,S[k])}
+
+/* ---------- reveal on scroll ---------- */
+(function(){
+  var els=document.querySelectorAll(".reveal,.stagger,.section-header");
+  if(reduce||!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in")});return}
+  var io=new IntersectionObserver(function(ents){ents.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.1,rootMargin:"0px 0px -4% 0px"});
+  els.forEach(function(e){io.observe(e)});
+  // Fast scrolls (or a jump from the Canvas page) can skip the observer: anything at or above the fold shows.
+  function sweep(){var h=window.innerHeight||document.documentElement.clientHeight;els.forEach(function(e){if(!e.classList.contains("in")&&e.getBoundingClientRect().top<h*0.98)e.classList.add("in")})}
+  var last=0;window.addEventListener("scroll",function(){var t=Date.now();if(t-last<80)return;last=t;sweep()},{passive:true});
+  window.addEventListener("resize",sweep);setTimeout(sweep,60);setTimeout(sweep,600);
+})();
+
+/* ---------- parts, rail, journey ---------- */
+var PART_NAMES={1:"What this course is",2:"The HELP idea",3:"Self-paced",4:"The activity log",5:"Carry it forward"};
+function partsDone(){return [1,2,3,4,5].filter(function(k){return S.parts[k]}).length}
+function checksDone(){return [0,1,2].filter(function(i){return S.checks[i]}).length}
+function plannerDone(){return S.days.length===2&&!!S.time}
+function doDone(){return checksDone()===3&&S.sortDone&&plannerDone()&&S.ttTried&&!!S.log}
+function readDone(){return [1,2,3,4].every(function(k){return S.parts[k]})}
+
+function renderRail(){
+  var n=partsDone();$("railN").textContent=n;$("railFill").style.width=(n/5*100)+"%";$("hdrFill").style.width=(n/5*100)+"%";
+  document.querySelectorAll(".markbtn").forEach(function(b){var k=b.getAttribute("data-mark"),on=!!S.parts[k];b.setAttribute("aria-pressed",on?"true":"false");b.innerHTML='<span class="tick" aria-hidden="true">'+(on?"✓":"○")+'</span> '+(on?"Part complete":"Mark part complete")});
+}
+function renderJourney(){
+  var read=document.querySelector('[data-node="read"]'),dp=document.querySelector('[data-node="do"]'),rf=document.querySelector('[data-node="reflect"]');
+  read.classList.toggle("done",readDone());read.classList.toggle("now",!readDone());
+  dp.classList.toggle("done",doDone());dp.classList.toggle("now",!doDone());
+  rf.classList.toggle("ready",!!S.copied);
+}
+var allDoneBefore=partsDone()===5;
+document.querySelectorAll(".markbtn").forEach(function(b){b.addEventListener("click",function(){
+  var k=b.getAttribute("data-mark");S.parts[k]=!S.parts[k];save("parts");renderAll();
+  if(S.parts[k]){toast("Part "+k+" complete: "+PART_NAMES[k]);if(partsDone()===5&&!allDoneBefore){allDoneBefore=true;celebrate()}}
+  else allDoneBefore=false;
+})});
+$("resetAll").addEventListener("click",function(){
+  if(!confirm("Clear saved progress, checkmarks, and notes for this lesson on this device?"))return;
+  store.clearAll();location.reload();
+});
+
+/* ---------- orientation check (the original three questions, verbatim) ---------- */
+var goodFb=[
+  "Exactly. Keep that in your back pocket all year — when an assignment lets you choose, choose what fits *your* life.",
+  "Right. Wherever you're starting from is the right place to start. We build from there.",
+  "Yep. Not the smartest or the fittest — the most consistent. Pick your two days and protect them."
+];
+var tryFb=[
+  "Not quite — HELP means *Health is for Everyone, for a Lifetime, and it's Personal.* Give it another look.",
+  "Not quite — you need zero equipment. Every activity has a no-gear option. Try again.",
+  "Not quite — it's routine that wins, not talent or speed. Try again."
+];
+document.querySelectorAll(".q").forEach(function(q){
+  var idx=+q.getAttribute("data-q");
+  var opts=q.querySelectorAll(".opt"),fb=q.querySelector(".fb");
+  if(S.checks[idx]){opts.forEach(function(o){o.classList.toggle("correct",o.getAttribute("data-correct")==="true")});fb.className="fb show good";fb.textContent="✓ "+goodFb[idx]}
+  opts.forEach(function(opt){opt.addEventListener("click",function(){
+    var correct=opt.getAttribute("data-correct")==="true";
+    opts.forEach(function(o){o.classList.remove("correct","wrong")});
+    if(correct){
+      opt.classList.add("correct");fb.className="fb show good";fb.textContent="✓ "+goodFb[idx];
+      if(!S.checks[idx]){S.checks[idx]=true;save("checks");renderAll();if(checksDone()===3)toast("Orientation check: 3 of 3. You've got the game plan.")}
+    }else{
+      opt.classList.add("wrong");fb.className="fb show try";fb.textContent="↻ "+tryFb[idx];
+    }
+  })});
+});
+function renderChecks(){
+  var n=checksDone();
+  document.querySelectorAll(".cdots").forEach(function(c){c.querySelectorAll(".cdot").forEach(function(d,i){d.classList.toggle("on",i<n)})});
+  document.querySelectorAll(".ans-n").forEach(function(e){e.textContent=n});
+}
+
+/* ---------- HELP in action (sort) ---------- */
+var STMTS=[
+  {id:"s1",k:"E",t:"A workout plan that works for a wheelchair user, a varsity athlete, and everyone in between."},
+  {id:"s2",k:"H",t:"Choosing a walk after dinner because it lowers your stress, not to hit a number on a scale."},
+  {id:"s3",k:"L",t:"Picking an activity you could still be doing at 45, not just this semester."},
+  {id:"s4",k:"P",t:"Your plan runs on your schedule and your favorite ways to move."}
+];
+var armed=null;
+function sortStatus(msg,cls){var s=$("sortStatus");s.className="status"+(cls?" "+cls:"");s.textContent=msg}
+function sortRender(){
+  var pool=$("sortPool");pool.innerHTML="";
+  STMTS.forEach(function(s){
+    if(S.sort[s.id])return;
+    var b=document.createElement("button");b.type="button";b.className="token";b.textContent=s.t;b.setAttribute("aria-pressed",armed===s.id?"true":"false");
+    b.addEventListener("click",function(){armed=armed===s.id?null:s.id;sortRender();sortStatus(armed?"Now tap the letter it belongs to.":"Tap a situation to pick it up.")});
+    pool.appendChild(b);
+  });
+  if(!pool.children.length){var e=document.createElement("div");e.className="pool-empty";e.textContent="All four placed. Tap Check.";pool.appendChild(e)}
+  document.querySelectorAll(".bucket").forEach(function(bk){
+    var key=bk.getAttribute("data-b");bk.classList.toggle("armed",!!armed);
+    var wrap=bk.querySelector(".placed-wrap");wrap.innerHTML="";
+    STMTS.forEach(function(s){
+      if(S.sort[s.id]!==key)return;
+      var d=document.createElement("button");d.type="button";d.className="placed"+(S.sortChecked?(s.k===key?" right":" wrong"):"");d.textContent=s.t;d.title="Tap to send it back";
+      d.addEventListener("click",function(ev){ev.stopPropagation();delete S.sort[s.id];S.sortChecked=false;S.sortDone=false;save("sort");save("sortChecked");save("sortDone");sortRender();renderAll();sortStatus("Sent back to the pool.")});
+      wrap.appendChild(d);
+    });
+  });
+}
+function placeIn(key){
+  if(!armed){sortStatus("Tap a situation first, then a letter.");return}
+  STMTS.forEach(function(s){if(S.sort[s.id]===key)delete S.sort[s.id]});
+  S.sort[armed]=key;armed=null;S.sortChecked=false;save("sort");save("sortChecked");
+  var placed=Object.keys(S.sort).length;sortRender();sortStatus(placed<4?"Placed. "+placed+" of 4 placed.":"All four placed. Tap Check.");
+}
+document.querySelectorAll(".bucket").forEach(function(bk){
+  bk.addEventListener("click",function(){placeIn(bk.getAttribute("data-b"))});
+  bk.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();placeIn(bk.getAttribute("data-b"))}});
+});
+$("sortCheck").addEventListener("click",function(){
+  var placed=Object.keys(S.sort).length;
+  if(placed<4){sortStatus("Place all four situations first ("+placed+" of 4 so far).","bad");return}
+  S.sortChecked=true;save("sortChecked");
+  var right=STMTS.filter(function(s){return S.sort[s.id]===s.k}).length;
+  sortRender();
+  if(right===4){S.sortDone=true;save("sortDone");renderAll();sortStatus("All four in place. Every HELP letter is a promise about how this course treats you.","ok");toast("HELP in action: sorted.")}
+  else{
+    sortStatus(right+" of 4 right. The ones outlined in red go back to the pool. Re-read the card for that letter and try again.","bad");
+    setTimeout(function(){STMTS.forEach(function(s){if(S.sort[s.id]&&S.sort[s.id]!==s.k)delete S.sort[s.id]});S.sortChecked=false;save("sort");save("sortChecked");sortRender()},1200);
+  }
+});
+$("sortReset").addEventListener("click",function(){S.sort={};S.sortChecked=false;S.sortDone=false;armed=null;save("sort");save("sortChecked");save("sortDone");sortRender();renderAll();sortStatus("Four situations, four letters.")});
+sortRender();
+
+/* ---------- routine planner ---------- */
+var DAYS=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],DAYS_S=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+var TIMES=[["morning","Morning","in the morning",7,0],["school","After school","after school",15,30],["dinner","After dinner","after dinner",19,0],["bed","Before bed","before bed",21,0]];
+function timeRec(){for(var i=0;i<TIMES.length;i++)if(TIMES[i][0]===S.time)return TIMES[i];return null}
+function routineSentence(){var d=S.days.slice().sort(function(a,b){return a-b}),t=timeRec();if(d.length!==2||!t)return "";return DAYS[d[0]]+" and "+DAYS[d[1]]+" "+t[2]+"."}
+function planStatus(msg,cls){var s=$("planStatus");s.className="status"+(cls?" "+cls:"");s.textContent=msg}
+function plannerRender(){
+  var dwrap=$("days");dwrap.innerHTML="";
+  DAYS_S.forEach(function(n,i){var b=document.createElement("button");b.type="button";b.className="day";b.textContent=n;b.setAttribute("aria-label",DAYS[i]);b.setAttribute("aria-pressed",S.days.indexOf(i)>=0?"true":"false");
+    b.addEventListener("click",function(){var at=S.days.indexOf(i);if(at>=0)S.days.splice(at,1);else if(S.days.length<2)S.days.push(i);else{S.days.shift();S.days.push(i);toast("Swapped out your first pick.")}save("days");plannerRender();renderAll()});
+    dwrap.appendChild(b)});
+  var twrap=$("times");twrap.innerHTML="";
+  TIMES.forEach(function(t){var b=document.createElement("button");b.type="button";b.className="time";b.textContent=t[1];b.setAttribute("aria-pressed",S.time===t[0]?"true":"false");
+    b.addEventListener("click",function(){S.time=S.time===t[0]?"":t[0];save("time");plannerRender();renderAll()});twrap.appendChild(b)});
+  var out=$("planOut"),ok=plannerDone();
+  if(ok){out.className="plan-out";out.textContent="Your routine: "+routineSentence()}
+  else if(S.days.length<2){out.className="plan-out dim";out.textContent=S.days.length===0?"Pick two days to start.":"Pick one more day."}
+  else{out.className="plan-out dim";out.textContent=DAYS[S.days.slice().sort()[0]]+" and "+DAYS[S.days.slice().sort()[1]]+". Now pick a time."}
+  $("planIcs").disabled=!ok;$("planCopy").disabled=!ok;
+  if(ok)planStatus("Locked in. Put it in your phone so it actually happens.","ok");else planStatus("");
+}
+function pad(n){return (n<10?"0":"")+n}
+function icsText(){
+  var t=timeRec(),d=S.days.slice().sort(function(a,b){return a-b});
+  var now=new Date(),first=new Date(now.getFullYear(),now.getMonth(),now.getDate(),t[3],t[4],0,0);
+  var jsDay=(d[0]+1)%7,diff=(jsDay-first.getDay()+7)%7;if(diff===0&&first<now)diff=7;first.setDate(first.getDate()+diff);
+  var byday=["MO","TU","WE","TH","FR","SA","SU"];
+  var stamp=first.getFullYear()+pad(first.getMonth()+1)+pad(first.getDate())+"T"+pad(first.getHours())+pad(first.getMinutes())+"00";
+  var u=new Date(),dtstamp=u.getUTCFullYear()+pad(u.getUTCMonth()+1)+pad(u.getUTCDate())+"T"+pad(u.getUTCHours())+pad(u.getUTCMinutes())+pad(u.getUTCSeconds())+"Z";
+  return ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Optima Academy Online//HOPE//EN","BEGIN:VEVENT","UID:hope-u1w1-"+Date.now()+"@optimaed.com","DTSTAMP:"+dtstamp,"DTSTART:"+stamp,"DURATION:PT45M","RRULE:FREQ=WEEKLY;BYDAY="+byday[d[0]]+","+byday[d[1]],"SUMMARY:HOPE coursework","DESCRIPTION:My two HOPE days. Read, do, log, reflect.","END:VEVENT","END:VCALENDAR"].join("\r\n");
+}
+$("planIcs").addEventListener("click",function(){
+  if(!plannerDone())return;
+  try{
+    var blob=new Blob([icsText()],{type:"text/calendar;charset=utf-8"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+    a.href=url;a.download="hope-routine.ics";document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(function(){URL.revokeObjectURL(url)},2000);
+    planStatus("Calendar file downloaded (hope-routine.ics). Open it and it repeats every week.","ok");
+  }catch(e){planStatus("Couldn't build the calendar file here. Copy the routine and add it to your calendar by hand.","bad")}
+});
+$("planCopy").addEventListener("click",function(){copyText("HOPE days: "+routineSentence(),function(ok){planStatus(ok?"Copied. Paste it into your phone's notes or calendar.":"Copy blocked here. Select the routine and copy it by hand.",ok?"ok":"bad")})});
+plannerRender();
+
+/* ---------- talk test ---------- */
+var TT=[
+  {n:"Light",phrase:"Light — could easily sing",feel:"Easy breathing. You could hold a full conversation or sing along.",heart:"A little above resting.",ex:"A slow walk, stretching, easy yoga, a casual bike ride.",count:"Counts as movement for your log. Not yet MVPA.",beat:"2.1s"},
+  {n:"Moderate",phrase:"Moderate — could talk, not sing",feel:"Breathing deeper. You can talk in short sentences, but singing is out.",heart:"Up and steady. You notice it.",ex:"A brisk walk, a bike ride, dancing, shooting hoops, mowing the lawn.",count:"Counts toward your 5+ days of MVPA.",beat:"1.15s"},
+  {n:"Vigorous",phrase:"Vigorous — hard to talk",feel:"Breathing hard. A few words at a time is all you've got.",heart:"Way up. You feel it in your chest.",ex:"Running, a full-court game, jump rope, swimming laps, hill sprints.",count:"Counts toward your 5+ days of MVPA. Short sessions add up fast.",beat:"0.68s"}
+];
+var ttRange=$("ttRange");
+function ttRender(i){
+  var t=TT[i];document.querySelector(".ecg").style.setProperty("--beat",t.beat);
+  $("ttLvl").textContent=t.n;$("ttPhrase").textContent=t.phrase;$("ttFeel").textContent=t.feel;$("ttHeart").textContent=t.heart;$("ttEx").textContent=t.ex;$("ttCount").textContent=t.count;
+  document.querySelectorAll(".tt-labels button").forEach(function(b){b.classList.toggle("on",+b.getAttribute("data-tt")===i)});
+}
+function ttSet(i,user){S.tt=i;save("tt");if(user&&!S.ttTried){S.ttTried=true;save("ttTried");renderAll()}ttRender(i)}
+ttRange.value=S.tt;ttRender(S.tt);
+ttRange.addEventListener("input",function(){ttSet(+ttRange.value,true)});
+document.querySelectorAll(".tt-labels button").forEach(function(b){b.addEventListener("click",function(){ttRange.value=b.getAttribute("data-tt");ttSet(+b.getAttribute("data-tt"),true)})});
+
+/* ---------- practice log (verbatim behavior, plus kept on this device) ---------- */
+function showLog(entry,scroll){
+  $("rAct").textContent=entry.act;$("rMin").textContent=entry.min;$("rInt").textContent=entry.intensity;
+  $("rFeel").textContent=entry.feel?entry.feel:"(you can add this next time)";
+  var msg="",m=parseInt(entry.min,10);
+  if(entry.intensity==="Vigorous"){msg="Vigorous work — your heart got a real workout. Even short vigorous sessions count big toward your weekly goal.";}
+  else if(entry.intensity==="Moderate"){msg="Moderate activity is the sweet spot for building lifelong health. Stack up days like this and you'll hit your 5+ days a week.";}
+  else{msg="Light movement still matters — it all adds up. When you're ready, try nudging one session up to moderate.";}
+  if(m>=30){msg+=" And "+m+" minutes? That's a solid chunk.";}
+  else if(m<10){msg+=" Short and sweet — try linking a few short sessions across your day.";}
+  $("coachLine").textContent="Coach: "+msg;
+  var r=$("result");r.classList.add("show");
+  if(scroll)r.scrollIntoView({behavior:reduce?"auto":"smooth",block:"nearest"});
+}
+if(S.log){$("act").value=S.log.act;$("min").value=S.log.min;$("intensity").value=S.log.intensity;$("feel").value=S.log.feel||"";showLog(S.log,false)}
+$("logBtn").addEventListener("click",function(){
+  var act=$("act").value.trim(),min=$("min").value.trim(),intensity=$("intensity").value,feel=$("feel").value.trim(),err=$("err");
+  if(!act||!min||!intensity){err.classList.add("show");$("result").classList.remove("show");return}
+  err.classList.remove("show");
+  S.log={act:act,min:min,intensity:intensity,feel:feel};save("log");
+  showLog(S.log,true);renderAll();toast("First log entry done. That's the habit.");
+});
+
+/* ---------- carry it forward ---------- */
+function gatherText(){
+  var lines=["HOPE · Unit 1 · Week 1 · My notes for Your Starting Line"];
+  lines.push("Orientation check: "+checksDone()+" of 3 answered");
+  lines.push("HELP sort: "+(S.sortDone?"complete":"not yet"));
+  lines.push("My two HOPE days: "+(plannerDone()?routineSentence():"not picked yet"));
+  lines.push("Practice log entry: "+(S.log?(S.log.act+" · "+S.log.min+" minutes · "+S.log.intensity+(S.log.feel?' · "'+S.log.feel+'"':"")):"not logged yet"));
+  return lines.join("\n");
+}
+function gatherRender(){
+  var rows=[["Orientation check",checksDone()+" of 3 answered",checksDone()===3],["HELP sort",S.sortDone?"complete":"not yet",S.sortDone],["Your two HOPE days",plannerDone()?routineSentence():"not picked yet",plannerDone()],["Practice log entry",S.log?(S.log.act+" · "+S.log.min+" min · "+S.log.intensity+(S.log.feel?' · "'+S.log.feel+'"':"")):"not logged yet",!!S.log]];
+  var w=$("gatherRows");w.innerHTML="";
+  rows.forEach(function(r){var d=document.createElement("div");d.className="grow"+(r[2]?"":" empty");var k=document.createElement("div");k.className="gk";k.textContent=r[0];var v=document.createElement("div");v.className="gv";v.textContent=r[1];d.appendChild(k);d.appendChild(v);w.appendChild(d)});
+  $("gatherPre").value=gatherText();
+}
+function copyText(text,cb){
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(function(){cb(true)},function(){fallback()})}else fallback();
+  function fallback(){try{var ta=document.createElement("textarea");ta.value=text;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var ok=document.execCommand("copy");document.body.removeChild(ta);cb(!!ok)}catch(e){cb(false)}}
+}
+$("gatherCopy").addEventListener("click",function(){
+  copyText(gatherText(),function(ok){
+    var s=$("gatherStatus");s.className="status "+(ok?"ok":"bad");
+    if(ok){S.copied=true;save("copied");renderAll();s.textContent="Copied. Open Your Starting Line in Canvas and paste it into the text box.";toast("Notes copied. Take them to your reflection.")}
+    else{s.textContent="Copy was blocked here. Select the text in the box above and copy it by hand.";var pre=$("gatherPre");pre.focus();pre.select()}
+  });
+});
+// Copying by hand from the notes box counts too.
+$("gatherPre").addEventListener("copy",function(){if(!S.copied){S.copied=true;save("copied");renderAll();var s=$("gatherStatus");s.className="status ok";s.textContent="Copied. Open Your Starting Line in Canvas and paste it into the text box."}});
+
+/* ---------- success checklist ---------- */
+function checklistRender(){
+  var map={checks:checksDone()===3,sort:S.sortDone,planner:plannerDone(),tt:S.ttTried,log:!!S.log,copied:S.copied},n=0;
+  document.querySelectorAll("#checklist li").forEach(function(li){var on=!!map[li.getAttribute("data-ck")];li.classList.toggle("done",on);if(on)n++});
+  $("ckN").textContent=n;
+}
+
+/* ---------- vocabulary self-test ---------- */
+(function(){
+  var grid=$("vocabGrid"),btn=$("vocabToggle");
+  btn.addEventListener("click",function(){var on=!grid.classList.contains("quiz");grid.classList.toggle("quiz",on);btn.setAttribute("aria-pressed",on?"true":"false");btn.textContent=on?"Show all the definitions":"Hide the definitions and quiz me";grid.querySelectorAll(".vocab").forEach(function(v){v.classList.remove("show");v.tabIndex=on?0:-1})});
+  grid.querySelectorAll(".vocab").forEach(function(v){
+    v.addEventListener("click",function(){if(grid.classList.contains("quiz"))v.classList.toggle("show")});
+    v.addEventListener("keydown",function(ev){if(grid.classList.contains("quiz")&&(ev.key==="Enter"||ev.key===" ")){ev.preventDefault();v.classList.toggle("show")}});
+  });
+})();
+
+/* ---------- coach voice (MP3 if it exists, else the browser voice) ---------- */
+(function(){
+  var synth=window.speechSynthesis,voices=[];
+  function loadVoices(){try{voices=synth.getVoices()||[]}catch(e){voices=[]}}
+  if(synth){loadVoices();try{synth.addEventListener("voiceschanged",loadVoices)}catch(e){}}
+  function pickVoice(){var en=voices.filter(function(v){return /^en/i.test(v.lang)});return en.filter(function(v){return /natural/i.test(v.name)})[0]||en.filter(function(v){return /google us english/i.test(v.name)})[0]||en.filter(function(v){return v.default})[0]||en[0]||null}
+  var current=null,audio=null,active=null;
+  function stopCoach(){
+    if(audio){try{audio.pause()}catch(e){}audio=null}
+    if(current){current=null;try{synth.cancel()}catch(e){}}
+    if(active){active.classList.remove("playing");active.querySelector(".coach-play").textContent="▶ Play";active=null}
+  }
+  function playBlock(block){
+    var script=block.querySelector(".coach-script").textContent.trim(),src=block.getAttribute("data-audio"),note=block.querySelector(".coach-note");
+    var oraStop=document.getElementById("ora-stop");if(oraStop&&!oraStop.disabled)oraStop.click();
+    stopCoach();active=block;block.classList.add("playing");block.querySelector(".coach-play").textContent="■ Stop";
+    function tts(){
+      if(!synth||!("SpeechSynthesisUtterance" in window)){note.textContent="Audio isn't available in this browser. Read the script instead.";stopCoach();return}
+      note.textContent="Preview voice";
+      var u=new SpeechSynthesisUtterance(script);u.rate=1;var v=pickVoice();if(v)u.voice=v;
+      u.onend=function(){if(current===u)stopCoach()};u.onerror=function(){if(current===u)stopCoach()};
+      current=u;try{synth.cancel()}catch(e){}synth.speak(u);
+    }
+    if(src){
+      var a=new Audio();audio=a;
+      a.addEventListener("canplay",function(){if(audio!==a)return;note.textContent="";a.play().catch(function(){if(audio===a){audio=null;tts()}})});
+      a.addEventListener("ended",function(){if(audio===a)stopCoach()});
+      a.addEventListener("error",function(){if(audio!==a)return;audio=null;tts()});
+      a.src=src;a.load();
+    }else tts();
+  }
+  document.querySelectorAll(".coach").forEach(function(block){
+    block.querySelector(".coach-play").addEventListener("click",function(){if(active===block)stopCoach();else playBlock(block)});
+    var rd=block.querySelector(".coach-read"),sc=block.querySelector(".coach-script");
+    rd.addEventListener("click",function(){var open=sc.hasAttribute("hidden");if(open)sc.removeAttribute("hidden");else sc.setAttribute("hidden","");rd.setAttribute("aria-expanded",open?"true":"false");rd.textContent=open?"Hide the script":"Read the script"});
+  });
+  var oraPlay=document.getElementById("ora-play");if(oraPlay)oraPlay.addEventListener("click",function(){if(active)stopCoach()},true);
+  window.addEventListener("pagehide",stopCoach);
+})();
+
+/* ---------- celebration ---------- */
+function celebrate(){
+  toast("All five parts complete. That's a full HOPE week in miniature.");
+  if(reduce)return;
+  var cv=$("confetti"),ctx=cv.getContext("2d");cv.style.display="block";
+  var W=cv.width=window.innerWidth,H=cv.height=window.innerHeight;
+  var cols=["#55C8E8","#C7922C","#76C043","#F78F1E","#67308F","#A53E97","#ffffff"],ps=[];
+  for(var i=0;i<150;i++){ps.push({x:W/2+(Math.random()-.5)*220,y:Math.min(H*0.35,320),vx:(Math.random()-.5)*14,vy:-6-Math.random()*9,w:6+Math.random()*6,h:4+Math.random()*4,r:Math.random()*Math.PI,vr:(Math.random()-.5)*.3,c:cols[i%cols.length]})}
+  var t0=null;
+  function f(ts){if(!t0)t0=ts;var p=(ts-t0)/1900;ctx.clearRect(0,0,W,H);
+    ps.forEach(function(q){q.vy+=.32;q.x+=q.vx;q.y+=q.vy;q.vx*=.985;q.r+=q.vr;ctx.save();ctx.globalAlpha=Math.max(0,1-p*1.1);ctx.translate(q.x,q.y);ctx.rotate(q.r);ctx.fillStyle=q.c;ctx.fillRect(-q.w/2,-q.h/2,q.w,q.h);ctx.restore()});
+    if(p<1)requestAnimationFrame(f);else{ctx.clearRect(0,0,W,H);cv.style.display="none"}}
+  requestAnimationFrame(f);
+}
+
+/* ---------- render everything ---------- */
+function renderAll(){renderRail();renderChecks();renderJourney();gatherRender();checklistRender()}
+renderAll();
+})();
+</script>
+</body>
+</html>

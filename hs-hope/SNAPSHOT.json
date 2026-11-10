@@ -1,0 +1,25 @@
+{
+ "source": "https://facevedooe.github.io/OAO-Hope/",
+ "snapshot_of": "Pages",
+ "source_repo": "facevedoOE/OAO-Hope",
+ "source_commit": "79241ae",
+ "taken": "2026-11-10",
+ "files": [
+  "assets/hope-intro.js",
+  "assets/oao-logo.png",
+  "unit1/audio/hope-u1w1-p0.mp3",
+  "unit1/audio/hope-u1w1-p1.mp3",
+  "unit1/audio/hope-u1w1-p2.mp3",
+  "unit1/audio/hope-u1w1-p3.mp3",
+  "unit1/audio/hope-u1w1-p4.mp3",
+  "unit1/audio/hope-u1w1-p5.mp3",
+  "unit1/u1w1-welcome-lesson.html",
+  "unit1/u1w1-welcome-reflection.html"
+ ],
+ "missing": [],
+ "dead_html_links": [],
+ "demo_changes": [
+  "None. The lesson page, its intro script, the OAO logo, and the six Coach Dani audio clips are byte-for-byte copies of the course files; the reflection page is the Canvas-paste HTML and loads its logo from the live course site, as Canvas requires."
+ ],
+ "reviewer_guide": "https://facevedooe.github.io/OAO-Hope/PILOT-U1W1-REVAMP.html"
+}

@@ -1148,7 +1148,23 @@ _Week 1 and major projects not posted yet_
 
 ### Health Opportunities through Physical Education (HOPE) (Grades 9–12 · Physical Education · 3026010)
 
-_Week 1 and major projects not posted yet_
+#### Unit 1 · Week 1 — Welcome to HOPE
+
+**Week 1 Lesson**
+
+- [Week 1 — Welcome to HOPE (interactive lesson: reading, orientation check, and practice log)](https://optimaondemand.github.io/optima-pilot-samples/hs-hope/unit1/u1w1-welcome-lesson.html)
+
+**Week 1 Reflection**
+
+- [Your Starting Line (Canvas reflection page)](https://optimaondemand.github.io/optima-pilot-samples/hs-hope/unit1/u1w1-welcome-reflection.html)
+
+**Reviewer Guide**
+
+- [How to review the Week 1 pilot in five minutes](https://facevedooe.github.io/OAO-Hope/PILOT-U1W1-REVAMP.html)
+
+**Major Project**
+
+_Not posted yet_
 
 ### 2D Studio Art 2 (Grades 9–12 · Visual Arts · 0101310)
 
