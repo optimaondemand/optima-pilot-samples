@@ -935,11 +935,40 @@ _Week 1 and major projects not posted yet_
 
 ### ★ Mississippi U.S. History: 1877 to Present (Social Studies · msushist10)
 
-_Week 1 and major projects not posted yet_
+#### Module 1: The League Rejected and the Red Scare
+
+**Week 1**
+
+- [Lesson 1: The League Rejected, 1919 to 1922](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-w19/w19-lesson-1-the-league-rejected.html)
+- [Lesson 2: Lodge, Speech Against the League of Nations](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-w19/w19-lesson-2-lodge-against-the-league.html)
+- [Lesson 3: Red Scare, Strikes, and the Closing Door](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-w19/w19-lesson-3-red-scare-and-the-closing-door.html)
+- [Lesson 4: Palmer, “The Case Against the ‘Reds’”](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-w19/w19-lesson-4-palmer-case-against-the-reds.html)
+
+**Major Project**
+
+- [Module 1 Project: Primary Source Report, Lodge or Palmer](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-projects/project-primary-source-report.html)
+- [1.1 Module 1 Intro: Before You Begin](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-assessments/1-1-module-1-intro-before-you-begin.html)
+- [1.6 Primary Source Report: Lodge or Palmer](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-assessments/1-6-primary-source-report-lodge-or-palmer.html)
+- [1.7 Reading Quiz: The League Rejected, 1919 to 1922](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-assessments/1-7-reading-quiz-the-league-rejected-1919-to-1922.html)
+- [1.8 Critical Questions: Lodge, Speech Against the League of Nations](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-assessments/1-8-critical-questions-lodge-speech-against-the-league-of-nations.html)
+- [1.9 Primary Source Exercise: Palmer, "The Case Against the 'Reds'"](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-assessments/1-9-primary-source-exercise-palmer-the-case-against-the-reds.html)
+- [1.10 Discussion: Who Killed the League: Wilson or the Senate?](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-assessments/1-10-discussion-who-killed-the-league.html)
+- [1.12 Module 1 Outro: Looking Back](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-us-history-assessments/1-12-module-1-outro-looking-back.html)
 
 ### ★ World History: Age of Enlightenment to Present (Mississippi) (Social Studies · mswhist10)
 
-_Week 1 and major projects not posted yet_
+#### Module 11: The Marne and the Trenches
+
+**Week 1**
+
+- [The Schlieffen Plan and the Marne](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-world-history-w19/w19-lesson-1-the-schlieffen-plan-and-the-marne.html)
+- [Primary Source: Goschen’s Report: The “Scrap of Paper”](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-world-history-w19/w19-lesson-2-goschen-scrap-of-paper.html)
+- [Trench War and Attrition: Ypres, Verdun, the Somme](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-world-history-w19/w19-lesson-3-trench-war-and-attrition.html)
+- [Primary Source: Owen: “Dulce et Decorum Est”](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-world-history-w19/w19-lesson-4-owen-dulce-et-decorum-est.html)
+
+**Major Project**
+
+- [11.8 Discussion: Could Germany have won in 1914?](https://optimaondemand.github.io/optima-pilot-samples/10th-ms-world-history-assessments/11-8-discussion-could-germany-have-won-in-1914.html)
 
 ## Grade 11
 

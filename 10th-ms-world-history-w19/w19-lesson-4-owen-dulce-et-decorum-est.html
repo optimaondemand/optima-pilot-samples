@@ -1,0 +1,1739 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="author" content="Phyllis">
+<title>Dulce et Decorum Est</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>:root{
+  --page:#F4F0E7; --card:#FFFDF8; --ink:#1C1B1A; --ink2:#55524C; --line:#DCD4C4;
+  --terra:#5E5127; --terra-d:#3F3719; --terra-f:#EFE9D5;
+  --gold:#4B5043; --gold-d:#33372D; --gold-f:#E8E9E1;
+  --navy:#2E2F2A; --cyan:#C9B26B;
+  --ok:#2E7D4F; --ok-f:#E5F3EA; --bad:#B3261E; --bad-f:#FBE7E5;
+  --head:"Old Standard TT", Georgia, "Times New Roman", serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--ink);font:18px/1.7 Georgia,"Times New Roman",serif;padding-bottom:120px}
+button{font:inherit;color:inherit;cursor:pointer}
+img{max-width:100%;display:block}
+h1,h2,h3{font-family:var(--head);font-weight:400;color:var(--terra-d);line-height:1.2;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+/* Optima chrome */
+.oao{background:var(--navy);color:#fff;font:600 14px/1 system-ui,"Segoe UI",sans-serif}
+.oao .wrap{display:flex;align-items:center;gap:10px;height:52px}
+.oao img{width:34px;height:34px;object-fit:contain}
+.oao .sub{margin-left:auto;color:var(--cyan);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:12px}
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line);background:#E9E3D6}
+.hero::before{content:"";position:absolute;inset:0;background:var(--hero) center 35%/cover;opacity:.2;filter:grayscale(1) contrast(1.1)}
+.hero .wrap{position:relative;padding:16px 20px 14px;display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.kicker{font:700 12px/1 system-ui,"Segoe UI",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.hero h1{font-size:30px;margin:0}
+.guide{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px 12px 12px;box-shadow:0 6px 24px rgba(60,40,20,.10)}
+.guide img{width:76px;height:76px;border-radius:50%;object-fit:cover;border:3px solid var(--gold)}
+.guide b{display:block;font-family:var(--head);font-weight:400;font-size:21px;color:var(--ink)}
+.guide small{display:block;color:var(--ink2);font-size:14px;margin-bottom:8px}
+.btn{border:0;border-radius:999px;padding:10px 18px;background:var(--terra);color:#fff;font:600 15px/1 system-ui,"Segoe UI",sans-serif;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{background:var(--terra-d)}
+.btn.ghost{background:transparent;color:var(--terra-d);border:1.5px solid var(--terra)}
+.btn.ghost:hover{background:var(--terra-f)}
+.btn.small{padding:7px 13px;font-size:13px}
+/* route */
+.route{position:sticky;top:0;z-index:20;background:rgba(246,240,228,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.route .wrap{max-width:1180px;display:flex;align-items:center;gap:8px;padding-top:10px;padding-bottom:10px}
+.stops{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.stops::-webkit-scrollbar{display:none}
+.stop{flex:none;border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 13px/1 system-ui,"Segoe UI",sans-serif;color:var(--ink2);display:flex;align-items:center;gap:6px}
+.stop i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);font-size:11px}
+.stop.done i{background:var(--gold);color:#fff}
+.stop.on{border-color:var(--terra);color:var(--terra-d)}
+.stop.on i{background:var(--terra);color:#fff}
+.tools{display:flex;gap:6px;flex:none}
+/* steps */
+.step{display:none;padding:34px 0 10px;animation:rise .45s ease}
+.step.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.parthead{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.parthead h2{font-size:38px;margin-top:6px}
+.meander{height:6px;margin:16px 0 22px;border-top:2px solid var(--ink);border-bottom:1px solid var(--ink);opacity:.55}
+h3.sub{font-size:24px;margin:30px 0 10px;color:var(--ink)}
+.prose{position:relative;margin:0 0 16px}
+.pp{position:absolute;left:-40px;top:4px;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--terra);font-size:11px;opacity:.55;display:grid;place-items:center}
+.pp:hover,.prose.reading .pp{opacity:1;border-color:var(--terra)}
+.prose.reading{background:linear-gradient(90deg,var(--gold-f),transparent 70%);border-radius:6px;box-shadow:-10px 0 0 var(--gold-f)}
+.w{border-radius:3px}
+.w.on{background:#D9DACB;box-shadow:0 0 0 2px #D9DACB}
+.term{border-bottom:2px dotted var(--terra);cursor:pointer}
+.term:hover{background:var(--terra-f)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:22px 0}
+.card.terra{border-top:4px solid var(--terra)}
+.card.gold{border-top:4px solid var(--gold)}
+.label{font:700 12px/1 system-ui,"Segoe UI",sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.label .say{margin-left:auto}
+.say{border:1.5px solid var(--line);background:var(--card);color:var(--terra-d);border-radius:999px;padding:5px 11px;font:600 12px/1 system-ui,"Segoe UI",sans-serif;display:inline-flex;gap:6px;align-items:center}
+.say:hover{border-color:var(--terra)}
+.instr{font-size:16px;color:var(--ink2);margin:0 0 14px}
+figure{margin:24px 0}
+figure img{border-radius:10px;border:1px solid var(--line)}
+figcaption{font-size:14px;color:var(--ink2);margin-top:8px;line-height:1.5}
+.ui{font-family:system-ui,"Segoe UI",sans-serif}
+/* arrive */
+.focusq{font-family:var(--head);font-size:30px;color:var(--ink);margin:0 0 12px}
+.obj{list-style:none;padding:0;margin:0;counter-reset:o}
+.obj li{counter-increment:o;display:grid;grid-template-columns:34px 1fr;gap:10px;margin:0 0 12px;font-size:17px}
+.obj li::before{content:counter(o);width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font:700 13px system-ui,sans-serif;margin-top:2px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 14px;font-size:16px;line-height:1.35}
+.opt:hover{border-color:var(--terra)}
+.opt.picked{border-color:var(--terra);background:var(--terra-f)}
+.opt.right{border-color:var(--ok);background:var(--ok-f)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-f)}
+.note{font:600 14px/1.4 system-ui,"Segoe UI",sans-serif;color:var(--ink2);margin-top:12px;min-height:20px}
+.next{display:flex;justify-content:space-between;gap:10px;margin:34px 0 10px;border-top:1px solid var(--line);padding-top:20px}
+/* svg widgets */
+.stage{width:100%;height:auto;display:block;background:linear-gradient(#FBF8F1,#EFE9DD);border-radius:10px;border:1px solid var(--line)}
+.hot{cursor:pointer;transition:filter .15s}
+.hot:hover,.hot.sel{filter:drop-shadow(0 0 6px rgba(142,47,42,.55))}
+.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+.seg button{border:0;background:transparent;padding:7px 14px;font:600 13px/1 system-ui,sans-serif;color:var(--ink2)}
+.seg button.on{background:var(--terra);color:#fff}
+.wrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0 0}
+.info{margin-top:12px;background:var(--gold-f);border-radius:10px;padding:12px 14px;font-size:16px;min-height:52px;line-height:1.5}
+.info b{font-family:var(--head);font-weight:400;font-size:19px;color:var(--terra-d)}
+.wave{fill:none;stroke:var(--terra);stroke-width:2.5;opacity:0}
+.go .wave{animation:wave 2.2s ease-out forwards}
+.go .wave:nth-of-type(2){animation-delay:.25s}
+.go .wave:nth-of-type(3){animation-delay:.5s}
+.go .wave:nth-of-type(4){animation-delay:.75s}
+@keyframes wave{0%{opacity:.9;transform:scale(.2)}100%{opacity:0;transform:scale(1)}}
+.wave{transform-box:fill-box;transform-origin:left bottom}
+.listener{transition:fill .3s}
+.lit{fill:var(--gold)!important}
+.shake{animation:shake .5s linear 3}
+@keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(-3px,1px)}50%{transform:translate(3px,-1px)}75%{transform:translate(-2px,0)}}
+#god{transition:transform 2.4s cubic-bezier(.4,.1,.3,1)}
+#rope{transition:all 2.4s cubic-bezier(.4,.1,.3,1)}
+#ekk{transition:transform 2s cubic-bezier(.4,.1,.3,1)}
+.tick{display:inline-block;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);vertical-align:-3px;margin-right:4px}
+.tick.y{background:var(--gold);border-color:var(--gold)}
+/* casting */
+.cast{width:100%;border-collapse:separate;border-spacing:6px;font-family:system-ui,sans-serif}
+.cast th{font:700 12px/1.2 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);padding:4px}
+.cast td{text-align:center}
+.cell{width:100%;min-height:74px;border:1.5px solid var(--line);border-radius:10px;background:#fff;display:grid;place-items:center;padding:6px 2px;gap:2px}
+.cell:hover{border-color:var(--terra)}
+.cell svg{width:34px;height:40px}
+.cell b{font:700 13px/1 system-ui,sans-serif;color:var(--ink2)}
+.cell[data-a="A"]{background:#F3EEDC;border-color:#CBBE8E}
+.cell[data-a="A"] b{color:var(--terra-d)}
+.cell[data-a="B"]{background:var(--gold-f);border-color:#E3C68C}
+.cell[data-a="B"] b{color:var(--gold-d)}
+.cell[data-a="C"]{background:#EEEFE8;border-color:#B8BFCF}
+.cell[data-a="C"] b{color:var(--navy)}
+.cell.err{border-color:var(--bad);box-shadow:0 0 0 2px var(--bad-f)}
+.off{font:12px/1.2 system-ui,sans-serif;color:#B5A994;min-height:74px;display:grid;place-items:center;border:1.5px dashed #E8DDCB;border-radius:10px}
+.scn{font:700 13px system-ui,sans-serif;color:var(--terra-d);white-space:nowrap}
+.fb{margin-top:12px;border-radius:10px;padding:10px 14px;font:15px/1.5 system-ui,sans-serif;display:none}
+.fb.show{display:block}
+.fb.ok{background:var(--ok-f);color:#1E5A37}
+.fb.no{background:var(--bad-f);color:#8A1D16}
+/* sort chips */
+.sortlist{display:grid;gap:8px}
+.chip{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;font-size:16px;line-height:1.35}
+.chip .pick{display:flex;gap:6px}
+.chip .pick button{border:1.5px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font:600 13px/1 system-ui,sans-serif;white-space:nowrap}
+.chip .pick button:hover{border-color:var(--terra)}
+.chip .pick button.sel{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.ok{border-color:var(--ok);background:var(--ok-f)}
+.chip.no{border-color:var(--bad);background:var(--bad-f)}
+.chip .why{grid-column:1/-1;font:14px/1.45 system-ui,sans-serif;color:var(--ink2);display:none}
+.chip.ok .why,.chip.no .why{display:block}
+.tally{font:600 14px system-ui,sans-serif;color:var(--ink2);margin-top:10px}
+/* guess reveal */
+.reveal{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
+.reveal .coin{width:62px;height:62px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#F1D58F,#C7922C 60%,#8F6516);display:grid;place-items:center;color:#fff;font-family:var(--head);font-size:26px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35)}
+/* drachma counter */
+.ledger{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+.count{font-family:var(--head);font-size:44px;color:var(--terra-d);min-width:150px}
+.count small{display:block;font:600 12px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.workers{display:flex;flex-wrap:wrap;gap:6px}
+.worker{width:34px;height:44px;opacity:.15;transition:opacity .3s,transform .3s}
+.worker.on{opacity:1;transform:translateY(-3px)}
+/* festival days */
+.days{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.day{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 6px 10px;text-align:center;font-family:system-ui,sans-serif}
+.day b{display:block;font-family:var(--head);font-weight:400;font-size:26px;color:var(--terra-d);line-height:1}
+.day span{display:block;font-size:12px;font-weight:600;color:var(--ink2);margin-top:6px;line-height:1.25}
+.day.seen{background:var(--gold-f);border-color:#E3C68C}
+.day.on{border-color:var(--terra);box-shadow:0 0 0 2px var(--terra-f)}
+.daypanel{margin-top:12px;background:var(--gold-f);border-radius:12px;padding:14px 16px;font-size:16px;min-height:90px}
+.daypanel h4{font-family:var(--head);font-weight:400;font-size:21px;color:var(--terra-d);margin:0 0 6px}
+.daypanel ul{margin:0;padding-left:20px}
+.dots{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 12px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--terra);transform:scale(0);transition:transform .25s}
+.dot.in{transform:scale(1)}
+.chorusrow{display:grid;grid-template-columns:150px 1fr 40px;gap:10px;align-items:center;font:600 14px system-ui,sans-serif}
+.chorusrow em{font-style:normal;font-family:var(--head);font-size:20px;color:var(--terra-d)}
+.citgrid{display:grid;grid-template-columns:repeat(40,1fr);gap:2px;margin-top:10px}
+.cz{aspect-ratio:1;border-radius:50%;background:#DDD0BA;transition:background .4s,transform .4s}
+.cz.on{background:var(--terra);transform:scale(1.25)}
+/* quiz */
+.q{margin:0 0 22px}
+.q p{margin:0 0 10px;font-weight:600}
+.q .opts{grid-template-columns:1fr}
+.q .fbline{font:15px/1.5 system-ui,sans-serif;margin-top:8px;min-height:0}
+.q .fbline.ok{color:var(--ok)}
+.q .fbline.no{color:var(--bad)}
+.keep{background:var(--navy);color:#fff;border-radius:14px;padding:22px 24px;margin:26px 0}
+.keep .label{color:var(--cyan)}
+.keep p{margin:0;font-size:19px}
+/* dock */
+.dock{position:fixed;left:50%;bottom:14px;transform:translate(-50%,140%);z-index:40;width:min(860px,calc(100% - 20px));background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 40px rgba(50,30,10,.22);display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:10px 14px 10px 10px;transition:transform .4s cubic-bezier(.3,.1,.2,1)}
+.dock.show{transform:translate(-50%,0)}
+.dock img{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2.5px solid var(--gold)}
+.dock.talking img{animation:talk 1.4s ease-in-out infinite}
+@keyframes talk{50%{box-shadow:0 0 0 5px rgba(199,146,44,.28)}}
+.dock .who{font:700 12px system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--terra)}
+.cap{font-size:15px;line-height:1.45;max-height:44px;overflow:hidden;color:var(--ink)}
+.seek{width:100%;accent-color:var(--terra);height:4px;margin:4px 0 0}
+.ctl{display:flex;gap:4px;align-items:center}
+.ctl button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--line);background:#fff;display:grid;place-items:center;font-size:13px}
+.ctl button.main{width:44px;height:44px;background:var(--terra);border-color:var(--terra);color:#fff;font-size:15px}
+.ctl .rate{width:auto;padding:0 10px;border-radius:999px;font:700 12px system-ui,sans-serif}
+/* drawers */
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--card);z-index:50;box-shadow:-10px 0 40px rgba(50,30,10,.2);transform:translateX(105%);transition:transform .35s cubic-bezier(.3,.1,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer header{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line)}
+.drawer header h3{font-size:24px;color:var(--ink);flex:1}
+.drawer .x{border:0;background:transparent;font-size:24px;line-height:1;color:var(--ink2)}
+.drawer .body{overflow-y:auto;padding:12px 18px 30px;flex:1}
+.gl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.gl button{grid-row:span 2;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);background:#fff;color:var(--terra);font-size:12px}
+.gl b{font-family:var(--head);font-weight:400;font-size:20px}
+.gl b small{font:600 12px system-ui,sans-serif;color:var(--gold-d);margin-left:6px;letter-spacing:.04em}
+.gl span{font-size:15px;color:var(--ink2);line-height:1.45}
+.glh{font:700 12px system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--terra);margin:18px 0 0}
+.chat{display:flex;flex-direction:column;gap:10px}
+.msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:16px;line-height:1.5}
+.msg.me{align-self:flex-end;background:var(--terra-f);border-bottom-right-radius:4px}
+.msg.him{align-self:flex-start;background:var(--gold-f);border-bottom-left-radius:4px}
+.askrow{display:flex;gap:8px;padding:12px 18px;border-top:1px solid var(--line)}
+.askrow input{flex:1;border:1.5px solid var(--line);border-radius:999px;padding:10px 14px;font:16px Georgia,serif;background:#fff}
+.scrim{position:fixed;inset:0;background:rgba(30,20,10,.25);z-index:45;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.on{opacity:1;pointer-events:auto}
+.pop{position:absolute;z-index:60;max-width:320px;background:var(--ink);color:#fff;border-radius:10px;padding:10px 13px;font:14px/1.45 system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);display:none}
+.pop b{font-family:var(--head);font-weight:400;font-size:18px;display:block}
+.pop i{color:#D9DACB;font-style:normal;font-weight:600}
+footer{margin-top:40px;background:var(--navy);color:#C9D2E6;font:13px/1.6 system-ui,sans-serif;padding:18px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media (max-width:720px){
+  body{font-size:17px}
+  .hero h1{font-size:24px}
+  .parthead h2{font-size:30px}
+  .opts{grid-template-columns:1fr}
+  .pp{position:static;display:inline-grid;margin-right:6px;width:24px;height:24px;vertical-align:-4px}
+  .prose.reading{box-shadow:none}
+  .days{grid-template-columns:repeat(3,1fr)}
+  .chip{grid-template-columns:1fr}
+  .chorusrow{grid-template-columns:110px 1fr 34px}
+  .citgrid{grid-template-columns:repeat(30,1fr)}
+  .dock{grid-template-columns:auto 1fr;bottom:8px}
+  .dock{gap:6px 10px;padding:8px 10px}
+  .dock img{width:40px;height:40px}
+  .cap{font-size:14px;max-height:40px}
+  .dock .ctl{grid-column:1/-1;justify-content:center}
+  .ctl button{width:32px;height:32px}
+  .ctl button.main{width:38px;height:38px}
+  #back5,#fwd5{display:none}
+  body{padding-bottom:160px}
+  .ledger{grid-template-columns:1fr}
+  .cast{border-spacing:3px}
+  .cell svg{width:26px;height:30px}
+  .tools .btn span{display:none}
+}
+/* voice is opt-in: listen controls appear only while it is on */
+body:not(.voice-on) .say,body:not(.voice-on) [data-part],body:not(.voice-on) .pp,body:not(.voice-on) .gl button,body:not(.voice-on) .outro{display:none}
+body:not(.voice-on) .gl{grid-template-columns:1fr}
+.voicetab{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:65;border:1px solid var(--line);border-right:0;background:var(--card);border-radius:14px 0 0 14px;padding:8px 8px 8px 8px;display:grid;justify-items:center;gap:5px;box-shadow:-4px 6px 22px rgba(50,30,10,.16);font:700 11px/1 system-ui,"Segoe UI",sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--terra-d)}
+.voicetab img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
+.voicetab:hover{border-color:var(--terra)}
+.voicetab.on img{border-color:var(--gold);animation:talk 1.4s ease-in-out infinite}
+.dock{z-index:60}
+body.reading-open .voicetab{top:auto;bottom:22px;transform:none}
+body.reading-open .dock{bottom:10px}
+.flow .ch > p.prose:first-of-type:has(.w[data-w="0"].hk)::first-letter{background:#D9DACB}
+.flow .ch > p.prose:first-of-type:has(.w[data-w="0"].he)::first-letter{background:#E3DAB8}
+#voiceOff{font-size:18px;color:var(--ink2)}
+/* read cards */
+.readcard{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;border-top:4px solid var(--terra)}
+.minibook{width:92px;height:124px;border:0;border-radius:3px 7px 7px 3px;padding:0;position:relative;background:linear-gradient(90deg,#6E2810 0 7px,var(--terra) 7px 100%);box-shadow:inset -3px 0 0 #E9DCC5,inset -5px 0 0 #CDBB9C,0 8px 18px rgba(60,30,10,.28);transition:transform .25s}
+.minibook::before{content:"";position:absolute;inset:9px 11px 9px 15px;border:1.5px solid var(--gold);border-radius:2px}
+.minibook span{position:absolute;left:15px;right:11px;top:50%;transform:translateY(-50%);font-family:var(--head);color:#F6E2B5;font-size:22px;text-align:center}
+.minibook:hover{transform:translateY(-3px) rotate(-1.5deg)}
+.readcard h3{font-size:25px;color:var(--ink);margin:2px 0 10px}
+.readcard .chs{display:block}
+.readfor{margin:0 0 14px;font-size:17px;line-height:1.5}
+.readfor b{display:block;font:700 12px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--terra);margin-bottom:6px}
+.rc-row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.rc-stat{font:600 14px/1.3 system-ui,sans-serif;color:var(--ink2)}
+.rc-stat.done{color:var(--ok)}
+.rc-ans{display:block;margin-top:16px}
+.rc-ans span{display:block;font:700 12px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-d);margin-bottom:6px}
+.rc-ans textarea,.noteed textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;font:16px/1.5 Georgia,serif;background:#fff;color:var(--ink);resize:vertical}
+.rc-ans textarea:focus,.noteed textarea:focus{outline:none;border-color:var(--terra)}
+.nbstats{display:flex;gap:26px;flex-wrap:wrap;margin:4px 0 6px}
+.nbstats div{font:600 13px system-ui,sans-serif;color:var(--ink2)}
+.nbstats b{display:block;font-family:var(--head);font-weight:400;font-size:34px;color:var(--terra-d);line-height:1.1}
+/* the reader */
+.reader{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;align-items:center;background:rgba(38,26,15,.62);backdrop-filter:blur(3px);visibility:hidden;opacity:0;pointer-events:none}
+.reader.open{visibility:visible;opacity:1;pointer-events:auto}
+body.reading-open{overflow:hidden}
+.rbar{width:100%;height:56px;flex:none;display:flex;align-items:center;gap:12px;padding:0 14px 0 20px;color:#F6EBD6}
+.rtitle{flex:1;min-width:0;display:flex;align-items:baseline;gap:10px;white-space:nowrap;overflow:hidden}
+.rtitle .kicker{color:#F0C982}
+.rtitle b{font-family:var(--head);font-weight:400;font-size:19px;overflow:hidden;text-overflow:ellipsis}
+.rtools{display:flex;gap:4px}
+.rt{border:1px solid rgba(246,235,214,.28);background:rgba(255,255,255,.06);color:#F6EBD6;border-radius:999px;height:36px;padding:0 13px;display:inline-flex;align-items:center;gap:7px;font:600 13px/1 system-ui,"Segoe UI",sans-serif}
+.rt:hover,.rt[aria-pressed="true"]{background:rgba(255,255,255,.18);border-color:rgba(246,235,214,.6)}
+.rt.close{background:#F6EBD6;color:var(--terra-d);border-color:#F6EBD6}
+.stagebook{flex:1;width:100%;display:grid;place-items:center;perspective:2600px;padding-bottom:18px}
+.book{--P:540px;--H:720px;--M:72px;--T:54px;--B:50px;--fs:19px;--lh:1.7;position:relative;width:var(--P);height:var(--H);transform-origin:0 0;perspective:2400px;user-select:none;-webkit-user-select:none}
+.book.two{width:calc(var(--P)*2)}
+.paper{position:absolute;top:0;height:100%;width:var(--P);background:#FBF6EA;box-shadow:0 18px 50px rgba(20,10,0,.38)}
+.pl{left:0;border-radius:4px 0 0 4px;background:linear-gradient(270deg,rgba(90,60,20,.20),rgba(90,60,20,.05) 5%,transparent 12%),#FBF6EA;box-shadow:-2px 0 0 #EDE3CF,-4px 1px 0 #DCCFB4,-6px 2px 0 #EDE3CF,-8px 3px 0 #CDBB9C,0 18px 50px rgba(20,10,0,.38)}
+.pr{left:var(--P);border-radius:0 4px 4px 0;background:linear-gradient(90deg,rgba(90,60,20,.22),rgba(90,60,20,.05) 5%,transparent 12%),#FBF6EA;box-shadow:2px 0 0 #EDE3CF,4px 1px 0 #DCCFB4,6px 2px 0 #EDE3CF,8px 3px 0 #CDBB9C,0 18px 50px rgba(20,10,0,.38)}
+.book:not(.two) .pr{display:none}
+.book:not(.two) .pl{border-radius:4px;background:#FBF6EA}
+.vp{position:absolute;left:var(--M);top:var(--T);width:calc(var(--P) - 2*var(--M));height:calc(var(--H) - var(--T) - var(--B));overflow:hidden;touch-action:pinch-zoom}
+.book.two .vp{width:calc(2*var(--P) - 2*var(--M))}
+.flow{height:100%;column-count:1;column-gap:calc(2*var(--M));column-fill:auto;font-size:var(--fs);line-height:var(--lh);color:#221B14;user-select:text;-webkit-user-select:text;will-change:transform}
+.book.two .flow{column-count:2}
+.flow.slide{transition:transform .32s cubic-bezier(.3,.1,.2,1)}
+.flow .prose{margin:0;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.flow .prose + .prose{text-indent:1.5em}
+.book:not(.two) .flow .prose{text-align:left}
+.flow .ch{break-before:column}
+.flow .chk{font:700 11px/1 system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);margin:18px 0 10px}
+.flow .ch h3{font-size:calc(var(--fs)*1.55);color:var(--terra-d);margin:0 0 6px;line-height:1.15}
+.flow .ch h3::after{content:"";display:block;width:64px;height:2px;background:var(--gold);margin:16px 0 22px}
+.flow .ch > p.prose:first-of-type::first-letter{font-family:var(--head);font-size:3.2em;float:left;line-height:.9;margin:.06em .08em 0 0;color:var(--terra-d)}
+.flow .pp{position:static;display:inline-grid;width:24px;height:24px;margin-right:6px;vertical-align:-4px;text-indent:0;user-select:none}
+.flow .prose.reading{box-shadow:none;background:none}
+/* inside the book: part openers, plates, figures, answers, end page */
+.flow .readfor{font:italic calc(var(--fs)*.88)/1.45 Georgia,serif;color:var(--ink2);margin:0 0 18px;padding-left:12px;border-left:3px solid var(--terra)}
+.flow .readfor b{font-style:normal;margin-bottom:4px}
+.flow .ch h3::after{margin:14px 0 16px}
+.partpg,.endpg{break-before:column;break-after:column;height:100%;display:flex;flex-direction:column;justify-content:center;text-align:center;gap:10px}
+.partpg h2,.endpg h2{font-size:calc(var(--fs)*2.1);color:var(--terra-d)}
+.partpg .chk,.endpg .chk{margin:0}
+.partpg .meander,.endpg .meander{width:50%;margin:8px auto 14px}
+.pt-ch{font-size:calc(var(--fs)*.95);color:var(--ink);line-height:1.4}
+.pt-ch b{display:block;font:700 10.5px/1 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);margin:8px 0 4px}
+.pt-slot{text-align:left;margin-top:12px}
+.pt-slot .card{margin:0;font-size:16px;line-height:1.5}
+.endpg .btn{align-self:center}
+.plate{break-before:column;break-after:column;font-size:16px;line-height:1.5;user-select:none;-webkit-user-select:none}
+.plate .card{break-inside:avoid}
+.plate .card:has(.sortlist){break-inside:auto}
+.plate .chip,.plate .instr,.plate .label{break-inside:avoid}
+.plate .label{break-after:avoid}
+.plate .meander{margin:2px 0 12px}
+.plate .card{background:transparent;border:0;padding:0;margin:0 0 18px;border-radius:0}
+.plate .card + .card{border-top:1px solid var(--line);padding-top:16px}
+.plate .label{font-size:13px;color:var(--terra);margin-bottom:8px}
+.plate .instr{font-size:15px;margin-bottom:10px}
+.plate .info,.plate .daypanel{font-size:15px;min-height:0}
+.plate .wrow{gap:6px;margin-top:10px}
+.plate .btn.small{padding:7px 11px;font-size:12.5px}
+.plate .cast{border-spacing:3px}
+.plate .cast th{font-size:9.5px;letter-spacing:0;padding:2px}
+.plate .cell{min-height:58px;padding:4px 1px}
+.plate .cell svg{width:24px;height:28px}
+.plate .off{min-height:58px;font-size:10px}
+.plate .scn{font-size:11px;white-space:normal}
+.plate .chip{grid-template-columns:1fr;gap:6px;font-size:15px;padding:8px 10px}
+.plate .chip .pick button{padding:6px 10px;font-size:12px}
+.plate .days{grid-template-columns:repeat(3,1fr);gap:6px}
+.plate .day{padding:8px 4px}
+.plate .day b{font-size:22px}
+.plate .chorusrow{grid-template-columns:86px 1fr 30px;font-size:13px}
+.plate .ledger{grid-template-columns:1fr;gap:8px}
+.plate .count{font-size:36px}
+.plate .worker{width:26px;height:34px}
+.plate .citgrid{grid-template-columns:repeat(30,1fr)}
+.flow .bfig{break-inside:avoid;margin:14px 0 18px;text-indent:0}
+.flow .bfig img{max-height:calc((var(--H) - var(--T) - var(--B)) * .42);width:auto;max-width:100%;margin:0 auto;border-radius:3px;border:0;filter:sepia(.15)}
+.flow .bfig figcaption{font:13px/1.45 system-ui,"Segoe UI",sans-serif;color:var(--ink2);margin-top:8px}
+.flow .ansbox{break-inside:avoid;margin:20px 0 6px;padding:14px 0 0;border-top:1px solid var(--line);text-indent:0}
+.flow .ansbox span{display:block;font:700 11px/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);margin-bottom:6px}
+.flow .ansbox em{display:block;font-size:calc(var(--fs)*.85);line-height:1.45;color:var(--ink2);margin-bottom:8px}
+.flow .ansbox textarea{width:100%;border:1.5px solid var(--line);border-radius:8px;padding:8px 10px;font:16px/1.5 Georgia,serif;background:#fff;color:var(--ink);resize:none;user-select:text}
+.flow .ansbox textarea:focus{outline:none;border-color:var(--terra)}
+/* the book landing (Parts 1-6) */
+.stage0{display:grid;grid-template-columns:auto auto 1fr;gap:36px;align-items:center;padding:8px 0 28px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+.mag{display:grid;justify-items:center;gap:4px;text-align:center;width:150px}
+.mag img{width:118px;height:118px;border-radius:50%;object-fit:cover;border:4px solid var(--gold);box-shadow:0 8px 22px rgba(60,40,20,.18);margin-bottom:6px}
+.mag b{display:block;font-family:var(--head);font-weight:400;font-size:21px;color:var(--ink)}
+.mag small{display:block;color:var(--ink2);font-size:14px;margin-bottom:8px}
+.mag-b{display:grid;gap:6px;width:100%}
+.mag .btn{justify-content:center}
+.minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"f c" "o c";grid-template-rows:auto 1fr;gap:16px;align-items:start}
+.minis .card{padding:16px 18px;margin:0;font-size:16px}
+.minis .card.terra{grid-area:f}
+.minis .objs{grid-area:o}
+.minis .card.gold{grid-area:c}
+.minis .focusq{font-size:21px;margin:4px 0 6px}
+.minis .opts{gap:8px}
+.minis .opt{padding:9px 12px;font-size:15px}
+.objs summary{cursor:pointer;list-style:none}
+.objs summary::-webkit-details-marker{display:none}
+.objs summary::after{content:" \25be ";color:var(--ink2)}
+.objs[open] summary::after{content:" \25b4 "}
+.objs .obj{margin:10px 0 0;font-size:15px}
+.bigbook{--P:260px;position:relative;width:260px;height:360px;border:0;padding:0;border-radius:3px 9px 9px 3px;background:radial-gradient(ellipse at 40% 30%,rgba(255,220,180,.18),transparent 60%),linear-gradient(90deg,#3F3719 0 12px,#5E5127 12px 15px,var(--terra) 15px 100%);box-shadow:inset -4px 0 0 #E9DCC5,inset -7px 0 0 #CDBB9C,0 18px 40px rgba(60,30,10,.32);transition:transform .3s}
+.bigbook:hover{transform:translateY(-4px) rotate(-1deg)}
+.bigbook .cv-in{inset:16px 18px 16px 26px;gap:12px;padding:10px}
+.bigbook .cv-k{font-size:8px}
+.bigbook .cv-t{font-size:21px}
+.bl-body h2{font-size:34px;margin:6px 0 14px}
+.partlist{display:grid;gap:6px;margin-bottom:18px}
+.pl-row{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:12px;padding:10px 14px}
+.pl-row:hover{border-color:var(--terra)}
+.pl-row i{font-style:normal;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--line);font:700 13px system-ui,sans-serif}
+.pl-row.read i{background:var(--gold);color:#fff}
+.pl-row b{font-family:var(--head);font-weight:400;font-size:19px}
+.pl-row span{font:600 13px system-ui,sans-serif;color:var(--ink2)}
+@media (max-width:900px){.stage0{grid-template-columns:auto 1fr;gap:24px}.stage0 .bl-body{grid-column:1/-1}}
+@media (max-width:720px){.stage0{grid-template-columns:1fr;justify-items:center;gap:20px}.mag{width:auto;grid-template-columns:64px auto;align-items:center;justify-items:start;text-align:left;column-gap:12px}.mag img{grid-row:1/3;width:64px;height:64px;margin:0;border-width:3px}.mag small{display:none}.mag-b{display:flex;width:auto}.minis{grid-template-columns:1fr;grid-template-areas:"f" "o" "c";grid-template-rows:auto}.stage0 .bl-body{width:100%}.pl-row{grid-template-columns:28px 1fr}.pl-row span{grid-column:2}}
+.titlepg{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;break-after:column}
+.titlepg img{max-width:72%;max-height:42%;object-fit:contain;filter:sepia(.35);mix-blend-mode:multiply}
+.titlepg h2{font-size:calc(var(--fs)*1.9);color:var(--terra-d)}
+.titlepg .tp-k{font:700 11px/1.4 system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2)}
+.titlepg .meander{width:60%;margin:0}
+.w.hk,.s.hk{background:#D9DACB}
+.w.he,.s.he{background:#E3DAB8}
+.w.hn,.s.hn{background:linear-gradient(transparent 82%,#D8B266 82%)}
+.w.pre,.s.pre{background:rgba(142,47,42,.10)}
+.flow ::selection{background:rgba(142,47,42,.22)}
+.hd{position:absolute;top:22px;font:700 10.5px/1 system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#9A8B78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:calc(var(--P) - 2*var(--M))}
+.hdL{left:var(--M)}
+.hdR{left:calc(var(--P) + var(--M));text-align:right}
+.fo{position:absolute;bottom:18px;width:var(--P);text-align:center;font:600 12px/1 Georgia,serif;color:#9A8B78}
+.foL{left:0}
+.foR{left:var(--P)}
+.book:not(.two) .hdR,.book:not(.two) .foR{display:none}
+.slips{position:absolute;inset:0;pointer-events:none}
+.slip{position:absolute;pointer-events:auto;width:calc(var(--M) - 16px);max-height:92px;overflow:hidden;border:0;border-left:3px solid var(--gold);background:var(--gold-f);color:#5A4320;font:12px/1.35 system-ui,"Segoe UI",sans-serif;text-align:left;padding:6px 7px;border-radius:2px 6px 6px 2px;box-shadow:0 2px 6px rgba(80,50,10,.12);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical}
+.slip.L{left:8px}
+.slip.R{right:8px}
+.slip:hover{background:#F7E4B8}
+.book:not(.two) .slip{width:16px;height:16px;padding:0;border:0;border-radius:50%;background:var(--gold);color:transparent;left:3px}
+.ribbon{position:absolute;top:-6px;right:calc(var(--M) / 2 - 10px);width:20px;height:130px;background:linear-gradient(90deg,#5E5127,var(--terra) 45%,#5E5127);clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%);box-shadow:0 2px 3px rgba(0,0,0,.2);display:none;pointer-events:none}
+.ribbon.on{display:block}
+.ruler{position:absolute;inset:var(--T) 0 var(--B);display:none;flex-direction:column;pointer-events:none}
+.ruler.on{display:flex}
+.ruler i{display:block;background:rgba(60,40,20,.16)}
+.ruler b{display:block;flex:none;border-top:1px solid rgba(94,81,39,.35);border-bottom:1px solid rgba(94,81,39,.35)}
+.ruler i:last-child{flex:1}
+.turn{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:1px solid rgba(246,235,214,.4);background:rgba(251,246,234,.92);color:var(--terra-d);font-size:26px;line-height:1;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.turn.prev{left:-62px}
+.turn.next{right:-62px}
+.turn:disabled{opacity:.25;cursor:default}
+.book:not(.two) .turn{top:auto;bottom:-50px;transform:none;width:42px;height:42px;font-size:24px}
+.book:not(.two) .turn.prev{left:4px}
+.book:not(.two) .turn.next{right:4px}
+.leaf,.lift{position:absolute;top:0;height:100%;width:var(--P);display:none;transform-style:preserve-3d;pointer-events:none}
+.leaf.fwd{display:block;left:var(--P);transform-origin:left center}
+.leaf.back{display:block;left:0;transform-origin:right center}
+.lf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#FBF6EA;overflow:hidden}
+.leaf.fwd .lf.front{background:linear-gradient(90deg,rgba(90,60,20,.18),transparent 14%),#FBF6EA}
+.leaf.fwd .lf.back,.leaf.back .lf.front{background:linear-gradient(270deg,rgba(90,60,20,.18),transparent 14%),#FBF6EA}
+.leaf.back .lf.back{background:linear-gradient(90deg,rgba(90,60,20,.18),transparent 14%),#FBF6EA}
+.lf.back{transform:rotateY(180deg)}
+.lift.on{display:block;background:#FBF6EA}
+.clip{position:absolute;left:var(--M);top:var(--T);width:calc(var(--P) - 2*var(--M));height:calc(var(--H) - var(--T) - var(--B));overflow:hidden}
+.clip .flow{width:calc(var(--P) - 2*var(--M))}
+.book.two .clip .flow{width:calc(2*var(--P) - 2*var(--M))}
+.cover{position:absolute;top:0;height:100%;width:var(--P);left:var(--P);transform-origin:left center;transform-style:preserve-3d;display:none}
+.book:not(.two) .cover{left:0}
+.cover.on{display:block}
+.cf{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:3px 8px 8px 3px}
+.cf.front{background:radial-gradient(ellipse at 40% 30%,rgba(255,220,180,.18),transparent 60%),linear-gradient(90deg,#3F3719 0 16px,#5E5127 16px 20px,var(--terra) 20px 100%);box-shadow:0 24px 60px rgba(20,10,0,.5)}
+.cf.back{transform:rotateY(180deg);background:linear-gradient(270deg,rgba(90,60,20,.22),transparent 12%),#F3E9D4;border-radius:8px 3px 3px 8px}
+.cv-in{position:absolute;inset:26px 26px 26px 42px;border:2px solid var(--gold);outline:1px solid rgba(199,146,44,.45);outline-offset:-8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;text-align:center;padding:20px}
+.cv-in img{width:58%;border-radius:50%;aspect-ratio:1;object-fit:cover;filter:sepia(.8) contrast(1.05);border:3px solid var(--gold);opacity:.92}
+.cv-k{font:700 11px/1 system-ui,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:#F0C982}
+.cv-t{font-family:var(--head);font-size:clamp(24px,calc(var(--P)*.07),40px);color:#FBEACB;line-height:1.15}
+.cv-s{font:600 12px/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#F0C982}
+.book.closed .paper.pl,.book.closed .vp,.book.closed .hd,.book.closed .fo,.book.closed .slips,.book.closed .turn,.book.closed .ribbon{opacity:0}
+.book.closed:not(.two) .paper{opacity:1}
+.book .paper.pl,.book .vp,.book .hd,.book .fo,.book .slips,.book .turn{transition:opacity .45s}
+.rpanel{position:fixed;left:0;top:56px;bottom:0;width:min(360px,100%);background:var(--card);z-index:3;transform:translateX(-105%);transition:transform .3s;display:flex;flex-direction:column;box-shadow:10px 0 40px rgba(0,0,0,.25)}
+.rpanel.open{transform:none}
+.rpanel header{display:flex;align-items:center;gap:10px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.rpanel header .seg{flex:1}
+.rpanel .x{border:0;background:transparent;font-size:24px;color:var(--ink2)}
+.rpbody{overflow-y:auto;padding:8px 16px 24px;flex:1}
+.toc{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:11px 2px}
+.toc small{grid-column:1/-1;font:700 11px/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--terra)}
+.toc b{font-family:var(--head);font-weight:400;font-size:18px;color:var(--ink)}
+.toc span{font:600 13px system-ui,sans-serif;color:var(--ink2)}
+.toc.read span::before{content:"\2713  ";color:var(--ok)}
+.toc:hover b{color:var(--terra-d)}
+.mk{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:12px 2px}
+.mk em{display:block;font-style:italic;font-size:15px;line-height:1.5;color:var(--ink);display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.mk .nt{display:block;font:14px/1.45 system-ui,sans-serif;color:#5A4320;background:var(--gold-f);border-left:3px solid var(--gold);padding:6px 9px;margin-top:6px}
+.tag{display:inline-block;font:700 10.5px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:4px 7px;border-radius:4px;margin-bottom:6px}
+.tag.k{background:#D9DACB;color:#6B4A0C}
+.tag.e{background:#E3DAB8;color:#7C3115}
+.tag.n{background:var(--gold-f);color:#6B4A0C}
+.mkh{font:700 12px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:18px 0 4px}
+.empty{color:var(--ink2);font-size:15px;padding:14px 2px}
+.rset{position:fixed;top:60px;right:14px;z-index:4;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(0,0,0,.25);display:none}
+.rset.open{display:block}
+.hlbar{position:fixed;z-index:70;display:none;gap:2px;background:var(--ink);border-radius:12px;padding:5px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.hlbar.open{display:flex}
+.hlbar button{border:0;background:transparent;color:#fff;border-radius:8px;padding:8px 10px;font:600 13px/1 system-ui,"Segoe UI",sans-serif;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.hlbar button:hover{background:rgba(255,255,255,.14)}
+.hlbar .rm{display:none;color:#F3B9A6}
+.hlbar.edit .rm{display:inline-flex}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+.sw.k{background:#D9DACB}
+.sw.e{background:#E3DAB8}
+.noteed{position:fixed;z-index:72;left:50%;top:50%;transform:translate(-50%,-50%);width:min(440px,calc(100% - 32px));background:var(--card);border-radius:16px;padding:18px 20px;box-shadow:0 20px 60px rgba(0,0,0,.4);display:none}
+.noteed.open{display:block}
+.noteed blockquote{margin:0 0 12px;padding:2px 0 2px 12px;border-left:3px solid var(--gold);font-style:italic;font-size:15px;line-height:1.5;color:var(--ink2);max-height:96px;overflow:auto}
+.drawer{z-index:80}
+.scrim{z-index:78}
+.pop{z-index:90}
+.pop .savew{display:block;margin-top:8px;border:1px solid rgba(255,255,255,.35);background:transparent;color:#D9DACB;border-radius:999px;padding:5px 10px;font:600 12px/1 system-ui,sans-serif}
+.msg.ctx{align-self:stretch;max-width:100%;background:transparent;border-left:3px solid var(--gold);border-radius:0;font-style:italic;color:var(--ink2);font-size:15px;padding:4px 0 4px 12px}
+@media (max-width:860px){
+  .rt span{display:none}
+  .rt{padding:0 11px}
+  .rbar{padding:0 8px 0 12px}
+  .rtitle .kicker{display:none}
+  .rtitle b{font-size:16px}
+  .stagebook{padding:4px 0 0;place-items:start center}
+  body.reading-open .voicetab{left:50%;right:auto;bottom:max(10px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;align-items:center;gap:8px;border-radius:999px;border-right:1px solid var(--line);padding:4px 14px 4px 4px}
+  body.reading-open .voicetab img{width:32px;height:32px}
+  body.reading-open.voice-on .voicetab{bottom:auto;top:calc(56px + 4px + var(--bookH, 600px) + 6px)}
+  .book{--T:40px;--B:52px}
+  .hd{top:16px}
+  .fo{bottom:20px}
+}
+@media (max-width:720px){
+  .readcard{grid-template-columns:1fr;gap:14px}
+  .minibook{width:72px;height:96px}
+  .voicetab{top:auto;bottom:96px;padding:6px}
+  .voicetab img{width:32px;height:32px}
+  .voicetab span{font-size:10px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ===== kit: US History (newsprint look, two accents: oxblood + navy) ===== */
+h1,h2,h3,h4{letter-spacing:.005em}
+.hero h1{font-weight:700}
+.unvoiced .voicetab,.unvoiced .dock,.unvoiced [data-play]{display:none!important}
+/* Mr. Magister mini-lecture */
+.mini{border-top:4px solid var(--gold);position:relative}
+.mini .mhead{display:flex;gap:12px;align-items:center;margin-bottom:14px}
+.mini .mhead img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2.5px solid var(--gold);flex:none}
+.mini .mhead h4{font-family:var(--head);font-weight:700;font-size:22px;margin:0;color:var(--ink);line-height:1.2}
+.mini.live .mhead img{animation:talk 1.4s ease-in-out infinite}
+.mini .mstage{position:relative}
+.mini .mstage svg{width:100%;height:auto;display:block;background:linear-gradient(#FBF8F1,#EFE9DD);border:1px solid var(--line);border-radius:10px}
+.mini .mfoot{margin-top:12px}
+.mini .mcap{background:var(--gold-f);border-radius:10px;padding:12px 14px;font-size:16.5px;line-height:1.5;min-height:56px}
+.mini .mcap .mbeat{display:inline-block;font:700 11px/1 system-ui,sans-serif;letter-spacing:.1em;color:var(--gold-d);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin-right:8px;vertical-align:2px}
+.mini .btn[disabled]{opacity:.4;cursor:default}
+.mini [data-on]{opacity:0;transition:opacity .45s ease,transform .9s cubic-bezier(.3,.1,.2,1)}
+.mini [data-on].shown{opacity:1}
+.mini svg text{font-family:system-ui,"Segoe UI",sans-serif}
+.mini svg .sh{font-family:"Old Standard TT",Georgia,serif}
+.plate .mini .mhead h4{font-size:18px}
+.plate .mini .mhead img{width:40px;height:40px}
+.plate .mini .mcap{font-size:14.5px;min-height:0;padding:9px 11px}
+.plate .mini{border-top:0}
+/* typed responses (Canvas written work folded into the lesson) */
+.resp{margin:0 0 18px}
+.resp .rq{font-size:17px;margin:0 0 8px}
+.resp .rq b{font-family:var(--head);color:var(--terra-d);margin-right:4px}
+.resp textarea{width:100%;min-height:130px;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font:16px/1.6 Georgia,serif;background:#fff;color:var(--ink);resize:vertical}
+.resp textarea:focus{outline:none;border-color:var(--gold)}
+.resp .wc{font:600 12px/1 system-ui,sans-serif;color:var(--ink2);text-align:right;margin-top:4px;min-height:12px}
+.resp .hint{font-size:14.5px;color:var(--ink2);margin:0 0 8px;line-height:1.45}
+.submitrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;background:var(--gold-f);border-radius:12px;padding:12px 14px;margin-top:6px}
+.submitrow .note{margin:0}
+/* source text: page markers + editor's marks */
+.flow .pgref{display:block;font:700 10.5px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:0 0 8px;text-indent:0}
+.flow .om{color:var(--ink2);font-style:normal}
+.srcnote{font-size:14px;color:var(--ink2);line-height:1.5}
+.titlepg .tp-cite{font-size:13px;color:var(--ink2);line-height:1.45;max-width:36ch;margin:6px auto 0}
+/* flip cards (tap to reveal) */
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.flip{border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:14px;text-align:left;font-size:16px;line-height:1.45;min-height:110px}
+.flip .back{display:none;color:var(--ink)}
+.flip.on{border-color:var(--gold);background:var(--gold-f)}
+.flip.on .front{display:none}
+.flip.on .back{display:block}
+.flip small{display:block;font:700 11px/1 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-d);margin-bottom:6px}
+/* select rows (Try It) */
+.srow{margin:0 0 16px}
+.srow p{margin:0 0 8px;font-size:16.5px}
+.srow .opts{grid-template-columns:1fr}
+.srow .fbline{font-size:15px}
+.fbline{font:600 15px/1.45 system-ui,"Segoe UI",sans-serif;margin-top:8px;min-height:0}
+.fbline.ok{color:var(--ok)}
+.fbline.no{color:var(--bad)}
+.plate .srow p{font-size:15px}
+.plate .opt{padding:9px 11px;font-size:14.5px}
+/* enlarge a mini-lecture from the book */
+.mini .mhead .mzoom{margin-left:auto;display:none;flex:none}
+.plate .mini .mhead .mzoom{display:inline-flex}
+.plate .mini .mstage{cursor:zoom-in}
+#mzoom{position:fixed;inset:0;z-index:200;background:rgba(20,18,16,.72);display:none;align-items:center;justify-content:center;padding:16px}
+#mzoom.open{display:flex}
+#mzoom .mz-in{background:var(--card);border-radius:16px;padding:16px 18px 18px;width:min(1000px,100%);max-height:100%;overflow:auto;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+#mzoom .mz-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+#mzoom .mz-t{font-family:var(--head);font-size:22px;font-weight:700}
+#mzoom .mz-top .btn{margin-left:auto}
+#mzoom .mz-stage svg{width:100%;height:auto;display:block;background:linear-gradient(#FBF8F1,#EFE9DD);border:1px solid var(--line);border-radius:10px}
+#mzoom .mz-cap{background:var(--gold-f);border-radius:10px;padding:12px 14px;font-size:18px;line-height:1.5;margin-top:12px}
+#mzoom .mz-cap .mbeat{display:inline-block;font:700 11px/1 system-ui,sans-serif;letter-spacing:.1em;color:var(--gold-d);background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;margin-right:8px;vertical-align:2px}
+#mzoom [data-on]{opacity:0}
+#mzoom [data-on].shown{opacity:1}
+#mzoom svg text{font-family:system-ui,"Segoe UI",sans-serif}
+#mzoom svg .sh{font-family:"Old Standard TT",Georgia,serif}
+/* arrive: intro + overview on the left, the book (with a compact chapter list) on the right */
+.step[data-step="0"]{width:min(1140px,calc(100vw - 40px));margin-left:calc(50% - min(570px,calc(50vw - 20px)))}
+.arrive{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:36px;align-items:start;padding:6px 0 10px}
+.a-left{display:grid;gap:16px;min-width:0}
+.a-left .mag{width:auto;display:grid;grid-template-columns:72px 1fr auto;align-items:center;justify-items:start;text-align:left;column-gap:14px;gap:0 14px}
+.a-left .mag img{width:72px;height:72px;margin:0;border-width:3px;grid-row:1/2}
+.a-left .mag small{margin:0}
+.a-left .mag-b{display:flex;gap:6px;width:auto}
+.a-left .minis{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"m m" "f c" "o c";grid-template-rows:auto auto 1fr;gap:16px;align-items:start}
+.a-left .minis .mini{grid-area:m}
+.a-right{position:sticky;top:76px;display:grid;justify-items:center;gap:12px;padding:16px 16px 18px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.a-right > .kicker{justify-self:start}
+.a-right .bigbook{--P:190px;width:190px;height:262px}
+.a-right .bigbook .cv-t{font-size:17px}
+.a-right .bigbook .cv-k{font-size:7px}
+.a-right .bl-body{width:100%}
+.a-right .bl-body .wrow{justify-content:center;margin:0 0 12px}
+.a-right .pl-h{font:700 11px/1 system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:0 0 8px}
+.a-right .partlist{gap:5px;margin:0}
+.a-right .pl-row{grid-template-columns:22px 1fr;gap:4px 9px;padding:7px 10px;border-radius:9px}
+.a-right .pl-row i{width:22px;height:22px;font-size:11px;grid-row:1/3}
+.a-right .pl-row b{font-size:15.5px;line-height:1.25}
+.a-right .pl-row span{grid-column:2;font-size:11.5px}
+@media (max-width:980px){.arrive{grid-template-columns:minmax(0,1fr) 250px;gap:22px}.a-right .bigbook{--P:160px;width:160px;height:222px}.a-left .minis{grid-template-columns:1fr;grid-template-areas:"m" "f" "o" "c"}}
+@media (max-width:720px){.step[data-step="0"]{width:auto;margin-left:0}.arrive{grid-template-columns:1fr}.a-right{position:static}.a-left .mag{grid-template-columns:56px 1fr}.a-left .mag img{width:56px;height:56px}.a-left .mag-b{grid-column:1/-1;margin-top:8px}}
+.sprog{font:700 11px/1 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin:0 0 8px}
+.plate .sq{font-size:15.5px}
+.flip .back{font-size:15px}
+.plate .flip{padding:11px;font-size:14.5px;min-height:0}
+/* ---------- Trench Khaki skin: barbed-wire ornament ---------- */
+.meander{height:18px;margin:16px 0 22px;border:0;opacity:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='18' viewBox='0 0 56 18'%3E%3Cg fill='none' stroke='%235E5127' stroke-width='1.6' stroke-linecap='round'%3E%3Cpath d='M0 9 Q14 2 28 9 T56 9'/%3E%3Cpath d='M0 9 Q14 16 28 9 T56 9'/%3E%3Cpath d='M22 3 L34 15 M34 3 L22 15'/%3E%3C/g%3E%3C/svg%3E") repeat-x center/56px 18px}
+/* ---------- Module 11 plates ---------- */
+.ordl{margin:6px 0 10px;padding-left:24px}
+.ordl li{margin:0 0 6px}
+.fcard .fnm{display:block;font-family:var(--head);font-size:21px;line-height:1.25;color:var(--ink)}
+.fcard .fpr{display:block;color:var(--ink2);font:14px/1.4 system-ui,sans-serif;margin:2px 0 8px}
+.fcard p{margin:0 0 8px;font-size:16px}
+.sl-ends{display:flex;justify-content:space-between;gap:12px;font:600 13px/1.35 system-ui,sans-serif;color:var(--gold-d);margin-bottom:6px}
+.sl-ends span{max-width:46%}
+.sl-ends span:last-child{text-align:right}
+#slIn{width:100%;accent-color:var(--terra);margin:0 0 4px}
+.sl-out{background:#fff;border-left:3px solid var(--terra);padding:10px 14px;border-radius:4px;color:var(--ink);font-size:15.5px;line-height:1.55;margin-top:10px}
+@media(max-width:859px){
+.plate .opt{padding:6px 9px;font-size:13.5px;line-height:1.28;border-radius:9px}
+.plate .opts{gap:6px}
+.plate .srow{margin:0 0 8px}.plate .srow p{font-size:14px;margin:0 0 5px}
+.plate .fbline{font-size:13px;margin-top:5px;line-height:1.4}
+.plate .instr{font-size:13.5px;margin-bottom:6px}
+.plate .label{margin-bottom:5px}
+.ordl{margin:2px 0 6px}.ordl li{margin:0 0 4px}
+.plate .wrow{margin-top:6px}
+.plate .card{margin-bottom:10px}
+.fcard p{font-size:14.5px}
+}
+@media(max-width:859px){
+.pt-slot .reveal{grid-template-columns:44px 1fr;gap:10px}
+.pt-slot .coin{width:44px;height:44px;font-size:20px}
+.pt-slot #guessBackText div[style*="19px"]{font-size:16px!important;line-height:1.35}
+.pt-slot .card{padding:12px 14px}
+}
+@media(max-width:859px) and (max-height:720px){
+.fcard p{font-size:13.5px;line-height:1.38;margin:0 0 6px}
+.fcard .fnm{font-size:18px}
+.plate .opt{padding:5px 8px;font-size:13px;line-height:1.25}
+.plate .instr{font-size:13px;margin-bottom:4px}
+.plate .mini .mcap{font-size:13.5px}
+}
+/* narration is off until the audio clips exist */
+.unvoiced .gl>button{display:none!important}
+/* ---------- source pages ---------- */
+.flow .pgref{text-transform:none}
+.plate .srow p{margin:0 0 6px}
+@media(max-width:859px){
+.plate .srow{margin:0 0 6px}.plate .srow p{font-size:13.5px;margin:0 0 4px;line-height:1.3}
+.plate .opt{padding:5px 8px;font-size:13px;line-height:1.25}
+.plate .fbline{font-size:12.5px;margin-top:4px;line-height:1.35}
+}</style>
+</head>
+<body class="">
+
+<div class="oao"><div class="wrap">
+  <img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy">
+  <span>Optima Academy Online</span><span class="sub">World History: Enlightenment to Present</span>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <div class="kicker">Week 19 &#183; Primary Source 2</div>
+  <h1>Dulce et Decorum Est</h1>
+</div></section>
+
+<nav class="route" aria-label="Lesson parts"><div class="wrap">
+  <div class="stops" id="stops"></div>
+  <div class="tools">
+    <button class="btn ghost small" data-openbook="" id="bookBtn">&#128213; <span>Book</span></button>
+    <button class="btn ghost small" data-open="glossDrawer">&#128214; <span>Words</span></button>
+    <button class="btn ghost small" data-open="askDrawer">&#128172; <span>Ask Mr. Magister</span></button>
+  </div>
+</div></nav>
+
+<main class="wrap">
+
+<!-- 0 &#183; ARRIVE -->
+<section class="step" data-step="0">
+  <div class="arrive">
+  <div class="a-left">
+    <div class="mag">
+      <img src="img/magister.jpg" alt="Mr. Magister">
+      <div class="mag-t"><b>Mr. Magister</b><small>Your teacher</small></div>
+      <div class="mag-b"><button class="btn small" data-mini-go="m1">&#9654; Start</button><button class="btn ghost small" data-open="askDrawer">&#128172; Ask</button></div>
+    </div>
+    <div class="minis">
+    <div class="card mini" data-mini="m1">
+  <div class="mstage">
+  <svg viewBox="0 0 640 300" role="img" aria-label="Wilfred Owen, a timeline from 1917 to the end of the war, the Latin words, and the old Lie">
+  <g data-on="0" data-off="1">
+    <rect x="150" y="60" width="340" height="170" rx="8" fill="#fff" stroke="#55524C" stroke-width="1.5"/><rect x="150" y="60" width="340" height="10" fill="#5E5127"/>
+    <text class="sh" x="320" y="128" text-anchor="middle" font-size="30" fill="#1C1B1A">Wilfred Owen</text>
+    <text x="320" y="166" text-anchor="middle" font-size="17" fill="#55524C">a young British officer</text>
+    <text x="320" y="192" text-anchor="middle" font-size="17" fill="#55524C">on the Western Front</text>
+  </g>
+  <g data-on="1" data-off="4">
+    <path d="M50 150 H590" stroke="#55524C" stroke-width="3"/>
+    <circle cx="150" cy="150" r="9" fill="#5E5127"/><text class="sh" x="150" y="118" text-anchor="middle" font-size="16" fill="#1C1B1A">1917 and 1918</text><text x="150" y="190" text-anchor="middle" font-size="14" fill="#55524C">he writes the poem</text>
+  </g>
+  <g data-on="2" data-off="4">
+    <circle cx="390" cy="150" r="9" fill="#4B5043"/><text class="sh" x="390" y="118" text-anchor="middle" font-size="16" fill="#1C1B1A">November 4, 1918</text><text x="390" y="190" text-anchor="middle" font-size="14" fill="#55524C">killed in battle</text>
+    <circle cx="540" cy="150" r="9" fill="none" stroke="#55524C" stroke-width="2.4"/><text x="540" y="118" text-anchor="middle" font-size="14" fill="#55524C">one week later</text><text x="540" y="190" text-anchor="middle" font-size="14" fill="#55524C">the war ends</text>
+  </g>
+  <g data-on="3" data-off="4">
+    <rect x="130" y="224" width="380" height="46" rx="6" fill="#fff" stroke="#4B5043" stroke-width="1.6"/>
+    <text class="sh" x="320" y="253" text-anchor="middle" font-size="16" fill="#5E5127">The poem is published after his death</text>
+  </g>
+  <g data-on="4" data-off="5">
+    <rect x="100" y="50" width="440" height="190" rx="6" fill="#fff" stroke="#55524C" stroke-width="1.5"/>
+    <text class="sh" x="320" y="104" text-anchor="middle" font-size="22" font-style="italic" fill="#1C1B1A">Dulce et decorum est</text>
+    <text class="sh" x="320" y="136" text-anchor="middle" font-size="22" font-style="italic" fill="#1C1B1A">pro patria mori</text>
+    <text x="320" y="180" text-anchor="middle" font-size="15" fill="#55524C">from the Roman poet Horace</text>
+    <text x="320" y="210" text-anchor="middle" font-size="15" fill="#1C1B1A">&#8220;It is sweet and fitting to die for one's country.&#8221;</text>
+  </g>
+  <g data-on="5">
+    <text class="sh" x="320" y="70" text-anchor="middle" font-size="26" fill="#5E5127">&#8220;the old Lie&#8221;</text>
+    <g font-size="16" text-anchor="middle" fill="#1C1B1A">
+      <rect x="40" y="120" width="170" height="90" rx="6" fill="#fff" stroke="#4B5043" stroke-width="1.6"/><text x="125" y="160">What did the</text><text x="125" y="182">author see?</text>
+      <rect x="235" y="120" width="170" height="90" rx="6" fill="#fff" stroke="#4B5043" stroke-width="1.6"/><text x="320" y="160">Whom is he</text><text x="320" y="182">speaking to?</text>
+      <rect x="430" y="120" width="170" height="90" rx="6" fill="#fff" stroke="#4B5043" stroke-width="1.6"/><text x="515" y="150">What does he want</text><text x="515" y="170">that person to</text><text x="515" y="190">feel and do?</text>
+    </g>
+  </g>
+</svg>
+  </div>
+</div>
+
+    <div class="card terra">
+      <div class="label">Today's Focus</div>
+      <p style="margin:0">A poem is a source like any other. Ask what the author saw, whom he is speaking to, and what he wants that person to feel and do.</p>
+    </div>
+    <details class="card objs">
+      <summary class="label">Objectives</summary>
+      <ol class="obj"><li><span>Say who wrote the poem, when, and what the Latin words mean.</span></li><li><span>Name the images the speaker uses: the flares, the gas, the green sea, and the wagon.</span></li><li><span>Explain what a poem can and cannot show a historian.</span></li></ol>
+    </details>
+    <div class="card gold"><div class="label">Quick Check-in</div><p style="margin:0 0 12px">A poem tells you what one man saw. How much can it tell a historian?</p><div class="opts" id="guess"><button class="opt" data-v="0">Everything about the war</button><button class="opt" data-v="1">What one man saw, and how he wanted others to see it</button><button class="opt" data-v="2">Nothing, because a poem is not a document</button></div><div class="note" id="guessNote"></div></div>
+    </div>
+  </div>
+  <aside class="a-right" aria-label="The book">
+    <div class="kicker">The Book</div>
+    <button class="bigbook" data-openbook="" aria-label="Open the book"><div class="cv-in"><div class="cv-k">Week 19 &#183; The Marne and the Trenches</div><div class="cv-t">Dulce et Decorum Est</div></div></button>
+    <div class="bl-body">
+      <div class="wrow"><button class="btn" data-openbook="">&#128214; Open the book</button><button class="btn ghost small" data-go="4">Verdict &rarr;</button></div>
+      <div class="pl-h">Parts 1 to 3</div>
+      <div class="partlist" id="partlist"></div>
+    </div>
+  </aside>
+  </div>
+</section>
+<section class="bookhold" hidden>
+<div class="card gold" id="guessBack" data-book="open:3"><div class="reveal"><div class="coin">?</div><div id="guessBackText"></div></div></div>
+<div class="card terra" data-book="plate:s1"><div class="label">Reading the Source</div><p class="instr">Use the note you just read.</p><div id="ra0"></div><div id="ra1"></div><div class="wrow"><button class="btn ghost small" id="raReset">Reset</button></div></div>
+<div class="card terra" data-book="plate:s3"><div class="label">Hard Words</div><p class="instr">Use the note&#x27;s own words.</p><div id="rb0"></div><div id="rb1"></div><div class="wrow"><button class="btn ghost small" id="rbReset">Reset</button></div></div>
+<div class="card mini" data-mini="m2" data-book="plate:s5">
+  <div class="mstage">
+  <svg viewBox="0 0 640 300" role="img" aria-label="Six images from the poem: the bent men, the flares, the cry of gas, the man who stumbles, the green sea, and the wagon">
+  <text x="14" y="292" font-size="11" fill="#55524C">Schematic, not to scale</text>
+  <g data-on="0" data-off="2" fill="none" stroke="#1C1B1A" stroke-width="3" stroke-linecap="round">
+    <path d="M70 230 L90 170 Q100 150 120 160"/><path d="M170 230 L190 170 Q200 150 220 160"/><path d="M270 230 L290 170 Q300 150 320 160"/><path d="M370 230 L390 170 Q400 150 420 160"/><path d="M470 230 L490 170 Q500 150 520 160"/>
+    <path d="M40 232 H600" stroke="#55524C" stroke-width="1.6" stroke-dasharray="3 5"/><g fill="#1C1B1A" stroke="none"><circle cx="126" cy="168" r="8"/><circle cx="226" cy="168" r="8"/><circle cx="326" cy="168" r="8"/><circle cx="426" cy="168" r="8"/><circle cx="526" cy="168" r="8"/></g>
+    <text class="sh" x="320" y="80" text-anchor="middle" font-size="19" fill="#1C1B1A" stroke="none">Bent double, like old beggars under sacks</text>
+  </g>
+  <g data-on="1" data-off="2">
+    <circle cx="560" cy="70" r="12" fill="#C9B26B" stroke="#5E5127" stroke-width="2"/>
+    <path d="M560 44 V30 M560 96 V110 M534 70 H520 M586 70 H600 M541 51 L531 41 M579 89 L589 99 M541 89 L531 99 M579 51 L589 41" stroke="#5E5127" stroke-width="2.4" fill="none"/>
+    <text x="560" y="134" text-anchor="middle" font-size="14" fill="#5E5127">haunting flares</text>
+  </g>
+  <g data-on="2" data-off="4" fill="none" stroke="#1C1B1A" stroke-width="3">
+    <g fill="#55524C" stroke="none"><circle cx="110" cy="190" r="22"/><circle cx="210" cy="190" r="22"/><circle cx="310" cy="190" r="22"/><circle cx="410" cy="190" r="22"/></g>
+    <text class="sh" x="320" y="70" text-anchor="middle" font-size="38" fill="#5E5127" stroke="none">Gas! GAS! Quick, boys!</text>
+    <text x="260" y="262" text-anchor="middle" font-size="14" fill="#1C1B1A" stroke="none">clumsy helmets, fitted just in time</text>
+  </g>
+  <g data-on="3" data-off="4" fill="none" stroke="#5E5127" stroke-width="3.4" stroke-linecap="round">
+    <path d="M510 250 L520 200 M520 200 L490 160 M520 200 L550 150 M520 200 L500 250"/><circle cx="522" cy="186" r="12" fill="#fff"/>
+    <text x="522" y="278" text-anchor="middle" font-size="14" fill="#5E5127" stroke="none">one man still stumbling</text>
+  </g>
+  <g data-on="4" data-off="5">
+    <rect x="330" y="40" width="290" height="200" rx="6" fill="#A9B8A0" opacity=".75"/>
+    <path d="M330 90 q20 -14 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 M330 130 q20 -14 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0 M330 170 q20 -14 40 0 t40 0 t40 0 t40 0 t40 0 t40 0 t40 0" fill="none" stroke="#4B5043" stroke-width="2"/>
+    <text class="sh" x="475" y="268" text-anchor="middle" font-size="14" fill="#1C1B1A">thick green light, as under a green sea</text>
+  </g>
+  <g data-on="5" fill="none" stroke="#1C1B1A" stroke-width="3">
+    <rect x="260" y="150" width="140" height="56" fill="#E3DAB8"/><circle cx="290" cy="216" r="16" fill="#fff"/><circle cx="370" cy="216" r="16" fill="#fff"/><path d="M400 170 H440"/>
+    <text class="sh" x="330" y="120" text-anchor="middle" font-size="20" fill="#1C1B1A" stroke="none">the wagon that we flung him in</text>
+    <text x="330" y="270" text-anchor="middle" font-size="14" fill="#55524C" stroke="none">pacing behind it, in smothering dreams</text>
+  </g>
+</svg>
+  </div>
+</div>
+<div class="card terra" data-book="plate:s5"><div class="label">Reading the Images</div><div id="rc0"></div><div id="rc1"></div><div class="wrow"><button class="btn ghost small" id="rcReset">Reset</button></div></div>
+<div class="card terra" data-book="plate:s6"><div class="label">A Poem Is a Source</div><div id="rd0"></div><div id="rd1"></div><div class="wrow"><button class="btn ghost small" id="rdReset">Reset</button></div></div>
+</section>
+<!-- END &#183; WRAP -->
+<section class="step" data-step="4">
+  <div class="parthead"><div><div class="kicker">Verdict</div><h2>A Poem as a Source</h2></div></div>
+  <div class="meander"></div>
+  <div class="card terra" id="respCard"><div class="label">My Verdict</div><div class="resp"><p class="rq"><b>1.</b>What did Owen see, whom is he speaking to, and what does he want that person to feel and do? Answer in three to five sentences, with one image from the poem.</p><p class="hint">A poem tells you what one man saw and how he wanted others to see it. Keep in view the note&#x27;s reminder that many soldiers who survived felt differently about their service.</p><textarea data-resp="verdict" aria-label="Answer 1" placeholder="Three to five sentences"></textarea><div class="wc"></div></div><div class="submitrow"><button class="btn small copyall">&#128203; Copy all my answers</button><span class="note"></span></div></div>
+  <div class="card gold" id="nbCard">
+    <div class="label">My Notebook</div>
+    <div class="nbstats" id="nbStats"></div>
+    <div class="wrow"><button class="btn" id="nbBtn">&#11015; Download My Notebook (PDF)</button><span class="note" id="nbNote"></span></div>
+  </div>
+  <div class="keep">
+    <div class="label">Keep This in Mind</div>
+    <p>A poem is a source like any other.</p>
+  </div>
+  <div class="next"><button class="btn ghost" data-go="3">&larr; Part 3</button><button class="btn ghost" data-go="0">Back to the start</button></div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>Optima Academy Online &#183; Student Lesson Page</span><span>Academic Design and Curriculum (AcDC) &#183; &#169; Optima Academy Online</span></div></footer>
+
+<div class="dock" id="dock" aria-live="polite">
+  <img src="img/magister.jpg" alt="">
+  <div style="min-width:0">
+    <div class="who">Mr. Magister</div>
+    <div class="cap" id="cap"></div>
+    <input type="range" class="seek" id="seek" min="0" max="1000" value="0" aria-label="Seek">
+  </div>
+  <div class="ctl">
+    <button id="prev" aria-label="Previous">&#9198;</button>
+    <button id="back5" aria-label="Back 5 seconds">&#8634;</button>
+    <button class="main" id="pp" aria-label="Play or pause">&#9654;</button>
+    <button id="fwd5" aria-label="Forward 5 seconds">&#8635;</button>
+    <button id="next" aria-label="Next">&#9197;</button>
+    <button class="rate" id="rate">1&times;</button>
+    <button id="voiceOff" aria-label="Turn voice off" title="Turn voice off">&times;</button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="glossDrawer" aria-label="Words">
+  <header><h3>Words</h3><button class="x" data-close>&times;</button></header>
+  <div class="body"><div class="gl"><button data-g="v_flares" aria-label="Hear flares">&#9654;</button><b>flares<small></small></b><span>A rocket that lights up the battlefield at night.</span></div>
+<div class="gl"><button data-g="v_gas-shells" aria-label="Hear gas-shells">&#9654;</button><b>gas-shells<small></small></b><span>Artillery shells filled with poison gas.</span></div>
+<div class="gl"><button data-g="v_lime" aria-label="Hear lime">&#9654;</button><b>lime<small></small></b><span>A chemical that burns skin.</span></div>
+</div>
+</aside>
+<aside class="drawer" id="askDrawer" aria-label="Ask Mr. Magister">
+  <header><img src="img/magister.jpg" alt="" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)"><h3>Ask Mr. Magister</h3><button class="x" data-close>&times;</button></header>
+  <div class="body"><div class="chat" id="chat"></div></div>
+  <form class="askrow" id="askForm"><input id="askIn" placeholder="Ask about the lesson" autocomplete="off"><button class="btn" type="submit">Ask</button></form>
+</aside>
+<div class="pop" id="pop"></div>
+
+<button class="voicetab" id="voiceTab" aria-label="Listen to Mr. Magister"><img src="img/magister.jpg" alt=""><span id="voiceLbl">Listen</span></button>
+
+<div class="reader" id="reader" role="dialog" aria-label="The book" aria-hidden="true">
+  <div class="rbar">
+    <div class="rtitle"><span class="kicker" id="rKick"></span><b id="rChap"></b></div>
+    <div class="rtools">
+      <button class="rt" data-rpanel="toc" aria-label="Contents">&#9776;<span>Contents</span></button>
+      <button class="rt" data-rpanel="marks" aria-label="My marks">&#9998;<span>My marks</span></button>
+      <button class="rt" id="rSetBtn" aria-label="Text settings">Aa<span>Text</span></button>
+      <button class="rt" id="rRuler" aria-label="Reading line" aria-pressed="false">&#9636;<span>Line</span></button>
+      <button class="rt" id="rRibbon" aria-label="Ribbon" aria-pressed="false">&#9873;<span>Ribbon</span></button>
+      <button class="rt close" id="rClose" aria-label="Close the book">&times;<span>Close</span></button>
+    </div>
+  </div>
+  <div class="stagebook" id="stagebook">
+    <div class="book" id="book">
+      <div class="paper pl"></div><div class="paper pr"></div>
+      <div class="hd hdL" id="hL"></div><div class="hd hdR" id="hR"></div>
+      <div class="vp" id="vp"><div class="flow" id="flow"><section class="titlepg"><div class="tp-k">Wilfred Owen &#183; 1917 and 1918</div><h2>Dulce et Decorum Est</h2><div class="tp-cite">Wilfred Owen (1893 to 1918). Text of the first published edition, <i>Poems by Wilfred Owen</i> (London: Chatto and Windus, 1920), as transcribed at Wikisource. Later scholarly editions differ in small details. Dashes appear as double hyphens.</div><div class="meander"></div></section><section class="partpg" data-pt="1"><div class="chk">Part 1</div><h2>Before You Read</h2><div class="meander"></div><div class="pt-ch"><b>Chapter 1</b>About This Poem</div><div class="pt-slot"></div></section><section class="ch" data-ch="s1"><div class="chk">Chapter 1</div><h3>About This Poem</h3><div class="readfor" data-rf="r1"></div><p class="prose" data-clip="s1_1"><span class="w" data-w="0">Wilfred</span><span class="s" data-s="0"> </span><span class="w" data-w="1">Owen</span><span class="s" data-s="1"> </span><span class="w" data-w="2">was</span><span class="s" data-s="2"> </span><span class="w" data-w="3">a</span><span class="s" data-s="3"> </span><span class="w" data-w="4">young</span><span class="s" data-s="4"> </span><span class="w" data-w="5">British</span><span class="s" data-s="5"> </span><span class="w" data-w="6">officer</span><span class="s" data-s="6"> </span><span class="w" data-w="7">who</span><span class="s" data-s="7"> </span><span class="w" data-w="8">fought</span><span class="s" data-s="8"> </span><span class="w" data-w="9">on</span><span class="s" data-s="9"> </span><span class="w" data-w="10">the</span><span class="s" data-s="10"> </span><span class="w" data-w="11">Western</span><span class="s" data-s="11"> </span><span class="w" data-w="12">Front.</span><span class="s" data-s="12"> </span><span class="w" data-w="13">He</span><span class="s" data-s="13"> </span><span class="w" data-w="14">wrote</span><span class="s" data-s="14"> </span><span class="w" data-w="15">this</span><span class="s" data-s="15"> </span><span class="w" data-w="16">poem</span><span class="s" data-s="16"> </span><span class="w" data-w="17">in</span><span class="s" data-s="17"> </span><span class="w" data-w="18">1917</span><span class="s" data-s="18"> </span><span class="w" data-w="19">and</span><span class="s" data-s="19"> </span><span class="w" data-w="20">1918,</span><span class="s" data-s="20"> </span><span class="w" data-w="21">and</span><span class="s" data-s="21"> </span><span class="w" data-w="22">he</span><span class="s" data-s="22"> </span><span class="w" data-w="23">was</span><span class="s" data-s="23"> </span><span class="w" data-w="24">killed</span><span class="s" data-s="24"> </span><span class="w" data-w="25">in</span><span class="s" data-s="25"> </span><span class="w" data-w="26">battle</span><span class="s" data-s="26"> </span><span class="w" data-w="27">on</span><span class="s" data-s="27"> </span><span class="w" data-w="28">November</span><span class="s" data-s="28"> </span><span class="w" data-w="29">4,</span><span class="s" data-s="29"> </span><span class="w" data-w="30">1918,</span><span class="s" data-s="30"> </span><span class="w" data-w="31">one</span><span class="s" data-s="31"> </span><span class="w" data-w="32">week</span><span class="s" data-s="32"> </span><span class="w" data-w="33">before</span><span class="s" data-s="33"> </span><span class="w" data-w="34">the</span><span class="s" data-s="34"> </span><span class="w" data-w="35">war</span><span class="s" data-s="35"> </span><span class="w" data-w="36">ended.</span><span class="s" data-s="36"> </span><span class="w" data-w="37">This</span><span class="s" data-s="37"> </span><span class="w" data-w="38">poem</span><span class="s" data-s="38"> </span><span class="w" data-w="39">was</span><span class="s" data-s="39"> </span><span class="w" data-w="40">published</span><span class="s" data-s="40"> </span><span class="w" data-w="41">after</span><span class="s" data-s="41"> </span><span class="w" data-w="42">his</span><span class="s" data-s="42"> </span><span class="w" data-w="43">death.</span></p><p class="prose" data-clip="s1_2"><span class="w" data-w="0">The</span><span class="s" data-s="0"> </span><span class="w" data-w="1">Latin</span><span class="s" data-s="1"> </span><span class="w" data-w="2">words</span><span class="s" data-s="2"> </span><span class="w" data-w="3">at</span><span class="s" data-s="3"> </span><span class="w" data-w="4">the</span><span class="s" data-s="4"> </span><span class="w" data-w="5">end</span><span class="s" data-s="5"> </span><span class="w" data-w="6">come</span><span class="s" data-s="6"> </span><span class="w" data-w="7">from</span><span class="s" data-s="7"> </span><span class="w" data-w="8">the</span><span class="s" data-s="8"> </span><span class="w" data-w="9">Roman</span><span class="s" data-s="9"> </span><span class="w" data-w="10">poet</span><span class="s" data-s="10"> </span><span class="w" data-w="11">Horace.</span><span class="s" data-s="11"> </span><span class="w" data-w="12">They</span><span class="s" data-s="12"> </span><span class="w" data-w="13">mean,</span><span class="s" data-s="13"> </span><span class="w" data-w="14">&#8220;It</span><span class="s" data-s="14"> </span><span class="w" data-w="15">is</span><span class="s" data-s="15"> </span><span class="w" data-w="16">sweet</span><span class="s" data-s="16"> </span><span class="w" data-w="17">and</span><span class="s" data-s="17"> </span><span class="w" data-w="18">fitting</span><span class="s" data-s="18"> </span><span class="w" data-w="19">to</span><span class="s" data-s="19"> </span><span class="w" data-w="20">die</span><span class="s" data-s="20"> </span><span class="w" data-w="21">for</span><span class="s" data-s="21"> </span><span class="w" data-w="22">one&#8217;s</span><span class="s" data-s="22"> </span><span class="w" data-w="23">country.&#8221;</span><span class="s" data-s="23"> </span><span class="w" data-w="24">Owen</span><span class="s" data-s="24"> </span><span class="w" data-w="25">calls</span><span class="s" data-s="25"> </span><span class="w" data-w="26">them</span><span class="s" data-s="26"> </span><span class="w" data-w="27">&#8220;the</span><span class="s" data-s="27"> </span><span class="w" data-w="28">old</span><span class="s" data-s="28"> </span><span class="w" data-w="29">Lie.&#8221;</span></p><p class="prose" data-clip="s1_3"><span class="w" data-w="0">Several</span><span class="s" data-s="0"> </span><span class="w" data-w="1">terms</span><span class="s" data-s="1"> </span><span class="w" data-w="2">may</span><span class="s" data-s="2"> </span><span class="w" data-w="3">be</span><span class="s" data-s="3"> </span><span class="w" data-w="4">new.</span><span class="s" data-s="4"> </span><span class="w" data-w="5">A</span><span class="s" data-s="5"> </span><span class="w" data-w="6">&#8220;flare&#8221;</span><span class="s" data-s="6"> </span><span class="w" data-w="7">is</span><span class="s" data-s="7"> </span><span class="w" data-w="8">a</span><span class="s" data-s="8"> </span><span class="w" data-w="9">rocket</span><span class="s" data-s="9"> </span><span class="w" data-w="10">that</span><span class="s" data-s="10"> </span><span class="w" data-w="11">lights</span><span class="s" data-s="11"> </span><span class="w" data-w="12">up</span><span class="s" data-s="12"> </span><span class="w" data-w="13">the</span><span class="s" data-s="13"> </span><span class="w" data-w="14">battlefield</span><span class="s" data-s="14"> </span><span class="w" data-w="15">at</span><span class="s" data-s="15"> </span><span class="w" data-w="16">night.</span><span class="s" data-s="16"> </span><span class="w" data-w="17">&#8220;Gas-shells&#8221;</span><span class="s" data-s="17"> </span><span class="w" data-w="18">are</span><span class="s" data-s="18"> </span><span class="w" data-w="19">artillery</span><span class="s" data-s="19"> </span><span class="w" data-w="20">shells</span><span class="s" data-s="20"> </span><span class="w" data-w="21">filled</span><span class="s" data-s="21"> </span><span class="w" data-w="22">with</span><span class="s" data-s="22"> </span><span class="w" data-w="23">poison</span><span class="s" data-s="23"> </span><span class="w" data-w="24">gas.</span><span class="s" data-s="24"> </span><span class="w" data-w="25">&#8220;Lime&#8221;</span><span class="s" data-s="25"> </span><span class="w" data-w="26">is</span><span class="s" data-s="26"> </span><span class="w" data-w="27">a</span><span class="s" data-s="27"> </span><span class="w" data-w="28">chemical</span><span class="s" data-s="28"> </span><span class="w" data-w="29">that</span><span class="s" data-s="29"> </span><span class="w" data-w="30">burns</span><span class="s" data-s="30"> </span><span class="w" data-w="31">skin.</span></p><p class="prose" data-clip="s1_4"><span class="w" data-w="0">A</span><span class="s" data-s="0"> </span><span class="w" data-w="1">poem</span><span class="s" data-s="1"> </span><span class="w" data-w="2">is</span><span class="s" data-s="2"> </span><span class="w" data-w="3">a</span><span class="s" data-s="3"> </span><span class="w" data-w="4">source</span><span class="s" data-s="4"> </span><span class="w" data-w="5">like</span><span class="s" data-s="5"> </span><span class="w" data-w="6">any</span><span class="s" data-s="6"> </span><span class="w" data-w="7">other.</span><span class="s" data-s="7"> </span><span class="w" data-w="8">Ask</span><span class="s" data-s="8"> </span><span class="w" data-w="9">what</span><span class="s" data-s="9"> </span><span class="w" data-w="10">the</span><span class="s" data-s="10"> </span><span class="w" data-w="11">author</span><span class="s" data-s="11"> </span><span class="w" data-w="12">saw,</span><span class="s" data-s="12"> </span><span class="w" data-w="13">whom</span><span class="s" data-s="13"> </span><span class="w" data-w="14">he</span><span class="s" data-s="14"> </span><span class="w" data-w="15">is</span><span class="s" data-s="15"> </span><span class="w" data-w="16">speaking</span><span class="s" data-s="16"> </span><span class="w" data-w="17">to,</span><span class="s" data-s="17"> </span><span class="w" data-w="18">and</span><span class="s" data-s="18"> </span><span class="w" data-w="19">what</span><span class="s" data-s="19"> </span><span class="w" data-w="20">he</span><span class="s" data-s="20"> </span><span class="w" data-w="21">wants</span><span class="s" data-s="21"> </span><span class="w" data-w="22">that</span><span class="s" data-s="22"> </span><span class="w" data-w="23">person</span><span class="s" data-s="23"> </span><span class="w" data-w="24">to</span><span class="s" data-s="24"> </span><span class="w" data-w="25">feel</span><span class="s" data-s="25"> </span><span class="w" data-w="26">and</span><span class="s" data-s="26"> </span><span class="w" data-w="27">do.</span></p><div class="ansbox" data-slot="r1"></div></section><section class="partpg" data-pt="2"><div class="chk">Part 2</div><h2>The March and the Gas</h2><div class="meander"></div><div class="pt-ch"><b>Chapter 2</b>Stanzas 1 and 2, in Plain English</div><div class="pt-ch"><b>Chapter 3</b>Stanzas 1 and 2, in the Original</div><div class="pt-slot"></div></section><section class="ch" data-ch="s2"><div class="chk">Chapter 2</div><h3>Stanzas 1 and 2, in Plain English</h3><span class="pgref">Plain version, written for this page. These are not Owen&#x27;s words.</span><div class="readfor" data-rf="r2"></div><p class="prose" data-clip="s2_1"><span class="w" data-w="0">The</span><span class="s" data-s="0"> </span><span class="w" data-w="1">men</span><span class="s" data-s="1"> </span><span class="w" data-w="2">were</span><span class="s" data-s="2"> </span><span class="w" data-w="3">bent</span><span class="s" data-s="3"> </span><span class="w" data-w="4">double,</span><span class="s" data-s="4"> </span><span class="w" data-w="5">like</span><span class="s" data-s="5"> </span><span class="w" data-w="6">old</span><span class="s" data-s="6"> </span><span class="w" data-w="7">beggars</span><span class="s" data-s="7"> </span><span class="w" data-w="8">under</span><span class="s" data-s="8"> </span><span class="w" data-w="9">sacks,</span><span class="s" data-s="9"> </span><span class="w" data-w="10">knock-kneed,</span><span class="s" data-s="10"> </span><span class="w" data-w="11">coughing</span><span class="s" data-s="11"> </span><span class="w" data-w="12">like</span><span class="s" data-s="12"> </span><span class="w" data-w="13">hags,</span><span class="s" data-s="13"> </span><span class="w" data-w="14">and</span><span class="s" data-s="14"> </span><span class="w" data-w="15">they</span><span class="s" data-s="15"> </span><span class="w" data-w="16">cursed</span><span class="s" data-s="16"> </span><span class="w" data-w="17">as</span><span class="s" data-s="17"> </span><span class="w" data-w="18">they</span><span class="s" data-s="18"> </span><span class="w" data-w="19">trudged</span><span class="s" data-s="19"> </span><span class="w" data-w="20">through</span><span class="s" data-s="20"> </span><span class="w" data-w="21">sludge.</span><span class="s" data-s="21"> </span><span class="w" data-w="22">They</span><span class="s" data-s="22"> </span><span class="w" data-w="23">turned</span><span class="s" data-s="23"> </span><span class="w" data-w="24">their</span><span class="s" data-s="24"> </span><span class="w" data-w="25">backs</span><span class="s" data-s="25"> </span><span class="w" data-w="26">on</span><span class="s" data-s="26"> </span><span class="w" data-w="27">the</span><span class="s" data-s="27"> </span><span class="w" data-w="28">haunting</span><span class="s" data-s="28"> </span><span class="w" data-w="29">flares</span><span class="s" data-s="29"> </span><span class="w" data-w="30">and</span><span class="s" data-s="30"> </span><span class="w" data-w="31">began</span><span class="s" data-s="31"> </span><span class="w" data-w="32">to</span><span class="s" data-s="32"> </span><span class="w" data-w="33">trudge</span><span class="s" data-s="33"> </span><span class="w" data-w="34">toward</span><span class="s" data-s="34"> </span><span class="w" data-w="35">their</span><span class="s" data-s="35"> </span><span class="w" data-w="36">distant</span><span class="s" data-s="36"> </span><span class="w" data-w="37">rest.</span><span class="s" data-s="37"> </span><span class="w" data-w="38">Men</span><span class="s" data-s="38"> </span><span class="w" data-w="39">marched</span><span class="s" data-s="39"> </span><span class="w" data-w="40">asleep.</span><span class="s" data-s="40"> </span><span class="w" data-w="41">Many</span><span class="s" data-s="41"> </span><span class="w" data-w="42">had</span><span class="s" data-s="42"> </span><span class="w" data-w="43">lost</span><span class="s" data-s="43"> </span><span class="w" data-w="44">their</span><span class="s" data-s="44"> </span><span class="w" data-w="45">boots</span><span class="s" data-s="45"> </span><span class="w" data-w="46">but</span><span class="s" data-s="46"> </span><span class="w" data-w="47">limped</span><span class="s" data-s="47"> </span><span class="w" data-w="48">on,</span><span class="s" data-s="48"> </span><span class="w" data-w="49">shod</span><span class="s" data-s="49"> </span><span class="w" data-w="50">in</span><span class="s" data-s="50"> </span><span class="w" data-w="51">blood.</span><span class="s" data-s="51"> </span><span class="w" data-w="52">All</span><span class="s" data-s="52"> </span><span class="w" data-w="53">went</span><span class="s" data-s="53"> </span><span class="w" data-w="54">lame;</span><span class="s" data-s="54"> </span><span class="w" data-w="55">all</span><span class="s" data-s="55"> </span><span class="w" data-w="56">blind;</span><span class="s" data-s="56"> </span><span class="w" data-w="57">drunk</span><span class="s" data-s="57"> </span><span class="w" data-w="58">with</span><span class="s" data-s="58"> </span><span class="w" data-w="59">fatigue;</span><span class="s" data-s="59"> </span><span class="w" data-w="60">deaf</span><span class="s" data-s="60"> </span><span class="w" data-w="61">even</span><span class="s" data-s="61"> </span><span class="w" data-w="62">to</span><span class="s" data-s="62"> </span><span class="w" data-w="63">the</span><span class="s" data-s="63"> </span><span class="w" data-w="64">hoots</span><span class="s" data-s="64"> </span><span class="w" data-w="65">of</span><span class="s" data-s="65"> </span><span class="w" data-w="66">gas-shells</span><span class="s" data-s="66"> </span><span class="w" data-w="67">dropping</span><span class="s" data-s="67"> </span><span class="w" data-w="68">softly</span><span class="s" data-s="68"> </span><span class="w" data-w="69">behind.</span></p><p class="prose" data-clip="s2_2"><span class="w" data-w="0">Then</span><span class="s" data-s="0"> </span><span class="w" data-w="1">came</span><span class="s" data-s="1"> </span><span class="w" data-w="2">the</span><span class="s" data-s="2"> </span><span class="w" data-w="3">cry:</span><span class="s" data-s="3"> </span><span class="w" data-w="4">Gas!</span><span class="s" data-s="4"> </span><span class="w" data-w="5">GAS!</span><span class="s" data-s="5"> </span><span class="w" data-w="6">Quick,</span><span class="s" data-s="6"> </span><span class="w" data-w="7">boys!</span><span class="s" data-s="7"> </span><span class="w" data-w="8">There</span><span class="s" data-s="8"> </span><span class="w" data-w="9">was</span><span class="s" data-s="9"> </span><span class="w" data-w="10">a</span><span class="s" data-s="10"> </span><span class="w" data-w="11">wild</span><span class="s" data-s="11"> </span><span class="w" data-w="12">fumbling</span><span class="s" data-s="12"> </span><span class="w" data-w="13">as</span><span class="s" data-s="13"> </span><span class="w" data-w="14">the</span><span class="s" data-s="14"> </span><span class="w" data-w="15">men</span><span class="s" data-s="15"> </span><span class="w" data-w="16">fitted</span><span class="s" data-s="16"> </span><span class="w" data-w="17">the</span><span class="s" data-s="17"> </span><span class="w" data-w="18">clumsy</span><span class="s" data-s="18"> </span><span class="w" data-w="19">helmets</span><span class="s" data-s="19"> </span><span class="w" data-w="20">on</span><span class="s" data-s="20"> </span><span class="w" data-w="21">just</span><span class="s" data-s="21"> </span><span class="w" data-w="22">in</span><span class="s" data-s="22"> </span><span class="w" data-w="23">time.</span><span class="s" data-s="23"> </span><span class="w" data-w="24">But</span><span class="s" data-s="24"> </span><span class="w" data-w="25">someone</span><span class="s" data-s="25"> </span><span class="w" data-w="26">was</span><span class="s" data-s="26"> </span><span class="w" data-w="27">still</span><span class="s" data-s="27"> </span><span class="w" data-w="28">yelling</span><span class="s" data-s="28"> </span><span class="w" data-w="29">and</span><span class="s" data-s="29"> </span><span class="w" data-w="30">stumbling,</span><span class="s" data-s="30"> </span><span class="w" data-w="31">floundering</span><span class="s" data-s="31"> </span><span class="w" data-w="32">like</span><span class="s" data-s="32"> </span><span class="w" data-w="33">a</span><span class="s" data-s="33"> </span><span class="w" data-w="34">man</span><span class="s" data-s="34"> </span><span class="w" data-w="35">in</span><span class="s" data-s="35"> </span><span class="w" data-w="36">fire</span><span class="s" data-s="36"> </span><span class="w" data-w="37">or</span><span class="s" data-s="37"> </span><span class="w" data-w="38">lime.</span><span class="s" data-s="38"> </span><span class="w" data-w="39">Through</span><span class="s" data-s="39"> </span><span class="w" data-w="40">the</span><span class="s" data-s="40"> </span><span class="w" data-w="41">misty</span><span class="s" data-s="41"> </span><span class="w" data-w="42">panes</span><span class="s" data-s="42"> </span><span class="w" data-w="43">of</span><span class="s" data-s="43"> </span><span class="w" data-w="44">the</span><span class="s" data-s="44"> </span><span class="w" data-w="45">helmet,</span><span class="s" data-s="45"> </span><span class="w" data-w="46">in</span><span class="s" data-s="46"> </span><span class="w" data-w="47">a</span><span class="s" data-s="47"> </span><span class="w" data-w="48">thick</span><span class="s" data-s="48"> </span><span class="w" data-w="49">green</span><span class="s" data-s="49"> </span><span class="w" data-w="50">light,</span><span class="s" data-s="50"> </span><span class="w" data-w="51">as</span><span class="s" data-s="51"> </span><span class="w" data-w="52">under</span><span class="s" data-s="52"> </span><span class="w" data-w="53">a</span><span class="s" data-s="53"> </span><span class="w" data-w="54">green</span><span class="s" data-s="54"> </span><span class="w" data-w="55">sea,</span><span class="s" data-s="55"> </span><span class="w" data-w="56">the</span><span class="s" data-s="56"> </span><span class="w" data-w="57">speaker</span><span class="s" data-s="57"> </span><span class="w" data-w="58">saw</span><span class="s" data-s="58"> </span><span class="w" data-w="59">him</span><span class="s" data-s="59"> </span><span class="w" data-w="60">drowning.</span></p></section><section class="ch" data-ch="s3"><div class="chk">Chapter 3</div><h3>Stanzas 1 and 2, in the Original</h3><span class="pgref">The original: stanzas 1 and 2</span><p class="prose" data-clip="s3_1"><span class="w" data-w="0">Bent</span><span class="s" data-s="0"> </span><span class="w" data-w="1">double,</span><span class="s" data-s="1"> </span><span class="w" data-w="2">like</span><span class="s" data-s="2"> </span><span class="w" data-w="3">old</span><span class="s" data-s="3"> </span><span class="w" data-w="4">beggars</span><span class="s" data-s="4"> </span><span class="w" data-w="5">under</span><span class="s" data-s="5"> </span><span class="w" data-w="6">sacks,</span><br><span class="w" data-w="7">Knock-kneed,</span><span class="s" data-s="7"> </span><span class="w" data-w="8">coughing</span><span class="s" data-s="8"> </span><span class="w" data-w="9">like</span><span class="s" data-s="9"> </span><span class="w" data-w="10">hags,</span><span class="s" data-s="10"> </span><span class="w" data-w="11">we</span><span class="s" data-s="11"> </span><span class="w" data-w="12">cursed</span><span class="s" data-s="12"> </span><span class="w" data-w="13">through</span><span class="s" data-s="13"> </span><span class="w" data-w="14">sludge,</span><br><span class="w" data-w="15">Till</span><span class="s" data-s="15"> </span><span class="w" data-w="16">on</span><span class="s" data-s="16"> </span><span class="w" data-w="17">the</span><span class="s" data-s="17"> </span><span class="w" data-w="18">haunting</span><span class="s" data-s="18"> </span><span class="term" data-tip="A rocket that lights up the battlefield at night." data-pron="" data-word="flares" data-g="v_flares"><span class="w" data-w="19">flares</span></span><span class="s" data-s="19"> </span><span class="w" data-w="20">we</span><span class="s" data-s="20"> </span><span class="w" data-w="21">turned</span><span class="s" data-s="21"> </span><span class="w" data-w="22">our</span><span class="s" data-s="22"> </span><span class="w" data-w="23">backs</span><br><span class="w" data-w="24">And</span><span class="s" data-s="24"> </span><span class="w" data-w="25">towards</span><span class="s" data-s="25"> </span><span class="w" data-w="26">our</span><span class="s" data-s="26"> </span><span class="w" data-w="27">distant</span><span class="s" data-s="27"> </span><span class="w" data-w="28">rest</span><span class="s" data-s="28"> </span><span class="w" data-w="29">began</span><span class="s" data-s="29"> </span><span class="w" data-w="30">to</span><span class="s" data-s="30"> </span><span class="w" data-w="31">trudge.</span><br><span class="w" data-w="32">Men</span><span class="s" data-s="32"> </span><span class="w" data-w="33">marched</span><span class="s" data-s="33"> </span><span class="w" data-w="34">asleep.</span><span class="s" data-s="34"> </span><span class="w" data-w="35">Many</span><span class="s" data-s="35"> </span><span class="w" data-w="36">had</span><span class="s" data-s="36"> </span><span class="w" data-w="37">lost</span><span class="s" data-s="37"> </span><span class="w" data-w="38">their</span><span class="s" data-s="38"> </span><span class="w" data-w="39">boots</span><br><span class="w" data-w="40">But</span><span class="s" data-s="40"> </span><span class="w" data-w="41">limped</span><span class="s" data-s="41"> </span><span class="w" data-w="42">on,</span><span class="s" data-s="42"> </span><span class="w" data-w="43">blood-shod.</span><span class="s" data-s="43"> </span><span class="w" data-w="44">All</span><span class="s" data-s="44"> </span><span class="w" data-w="45">went</span><span class="s" data-s="45"> </span><span class="w" data-w="46">lame;</span><span class="s" data-s="46"> </span><span class="w" data-w="47">all</span><span class="s" data-s="47"> </span><span class="w" data-w="48">blind;</span><br><span class="w" data-w="49">Drunk</span><span class="s" data-s="49"> </span><span class="w" data-w="50">with</span><span class="s" data-s="50"> </span><span class="w" data-w="51">fatigue;</span><span class="s" data-s="51"> </span><span class="w" data-w="52">deaf</span><span class="s" data-s="52"> </span><span class="w" data-w="53">even</span><span class="s" data-s="53"> </span><span class="w" data-w="54">to</span><span class="s" data-s="54"> </span><span class="w" data-w="55">the</span><span class="s" data-s="55"> </span><span class="w" data-w="56">hoots</span><br><span class="w" data-w="57">Of</span><span class="s" data-s="57"> </span><span class="term" data-tip="Artillery shells filled with poison gas." data-pron="" data-word="gas-shells" data-g="v_gas-shells"><span class="w" data-w="58">gas-shells</span></span><span class="s" data-s="58"> </span><span class="w" data-w="59">dropping</span><span class="s" data-s="59"> </span><span class="w" data-w="60">softly</span><span class="s" data-s="60"> </span><span class="w" data-w="61">behind.</span></p><p class="prose" data-clip="s3_2"><span class="w" data-w="0">Gas!</span><span class="s" data-s="0"> </span><span class="w" data-w="1">GAS!</span><span class="s" data-s="1"> </span><span class="w" data-w="2">Quick,</span><span class="s" data-s="2"> </span><span class="w" data-w="3">boys!--An</span><span class="s" data-s="3"> </span><span class="w" data-w="4">ecstasy</span><span class="s" data-s="4"> </span><span class="w" data-w="5">of</span><span class="s" data-s="5"> </span><span class="w" data-w="6">fumbling</span><br><span class="w" data-w="7">Fitting</span><span class="s" data-s="7"> </span><span class="w" data-w="8">the</span><span class="s" data-s="8"> </span><span class="w" data-w="9">clumsy</span><span class="s" data-s="9"> </span><span class="w" data-w="10">helmets</span><span class="s" data-s="10"> </span><span class="w" data-w="11">just</span><span class="s" data-s="11"> </span><span class="w" data-w="12">in</span><span class="s" data-s="12"> </span><span class="w" data-w="13">time,</span><br><span class="w" data-w="14">But</span><span class="s" data-s="14"> </span><span class="w" data-w="15">someone</span><span class="s" data-s="15"> </span><span class="w" data-w="16">still</span><span class="s" data-s="16"> </span><span class="w" data-w="17">was</span><span class="s" data-s="17"> </span><span class="w" data-w="18">yelling</span><span class="s" data-s="18"> </span><span class="w" data-w="19">out</span><span class="s" data-s="19"> </span><span class="w" data-w="20">and</span><span class="s" data-s="20"> </span><span class="w" data-w="21">stumbling</span><br><span class="w" data-w="22">And</span><span class="s" data-s="22"> </span><span class="w" data-w="23">flound&#8217;ring</span><span class="s" data-s="23"> </span><span class="w" data-w="24">like</span><span class="s" data-s="24"> </span><span class="w" data-w="25">a</span><span class="s" data-s="25"> </span><span class="w" data-w="26">man</span><span class="s" data-s="26"> </span><span class="w" data-w="27">in</span><span class="s" data-s="27"> </span><span class="w" data-w="28">fire</span><span class="s" data-s="28"> </span><span class="w" data-w="29">or</span><span class="s" data-s="29"> </span><span class="term" data-tip="A chemical that burns skin." data-pron="" data-word="lime" data-g="v_lime"><span class="w" data-w="30">lime</span></span><span class="w" data-w="30">.--</span><br><span class="w" data-w="31">Dim,</span><span class="s" data-s="31"> </span><span class="w" data-w="32">through</span><span class="s" data-s="32"> </span><span class="w" data-w="33">the</span><span class="s" data-s="33"> </span><span class="w" data-w="34">misty</span><span class="s" data-s="34"> </span><span class="w" data-w="35">panes</span><span class="s" data-s="35"> </span><span class="w" data-w="36">and</span><span class="s" data-s="36"> </span><span class="w" data-w="37">thick</span><span class="s" data-s="37"> </span><span class="w" data-w="38">green</span><span class="s" data-s="38"> </span><span class="w" data-w="39">light,</span><br><span class="w" data-w="40">As</span><span class="s" data-s="40"> </span><span class="w" data-w="41">under</span><span class="s" data-s="41"> </span><span class="w" data-w="42">a</span><span class="s" data-s="42"> </span><span class="w" data-w="43">green</span><span class="s" data-s="43"> </span><span class="w" data-w="44">sea,</span><span class="s" data-s="44"> </span><span class="w" data-w="45">I</span><span class="s" data-s="45"> </span><span class="w" data-w="46">saw</span><span class="s" data-s="46"> </span><span class="w" data-w="47">him</span><span class="s" data-s="47"> </span><span class="w" data-w="48">drowning.</span></p><div class="ansbox" data-slot="r2"></div></section><section class="partpg" data-pt="3"><div class="chk">Part 3</div><h2>The Dream and the Old Lie</h2><div class="meander"></div><div class="pt-ch"><b>Chapter 4</b>Stanzas 3 and 4, in Plain English</div><div class="pt-ch"><b>Chapter 5</b>Stanzas 3 and 4, in the Original</div><div class="pt-ch"><b>Chapter 6</b>A Note for You</div><div class="pt-slot"></div></section><section class="ch" data-ch="s4"><div class="chk">Chapter 4</div><h3>Stanzas 3 and 4, in Plain English</h3><span class="pgref">Plain version, written for this page. These are not Owen&#x27;s words.</span><div class="readfor" data-rf="r3"></div><p class="prose" data-clip="s4_1"><span class="w" data-w="0">In</span><span class="s" data-s="0"> </span><span class="w" data-w="1">all</span><span class="s" data-s="1"> </span><span class="w" data-w="2">the</span><span class="s" data-s="2"> </span><span class="w" data-w="3">speaker's</span><span class="s" data-s="3"> </span><span class="w" data-w="4">dreams,</span><span class="s" data-s="4"> </span><span class="w" data-w="5">before</span><span class="s" data-s="5"> </span><span class="w" data-w="6">his</span><span class="s" data-s="6"> </span><span class="w" data-w="7">helpless</span><span class="s" data-s="7"> </span><span class="w" data-w="8">sight,</span><span class="s" data-s="8"> </span><span class="w" data-w="9">the</span><span class="s" data-s="9"> </span><span class="w" data-w="10">man</span><span class="s" data-s="10"> </span><span class="w" data-w="11">plunges</span><span class="s" data-s="11"> </span><span class="w" data-w="12">at</span><span class="s" data-s="12"> </span><span class="w" data-w="13">him,</span><span class="s" data-s="13"> </span><span class="w" data-w="14">guttering,</span><span class="s" data-s="14"> </span><span class="w" data-w="15">choking,</span><span class="s" data-s="15"> </span><span class="w" data-w="16">drowning.</span></p><p class="prose" data-clip="s4_2"><span class="w" data-w="0">The</span><span class="s" data-s="0"> </span><span class="w" data-w="1">speaker</span><span class="s" data-s="1"> </span><span class="w" data-w="2">says</span><span class="s" data-s="2"> </span><span class="w" data-w="3">to</span><span class="s" data-s="3"> </span><span class="w" data-w="4">his</span><span class="s" data-s="4"> </span><span class="w" data-w="5">friend:</span><span class="s" data-s="5"> </span><span class="w" data-w="6">if</span><span class="s" data-s="6"> </span><span class="w" data-w="7">in</span><span class="s" data-s="7"> </span><span class="w" data-w="8">some</span><span class="s" data-s="8"> </span><span class="w" data-w="9">smothering</span><span class="s" data-s="9"> </span><span class="w" data-w="10">dreams</span><span class="s" data-s="10"> </span><span class="w" data-w="11">you</span><span class="s" data-s="11"> </span><span class="w" data-w="12">too</span><span class="s" data-s="12"> </span><span class="w" data-w="13">could</span><span class="s" data-s="13"> </span><span class="w" data-w="14">pace</span><span class="s" data-s="14"> </span><span class="w" data-w="15">behind</span><span class="s" data-s="15"> </span><span class="w" data-w="16">the</span><span class="s" data-s="16"> </span><span class="w" data-w="17">wagon</span><span class="s" data-s="17"> </span><span class="w" data-w="18">that</span><span class="s" data-s="18"> </span><span class="w" data-w="19">we</span><span class="s" data-s="19"> </span><span class="w" data-w="20">flung</span><span class="s" data-s="20"> </span><span class="w" data-w="21">him</span><span class="s" data-s="21"> </span><span class="w" data-w="22">in,</span><span class="s" data-s="22"> </span><span class="w" data-w="23">and</span><span class="s" data-s="23"> </span><span class="w" data-w="24">watch</span><span class="s" data-s="24"> </span><span class="w" data-w="25">the</span><span class="s" data-s="25"> </span><span class="w" data-w="26">white</span><span class="s" data-s="26"> </span><span class="w" data-w="27">eyes</span><span class="s" data-s="27"> </span><span class="w" data-w="28">writhing</span><span class="s" data-s="28"> </span><span class="w" data-w="29">in</span><span class="s" data-s="29"> </span><span class="w" data-w="30">his</span><span class="s" data-s="30"> </span><span class="w" data-w="31">face,</span><span class="s" data-s="31"> </span><span class="w" data-w="32">his</span><span class="s" data-s="32"> </span><span class="w" data-w="33">hanging</span><span class="s" data-s="33"> </span><span class="w" data-w="34">face,</span><span class="s" data-s="34"> </span><span class="w" data-w="35">like</span><span class="s" data-s="35"> </span><span class="w" data-w="36">a</span><span class="s" data-s="36"> </span><span class="w" data-w="37">devil's</span><span class="s" data-s="37"> </span><span class="w" data-w="38">sick</span><span class="s" data-s="38"> </span><span class="w" data-w="39">of</span><span class="s" data-s="39"> </span><span class="w" data-w="40">sin;</span><span class="s" data-s="40"> </span><span class="w" data-w="41">if</span><span class="s" data-s="41"> </span><span class="w" data-w="42">you</span><span class="s" data-s="42"> </span><span class="w" data-w="43">could</span><span class="s" data-s="43"> </span><span class="w" data-w="44">hear,</span><span class="s" data-s="44"> </span><span class="w" data-w="45">at</span><span class="s" data-s="45"> </span><span class="w" data-w="46">every</span><span class="s" data-s="46"> </span><span class="w" data-w="47">jolt,</span><span class="s" data-s="47"> </span><span class="w" data-w="48">the</span><span class="s" data-s="48"> </span><span class="w" data-w="49">blood</span><span class="s" data-s="49"> </span><span class="w" data-w="50">come</span><span class="s" data-s="50"> </span><span class="w" data-w="51">gargling</span><span class="s" data-s="51"> </span><span class="w" data-w="52">from</span><span class="s" data-s="52"> </span><span class="w" data-w="53">the</span><span class="s" data-s="53"> </span><span class="w" data-w="54">froth-corrupted</span><span class="s" data-s="54"> </span><span class="w" data-w="55">lungs,</span><span class="s" data-s="55"> </span><span class="w" data-w="56">bitter</span><span class="s" data-s="56"> </span><span class="w" data-w="57">as</span><span class="s" data-s="57"> </span><span class="w" data-w="58">the</span><span class="s" data-s="58"> </span><span class="w" data-w="59">cud</span><span class="s" data-s="59"> </span><span class="w" data-w="60">of</span><span class="s" data-s="60"> </span><span class="w" data-w="61">vile,</span><span class="s" data-s="61"> </span><span class="w" data-w="62">incurable</span><span class="s" data-s="62"> </span><span class="w" data-w="63">sores</span><span class="s" data-s="63"> </span><span class="w" data-w="64">on</span><span class="s" data-s="64"> </span><span class="w" data-w="65">innocent</span><span class="s" data-s="65"> </span><span class="w" data-w="66">tongues,</span><span class="s" data-s="66"> </span><span class="w" data-w="67">then</span><span class="s" data-s="67"> </span><span class="w" data-w="68">you</span><span class="s" data-s="68"> </span><span class="w" data-w="69">would</span><span class="s" data-s="69"> </span><span class="w" data-w="70">not</span><span class="s" data-s="70"> </span><span class="w" data-w="71">tell</span><span class="s" data-s="71"> </span><span class="w" data-w="72">with</span><span class="s" data-s="72"> </span><span class="w" data-w="73">such</span><span class="s" data-s="73"> </span><span class="w" data-w="74">high</span><span class="s" data-s="74"> </span><span class="w" data-w="75">zest,</span><span class="s" data-s="75"> </span><span class="w" data-w="76">to</span><span class="s" data-s="76"> </span><span class="w" data-w="77">children</span><span class="s" data-s="77"> </span><span class="w" data-w="78">ardent</span><span class="s" data-s="78"> </span><span class="w" data-w="79">for</span><span class="s" data-s="79"> </span><span class="w" data-w="80">some</span><span class="s" data-s="80"> </span><span class="w" data-w="81">desperate</span><span class="s" data-s="81"> </span><span class="w" data-w="82">glory,</span><span class="s" data-s="82"> </span><span class="w" data-w="83">the</span><span class="s" data-s="83"> </span><span class="w" data-w="84">old</span><span class="s" data-s="84"> </span><span class="w" data-w="85">Lie:</span><span class="s" data-s="85"> </span><span class="w" data-w="86">&#8220;It</span><span class="s" data-s="86"> </span><span class="w" data-w="87">is</span><span class="s" data-s="87"> </span><span class="w" data-w="88">sweet</span><span class="s" data-s="88"> </span><span class="w" data-w="89">and</span><span class="s" data-s="89"> </span><span class="w" data-w="90">fitting</span><span class="s" data-s="90"> </span><span class="w" data-w="91">to</span><span class="s" data-s="91"> </span><span class="w" data-w="92">die</span><span class="s" data-s="92"> </span><span class="w" data-w="93">for</span><span class="s" data-s="93"> </span><span class="w" data-w="94">one's</span><span class="s" data-s="94"> </span><span class="w" data-w="95">country.&#8221;</span></p></section><section class="ch" data-ch="s5"><div class="chk">Chapter 5</div><h3>Stanzas 3 and 4, in the Original</h3><span class="pgref">The original: stanzas 3 and 4</span><p class="prose" data-clip="s5_1"><span class="w" data-w="0">In</span><span class="s" data-s="0"> </span><span class="w" data-w="1">all</span><span class="s" data-s="1"> </span><span class="w" data-w="2">my</span><span class="s" data-s="2"> </span><span class="w" data-w="3">dreams</span><span class="s" data-s="3"> </span><span class="w" data-w="4">before</span><span class="s" data-s="4"> </span><span class="w" data-w="5">my</span><span class="s" data-s="5"> </span><span class="w" data-w="6">helpless</span><span class="s" data-s="6"> </span><span class="w" data-w="7">sight</span><br><span class="w" data-w="8">He</span><span class="s" data-s="8"> </span><span class="w" data-w="9">plunges</span><span class="s" data-s="9"> </span><span class="w" data-w="10">at</span><span class="s" data-s="10"> </span><span class="w" data-w="11">me,</span><span class="s" data-s="11"> </span><span class="w" data-w="12">guttering,</span><span class="s" data-s="12"> </span><span class="w" data-w="13">choking,</span><span class="s" data-s="13"> </span><span class="w" data-w="14">drowning.</span></p><p class="prose" data-clip="s5_2"><span class="w" data-w="0">If</span><span class="s" data-s="0"> </span><span class="w" data-w="1">in</span><span class="s" data-s="1"> </span><span class="w" data-w="2">some</span><span class="s" data-s="2"> </span><span class="w" data-w="3">smothering</span><span class="s" data-s="3"> </span><span class="w" data-w="4">dreams</span><span class="s" data-s="4"> </span><span class="w" data-w="5">you</span><span class="s" data-s="5"> </span><span class="w" data-w="6">too</span><span class="s" data-s="6"> </span><span class="w" data-w="7">could</span><span class="s" data-s="7"> </span><span class="w" data-w="8">pace</span><br><span class="w" data-w="9">Behind</span><span class="s" data-s="9"> </span><span class="w" data-w="10">the</span><span class="s" data-s="10"> </span><span class="w" data-w="11">wagon</span><span class="s" data-s="11"> </span><span class="w" data-w="12">that</span><span class="s" data-s="12"> </span><span class="w" data-w="13">we</span><span class="s" data-s="13"> </span><span class="w" data-w="14">flung</span><span class="s" data-s="14"> </span><span class="w" data-w="15">him</span><span class="s" data-s="15"> </span><span class="w" data-w="16">in,</span><br><span class="w" data-w="17">And</span><span class="s" data-s="17"> </span><span class="w" data-w="18">watch</span><span class="s" data-s="18"> </span><span class="w" data-w="19">the</span><span class="s" data-s="19"> </span><span class="w" data-w="20">white</span><span class="s" data-s="20"> </span><span class="w" data-w="21">eyes</span><span class="s" data-s="21"> </span><span class="w" data-w="22">writhing</span><span class="s" data-s="22"> </span><span class="w" data-w="23">in</span><span class="s" data-s="23"> </span><span class="w" data-w="24">his</span><span class="s" data-s="24"> </span><span class="w" data-w="25">face,</span><br><span class="w" data-w="26">His</span><span class="s" data-s="26"> </span><span class="w" data-w="27">hanging</span><span class="s" data-s="27"> </span><span class="w" data-w="28">face,</span><span class="s" data-s="28"> </span><span class="w" data-w="29">like</span><span class="s" data-s="29"> </span><span class="w" data-w="30">a</span><span class="s" data-s="30"> </span><span class="w" data-w="31">devil&#8217;s</span><span class="s" data-s="31"> </span><span class="w" data-w="32">sick</span><span class="s" data-s="32"> </span><span class="w" data-w="33">of</span><span class="s" data-s="33"> </span><span class="w" data-w="34">sin,</span><br><span class="w" data-w="35">If</span><span class="s" data-s="35"> </span><span class="w" data-w="36">you</span><span class="s" data-s="36"> </span><span class="w" data-w="37">could</span><span class="s" data-s="37"> </span><span class="w" data-w="38">hear,</span><span class="s" data-s="38"> </span><span class="w" data-w="39">at</span><span class="s" data-s="39"> </span><span class="w" data-w="40">every</span><span class="s" data-s="40"> </span><span class="w" data-w="41">jolt,</span><span class="s" data-s="41"> </span><span class="w" data-w="42">the</span><span class="s" data-s="42"> </span><span class="w" data-w="43">blood</span><br><span class="w" data-w="44">Come</span><span class="s" data-s="44"> </span><span class="w" data-w="45">gargling</span><span class="s" data-s="45"> </span><span class="w" data-w="46">from</span><span class="s" data-s="46"> </span><span class="w" data-w="47">the</span><span class="s" data-s="47"> </span><span class="w" data-w="48">froth-corrupted</span><span class="s" data-s="48"> </span><span class="w" data-w="49">lungs,</span><br><span class="w" data-w="50">Bitter</span><span class="s" data-s="50"> </span><span class="w" data-w="51">as</span><span class="s" data-s="51"> </span><span class="w" data-w="52">the</span><span class="s" data-s="52"> </span><span class="w" data-w="53">cud</span><br><span class="w" data-w="54">Of</span><span class="s" data-s="54"> </span><span class="w" data-w="55">vile,</span><span class="s" data-s="55"> </span><span class="w" data-w="56">incurable</span><span class="s" data-s="56"> </span><span class="w" data-w="57">sores</span><span class="s" data-s="57"> </span><span class="w" data-w="58">on</span><span class="s" data-s="58"> </span><span class="w" data-w="59">innocent</span><span class="s" data-s="59"> </span><span class="w" data-w="60">tongues,--</span><br><span class="w" data-w="61">My</span><span class="s" data-s="61"> </span><span class="w" data-w="62">friend,</span><span class="s" data-s="62"> </span><span class="w" data-w="63">you</span><span class="s" data-s="63"> </span><span class="w" data-w="64">would</span><span class="s" data-s="64"> </span><span class="w" data-w="65">not</span><span class="s" data-s="65"> </span><span class="w" data-w="66">tell</span><span class="s" data-s="66"> </span><span class="w" data-w="67">with</span><span class="s" data-s="67"> </span><span class="w" data-w="68">such</span><span class="s" data-s="68"> </span><span class="w" data-w="69">high</span><span class="s" data-s="69"> </span><span class="w" data-w="70">zest</span><br><span class="w" data-w="71">To</span><span class="s" data-s="71"> </span><span class="w" data-w="72">children</span><span class="s" data-s="72"> </span><span class="w" data-w="73">ardent</span><span class="s" data-s="73"> </span><span class="w" data-w="74">for</span><span class="s" data-s="74"> </span><span class="w" data-w="75">some</span><span class="s" data-s="75"> </span><span class="w" data-w="76">desperate</span><span class="s" data-s="76"> </span><span class="w" data-w="77">glory,</span><br><span class="w" data-w="78">The</span><span class="s" data-s="78"> </span><span class="w" data-w="79">old</span><span class="s" data-s="79"> </span><span class="w" data-w="80">Lie:</span><span class="s" data-s="80"> </span><span class="w" data-w="81">Dulce</span><span class="s" data-s="81"> </span><span class="w" data-w="82">et</span><span class="s" data-s="82"> </span><span class="w" data-w="83">decorum</span><span class="s" data-s="83"> </span><span class="w" data-w="84">est</span><br><span class="w" data-w="85">Pro</span><span class="s" data-s="85"> </span><span class="w" data-w="86">patria</span><span class="s" data-s="86"> </span><span class="w" data-w="87">mori.</span></p></section><section class="ch" data-ch="s6"><div class="chk">Chapter 6</div><h3>A Note for You</h3><span class="pgref">From the page</span><p class="prose" data-clip="s6_1"><span class="w" data-w="0">A</span><span class="s" data-s="0"> </span><span class="w" data-w="1">poem</span><span class="s" data-s="1"> </span><span class="w" data-w="2">like</span><span class="s" data-s="2"> </span><span class="w" data-w="3">this</span><span class="s" data-s="3"> </span><span class="w" data-w="4">tells</span><span class="s" data-s="4"> </span><span class="w" data-w="5">you</span><span class="s" data-s="5"> </span><span class="w" data-w="6">what</span><span class="s" data-s="6"> </span><span class="w" data-w="7">one</span><span class="s" data-s="7"> </span><span class="w" data-w="8">man</span><span class="s" data-s="8"> </span><span class="w" data-w="9">saw</span><span class="s" data-s="9"> </span><span class="w" data-w="10">and</span><span class="s" data-s="10"> </span><span class="w" data-w="11">how</span><span class="s" data-s="11"> </span><span class="w" data-w="12">he</span><span class="s" data-s="12"> </span><span class="w" data-w="13">wanted</span><span class="s" data-s="13"> </span><span class="w" data-w="14">others</span><span class="s" data-s="14"> </span><span class="w" data-w="15">to</span><span class="s" data-s="15"> </span><span class="w" data-w="16">see</span><span class="s" data-s="16"> </span><span class="w" data-w="17">it.</span><span class="s" data-s="17"> </span><span class="w" data-w="18">It</span><span class="s" data-s="18"> </span><span class="w" data-w="19">is</span><span class="s" data-s="19"> </span><span class="w" data-w="20">powerful</span><span class="s" data-s="20"> </span><span class="w" data-w="21">evidence</span><span class="s" data-s="21"> </span><span class="w" data-w="22">of</span><span class="s" data-s="22"> </span><span class="w" data-w="23">the</span><span class="s" data-s="23"> </span><span class="w" data-w="24">horror</span><span class="s" data-s="24"> </span><span class="w" data-w="25">of</span><span class="s" data-s="25"> </span><span class="w" data-w="26">one</span><span class="s" data-s="26"> </span><span class="w" data-w="27">kind</span><span class="s" data-s="27"> </span><span class="w" data-w="28">of</span><span class="s" data-s="28"> </span><span class="w" data-w="29">attack.</span><span class="s" data-s="29"> </span><span class="w" data-w="30">But</span><span class="s" data-s="30"> </span><span class="w" data-w="31">Owen</span><span class="s" data-s="31"> </span><span class="w" data-w="32">also</span><span class="s" data-s="32"> </span><span class="w" data-w="33">wrote</span><span class="s" data-s="33"> </span><span class="w" data-w="34">to</span><span class="s" data-s="34"> </span><span class="w" data-w="35">change</span><span class="s" data-s="35"> </span><span class="w" data-w="36">minds,</span><span class="s" data-s="36"> </span><span class="w" data-w="37">and</span><span class="s" data-s="37"> </span><span class="w" data-w="38">many</span><span class="s" data-s="38"> </span><span class="w" data-w="39">soldiers</span><span class="s" data-s="39"> </span><span class="w" data-w="40">who</span><span class="s" data-s="40"> </span><span class="w" data-w="41">survived</span><span class="s" data-s="41"> </span><span class="w" data-w="42">the</span><span class="s" data-s="42"> </span><span class="w" data-w="43">war</span><span class="s" data-s="43"> </span><span class="w" data-w="44">felt</span><span class="s" data-s="44"> </span><span class="w" data-w="45">differently</span><span class="s" data-s="45"> </span><span class="w" data-w="46">about</span><span class="s" data-s="46"> </span><span class="w" data-w="47">their</span><span class="s" data-s="47"> </span><span class="w" data-w="48">service.</span><span class="s" data-s="48"> </span><span class="w" data-w="49">Keep</span><span class="s" data-s="49"> </span><span class="w" data-w="50">both</span><span class="s" data-s="50"> </span><span class="w" data-w="51">thoughts</span><span class="s" data-s="51"> </span><span class="w" data-w="52">in</span><span class="s" data-s="52"> </span><span class="w" data-w="53">view</span><span class="s" data-s="53"> </span><span class="w" data-w="54">as</span><span class="s" data-s="54"> </span><span class="w" data-w="55">you</span><span class="s" data-s="55"> </span><span class="w" data-w="56">read.</span></p><div class="ansbox" data-slot="r3"></div></section><section class="endpg"><div class="chk">End of the reading</div><h2>A Poem as a Source</h2><div class="meander"></div><button class="btn" data-go="4">Go to Verdict &rarr;</button></section></div></div>
+      <div class="fo foL" id="fL"></div><div class="fo foR" id="fR"></div>
+      <div class="slips" id="slips"></div>
+      <div class="ribbon" id="ribbon"></div>
+      <div class="ruler" id="ruler"><i></i><b></b><i></i></div>
+      <div class="leaf" id="leaf"><div class="lf front"></div><div class="lf back"></div></div>
+      <div class="lift" id="lift"></div>
+      <div class="cover" id="cover">
+        <div class="cf front"><div class="cv-in"><div class="cv-k">Week 19 &#183; The Marne and the Trenches</div><div class="cv-t">Dulce et Decorum Est</div><div class="cv-s">World History: Enlightenment to Present</div></div></div>
+        <div class="cf back"></div>
+      </div>
+      <button class="turn prev" id="tPrev" aria-label="Previous page">&#8249;</button>
+      <button class="turn next" id="tNext" aria-label="Next page">&#8250;</button>
+    </div>
+  </div>
+  <aside class="rpanel" id="rpanel"><header><div class="seg" id="rpTabs"><button data-rpanel="toc">Contents</button><button data-rpanel="marks">My marks</button></div><button class="x" id="rpX" aria-label="Close panel">&times;</button></header><div class="rpbody" id="rpBody"></div></aside>
+  <div class="rset" id="rset">
+    <div class="label">Text size</div><div class="seg" id="rSize"><button data-v="0">A&minus;</button><button data-v="1">A</button><button data-v="2">A+</button></div>
+    <div class="label" style="margin-top:14px">Line spacing</div><div class="seg" id="rLh"><button data-v="0">Snug</button><button data-v="1">Open</button></div>
+  </div>
+  <div class="hlbar" id="hlbar">
+    <button data-hl="k"><i class="sw k"></i>Key idea</button>
+    <button data-hl="e"><i class="sw e"></i>Evidence</button>
+    <button data-hl="n">&#9998; Note</button>
+    <button data-hl="ask">&#128172; Ask</button>
+    <button data-hl="x" class="rm">Remove</button>
+  </div>
+  <div class="noteed" id="noteEd">
+    <div class="label">Note</div>
+    <blockquote id="neQ"></blockquote>
+    <textarea id="neT" rows="4" placeholder="Your note"></textarea>
+    <div class="wrow"><button class="btn small" id="neSave">Save</button><button class="btn ghost small" id="neDel">Delete</button><button class="btn ghost small" id="neX">Cancel</button></div>
+  </div>
+</div>
+
+<script>
+const DATA = {"tim": {}, "disp": {}, "beats": {}};
+const L = {"key": "whsp-w19-ps2-v1", "title": "Dulce et Decorum Est", "course": "World History: Enlightenment to Present", "kicker": "Week 19 \u00b7 Primary Source 2", "bookTitle": "Dulce et Decorum Est", "wrapShort": "Verdict", "nbFile": "W19-PS2-Owen-Dulce-et-Decorum-Est-My-Notebook", "slots": {"r1": {"chs": ["s1"], "q": "When did Owen write the poem, when was it published, and what do the Latin words at the end mean?"}, "r2": {"chs": ["s2", "s3"], "q": "What are the men doing in the first stanza, and what happens when the cry of gas comes?"}, "r3": {"chs": ["s4", "s5", "s6"], "q": "What does the speaker see in his dreams, and what does he say his friend would not tell to children?"}}, "minis": {"m1": {"title": "Who Wrote This?", "clip": "m1", "part": 0, "lead": "Step through the picture with Next.", "beats": ["G'day, I'm Mr. Magister. Wilfred Owen was a young British officer who fought on the Western Front.", "He wrote this poem in 1917 and 1918.", "He was killed in battle on November 4, 1918, one week before the war ended.", "The poem was published after his death.", "The Latin words at the end come from the Roman poet Horace. They mean, \u201cIt is sweet and fitting to die for one's country.\u201d", "Owen calls them \u201cthe old Lie.\u201d A poem is a source like any other. Ask what the author saw, whom he is speaking to, and what he wants that person to feel and do."]}, "m2": {"title": "What the Speaker Sees", "clip": "m2", "part": 2, "lead": "Step through the picture with Next.", "beats": ["In the first stanza the men are bent double, like old beggars under sacks, coughing like hags, trudging through sludge.", "They turn their backs on the haunting flares. Many have lost their boots but limp on, shod in blood.", "In the second stanza comes the cry: Gas! GAS! Quick, boys! The men fumble the clumsy helmets on just in time.", "But someone is still yelling and stumbling, floundering like a man in fire or lime.", "Through the misty panes, in a thick green light, as under a green sea, the speaker sees him drowning.", "In the last stanza the speaker asks his friend to pace behind the wagon that they flung the man in."]}}, "notes": [["owen|wilfred|officer|1918|killed", "Wilfred Owen was a young British officer. He wrote the poem in 1917 and 1918 and was killed on November 4, 1918. It was published after his death. Chapter 1."], ["latin|dulce|horace|lie|patria", "The Latin words come from the Roman poet Horace. They mean, \u201cIt is sweet and fitting to die for one's country.\u201d Owen calls them \u201cthe old Lie.\u201d Chapter 1."], ["flare|gas-shell|gas shell|lime|helmet|gas", "A flare lights up the battlefield at night. Gas-shells are artillery shells filled with poison gas. Lime is a chemical that burns skin. Chapters 1 to 3."], ["green|sea|drowning|panes|wagon|dream", "The speaker sees the man drowning through the misty panes, and asks his friend to pace behind the wagon. Chapters 4 and 5."], ["plain|original|source|evidence|note", "Each stretch of the original has a plain version before it. The plain version is not Owen's words. Chapter 6 gives the note about how to use a poem as evidence."]], "back": [["man|drowning|green|wagon", "Go back to Chapters 3 and 5. What does the speaker see, and what does he ask his friend to picture?"], ["source|evidence|survivors|felt", "Go back to Chapter 6. What does the note say the poem is powerful evidence of, and what should you keep in view?"]], "backDefault": "Go back to the chapter that made you ask. What did the speaker see there, and who is he speaking to?", "askMiss": "My notes do not cover that one. Which chapter were you reading when the question came up? Try a word from it, like Owen, flare, gas, the green sea, or the wagon.", "askHello": "Ask me about the poem: Owen, the Latin words, the gas attack, the wagon, or how to use a poem as a source.", "voiced": false, "parts": [{"title": "Before You Read", "short": "Before You Read", "chapters": [{"id": "s1", "title": "About This Poem"}]}, {"title": "The March and the Gas", "short": "The Gas", "chapters": [{"id": "s2", "title": "Stanzas 1 and 2, in Plain English"}, {"id": "s3", "title": "Stanzas 1 and 2, in the Original"}]}, {"title": "The Dream and the Old Lie", "short": "The Old Lie", "chapters": [{"id": "s4", "title": "Stanzas 3 and 4, in Plain English"}, {"id": "s5", "title": "Stanzas 3 and 4, in the Original"}, {"id": "s6", "title": "A Note for You"}]}], "checkin": {"q": "A poem tells you what one man saw. How much can it tell a historian?", "opts": [["Everything about the war", "A poem shows one man's view. Part 3 and the note ask you to keep that in view."], ["What one man saw, and how he wanted others to see it", "That is the note's own point. As you read Part 2, notice what he saw."], ["Nothing, because a poem is not a document", "The note says a poem is a source like any other. Part 1 says what to ask of it."]], "backPart": 3, "backText": "The note says Owen also wrote to change minds. As you read Part 3, notice what he wants his friend to feel and do."}, "extra": {"cards": [{"id": "ra", "rows": [{"prompt": "When did Owen write this poem, and when was it published?", "correct": 2, "opts": ["He wrote it after the war ended", "It was published before Owen went to the front", "He wrote it in 1917 and 1918, and it was published after his death"], "fb": ["Owen was killed on November 4, 1918, one week before the war ended. Look at the first paragraph of the note.", "The note says the poem was published after his death.", "Right. He was killed on November 4, 1918, one week before the war ended, and the poem was published after his death."]}, {"prompt": "What do the Latin words at the end mean?", "correct": 0, "opts": ["\u201cIt is sweet and fitting to die for one's country.\u201d", "\u201cGas! Quick, boys!\u201d", "\u201cThe old Lie\u201d"], "fb": ["Right. The words come from the Roman poet Horace. Owen calls them \u201cthe old Lie.\u201d", "That is the cry in the second stanza. The Latin words come at the end.", "Owen calls the Latin words \u201cthe old Lie.\u201d The note gives their meaning."]}]}, {"id": "rb", "rows": [{"prompt": "The note says a \u201cflare\u201d is...", "correct": 1, "opts": ["a helmet worn against gas", "a rocket that lights up the battlefield at night", "a chemical that burns skin"], "fb": ["Helmets appear in the second stanza. The note describes a flare differently.", "Right. The men turn their backs on the haunting flares.", "That is the note's word for lime."]}, {"prompt": "The note says \u201cgas-shells\u201d are...", "correct": 0, "opts": ["artillery shells filled with poison gas", "rockets that light up the battlefield", "the cylinders from which gas was released"], "fb": ["Right. The men are deaf even to the hoots of gas-shells dropping softly behind.", "Those are flares. The note gives a different meaning for gas-shells.", "The note says gas-shells are artillery shells."]}]}, {"id": "rc", "rows": [{"prompt": "Through the misty panes, in a thick green light, what does the speaker see?", "correct": 1, "opts": ["A flare lighting the field", "A man drowning, as under a green sea", "A wagon on the road"], "fb": ["The flares are behind the men in the first stanza. Look at the second stanza.", "Right. In the second stanza he sees the man drowning, as under a green sea.", "The wagon comes in the last stanza, in the dream."]}, {"prompt": "In the last stanza, what does the speaker ask his friend to picture?", "correct": 0, "opts": ["Pacing behind the wagon that they flung the man in", "Marching in the dark toward a distant rest", "Fitting the helmets just in time"], "fb": ["Right. He asks the friend to pace behind the wagon, and to watch and hear what he saw.", "That is the march in the first stanza.", "That is the cry of gas in the second stanza."]}]}, {"id": "rd", "rows": [{"prompt": "The note calls this poem powerful evidence of what?", "correct": 2, "opts": ["How all soldiers felt about their service", "What every battle on the Western Front looked like", "The horror of one kind of attack"], "fb": ["The note says the opposite: many soldiers who survived felt differently.", "The note limits it to one kind of attack.", "Right. The note calls it powerful evidence of the horror of one kind of attack."]}, {"prompt": "What else does the note ask you to keep in view?", "correct": 0, "opts": ["Owen also wrote to change minds, and many survivors felt differently about their service", "Owen wrote the poem only for himself", "Owen wanted the poem to be forgotten"], "fb": ["Right. A poem tells you what one man saw and how he wanted others to see it.", "The note says Owen wrote to change minds.", "The poem was published after his death. The note says he wrote to change minds."]}]}]}, "quiz": [], "quizTitle": null, "responses": [{"id": "verdict", "q": "What did Owen see, whom is he speaking to, and what does he want that person to feel and do? Answer in three to five sentences, with one image from the poem.", "hint": "A poem tells you what one man saw and how he wanted others to see it. Keep in view the note's reminder that many soldiers who survived felt differently about their service."}], "respTitle": "My Verdict", "playlists": {}};
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const store = (() => { let s = {}; try { s = JSON.parse(localStorage.getItem(L.key) || '{}'); } catch (e) {}
+  return { get: k => s[k], set: (k, v) => { s[k] = v; try { localStorage.setItem(L.key, JSON.stringify(s)); } catch (e) {} } }; })();
+/* ---------- route ---------- */
+const NP = L.parts.length, END = NP + 1;
+const STOPS = ['Arrive', ...L.parts.map(p => p.short || p.title), L.wrapShort];
+const done = new Set(store.get('done') || []);
+function drawStops(c) {
+  $('#stops').innerHTML = STOPS.map((s, i) => `<button class="stop ${i === c ? 'on' : ''} ${done.has(i) ? 'done' : ''}" data-go="${i}"><i>${done.has(i) ? '&#10003;' : (i === 0 ? '&#9679;' : i === END ? '&#9733;' : i)}</i>${s}</button>`).join('');
+  $('.stop.on')?.scrollIntoView({ inline: 'center', block: 'nearest' });
+}
+let cur = 0;
+const PL = L.playlists || {};
+let started = false;
+const inBookStep = n => n >= 1 && n <= NP;
+function go(n, auto = true) {
+  if (cur !== n && !(inBookStep(cur) && inBookStep(n) && n < cur)) { done.add(cur); store.set('done', [...done]); }
+  cur = n; store.set('step', n);
+  const inBook = inBookStep(n);
+  $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === (inBook ? '0' : String(n))));
+  drawStops(n);
+  if (Q.length) { A.pause(); Q = []; qi = 0; drawVoice(); }
+  if (inBook) {
+    if (!auto) return;
+    if (R.open) { const c = R.pts[n]; if (spreadStart(c) !== R.col) show(c, c > R.col ? 1 : -1); return; }
+    window.scrollTo({ top: $('main').offsetTop - 60, behavior: 'instant' });
+    openBook('P' + n, $('.bigbook'));
+  } else {
+    if (R.open) closeBook();
+    window.scrollTo({ top: $('main').offsetTop - 60, behavior: 'smooth' });
+  }
+}
+document.addEventListener('click', e => {
+  const g = e.target.closest('[data-go]'); if (g) { go(+g.dataset.go); return; }
+  const p = e.target.closest('[data-play]'); if (p) { started = true; if (!voiceOn) setVoice(true); play([p.dataset.play]); return; }
+  const mg = e.target.closest('[data-mini-go]'); if (mg) { const c = $(`.mini[data-mini="${mg.dataset.miniGo}"]`); if (c) { c.scrollIntoView({ behavior: 'smooth', block: 'center' }); ($('.mplay', c) || $('.mread', c)).click(); } return; }
+  const ob = e.target.closest('[data-openbook]'); if (ob) { openBook(ob.dataset.openbook || null, ob.closest('[data-step="0"]') ? $('.bigbook') : null); return; }
+  const t = e.target.closest('.term'); if (t) { showPop(t); if (t.dataset.g && voiceOn) play([t.dataset.g]); return; }
+  if (!e.target.closest('.pop')) $('#pop').style.display = 'none';
+  const o = e.target.closest('[data-open]'); if (o) { openDrawer(o.dataset.open); return; }
+  if (e.target.closest('[data-close]') || e.target.id === 'scrim') closeDrawers();
+});
+
+/* ---------- player (Mr. Magister's voice: mini-lectures + words only) ---------- */
+const A = new Audio(); A.preload = 'auto';
+let Q = [], qi = 0, words = [], times = null, lastW = -1, rate = 1, raf = 0;
+const dock = $('#dock'), cap = $('#cap'), seek = $('#seek');
+function play(list, start = 0) {
+  if (!voiceOn || !L.voiced) return;
+  Q = list.filter(id => DATA.disp[id]); qi = Math.max(0, start); if (Q.length) load();
+}
+function load() {
+  const id = Q[qi]; if (!id) return stop();
+  const d = DATA.disp[id] || '';
+  cap.innerHTML = d.split(/\s+/).map((w, i) => `<span class="w" data-w="${i}">${w}</span>`).join(' ');
+  words = $$('.w', cap);
+  times = DATA.tim[id] || null; lastW = -1;
+  dock.classList.add('show');
+  A.src = 'audio/' + id + '.mp3'; A.playbackRate = rate;
+  A.play().catch(() => {});
+}
+function stop() { dock.classList.remove('talking'); $('#pp').innerHTML = '&#9654;'; cancelAnimationFrame(raf); drawVoice(); miniTick(true); }
+A.addEventListener('play', () => { dock.classList.add('talking'); $('#pp').innerHTML = '&#10074;&#10074;'; tick(); drawVoice(); });
+A.addEventListener('pause', stop);
+A.addEventListener('ended', () => { $$('.w.on').forEach(w => w.classList.remove('on')); qi++; if (qi < Q.length) load(); else { Q = []; qi = 0; stop(); } });
+A.addEventListener('error', () => { setTimeout(() => { qi++; if (qi < Q.length) load(); else stop(); }, 400); });
+function wordAt(t) {
+  if (times) { let k = -1; for (let i = 0; i < times.length; i++) { if (times[i] && times[i][0] <= t) k = i; } return k; }
+  if (!A.duration) return -1;
+  return Math.min(words.length - 1, Math.floor(t / A.duration * words.length));
+}
+function tick() {
+  const t = A.currentTime, k = wordAt(t);
+  if (k !== lastW) { words.forEach(w => w.classList.remove('on')); if (words[k]) words[k].classList.add('on'); lastW = k; }
+  if (A.duration) seek.value = Math.round(t / A.duration * 1000);
+  miniTick(false);
+  if (!A.paused) raf = requestAnimationFrame(tick);
+}
+seek.oninput = () => { if (A.duration) { A.currentTime = seek.value / 1000 * A.duration; tick(); } };
+$('#pp').onclick = () => { if (!Q.length) return; A.paused ? A.play() : A.pause(); };
+$('#prev').onclick = () => { if (A.currentTime > 2 || qi === 0) A.currentTime = 0; else { qi--; load(); } };
+$('#next').onclick = () => { if (qi < Q.length - 1) { qi++; load(); } };
+$('#back5').onclick = () => { A.currentTime = Math.max(0, A.currentTime - 5); tick(); };
+$('#fwd5').onclick = () => { A.currentTime = Math.min(A.duration || 0, A.currentTime + 5); tick(); };
+$('#rate').onclick = () => { rate = rate === 1 ? 1.25 : rate === 1.25 ? 0.85 : 1; A.playbackRate = rate; $('#rate').innerHTML = rate + '&times;'; };
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input, textarea')) return;
+  if (R.open && !R.busy) {
+    if (e.key === 'ArrowRight') { turn(1); return; }
+    if (e.key === 'ArrowLeft') { turn(-1); return; }
+    if (e.key === 'Escape') { if (!$('#noteEd').classList.contains('open') && !$('#hlbar').classList.contains('open') && !$('.drawer.open')) closeBook(); hideBar(); return; }
+  }
+  if (e.key === ' ' && Q.length) { e.preventDefault(); $('#pp').click(); }
+});
+
+/* ---------- glossary popover + drawers ---------- */
+function showPop(t) {
+  const p = $('#pop'), w = t.dataset.word || t.textContent.trim();
+  p.innerHTML = `<b>${t.textContent}</b>${t.dataset.pron ? `<i>${t.dataset.pron}</i> \u00b7 ` : ''}${t.dataset.tip}${t.dataset.side ? '' : `<button class="savew">${savedWords[w] ? '&#10003; Saved to my words' : '+ Save to my words'}</button>`}`;
+  const sb = $('.savew', p); if (sb) sb.onclick = () => { savedWords[w] = t.dataset.tip; store.set('words', savedWords); sb.innerHTML = '&#10003; Saved to my words'; drawMarks(); updateNb(); };
+  p.style.display = 'block';
+  const r = t.getBoundingClientRect();
+  p.style.left = Math.max(10, Math.min(scrollX + r.left, scrollX + innerWidth - 340)) + 'px';
+  p.style.top = (scrollY + r.bottom + 8) + 'px';
+}
+function openDrawer(id) { closeDrawers(); $('#' + id).classList.add('open'); $('#scrim').classList.add('on'); if (id === 'askDrawer') { askHello(); setTimeout(() => $('#askIn').focus(), 300); } }
+function closeDrawers() { $$('.drawer').forEach(d => d.classList.remove('open')); $('#scrim').classList.remove('on'); askCtx = ''; $('#askIn').placeholder = 'Ask about the lesson'; }
+$$('.gl button[data-g]').forEach(b => b.onclick = () => { started = true; if (!voiceOn) setVoice(true); play([b.dataset.g]); });
+
+/* ---------- check-in (saved; comes back in a later part) ---------- */
+function markGuess(v) {
+  $$('#guess .opt').forEach(o => o.classList.toggle('picked', +o.dataset.v === v));
+  const c = L.checkin; if (!c) return;
+  $('#guessNote').textContent = v == null ? '' : (c.opts[v][1] || '') + (c.backPart ? ` Saved. You will see it again in Part ${c.backPart}.` : '');
+}
+function showGuessBack() {
+  const c = L.checkin, el = $('#guessBackText'); if (!c || !el) return;
+  const v = store.get('guess');
+  el.innerHTML = `<div class="label" style="margin:0 0 6px">Your check-in</div><div style="font-size:19px">${v == null ? 'You skipped the check-in. ' + c.q : c.opts[v][0]}</div><div class="ui" style="font-size:14px;color:var(--ink2);margin-top:6px">${c.backText}</div>`;
+}
+if (L.checkin) {
+  $$('#guess .opt').forEach(o => o.onclick = () => { const v = +o.dataset.v; store.set('guess', v); markGuess(v); showGuessBack(); updateNb(); });
+  markGuess(store.get('guess'));
+}
+
+/* ---------- Mr. Magister mini-lectures ----------
+   A .mini card holds a lesson visual. Beats step the visual (data-beat on the card) and the caption.
+   Voiced lessons: Play runs the clip and the beats follow the word timings. Every lesson: Read steps through by hand. */
+const MINI = L.minis || {};
+let miniLive = null;
+function setBeat(card, k) {
+  const m = MINI[card.dataset.mini], n = m.beats.length;
+  k = Math.max(0, Math.min(n - 1, k));
+  card.dataset.beat = k; card.classList.add('begun');
+  $('.mcap', card).innerHTML = `<span class="mbeat">${k + 1} / ${n}</span>${m.beats[k]}`;
+  $('.mnext', card).textContent = k === n - 1 ? 'Start over' : 'Next \u203a';
+  $('.mprev', card).disabled = k === 0;
+  card.dispatchEvent(new CustomEvent('beat', { detail: k }));
+  const seen = store.get('minis') || {}; if (!seen[card.dataset.mini] || seen[card.dataset.mini] < k + 1) { seen[card.dataset.mini] = k + 1; store.set('minis', seen); }
+}
+function miniTick(ended) {
+  if (!miniLive) return;
+  const id = Q[qi];
+  if (ended || id !== miniLive.dataset.clip) { if (ended && A.ended) setBeat(miniLive, MINI[miniLive.dataset.mini].beats.length - 1); miniLive.classList.remove('live'); miniLive = null; return; }
+  const bt = DATA.beats[miniLive.dataset.mini] || [], t = A.currentTime;
+  let k = 0; bt.forEach((s, i) => { if (s <= t) k = i; });
+  if (+miniLive.dataset.beat !== k) setBeat(miniLive, k);
+}
+function buildMinis() {
+  $$('.mini').forEach(card => {
+    const id = card.dataset.mini, m = MINI[id]; if (!m) return;
+    const voiced = L.voiced && m.clip && DATA.disp[m.clip];
+    if (voiced) card.dataset.clip = m.clip;
+    const head = document.createElement('div'); head.className = 'mhead';
+    head.innerHTML = `<img src="img/magister.jpg" alt=""><div><div class="label" style="margin:0 0 4px">Mini-lecture${m.len ? " \u00b7 " + m.len : ""}</div><h4>${m.title}</h4></div>`;
+    card.prepend(head);
+    const foot = document.createElement('div'); foot.className = 'mfoot';
+    foot.innerHTML = `<div class="mcap"><span class="mbeat">${m.beats.length} steps</span>${m.lead || 'Watch the picture change as Mr. Magister explains.'}</div>
+      <div class="wrow">${voiced ? '<button class="btn small mplay">&#9654; Play with Mr. Magister</button>' : ''}<button class="btn ${voiced ? 'ghost ' : ''}small mread">${voiced ? 'Read' : '&#9654; Start'}</button><button class="btn ghost small mprev" disabled>&lsaquo; Back</button><button class="btn ghost small mnext">Next &rsaquo;</button></div>`;
+    card.appendChild(foot);
+    $('.mread', card).onclick = () => { if (miniLive === card) A.pause(); setBeat(card, 0); };
+    $('.mnext', card).onclick = () => { if (miniLive === card) A.pause(); const k = +(card.dataset.beat ?? -1); setBeat(card, k >= m.beats.length - 1 ? 0 : k + 1); };
+    $('.mprev', card).onclick = () => { if (miniLive === card) A.pause(); setBeat(card, +(card.dataset.beat || 0) - 1); };
+    if (voiced) $('.mplay', card).onclick = () => { started = true; if (!voiceOn) setVoice(true); play([m.clip]); miniLive = card; card.classList.add('live'); setBeat(card, 0); };
+    /* visuals: data-on="k" shows from beat k; data-off="j" hides again at beat j */
+    const vis = k => $$('[data-on]', card).forEach(el => { const a = +el.dataset.on, b = el.dataset.off != null ? +el.dataset.off : 99; el.classList.toggle('shown', k >= a && k < b); });
+    card.addEventListener('beat', e => { vis(e.detail); if (zoomCard === card) requestAnimationFrame(drawZoom); }); vis(0);
+    /* in the book a mini-lecture is small: Enlarge opens the same visual full-screen, still stepped by Back / Next */
+    const z = document.createElement('button'); z.className = 'btn ghost small mzoom'; z.innerHTML = '&#10530; Enlarge'; z.setAttribute('aria-label', 'Enlarge the picture');
+    head.appendChild(z); z.onclick = () => openZoom(card);
+    $('.mstage', card)?.addEventListener('click', () => { if (card.closest('.plate')) openZoom(card); });
+  });
+}
+let zoomCard = null;
+function openZoom(card) {
+  let o = $('#mzoom');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'mzoom'; o.setAttribute('role', 'dialog'); o.setAttribute('aria-label', 'Mini-lecture, enlarged');
+    o.innerHTML = '<div class="mz-in"><div class="mz-top"><b class="mz-t"></b><button class="btn ghost small mz-x">&times; Close</button></div><div class="mz-stage"></div><div class="mz-cap"></div><div class="wrow"><button class="btn ghost small mz-prev">&lsaquo; Back</button><button class="btn small mz-next">Next &rsaquo;</button></div></div>';
+    document.body.appendChild(o);
+    $('.mz-x', o).onclick = closeZoom; o.addEventListener('click', e => { if (e.target === o) closeZoom(); });
+    $('.mz-prev', o).onclick = () => zoomCard && $('.mprev', zoomCard).click();
+    $('.mz-next', o).onclick = () => zoomCard && $('.mnext', zoomCard).click();
+    document.addEventListener('keydown', e => { if (zoomCard && e.key === 'Escape') { e.stopPropagation(); closeZoom(); } }, true);
+  }
+  zoomCard = card; if (card.dataset.beat == null) setBeat(card, 0);
+  $('.mz-t', o).textContent = $('h4', card).textContent;
+  o.classList.add('open'); drawZoom();
+}
+function drawZoom() {
+  const o = $('#mzoom'); if (!o || !zoomCard) return;
+  const s = $('.mstage', zoomCard).cloneNode(true); $('.mz-stage', o).replaceChildren(s);
+  $('.mz-cap', o).innerHTML = $('.mcap', zoomCard).innerHTML;
+  $('.mz-next', o).innerHTML = $('.mnext', zoomCard).innerHTML; $('.mz-prev', o).disabled = $('.mprev', zoomCard).disabled;
+}
+function closeZoom() { $('#mzoom')?.classList.remove('open'); zoomCard = null; }
+
+/* ---------- wrap: quick check (one at a time, feedback in Mr. Magister's words) ---------- */
+const QZ = L.quiz || [];
+const qState = store.get('quiz') || {};
+function drawQuiz() {
+  const box = $('#quiz'); if (!box) return;
+  box.innerHTML = QZ.map((q, i) => {
+    const st = qState[i] || {};
+    return `<div class="q card" data-q="${i}"><p>${i + 1}. ${q.q}</p><div class="opts">${q.opts.map((o, k) => `<button class="opt ${st.right && k === q.a ? 'right' : ''} ${(st.wrong || []).includes(k) ? 'wrong' : ''}" data-k="${k}" ${st.right ? 'disabled' : ''}>${o}</button>`).join('')}</div><div class="fbline ${st.right ? 'ok' : st.wrong ? 'no' : ''}">${st.right ? q.yes : st.wrong ? q.no : ''}</div></div>`;
+  }).join('');
+  $$('#quiz .q').forEach(el => $$('.opt', el).forEach(b => b.onclick = () => {
+    const i = +el.dataset.q, k = +b.dataset.k, st = qState[i] = qState[i] || {};
+    if (k === QZ[i].a) { st.right = true; if (!st.wrong) st.first = true; }
+    else st.wrong = [...new Set([...(st.wrong || []), k])];
+    store.set('quiz', qState); drawQuiz(); updateNb();
+  }));
+  const right = QZ.filter((q, i) => qState[i]?.right).length, first = QZ.filter((q, i) => qState[i]?.first).length;
+  $('#quizTally').textContent = right ? `${right} of ${QZ.length} answered` + (right === QZ.length ? ` \u00b7 ${first} right on the first try` : '') : '';
+}
+
+/* ---------- typed responses (the week's written work lives here; copy into Canvas) ---------- */
+function buildResponses() {
+  $$('[data-resp]').forEach(t => { t.value = ans[t.dataset.resp] || ''; t.oninput = () => { ans[t.dataset.resp] = t.value; store.set('ans', ans); updateNb(); countWords(t); }; countWords(t); });
+  $$('.copyall').forEach(b => b.onclick = async () => {
+    const txt = (L.responses || []).map((r, i) => `${i + 1}. ${r.q}\n\n${(ans[r.id] || '').trim() || '(no answer yet)'}`).join('\n\n');
+    try { await navigator.clipboard.writeText(txt); b.nextElementSibling.textContent = 'Copied. Paste it into the Canvas text box.'; }
+    catch (e) { b.nextElementSibling.textContent = 'Copy did not work here. Download the notebook instead.'; }
+  });
+}
+function countWords(t) { const n = (t.value.trim().match(/\S+/g) || []).length, c = t.closest('.resp')?.querySelector('.wc'); if (c) c.textContent = n ? n + ' words' : ''; }
+
+/* ---------- Ask Mr. Magister ---------- */
+const NOTES = (L.notes || []).map(([r, a]) => [new RegExp(r, 'i'), a]);
+const BACK = (L.back || []).map(([r, a]) => [new RegExp(r, 'i'), a]);
+const THINK = /\b(should|would you|do you think|is it fair|fair|better|worse|worth|agree|right or wrong|good idea|bad idea|wise|your opinion|who was right|was he right)\b/i;
+function reply(q) {
+  if (THINK.test(q)) { const b = BACK.find(([r]) => r.test(q)) || (askCtx && BACK.find(([r]) => r.test(askCtx))); return "That's yours to decide. " + (b ? b[1] : L.backDefault); }
+  const n = NOTES.find(([r]) => r.test(q)) || (askCtx && NOTES.find(([r]) => r.test(askCtx)));
+  return n ? n[1] : L.askMiss;
+}
+function say(who, t) { const m = document.createElement('div'); m.className = 'msg ' + who; m.textContent = t; $('#chat').appendChild(m); m.scrollIntoView({ block: 'end' }); }
+let helloed = false;
+function askHello() { if (!helloed) { helloed = true; say('him', L.askHello); } }
+$('#askForm').onsubmit = e => { e.preventDefault(); const q = $('#askIn').value.trim(); if (!q) return; say('me', q); $('#askIn').value = ''; setTimeout(() => say('him', reply(q)), 350); };
+
+/* ---------- boot ---------- */
+function boot() {
+  if (!L.voiced) document.body.classList.add('unvoiced');
+  buildMinis(); drawQuiz();
+  if (window.widgets) window.widgets();
+  go(store.get('step') || 0, false);
+  bootReader(); buildResponses();
+}
+
+/* ---------- source-page question cards ---------- */
+window.widgets = () => {
+  const X = L.extra;
+  const wr = (id, fn) => { const b = $('#' + id); if (b) b.onclick = fn; };
+  function rowsCard(c) {
+    let st = store.get(c.id) || {};
+    function draw(i) {
+      const r = c.rows[i], a = st[i], ok = a != null && a === r.correct;
+      $('#' + c.id + i).innerHTML = `<div class="srow"><p>${r.prompt}</p><div class="opts">${r.opts.map((o, k) => `<button class="opt ${a === k ? (ok ? 'right' : 'wrong') : ''}" data-k="${k}">${o}</button>`).join('')}</div><div class="fbline ${a == null ? '' : ok ? 'ok' : 'no'}">${a == null ? '' : r.fb[a]}</div></div>`;
+      $$('#' + c.id + i + ' .opt').forEach(btn => btn.onclick = () => { st[i] = +btn.dataset.k; store.set(c.id, st); draw(i); });
+    }
+    c.rows.forEach((_, i) => draw(i));
+    wr(c.id + 'Reset', () => { st = {}; store.set(c.id, st); c.rows.forEach((_, i) => draw(i)); });
+  }
+  X.cards.forEach(rowsCard);
+};
+
+/* ---------- voice: off until the student turns it on ---------- */
+let voiceOn = !!store.get('voice');
+function setVoice(on) {
+  voiceOn = on; store.set('voice', on); document.body.classList.toggle('voice-on', on);
+  if (!on) {
+    A.pause(); Q = []; qi = 0; dock.classList.remove('show');
+    $$('.prose.reading').forEach(p => p.classList.remove('reading')); $$('.w.on').forEach(w => w.classList.remove('on'));
+  }
+  drawVoice();
+  if (R.open) layout(true);
+}
+function drawVoice() {
+  const t = $('#voiceTab'); if (!t) return;
+  const playing = voiceOn && !A.paused;
+  t.classList.toggle('on', playing);
+  const lbl = !voiceOn ? 'Listen' : playing ? 'Pause' : (Q.length ? 'Resume' : 'Listen');
+  $('#voiceLbl').textContent = lbl; t.setAttribute('aria-label', lbl + ' (Mr. Magister)');
+}
+function listenHere() {
+  const n = R.open ? partAt(R.col + R.per - 1) : cur;
+  play(PL[n] || PL[0] || []);
+}
+$('#voiceTab').onclick = () => {
+  if (!voiceOn) { setVoice(true); listenHere(); return; }
+  if (!A.paused) { A.pause(); return; }
+  if (Q.length) A.play().catch(() => {}); else listenHere();
+};
+$('#voiceOff').onclick = () => setVoice(false);
+
+/* ---------- the book ---------- */
+const CHAP = L.parts.flatMap(p => p.chapters.map(c => [c.id, c.title]));
+const chNum = c => CHAP.findIndex(x => x[0] === c) + 1, chTitle = c => CHAP[chNum(c) - 1][1];
+const SLOTS = Object.fromEntries(Object.entries(L.slots).map(([k, v]) => [k, [v.chs, v.q]]));
+const LBL = { k: 'Key idea', e: 'Evidence', n: 'Note' };
+const PARTS = L.parts.map(p => [p.title, p.chapters.map(c => c.id)]);
+const SIZES = [17, 19, 21], LHS = [1.62, 1.95];
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const R = { open: false, busy: false, two: true, per: 2, P: 540, M: 72, col: 0, ncol: 1, words: [], wcol: [], chs: {}, pts: {}, opener: null };
+const reader = $('#reader'), book = $('#book'), flow = $('#flow'), vp = $('#vp');
+const rs = { size: store.get('rsize') ?? 1, lh: store.get('rlh') ?? 0, ruler: false };
+let hls = store.get('hls') || [], savedWords = store.get('words') || {}, ans = store.get('ans') || {};
+const chRead = new Set(store.get('chRead') || []);
+let askCtx = '', pend = null;
+
+const bookClips = () => $$('#flow .prose').map(p => p.dataset.clip);
+const spreadStart = c => R.two ? c - (c % 2) : c;
+const colOfEl = el => Math.floor((el.getBoundingClientRect().left - flow.getBoundingClientRect().left + 2) / R.P);
+const wordEl = (c, k) => $(`#flow .prose[data-clip="${c}"] .w[data-w="${k}"]`);
+function firstVisibleWord() { const i = R.wcol.findIndex(c => c >= R.col); return i < 0 ? null : R.words[i]; }
+const anchorOf = w => w ? [w.closest('.prose').dataset.clip, +w.dataset.w] : null;
+const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+
+function layout(keep) {
+  const anchor = keep === true ? anchorOf(firstVisibleWord()) : null;
+  R.two = innerWidth >= 860; R.per = R.two ? 2 : 1;
+  const availH = innerHeight - 56 - (R.two ? 34 : 64) - (voiceOn ? (R.two ? 74 : 140) : 0), availW = innerWidth - (R.two ? 150 : 16);
+  const P = R.two ? Math.min(560, Math.floor(availW / 2)) : Math.min(620, availW);
+  const H = Math.round(R.two ? Math.min(820, availH, P * 1.5) : availH);
+  const M = R.two ? (P >= 500 ? 84 : 62) : 22;
+  Object.assign(R, { P, M, H });
+  const s = book.style;
+  s.setProperty('--P', P + 'px'); s.setProperty('--H', H + 'px'); s.setProperty('--M', M + 'px');
+  s.setProperty('--fs', (R.two ? SIZES[rs.size] : SIZES[rs.size] - 1) + 'px'); s.setProperty('--lh', LHS[rs.lh]);
+  book.classList.toggle('two', R.two); document.body.style.setProperty('--bookH', H + 'px');
+  flow.classList.remove('slide'); flow.style.transform = 'none';
+  R.words = $$('.w', flow);
+  const fl = flow.getBoundingClientRect().left;
+  R.wcol = R.words.map(w => Math.floor((w.getBoundingClientRect().left - fl + 2) / P));
+  R.ncol = Math.max(Math.max(...R.wcol), colOfEl($('.endpg .chk', flow))) + 1;
+  R.pts = {}; $$('.partpg', flow).forEach(p => R.pts[p.dataset.pt] = colOfEl($('.chk', p)));
+  R.chs = {};
+  $$('.ch', flow).forEach(c => { const ws = $$('.w', c); R.chs[c.dataset.ch] = { a: colOfEl($('.chk', c)), b: R.wcol[R.words.indexOf(ws[ws.length - 1])] }; });
+  const w = anchor && wordEl(...anchor);
+  show(w ? R.wcol[R.words.indexOf(w)] : R.col, 0);
+  updateCards();
+  drawSlips();
+}
+
+function show(c, dir) {
+  c = Math.max(0, Math.min(spreadStart(R.ncol - 1), spreadStart(c)));
+  const prev = R.col; R.col = c;
+  if (dir && !reduced && R.open) { if (R.two) turnAnim(dir, prev, c); else { flow.classList.add('slide'); } }
+  flow.style.transform = `translateX(${-c * R.P}px)`;
+  const chAt = col => { let r = null; CHAP.forEach(([id]) => { if (R.chs[id] && R.chs[id].a <= col) r = id; }); return r; };
+  const isOp = col => Object.values(R.pts).includes(col) || col >= R.ncol - 1;
+  const head = (col, left) => { const id = chAt(col); if (!id || col >= R.ncol || isOp(col)) return ''; if (R.chs[id].a === col) return ''; return left && R.two ? L.bookTitle : chTitle(id); };
+  $('#hL').textContent = head(c, true); $('#hR').textContent = R.two ? head(c + 1, false) : '';
+  $('#fL').textContent = c > 0 ? c : ''; $('#fR').textContent = R.two && c + 1 < R.ncol ? c + 1 : '';
+  const pt = partAt(c + R.per - 1), op = [c, c + R.per - 1].map(x => Object.keys(R.pts).find(k => R.pts[k] === x)).find(Boolean);
+  const cc = chAt(c + R.per - 1) || chAt(c);
+  if (op) { $('#rKick').textContent = 'Part ' + op; $('#rChap').textContent = PARTS[op - 1][0]; }
+  else { $('#rKick').textContent = cc ? 'Chapter ' + chNum(cc) : ''; $('#rChap').textContent = cc ? chTitle(cc) : L.bookTitle; }
+  if (R.open && pt && pt !== cur) { if (inBookStep(cur) && pt > cur) { done.add(cur); store.set('done', [...done]); } cur = pt; store.set('step', pt); drawStops(pt); }
+  $('#tPrev').disabled = c === 0; $('#tNext').disabled = c + R.per >= R.ncol;
+  if (R.open) {
+    let changed = false;
+    CHAP.forEach(([id]) => { const x = R.chs[id]; if (x && x.b >= c && x.b < c + R.per && !chRead.has(id)) { chRead.add(id); changed = true; } });
+    if (changed) { store.set('chRead', [...chRead]); updateCards(); }
+    store.set('pos', anchorOf(firstVisibleWord()));
+  }
+  drawRibbon(); hideBar();
+  requestAnimationFrame(() => setTimeout(drawSlips, dir && R.two && !reduced ? 0 : 340));
+}
+function turn(d) {
+  if (R.busy) return;
+  const n = spreadStart(R.col + d * R.per);
+  if (n < 0 || n >= R.ncol || n === R.col) return;
+  show(n, d);
+}
+function ensureVisible(w) {
+  const col = R.wcol[R.words.indexOf(w)];
+  if (col != null && (col < R.col || col >= R.col + R.per)) show(col, 0);
+}
+
+/* a page turn: the leaf carries the old right page over and lands as the new left page */
+function pageClone(col) {
+  const c = document.createElement('div'); c.className = 'clip';
+  const f = flow.cloneNode(true); f.removeAttribute('id'); f.classList.remove('slide');
+  f.style.transform = `translateX(${-col * R.P}px)`; c.appendChild(f); return c;
+}
+function turnAnim(dir, from, to) {
+  const leaf = $('#leaf'), lift = $('#lift'), fr = $('.lf.front', leaf), bk = $('.lf.back', leaf);
+  leaf.getAnimations().forEach(a => a.cancel());
+  fr.innerHTML = ''; bk.innerHTML = ''; lift.innerHTML = '';
+  leaf.className = 'leaf ' + (dir > 0 ? 'fwd' : 'back');
+  if (dir > 0) { fr.appendChild(pageClone(from + 1)); bk.appendChild(pageClone(to)); lift.style.left = '0'; lift.appendChild(pageClone(from)); }
+  else { fr.appendChild(pageClone(from)); bk.appendChild(pageClone(to + 1)); lift.style.left = 'var(--P)'; lift.appendChild(pageClone(from + 1)); }
+  $$('.clip', bk).forEach(c => c.style.left = 'var(--M)');
+  lift.classList.add('on');
+  const a = leaf.animate([{ transform: 'rotateY(0deg)' }, { transform: `rotateY(${dir > 0 ? -180 : 180}deg)` }], { duration: 620, easing: 'cubic-bezier(.45,.05,.25,1)' });
+  setTimeout(() => lift.classList.remove('on'), 310);
+  a.finished.then(() => { leaf.className = 'leaf'; fr.innerHTML = ''; bk.innerHTML = ''; lift.innerHTML = ''; drawSlips(); }).catch(() => {});
+}
+
+/* opening: the book flies up from the card, the cover swings open, a few pages riffle */
+async function openBook(ch, fromEl) {
+  if (R.busy) return;
+  R.opener = document.activeElement;
+  reader.classList.add('open'); reader.setAttribute('aria-hidden', 'false'); document.body.classList.add('reading-open');
+  R.open = true;
+  layout(false);
+  const pos = store.get('pos'), pw = pos && wordEl(...pos);
+  const first = !store.get('opened'); store.set('opened', 1);
+  const target = ch && /^P\d$/.test(ch) ? R.pts[ch[1]] : ch && R.chs[ch] ? R.chs[ch].a : (pw && !first ? R.wcol[R.words.indexOf(pw)] : R.pts[1]);
+  if (reduced) { show(target, 0); reader.animate([{ opacity: 0 }, { opacity: 1 }], 200); $('#rClose').focus(); return; }
+  R.busy = true;
+  const cover = $('#cover'), P = R.P, H = R.H, cx0 = R.two ? P : 0, x1 = R.two ? -P / 2 : 0;
+  show(first ? 0 : target, 0);
+  book.classList.add('closed'); cover.classList.add('on');
+  cover.style.transform = 'rotateY(0deg)'; cover.style.opacity = 1;
+  book.style.transform = 'none';
+  const b0 = book.getBoundingClientRect();
+  const fr = fromEl ? fromEl.getBoundingClientRect() : { left: b0.left + cx0 + P * .3, top: b0.top + H * .3, width: P * .4, height: H * .4 };
+  const sx = fr.width / P, sy = fr.height / H;
+  const anims = [];
+  const flyIn = book.animate([
+    { transform: `translate(${fr.left - b0.left - sx * cx0}px,${fr.top - b0.top}px) scale(${sx},${sy})`, opacity: fromEl ? 1 : 0 },
+    { transform: `translate(${x1}px,0) scale(1)`, opacity: 1 }], { duration: first ? 650 : 340, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' });
+  anims.push(flyIn);
+  const skip = () => anims.forEach(a => { try { a.finish(); } catch (e) {} });
+  reader.addEventListener('pointerdown', skip, { once: true });
+  await flyIn.finished.catch(() => {});
+  const dur = first ? 1100 : 520;
+  const swing = cover.animate([{ transform: 'rotateY(0deg)' }, { transform: 'rotateY(-180deg)' }], { duration: dur, easing: 'cubic-bezier(.5,.05,.25,1)', fill: 'forwards' });
+  const slide = book.animate([{ transform: `translate(${x1}px,0)` }, { transform: 'translate(0,0)' }], { duration: dur, easing: 'cubic-bezier(.5,.05,.25,1)', fill: 'forwards' });
+  anims.push(swing, slide);
+  setTimeout(() => book.classList.remove('closed'), dur * .45);
+  await Promise.all([swing.finished, slide.finished]).catch(() => {});
+  book.classList.remove('closed');
+  const fade = cover.animate([{ opacity: 1 }, { opacity: 0 }], { duration: R.two ? (first ? 260 : 160) : 120, fill: 'forwards' }); anims.push(fade);
+  await fade.finished.catch(() => {});
+  anims.forEach(a => a.cancel()); book.style.transform = 'none'; cover.classList.remove('on');
+  if (first && R.two && target > 1) {
+    for (let i = 0; i < 2 && spreadStart(target) > R.col + 2; i++) { show(R.col + 2, 1); await new Promise(r => setTimeout(r, 260)); }
+  }
+  show(target, first && R.two && R.col !== spreadStart(target) ? 1 : 0);
+  reader.removeEventListener('pointerdown', skip);
+  R.busy = false; $('#rClose').focus();
+}
+function closeBook() {
+  if (!R.open) return;
+  hideBar(); $('#noteEd').classList.remove('open'); $('#rpanel').classList.remove('open'); $('#rset').classList.remove('open');
+  const done = () => { if (inBookStep(cur)) $$('.step').forEach(s => s.classList.toggle('on', s.dataset.step === '0')); reader.classList.remove('open'); reader.setAttribute('aria-hidden', 'true'); document.body.classList.remove('reading-open'); R.open = false; R.busy = false; updateCards(); R.opener?.focus?.(); };
+  if (reduced) return done();
+  R.busy = true;
+  reader.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 220 }).finished.then(done).catch(done);
+  book.animate([{ transform: 'scale(1)' }, { transform: 'scale(.94)' }], { duration: 220 });
+}
+$('#rClose').onclick = closeBook;
+$('#tPrev').onclick = () => turn(-1);
+$('#tNext').onclick = () => turn(1);
+
+/* ---------- highlights and notes ---------- */
+const saveHls = () => { store.set('hls', hls); renderHls(); updateCards(); drawMarks(); };
+const inPart = (h, c, k) => h.parts.some(([pc, a, b]) => pc === c && k >= a && k <= b);
+const overlaps = (h, parts) => parts.some(([c, a, b]) => h.parts.some(([pc, pa, pb]) => pc === c && a <= pb && b >= pa));
+function partsFrom(ws) {
+  const m = new Map();
+  ws.forEach(w => { const c = w.closest('.prose').dataset.clip, k = +w.dataset.w; const r = m.get(c); if (!r) m.set(c, [k, k]); else { r[0] = Math.min(r[0], k); r[1] = Math.max(r[1], k); } });
+  return [...m].map(([c, [a, b]]) => [c, a, b]);
+}
+function textOf(parts) {
+  return parts.map(([c, a, b]) => {
+    const p = $(`#flow .prose[data-clip="${c}"]`), out = [];
+    for (let k = a; k <= b; k++) out.push($$(`.w[data-w="${k}"]`, p).map(w => w.textContent).join(''));
+    return out.join(' ');
+  }).join(' / ');
+}
+function renderHls() {
+  $$('#flow .hk, #flow .he, #flow .hn').forEach(e => e.classList.remove('hk', 'he', 'hn'));
+  hls.forEach(h => h.parts.forEach(([c, a, b]) => {
+    const p = $(`#flow .prose[data-clip="${c}"]`); if (!p) return;
+    $$('.w', p).forEach(w => { const k = +w.dataset.w; if (k >= a && k <= b) w.classList.add('h' + h.l); });
+    $$('.s', p).forEach(s => { const k = +s.dataset.s; if (k >= a && k < b) s.classList.add('h' + h.l); });
+  }));
+  drawSlips();
+}
+function clearPre() { $$('#flow .pre').forEach(e => e.classList.remove('pre')); }
+function selWords() {
+  const s = getSelection(); if (!s.rangeCount || s.isCollapsed) return null;
+  const r = s.getRangeAt(0); if (!flow.contains(r.commonAncestorContainer)) return null;
+  const ws = R.words.filter(w => r.intersectsNode(w));
+  return ws.length ? ws : null;
+}
+function showBar(rect, edit) {
+  const bar = $('#hlbar'); bar.classList.toggle('edit', !!edit); bar.classList.add('open');
+  const bw = bar.offsetWidth, bh = bar.offsetHeight;
+  let top = rect.top - bh - 10; if (top < 62) top = rect.bottom + 10;
+  bar.style.top = top + 'px'; bar.style.left = Math.max(8, Math.min(innerWidth - bw - 8, rect.left + rect.width / 2 - bw / 2)) + 'px';
+}
+function hideBar() { $('#hlbar')?.classList.remove('open'); clearPre(); pend = null; }
+function pendFromSelection() {
+  const ws = selWords(); if (!ws) return false;
+  const parts = partsFrom(ws);
+  pend = { parts, text: textOf(parts), ch: ws[0].closest('.ch').dataset.ch };
+  showBar(getSelection().getRangeAt(0).getBoundingClientRect(), false);
+  return true;
+}
+const ENDS = /[.?!][\u2019\u201d'")\]]*$/;
+function tapWord(w) {
+  const p = w.closest('.prose'), c = p.dataset.clip, k = +w.dataset.w;
+  const h = hls.find(h => inPart(h, c, k));
+  if (h) { pend = { hl: h, parts: h.parts, text: h.text, ch: h.ch }; showBar(w.getBoundingClientRect(), true); return; }
+  const n = Math.max(...$$('.w', p).map(x => +x.dataset.w)) + 1, txt = k2 => $$(`.w[data-w="${k2}"]`, p).map(x => x.textContent).join('');
+  let a = k, b = k;
+  while (a > 0 && !ENDS.test(txt(a - 1))) a--;
+  while (b < n - 1 && !ENDS.test(txt(b))) b++;
+  clearPre();
+  $$('.w', p).forEach(x => { const i = +x.dataset.w; if (i >= a && i <= b) x.classList.add('pre'); });
+  $$('.s', p).forEach(x => { const i = +x.dataset.s; if (i >= a && i < b) x.classList.add('pre'); });
+  const parts = [[c, a, b]];
+  pend = { parts, text: textOf(parts), ch: p.closest('.ch').dataset.ch };
+  const r1 = $(`.w[data-w="${a}"]`, p).getBoundingClientRect(), r2 = $(`.w[data-w="${b}"]`, p).getBoundingClientRect();
+  const top = Math.min(r1.top, r2.top), left = (r1.top === r2.top) ? r1.left : w.getBoundingClientRect().left;
+  showBar({ top, bottom: Math.max(r1.bottom, r2.bottom), left, width: r1.top === r2.top ? r2.right - r1.left : w.getBoundingClientRect().width }, false);
+}
+function makeHl(l) {
+  const old = hls.filter(h => overlaps(h, pend.parts));
+  const note = old.map(h => h.note).filter(Boolean).join(' ');
+  hls = hls.filter(h => !old.includes(h));
+  const h = { id: Date.now().toString(36) + Math.random().toString(36).slice(2, 5), l, parts: pend.parts, text: pend.text, ch: pend.ch, note };
+  hls.push(h); return h;
+}
+$('#hlbar').addEventListener('pointerdown', e => e.preventDefault());
+$('#hlbar').onclick = e => {
+  const b = e.target.closest('[data-hl]'); if (!b || !pend) return;
+  const act = b.dataset.hl, p = pend;
+  if (act === 'k' || act === 'e') { if (p.hl) p.hl.l = act; else makeHl(act); }
+  else if (act === 'n') { const h = p.hl || makeHl('n'); getSelection().removeAllRanges(); saveHls(); hideBar(); return openNote(h); }
+  else if (act === 'x') { hls = hls.filter(h => h !== p.hl); }
+  else if (act === 'ask') { getSelection().removeAllRanges(); hideBar(); return askAbout(p.text); }
+  getSelection().removeAllRanges(); saveHls(); hideBar();
+};
+let noteFor = null;
+function openNote(h) {
+  noteFor = h; $('#neQ').textContent = '\u201c' + h.text + '\u201d'; $('#neT').value = h.note || '';
+  $('#neDel').style.display = h.note ? '' : 'none';
+  $('#noteEd').classList.add('open'); setTimeout(() => $('#neT').focus(), 50);
+}
+function closeNote() { $('#noteEd').classList.remove('open'); noteFor = null; }
+$('#neSave').onclick = () => {
+  const h = noteFor; if (!h) return closeNote();
+  h.note = $('#neT').value.trim();
+  if (!h.note && h.l === 'n') hls = hls.filter(x => x !== h);
+  saveHls(); closeNote();
+};
+$('#neDel').onclick = () => { const h = noteFor; if (h) { h.note = ''; if (h.l === 'n') hls = hls.filter(x => x !== h); saveHls(); } closeNote(); };
+$('#neX').onclick = () => { const h = noteFor; if (h && h.l === 'n' && !h.note) { hls = hls.filter(x => x !== h); saveHls(); } closeNote(); };
+
+function drawSlips() {
+  const box = $('#slips'); box.innerHTML = ''; if (!R.open) return;
+  const br = book.getBoundingClientRect(), vr = vp.getBoundingClientRect(), mid = vr.left + vr.width / 2;
+  const items = hls.filter(h => h.note).map(h => {
+    const w = wordEl(h.parts[0][0], h.parts[0][1]); if (!w) return null;
+    const r = w.getBoundingClientRect(); if (r.right <= vr.left + 1 || r.left >= vr.right - 1) return null;
+    return { h, y: r.top - br.top - 2, right: R.two && r.left > mid };
+  }).filter(Boolean).sort((a, b) => a.y - b.y);
+  const last = { L: -1e9, R: -1e9 };
+  items.forEach(it => {
+    const side = it.right ? 'R' : 'L', el = document.createElement('button');
+    el.className = 'slip ' + side; el.textContent = it.h.note; el.title = it.h.note;
+    el.onclick = () => openNote(it.h); box.appendChild(el);
+    const y = Math.max(it.y, last[side] + 6); el.style.top = y + 'px'; last[side] = y + el.offsetHeight;
+  });
+}
+
+/* the frame never scrolls: focus inside the book turns to that page instead */
+vp.addEventListener('scroll', () => { if (vp.scrollLeft || vp.scrollTop) { vp.scrollLeft = 0; vp.scrollTop = 0; } });
+flow.addEventListener('focusin', e => { if (R.busy) return; const c = colOfEl(e.target);
+  if (c < R.col || c >= R.col + R.per) show(c, c > R.col ? 1 : -1); });
+
+/* pointer: tap a sentence, drag to select, swipe to turn */
+let down = null;
+vp.addEventListener('pointerdown', e => { down = { x: e.clientX, y: e.clientY }; });
+vp.addEventListener('pointerup', e => {
+  if (!down || R.busy) return; const dx = e.clientX - down.x, dy = e.clientY - down.y; down = null;
+  if (e.target.closest('.term, .pp')) return;
+  const sel = getSelection();
+  if (Math.abs(dx) > 60 && Math.abs(dy) < 50 && (sel.isCollapsed || e.pointerType === 'touch')) { sel.removeAllRanges(); turn(dx < 0 ? 1 : -1); return; }
+  setTimeout(() => {
+    if (pendFromSelection()) return;
+    if (Math.hypot(dx, dy) < 8) { const w = e.target.closest('.w') || e.target.closest('.s')?.previousElementSibling; if (w && w.classList.contains('w')) tapWord(w); else hideBar(); }
+  }, 10);
+});
+let selT;
+document.addEventListener('selectionchange', () => {
+  if (!R.open) return; clearTimeout(selT);
+  selT = setTimeout(() => { if (!down && !pend?.hl && selWords()) pendFromSelection(); }, 450);
+});
+reader.addEventListener('pointerdown', e => {
+  if (!e.target.closest('#hlbar, #vp, #noteEd')) hideBar();
+  if (!e.target.closest('#rset, #rSetBtn')) $('#rset').classList.remove('open');
+});
+
+/* reading line */
+book.addEventListener('pointermove', e => {
+  if (!rs.ruler) return;
+  const r = $('#ruler'), rr = r.getBoundingClientRect(), band = R.two ? SIZES[rs.size] * LHS[rs.lh] * 1.15 : (SIZES[rs.size] - 1) * LHS[rs.lh] * 1.15;
+  const y = Math.max(0, Math.min(rr.height - band, e.clientY - rr.top - band / 2));
+  r.children[0].style.height = y + 'px'; r.children[1].style.height = band + 'px';
+});
+$('#rRuler').onclick = () => { rs.ruler = !rs.ruler; $('#ruler').classList.toggle('on', rs.ruler); $('#rRuler').setAttribute('aria-pressed', rs.ruler); const r = $('#ruler'); r.children[0].style.height = '30%'; r.children[1].style.height = (SIZES[rs.size] * LHS[rs.lh] * 1.15) + 'px'; };
+
+/* text settings */
+function drawSet() { $$('#rSize button').forEach(b => b.classList.toggle('on', +b.dataset.v === rs.size)); $$('#rLh button').forEach(b => b.classList.toggle('on', +b.dataset.v === rs.lh)); }
+$('#rSetBtn').onclick = () => { drawSet(); $('#rset').classList.toggle('open'); };
+$$('#rSize button').forEach(b => b.onclick = () => { rs.size = +b.dataset.v; store.set('rsize', rs.size); drawSet(); layout(true); });
+$$('#rLh button').forEach(b => b.onclick = () => { rs.lh = +b.dataset.v; store.set('rlh', rs.lh); drawSet(); layout(true); });
+
+/* ribbon */
+function drawRibbon() {
+  const a = store.get('ribbon'), w = a && wordEl(...a), col = w ? R.wcol[R.words.indexOf(w)] : -1;
+  const here = col >= R.col && col < R.col + R.per;
+  $('#ribbon').classList.toggle('on', here); $('#rRibbon').setAttribute('aria-pressed', here);
+}
+$('#rRibbon').onclick = () => { const on = $('#ribbon').classList.contains('on'); store.set('ribbon', on ? null : anchorOf(firstVisibleWord())); drawRibbon(); drawMarks(); };
+
+/* contents and my marks */
+let panel = 'toc';
+const pageOf = h => { const w = wordEl(h.parts[0][0], h.parts[0][1]); return w ? R.wcol[R.words.indexOf(w)] : 0; };
+function drawMarks() {
+  const body = $('#rpBody'); if (!body) return;
+  $$('#rpTabs button').forEach(b => b.classList.toggle('on', b.dataset.rpanel === panel));
+  if (panel === 'toc') {
+    const rib = store.get('ribbon'), rw = rib && wordEl(...rib);
+    body.innerHTML = `<button class="toc" data-col="0"><b>Title page</b><span></span></button>` +
+      CHAP.map(([id, t], i) => `<button class="toc ${chRead.has(id) ? 'read' : ''}" data-col="${R.chs[id]?.a ?? 0}"><small>Chapter ${i + 1}</small><b>${t}</b><span>p. ${R.chs[id]?.a ?? ''}</span></button>`).join('') +
+      (rw ? `<button class="toc" data-col="${R.wcol[R.words.indexOf(rw)]}"><small>Ribbon</small><b>Where you left the ribbon</b><span>p. ${R.wcol[R.words.indexOf(rw)]}</span></button>` : '');
+  } else {
+    const order = bookClips(), sorted = [...hls].sort((a, b) => order.indexOf(a.parts[0][0]) - order.indexOf(b.parts[0][0]) || a.parts[0][1] - b.parts[0][1]);
+    let html = '', lastCh = '';
+    sorted.forEach(h => {
+      if (h.ch !== lastCh) { html += `<div class="mkh">Chapter ${chNum(h.ch)} \u00b7 ${chTitle(h.ch)}</div>`; lastCh = h.ch; }
+      html += `<button class="mk" data-col="${pageOf(h)}"><span class="tag ${h.l}">${LBL[h.l]}</span><em>\u201c${esc(h.text)}\u201d</em>${h.note ? `<span class="nt">${esc(h.note)}</span>` : ''}</button>`;
+    });
+    const words = Object.keys(savedWords);
+    if (words.length) html += `<div class="mkh">My words</div>` + words.map(w => `<div class="mk"><b>${esc(w)}</b> <span class="ui" style="font-size:14px;color:var(--ink2)">${esc(savedWords[w])}</span></div>`).join('');
+    body.innerHTML = (html || '<div class="empty">No marks yet.</div>') + `<div class="wrow" style="margin-top:18px"><button class="btn small" data-nb>&#11015; Download My Notebook</button></div>`;
+  }
+  $$('[data-col]', body).forEach(b => b.onclick = () => { $('#rpanel').classList.remove('open'); const c = +b.dataset.col; if (spreadStart(c) !== R.col) show(c, c > R.col ? 1 : -1); });
+  $$('[data-nb]', body).forEach(b => b.onclick = notebook);
+}
+$$('[data-rpanel]').forEach(b => b.onclick = () => { const p = $('#rpanel'); if (p.classList.contains('open') && panel === b.dataset.rpanel && b.classList.contains('rt')) { p.classList.remove('open'); return; } panel = b.dataset.rpanel; drawMarks(); p.classList.add('open'); });
+$('#rpX').onclick = () => $('#rpanel').classList.remove('open');
+
+/* ask about a passage */
+function askAbout(text) {
+  openDrawer('askDrawer'); askCtx = text;
+  const m = document.createElement('div'); m.className = 'msg ctx'; m.textContent = '\u201c' + (text.length > 220 ? text.slice(0, 220) + '\u2026' : text) + '\u201d';
+  $('#chat').appendChild(m); m.scrollIntoView({ block: 'end' });
+  $('#askIn').placeholder = 'Ask about this passage';
+}
+
+/* ---------- read cards ---------- */
+const partAt = col => { let r = 0; Object.entries(R.pts).forEach(([k, v]) => { if (v <= col) r = Math.max(r, +k); }); return r; };
+function placeBookItems() {
+  $$('.bookhold [data-book]').forEach(el => {
+    const [kind, at] = el.dataset.book.split(':');
+    if (kind === 'fig') { el.classList.add('bfig'); $(`#flow .prose[data-clip="${at}"]`).after(el); return; }
+    if (kind === 'open') { $(`#flow .partpg[data-pt="${at}"] .pt-slot`).appendChild(el); return; }
+    const ch = $(`#flow .ch[data-ch="${at}"]`), pl = document.createElement('section');
+    pl.className = 'plate'; pl.innerHTML = '<div class="meander"></div>'; pl.appendChild(el);
+    const ab = $('.ansbox', ch); ab ? ch.insertBefore(pl, ab) : ch.appendChild(pl);
+  });
+}
+function buildCards() {
+  $$('#flow .readfor').forEach(el => { el.innerHTML = `<b>Read for</b>${SLOTS[el.dataset.rf][1]}`; });
+  $$('#flow .ansbox').forEach(el => {
+    const slot = el.dataset.slot;
+    el.innerHTML = `<label><span>My answer</span><em>${SLOTS[slot][1]}</em><textarea rows="3" data-ans="${slot}" placeholder="Your answer">${esc(ans[slot] || '')}</textarea></label>`;
+  });
+  $$('.readcard').forEach(el => {
+    const slot = el.dataset.slot, [chs, q] = SLOTS[slot], nums = chs.map(chNum);
+    el.innerHTML = `<button class="minibook" data-openbook="${chs[0]}" aria-label="Open the book to chapter ${nums[0]}"><span>${nums.join('&thinsp;\u00b7&thinsp;')}</span></button>
+      <div><div class="label">${chs.length > 1 ? 'Chapters ' + nums.join(' and ') : 'Chapter ' + nums[0]} \u00b7 <span class="rc-pages"></span></div>
+      <h3>${chs.map(c => `<span class="chs">${chTitle(c)}</span>`).join('')}</h3>
+      <p class="readfor"><b>Read for</b>${q}</p>
+      <div class="rc-row"><button class="btn" data-openbook="${chs[0]}">&#128214; Open the book</button><span class="rc-stat"></span></div>
+      <label class="rc-ans"><span>My answer</span><textarea rows="2" data-ans="${slot}" placeholder="Your answer">${esc(ans[slot] || '')}</textarea></label></div>`;
+  });
+  $$('[data-ans]').forEach(t => t.oninput = () => { ans[t.dataset.ans] = t.value; store.set('ans', ans); updateNb(); });
+  $$('#flow .ansbox textarea').forEach(t => t.addEventListener('change', updateCards));
+}
+function updateCards() {
+  const pl = $('#partlist');
+  if (pl) pl.innerHTML = PARTS.map(([t, chs], i) => {
+    const read = chs.filter(c => chRead.has(c)).length, slots = Object.entries(SLOTS).filter(([, [c]]) => chs.includes(c[0])).map(([k]) => k), a = slots.filter(k => (ans[k] || '').trim()).length;
+    return `<button class="pl-row ${read === chs.length ? 'read' : ''}" data-go="${i + 1}"><i>${i + 1}</i><b>${t}</b><span>${read}/${chs.length} read \u00b7 ${a}/${slots.length} ${slots.length > 1 ? 'answers' : 'answer'}</span></button>`;
+  }).join('');
+  $$('.readcard').forEach(el => {
+    const chs = SLOTS[el.dataset.slot][0], a = R.chs[chs[0]]?.a, b = R.chs[chs[chs.length - 1]]?.b;
+    $('.rc-pages', el).textContent = a ? (a === b ? 'Page ' + a : `Pages ${a}\u2013${b}`) : '';
+    const read = chs.every(c => chRead.has(c)), mine = hls.filter(h => chs.includes(h.ch)), notes = mine.filter(h => h.note).length;
+    const st = $('.rc-stat', el); st.classList.toggle('done', read);
+    st.textContent = (read ? '\u2713 Read' : 'Not yet read') + (mine.length ? ` \u00b7 ${mine.length} marked` : '') + (notes ? ` \u00b7 ${notes} ${notes > 1 ? 'notes' : 'note'}` : '');
+  });
+  const n = chRead.size; $('#bookBtn span').textContent = n ? `Book \u00b7 ${n}/${CHAP.length}` : 'Book';
+  updateNb();
+}
+function updateNb() {
+  const a = Object.values(ans).filter(v => v.trim()).length;
+  $('#nbStats').innerHTML = [[a, 'answers'], [hls.filter(h => h.l !== 'n').length, 'highlights'], [hls.filter(h => h.note).length, 'notes'], [Object.keys(savedWords).length, 'words']]
+    .map(([n, l]) => `<div><b>${n}</b>${l}</div>`).join('');
+}
+
+/* ---------- My Notebook (PDF) ---------- */
+function loadPdfLib() {
+  if (window.jspdf) return Promise.resolve();
+  return new Promise((ok, no) => { const s = document.createElement('script'); s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+}
+function nbData() {
+  const order = bookClips();
+  const sorted = [...hls].sort((a, b) => order.indexOf(a.parts[0][0]) - order.indexOf(b.parts[0][0]) || a.parts[0][1] - b.parts[0][1]);
+  const g = store.get('guess');
+  return {
+    guess: L.checkin ? [L.checkin.q, g == null ? '' : L.checkin.opts[g][0]] : null,
+    slots: Object.entries(SLOTS).map(([slot, [chs, q]]) => ({ title: (chs.length > 1 ? 'Chapters ' : 'Chapter ') + chs.map(chNum).join(' and ') + ': ' + chs.map(chTitle).join('; '), q, a: (ans[slot] || '').trim(), marks: sorted.filter(h => chs.includes(h.ch)) })),
+    words: Object.entries(savedWords),
+    quiz: QZ.map((q, i) => { const st = qState[i] || {}; return [q.q, st.right ? q.opts[q.a] : '', st.right ? (st.first ? 'Right on the first try' : 'Right after ' + ((st.wrong || []).length + 1) + ' tries') : 'Not answered'] }),
+    resp: (L.responses || []).map(r => [r.q, (ans[r.id] || '').trim()]),
+    keep: $('.keep p')?.textContent || ''
+  };
+}
+async function notebook() {
+  $('#nbNote').textContent = 'Making your notebook\u2026';
+  try { await loadPdfLib(); } catch (e) { $('#nbNote').textContent = ''; return notebookHtml(); }
+  const d = nbData(), pdf = new window.jspdf.jsPDF({ unit: 'pt', format: 'letter' });
+  const Lm = 64, W = 612 - 128, BOT = 736, RED = [63, 55, 25], INK = [28, 27, 26], GREY = [85, 82, 76], NAVY = [51, 55, 45];
+  const clean = t => String(t).replace(/[^\x20-\x7E\xA0-\xFF\u2018\u2019\u201c\u201d\u2013\u2014\u2026\u2022]/g, '').replace(/\s+/g, ' ').trim();
+  let y = 70;
+  const write = (t, { size = 11, font = 'times', style = 'normal', color = INK, indent = 0, gap = 4, lh = 1.4 } = {}) => {
+    pdf.setFont(font, style); pdf.setFontSize(size); pdf.setTextColor(...color);
+    pdf.splitTextToSize(clean(t), W - indent).forEach(ln => { if (y + size * lh > BOT) { pdf.addPage(); y = 70; } pdf.text(ln, Lm + indent, y); y += size * lh; });
+    y += gap;
+  };
+  const rule = (c = [220, 212, 196]) => { if (y + 12 > BOT) { pdf.addPage(); y = 70; } pdf.setDrawColor(...c); pdf.setLineWidth(.8); pdf.line(Lm, y, Lm + W, y); y += 16; };
+  const head = t => { if (y + 60 > BOT) { pdf.addPage(); y = 70; } y += 8; write(t, { size: 15, color: RED, gap: 4 }); };
+  const lab = (t, gap = 1) => write(t, { size: 8.5, font: 'helvetica', style: 'bold', color: NAVY, gap });
+  write('MY NOTEBOOK', { size: 9, font: 'helvetica', style: 'bold', color: RED, gap: 14 });
+  write(L.title, { size: 24, color: INK, gap: 2, lh: 1.25 });
+  write(L.course + ' \u00b7 ' + L.kicker + ' \u00b7 Optima Academy Online \u00b7 ' + new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' }), { size: 9, font: 'helvetica', color: GREY, gap: 10 });
+  rule([142, 47, 42]);
+  if (d.guess) { lab('CHECK-IN: ' + d.guess[0].toUpperCase(), 2); write(d.guess[1] || 'Skipped.', { size: 12, gap: 8 }); }
+  d.slots.forEach(s => {
+    head(s.title);
+    lab('READ FOR'); write(s.q, { size: 11.5, style: 'italic', gap: 6 });
+    lab('MY ANSWER'); write(s.a || 'No answer yet.', { size: 11.5, color: s.a ? INK : GREY, gap: 8 });
+    if (s.marks.length) {
+      lab('MY MARKS', 3);
+      s.marks.forEach(h => {
+        write(LBL[h.l].toUpperCase(), { size: 7.5, font: 'helvetica', style: 'bold', color: h.l === 'e' ? RED : NAVY, indent: 12, gap: 1 });
+        write('\u201c' + h.text + '\u201d', { size: 11, style: 'italic', indent: 12, gap: h.note ? 2 : 7 });
+        if (h.note) write('Margin note: ' + h.note, { size: 10, font: 'helvetica', color: [60, 60, 60], indent: 12, gap: 7 });
+      });
+    }
+    rule();
+  });
+  if (d.words.length) { head('My Words'); d.words.forEach(([w, t]) => { write(w, { size: 12, style: 'bold', gap: 0 }); write(t, { size: 10.5, font: 'helvetica', color: GREY, gap: 6 }); }); rule(); }
+  if (d.quiz.length) { head(L.quizTitle || 'Quick Check'); d.quiz.forEach(([q, a, st], i) => { write((i + 1) + '. ' + q, { size: 11, style: 'bold', gap: 1 }); if (a) write(a, { size: 11, indent: 14, gap: 1 }); write(st, { size: 9, font: 'helvetica', color: GREY, indent: 14, gap: 8 }); }); rule(); }
+  if (d.resp.length) { head(L.respTitle || 'My Written Answers'); d.resp.forEach(([q, a], i) => { write((i + 1) + '. ' + q, { size: 11, style: 'bold', gap: 3 }); write(a || 'No answer yet.', { size: 11.5, color: a ? INK : GREY, indent: 14, gap: 10 }); }); rule(); }
+  lab('KEEP THIS IN MIND', 2);
+  write(d.keep, { size: 12, style: 'italic' });
+  const n = pdf.getNumberOfPages();
+  for (let i = 1; i <= n; i++) { pdf.setPage(i); pdf.setFont('helvetica', 'normal'); pdf.setFontSize(8); pdf.setTextColor(...GREY); pdf.text(`My Notebook \u00b7 ${clean(L.title)} \u00b7 page ${i} of ${n}`, Lm, 762); }
+  pdf.save(L.nbFile + '.pdf');
+  $('#nbNote').textContent = 'Saved: ' + L.nbFile + '.pdf';
+}
+function notebookHtml() {
+  const d = nbData(), e = esc;
+  const html = `<!doctype html><meta charset="utf-8"><title>My Notebook</title><body style="font:16px/1.6 Georgia,serif;max-width:720px;margin:40px auto;padding:0 20px;color:#1C1B1A">
+<p style="font:700 11px sans-serif;letter-spacing:.14em;color:#3F3719">MY NOTEBOOK</p><h1>${e(L.title)}</h1>` +
+    (d.guess ? `<p><b>Check-in:</b> ${e(d.guess[1] || 'Skipped.')}</p>` : '') +
+    d.slots.map(s => `<h2 style="color:#3F3719">${e(s.title)}</h2><p><i>Read for: ${e(s.q)}</i></p><p><b>My answer:</b> ${e(s.a || 'No answer yet.')}</p>` +
+      s.marks.map(h => `<blockquote><small>${LBL[h.l]}</small><br><i>\u201c${e(h.text)}\u201d</i>${h.note ? `<br>Margin note: ${e(h.note)}` : ''}</blockquote>`).join('')).join('') +
+    (d.words.length ? '<h2>My Words</h2>' + d.words.map(([w, t]) => `<p><b>${e(w)}</b>: ${e(t)}</p>`).join('') : '') +
+    (d.quiz.length ? `<h2>${e(L.quizTitle || 'Quick Check')}</h2>` + d.quiz.map(([q, a, st], i) => `<p><b>${i + 1}. ${e(q)}</b><br>${e(a)} <small>(${st})</small></p>`).join('') : '') +
+    (d.resp.length ? `<h2>${e(L.respTitle || 'My Written Answers')}</h2>` + d.resp.map(([q, a], i) => `<p><b>${i + 1}. ${e(q)}</b></p><p>${e(a || 'No answer yet.')}</p>`).join('') : '') + `<p><i>${e(d.keep)}</i></p>`;
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' })); a.download = L.nbFile + '.html'; a.click();
+  $('#nbNote').textContent = 'Saved: ' + L.nbFile + '.html';
+}
+$('#nbBtn').onclick = notebook;
+
+/* ---------- boot ---------- */
+function bootReader() {
+  document.body.classList.toggle('voice-on', voiceOn); drawVoice();
+  placeBookItems(); buildCards(); showGuessBack(); renderHls(); layout(false); drawMarks(); drawSet();
+  // a widget that grows (feedback appears) pushes the pages after it along: re-measure, stay on this page
+  let roT; const ro = new ResizeObserver(() => { clearTimeout(roT); roT = setTimeout(() => { if (R.open && !R.busy) layout('col'); }, 80); });
+  $$('#flow .plate').forEach(p => ro.observe(p));
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { layout(R.open); drawSlips(); }, 150); });
+  if (document.fonts) document.fonts.ready.then(() => layout(false));
+}
+
+boot();
+</script>
+</body>
+</html>
