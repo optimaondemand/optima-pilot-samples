@@ -12,14 +12,14 @@ Page: `ela-vr-the-crown-and-the-stone.html`
 
 **Models:**
 - Granite Block × 1. Type: Granite. the stone
-- Great Sword (Optima Domi) × 1. Type: Great Sword. the sword in the stone
-- Gold Crown (Optima Domi) × 1. Type: Gold Crown. the crown, which is your answer
-- Great Sword (Optima Domi) × 1 more. Type: Great Sword. Arthur rides back to find Kay a sword. Lay this one flat on the ground.
-- Optima Domi Knight × 1. Type: Knight. “Why do you kneel to me, my father?” Face him toward the stone.
-- White Horse - Idle × 1. Type: White Horse. Arthur ignores Merlin and rides out in pride.
+- Great Sword (Optima Domi) × 1. Type: Great Sword. the sword
+- Gold Crown (Optima Domi) × 1. Type: Gold Crown. the crown
+- Great Sword (Optima Domi) 1 more. Type: Great Sword. Arthur rides back to find Kay a sword. Lay it flat.
+- Optima Domi Knight × 1. Type: Knight. “Why do you kneel to me, my father?”
+- White Horse - Idle × 1. Type: White Horse. Arthur ignores Merlin and rides out.
 - Medieval Shield × 1. Type: Shield. Arthur will not yield to Pellinore.
 
-**Task:** Build and photograph the sword standing on the stone, one moment model beside it, and the crown clearly in one of the two places. The crown’s place fits the moment you chose.
+**Task:** Build and photograph the sword on the stone, one moment model, and the crown in one of the two places.
 
 **Turn it in:** Library > Camera > Take photo > Canvas tab > pick VR: The Crown and the Stone > Choose from My Files > Use this file > Submit to Canvas > green Submitted tag. First time only: connect Canvas at xr.optimaed.com.
 
@@ -43,11 +43,11 @@ Page: `math-vr-two-groups-one-expression.html`
 **Map:** Classical Outdoor Classroom (in Explore, type Classical in Filter environments, then Begin Solo)
 
 **Models:**
-- Algebra Tile – x × 4. Type: Algebra. one x. Two for the groups, two for the regrouped side.
-- Algebra Tile - 1 × 8. Type: Algebra. one unit. Four for the groups, four for the regrouped side.
-- Equal Sign × 1. Type: Equal. your claim that the two builds are equivalent
+- Algebra Tile – x × 4. Type: Algebra. one x
+- Algebra Tile - 1 × 8. Type: Algebra. one unit
+- Equal Sign × 1. Type: Equal. goes between your two builds
 
-**Task:** Build and photograph two rows of one x tile and two 1 tiles, an Equal Sign, and the same tiles regrouped with like tiles together.
+**Task:** Build and photograph two rows of one x tile and two 1 tiles, an Equal Sign, and the same tiles with like tiles together.
 
 **Turn it in:** Library > Camera > Take photo > Canvas tab > pick VR: Two Groups, One Expression > Choose from My Files > Use this file > Submit to Canvas > green Submitted tag. First time only: connect Canvas at xr.optimaed.com.
 
@@ -71,11 +71,11 @@ Page: `science-vr-the-fair-test-garden.html`
 **Map:** The Countryside (in Explore, type Country in Filter environments, then Begin Solo)
 
 **Models:**
-- Stone Planter 1x1m × 3. Type: Planter. one planter for each run of the test
-- Sunflower Stage 2 × 3. Type: Sunflower. the same young plant in every planter
-- Water Jug × 6. Type: Water Jug. the water: 1 jug, 2 jugs, 3 jugs
+- Stone Planter 1x1m × 3. Type: Planter. one for each sunflower
+- Sunflower Stage 2 × 3. Type: Sunflower. the same plant every time
+- Water Jug × 6. Type: Water Jug. 1 jug, 2 jugs, 3 jugs
 
-**Task:** Build and photograph three matching planters with matching sunflowers, and 1, 2 and 3 water jugs. Nothing else differs from planter to planter.
+**Task:** Build and photograph three matching planters with matching sunflowers, and 1, 2 and 3 water jugs.
 
 **Turn it in:** Library > Camera > Take photo > Canvas tab > pick VR: The Fair Test Garden > Choose from My Files > Use this file > Submit to Canvas > green Submitted tag. First time only: connect Canvas at xr.optimaed.com.
 
@@ -84,7 +84,7 @@ Canvas setup: name starts with VR, File Uploads on, published with a due date. N
 ### Check in the headset before publishing
 
 - [ ] The Countryside opens with Begin Solo and has level ground for a row of three planters.
-- [ ] Filter models finds each search word: Planter (Stone Planter 1x1m), Sunflower (Sunflower Stage 2), Water Jug. For the extra: Tomato (Tomato Stage 2).
+- [ ] Filter models finds each search word: Planter (Stone Planter 1x1m), Sunflower (Sunflower Stage 2), Water Jug. For the VR-only add-on: Tomato (Tomato Stage 2).
 - [ ] A Sunflower Stage 2 can be set inside a Stone Planter 1x1m and still be seen from the front.
 - [ ] Six Water Jugs are readable in one photo. If they are too small, tell students to make them bigger with both palm triggers.
 
@@ -99,21 +99,21 @@ Page: `history-vr-hold-the-line.html`
 **Map:** Mount Olympus (in Explore, type Olympus in Filter environments, then Begin Solo)
 
 **Models:**
-- Greek Mercenary Standing × 5. Type: Greek. the hoplites who hold their place
-- Greek Mercenary Running × 1. Type: Greek. the one who charges ahead alone
+- Greek Mercenary Standing × 5. Type: Greek. the men who hold the line
+- Greek Mercenary Running × 1. Type: Greek. the man who runs ahead
 
-**Task:** Build and photograph five standing soldiers in one tight row with one empty place, and one running soldier alone in front of that place.
+**Task:** Build and photograph five standing soldiers in one tight row with one empty place, and one running soldier in front of the gap.
 
 **Turn it in:** Library > Camera > Take photo > Canvas tab > pick VR: Hold the Line > Choose from My Files > Use this file > Submit to Canvas > green Submitted tag. First time only: connect Canvas at xr.optimaed.com.
 
-Canvas setup: name starts with VR, File Uploads on, published with a due date. No headset: the At the Map Table path on the page ends in a PDF uploaded to this same assignment.
+Canvas setup: name starts with VR, File Uploads on, published with a due date. No headset: the Map Table path on the page ends in a PDF uploaded to this same assignment.
 
 ### Check in the headset before publishing
 
 - [ ] Mount Olympus is in the app and opens with Begin Solo. It is on the asset list but no teacher has walked it yet. If it is missing, change the map on the page to Classical Outdoor Classroom (already used by a published 5th grade page).
 - [ ] Typing Greek in Filter models shows Greek Mercenary Standing and Greek Mercenary Running, and each looks like a soldier with a shield and spear.
 - [ ] Six soldier models fit in one photo from about ten steps back.
-- [ ] For the extra: typing Spartan shows Spartan Helmet.
+- [ ] For the VR-only add-on: typing Spartan shows Spartan Helmet.
 
 Size: 6 models, 7 steps.
 
@@ -121,7 +121,7 @@ Size: 6 models, 7 steps.
 
 | Course | Page | Map | Hook | No-headset activity | Reward |
 |---|---|---|---|---|---|
-| 6th Grade ELA | VR: The Crown and the Stone | Medieval Castle (Day) | Is Arthur fit to be king? | Set the crown on the page | Seal of Camelot |
-| Grade 6 Math | VR: Two Groups, One Expression | Classical Outdoor Classroom | Can tiles prove two expressions are equivalent? | Build 2(x + 2) on the page | Proof Mark |
-| M/J Comprehensive Science 1 | VR: The Fair Test Garden | The Countryside | How do you know what caused the change? | Fix the unfair test | Fair Test Stamp |
+| 6th Grade ELA | VR: The Crown and the Stone | Medieval Castle (Day) | Is Arthur fit to be king? | Place the crown on the page | Seal of Camelot |
+| Grade 6 Math | VR: Two Groups, One Expression | Classical Outdoor Classroom | Same tiles, same value? | Build 2(x + 2) on the page | Proof Mark |
+| M/J Comprehensive Science 1 | VR: The Fair Test Garden | The Countryside | Does more water grow a taller sunflower? | Fix the unfair test | Fair Test Stamp |
 | 6th Grade World History | VR: Hold the Line | Mount Olympus | What happens when one man leaves the line? | Break the line on the page | Olive Wreath |

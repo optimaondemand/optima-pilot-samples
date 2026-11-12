@@ -5,93 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VR: Two Groups, One Expression · Grade 6 Math</title>
 <meta name="author" content="Phyllis">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--a1:#1E5AA0;--a2:#C43D27;--a2d:#A2321F;--page:#F7F9F5;--card:#FFFFFF;--ink:#0E1C42;--ink2:#515C69;--line:#DCE3EA;--tint:#E8F0FA;--tint2:#FBEBE7;--ok:#2F6B4F;--head:'Source Serif 4',Georgia,serif}
+:root{--a1:#0E1C42;--a2:#C7922C;--a2d:#8F6516;--page:#E9EEF5;--paper:#F7F9F5;--card:#FFFFFF;--ink:#0E1C42;--ink2:#515C69;--line:#D5DEE8;--tint:#EEF1F8;--tint2:#FBF3E2;--ok:#2F6B4F;--hdr:#0E1C42;--hdrk:#55C8E8;--hooktop:2px solid #D5DEE8;--head:Lexend,system-ui,sans-serif;--hw:700;--body:Inter,system-ui,'Segoe UI',sans-serif;--ui:Lexend,system-ui,sans-serif}
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--page);color:var(--ink);font:17px/1.55 system-ui,"Segoe UI",Roboto,sans-serif}
-img{max-width:100%}
-.wrap{max-width:880px;margin:0 auto;padding:0 16px}
-.top{background:var(--a1);color:#fff;padding:18px 0 22px;border-bottom:5px solid var(--a2)}
-.brand{display:flex;align-items:center;gap:10px;font-size:14px;line-height:1.25}
-.brand img{width:38px;height:38px;border-radius:50%;background:#fff}
-.brand small{display:block;opacity:.8;font-size:12px}
-.kicker{margin-top:16px;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
-h1{font-family:var(--head);font-weight:600;font-size:clamp(28px,5vw,40px);line-height:1.12;margin:4px 0 8px}
-.meta{display:flex;flex-wrap:wrap;gap:8px;font-size:14px}
-.meta span{border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:2px 11px}
-main{padding:22px 0 50px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin:0 0 18px}
-h2{font-family:var(--head);font-size:26px;line-height:1.2;margin:0 0 8px;color:var(--a1)}
-h3{font-size:18px;margin:0 0 6px;color:var(--ink)}
+body{margin:0;background:var(--page);color:var(--ink);font:17px/1.55 var(--body)}
+img,svg{max-width:100%}
+.col{max-width:940px;margin:0 auto;background:var(--paper)}
+.pad{padding:22px 22px 40px}
+/* header + scene */
+.top{background:var(--hdr);color:#fff;padding:14px 22px 16px;display:flex;gap:14px;align-items:center}
+.top img{width:46px;height:46px;border-radius:50%;background:#fff;flex:0 0 auto}
+.top .k{font:700 12px/1.2 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--hdrk)}
+h1{font-family:var(--head);font-weight:var(--hw);font-size:clamp(24px,4.6vw,32px);line-height:1.15;margin:3px 0 5px}
+.top .m{font-size:14px;opacity:.92}
+.top .wk{display:inline-block;background:#fff;color:var(--a1);font:800 11.5px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;
+  padding:4px 8px;border-radius:5px;margin-right:8px}
+.scene{display:block;width:100%;height:auto;border-top:4px solid var(--a2);border-bottom:4px solid var(--a2)}
+/* guide card */
+.hook{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;background:var(--card);border:2px solid var(--line);border-top:var(--hooktop);
+  border-radius:16px;padding:20px 22px;margin:0 0 20px}
+.guide{display:flex;align-items:center;gap:10px;margin:0 0 8px;font:700 12px/1.2 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--a2d)}
+.guide img,.guide .ini{width:48px;height:48px;border-radius:50%;border:3px solid var(--a2);object-fit:cover;flex:0 0 auto}
+.guide .ini{display:flex;align-items:center;justify-content:center;background:var(--tint);color:var(--a1);font-size:15px;letter-spacing:0}
+h2{font-family:var(--head);font-weight:var(--hw);font-size:25px;line-height:1.2;margin:0 0 8px;color:var(--a1)}
+h3{font:700 17px/1.3 var(--ui);margin:0 0 6px;color:var(--ink)}
 p{margin:0 0 10px}
-.q{font-size:19px;font-weight:600;margin:0 0 10px}
-.lab{font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--a2d);margin:0 0 4px}
-.facts{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}
-.facts li{border-left:4px solid var(--a2);background:var(--tint);padding:8px 12px;border-radius:0 8px 8px 0}
-.facts b{color:var(--a1)}
-.paths{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 18px}
-.paths button{font:inherit;text-align:left;cursor:pointer;background:var(--card);color:var(--ink);border:2px solid var(--line);
-  border-radius:12px;padding:12px 14px;line-height:1.3}
-.paths button b{display:block;font-size:17px}
-.paths button small{color:var(--ink2);font-size:14px}
-.paths button[aria-selected="true"]{border-color:var(--a1);box-shadow:inset 0 -4px 0 var(--a2)}
-.paths button:focus-visible,.step input:focus-visible,.btn:focus-visible,.opts button:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
-.job{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin:10px 0 14px;font-size:15px}
-.job span{background:var(--tint);border:1px solid var(--line);border-radius:999px;padding:3px 12px}
-.job span b{color:var(--a1)}
-.job i{font-style:normal;color:var(--ink2)}
-.headrow{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
-.seal{flex:0 0 auto;width:96px;height:96px;border-radius:50%;border:3px double var(--a2);color:var(--a2d);background:var(--card);
-  display:flex;align-items:center;justify-content:center;text-align:center;font:700 11.5px/1.2 system-ui,sans-serif;
-  letter-spacing:.06em;text-transform:uppercase;padding:10px;opacity:.45}
-.seal.on{opacity:1;background:var(--tint2);box-shadow:0 0 0 4px var(--tint2)}
-.prog{font-size:14.5px;color:var(--ink2);margin:0 0 6px}
-.bar{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:0 0 16px}
-.bar i{display:block;height:100%;width:0;background:var(--a2);transition:width .25s}
-.grp{font-size:13px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink2);margin:20px 0 8px;
-  padding-top:12px;border-top:1px solid var(--line)}
-.step{display:grid;grid-template-columns:34px 1fr;gap:4px 10px;padding:12px 0}
-.step + .step{border-top:1px dashed var(--line)}
-.step input{width:24px;height:24px;margin:3px 0 0;accent-color:var(--a1);cursor:pointer}
-.step h3 small{font-weight:600;color:var(--ink2);font-size:13.5px;letter-spacing:.04em;text-transform:uppercase;display:block}
-.step.done h3{color:var(--ink2)}
-.step ol,.step ul{margin:4px 0 8px;padding-left:22px}
-.step li{margin:3px 0}
-.tip{background:var(--tint);border-radius:8px;padding:8px 12px;font-size:15.5px;margin:8px 0 0}
-.say{border:2px solid var(--a2);border-radius:10px;padding:10px 14px;margin:8px 0 0;font-size:18px;background:var(--card)}
-.say .lab{margin-bottom:2px}
-.extra{border:1px dashed var(--a1);border-radius:10px;padding:10px 14px;margin:6px 0 4px 44px;font-size:16px}
-.extra b.tag{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--a1);display:block}
-kbd{font:600 15px/1 ui-monospace,Consolas,monospace;background:#EDEFF2;color:#1b2330;border:1px solid #C9CFD8;border-bottom-width:2px;
-  border-radius:6px;padding:2px 7px;white-space:nowrap}
-.models{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:8px 0}
-.model{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--card)}
-.model b{display:block;font-size:16.5px}
-.model .n{float:right;font-weight:700;color:var(--a1);font-size:15px}
-.model p{margin:4px 0 0;font-size:15px;color:var(--ink2)}
-.model .type{font-size:14.5px;margin-top:6px}
-.plan{border:1px solid var(--line);border-radius:12px;background:var(--tint);padding:14px;margin:10px 0 4px;overflow-x:auto}
-.plan .lab{margin-bottom:8px}
-.planrow{display:flex;align-items:flex-end;gap:10px;flex-wrap:wrap}
-.pc{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;line-height:1.2;text-align:center;color:var(--ink2);max-width:120px}
+.terms{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0;padding:0;list-style:none;font-size:14.5px}
+.terms li{background:var(--tint);border-radius:999px;padding:3px 12px}
+.lab{font:700 12px/1.2 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--a2d);margin:0 0 6px}
+/* build diagram */
+.plan{border:1px solid var(--line);border-radius:12px;background:var(--tint);padding:14px;overflow-x:auto}
+.hook .plan{align-self:start}
+.planrow{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.pc{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:13px;line-height:1.2;text-align:center;color:var(--ink2);max-width:110px}
 .pb{display:flex;align-items:center;justify-content:center;border:2px solid var(--a1);background:var(--card);color:var(--a1);
-  font-weight:700;border-radius:6px;min-width:44px;height:44px;padding:0 6px;font-size:15px}
+  font:700 14.5px/1.1 var(--ui);border-radius:6px;min-width:44px;height:44px;padding:0 6px}
 .pb.alt{border-color:var(--a2);color:var(--a2d)}
 .pb.ghost{border-style:dashed;background:transparent}
-.pb.tall{height:70px}
+.pb.tall{height:66px}
 .pb.sm{min-width:30px;height:30px;font-size:13px}
-.pgap{width:18px}
+.pgap{width:14px}
+#line .pb{flex:1 1 0;min-width:0;max-width:92px;padding:0 2px;font-size:clamp(10.5px,2.9vw,13.5px);text-align:center}
 .pc.wide{max-width:none}
 .pc .planrow{flex-wrap:nowrap;align-items:center;gap:6px}
-.full{border-left:5px solid var(--a1);background:var(--tint2);border-radius:0 10px 10px 0;padding:10px 14px;margin:16px 0 0}
-.full b{color:var(--a1)}
-.earned{display:none;margin:14px 0 0;padding:12px 14px;border-radius:10px;background:var(--tint2);border:1px solid var(--a2)}
+/* path tabs */
+.paths{display:grid;grid-template-columns:1.25fr 1fr;gap:12px;margin:0 0 16px}
+.paths button{font:inherit;text-align:left;cursor:pointer;background:var(--card);color:var(--ink);border:2px solid var(--line);
+  border-radius:14px;padding:12px 16px;line-height:1.3;display:flex;gap:12px;align-items:center}
+.paths button svg{flex:0 0 auto;width:34px;height:34px}
+.paths button b{display:block;font:700 17px/1.25 var(--ui)}
+.paths button small{font-size:14px;opacity:.85}
+.paths button[aria-selected="true"]{background:var(--a1);border-color:var(--a2);color:#fff;box-shadow:0 3px 0 var(--a2)}
+.paths button:focus-visible,.cb:focus-visible,.btn:focus-visible,.opts button:focus-visible{outline:3px solid var(--a2);outline-offset:2px}
+/* path card */
+.pcard{border:2px solid var(--a1);border-radius:16px;background:var(--card);overflow:hidden}
+.phead{background:var(--a1);color:#fff;padding:16px 20px;display:flex;gap:16px;align-items:center}
+.phead .ic{flex:0 0 auto;width:58px;height:58px;border-radius:14px;border:2px solid var(--a2);display:flex;align-items:center;justify-content:center}
+.phead .ic svg{width:34px;height:34px}
+.phead .k{font:700 12px/1.2 var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--hdrk)}
+.phead h2{color:#fff;margin:3px 0 0}
+.phead .grow{flex:1}
+.badge{flex:0 0 auto;text-align:center;font:700 10.5px/1.15 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--hdrk);width:88px;opacity:.55}
+.badge svg{display:block;width:54px;height:54px;margin:0 auto 4px}
+.badge.on{opacity:1}
+.pbody{padding:18px 20px 20px}
+.job{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;background:var(--tint2);border:2px solid var(--a2);border-radius:12px;
+  padding:9px 14px;margin:0 0 14px;font:600 15.5px/1.3 var(--ui)}
+.job .lab{margin:0 6px 0 0}
+.job span{display:inline-flex;align-items:center;gap:6px}
+.job span b{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--a1);color:#fff;font-size:12.5px}
+.job i{font-style:normal;color:var(--a2d)}
+.progrow{display:flex;align-items:center;gap:12px;margin:0 0 6px;font:600 14px/1 var(--ui);color:var(--ink2)}
+.bar{flex:1;height:10px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--a2);transition:width .25s}
+.hint{font-size:14.5px;color:var(--ink2);margin:0 0 4px}
+.grp{font:700 12.5px/1.2 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--a1);margin:18px 0 8px;padding-bottom:6px;
+  border-bottom:1px solid var(--line)}
+.step{display:grid;grid-template-columns:40px 1fr;gap:4px 12px;border:2px solid var(--line);border-radius:12px;padding:12px 14px;margin:0 0 10px;background:var(--card)}
+.step.done{border-color:var(--a2);background:var(--tint2)}
+.cb{appearance:none;-webkit-appearance:none;width:32px;height:32px;margin:0;border:2px solid var(--ink2);border-radius:8px;background:#fff;cursor:pointer;
+  display:grid;place-content:center}
+.cb:checked{background:var(--a1);border-color:var(--a1)}
+.cb:checked::after{content:"";width:9px;height:16px;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-2px)}
+.st{font:700 12.5px/1.2 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--a2d);margin:1px 0 4px}
+.step ol,.step ul{margin:2px 0 6px;padding-left:22px}
+.step li{margin:2px 0}
+.step p:last-child,.step ol:last-child{margin-bottom:0}
+.tip{background:var(--tint);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:15px;margin:8px 0}
+.say{background:var(--tint2);border:1px solid var(--a2);border-radius:8px;padding:6px 12px;font-size:16px;margin:8px 0}
+.vro{display:inline-block;background:var(--a2);color:#fff;font:800 10.5px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;padding:4px 8px;
+  border-radius:99px;margin-right:6px;vertical-align:2px}
+.models{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin:8px 0}
+.model{border:1px solid var(--line);border-radius:8px;padding:7px 11px;background:var(--tint);font-size:15px;line-height:1.3}
+.model b{display:block;color:var(--a1)}
+.model .n{float:right;font:700 13.5px/1.4 var(--ui);color:var(--a2d)}
+.model .type{font-size:13.5px;color:#6B7280}
+.model .type b{display:inline;color:inherit}
+.full{background:var(--tint);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:14px 0 0}
+.earned{display:none;margin:12px 0 0;padding:10px 14px;border-radius:12px;background:var(--a1);color:#fff;font-weight:600}
 .earned.on{display:block}
-details.help{margin:18px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
-details.help summary{cursor:pointer;padding:12px 16px;font-weight:700;color:var(--a1);list-style:none;display:flex;justify-content:space-between;gap:10px}
+details.help{margin:14px 0 0;border:2px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+details.help summary{cursor:pointer;padding:11px 16px;font:700 16px/1.3 var(--ui);color:var(--a1);list-style:none;display:flex;justify-content:space-between;gap:10px}
 details.help summary::-webkit-details-marker{display:none}
 details.help summary small{font-weight:400;color:var(--ink2);display:block;font-size:14px}
 details.help[open] summary .chev{transform:rotate(180deg)}
@@ -100,22 +118,21 @@ details.help[open] summary .chev{transform:rotate(180deg)}
 .hd-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .hd-cap{font-size:13.5px;color:var(--ink2);margin:4px 0 10px}
 .hd-note{font-size:15px;background:var(--tint);border-radius:8px;padding:8px 12px}
-.hd-group{font-size:15px;margin:16px 0 8px;color:var(--a1)}
+.hd-group{font:700 15px/1.3 var(--ui);margin:16px 0 8px;color:var(--a1)}
 .hd-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
 .hd-step{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);font-size:15px}
 .hd-step img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:#dde3ec}
 .hd-step div{padding:8px 12px 10px}
 .hd-step p{margin:4px 0 0}
 .hd-n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--a1);color:#fff;
-  font-weight:700;font-size:13px;margin-right:6px}
+  font:700 13px/1 var(--ui);margin-right:6px}
 .hd-alt{font-size:15px;margin-top:12px}
 /* no-headset path */
-.nh-block{padding:14px 0;border-top:1px dashed var(--line)}
-.nh-block:first-of-type{border-top:0}
-.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:8px 0}
+.nh-block{border:2px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 10px;background:var(--card)}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin:8px 0 0}
 .opts button,.btn{font:inherit;cursor:pointer;border-radius:10px;border:2px solid var(--line);background:var(--card);color:var(--ink);
   padding:9px 12px;text-align:left;line-height:1.3}
-.opts button[aria-pressed="true"]{border-color:var(--a1);background:var(--tint2);font-weight:600}
+.opts button[aria-pressed="true"]{border-color:var(--a1);background:var(--tint2);font-weight:700}
 .btn{display:inline-block;text-align:center;font-weight:600}
 .btn.pri{background:var(--a1);border-color:var(--a1);color:#fff;padding:11px 18px}
 .btn.sm{padding:5px 10px;font-size:15px}
@@ -125,22 +142,25 @@ details.help[open] summary .chev{transform:rotate(180deg)}
 .lights li.on{color:var(--ink)}
 .lights li.on::before{background:var(--ok);border-color:var(--ok)}
 textarea,input[type=text],select{font:inherit;width:100%;border:2px solid var(--line);border-radius:10px;padding:9px 12px;background:#fff;color:var(--ink)}
-textarea{min-height:150px;resize:vertical}
+textarea{min-height:140px;resize:vertical}
 textarea:focus,input[type=text]:focus,select:focus{outline:0;border-color:var(--a1)}
 label.f{display:block;font-weight:600;font-size:15.5px;margin:10px 0 4px}
 .count{font-size:14.5px;color:var(--ink2);margin:4px 0 0}
-.turnin{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin-top:12px}
+.turnin{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
 .turnin > div{flex:1 1 220px}
-footer{border-top:1px solid var(--line);padding:16px 0 30px;font-size:13.5px;color:var(--ink2)}
+footer{padding:14px 22px 26px;font-size:13.5px;color:var(--ink2);border-top:1px solid var(--line)}
 #printout{display:none}
 [hidden]{display:none!important}
-@media (max-width:560px){
-  body{font-size:16.5px}.card{padding:16px 14px}.paths{grid-template-columns:1fr}.seal{width:78px;height:78px;font-size:10px}
-  .extra{margin-left:0}.step{grid-template-columns:30px 1fr}
+@media (max-width:640px){
+  body{font-size:16.5px}.pad{padding:16px 16px 30px}.top{padding:12px 16px}
+  .hook{grid-template-columns:1fr;padding:16px}.paths{grid-template-columns:1fr}
+  .phead{padding:14px 16px;gap:12px}.phead .ic{display:none}.badge{width:70px}.badge svg{width:44px;height:44px}
+  .hook .planrow{gap:5px;flex-wrap:nowrap}.hook .pb{padding:0 4px;font-size:13px}
+  .pbody{padding:14px 14px 16px}.step{grid-template-columns:34px 1fr;padding:10px 12px}
 }
 @media print{
   body{background:#fff}
-  .top,main,footer{display:none!important}
+  .col{display:none!important}
   #printout{display:block;padding:24px;font:12.5pt/1.5 Georgia,serif;color:#000}
   #printout h1{font:700 18pt Georgia,serif;margin:0 0 4px}
   #printout h2{font:700 12pt system-ui,sans-serif;margin:16px 0 4px;color:#000}
@@ -151,88 +171,89 @@ footer{border-top:1px solid var(--line);padding:16px 0 30px;font-size:13.5px;col
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <div class="brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div>
-  <div class="kicker">Grade 6 Math · Algebraic Expressions</div>
-  <h1>Two Groups, One Expression</h1>
-  <div class="meta"><span>Week 1 · VR</span><span>The distributive property</span><span>About 15 minutes</span></div>
-</div></header>
-<main class="wrap">
-<section class="card">
-  <h2>Can tiles prove two expressions are equivalent?</h2>
-  <p class="q">2(<i>x</i> + 2) means two groups of <i>x</i> + 2. Build the groups. Then move the same tiles so the like tiles sit together.</p>
-<p>If both builds use exactly the same tiles, the two expressions have the same value for any <i>x</i>. An <b>Equal Sign</b> between them makes that claim.</p>
-<ul class="facts">
-<li><b>Distributive property:</b> <i>a</i>(<i>b</i> + <i>c</i>) = <i>ab</i> + <i>ac</i>. The outside number multiplies each term inside.</li>
-<li><b>Equivalent expressions</b> have the same value for any value of the variable.</li>
-<li><b>Like terms</b> have the same variable raised to the same power.</li>
-</ul>
+<div class="col">
+<header class="top"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="">
+  <div><div class="k">Optima Academy Online · Grade 6 Math</div><h1>Two Groups, One Expression</h1><div class="m"><span class="wk">Week 1</span>Algebraic Expressions · The distributive property</div></div>
+</header>
+<svg class="scene" viewBox="0 0 940 200" role="img" aria-label="Algebra tiles: two groups of x plus 2, an equal sign, then the same tiles with like tiles together"><defs><pattern id="gr" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0V26" fill="none" stroke="#fff" stroke-opacity=".09"/></pattern></defs><rect width="940" height="200" fill="#0E1C42"/><rect width="940" height="200" fill="url(#gr)"/><circle cx="70" cy="30" r="1.6" fill="#55C8E8"/><circle cx="460" cy="26" r="1.6" fill="#55C8E8"/><circle cx="900" cy="60" r="1.6" fill="#55C8E8"/><circle cx="60" cy="170" r="1.6" fill="#55C8E8"/><circle cx="880" cy="176" r="1.6" fill="#55C8E8"/><circle cx="470" cy="178" r="1.6" fill="#55C8E8"/><rect x="150" y="52" width="78" height="36" rx="5" fill="#EADCF5" stroke="#67308F" stroke-width="2"/><text x="189" y="78" font-family="Georgia,serif" font-style="italic" font-size="24" fill="#4B2368" text-anchor="middle">x</text><rect x="238" y="52" width="36" height="36" rx="5" fill="#FBEFD0" stroke="#C7922C" stroke-width="2"/><text x="256" y="77" font-family="Georgia,serif" font-size="20" fill="#8F6516" text-anchor="middle">1</text><rect x="284" y="52" width="36" height="36" rx="5" fill="#FBEFD0" stroke="#C7922C" stroke-width="2"/><text x="302" y="77" font-family="Georgia,serif" font-size="20" fill="#8F6516" text-anchor="middle">1</text><rect x="150" y="112" width="78" height="36" rx="5" fill="#EADCF5" stroke="#67308F" stroke-width="2"/><text x="189" y="138" font-family="Georgia,serif" font-style="italic" font-size="24" fill="#4B2368" text-anchor="middle">x</text><rect x="238" y="112" width="36" height="36" rx="5" fill="#FBEFD0" stroke="#C7922C" stroke-width="2"/><text x="256" y="137" font-family="Georgia,serif" font-size="20" fill="#8F6516" text-anchor="middle">1</text><rect x="284" y="112" width="36" height="36" rx="5" fill="#FBEFD0" stroke="#C7922C" stroke-width="2"/><text x="302" y="137" font-family="Georgia,serif" font-size="20" fill="#8F6516" text-anchor="middle">1</text><path d="M392 88h44M392 108h44" stroke="#fff" stroke-width="8" stroke-linecap="round"/><rect x="506" y="82" width="78" height="36" rx="5" fill="#EADCF5" stroke="#67308F" stroke-width="2"/><text x="545" y="108" font-family="Georgia,serif" font-style="italic" font-size="24" fill="#4B2368" text-anchor="middle">x</text><rect x="594" y="82" width="78" height="36" rx="5" fill="#EADCF5" stroke="#67308F" stroke-width="2"/><text x="633" y="108" font-family="Georgia,serif" font-style="italic" font-size="24" fill="#4B2368" text-anchor="middle">x</text><rect x="690" y="82" width="36" height="36" rx="5" fill="#FBEFD0" stroke="#C7922C" stroke-width="2"/><text x="708" y="107" font-family="Georgia,serif" font-size="20" fill="#8F6516" text-anchor="middle">1</text><rect x="736" y="82" width="36" height="36" rx="5" fill="#FBEFD0" stroke="#C7922C" stroke-width="2"/><text x="754" y="107" font-family="Georgia,serif" font-size="20" fill="#8F6516" text-anchor="middle">1</text><rect x="782" y="82" width="36" height="36" rx="5" fill="#FBEFD0" stroke="#C7922C" stroke-width="2"/><text x="800" y="107" font-family="Georgia,serif" font-size="20" fill="#8F6516" text-anchor="middle">1</text><rect x="828" y="82" width="36" height="36" rx="5" fill="#FBEFD0" stroke="#C7922C" stroke-width="2"/><text x="846" y="107" font-family="Georgia,serif" font-size="20" fill="#8F6516" text-anchor="middle">1</text></svg>
+<main class="pad">
+<section class="hook">
+  <div><p class="guide"><img src="img/usborne.jpg" alt=""><span>From Dr. Usborne</span></p><h2>Same tiles, same value?</h2><p>2(<i>x</i> + 2) means two groups of <i>x</i> + 2.</p><p>Build the two groups with tiles. Then build the same tiles again with like tiles together. If the tiles match, the expressions are equivalent.</p><ul class="terms"><li><b>Distribute:</b> multiply each term inside</li><li><b>Like terms:</b> same variable</li><li><b>Equivalent:</b> same value for any <i>x</i></li></ul></div>
+  <div class="plan"><p class="lab">Your build</p>
+<div class="planrow"><span class="pb">x</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span></div>
+<div class="planrow" style="margin-top:6px"><span class="pb">x</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span></div>
+<div class="planrow" style="margin:8px 0"><span class="pb ghost sm">=</span></div>
+<div class="planrow"><span class="pb">x</span><span class="pb">x</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span></div>
+</div>
 </section>
 
 <div class="paths" role="tablist" aria-label="Choose how you will do this assignment">
-  <button type="button" role="tab" data-path="vr" aria-selected="true"><b>Tile Build</b><small>In your headset. Earns the Proof Mark.</small></button>
-  <button type="button" role="tab" data-path="nh" aria-selected="false"><b>No headset? Desk Build</b><small>On your computer. Ends in a PDF.</small></button>
+  <button type="button" role="tab" data-path="vr" aria-selected="true"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="11" width="28" height="14" rx="6" fill="#55C8E8"/><rect x="7" y="14" width="8" height="8" rx="3" fill="#fff"/><rect x="19" y="14" width="8" height="8" rx="3" fill="#fff"/><path d="M9 11c0-4 16-4 16 0" fill="none" stroke="#55C8E8" stroke-width="2.5"/></svg><span><b>Tile Build</b><small>Use your headset and earn the Proof Mark</small></span></button>
+  <button type="button" role="tab" data-path="nh" aria-selected="false"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="6" y="8" width="22" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3 27h28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg><span><b>No headset today?</b><small>Do the Desk Build version on your computer</small></span></button>
 </div>
 
-<section class="card" id="vr">
-  <div class="headrow"><div><p class="lab">Tile Build · VR</p><h2>Build 2(x + 2) two ways</h2></div><div class="seal" id="seal">Proof Mark</div></div>
-  <div class="job"><span><b>1</b> Build</span> <i>→</i> <span><b>2</b> Take a photo</span> <i>→</i> <span><b>3</b> Submit to Canvas</span></div>
-  <p class="prog" id="prog"></p><div class="bar"><i id="bar"></i></div>
-  <div class="plan"><p class="lab">What your photo shows</p><div class="planrow">
-<div class="pc wide"><div class="planrow"><span class="pb">x</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span></div>
-<div class="planrow" style="margin-top:6px"><span class="pb">x</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span></div>two groups of x + 2</div>
-<div class="pc"><span class="pb ghost">=</span>Equal Sign</div>
-<div class="pc wide"><div class="planrow"><span class="pb">x</span><span class="pb">x</span><span class="pgap"></span><span class="pb sm alt">1</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span><span class="pb sm alt">1</span></div>like tiles together</div>
-</div></div>
-  <p class="grp">Before you put on your headset</p>
-  <div class="step"><input type="checkbox" id="s1" aria-label="Step 1 done"><div><h3><small>Step 1 of 7</small>Know your models</h3><p>Type the word shown in the <b>Filter models</b> box, then pick the model with this exact name.</p><div class="models"><div class="model"><span class="n">4</span><b>Algebra Tile – x</b><p>one <i>x</i>. Two for the groups, two for the regrouped side.</p><div class="type">Type <kbd>Algebra</kbd></div></div><div class="model"><span class="n">8</span><b>Algebra Tile - 1</b><p>one unit. Four for the groups, four for the regrouped side.</p><div class="type">Type <kbd>Algebra</kbd></div></div><div class="model"><span class="n">1</span><b>Equal Sign</b><p>your claim that the two builds are equivalent</p><div class="type">Type <kbd>Equal</kbd></div></div></div><p class="tip">This list is also in VR: open your menu, click the <b>Canvas</b> tab, then pick <b>VR: Two Groups, One Expression</b>.</p></div></div>
-  <p class="grp">In VR</p>
-  <div class="step"><input type="checkbox" id="s2" aria-label="Step 2 done"><div><h3><small>Step 2 of 7</small>Go in</h3><p class="tip">First time only: connect Canvas at <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> on a computer. The steps are in <b>Having trouble in VR?</b> below.</p><ol><li>Put on your headset and open the <b>On-Demand</b> app.</li><li>Click <b>Explore</b>. Type <kbd>Classical</kbd> in the <b>Filter environments</b> box.</li><li>Click <b>Classical Outdoor Classroom</b>, then click <b>Begin Solo</b>.</li></ol></div></div>
-<div class="step"><input type="checkbox" id="s3" aria-label="Step 3 done"><div><h3><small>Step 3 of 7</small>Build two groups of x + 2</h3><p>On your left, make two rows. Each row is one <b>Algebra Tile – x</b> followed by two <b>Algebra Tile - 1</b>. Leave a gap between the rows so each group is easy to see.</p><p class="tip">To bring out a model: press the <b>top button</b> on your right controller, click <b>Models</b>, and type the word in the <b>Filter models</b> box. Grab a model with the <b>palm trigger</b> (under your middle finger). Turn and move it with the <b>thumbstick</b>. Use both palm triggers to make it bigger or smaller.</p></div></div>
-<div class="step"><input type="checkbox" id="s4" aria-label="Step 4 done"><div><h3><small>Step 4 of 7</small>Make the claim</h3><p>Set the <b>Equal Sign</b> to the right of your two groups.</p></div></div>
-<div class="step"><input type="checkbox" id="s5" aria-label="Step 5 done"><div><h3><small>Step 5 of 7</small>Regroup the same tiles</h3><p>To the right of the Equal Sign, bring out the same tiles again: two <i>x</i> tiles and four 1 tiles. This time put the <i>x</i> tiles side by side, then the 1 tiles side by side.</p>
-<div class="say"><p class="lab">Say it out loud</p>“Two groups of <i>x</i> plus 2 is equivalent to ___ because ___.”</div></div></div>
-<div class="extra"><b class="tag">Extra · VR only · if you have time</b>Below your first build, show 3(<i>x</i> + 1) the same two ways with an Equal Sign between them.</div>
-<div class="step"><input type="checkbox" id="s6" aria-label="Step 6 done"><div><h3><small>Step 6 of 7</small>Take the photo and submit it</h3><ol><li>Stand back until you can see both builds and the Equal Sign.</li><li>Open your menu. Click <b>Library</b>, then <b>Camera</b>. Move the tablet until it all fits, then click <b>Take photo</b>.</li><li>Click the <b>Canvas</b> tab and pick <b>VR: Two Groups, One Expression</b>.</li><li>Click <b>Choose from My Files</b>, pick your photo, then click <b>Use this file</b>.</li><li>Click <b>Submit to Canvas</b>. Look for the green <b>Submitted</b> tag.</li></ol><p class="tip">The photo is the only thing you turn in. To fix something, move the models, take a new photo and submit again.</p></div></div>
-  <p class="grp">After</p>
-  <div class="step"><input type="checkbox" id="s7" aria-label="Step 7 done"><div><h3><small>Step 7 of 7</small>Check and leave</h3><p>Press the <b>Meta button</b> on your right controller, then click <b>Quit</b>. Take off your headset and open the Canvas assignment. Your photo should be there. If it is not, open <b>Having trouble in VR?</b> below for two other ways to turn it in.</p></div></div>
-  <p class="full"><b>Full credit:</b> Your photo shows two rows of one x tile and two 1 tiles, an Equal Sign, and the same tiles regrouped with like tiles together.</p>
-  <p class="earned" id="earned"><b>Proof Mark earned.</b> Only students who build with tiles in VR earn this mark.</p>
+<section class="pcard" id="vr">
+  <div class="phead"><div class="ic"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="3" y="11" width="28" height="14" rx="6" fill="#55C8E8"/><rect x="7" y="14" width="8" height="8" rx="3" fill="#fff"/><rect x="19" y="14" width="8" height="8" rx="3" fill="#fff"/><path d="M9 11c0-4 16-4 16 0" fill="none" stroke="#55C8E8" stroke-width="2.5"/></svg></div>
+    <div class="grow"><div class="k">Tile Build · about 15 minutes</div><h2>Build 2(x + 2) two ways</h2></div>
+    <div class="badge" id="seal"><svg viewBox="-30 -30 60 60" aria-hidden="true"><path d="M-12 14l-6 14 9-4 3 6 6-14zM12 14l6 14-9-4-3 6-6-14z" fill="#8F6516"/><circle r="21" fill="#E3B341" stroke="#8F6516" stroke-width="2.5"/><circle r="15.5" fill="none" stroke="#fff" stroke-width="1.2" opacity=".8"/><path d="M-9-5h18M-9 5h18" stroke="#0E1C42" stroke-width="4.5" stroke-linecap="round"/></svg>Proof Mark</div></div>
+  <div class="pbody">
+  <div class="job"><span class="lab">Your job</span><span><b>1</b> Build</span> <i>→</i> <span><b>2</b> Take a photo</span> <i>→</i> <span><b>3</b> Submit to Canvas</span></div>
+  <div class="progrow"><div class="bar"><i id="bar"></i></div><span id="prog"></span></div>
+  <p class="hint">Tap the box when you finish each step.</p>
+  <p class="grp">🖥️ Before you put on your headset</p>
+  <div class="step"><input class="cb" type="checkbox" id="s1" aria-label="Step 1 done"><div><p class="st">Step 1 · Know your models</p><p>In VR, type the gray word in the <b>Filter models</b> box.</p><div class="models"><div class="model"><span class="n">× 4</span><b>Algebra Tile – x</b>one <i>x</i><div class="type">type: <b>Algebra</b></div></div><div class="model"><span class="n">× 8</span><b>Algebra Tile - 1</b>one unit<div class="type">type: <b>Algebra</b></div></div><div class="model"><span class="n">× 1</span><b>Equal Sign</b>goes between your two builds<div class="type">type: <b>Equal</b></div></div></div><p>This list is also in VR: open your menu, click the <b>Canvas</b> tab, then pick our assignment.</p></div></div>
+  <p class="grp">🥽 In VR</p>
+  <div class="step"><input class="cb" type="checkbox" id="s2" aria-label="Step 2 done"><div><p class="st">Step 2 · Go in</p><p class="tip">🔗 <b>First time?</b> Connect Canvas at <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> first. See <b>Having trouble in VR?</b> below.</p><ol><li>Put on your headset. Open the <b>On-Demand</b> app.</li><li>Click <b>Explore</b>. Type <b>Classical</b> in the <b>Filter environments</b> box.</li><li>Click <b>Classical Outdoor Classroom</b>, then <b>Begin Solo</b>.</li></ol></div></div>
+<div class="step"><input class="cb" type="checkbox" id="s3" aria-label="Step 3 done"><div><p class="st">Step 3 · Build two groups</p><p>Open your menu (top button, right controller) and click <b>Models</b>. On your left, make two rows. Each row: one <i>x</i> tile, then two 1 tiles.</p><p class="tip">✋ <b>To move a model:</b> grab it with the <b>palm trigger</b> (under your middle finger). Use <b>both</b> palm triggers to make it bigger or smaller.</p></div></div>
+<div class="step"><input class="cb" type="checkbox" id="s4" aria-label="Step 4 done"><div><p class="st">Step 4 · Add the Equal Sign</p><p>Set the <b>Equal Sign</b> to the right of your two rows.</p></div></div>
+<div class="step"><input class="cb" type="checkbox" id="s5" aria-label="Step 5 done"><div><p class="st">Step 5 · Regroup</p><p>To the right of the Equal Sign, build the same tiles again: two <i>x</i> tiles together, then four 1 tiles together.</p>
+<p class="say">🗣 “Two groups of <i>x</i> + 2 is equivalent to ___ because ___.”</p>
+<p><span class="vro">VR only</span>Below it, show 3(<i>x</i> + 1) the same two ways.</p></div></div>
+<div class="step"><input class="cb" type="checkbox" id="s6" aria-label="Step 6 done"><div><p class="st">Step 6 · Snap and submit</p><ol><li>Stand back so you can see both builds and the Equal Sign.</li><li>Open your menu. Click <b>Library</b>, then <b>Camera</b>, then <b>Take photo</b>.</li><li>Click the <b>Canvas</b> tab. Pick <b>VR: Two Groups, One Expression</b>.</li><li>Click <b>Choose from My Files</b>. Pick your photo. Click <b>Use this file</b>.</li><li>Click <b>Submit to Canvas</b>. Look for the green <b>Submitted</b> tag.</li></ol><p class="tip">🔁 Want to fix it? Move the models, take a new photo and submit again.</p></div></div>
+  <p class="grp">✅ After</p>
+  <div class="step"><input class="cb" type="checkbox" id="s7" aria-label="Step 7 done"><div><p class="st">Step 7 · Check and leave</p><ol><li>Press the <b>Meta button</b> on your right controller. Click <b>Quit</b>.</li><li>Open the Canvas assignment. Check that your photo is there.</li></ol><p>Not there? Open <b>Having trouble in VR?</b> below.</p></div></div>
   <details class="help" id="vr-help">
-    <summary><span>Having trouble in VR?<small>Steps with pictures, and a how-to video</small></span><span class="chev" aria-hidden="true">▾</span></summary>
+    <summary><span>🛟 Having trouble in VR?<small>Steps with pictures, and a how-to video</small></span><span class="chev" aria-hidden="true">▾</span></summary>
     <div class="hd-body">
       <div class="hd-frame" data-src="https://www.youtube-nocookie.com/embed/slDH-WN4scY?rel=0"></div><p class="hd-cap">How-to video: Optima On-Demand and Canvas</p>
       <p class="hd-note">These pictures come from other maps. Your map will be <b>Classical Outdoor Classroom</b>, but the buttons are the same.</p>
-      <h4 class="hd-group">First time only: connect Canvas (on your computer)</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-01-login.jpg" alt="The Optima On Demand login page, with the Sign In button circled."><div><span class="hd-n">1</span><b>Log in</b><p>Go to <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> on your computer. Log in with the same login you use in VR.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-02-authorize.jpg" alt="The Canvas box that asks to connect, with the Authorize button circled."><div><span class="hd-n">2</span><b>Connect to Canvas</b><p>Click <b>Connect to Canvas</b>. Log in with your usual Canvas username and password, then click <b>Authorize</b>. You will see <b>Canvas connection completed</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-03-connected.jpg" alt="The Canvas page on the website, with the Canvas button and the list of assignments circled."><div><span class="hd-n">3</span><b>Find our class</b><p>Click <b>Canvas</b> on the left and pick our class. Our assignments show up. You only do this part one time.</p></div></li></ol><h4 class="hd-group">In the headset</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-05-explore.jpg" alt="The Explore tab in the headset, with the tab and the filter box circled."><div><span class="hd-n">4</span><b>Explore tab</b><p>Put on your headset. Click the <b>Explore</b> tab and type the map’s name in <b>Filter environments</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-06-begin-solo.jpg" alt="A map is picked and the Begin Solo button is circled."><div><span class="hd-n">5</span><b>Begin Solo</b><p>Click the map, then click <b>Begin Solo</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-07-canvas.jpg" alt="The Canvas tab in the headset, with the tab and the assignment box circled."><div><span class="hd-n">6</span><b>Read the assignment</b><p>Press the <b>top button on your right controller</b> to open your menu. Click the <b>Canvas</b> tab and pick our assignment to read the directions. Tip: point at a mint side grip and squeeze to pull the tablet to your hand.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-08-models.jpg" alt="The Models tab open in an ocean map, with a list of models."><div><span class="hd-n">7</span><b>Bring out the models</b><p>Click <b>Models</b>. Type the exact name in the search box, or scroll with your thumbstick. Click a model to bring it out.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-08b-move.jpg" alt="A controller moving a fish model in an ocean map."><div><span class="hd-n">8</span><b>Move and resize</b><p>Grab a model with the <b>palm trigger</b>. Turn and move it with the thumbstick. Use <b>both</b> palm triggers to make it bigger or smaller.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-10-camera.jpg" alt="The Library camera, with the Height slider and the Take photo button circled."><div><span class="hd-n">9</span><b>Take a photo</b><p>Click <b>Library</b>, then <b>Camera</b>. Move the tablet until your whole model fits. Slide <b>Height</b> or the zoom bar if you need to. Click <b>Take photo</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-11-choose.jpg" alt="The My Files list in the headset, with the newest file circled."><div><span class="hd-n">10</span><b>Pick your photo</b><p>Click the <b>Canvas</b> tab and pick our assignment. Click <b>Choose from My Files</b>, pick your newest photo, then click <b>Use this file</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-12-submitted.jpg" alt="The Canvas tab after submitting, with the green Submitted tag circled."><div><span class="hd-n">11</span><b>Submit to Canvas</b><p>Click <b>Submit to Canvas</b> and look for the green <b>Submitted</b> tag. To leave VR, press the <b>Meta button</b> on your right controller, then click <b>Quit</b>.</p></div></li></ol><h4 class="hd-group">Didn’t work in VR? Two other ways</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-13-portal-submit.jpg" alt="The Canvas page on the website, with the Choose from My Files button circled."><div><span class="hd-n">12</span><b>Use the website</b><p>Go to <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> and click <b>Canvas</b>. Pick our assignment, click <b>Choose from My Files</b>, pick your photo and submit it.</p></div></li></ol><p class="hd-alt">Your photos save to <b>My Files</b> at xr.optimaed.com on their own. You can also download your photo there and upload it to the Canvas assignment yourself.</p>
+      <h4 class="hd-group">🖥️ First time only: connect Canvas (on your computer)</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-01-login.jpg" alt="The Optima On Demand login page, with the Sign In button circled."><div><span class="hd-n">1</span><b>Log in</b><p>Go to <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> on your computer. Log in with the same login you use in VR.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-02-authorize.jpg" alt="The Canvas box that asks to connect, with the Authorize button circled."><div><span class="hd-n">2</span><b>Connect to Canvas</b><p>Click <b>Connect to Canvas</b>. Log in with your usual Canvas username and password, then click <b>Authorize</b>. You will see <b>Canvas connection completed</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-03-connected.jpg" alt="The Canvas page on the website, with the Canvas button and the list of assignments circled."><div><span class="hd-n">3</span><b>Find our class</b><p>Click <b>Canvas</b> on the left and pick our class. Our assignments show up. You only do this part one time.</p></div></li></ol><h4 class="hd-group">🥽 In the headset</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-05-explore.jpg" alt="The Explore tab in the headset, with the tab and the filter box circled."><div><span class="hd-n">4</span><b>Explore tab</b><p>Put on your headset. Click the <b>Explore</b> tab and type the map’s name in <b>Filter environments</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-06-begin-solo.jpg" alt="A map is picked and the Begin Solo button is circled."><div><span class="hd-n">5</span><b>Begin Solo</b><p>Click the map, then click <b>Begin Solo</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-07-canvas.jpg" alt="The Canvas tab in the headset, with the tab and the assignment box circled."><div><span class="hd-n">6</span><b>Read the assignment</b><p>Press the <b>top button on your right controller</b> to open your menu. Click the <b>Canvas</b> tab and pick our assignment to read the directions. Tip: point at a mint side grip and squeeze to pull the tablet to your hand.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-08-models.jpg" alt="The Models tab open in an ocean map, with a list of models."><div><span class="hd-n">7</span><b>Bring out the models</b><p>Click <b>Models</b>. Type the exact name in the search box, or scroll with your thumbstick. Click a model to bring it out.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-08b-move.jpg" alt="A controller moving a fish model in an ocean map."><div><span class="hd-n">8</span><b>Move and resize</b><p>Grab a model with the <b>palm trigger</b>. Turn and move it with the thumbstick. Use <b>both</b> palm triggers to make it bigger or smaller.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-10-camera.jpg" alt="The Library camera, with the Height slider and the Take photo button circled."><div><span class="hd-n">9</span><b>Take a photo</b><p>Click <b>Library</b>, then <b>Camera</b>. Move the tablet until your whole model fits. Slide <b>Height</b> or the zoom bar if you need to. Click <b>Take photo</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-11-choose.jpg" alt="The My Files list in the headset, with the newest file circled."><div><span class="hd-n">10</span><b>Pick your photo</b><p>Click the <b>Canvas</b> tab and pick our assignment. Click <b>Choose from My Files</b>, pick your newest photo, then click <b>Use this file</b>.</p></div></li><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-12-submitted.jpg" alt="The Canvas tab after submitting, with the green Submitted tag circled."><div><span class="hd-n">11</span><b>Submit to Canvas</b><p>Click <b>Submit to Canvas</b> and look for the green <b>Submitted</b> tag. To leave VR, press the <b>Meta button</b> on your right controller, then click <b>Quit</b>.</p></div></li></ol><h4 class="hd-group">🔁 Didn’t work in VR? Two other ways</h4><ol class="hd-steps"><li class="hd-step"><img loading="lazy" src="help/vr-canvas-help-13-portal-submit.jpg" alt="The Canvas page on the website, with the Choose from My Files button circled."><div><span class="hd-n">12</span><b>Use the website</b><p>Go to <a href="https://xr.optimaed.com" target="_blank" rel="noopener">xr.optimaed.com</a> and click <b>Canvas</b>. Pick our assignment, click <b>Choose from My Files</b>, pick your photo and submit it.</p></div></li></ol><p class="hd-alt">Your photos save to <b>My Files</b> at xr.optimaed.com on their own. You can also download your photo there and upload it to the Canvas assignment yourself.</p>
     </div>
   </details>
+  <p class="full">⭐ <b>Full credit:</b> Your photo shows two rows of one x tile and two 1 tiles, an Equal Sign, and the same tiles with like tiles together.</p>
+  <p class="earned" id="earned">Proof Mark earned!</p>
+  </div>
 </section>
 
-<section class="card" id="nh" hidden>
-  <p class="lab">Desk Build · no headset</p><h2>Build 2(x + 2) on the page</h2>
-  <div class="job"><span><b>1</b> Build both sides</span> <i>→</i> <span><b>2</b> Write</span> <i>→</i> <span><b>3</b> Upload your PDF to Canvas</span></div>
-  <div class="nh-block"><h3>1 · Build two groups of <i>x</i> + 2</h3>
+<section class="pcard" id="nh" hidden>
+  <div class="phead"><div class="ic"><svg viewBox="0 0 34 34" aria-hidden="true"><rect x="6" y="8" width="22" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M3 27h28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+    <div class="grow"><div class="k">Desk Build · no headset</div><h2>Build 2(x + 2) on the page</h2></div></div>
+  <div class="pbody">
+  <div class="job"><span class="lab">Your job</span><span><b>1</b> Build both sides</span> <i>→</i> <span><b>2</b> Write</span> <i>→</i> <span><b>3</b> Upload your PDF to Canvas</span></div>
+  <div class="nh-block"><h3>1 · Build two groups of <i>x</i> + 2, then regroup</h3>
 <div class="plan" id="tiles"></div></div>
-<div class="nh-block"><h3>2 · Write the regrouped expression</h3>
+<div class="nh-block"><h3>2 · Write the new expression</h3>
 <label class="f" for="expr">2(<i>x</i> + 2) =</label><input type="text" id="expr" data-k="expr" autocomplete="off" inputmode="text" style="max-width:240px">
-<label class="f" for="test">Test both expressions with <i>x</i> = 5. Show the two values.</label><input type="text" id="test" data-k="test" autocomplete="off"></div>
+<label class="f" for="test">Try <i>x</i> = 5 in both. Write the two values.</label><input type="text" id="test" data-k="test" autocomplete="off"></div>
   <div class="nh-block"><h3>3 · Write</h3>
-    <label class="f" for="w">Explain why 2(x + 2) and your regrouped expression are equivalent. Use the words distribute and like terms, and tell what your tiles show. Write 3 or 4 sentences.</label>
+    <label class="f" for="w">Why are 2(x + 2) and your new expression equivalent? Write 3 or 4 sentences. Use the words distribute and like terms.</label>
     <textarea id="w"></textarea><p class="count" id="wc"></p>
     <ul class="lights" id="lights"></ul>
   </div>
-  <p class="full"><b>Full credit:</b> All four lights are on, and your writing has 40 words or more and uses distribute and like terms.</p>
+  <div class="nh-block"><h3>4 · Turn it in</h3>
   <div class="turnin"><div><label class="f" for="nm">First name</label><input type="text" id="nm" autocomplete="off"></div>
     <div><button type="button" class="btn pri" id="pdf">Download my work (PDF)</button></div></div>
-  <p class="count">Choose <b>Save as PDF</b>, then upload that file to <b>VR: Two Groups, One Expression</b> in Canvas.</p>
+  <p class="count">Choose <b>Save as PDF</b>. Upload the file to <b>VR: Two Groups, One Expression</b> in Canvas.</p></div>
+  <p class="full">⭐ <b>Full credit:</b> Every check is lit, and your writing answers the question.</p>
+  </div>
 </section>
 </main>
-<footer><div class="wrap">Optima Academy Online · Academic Design and Curriculum (AcDC)</div></footer>
+<footer>Optima Academy Online · Academic Design and Curriculum (AcDC)</footer>
+</div>
 <div id="printout"></div>
 <script>
 window.PAGE = {id:"math", title:"VR: Two Groups, One Expression", course:"Grade 6 Math", nhName:"Desk Build", minWords:40};
 (function(){ var P = window.PAGE;
-
 var ROWS = [['r1','Group 1'],['r2','Group 2'],['g','Regrouped: like tiles together']];
 function T(S){ if (!S.nh.t) S.nh.t = {r1:[], r2:[], g:[]}; return S.nh.t; }
 function cnt(a, k){ return a.filter(function(v){ return v === k; }).length; }
@@ -265,9 +286,9 @@ P.lights = function(S){
   var e = (S.nh.expr || '').replace(/\s+/g,'').toLowerCase(), nx = cnt(t.g,'x'), n1 = cnt(t.g,'1');
   var match = t.g.length > 0 && (e === nx + 'x+' + n1 || e === n1 + '+' + nx + 'x');
   return [[rowOk(t.r1) && rowOk(t.r2), 'Each group shows x + 2'],
-          [same, 'The regrouped side uses exactly the tiles in the two groups'],
-          [match, 'Your expression matches your regrouped tiles'],
-          [!!(S.nh.test || '').trim(), 'You tested x = 5']];
+          [same, 'Both sides use the same tiles'],
+          [match, 'Your expression matches your tiles'],
+          [!!(S.nh.test || '').trim(), 'You tried x = 5']];
 };
 P.summary = function(S){
   var t = T(S), d = function(r){ return cnt(r,'x') + ' x tile(s), ' + cnt(r,'1') + ' 1 tile(s)'; };
@@ -277,8 +298,7 @@ P.summary = function(S){
 
 })();
 </script>
-<script>
-(function(){
+<script>(function(){
   var P = window.PAGE, KEY = 'vr6-' + P.id, S = {steps:{}, path:'vr', nh:{}, w:'', name:''};
   try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); for (var k in o) S[k] = o[k]; } } catch(e){}
   function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){} }
@@ -299,7 +319,7 @@ P.summary = function(S){
   function steps(){
     var n = 0;
     boxes.forEach(function(c){ var on = !!S.steps[c.id]; c.checked = on; c.closest('.step').classList.toggle('done', on); if (on) n++; });
-    $('#prog').textContent = n + ' of ' + boxes.length + ' steps done';
+    $('#prog').textContent = n + ' of ' + boxes.length + ' steps';
     $('#bar').style.width = (100 * n / boxes.length) + '%';
     var all = n === boxes.length;
     $('#seal').classList.toggle('on', all); $('#earned').classList.toggle('on', all);
