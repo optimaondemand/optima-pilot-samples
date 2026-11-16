@@ -621,6 +621,101 @@ footer.foot{background:#E8ECF5}
 .l1-nm{display:block;margin:8px 0 18px}
 </style>
 
+<style>
+/* ---- L1 REVISED: chunked reading, tap-to-define terms, scaffolds, tighter layout ---- */
+.focusq p{max-width:44ch}
+/* reading: short chunks, text left + one tile right, full card width */
+.atlas.rchunks{max-width:none}
+.rc{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:26px;align-items:start;padding:18px 0;border-top:1px solid var(--line)}
+.rc:first-child{border-top:0;padding-top:2px}
+.rc h3{margin:0 0 8px!important;font-size:21px}
+.rc p{margin:0 0 10px;font-size:17px;line-height:1.6}
+.rc p:last-child{margin-bottom:0}
+.tile{border-radius:14px;padding:14px 16px;background:var(--read-t);font:400 15.5px/1.5 var(--ui);color:var(--ink)}
+.tile p{margin:0;font-size:15.5px;line-height:1.5}
+.tile .tl-k{font:700 11.5px/1 var(--disp);letter-spacing:.12em;text-transform:uppercase;color:var(--read-d);margin-bottom:8px}
+.tile.key{background:#FFF5D3}.tile.key .tl-k{color:#7A5A00}
+.tile.key p{font:600 17px/1.4 var(--disp)}
+.tile.warn{background:#FDEAF2}.tile.warn .tl-k{color:#A82463}
+.tile.def{background:#fff;border:2px solid var(--read)}
+.tile.def p{font:600 16.5px/1.45 var(--disp)}
+.ways{margin:0;padding-left:20px}.ways li{margin:0 0 6px}.ways li:last-child{margin:0}
+@media (max-width:760px){.rc{grid-template-columns:1fr;gap:12px}}
+/* fossil fact files */
+.ff2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
+@media (max-width:760px){.ff2{grid-template-columns:1fr}}
+.ff{border:1.5px solid var(--read-t);border-radius:16px;background:#FAFCFF;padding:16px 18px}
+.ff-h{font:700 21px/1.2 var(--disp);color:var(--read-d);margin-bottom:10px}
+.ff-h span{display:block;font:500 14px/1.3 var(--ui);color:var(--muted);margin-top:3px}
+.ff dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0 0 10px}
+.ff dt{font:700 11.5px/1.6 var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;padding-top:2px}
+.ff dd{margin:0;font:500 16px/1.45 var(--ui)}
+.ff-n{margin:0;font:400 14.5px/1.5 var(--ui);color:var(--ink2);border-top:1px solid var(--line);padding-top:10px}
+/* tap-to-define terms */
+button.term{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;border-bottom:2px dotted var(--read);font-weight:600}
+button.term:hover,button.term[aria-expanded="true"]{background:var(--read-t);border-radius:4px}
+.tdef{position:absolute;z-index:60;max-width:320px;background:#162033;color:#fff;border-radius:12px;padding:12px 14px;font:400 15px/1.45 var(--ui);box-shadow:0 10px 30px rgba(22,32,51,.28)}
+.tdef b{display:block;font:700 15.5px/1.2 var(--disp);margin-bottom:4px;color:#FFD86B}
+.tdef[hidden]{display:none}
+/* side-by-side cards */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.duo > .bench + .bench{margin-top:0}
+.duo > .inset{margin:0;height:100%}
+.duo > .mcq{margin:0}
+.st-explore .duo{margin-top:16px}
+.st-think .duo + .field{margin-top:20px}
+@media (max-width:820px){.duo{grid-template-columns:1fr}}
+.opts.two{grid-template-columns:1fr 1fr}
+.setup{font:600 17.5px/1.45 var(--disp);margin:0 0 14px;color:var(--ink)}
+/* Dig Site: word bank beside the column */
+.l1r-dig{display:grid;grid-template-columns:210px minmax(0,1fr);gap:8px 18px;align-items:start}
+.l1r-dig .bank{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:0}
+.l1r-dig .tally,.l1r-dig .place-fb{grid-column:1/-1}
+@media (max-width:700px){.l1r-dig{grid-template-columns:1fr}.l1r-dig .bank{flex-direction:row;flex-wrap:wrap}}
+.l1r-flips{grid-template-columns:1fr}
+.l1r-flips .l1-flip{min-height:92px}
+.l1-flip .b b{display:inline;font:700 13px/1 var(--disp);letter-spacing:.08em;text-transform:uppercase;color:#B83F12}
+/* stats row */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+@media (max-width:700px){.stats{grid-template-columns:1fr}}
+.stat{background:#fff;border:1px solid var(--line2);border-radius:14px;padding:14px 16px}
+.stat b{display:block;font:800 30px/1 var(--disp);color:var(--ink);margin-bottom:6px}
+.stat span{font:400 14.5px/1.45 var(--ui);color:var(--ink2)}
+/* true/false grid */
+.tfgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px 28px}
+.tfgrid .mcq{margin:0}
+@media (max-width:760px){.tfgrid{grid-template-columns:1fr}}
+/* scaffolds: hints, sentence starters, steps */
+details.hintd{margin:0 0 10px}
+details.hintd summary{display:inline-block;cursor:pointer;font:600 14px/1 var(--disp);color:var(--ink);background:#F1F4FA;border:1.5px solid var(--line2);border-radius:999px;padding:8px 13px;list-style:none}
+details.hintd summary::-webkit-details-marker{display:none}
+details.hintd[open] summary{background:var(--ink);color:#fff;border-color:var(--ink)}
+details.hintd p{margin:8px 0 0;font:400 15.5px/1.5 var(--ui);color:var(--ink2)}
+.starters{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin:0 0 8px}
+.starters > span{font:700 11.5px/1 var(--disp);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+button.starter{font:500 14.5px/1.3 var(--ui);color:var(--ink);background:#fff;border:1.5px dashed var(--line2);border-radius:10px;padding:7px 11px;cursor:pointer;text-align:left}
+button.starter:hover{border-color:var(--ink);border-style:solid}
+.len{display:inline-block;font:600 12.5px/1 var(--disp);color:var(--muted);background:#F1F4FA;border-radius:999px;padding:5px 9px;margin-left:4px;white-space:nowrap}
+ol.steps3{list-style:none;counter-reset:s;margin:14px 0 0;padding:0}
+ol.steps3 > li{counter-increment:s;position:relative;padding:0 0 16px 44px}
+ol.steps3 > li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--task);color:#fff;font:700 15px/30px var(--disp);text-align:center}
+ol.steps3 > li > p{margin:2px 0 8px}
+textarea.jbox.short{min-height:70px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pair label{display:block}.pair .label{display:block;margin-bottom:4px}
+.pair input.jfield{width:100%;box-sizing:border-box}
+@media (max-width:640px){.pair{grid-template-columns:1fr}}
+.pa-top{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:flex-start}
+.pa-top .l1-pick{margin:0}
+.pa-top details.hintd{flex:1 1 320px;margin:0}
+table.mini{border-collapse:collapse;margin-top:10px;width:100%;font:400 14.5px/1.4 var(--ui)}
+table.mini th,table.mini td{border:1px solid var(--line2);padding:6px 10px;text-align:left}
+table.mini th{background:#F1F4FA;font-weight:600}
+.part > p{margin:0 0 10px}
+#l1-labLimbs{max-width:none;gap:14px}
+#l1-labLimbs .l1-limb svg{max-width:170px}
+</style>
+
 </head>
 <body>
 <header class="hero"><div class="wrap">
@@ -630,7 +725,7 @@ footer.foot{background:#E8ECF5}
     <div>
       <div class="kicker">Integrated Science &middot; Evidence for Evolution</div>
       <h1>Bones and Stone</h1>
-      <div class="focusq"><div class="label">What Bones and Stone Tell Us About Life's History</div><p>The evidence for evolution was not invented by one person or discovered in a single moment. It has accumulated across two centuries, from four independent directions. This lesson examines the first two: what fossils say and what comparing bodies reveals.</p></div>
+      <div class="focusq"><div class="label">What Bones and Stone Tell Us About Life's History</div><p>Evidence for evolution has built up over two centuries, from four independent directions. This lesson covers the first two: fossils, and comparing bodies from bones to embryos.</p></div>
       <details class="objs"><summary>Learning Objectives</summary><ul>
         <li>I will be able to explain how the fossil record provides evidence for evolution, including the significance of transitional fossils.</li>
         <li>I will be able to distinguish between homologous and vestigial structures and explain what each reveals about evolutionary history.</li>
@@ -685,10 +780,10 @@ footer.foot{background:#E8ECF5}
   <div class="sec st st-spark">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Spark</span><h2>Dig In</h2></div></div>
     <div class="mcq checkin" data-qid="l1-sp1">
-      <p class="stem">You dig straight down through flat layers of rock that have never been disturbed. Which layer formed first?</p>
-      <div class="opts">
+      <p class="stem">You dig straight down through flat layers of rock that have never been disturbed. Which layer do you predict formed first?</p>
+      <div class="opts row">
         <button class="opt" data-ok="1" data-fb="The top is what you see first, so it feels first. Watch how layers pile up in the card below, then decide again.">The top layer</button>
-        <button class="opt" data-ok="1" data-fb="A fair hedge. Picture mud settling in a lake, year after year: which layer has been there longest?">A middle layer</button>
+        <button class="opt" data-ok="1" data-fb="A careful guess. Picture mud settling in a lake, year after year: which layer has been there longest?">A middle layer</button>
         <button class="opt" data-ok="1" data-fb="That is the rule geologists use. Hold on to it: the whole fossil record is read from it.">The bottom layer</button>
       </div>
     </div>
@@ -749,23 +844,83 @@ footer.foot{background:#E8ECF5}
 
   <div class="sec st st-read">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.8 4.2 9 4.3 12 6.2c3-1.9 6.2-2 9-.7V19c-2.8-1.3-6-1.2-9 .7-3-1.9-6.2-2-9-.7z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6.2v13.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Read</span><h2>The Case Built in Stone and Bone</h2></div></div>
-    <div class="readfor"><b>Read for</b><span>Why an incomplete fossil record still shows a clear pattern, and what makes a fossil &ldquo;transitional.&rdquo;</span></div>
-    <article class="atlas">
-      <p>If evolution is true — if species have changed over time and all living things share common ancestors — then it should leave evidence behind. The history of life should be readable, at least in part, from the record that organisms have left in rock, in their bodies, and in their genes. It turns out that record exists, and it is extensive. No single piece of evidence would be enough to establish evolution as the foundational framework of biology. But four independent lines of evidence, each developed by different scientists using different methods, all point to the same conclusion. This reading examines the first two: the fossil record and comparative anatomy.</p>
-      <h3>The Fossil Record</h3>
-      <p>A fossil is any preserved trace of an organism that lived in the past. Fossils form in several ways: hard parts such as bones and shells can be replaced by minerals in a process called permineralization; an organism can be trapped in amber; soft tissues can leave impressions in fine sediment. The vast majority of organisms that have ever lived left no fossil at all. Fossilization requires a precise set of circumstances, and soft-bodied organisms in environments that erode rather than deposit are rarely preserved. The fossil record is therefore incomplete by nature.</p>
-      <p>Even so, it is not random. Sedimentary rock layers, called strata, deposit in sequence: older layers below, newer layers above. By examining fossils at different depths and in different strata across the world, paleontologists have assembled a picture of how life changed through time. The pattern is consistent: simple, single-celled organisms appear in the oldest rocks; complex multicellular organisms appear later; the major animal groups appear in a predictable sequence. Fish precede amphibians, which precede reptiles, which precede mammals and birds. This sequence has never been violated. No rabbit has ever been found in Cambrian rock.</p>
-      <div class="closer">
-        <div class="ilabel">Closer look &middot; Reading the Fossil Record</div>
-        <p>Sedimentary rock forms in layers, with older deposits beneath newer ones. Organisms preserved in those layers — as mineralized bone, shell, impression, or amber — provide a record of what lived at different points in Earth's past. That record is incomplete: most organisms never fossilize, and most fossils are destroyed by erosion or geological pressure before they are found. Yet the record that remains is consistent, detailed, and unambiguous in its pattern.</p>
-        <p>The pattern is this: organisms in older rocks are consistently simpler and more different from living species than organisms in younger rocks. The sequence of major groups through time is predictable: bacteria appear before eukaryotes, invertebrates before vertebrates, fish before amphibians, reptiles before mammals and birds. This sequence holds everywhere in the world. No rabbit fossil has been found in Cambrian rock. No modern whale has been found below the layer where the earliest whale ancestors appear. The succession of life through deep time is ordered and directional.</p>
+    <div class="readfor"><b>Read for</b><span>Why a fossil record with gaps still shows a clear pattern, and what makes a fossil &ldquo;transitional.&rdquo;</span></div>
+    <article class="atlas rchunks">
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>What a fossil is</h3>
+          <p>A <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="fossil" data-def="Any preserved trace of a living thing from the past, such as a bone, a shell, a footprint or a leaf print.">fossil</button> is any preserved trace of a living thing from the past. Together, all the fossils found so far make up the <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="fossil record" data-def="All the fossils found so far, together with the rock layers they were found in.">fossil record</button>.</p>
+        </div>
+        <aside class="rc-s"><div class="tile">
+          <div class="tl-k">Three ways a fossil forms</div>
+          <ol class="ways">
+            <li><b>Minerals</b> seep into buried bone or shell and harden it into stone.</li>
+            <li><b><button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="amber" data-def="Hardened tree resin. A small animal trapped in it can be preserved whole.">Amber</button></b> seals a small animal inside.</li>
+            <li><b>Mud</b> keeps the print of a leaf, a body or a foot, then hardens.</li>
+          </ol>
+        </div></aside>
+      </section>
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>Why the record has gaps</h3>
+          <p>Most living things never become fossils. A body has to be buried quickly, before it rots or is eaten. Soft bodies almost never last. Many fossils that do form are later worn away or crushed.</p>
+          <p>So the fossil record has gaps, and scientists expect it to.</p>
+        </div>
+        <aside class="rc-s"><div class="tile key">
+          <div class="tl-k">Key idea</div>
+          <p>The test is not whether the record is complete. The test is whether the fossils we do have fit one pattern.</p>
+        </div></aside>
+      </section>
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>The pattern in the layers</h3>
+          <p><button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="sedimentary rock" data-def="Rock formed when mud, sand or other loose material settles in layers and hardens.">Sedimentary rock</button> builds up in layers called <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="strata" data-def="Layers of sedimentary rock. One layer is a stratum.">strata</button>. Where the layers have not been disturbed, deeper means older.</p>
+          <p>All over the world, the first fossils of these groups appear in the same order: single-celled life, then fish, then amphibians, then reptiles, then mammals and birds. The order has never been broken. No one has found a rabbit in <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="Cambrian" data-def="A span of Earth&#x27;s history from about 540 to 485 million years ago, long before the first mammals.">Cambrian</button> rock.</p>
+        </div>
+        <aside class="rc-s"><div class="tile warn">
+          <div class="tl-k">Watch out</div>
+          <p>Earlier does not mean worse, and later does not mean better. Single-celled life came first and is still the most numerous life on Earth.</p>
+        </div></aside>
+      </section>
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>Transitional fossils</h3>
+          <p>If one group of animals descends from another, there should be in-between forms. A <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="transitional fossil" data-def="A fossil that shows a mix of features from an older group and a later group.">transitional fossil</button> shows a mix of features from an older group and a later group.</p>
+          <p>It does not have to be the direct ancestor of anything alive today. It is usually a close relative of that ancestor, and it shows what the in-between body looked like.</p>
+        </div>
+        <aside class="rc-s"><div class="tile">
+          <div class="tl-k">Two famous examples</div>
+          <p><i>Tiktaalik</i> links fish and <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="tetrapod" data-def="An animal with a backbone and four limbs, or one descended from four-limbed ancestors: amphibians, reptiles, birds and mammals.">tetrapods</button>.<br><i>Archaeopteryx</i> links dinosaurs and birds.</p>
+        </div></aside>
+      </section>
+
+      <div class="ff2">
+        <div class="ff">
+          <div class="ff-h"><i>Tiktaalik</i><span>fish with a neck and a wrist</span></div>
+          <dl>
+            <dt>Age</dt><dd>about 375 million years</dd>
+            <dt>Found</dt><dd>2004, Ellesmere Island, Arctic Canada</dd>
+            <dt>Like a fish</dt><dd>scales, fins, gills</dd>
+            <dt>Like a tetrapod</dt><dd>a neck, a flat head, and shoulder, elbow and wrist bones inside its front fins</dd>
+          </dl>
+          <p class="ff-n">Scientists predicted this find. They chose rock of the right age and searched it for four summers. Tracks found later show that four-legged animals already existed by then, so <i>Tiktaalik</i> is a close relative of the in-between animals, not the ancestor itself.</p>
+        </div>
+        <div class="ff">
+          <div class="ff-h"><i>Archaeopteryx</i><span>dinosaur with wings</span></div>
+          <dl>
+            <dt>Age</dt><dd>about 150 million years</dd>
+            <dt>Found</dt><dd>1861, Solnhofen, southern Germany</dd>
+            <dt>Like a bird</dt><dd>feathers, wings, a wishbone</dd>
+            <dt>Like a dinosaur</dt><dd>teeth, a long bony tail, clawed fingers</dd>
+          </dl>
+          <p class="ff-n">Dinosaurs appear in the rock about 230 million years ago, long before any bird. Feathers and wishbones have since been found on other dinosaur fossils too. Birds descend from small <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="theropod" data-def="One of a group of two-legged, mostly meat-eating dinosaurs. Birds descend from small theropods.">theropod</button> dinosaurs.</p>
+        </div>
       </div>
-      <p>Transitional fossils are particularly compelling. A transitional fossil is an organism with features intermediate between two groups, documenting a step in an evolutionary lineage. One famous example is <i>Tiktaalik</i>, a fish-like organism from approximately 375 million years ago that possessed fins with an internal skeletal structure resembling a wrist, and a neck capable of independent movement from its body. These are features found in four-limbed land vertebrates (tetrapods) but not in ordinary fish. <i>Tiktaalik</i> was discovered precisely where evolutionary theory predicted it would be found: in rocks of the right age to represent the fish-to-tetrapod transition. Another example is <i>Archaeopteryx</i>, which has feathers and a wishbone like a modern bird, but also teeth, a long bony tail, and clawed fingers on its wings like a small dinosaur. These organisms are not "missing links" in the sense of unexplained gaps; they are documented stages in evolutionary lineages.</p>
-      <div class="closer">
-        <div class="ilabel">Closer look &middot; Transitional Fossils: Documents of Change in Progress</div>
-        <p><i>Tiktaalik</i>, discovered in Arctic Canada in rocks approximately 375 million years old, was a fish with a difference. Its fins had an internal skeletal structure — a humerus, radius, and ulna — that corresponds to the limb bones of four-legged land vertebrates. It also had a neck, capable of turning independently of its body, a feature absent in fish but present in tetrapods. <i>Tiktaalik</i> was not a fish becoming a tetrapod in a single generation; it was a member of a population living at the evolutionary transition between aquatic and terrestrial life. Its discovery was predicted by evolutionary theory before the fossil was found: scientists knew approximately where in time the fish-to-tetrapod transition should be and searched rocks of that age in locations likely to have preserved freshwater shallow-water organisms.</p>
-        <p><i>Archaeopteryx</i>, from approximately 150 million years ago, has feathers, a wishbone, and a backward-pointing toe like modern birds. It also has teeth (no living bird has teeth), a long bony tail, and three clawed fingers on each wing, like the small theropod dinosaurs from which birds evolved. It is neither simply "a dinosaur" nor simply "a bird." It is an organism that was alive when the lineage leading to modern birds was diverging from the dinosaurs.</p>
-      </div>
+
     </article>
   </div>
 
@@ -773,11 +928,11 @@ footer.foot{background:#E8ECF5}
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m15 15 5.5 5.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Explore</span><h2>Dig Site</h2></div></div>
     <div class="bench">
       <div class="bh"><b>Stack the record</b><span class="hint">Tap a group, then tap the layer where its first fossils appear.</span></div>
-      <div class="place l1-dig" id="l1-dig">
+      <div class="place l1-dig l1r-dig" id="l1-dig">
         <div class="bank">
           <button class="chip" data-k="mb" data-ans="5" data-fb="Top layer: mammals and birds are the newest of these groups." data-miss="Mammals and birds come last in the sequence. Look higher.">mammals and birds</button>
           <button class="chip" data-k="fi" data-ans="2" data-fb="Fish sit just above the oldest, single-celled layer." data-miss="Fish come early: before amphibians, reptiles, mammals and birds. Look lower.">fish</button>
-          <button class="chip" data-k="sc" data-ans="1" data-fb="Deepest layer: simple, single-celled organisms appear in the oldest rocks." data-miss="The simplest organisms appear in the oldest rocks. Where are the oldest rocks?">single-celled life</button>
+          <button class="chip" data-k="sc" data-ans="1" data-fb="Deepest layer: single-celled life appears in the oldest rocks." data-miss="Single-celled life appears in the oldest rocks. Where are the oldest rocks?">single-celled life</button>
           <button class="chip" data-k="re" data-ans="4" data-fb="Reptiles come after amphibians and before mammals and birds." data-miss="Reptiles come after amphibians. Count up from the fish.">reptiles</button>
           <button class="chip" data-k="am" data-ans="3" data-fb="Amphibians come right after fish." data-miss="Amphibians follow fish directly. Find the fish layer first.">amphibians</button>
         </div>
@@ -792,47 +947,59 @@ footer.foot{background:#E8ECF5}
         <div class="place-fb"></div>
       </div>
     </div>
-    <div class="bench">
-      <div class="bh"><b>Predict the find</b><span class="hint">Scientists went looking for a fish with features of four-limbed land animals.</span></div>
-      <div class="mcq" data-qid="l1-dig2">
-        <p class="stem">In your finished column, between which two layers would you search?</p>
-        <div class="opts">
-          <button class="opt" data-fb="Single-celled life to fish is far too early: there are no fish yet to carry leg-like fins.">Layer 1 and layer 2</button>
-          <button class="opt" data-ok="1" data-fb="Yes. That is the fish-to-tetrapod boundary: the age of rock scientists chose to search before <i>Tiktaalik</i> was found.">Layer 2 and layer 3</button>
-          <button class="opt" data-fb="By the reptile layers, four-limbed land animals already exist. The fish-to-land step has to come earlier.">Layer 3 and layer 4</button>
-          <button class="opt" data-fb="Mammals and birds are the newest groups here. A fish with leg-like fins belongs much deeper.">Layer 4 and layer 5</button>
+    <div class="duo">
+      <div class="bench">
+        <div class="bh"><b>Predict the find</b></div>
+        <div class="mcq" data-qid="l1-dig2">
+          <p class="stem">Scientists wanted a fossil that was part fish, part four-legged animal. Between which two layers of your column should they search?</p>
+          <div class="opts two">
+            <button class="opt" data-fb="Too early. Layer 1 has only single-celled life, so there are no fish yet.">Layers 1 and 2</button>
+            <button class="opt" data-ok="1" data-fb="Yes. Fish below, amphibians above: the in-between animal belongs between them. That is the age of rock where <i>Tiktaalik</i> was found.">Layers 2 and 3</button>
+            <button class="opt" data-fb="Too late. By layer 3, four-legged animals already exist.">Layers 3 and 4</button>
+            <button class="opt" data-fb="Far too late. These are the newest groups in the column.">Layers 4 and 5</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="bench">
-      <div class="bh"><b>One animal, two groups</b><span class="hint">Sort the features of <i>Archaeopteryx</i>.</span></div>
-      <div class="place" id="l1-arch">
-        <div class="bank">
-          <button class="chip" data-k="fe" data-ans="bird" data-fb="Feathers: like a modern bird." data-miss="Which living animals have feathers?">feathers</button>
-          <button class="chip" data-k="te" data-ans="dino" data-fb="Teeth: no living bird has teeth." data-miss="No living bird has teeth. So which side is this?">teeth</button>
-          <button class="chip" data-k="wb" data-ans="bird" data-fb="A wishbone: like a modern bird." data-miss="The reading pairs the wishbone with feathers. Which side?">a wishbone</button>
-          <button class="chip" data-k="ta" data-ans="dino" data-fb="A long bony tail: like a small dinosaur." data-miss="Modern birds don't have a long bony tail. Try the other side.">a long bony tail</button>
-          <button class="chip" data-k="to" data-ans="bird" data-fb="A backward-pointing toe: like modern birds." data-miss="The lesson lists this toe with the feathers and wishbone. Which side?">a backward-pointing toe</button>
-          <button class="chip" data-k="cl" data-ans="dino" data-fb="Three clawed fingers on each wing: like the small theropod dinosaurs." data-miss="Claws on the fingers of a wing. Do modern birds have those?">three clawed fingers on each wing</button>
+      <div class="bench">
+        <div class="bh"><b>One animal, two groups</b><span class="hint">Sort the features of <i>Archaeopteryx</i>.</span></div>
+        <div class="place" id="l1-arch">
+          <div class="bank">
+            <button class="chip" data-k="fe" data-ans="bird" data-fb="Feathers: every living bird has them." data-miss="Which living animals have feathers?">feathers</button>
+            <button class="chip" data-k="te" data-ans="dino" data-fb="Teeth: no living bird has teeth." data-miss="Picture a bird's beak. Is anything missing from it?">teeth</button>
+            <button class="chip" data-k="wb" data-ans="bird" data-fb="A wishbone: nearly all living birds have one." data-miss="Think of a roast chicken. Is there a wishbone?">a wishbone</button>
+            <button class="chip" data-k="ta" data-ans="dino" data-fb="A long bony tail: living birds have only a short stub of tail bone." data-miss="A living bird's tail is feathers on a short stub of bone. Try the other side.">a long bony tail</button>
+            <button class="chip" data-k="wi" data-ans="bird" data-fb="Wings: living birds have them." data-miss="Which living animals have feathered wings?">wings</button>
+          </div>
+          <div class="bins">
+            <div class="bin" data-bin="bird"><h4>Living birds have it</h4><div class="drop"></div></div>
+            <div class="bin" data-bin="dino"><h4>No living bird has it</h4><div class="drop"></div></div>
+          </div>
+          <div class="tally"></div>
+          <div class="place-fb"></div>
         </div>
-        <div class="bins">
-          <div class="bin" data-bin="bird"><h4>Like a modern bird</h4><div class="drop"></div></div>
-          <div class="bin" data-bin="dino"><h4>Like a small dinosaur</h4><div class="drop"></div></div>
-        </div>
-        <div class="tally"></div>
-        <div class="place-fb"></div>
       </div>
     </div>
   </div>
 
   <div class="sec st st-think">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Think</span><h2>Pause and Reflect</h2></div></div>
-    <div class="mcq" data-qid="l1-pr">
-      <p class="stem">A student argues: "The fossil record has gaps, so it doesn't really prove evolution. If evolution were true, we would have fossils of every intermediate organism." How would you respond to this argument?</p>
-      <div class="opts">
-        <button class="opt" data-fb="This overstates what a theory requires. No historical record — in science, history, or law — is complete. The standard is not completeness but consistency: does the evidence we do have fit the theory, and does the theory make predictions that can be tested? The fossil record, though incomplete, is consistent with evolution and has repeatedly confirmed evolutionary predictions, including the discovery of Tiktaalik in rocks of exactly the predicted age.">The student is right. A valid scientific theory should have complete, unbroken evidence. The gaps in the fossil record mean evolutionary theory is not well supported.</button>
-        <button class="opt" data-ok="1" data-fb="Well reasoned. Fossilization is a rare event requiring specific conditions: rapid burial in fine sediment, hard body parts, absence of scavengers, and protection from erosion over millions of years. Most organisms leave no fossil. The pattern we do observe, however, is strikingly consistent: simpler organisms in older rock, more derived organisms in younger rock, transitional forms at the predicted time periods. A theory that predicts this pattern before the fossils are found is confirmed, not undermined, by each new discovery.">The gaps are expected. Fossilization requires rare conditions and most organisms never fossilize. The question is not whether the record is complete, but whether the pattern it does show is consistent with evolutionary theory. It is.</button>
-        <button class="opt" data-fb="This misunderstands how scientific evidence works. DNA evidence does not replace fossil evidence; it supplements it. The strength of the evolutionary case comes precisely from the convergence of multiple independent lines of evidence, not from any single line. Each type of evidence has different strengths and weaknesses. Fossils show us what organisms looked like at specific times in the past; DNA shows us molecular relationships. Both matter.">The gaps do not matter because evolution is proven by DNA evidence, which is more reliable than fossils.</button>
+    <p class="setup">A classmate says: &ldquo;The fossil record has gaps, so it can't be evidence for evolution.&rdquo;</p>
+    <div class="duo">
+      <div class="mcq" data-qid="l1-pr1">
+        <p class="stem"><span class="qn">1</span>First, why does the fossil record have gaps?</p>
+        <div class="opts">
+          <button class="opt" data-fb="Fossils can last hundreds of millions of years. The gaps come from how rarely they form.">Fossils crumble to dust after a few thousand years in rock.</button>
+          <button class="opt" data-ok="1" data-fb="Right. Fossils form only under rare conditions.">Most living things rot or are eaten before they fossilize.</button>
+          <button class="opt" data-fb="Evolution does not skip stages. The in-between animals lived; most of them just never fossilized.">Evolution skipped the stages where the fossils are missing.</button>
+        </div>
+      </div>
+      <div class="mcq" data-qid="l1-pr2">
+        <p class="stem"><span class="qn">2</span>Now, which reply to your classmate is strongest?</p>
+        <div class="opts">
+          <button class="opt" data-fb="DNA adds to the fossil evidence. It does not replace it. The case is strong because separate kinds of evidence agree.">Gaps do not matter, because DNA has replaced fossils as evidence.</button>
+          <button class="opt" data-fb="No record of the past is ever complete, and most living things left no fossil at all. Look at the Key idea tile in the reading.">Gaps will close once scientists find a fossil of every species.</button>
+          <button class="opt" data-ok="1" data-fb="Well reasoned. A record can have gaps and still show a clear pattern. Scientists used that pattern to choose the rock where they found <i>Tiktaalik</i>.">Gaps are expected. What counts is the pattern in the fossils.</button>
+        </div>
       </div>
     </div>
   </div>
@@ -847,10 +1014,10 @@ footer.foot{background:#E8ECF5}
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Spark</span><h2>Look Inside</h2></div></div>
     <div class="mcq checkin" data-qid="l1-sp2">
       <p class="stem">A whale swims with a flipper. A bat flies with a wing. What do you predict you'd find inside them?</p>
-      <div class="opts">
-        <button class="opt" data-ok="1" data-fb="Different jobs often suggest different parts. Hold that thought and watch the bones in the card below.">Completely different bones, each built for its job</button>
-        <button class="opt" data-ok="1" data-fb="Keep that prediction. The card below lets you check it bone by bone.">The same set of bones, shaped differently</button>
-        <button class="opt" data-ok="1" data-fb="From the outside, a flipper hides what it is built from. The card below shows what is inside.">Hardly any bones at all in the flipper</button>
+      <div class="opts row">
+        <button class="opt" data-ok="1" data-fb="Different jobs often suggest different parts. Hold that thought and watch the bones in the card below.">Different bones, each built for its job</button>
+        <button class="opt" data-ok="1" data-fb="Keep that prediction. The card below lets you check it bone by bone.">The same bones, shaped differently</button>
+        <button class="opt" data-ok="1" data-fb="From the outside, a flipper hides what it is built from. The card below shows what is inside.">Hardly any bones in the flipper</button>
       </div>
     </div>
   </div>
@@ -886,19 +1053,44 @@ footer.foot{background:#E8ECF5}
   <div class="sec st st-read">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.8 4.2 9 4.3 12 6.2c3-1.9 6.2-2 9-.7V19c-2.8-1.3-6-1.2-9 .7-3-1.9-6.2-2-9-.7z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6.2v13.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Read</span><h2>Comparative Anatomy</h2></div></div>
     <div class="readfor"><b>Read for</b><span>The difference between a homologous structure and a vestigial one, and what each tells you about the past.</span></div>
-    <article class="atlas">
-      <p>Comparative anatomy is the study of structural similarities and differences among organisms. Two types of structural similarity are especially informative about evolutionary history.</p>
-      <p>Homologous structures are body parts that share a common evolutionary origin, even if they now serve different functions. The forelimb of a human, the flipper of a whale, the wing of a bat, and the front leg of a dog all share the same underlying bone arrangement: one proximal bone, two distal bones, then a group of smaller bones, then digits. These structures are built on the same blueprint. The best explanation is that all four mammals inherited this basic limb structure from a common ancestor, and that natural selection has modified it differently in each lineage to suit different functions. Common descent with modification is the most parsimonious explanation for why four very different animals share an identical underlying architecture.</p>
-      <div class="closer">
-        <div class="ilabel">Closer look &middot; Homologous Structures</div>
-        <p>Homologous structures are body parts that share a common evolutionary origin even though they may serve different functions in different species. The forelimbs of vertebrates provide the clearest example. A human arm, a whale's flipper, a bat's wing, and a horse's front leg look very different externally and perform very different functions. Yet they all share the same underlying skeletal arrangement: one bone (the humerus), connected to two bones (radius and ulna), connected to a cluster of smaller bones (carpals), connected to elongated digits.</p>
-        <p>This shared blueprint cannot be explained by functional optimization alone. A flipper optimized for swimming would not be built from a wrist and five digits. A wing optimized for flying does not require a radius and ulna. These structures are shared because they were inherited from a common ancestor, then modified by natural selection in each lineage toward the different functions they now serve. The unity of the blueprint beneath the diversity of function is the signature of descent with modification.</p>
-      </div>
-      <p>Vestigial structures are body parts that have been reduced in size or function over evolutionary time but can still be identified in the organism's anatomy. The human coccyx (tailbone) consists of several fused vertebrae at the base of the spine. In our ancestors, this structure was part of a functional tail used for balance and communication. In modern humans it is a small remnant, retained because natural selection has not acted strongly enough to eliminate it entirely. Whales retain pelvic bones embedded in their musculature, the remains of hind limbs from the land-dwelling ancestors of whales. Snakes retain small, nonfunctional vestiges of leg bones in some species. These are not scars or errors; they are historical residue, carrying the record of the past inside the bodies of living organisms.</p>
-      <div class="closer">
-        <div class="ilabel">Closer look &middot; Vestigial Structures</div>
-        <p>Vestigial structures are anatomical features reduced in size or function over evolutionary time — remnants of structures that served clear functions in an ancestor. The human coccyx is a series of fused vertebrae at the base of the spine. In our primate ancestors, this structure was a functional tail used for balance and social communication. In modern humans it is much reduced, but its presence in human anatomy makes sense only in light of evolutionary history. Similarly, some snake species retain small, nonfunctional pelvic bones and vestigial leg structures embedded in their musculature — relics of the legs their lizard-like ancestors possessed. Whales retain pelvic bones embedded in their body wall, remnants of hind limbs from the terrestrial ancestors of whales. These structures are not errors or accidents; they are evolutionary history made visible inside living organisms.</p>
-      </div>
+    <article class="atlas rchunks">
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>Same bones, different jobs</h3>
+          <p><button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="comparative anatomy" data-def="Comparing the body structures of different species.">Comparative anatomy</button> means comparing the body structures of different species.</p>
+          <p>Compare four front limbs: a human arm, a whale flipper, a bat wing and a horse's front leg. They do four different jobs. Inside, the same bone groups appear in the same order: one upper bone, two lower bones, a cluster of wrist bones, then the bones of the hand and <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="digits" data-def="Fingers or toes.">digits</button>.</p>
+        </div>
+        <aside class="rc-s"><div class="tile def">
+          <div class="tl-k">Homologous structures</div>
+          <p>Body parts in different species that were inherited from a shared ancestor. They can do different jobs.</p>
+        </div></aside>
+      </section>
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>Why that points to a shared ancestor</h3>
+          <p>Suppose each limb had been built from scratch for its own job. There would be no reason for a flipper, a wing and a leg to use the same parts in the same order.</p>
+          <p>The simplest explanation is that all four animals inherited the limb from a <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="common ancestor" data-def="An earlier species from which two or more later species descend.">common ancestor</button>. Over many generations, <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="natural selection" data-def="Individuals with inherited traits that help them survive and reproduce leave more offspring, so those traits become more common over generations.">natural selection</button> reshaped it in each group of descendants.</p>
+        </div>
+        <aside class="rc-s"><div class="tile warn">
+          <div class="tl-k">Same plan, not identical</div>
+          <p>A horse stands on one finger. A whale's fingers have extra bones. The plan is shared, and each animal's version has changed.</p>
+        </div></aside>
+      </section>
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>Leftovers</h3>
+          <p>A <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="vestigial structure" data-def="A body part that has shrunk and lost most or all of the job it did in an ancestor. It may still do a smaller job.">vestigial structure</button> is a body part that has shrunk and lost most or all of the job it did in an ancestor. Your <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="coccyx" data-def="The tailbone: a few small fused bones at the base of the human spine.">coccyx</button> is one. It is what remains of a tail.</p>
+          <p>A whale has small hip bones but no hind legs. The simplest explanation is that the ancestors of whales walked on land.</p>
+        </div>
+        <aside class="rc-s"><div class="tile warn">
+          <div class="tl-k">Watch out</div>
+          <p>Vestigial means reduced. It does not mean useless. Many vestigial parts still do a smaller job.</p>
+        </div></aside>
+      </section>
+
     </article>
   </div>
 
@@ -913,47 +1105,51 @@ footer.foot{background:#E8ECF5}
         <button type="button" data-g="all" aria-pressed="false">all four</button>
       </div></div>
       <div class="l1-limbs" id="l1-labLimbs"></div>
-      <p class="model">Simplified diagram: shapes and sizes are not to scale.</p>
+      <p class="model">Simplified diagram: shapes, sizes and bone counts are not exact.</p>
       <p class="l1-gnote" id="l1-gnote" aria-live="polite">Pick a group. It lights up in all four limbs at once.</p>
     </div>
-    <div class="bench">
-      <div class="bh"><b>Why the same bones?</b></div>
-      <div class="mcq" data-qid="l1-why">
-        <p class="stem">A whale's flipper is built from a wrist and five digits. Which explanation fits that best?</p>
-        <div class="opts">
-          <button class="opt" data-fb="If swimming alone had shaped it, there would be no reason to build a flipper from a wrist and five digits. Look at the Closer look box again.">Wrists and digits are simply the best possible parts for a swimming limb.</button>
-          <button class="opt" data-ok="1" data-fb="Right. The bones were inherited from a common ancestor, then modified by natural selection for swimming. That is descent with modification.">It was inherited from a common ancestor, then reshaped for swimming.</button>
-          <button class="opt" data-fb="Whales are not descended from humans. The shared plan points to a common ancestor of all four mammals.">Whales descended from an early human that already had this kind of arm.</button>
-          <button class="opt" data-fb="Using a flipper during one whale's life doesn't change the bones its offspring inherit. Think inheritance, not practice.">Each whale's flipper bones form from practice while it learns to swim.</button>
+    <div class="duo">
+      <div class="bench">
+        <div class="bh"><b>Why the same bones?</b></div>
+        <div class="mcq" data-qid="l1-why">
+          <p class="stem">A whale's flipper has wrist and finger bones inside it. Which explanation fits best?</p>
+          <div class="opts">
+            <button class="opt" data-fb="If swimming alone had shaped it, there would be no reason to build a flipper from wrist and finger bones. A fish fin works well without them.">Wrist and finger bones are the best possible design for a flipper.</button>
+            <button class="opt" data-fb="Whales are not descended from humans. The shared plan points back to an older ancestor of both.">Whales descended from early humans, who already had arms like ours.</button>
+            <button class="opt" data-fb="Using a flipper during one whale's life does not change the bones its offspring inherit. Think inheritance, not practice.">Each whale grows those bones by practicing as it learns to swim.</button>
+            <button class="opt" data-ok="1" data-fb="Right. The bones came from a common ancestor and were reshaped by natural selection for swimming.">Whales inherited those bones from an ancestor, then they changed.</button>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="bench">
-      <div class="bh"><b>Leftovers</b><span class="hint">Tap each card to see what the leftover part used to be.</span></div>
-      <div class="l1-flips">
-        <button type="button" class="l1-flip" aria-pressed="false"><span class="f">Human<br><b>coccyx (tailbone)</b></span><span class="b">Several fused vertebrae at the base of the spine. In our ancestors, part of a functional tail used for balance and communication.</span></button>
-        <button type="button" class="l1-flip" aria-pressed="false"><span class="f">Whale<br><b>pelvic bones</b></span><span class="b">Embedded in the whale's musculature: the remains of hind limbs from the land-dwelling ancestors of whales.</span></button>
-        <button type="button" class="l1-flip" aria-pressed="false"><span class="f">Some snakes<br><b>tiny leg bones</b></span><span class="b">Small, nonfunctional vestiges of leg bones: relics of the legs their lizard-like ancestors possessed.</span></button>
+      <div class="bench">
+        <div class="bh"><b>Leftovers</b><span class="hint">Tap a card: then and now.</span></div>
+        <div class="l1-flips l1r-flips">
+          <button type="button" class="l1-flip" aria-pressed="false"><span class="f">Human<br><b>coccyx (tailbone)</b></span><span class="b"><b>Then:</b> part of a tail.<br><b>Now:</b> a few small fused bones that anchor muscles and ligaments.</span></button>
+          <button type="button" class="l1-flip" aria-pressed="false"><span class="f">Whale<br><b>hip bones</b></span><span class="b"><b>Then:</b> hips that carried hind legs on land.<br><b>Now:</b> small bones deep in the body that anchor muscles used in reproduction.</span></button>
+          <button type="button" class="l1-flip" aria-pressed="false"><span class="f">Boas<br><b>spurs</b></span><span class="b"><b>Then:</b> hind legs.<br><b>Now:</b> two tiny claws near the tail. Males use them in courtship.</span></button>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="sec st st-check">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m8 12.5 2.8 2.8L16.5 9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Check</span><h2>Homologous or Vestigial?</h2></div></div>
-    <div class="mcq" data-qid="l1-c1">
-      <p class="stem"><span class="qn">1</span>A bat's wing and a dog's front leg do different jobs but contain the same bone groups. They are</p>
-      <div class="opts row">
-        <button class="opt" data-ok="1" data-fb="Yes: shared origin, different function.">homologous structures</button>
-        <button class="opt" data-fb="Both limbs work fine. Vestigial means reduced in size or function, a leftover.">vestigial structures</button>
-        <button class="opt" data-fb="These are living animals' limbs, not fossils. Look again at the definitions.">transitional fossils</button>
+    <div class="duo">
+      <div class="mcq" data-qid="l1-c1">
+        <p class="stem"><span class="qn">1</span>A bat's wing and a horse's front leg do different jobs but contain the same bone groups. They are</p>
+        <div class="opts">
+          <button class="opt" data-ok="1" data-fb="Yes: inherited from a shared ancestor, now doing different jobs.">homologous structures</button>
+          <button class="opt" data-fb="Both limbs are full-sized and working. Vestigial means reduced, a leftover.">vestigial structures</button>
+          <button class="opt" data-fb="These are the limbs of living animals, not fossils.">transitional fossils</button>
+        </div>
       </div>
-    </div>
-    <div class="mcq" data-qid="l1-c2">
-      <p class="stem"><span class="qn">2</span>A whale's pelvic bones sit in its body wall and support no hind legs. They are</p>
-      <div class="opts row">
-        <button class="opt" data-fb="Homologous means a shared plan with a different working job. These bones no longer do the job they did.">homologous structures</button>
-        <button class="opt" data-ok="1" data-fb="Right: reduced remnants of hind limbs from land-dwelling ancestors.">vestigial structures</button>
-        <button class="opt" data-fb="They are inside a living whale, not preserved in rock.">transitional fossils</button>
+      <div class="mcq" data-qid="l1-c2">
+        <p class="stem"><span class="qn">2</span>A whale has small hip bones deep in its body and no hind legs. Which term describes what has happened to them?</p>
+        <div class="opts">
+          <button class="opt" data-fb="They were inherited, but the question is about what has happened to them since. They have shrunk and lost their old job.">homologous structures</button>
+          <button class="opt" data-fb="They are inside a living whale, not preserved in rock.">transitional fossils</button>
+          <button class="opt" data-ok="1" data-fb="Right: reduced leftovers of the hips that once carried hind legs.">vestigial structures</button>
+        </div>
       </div>
     </div>
   </div>
@@ -961,8 +1157,13 @@ footer.foot{background:#E8ECF5}
   <div class="sec st st-think">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Think</span><h2>Science Now</h2></div></div>
     <div class="inset">
-      <div class="ilabel">Contemporary Research: Ancient DNA and Paleogenomics</div>
-      <p>The discovery that DNA can be preserved in ancient bone and permafrost has opened a new line of evolutionary evidence that nineteenth-century scientists could not have imagined. Researchers have now sequenced the complete genomes of Neanderthals, Denisovans (an archaic human population known from a single finger bone), and woolly mammoths, among others. These ancient genomes allow scientists to test evolutionary hypotheses directly at the molecular level. We can now confirm that modern humans and Neanderthals interbred, and that roughly 1-4% of the DNA of non-African modern humans comes from Neanderthal ancestors. Ancient DNA research is accelerating rapidly as techniques improve: sequences that were considered irretrievable from specimens just ten years ago are now routinely analyzed. This field did not exist as recently as 1990.</p>
+      <div class="ilabel">Contemporary Research: Ancient DNA</div>
+      <p>DNA can survive for hundreds of thousands of years in old bone and frozen ground. Scientists can now read the <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="genome" data-def="The complete set of DNA of a living thing.">genome</button> of animals and humans that died long ago, and compare it with living species. It is a line of evidence Darwin never had, and it agrees with the fossils and the bones.</p>
+      <div class="stats">
+        <div class="stat"><b>1984</b><span>First DNA read from an extinct animal, the quagga, an extinct kind of zebra.</span></div>
+        <div class="stat"><b>2010</b><span>First <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="Neanderthals" data-def="An extinct group of humans who lived in Europe and western Asia until about 40,000 years ago.">Neanderthal</button> genome. The same year, DNA from one finger bone revealed the <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="Denisovans" data-def="An extinct group of humans from Asia, first identified in 2010 from the DNA in one finger bone. A few teeth, jaws and a skull are now known too.">Denisovans</button>.</span></div>
+        <div class="stat"><b>1 to 4%</b><span>Share of Neanderthal DNA in people today whose ancestors lived outside Africa.</span></div>
+      </div>
     </div>
   </div>
 
@@ -980,11 +1181,11 @@ footer.foot{background:#E8ECF5}
     </div>
     <div class="vo-stage">
       <div class="l1-emb">
-        <div class="l1-ecol"><b>fish</b><span class="e1" data-step="1">throat arches and pouches</span><span class="e2" data-step="1">post-anal tail</span><span class="e3" data-step="3">arches become parts of the gills and jaw</span></div>
-        <div class="l1-ecol"><b>chicken</b><span class="e1" data-step="1">throat arches and pouches</span><span class="e2" data-step="1">post-anal tail</span><span class="e3" data-step="2">develops into a chicken</span></div>
-        <div class="l1-ecol"><b>human</b><span class="e1" data-step="1">throat arches and pouches</span><span class="e2" data-step="1">post-anal tail</span><span class="e3" data-step="4">arches become jaw, middle ear, throat; tail shrinks to the coccyx</span></div>
+        <div class="l1-ecol"><b>fish</b><span class="e1" data-step="1">throat arches</span><span class="e2" data-step="1">post-anal tail</span><span class="e3" data-step="3">arches become parts of the gills and jaw</span></div>
+        <div class="l1-ecol"><b>chicken</b><span class="e1" data-step="1">throat arches</span><span class="e2" data-step="1">post-anal tail</span><span class="e3" data-step="2">develops into a chicken</span></div>
+        <div class="l1-ecol"><b>human</b><span class="e1" data-step="1">throat arches</span><span class="e2" data-step="1">post-anal tail</span><span class="e3" data-step="4">arches become jaw, middle ear, throat; tail shrinks to the coccyx</span></div>
       </div>
-      <div class="l1-erow"><span data-step="0" class="keep">early embryo</span><span data-step="2">later</span><span data-step="5" class="l1-warn">not a fish stage: retained developmental pathways</span></div>
+      <div class="l1-erow"><span data-step="0" class="keep">early embryo</span><span data-step="2">later</span><span data-step="5" class="l1-warn">not a fish stage: shared early steps</span></div>
     </div>
     <div class="vo-cap" aria-live="polite"></div>
     <div class="vo-foot"><div class="vo-bar"><div class="vo-fill"></div></div><div class="vo-dots"></div><button class="vo-tbtn" type="button" aria-expanded="false">Transcript</button></div>
@@ -1002,19 +1203,43 @@ footer.foot{background:#E8ECF5}
   <div class="sec st st-read">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5C5.8 4.2 9 4.3 12 6.2c3-1.9 6.2-2 9-.7V19c-2.8-1.3-6-1.2-9 .7-3-1.9-6.2-2-9-.7z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 6.2v13.5" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Read</span><h2>Comparative Embryology</h2></div></div>
     <div class="readfor"><b>Read for</b><span>What embryos share early on, what they become later, and the old claim scientists now reject.</span></div>
-    <article class="atlas">
-      <p>Comparative embryology is the study of how the embryos of different species develop and how those stages compare. It is the developmental side of comparative anatomy: the same logic of shared structure, applied to embryos instead of adult bodies. Scientists count it with the anatomical line of evidence, alongside fossils, biogeography, and molecular biology. Early in development, the embryos of fish, chickens, and humans look strikingly alike. All of them form pharyngeal arches and pouches along the throat region, and all of them have a tail that extends past the anus, called a post-anal tail. As development continues, the embryos diverge. In fish the arches become parts of the gills and jaw. In humans they become structures of the jaw, the middle ear, and the throat, and the tail shrinks until only the coccyx remains.</p>
-      <p>The best explanation is common ancestry. Vertebrates inherited the same basic developmental instructions from a shared ancestor, including families of regulatory genes such as the Hox genes, which help set up the body plan from head to tail. Different lineages then modified those instructions at later stages. This fits what the fossil record and comparative anatomy already show: the same pattern of shared structure beneath different forms.</p>
-      <p>Be careful about what this does and does not mean. A human embryo does not pass through an adult fish stage, and its throat arches are not working gills. These structures are retained developmental pathways. In the nineteenth century, Ernst Haeckel claimed that “ontogeny recapitulates phylogeny,” meaning that an embryo replays its species' whole evolutionary history. That claim was overstated, and scientists reject it. The modern claim is narrower and better supported: related species share early developmental patterns because they share ancestry. Embryology is strongest when it is combined with fossils, anatomy, and the molecular evidence you will meet next.</p>
-      <h3>Key Vocabulary</h3>
-      <ul class="vocab">
-        <li><b>fossil record</b> — the accumulated body of fossils preserved in rock strata, representing organisms that lived in the past</li>
-        <li><b>transitional fossil</b> — a fossil with features intermediate between an ancestral group and its evolutionary descendants</li>
-        <li><b>comparative anatomy</b> — the study of structural similarities and differences among species</li>
-        <li><b>homologous structures</b> — body parts in different species that share a common evolutionary origin but may have different functions</li>
-        <li><b>vestigial structures</b> — reduced or nonfunctional body parts that are remnants of structures that were functional in ancestors</li>
-        <li><b>strata</b> — layers of sedimentary rock, deposited over time; older layers are typically deeper</li>
-      </ul>
+    <article class="atlas rchunks">
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>What early embryos share</h3>
+          <p>An <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="embryo" data-def="A living thing at its earliest stage of development, before it is born or hatches.">embryo</button> is a living thing at its earliest stage of development. <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="comparative embryology" data-def="Comparing how the embryos of different species develop.">Comparative embryology</button> compares the embryos of different species.</p>
+          <p>Early fish, chicken and human embryos look alike in some ways, though they differ in size and shape. All three build the same two features: <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="pharyngeal arches" data-def="Folds of tissue along the throat of every early embryo of an animal with a backbone.">pharyngeal arches</button> along the throat, and a <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="post-anal tail" data-def="A tail that extends past the end of the gut.">post-anal tail</button>.</p>
+        </div>
+        <aside class="rc-s"><div class="tile">
+          <div class="tl-k">Later, they go different ways</div>
+          <p><b>Fish:</b> arches become parts of the jaw and gills.<br><b>Human:</b> arches become parts of the jaw, middle ear and throat. The tail shrinks to the coccyx.</p>
+        </div></aside>
+      </section>
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>Why they share it</h3>
+          <p>Animals with backbones inherited the same body-building genes from a common ancestor. These include the <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="Hox genes" data-def="A family of genes that tell a growing embryo which body parts go where, from head to tail.">Hox genes</button>, which lay out the body from head to tail. Each group of descendants then changed the later steps.</p>
+        </div>
+        <aside class="rc-s"><div class="tile key">
+          <div class="tl-k">Key idea</div>
+          <p>Related species share early steps of development because they share ancestors.</p>
+        </div></aside>
+      </section>
+
+      <section class="rc">
+        <div class="rc-t">
+          <h3>What it does not mean</h3>
+          <p>A human embryo never has working gills. It never passes through a &ldquo;fish stage.&rdquo;</p>
+          <p>In the 1800s, Ernst Haeckel claimed that an embryo replays its species' whole evolutionary history. His drawings made the embryos look more alike than they are. Scientists reject his claim.</p>
+        </div>
+        <aside class="rc-s"><div class="tile warn">
+          <div class="tl-k">Watch out</div>
+          <p>The arches in a human embryo are not gills. They are early building blocks that fish and humans use in different ways.</p>
+        </div></aside>
+      </section>
+
     </article>
   </div>
 
@@ -1025,9 +1250,9 @@ footer.foot{background:#E8ECF5}
       <input type="range" id="l1-eslide" min="0" max="1" step="1" value="0" aria-label="Stage of development: early or later" style="width:100%">
       <div class="l1-eslab"><span>early</span><span>later</span></div>
       <div class="l1-emb l1-emb-lab" id="l1-elab">
-        <div class="l1-ecol"><b>fish</b><span data-e="0">pharyngeal arches and pouches along the throat</span><span data-e="0">post-anal tail</span><span data-e="1">arches become parts of the gills and jaw</span></div>
-        <div class="l1-ecol"><b>chicken</b><span data-e="0">pharyngeal arches and pouches along the throat</span><span data-e="0">post-anal tail</span><span data-e="1">develops into a chicken</span></div>
-        <div class="l1-ecol"><b>human</b><span data-e="0">pharyngeal arches and pouches along the throat</span><span data-e="0">post-anal tail</span><span data-e="1">arches become structures of the jaw, middle ear and throat</span><span data-e="1">tail shrinks until only the coccyx remains</span></div>
+        <div class="l1-ecol"><b>fish</b><span data-e="0">pharyngeal arches along the throat</span><span data-e="0">post-anal tail</span><span data-e="1">arches become parts of the jaw and gills</span></div>
+        <div class="l1-ecol"><b>chicken</b><span data-e="0">pharyngeal arches along the throat</span><span data-e="0">post-anal tail</span><span data-e="1">develops into a chicken</span></div>
+        <div class="l1-ecol"><b>human</b><span data-e="0">pharyngeal arches along the throat</span><span data-e="0">post-anal tail</span><span data-e="1">arches become parts of the jaw, middle ear and throat</span><span data-e="1">tail shrinks until only the coccyx remains</span></div>
       </div>
       <p class="model">Word model of the reading: no embryo drawings.</p>
     </div>
@@ -1035,43 +1260,58 @@ footer.foot{background:#E8ECF5}
 
   <div class="sec st st-check">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m8 12.5 2.8 2.8L16.5 9" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Check</span><h2>Check Your Understanding</h2></div></div>
-    <p class="hint">Classify each statement as True or False.</p>
-    <div class="mcq tf" data-qid="l1-tf1">
-      <p class="stem"><span class="qn">1</span>Homologous structures may serve completely different functions in different species but share the same underlying skeletal or anatomical arrangement.</p>
-      <div class="opts"><button class="opt" data-ok="1" data-fb="True: the four forelimbs are the example.">True</button><button class="opt" data-fb="Think of the whale flipper and bat wing: different jobs, same bones.">False</button></div>
-    </div>
-    <div class="mcq tf" data-qid="l1-tf2">
-      <p class="stem"><span class="qn">2</span>The fossil record is considered strong evidence for evolution only because it is complete and contains every intermediate organism that ever lived.</p>
-      <div class="opts"><button class="opt" data-fb="Most organisms never fossilize. Its strength is the consistent pattern, not completeness.">True</button><button class="opt" data-ok="1" data-fb="False: the record is incomplete by nature; its pattern is what counts.">False</button></div>
-    </div>
-    <div class="mcq tf" data-qid="l1-tf3">
-      <p class="stem"><span class="qn">3</span>Vestigial structures, such as the human coccyx, are best explained as remnants of functional structures from evolutionary ancestors.</p>
-      <div class="opts"><button class="opt" data-ok="1" data-fb="True: the coccyx is what remains of an ancestral tail.">True</button><button class="opt" data-fb="Look back at the Leftovers cards: what did the coccyx used to be?">False</button></div>
-    </div>
-    <div class="mcq tf" data-qid="l1-tf4">
-      <p class="stem"><span class="qn">4</span>Tiktaalik was discovered by accident; scientists were not expecting to find a transitional fish-to-tetrapod fossil when they searched the Arctic.</p>
-      <div class="opts"><button class="opt" data-fb="Remember the Dig Site: scientists chose rocks of a predicted age before they searched.">True</button><button class="opt" data-ok="1" data-fb="False: its discovery was predicted, down to the age of the rocks.">False</button></div>
+    <p class="hint">True or false?</p>
+    <div class="tfgrid">
+      <div class="mcq tf" data-qid="l1-tf1">
+        <p class="stem"><span class="qn">1</span>Homologous structures can do different jobs in different species.</p>
+        <div class="opts"><button class="opt" data-ok="1" data-fb="True: the four front limbs are the example.">True</button><button class="opt" data-fb="Think of the whale flipper and the bat wing: different jobs, same bone groups.">False</button></div>
+      </div>
+      <div class="mcq tf" data-qid="l1-tf2">
+        <p class="stem"><span class="qn">2</span>The fossil record counts as evidence only if it is complete.</p>
+        <div class="opts"><button class="opt" data-fb="Most living things never fossilize. What counts is the pattern in the fossils we have.">True</button><button class="opt" data-ok="1" data-fb="False: gaps are expected. The pattern is what counts.">False</button></div>
+      </div>
+      <div class="mcq tf" data-qid="l1-tf3">
+        <p class="stem"><span class="qn">3</span>The human coccyx is what remains of a tail.</p>
+        <div class="opts"><button class="opt" data-ok="1" data-fb="True: it is a vestigial structure.">True</button><button class="opt" data-fb="Look back at the Leftovers cards in Same Bones.">False</button></div>
+      </div>
+      <div class="mcq tf" data-qid="l1-tf4">
+        <p class="stem"><span class="qn">4</span>Scientists found <i>Tiktaalik</i> by accident.</p>
+        <div class="opts"><button class="opt" data-fb="They chose rock of a predicted age before they searched.">True</button><button class="opt" data-ok="1" data-fb="False: they predicted the age of rock to search, then found it there.">False</button></div>
+      </div>
+      <div class="mcq tf" data-qid="l1-tf5">
+        <p class="stem"><span class="qn">5</span>A human embryo has working gills for a short time.</p>
+        <div class="opts"><button class="opt" data-fb="It has pharyngeal arches, and they never work as gills.">True</button><button class="opt" data-ok="1" data-fb="False: the arches become parts of the jaw, middle ear and throat.">False</button></div>
+      </div>
     </div>
   </div>
 
   <div class="sec st st-think">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Think</span><h2>Courage and Evidence</h2></div></div>
-    <div class="inset">
-      <div class="ilabel">History of Science: Lamarck's Courageous Mistake</div>
-      <p>Jean-Baptiste de Lamarck, a French naturalist, published his theory of evolution in 1809 — fifty years before Darwin. He was the first scientist to propose that species change over time, a radical claim at a moment when most naturalists held that species were fixed and separately created. He was right about the fact of evolution. He was wrong about the mechanism.</p>
-      <p>Lamarck believed that organisms could pass on traits they had acquired during their lifetimes. A giraffe that stretched its neck to reach higher leaves would, he thought, produce offspring with slightly longer necks. We now know this is not how inheritance works. Traits acquired by an individual organism are not passed to offspring; only heritable genetic differences are. But Lamarck's willingness to follow the evidence of change in the fossil record, even when it contradicted the received view, required the kind of intellectual courage that all genuine scientific advance demands. History has remembered his mechanism as wrong but rarely pauses to note that his basic claim about evolution was correct half a century before it was proven.</p>
-    </div>
-    <div class="inset">
-      <div class="ilabel">Virtue Focus: Courage in the Face of Evidence</div>
-      <p>Lamarck was wrong about the mechanism of inheritance, but he was courageous enough to follow the fossil evidence to the conclusion that species change over time — a conclusion that contradicted the scientific consensus and the cultural assumptions of his era. Darwin accumulated twenty years of evidence before he published, knowing his conclusion would be controversial. The courage this module asks of students is the same: the willingness to follow the evidence where it leads, even when the conclusion is unfamiliar or uncomfortable. This is not recklessness. It is the opposite of recklessness. It is the discipline of letting the world tell you what it is, rather than telling the world what it should be.</p>
+    <div class="duo">
+      <div class="inset">
+        <div class="ilabel">History of Science: Lamarck's Courageous Mistake</div>
+        <p>In 1809 the French <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="naturalist" data-def="A person who studies plants, animals and other parts of nature. It was the usual word for a biologist in Lamarck&#x27;s day.">naturalist</button> Jean-Baptiste Lamarck published one of the first full theories of evolution. That was fifty years before Darwin's book. Most naturalists of his day held that species never change.</p>
+        <p>Lamarck was right that species change. He was wrong about how. He thought a trait gained during life, like a neck stretched by reaching, passes to offspring. It does not. Only inherited differences are passed on.</p>
+      </div>
+      <div class="inset">
+        <div class="ilabel">Virtue Focus: Courage in the Face of Evidence</div>
+        <p>Lamarck followed his evidence to a conclusion that most of his peers rejected. Darwin gathered evidence for twenty years before he published his.</p>
+        <p>Courage in science is not recklessness. It is the discipline of letting the world tell you what it is, even when the answer is unfamiliar or uncomfortable.</p>
+      </div>
     </div>
     <div class="field">
-      <p class="q">Before moving on, think about: A human arm and a whale flipper perform completely different functions. Why would a biologist argue that their identical underlying bone arrangement is evidence for evolution rather than simply evidence that both work well for their purpose? What would it take to show that the similarity is due to common descent rather than a shared engineering solution?</p>
-      <textarea class="jbox" id="l1-think" data-label="Think: arm and flipper, descent or engineering?" data-min="40" placeholder="Type your thinking"></textarea>
+      <p class="q">A classmate says a human embryo has gills for a while. Explain what the throat arches really become, and why sharing them with a fish points to a common ancestor.</p>
+      <details class="hintd"><summary>Hint</summary><p>Move the slider in Early or Later? and compare the fish column with the human column.</p></details>
+      <div class="starters" data-for="l1-think"><span>Start with</span>
+        <button type="button" class="starter">In a human embryo, the throat arches become </button>
+        <button type="button" class="starter">In a fish, the same arches become </button>
+        <button type="button" class="starter">Both have them because </button>
+      </div>
+      <textarea class="jbox" id="l1-think" data-label="Think: does a human embryo have gills?" data-min="30" placeholder="2 or 3 sentences"></textarea>
     </div>
     <div class="fnote">
       <div class="label">The Long View &middot; Why Four Lines of Evidence Matter</div>
-      <p>This lesson examined two of the four major lines of evidence for evolution. The power of the evolutionary case does not rest on any single line of evidence. It rests on the convergence of four independent lines, developed by different scientists using different methods, all arriving at the same conclusion.</p>
+      <p>This lesson covered two of the four major lines of evidence for evolution. The case does not rest on any one of them. It rests on four independent lines, built by different scientists with different methods, that all reach the same conclusion.</p>
     </div>
   </div>
 
@@ -1082,45 +1322,79 @@ footer.foot{background:#E8ECF5}
 <section class="panel" id="tab-case" role="tabpanel">
   <div class="sec st st-task">
     <div class="sec-h"><span class="num"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1-4.5L16.5 4a2.1 2.1 0 0 1 3 3L8 18.5z" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 6.5l3 3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><span class="st-k">Make the Case</span><h2>Reading the Evidence: Fossils and Comparative Anatomy</h2></div></div>
-    <h3>Overview</h3>
-    <p>In this assignment you will apply what you learned to analyze two specific pieces of anatomical evidence and explain what each tells us about evolutionary history. You are not summarizing the lesson; you are making an argument using evidence, just as scientists do.</p>
-    <h3>Directions</h3>
+    <p class="setup">Make three short arguments from evidence, the way scientists do. 20 points.</p>
 
     <div class="part">
-      <h3>Part A: Transitional Fossils (8 points)</h3>
-      <p>Choose one of the following transitional fossils and write a short paragraph (4 to 6 sentences) explaining what it is, when it lived, and specifically what features it has that link two major groups. Then answer: what would the existence of this fossil look like if common descent were false? In other words, what is the alternative explanation, and why do scientists reject it?</p>
-      <ul>
-        <li><i>Tiktaalik</i> (Devonian fish with tetrapod features)</li>
-        <li><i>Archaeopteryx</i> (Jurassic animal with dinosaur and bird features)</li>
-      </ul>
-      <label class="l1-pick"><span class="label">My fossil</span>
-        <select class="jfield" id="l1-a-fossil" data-label="Part A: fossil chosen"><option value="">Choose one</option><option value="Tiktaalik">Tiktaalik</option><option value="Archaeopteryx">Archaeopteryx</option></select></label>
-      <textarea class="jbox l1-cnt" id="l1-a" data-label="Part A: Transitional Fossils (8 points)" data-min="80" placeholder="4 to 6 sentences"></textarea>
+      <h3>Part A: <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="transitional fossil" data-def="A fossil that shows a mix of features from an older group and a later group.">Transitional Fossils</button> <span class="pts">8 points</span></h3>
+      <div class="pa-top">
+        <label class="l1-pick"><span class="label">My fossil</span>
+          <select class="jfield" id="l1-a-fossil" data-label="Part A: fossil chosen"><option value="">Choose one</option><option value="Tiktaalik">Tiktaalik</option><option value="Archaeopteryx">Archaeopteryx</option></select></label>
+        <details class="hintd"><summary>Fossil fact file</summary>
+          <table class="mini">
+            <tr><th></th><th><i>Tiktaalik</i></th><th><i>Archaeopteryx</i></th></tr>
+            <tr><td>Age</td><td>about 375 million years</td><td>about 150 million years</td></tr>
+            <tr><td>Found</td><td>Arctic Canada</td><td>southern Germany</td></tr>
+            <tr><td>Links</td><td>fish and <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="tetrapod" data-def="An animal with a backbone and four limbs, or one descended from four-limbed ancestors: amphibians, reptiles, birds and mammals.">tetrapods</button></td><td>dinosaurs and birds</td></tr>
+            <tr><td>In the rock</td><td>after the first fish</td><td>after the first dinosaurs, before any living kind of bird</td></tr>
+          </table>
+        </details>
+      </div>
+      <ol class="steps3">
+        <li>
+          <p><b>Introduce it.</b> What is it, when did it live, and where was it found? <span class="len">1 or 2 sentences</span></p>
+          <textarea class="jbox l1-cnt short" id="l1-a1" data-label="Part A, step 1: what, when, where" data-min="15" placeholder="1 or 2 sentences"></textarea>
+        </li>
+        <li>
+          <p><b>Show the mix.</b> Name one feature from each group it links.</p>
+          <div class="pair">
+            <label><span class="label">A feature of the older group</span><input class="jfield" id="l1-a2a" data-label="Part A, step 2: feature of the older group" type="text"></label>
+            <label><span class="label">A feature of the later group</span><input class="jfield" id="l1-a2b" data-label="Part A, step 2: feature of the later group" type="text"></label>
+          </div>
+        </li>
+        <li>
+          <p><b>Weigh the other explanation.</b> Suppose the two groups were not related at all. Would you expect an animal with this mix of features, in rock of this age? Explain why shared ancestry fits the fossil better. <span class="len">2 or 3 sentences</span></p>
+          <div class="starters" data-for="l1-a"><span>Start with</span>
+            <button type="button" class="starter">If the two groups were not related, </button>
+            <button type="button" class="starter">Shared ancestry explains the fossil better because </button>
+          </div>
+          <textarea class="jbox l1-cnt" id="l1-a" data-label="Part A, step 3: why shared ancestry fits better" data-min="35" placeholder="2 or 3 sentences"></textarea>
+        </li>
+      </ol>
     </div>
 
     <div class="part">
-      <h3>Part B: Homologous Structures (7 points)</h3>
-      <p>The forelimbs of a human, a whale, a bat, and a horse all share the same arrangement of bones (humerus, radius, ulna, carpals, phalanges) despite being used for very different purposes. In 3 to 5 sentences, explain why this similarity is better explained by common descent than by independent design for function. Use the term "homologous structures" in your response.</p>
-      <textarea class="jbox l1-cnt" id="l1-b" data-label="Part B: Homologous Structures (7 points)" data-min="60" data-mark="homologous structures" placeholder="3 to 5 sentences"></textarea>
+      <h3>Part B: Homologous Structures <span class="pts">7 points</span></h3>
+      <p>A human arm, a whale flipper, a bat wing and a horse's front leg do very different jobs. They share the same bone groups in the same order: <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="humerus" data-def="The single bone of the upper arm, between shoulder and elbow.">humerus</button>, <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="radius and ulna" data-def="The two bones of the lower arm, between elbow and wrist.">radius and ulna</button>, <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="carpals" data-def="The cluster of small bones in the wrist.">carpals</button>, then the bones of the hand and <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="digits" data-def="Fingers or toes.">digits</button>.</p>
+      <p>Explain why shared ancestry explains this better than each limb being designed separately for its job. Use the term &ldquo;<button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="homologous structures" data-def="Body parts in different species that were inherited from a shared ancestor. They can do different jobs.">homologous structures</button>.&rdquo; <span class="len">3 to 5 sentences</span></p>
+      <div class="starters" data-for="l1-b"><span>Start with</span>
+        <button type="button" class="starter">These limbs are homologous structures because </button>
+        <button type="button" class="starter">If each limb had been designed separately, I would expect </button>
+        <button type="button" class="starter">What we see instead is </button>
+      </div>
+      <textarea class="jbox l1-cnt" id="l1-b" data-label="Part B: Homologous Structures (7 points)" data-min="50" data-mark="homologous structures" placeholder="3 to 5 sentences"></textarea>
       <p class="hint" id="l1-bterm">Your answer doesn't use the term "homologous structures" yet.</p>
     </div>
 
     <div class="part">
-      <h3>Part C: Vestigial Structures (5 points)</h3>
-      <p>Name one vestigial structure in any organism (human or otherwise) and explain in 2 to 3 sentences what it tells us about that organism's evolutionary history. What was its likely function in an ancestor?</p>
+      <h3>Part C: Vestigial Structures <span class="pts">5 points</span></h3>
+      <p>Name one <button type="button" class="term" aria-expanded="false" aria-describedby="l1r-tdef" data-t="vestigial structure" data-def="A body part that has shrunk and lost most or all of the job it did in an ancestor. It may still do a smaller job.">vestigial structure</button> in any organism. Explain what it did in an ancestor and what that tells you about the organism's evolutionary history. <span class="len">2 or 3 sentences</span></p>
       <label class="l1-pick"><span class="label">Structure and organism</span>
         <input class="jfield" id="l1-c-name" data-label="Part C: vestigial structure named" type="text" placeholder="structure, organism"></label>
-      <textarea class="jbox l1-cnt" id="l1-c" data-label="Part C: Vestigial Structures (5 points)" data-min="40" placeholder="2 to 3 sentences"></textarea>
+      <div class="starters" data-for="l1-c"><span>Start with</span>
+        <button type="button" class="starter">In an ancestor, this structure </button>
+        <button type="button" class="starter">This tells us that the ancestors of this organism </button>
+      </div>
+      <textarea class="jbox l1-cnt" id="l1-c" data-label="Part C: Vestigial Structures (5 points)" data-min="30" placeholder="2 or 3 sentences"></textarea>
     </div>
 
-    <div class="wtotal" id="l1-wt"><span>All three parts: <b id="l1-wn">0</b> words</span><span>Your response for all three parts combined should be approximately 200 to 350 words.</span></div>
+    <div class="wtotal" id="l1-wt"><span>All three parts: <b id="l1-wn">0</b> words</span><span>Aim for about 150 to 300 words across all three parts.</span></div>
 
     <h3>Success Criteria</h3>
     <table class="rubric">
       <tr><th>Criterion</th><th>Full Credit</th><th>Partial Credit</th><th>No Credit</th></tr>
-      <tr><td>Part A<br>Transitional fossil (8 pts)</td><td>Names fossil, states age/location, identifies specific linking features, addresses alternative and rejection (8)</td><td>Identifies fossil and features but misses alternative-explanation component (4-6)</td><td>Missing or severely inaccurate (0-2)</td></tr>
-      <tr><td>Part B<br>Homologous structures (7 pts)</td><td>Uses term correctly, explains descent vs. independent design distinction clearly (7)</td><td>Describes similarity but does not address the design-versus-descent comparison (4-5)</td><td>Missing or off-topic (0-2)</td></tr>
-      <tr><td>Part C<br>Vestigial structure (5 pts)</td><td>Names structure, identifies ancestral function, connects to evolutionary history (5)</td><td>Names structure but explanation is incomplete (2-3)</td><td>Missing or incorrect (0-1)</td></tr>
+      <tr><td>Part A<br>Transitional fossil (8 pts)</td><td>Gives the fossil's age and where it was found, names one feature from each group, and explains why shared ancestry fits better than no relationship (8)</td><td>Names the fossil and its features but does not weigh the other explanation (3-7)</td><td>Missing or mostly inaccurate (0-2)</td></tr>
+      <tr><td>Part B<br>Homologous structures (7 pts)</td><td>Uses the term correctly and explains why shared ancestry fits better than separate design (7)</td><td>Describes the similarity but does not compare the two explanations (3-6)</td><td>Missing or off-topic (0-2)</td></tr>
+      <tr><td>Part C<br>Vestigial structure (5 pts)</td><td>Names the structure, gives its job in an ancestor, and connects it to the organism's history (5)</td><td>Names the structure but the explanation is incomplete (2-4)</td><td>Missing or incorrect (0-1)</td></tr>
     </table>
   </div>
   <div class="sec st st-submit">
@@ -1136,30 +1410,43 @@ footer.foot{background:#E8ECF5}
 <template id="l1-limbsrc">
   <div class="l1-limb"><svg viewBox="0 0 120 230" role="img" aria-label="Human arm bones"><g class="g-hum"><rect x="51" y="8" width="18" height="74" rx="9"/></g><g class="g-ru"><rect x="45" y="86" width="11" height="64" rx="5.5"/><rect x="63" y="86" width="11" height="64" rx="5.5"/></g><g class="g-car"><circle cx="48" cy="158" r="5.5"/><circle cx="60" cy="156" r="5.5"/><circle cx="72" cy="158" r="5.5"/><circle cx="54" cy="168" r="5.5"/><circle cx="66" cy="168" r="5.5"/></g><g class="g-dig"><path d="M44 172l-14 26M52 176l-4 38M60 176v42M68 176l4 38M76 172l8 32"/></g></svg><span>human arm</span></div>
   <div class="l1-limb"><svg viewBox="0 0 120 230" role="img" aria-label="Whale flipper bones"><path class="l1-skin" d="M60 50c26 4 40 50 38 96-2 40-14 74-38 78-24-4-36-38-38-78-2-46 12-92 38-96z"/><g class="g-hum"><rect x="47" y="10" width="26" height="40" rx="10"/></g><g class="g-ru"><rect x="42" y="54" width="16" height="38" rx="7"/><rect x="62" y="54" width="16" height="38" rx="7"/></g><g class="g-car"><circle cx="46" cy="102" r="6"/><circle cx="60" cy="100" r="6"/><circle cx="74" cy="102" r="6"/><circle cx="53" cy="113" r="6"/><circle cx="67" cy="113" r="6"/></g><g class="g-dig"><path d="M42 120l-10 80M51 122l-3 96M60 122v100M69 122l3 96M78 120l10 80"/></g></svg><span>whale flipper</span></div>
-  <div class="l1-limb"><svg viewBox="0 0 120 230" role="img" aria-label="Bat wing bones"><path class="l1-skin" d="M60 130L8 214l26-6 22 10 26-10 30-8z"/><g class="g-hum"><rect x="52" y="6" width="15" height="54" rx="7"/></g><g class="g-ru"><rect x="50" y="64" width="9" height="62" rx="4.5"/><rect x="62" y="64" width="6" height="40" rx="3"/></g><g class="g-car"><circle cx="54" cy="132" r="5"/><circle cx="64" cy="132" r="5"/><circle cx="59" cy="141" r="5"/></g><g class="g-dig"><path d="M56 146L8 214M58 148l-24 60M60 148l-4 70M62 148l20 62M64 146l48 56M66 140l12-8"/></g></svg><span>bat wing</span></div>
+  <div class="l1-limb"><svg viewBox="0 0 120 230" role="img" aria-label="Bat wing bones"><path class="l1-skin" d="M60 130L8 214l26-6 22 10 26-10 30-8z"/><g class="g-hum"><rect x="52" y="6" width="15" height="54" rx="7"/></g><g class="g-ru"><rect x="50" y="64" width="9" height="62" rx="4.5"/><rect x="62" y="64" width="6" height="40" rx="3"/></g><g class="g-car"><circle cx="54" cy="132" r="5"/><circle cx="64" cy="132" r="5"/><circle cx="59" cy="141" r="5"/></g><g class="g-dig"><path d="M56 146L8 214M59 148l-18 64M62 148l16 64M64 146l48 56M66 140l12-8"/></g></svg><span>bat wing</span></div>
   <div class="l1-limb"><svg viewBox="0 0 120 230" role="img" aria-label="Horse front leg bones"><g class="g-hum"><rect x="49" y="6" width="22" height="52" rx="10"/></g><g class="g-ru"><rect x="52" y="62" width="14" height="66" rx="6"/><rect x="67" y="62" width="6" height="24" rx="3"/></g><g class="g-car"><circle cx="52" cy="136" r="5.5"/><circle cx="63" cy="135" r="5.5"/><circle cx="57" cy="146" r="5.5"/><circle cx="68" cy="146" r="5"/></g><g class="g-dig"><path d="M60 154v52"/><path d="M48 214h24l-4-10H52z" stroke-width="2"/></g></svg><span>horse front leg</span></div>
 </template>
 
 <template id="fg"><dl class="fg">
-  <dt>fossil</dt><dd>Any preserved trace of an organism that lived in the past.</dd>
-  <dt>fossil record</dt><dd>The accumulated body of fossils preserved in rock strata, representing organisms that lived in the past.</dd>
-  <dt>strata</dt><dd>Layers of sedimentary rock, deposited over time; older layers are typically deeper.</dd>
-  <dt>permineralization</dt><dd>Hard parts such as bones and shells replaced by minerals.</dd>
-  <dt>transitional fossil</dt><dd>A fossil with features intermediate between an ancestral group and its evolutionary descendants.</dd>
-  <dt>tetrapods</dt><dd>Four-limbed land vertebrates.</dd>
-  <dt>comparative anatomy</dt><dd>The study of structural similarities and differences among species.</dd>
-  <dt>homologous structures</dt><dd>Body parts in different species that share a common evolutionary origin but may have different functions.</dd>
-  <dt>vestigial structures</dt><dd>Reduced or nonfunctional body parts that are remnants of structures that were functional in ancestors.</dd>
-  <dt>humerus, radius, ulna, carpals</dt><dd>The forelimb's one upper bone, two lower bones, and cluster of small wrist bones.</dd>
-  <dt>comparative embryology</dt><dd>The study of how the embryos of different species develop and how those stages compare.</dd>
-  <dt>pharyngeal arches</dt><dd>Structures along the throat region of early vertebrate embryos.</dd>
-  <dt>post-anal tail</dt><dd>A tail that extends past the anus.</dd>
-  <dt>Hox genes</dt><dd>Regulatory genes that help set up the body plan from head to tail.</dd>
-  <dt>paleogenomics</dt><dd>Reading the genomes of ancient organisms from DNA preserved in bone and permafrost.</dd>
+  <dt>amber</dt><dd>Hardened tree resin. A small animal trapped in it can be preserved whole.</dd>
+  <dt>Cambrian</dt><dd>A span of Earth&#x27;s history from about 540 to 485 million years ago, long before the first mammals.</dd>
+  <dt>carpals</dt><dd>The cluster of small bones in the wrist.</dd>
+  <dt>coccyx</dt><dd>The tailbone: a few small fused bones at the base of the human spine.</dd>
+  <dt>common ancestor</dt><dd>An earlier species from which two or more later species descend.</dd>
+  <dt>comparative anatomy</dt><dd>Comparing the body structures of different species.</dd>
+  <dt>comparative embryology</dt><dd>Comparing how the embryos of different species develop.</dd>
+  <dt>Denisovans</dt><dd>An extinct group of humans from Asia, first identified in 2010 from the DNA in one finger bone. A few teeth, jaws and a skull are now known too.</dd>
+  <dt>digits</dt><dd>Fingers or toes.</dd>
+  <dt>embryo</dt><dd>A living thing at its earliest stage of development, before it is born or hatches.</dd>
+  <dt>fossil</dt><dd>Any preserved trace of a living thing from the past, such as a bone, a shell, a footprint or a leaf print.</dd>
+  <dt>fossil record</dt><dd>All the fossils found so far, together with the rock layers they were found in.</dd>
+  <dt>genome</dt><dd>The complete set of DNA of a living thing.</dd>
+  <dt>homologous structures</dt><dd>Body parts in different species that were inherited from a shared ancestor. They can do different jobs.</dd>
+  <dt>Hox genes</dt><dd>A family of genes that tell a growing embryo which body parts go where, from head to tail.</dd>
+  <dt>humerus</dt><dd>The single bone of the upper arm, between shoulder and elbow.</dd>
+  <dt>natural selection</dt><dd>Individuals with inherited traits that help them survive and reproduce leave more offspring, so those traits become more common over generations.</dd>
+  <dt>naturalist</dt><dd>A person who studies plants, animals and other parts of nature. It was the usual word for a biologist in Lamarck&#x27;s day.</dd>
+  <dt>Neanderthals</dt><dd>An extinct group of humans who lived in Europe and western Asia until about 40,000 years ago.</dd>
+  <dt>pharyngeal arches</dt><dd>Folds of tissue along the throat of every early embryo of an animal with a backbone.</dd>
+  <dt>post-anal tail</dt><dd>A tail that extends past the end of the gut.</dd>
+  <dt>radius and ulna</dt><dd>The two bones of the lower arm, between elbow and wrist.</dd>
+  <dt>sedimentary rock</dt><dd>Rock formed when mud, sand or other loose material settles in layers and hardens.</dd>
+  <dt>strata</dt><dd>Layers of sedimentary rock. One layer is a stratum.</dd>
+  <dt>tetrapod</dt><dd>An animal with a backbone and four limbs, or one descended from four-limbed ancestors: amphibians, reptiles, birds and mammals.</dd>
+  <dt>theropod</dt><dd>One of a group of two-legged, mostly meat-eating dinosaurs. Birds descend from small theropods.</dd>
+  <dt>transitional fossil</dt><dd>A fossil that shows a mix of features from an older group and a later group.</dd>
+  <dt>vestigial structure</dt><dd>A body part that has shrunk and lost most or all of the job it did in an ancestor. It may still do a smaller job.</dd>
 </dl></template>
 
 <footer class="foot"><div class="wrap"><span>Optima Academy Online · Integrated Science</span><span>Academic Design and Curriculum (AcDC) · © Optima Academy Online</span></div></footer>
-<script type="application/json" id="page-config">{"key": "isci-w16-l1", "title": "Bones and Stone", "course": "Integrated Science", "teacher": {"full": "Ms. Astra", "short": "Ms. Astra"}, "footer": "Integrated Science · Week 16 · Bones and Stone", "pdfTag": "ISCI_W16_L1"}</script>
+<script type="application/json" id="page-config">{"key": "isci-w16-l1r", "title": "Bones and Stone", "course": "Integrated Science", "teacher": {"full": "Ms. Astra", "short": "Ms. Astra"}, "footer": "Integrated Science · Week 16 · Bones and Stone", "pdfTag": "ISCI_W16_L1"}</script>
 <script type="application/json" id="page-assets">{"img": {"usb": {"src": "data:image/jpeg;base64,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", "alt": ""}}, "v_rocks": {"audio": "audio/isci-w16-l1-rocks.mp3", "words": [[0.0, 0.32, "Rock"], [0.32, 0.74, "forms"], [0.74, 0.98, "in"], [0.98, 1.34, "layers."], [2.12, 2.12, "Mud"], [2.12, 2.36, "and"], [2.36, 2.58, "sand"], [2.58, 3.02, "settle,"], [3.32, 3.36, "and"], [3.36, 3.66, "each"], [3.66, 3.94, "new"], [3.94, 4.14, "layer"], [4.14, 4.52, "covers"], [4.52, 4.7, "the"], [4.7, 4.84, "one"], [4.84, 5.16, "before"], [5.16, 5.48, "it."], [5.82, 5.9, "So"], [5.9, 6.06, "the"], [6.06, 6.32, "deeper"], [6.32, 6.7, "layers"], [6.7, 6.88, "are"], [6.88, 7.3, "older,"], [7.58, 7.66, "and"], [7.66, 7.78, "the"], [7.78, 8.02, "newer"], [8.02, 8.36, "layers"], [8.36, 8.56, "sit"], [8.56, 8.72, "on"], [8.72, 8.98, "top."], [9.46, 9.7, "That"], [9.7, 9.9, "is"], [9.9, 10.04, "how"], [10.04, 10.18, "you"], [10.18, 10.34, "read"], [10.34, 10.5, "the"], [10.5, 10.76, "column."], [11.42, 11.56, "Most"], [11.56, 11.82, "living"], [11.82, 12.14, "things"], [12.14, 12.48, "never"], [12.48, 12.86, "become"], [12.86, 13.22, "fossils."], [13.72, 13.9, "The"], [13.9, 14.08, "few"], [14.08, 14.24, "that"], [14.24, 14.58, "do"], [14.58, 14.86, "are"], [14.86, 15.04, "a"], [15.04, 15.24, "record"], [15.24, 15.48, "of"], [15.48, 15.66, "what"], [15.66, 15.94, "lived"], [15.94, 16.14, "when"], [16.14, 16.32, "that"], [16.32, 16.52, "layer"], [16.52, 16.96, "formed."], [17.46, 17.58, "And"], [17.58, 17.78, "that"], [17.78, 18.1, "record"], [18.1, 18.36, "has"], [18.36, 18.54, "an"], [18.54, 18.88, "order."], [19.39, 19.9, "Single-celled"], [19.92, 20.12, "life"], [20.12, 20.36, "comes"], [20.36, 20.76, "first."], [21.2, 21.34, "Then"], [21.34, 21.76, "fish,"], [22.12, 22.16, "then"], [22.16, 22.76, "amphibians,"], [23.08, 23.2, "then"], [23.2, 23.66, "reptiles,"], [24.14, 24.26, "then"], [24.26, 24.6, "mammals"], [24.6, 24.86, "and"], [24.86, 25.16, "birds."], [25.74, 26.02, "No"], [26.02, 26.32, "rabbit"], [26.32, 26.56, "has"], [26.56, 26.96, "ever"], [26.96, 27.24, "turned"], [27.24, 27.42, "up"], [27.42, 27.6, "in"], [27.6, 27.94, "Cambrian"], [27.94, 28.2, "rock."], [28.2, 28.82, "That"], [28.82, 29.2, "pattern"], [29.2, 29.42, "has"], [29.42, 29.76, "never"], [29.76, 30.0, "been"], [30.0, 30.34, "broken,"], [30.84, 31.14, "anywhere"], [31.14, 31.32, "in"], [31.32, 31.42, "the"], [31.42, 31.68, "world."], [32.26, 32.58, "Evolution"], [32.58, 33.04, "also"], [33.04, 33.48, "predicts"], [33.84, 34.2, "in-between"], [34.22, 34.72, "forms."], [35.22, 35.28, "So"], [35.28, 35.66, "scientists"], [35.66, 36.12, "asked:"], [36.58, 36.6, "in"], [36.6, 36.84, "which"], [36.84, 37.22, "layers"], [37.22, 37.48, "should"], [37.48, 37.62, "a"], [37.62, 37.8, "fish"], [37.8, 38.06, "with"], [38.06, 38.34, "limb"], [38.34, 38.62, "bones"], [38.62, 38.78, "in"], [38.78, 38.94, "its"], [38.94, 39.28, "fins"], [39.28, 39.56, "show"], [39.56, 39.8, "up?"]]}, "v_bones": {"audio": "audio/isci-w16-l1-bones.mp3", "words": [[0.0, 0.22, "Here"], [0.22, 0.44, "are"], [0.44, 0.86, "four"], [0.86, 1.6, "forelimbs:"], [2.02, 2.04, "a"], [2.04, 2.3, "human"], [2.3, 2.68, "arm,"], [3.1, 3.14, "a"], [3.14, 3.36, "whale"], [3.36, 3.8, "flipper,"], [4.14, 4.3, "a"], [4.3, 4.5, "bat"], [4.5, 4.76, "wing,"], [5.08, 5.26, "and"], [5.26, 5.38, "a"], [5.38, 5.78, "horse's"], [5.78, 6.0, "front"], [6.0, 6.3, "leg."], [6.74, 6.98, "Four"], [6.98, 7.48, "very"], [7.48, 7.86, "different"], [7.86, 8.16, "jobs."], [8.74, 9.0, "Start"], [9.0, 9.12, "at"], [9.12, 9.22, "the"], [9.22, 9.52, "shoulder."], [10.0, 10.14, "Each"], [10.14, 10.44, "limb"], [10.44, 10.74, "begins"], [10.74, 10.96, "with"], [10.96, 11.26, "one"], [11.26, 11.56, "bone,"], [11.9, 12.0, "the"], [12.0, 12.56, "humerus."], [12.92, 13.2, "Next"], [13.2, 13.46, "come"], [13.46, 13.78, "two"], [13.78, 14.12, "bones"], [14.12, 14.4, "side"], [14.4, 14.56, "by"], [14.56, 14.94, "side,"], [15.14, 15.32, "the"], [15.32, 15.68, "radius"], [15.68, 16.02, "and"], [16.02, 16.14, "the"], [16.14, 16.46, "ulna."], [16.46, 16.9, "In"], [16.9, 17.34, "every"], [17.34, 17.54, "one"], [17.54, 17.66, "of"], [17.66, 17.78, "the"], [17.78, 18.02, "four."], [18.36, 18.62, "Then"], [18.62, 18.82, "a"], [18.82, 19.06, "cluster"], [19.06, 19.3, "of"], [19.3, 19.6, "small"], [19.6, 19.88, "wrist"], [19.88, 20.18, "bones,"], [20.5, 20.64, "the"], [21.05, 21.46, "carpals."], [21.48, 21.7, "Then"], [21.7, 21.96, "the"], [21.96, 22.34, "digits."], [22.66, 23.06, "Long"], [23.06, 23.28, "and"], [23.28, 23.58, "spread"], [23.58, 23.74, "in"], [23.74, 23.84, "the"], [23.84, 24.02, "bat"], [24.02, 24.28, "wing,"], [24.54, 24.8, "tucked"], [24.8, 25.12, "inside"], [25.12, 25.3, "the"], [25.3, 25.7, "flipper,"], [26.04, 26.26, "short"], [26.26, 26.52, "in"], [26.52, 26.64, "your"], [26.64, 26.94, "hand."], [27.48, 27.68, "Same"], [27.68, 28.0, "blueprint,"], [28.46, 28.62, "different"], [28.62, 29.06, "jobs."], [29.06, 29.96, "Biologists"], [29.96, 30.26, "call"], [30.26, 30.48, "these"], [30.48, 31.18, "homologous"], [31.18, 31.68, "structures:"], [32.04, 32.4, "shared"], [32.4, 32.8, "because"], [32.8, 32.94, "they"], [32.94, 33.06, "were"], [33.06, 33.46, "inherited"], [33.46, 33.76, "from"], [33.76, 33.88, "a"], [33.88, 34.14, "common"], [34.14, 34.56, "ancestor."]]}, "v_embryos": {"audio": "audio/isci-w16-l1-embryos.mp3", "words": [[0.0, 0.36, "Bodies"], [0.36, 0.58, "are"], [0.58, 0.86, "not"], [0.86, 1.02, "the"], [1.02, 1.24, "only"], [1.24, 1.5, "place"], [1.5, 1.72, "to"], [1.72, 1.94, "look."], [2.34, 2.4, "We"], [2.4, 2.54, "can"], [2.54, 2.84, "also"], [2.84, 3.18, "compare"], [3.18, 3.64, "embryos,"], [4.08, 4.16, "the"], [4.16, 4.58, "earliest"], [4.58, 4.92, "stages"], [4.92, 5.16, "of"], [5.16, 5.6, "development."], [6.2, 6.32, "Early"], [6.32, 6.68, "on,"], [6.98, 7.02, "a"], [7.02, 7.28, "fish,"], [7.58, 7.66, "a"], [7.66, 7.92, "chicken,"], [8.1, 8.22, "and"], [8.22, 8.32, "a"], [8.32, 8.66, "human"], [8.66, 8.9, "look"], [8.9, 9.46, "strikingly"], [9.46, 9.86, "alike."], [10.38, 10.58, "All"], [10.58, 10.9, "three"], [10.9, 11.2, "form"], [11.2, 11.56, "arches"], [11.56, 11.8, "along"], [11.8, 11.98, "the"], [11.98, 12.26, "throat,"], [12.26, 12.52, "and"], [12.52, 12.66, "a"], [12.66, 12.92, "tail"], [12.92, 13.22, "past"], [13.22, 13.44, "the"], [13.44, 13.66, "anus."], [14.22, 14.46, "Then"], [14.6, 14.96, "development"], [14.96, 15.48, "continues,"], [15.74, 15.9, "and"], [15.9, 15.98, "the"], [15.98, 16.32, "embryos"], [16.32, 16.56, "go"], [16.56, 16.7, "their"], [16.7, 16.96, "separate"], [16.96, 17.36, "ways."], [17.82, 17.9, "In"], [17.9, 18.04, "a"], [18.04, 18.34, "fish,"], [18.64, 18.84, "those"], [18.84, 19.16, "throat"], [19.16, 19.54, "arches"], [19.54, 19.84, "become"], [19.84, 20.14, "parts"], [20.14, 20.3, "of"], [20.3, 20.44, "the"], [20.44, 20.66, "gills"], [20.66, 20.88, "and"], [20.88, 21.16, "jaw."], [21.58, 21.7, "In"], [21.7, 21.84, "a"], [21.84, 22.16, "human,"], [22.42, 22.52, "they"], [22.52, 22.76, "become"], [22.76, 23.02, "parts"], [23.02, 23.16, "of"], [23.16, 23.3, "the"], [23.3, 23.6, "jaw,"], [23.88, 23.94, "the"], [23.94, 24.16, "middle"], [24.16, 24.44, "ear,"], [24.62, 24.72, "and"], [24.72, 24.82, "the"], [24.82, 25.1, "throat."], [25.6, 25.7, "The"], [25.7, 25.92, "tail"], [25.92, 26.38, "shrinks"], [26.38, 26.7, "until"], [26.7, 27.04, "only"], [27.04, 27.2, "the"], [27.2, 27.62, "coccyx"], [27.62, 27.96, "remains."], [28.37, 28.76, "One"], [28.76, 29.2, "caution."], [29.7, 29.8, "A"], [29.8, 30.08, "human"], [30.08, 30.54, "embryo"], [30.54, 30.94, "never"], [30.94, 31.42, "passes"], [31.42, 31.74, "through"], [31.74, 31.92, "an"], [31.92, 32.22, "adult"], [32.22, 32.44, "fish"], [32.44, 32.92, "stage."], [33.6, 33.66, "Related"], [33.66, 34.06, "species"], [34.06, 34.46, "share"], [34.46, 34.8, "early"], [34.8, 35.18, "patterns"], [35.18, 35.56, "because"], [35.56, 35.74, "they"], [35.74, 35.98, "share"], [35.98, 36.44, "ancestry."]]}}</script>
 <script>
 window.ASK = {
@@ -1168,23 +1455,23 @@ window.ASK = {
   practice: /(write|do|answer|give me) (my |the )?(part [abc]|paragraph|assignment|make the case)|part [abc]\b.*(answer|for me)/i,
   guide: 'That one is yours to write. Look at what the part asks for, line by line, then find each piece in the reading: the fossil, its age, the features that link two groups, and why scientists reject the other explanation. Start with one sentence and build.',
   notes: [
-    { k: ['fossil','what is a fossil','fossils form','permineralization','amber'], w: 1.3, a: 'A fossil is any preserved trace of an organism that lived in the past. Hard parts can be replaced by minerals (permineralization), an organism can be trapped in amber, or soft tissue can leave an impression in fine sediment.' },
+    { k: ['fossil','what is a fossil','fossils form','permineralization','amber'], w: 1.3, a: 'A fossil is any preserved trace of an organism that lived in the past. Minerals can seep into buried bone or shell and harden it, a small animal can be sealed in amber, or a body can leave its print in mud that hardens.' },
     { k: ['incomplete','gaps','gap','missing','every organism','complete'], w: 1.3, a: 'Most organisms never fossilize: it takes the right conditions, and soft-bodied organisms in places that erode are rarely preserved. So the record is incomplete by nature. The test is not completeness but whether the pattern it does show is consistent. It is.' },
-    { k: ['strata','layers','layer','older','deeper','sedimentary'], a: 'Sedimentary rock layers, called strata, deposit in sequence: older layers below, newer layers above. Paleontologists read the history of life by comparing fossils at different depths.' },
-    { k: ['order','sequence','pattern','fish','amphibians','reptiles','mammals'], a: 'The pattern is consistent everywhere: simple, single-celled organisms in the oldest rocks, complex organisms later, and fish before amphibians, before reptiles, before mammals and birds. That sequence has never been violated.' },
+    { k: ['strata','layers','layer','older','deeper','sedimentary'], a: 'Sedimentary rock layers, called strata, deposit in sequence: older layers below, newer layers above. Scientists read the history of life by comparing fossils at different depths.' },
+    { k: ['order','sequence','pattern','fish','amphibians','reptiles','mammals'], a: 'The pattern is consistent everywhere: single-celled life in the oldest rocks, then fish, then amphibians, then reptiles, then mammals and birds. That order of first appearances has never been broken.' },
     { k: ['rabbit','cambrian'], a: 'No rabbit has ever been found in Cambrian rock. A single out-of-place fossil like that would break the pattern, and none has ever turned up.' },
-    { k: ['transitional','in between','intermediate','missing link'], w: 1.3, a: 'A transitional fossil has features intermediate between two groups and documents a step in a lineage. They are not "missing links" in the sense of unexplained gaps; they are documented stages in evolutionary lineages.' },
-    { k: ['tiktaalik','fish with legs','arctic','375'], a: 'Tiktaalik lived about 375 million years ago and was found in Arctic Canada. Its fins had a humerus, radius, and ulna inside, and it had a neck that could turn on its own: features of four-limbed land vertebrates, not ordinary fish. Scientists predicted the age of rock to search before they found it.' },
-    { k: ['archaeopteryx','feathers','wishbone','dinosaur','bird'], a: 'Archaeopteryx, about 150 million years old, has feathers, a wishbone, and a backward-pointing toe like modern birds, plus teeth, a long bony tail, and three clawed fingers on each wing like small theropod dinosaurs.' },
-    { k: ['tetrapod','tetrapods'], a: 'Tetrapods are four-limbed land vertebrates.' },
-    { k: ['homologous','same bones','blueprint','forelimb','flipper','wing'], w: 1.3, a: 'Homologous structures share a common evolutionary origin even if they now do different jobs. A human arm, whale flipper, bat wing, and horse leg all have one bone, then two bones, then a cluster of small bones, then digits. The best explanation is a common ancestor, with natural selection modifying the limb in each lineage.' },
-    { k: ['design','engineering','optimized','best for','function'], a: 'A flipper built only for swimming would not need a wrist and five digits, and a wing built only for flying would not need a radius and ulna. The shared parts make sense as inheritance from a common ancestor, then modification.' },
-    { k: ['vestigial','leftover','coccyx','tailbone','pelvic','snake','whale hip'], w: 1.3, a: 'Vestigial structures have been reduced in size or function but can still be found in the body. The human coccyx is what remains of an ancestral tail used for balance and communication; whales keep pelvic bones from land-dwelling ancestors; some snakes keep tiny leg bones.' },
-    { k: ['embryo','embryology','arches','pharyngeal','post anal','tail'], a: 'Early on, fish, chicken, and human embryos all form pharyngeal arches and pouches along the throat and a post-anal tail. Later they diverge: in fish the arches become parts of the gills and jaw; in humans, parts of the jaw, middle ear, and throat, and the tail shrinks to the coccyx.' },
-    { k: ['haeckel','recapitulates','ontogeny','fish stage','gills'], a: 'A human embryo does not pass through an adult fish stage, and its throat arches are not working gills. Ernst Haeckel claimed an embryo replays its species’ whole history; that claim was overstated and scientists reject it.' },
+    { k: ['transitional','in between','intermediate','missing link'], w: 1.3, a: 'A transitional fossil shows a mix of features from an older group and a later group. It does not have to be a direct ancestor. It is usually a close relative that shows what the in-between body looked like.' },
+    { k: ['tiktaalik','fish with legs','arctic','375'], a: 'Tiktaalik lived about 375 million years ago and was found in Arctic Canada. It had scales, fins and gills like a fish, plus a neck and shoulder, elbow and wrist bones inside its front fins like a tetrapod. Scientists predicted the age of rock to search, then found it there.' },
+    { k: ['archaeopteryx','feathers','wishbone','dinosaur','bird'], a: 'Archaeopteryx, about 150 million years old, has feathers, wings and a wishbone like living birds, plus teeth, a long bony tail and clawed fingers like other small theropod dinosaurs. Feathers and wishbones have since been found on other dinosaurs too.' },
+    { k: ['tetrapod','tetrapods'], a: 'A tetrapod is an animal with a backbone and four limbs, or one descended from four-limbed ancestors: amphibians, reptiles, birds and mammals.' },
+    { k: ['homologous','same bones','blueprint','forelimb','flipper','wing'], w: 1.3, a: 'Homologous structures were inherited from a shared ancestor, even if they now do different jobs. A human arm, whale flipper, bat wing and horse leg all have one upper bone, then two lower bones, then a cluster of wrist bones, then hand and finger bones. The best explanation is a common ancestor, with natural selection modifying the limb in each group of descendants.' },
+    { k: ['design','engineering','optimized','best for','function'], a: 'If each limb had been built from scratch for its own job, there would be no reason for a flipper, a wing and a leg to use the same parts in the same order. The shared parts make sense as inheritance from a common ancestor, then change.' },
+    { k: ['vestigial','leftover','coccyx','tailbone','pelvic','snake','whale hip'], w: 1.3, a: 'A vestigial structure has shrunk and lost most or all of the job it did in an ancestor. It can still do a smaller job. The human coccyx is what remains of a tail and now anchors muscles; whales keep small hip bones from ancestors that walked on land; boas keep tiny spurs where hind legs were.' },
+    { k: ['embryo','embryology','arches','pharyngeal','post anal','tail'], a: 'Early fish, chicken and human embryos differ in size and shape, but all form pharyngeal arches along the throat and a post-anal tail. Later they diverge: in fish the arches become parts of the gills and jaw; in humans, parts of the jaw, middle ear, and throat, and the tail shrinks to the coccyx.' },
+    { k: ['haeckel','recapitulates','ontogeny','fish stage','gills'], a: 'A human embryo does not pass through an adult fish stage, and its throat arches are not working gills. Ernst Haeckel claimed an embryo replays its species’ whole history. His drawings made embryos look more alike than they are, and scientists reject the claim.' },
     { k: ['hox','genes','developmental instructions'], a: 'Vertebrates inherited the same basic developmental instructions from a shared ancestor, including regulatory genes such as the Hox genes, which help set up the body plan from head to tail. Different lineages then modified those instructions.' },
-    { k: ['lamarck','giraffe','acquired','stretch'], a: 'Lamarck proposed in 1809 that species change over time, fifty years before Darwin. He was right about that, but wrong about the mechanism: traits acquired during a lifetime, like a stretched neck, are not passed to offspring.' },
-    { k: ['ancient dna','neanderthal','denisovan','mammoth','paleogenomics'], a: 'DNA preserved in ancient bone and permafrost has let researchers sequence the genomes of Neanderthals, Denisovans, and woolly mammoths. It confirms that modern humans and Neanderthals interbred.' },
+    { k: ['lamarck','giraffe','acquired','stretch'], a: 'In 1809 Lamarck published one of the first full theories of evolution, fifty years before Darwin’s book. He was right about that, but wrong about the mechanism: traits acquired during a lifetime, like a stretched neck, are not passed to offspring.' },
+    { k: ['ancient dna','neanderthal','denisovan','mammoth','paleogenomics'], a: 'DNA preserved in ancient bone and permafrost has let researchers sequence the genomes of Neanderthals, Denisovans, and woolly mammoths. It shows that modern humans and Neanderthals had children together.' },
     { k: ['four lines','lines of evidence','independent','convergence'], a: 'The case for evolution rests on four independent lines of evidence, developed by different scientists with different methods, all reaching the same conclusion. This lesson covers the first two: fossils and comparative anatomy.' }
   ]
 };
@@ -1963,11 +2250,55 @@ $$('.narrate').forEach(function(box){
   var bterm = document.getElementById('l1-bterm'), bbox = document.getElementById('l1-b');
   function total(){
     var n = 0; boxes.forEach(function(b){ n += (b.value.trim().match(/\S+/g) || []).length; });
-    wn.textContent = n; wt.classList.toggle('met', n >= 200 && n <= 350);
+    wn.textContent = n; wt.classList.toggle('met', n >= 150 && n <= 300);
     var has = /homologous structures?/i.test(bbox.value);
     bterm.textContent = has ? 'You used the term "homologous structures."' : 'Your answer doesn’t use the term "homologous structures" yet.';
   }
   boxes.forEach(function(b){ b.addEventListener('input', total); }); total();
+})();
+</script>
+
+<script>
+/* ---- L1 REVISED: tap-to-define terms + sentence starters ---- */
+(function(){
+  var tip = document.createElement('div'); tip.className = 'tdef'; tip.hidden = true; tip.setAttribute('role', 'tooltip'); tip.id = 'l1r-tdef';
+  document.body.appendChild(tip);
+  var open = null;
+  function close(){ if (open) open.setAttribute('aria-expanded', 'false'); open = null; tip.hidden = true; }
+  function show(b){
+    tip.textContent = '';
+    var h = document.createElement('b'); h.textContent = b.dataset.t; tip.appendChild(h);
+    tip.appendChild(document.createTextNode(b.dataset.def));
+    tip.hidden = false;
+    var r = b.getBoundingClientRect(), w = tip.offsetWidth, vw = document.documentElement.clientWidth;
+    var left = Math.max(8, Math.min(r.left, vw - w - 8));
+    tip.style.left = (left + window.pageXOffset) + 'px';
+    tip.style.top = (r.bottom + window.pageYOffset + 8) + 'px';
+    b.setAttribute('aria-expanded', 'true'); open = b;
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('button.term') : null;
+    if (!b) { close(); return; }
+    e.preventDefault();
+    if (open === b) { close(); return; }
+    close(); show(b);
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  document.querySelectorAll('.tab,[data-go]').forEach(function(t){ t.addEventListener('click', close); });
+
+  /* sentence starters: tap to drop the opening words into the answer box */
+  document.querySelectorAll('.starters').forEach(function(g){
+    var box = document.getElementById(g.dataset.for); if (!box) return;
+    g.querySelectorAll('button.starter').forEach(function(s){
+      s.addEventListener('click', function(){
+        var t = s.textContent, v = box.value;
+        if (v.indexOf(t.trim()) > -1) { box.focus(); return; }
+        box.value = v + (v && !/\s$/.test(v) ? ' ' : '') + t;
+        box.dispatchEvent(new Event('input', { bubbles: true }));
+        box.focus(); box.setSelectionRange(box.value.length, box.value.length);
+      });
+    });
+  });
 })();
 </script>
 
