@@ -370,6 +370,21 @@ _Not posted yet_
 
 - [Portrait of a Hero](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-robin-hood-projects/module-project-portrait-of-a-hero.html)
 
+#### Shakespeare Stories
+
+**Week 1**
+
+- [Lesson 1: Twelve Years Ago](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-shakespeare-stories-w1/w1-lesson1-twelve-years-ago.html)
+- [Lesson 2: A Brave World](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-shakespeare-stories-w1/w1-lesson2-a-brave-world.html)
+- [Lesson 3: The Writer's Bench](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-shakespeare-stories-w1/w1-lesson3-writers-bench.html)
+- [Lesson 4: The Rarer Action](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-shakespeare-stories-w1/w1-lesson4-the-rarer-action.html)
+
+**Major Project**
+
+- ["What Lasts" Comparative Essay and Reflection](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-shakespeare-stories-projects/module-project-what-lasts.html)
+- [Project lesson 1: Choose What Lasts](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-shakespeare-stories-projects/project1-choose-what-lasts.html)
+- [Project lesson 2: Write What Lasts](https://optimaondemand.github.io/optima-pilot-samples/6th-ela-shakespeare-stories-projects/project2-write-what-lasts.html)
+
 ### ★ M/J Grade 6 Mathematics (Mathematics · 1205010)
 
 #### Module 6: Algebraic Expressions
