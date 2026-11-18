@@ -176,6 +176,31 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .ix .wc{margin-top:4px}
 @media print{.ix{transform:none;box-shadow:none;border:1px solid #ccc}}
 
+/* ---------- 2026-11-18 section design: alternating grounds, printer's rules, initial blocks, a tailpiece before the next step ---------- */
+:root{--parch:#F3EEE2;--parch-l:#E4DCCB}
+.sec.band{position:relative;margin:0;padding:38px 0 38px;background:var(--bandc);box-shadow:0 0 0 100vmax var(--bandc);clip-path:inset(0 -100vmax)}
+.sec.band-a{--bandc:var(--parch)}
+.sec.band-b{--bandc:var(--tint)}
+.sec.band::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;border-top:2px solid var(--slate);border-bottom:1px solid var(--slate)}
+.sec.band + .mori,.sec.band + .card,.sec.band + .reader{margin-top:34px}
+.sec.band + .sec.sources{margin-top:0}
+.sec.band + .next{margin-top:0}
+.sec-h{align-items:center;gap:14px;margin:0 0 16px}
+.sec-h .num{flex:none;display:grid;place-items:center;width:42px;height:42px;font:600 25px/1 var(--display);letter-spacing:0;color:var(--scarlet);background:#fff;border:1px solid var(--scarlet);outline:1px solid var(--scarlet);outline-offset:2px;margin:3px}
+.sec-h h2{font-size:32px}
+.tab .n{font:500 17px/1 var(--display);letter-spacing:.02em}
+.mori{border-top:3px solid var(--slate)}
+.readtask.card{border:3px double var(--slate2);border-radius:4px}
+.reader.closed{background:var(--parch);border-color:var(--parch-l)}
+.next{position:relative;border-top:0;padding-top:44px}
+.next::before{content:"";position:absolute;left:0;right:0;top:12px;height:14px;background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 54 14'%3E%3Cpath d='M27 1l6 6-6 6-6-6z' fill='%23A3202A'/%3E%3Cpath d='M9 4l3 3-3 3-3-3zM45 4l3 3-3 3-3-3z' fill='%231F2A33'/%3E%3C/svg%3E") center/54px 14px no-repeat,
+  linear-gradient(var(--line2),var(--line2)) left center/calc(50% - 40px) 1px no-repeat,
+  linear-gradient(var(--line2),var(--line2)) right center/calc(50% - 40px) 1px no-repeat}
+.next .btn:not(.ghost){background:var(--scarlet);border-color:var(--scarlet);padding:13px 24px;font-size:15px}
+.next .btn:not(.ghost):hover{background:var(--scarlet-d);border-color:var(--scarlet-d)}
+@media (max-width:600px){ .sec.band{padding:30px 0} .sec-h h2{font-size:27px} .sec-h .num{width:36px;height:36px;font-size:21px} }
+
 /* ---------- the reader (inline + Focus) ---------- */
 .reader{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;--rs:19px;--rlh:1.75}
 .rbar{position:sticky;top:47px;z-index:20;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
@@ -314,6 +339,43 @@ body.r-focus{overflow:hidden}
 .reader.focus.night .rch + .rch{border-color:#2A3036}
 .reader.focus .rflow{transition:font-size .2s}
 @media (max-width:600px){ .rbody{padding:24px 16px 40px} .rbar{top:45px;padding:8px 10px} .rt span.l{display:none} .reader{--rs:18px} .rch h3{font-size:28px} }
+
+/* ---------- 2026-11-18: week vocabulary in context ---------- */
+.vx{font-style:normal;cursor:pointer;background:linear-gradient(transparent 62%,#F0D3D6 62%,#F0D3D6 95%,transparent 95%)}
+.reader.focus.night .vx{background:linear-gradient(transparent 62%,#5A2C31 62%,#5A2C31 95%,transparent 95%)}
+.rkey{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:6px 20px;align-items:center;justify-content:center;margin:0 0 24px;font:600 12.5px/1.4 var(--ui);color:var(--ink2)}
+.rkey .vx{padding:0 3px;cursor:default}
+.rkey .glk{text-decoration:underline dotted var(--muted);text-underline-offset:4px}
+.rkey .rk-t{color:var(--muted);font-weight:400}
+.hlbar .gloss .gk{display:block;font:600 10px/1.6 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:#E8C9CB}
+.hlbar .gloss i{color:#B8C4CD}
+
+/* ---------- 2026-11-18: stickers (left gutter, one line tall) ---------- */
+.rbody{grid-template-columns:44px minmax(0,66ch) 230px;column-gap:0}
+.margin{margin-left:40px}
+.gutter{position:relative}
+.stk{position:absolute;right:12px;width:26px;height:26px;padding:0;border:0;background:none;border-radius:50%;filter:drop-shadow(0 1px 2px rgba(20,26,32,.32));transition:transform .15s}
+.stk:hover{transform:scale(1.12)}
+.stk svg,.stk-i{display:block}
+.stk-br{position:absolute;right:3px;width:5px;border:1.5px solid var(--slate2);border-right:0;border-radius:3px 0 0 3px;opacity:.6}
+.reader.focus.night .stk-br{border-color:#8FA0AD}
+.hlbar .stkrow{flex-basis:100%;display:flex;align-items:center;gap:1px;border-top:1px solid rgba(255,255,255,.16);margin-top:3px;padding-top:3px}
+.hlbar .stkrow::before{content:"Sticker";font:600 10px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:#B8C4CD;padding:0 8px 0 10px}
+.hlbar .stkrow button{padding:5px}
+.hlbar.sedit [data-hl="k"],.hlbar.sedit [data-hl="e"],.hlbar.sedit [data-hl="n"]{display:none}
+.stktray{position:fixed;z-index:82;display:none;width:196px;background:#fff;border:1px solid var(--line2);border-radius:12px;padding:6px;box-shadow:0 14px 40px rgba(20,26,32,.22)}
+.stktray.open{display:block}
+.stktray button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;border-radius:8px;padding:6px 8px;font:600 13.5px/1 var(--ui);color:var(--ink);text-align:left}
+.stktray button:hover{background:var(--tint)}
+.stkarm{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:83;display:none;align-items:center;gap:10px;background:#fff;border:1px solid var(--slate);border-radius:16px;padding:8px 10px 8px 12px;box-shadow:0 10px 30px rgba(20,26,32,.25);width:max-content;max-width:calc(100vw - 16px);font:13px/1.35 var(--ui);color:var(--ink2)}
+.stkarm.open{display:flex}
+.stkarm .sa-t{flex:1;min-width:0}
+.stkarm .sa-t b{display:block;color:var(--ink);font-weight:600}
+.reader.arming .rflow{cursor:crosshair}
+.reader.arming .w:hover{background:#E4EAEE}
+.reader.closed .rline{display:none}
+@media (max-width:899px){ .rbody{grid-template-columns:36px minmax(0,1fr)} .stk{right:6px} .stk-br{right:0;width:4px} }
+@media (max-width:600px){ .rbody{padding-left:6px} .stkarm{flex-wrap:wrap;justify-content:flex-end;bottom:10px} .stkarm .sa-t{flex-basis:calc(100% - 40px)} }
 
 /* ---------- Dr. Mento mini-lesson card ---------- */
 .mori{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0 0 30px}
@@ -713,6 +775,21 @@ var STORE = (function(){
 function jget(k, d){ try { var v = STORE.rawGet(k); return v ? JSON.parse(v) : d; } catch(e){ return d; } }
 function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
+/* ---------- reading stickers (shared by the reader, the marks panel and the PDF) ---------- */
+var STICKERS = [
+  { k: 'star', label: 'Striking line', tone: 'r', svg: '<path d="M12 3.9l2.4 5.2 5.7.7-4.2 3.9 1.1 5.6L12 16.5l-5 2.8 1.1-5.6-4.2-3.9 5.7-.7z" fill="#fff"/>' },
+  { k: 'q', label: 'Question', tone: 's', svg: '<text x="12" y="17.4" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="15.5" fill="#fff">?</text>' },
+  { k: 'bang', label: 'Surprise', tone: 'r', svg: '<text x="12" y="17.4" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="15.5" fill="#fff">!</text>' },
+  { k: 'heart', label: 'Feeling', tone: 's', svg: '<path d="M12 18.6s-6.4-4-6.4-8.6c0-2.2 1.7-3.6 3.5-3.6 1.2 0 2.3.6 2.9 1.6.6-1 1.7-1.6 2.9-1.6 1.8 0 3.5 1.4 3.5 3.6 0 4.6-6.4 8.6-6.4 8.6z" fill="#fff"/>' },
+  { k: 'eye', label: 'Image', tone: 'r', svg: '<path d="M4 12s3-4.6 8-4.6 8 4.6 8 4.6-3 4.6-8 4.6S4 12 4 12z" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="2.3" fill="#fff"/>' },
+  { k: 'sym', label: 'Symbol', tone: 's', svg: '<circle cx="12" cy="7.9" r="2.9" fill="#fff"/><circle cx="12" cy="16.1" r="2.9" fill="#fff"/><circle cx="7.9" cy="12" r="2.9" fill="#fff"/><circle cx="16.1" cy="12" r="2.9" fill="#fff"/>' }
+];
+function stickerOf(k){ for (var i = 0; i < STICKERS.length; i++) if (STICKERS[i].k === k) return STICKERS[i]; return STICKERS[0]; }
+function stickerSvg(k, size){
+  var s = stickerOf(k);
+  return '<svg class="stk-i" width="' + size + '" height="' + size + '" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.6" fill="#fff"/><circle cx="12" cy="12" r="10.2" fill="' + (s.tone === 'r' ? '#A3202A' : '#1F2A33') + '"/>' + s.svg + '</svg>';
+}
+
 /* ---------- images from the asset pack ---------- */
 (function fillImages(){
   var img = ASSETS.img || {};
@@ -880,7 +957,7 @@ function updateMarkSums(){
   var all = allMarks();
   $$('.marks-sum').forEach(function(h){
     var mine = h.dataset.scope === 'week' ? all : all.filter(function(m){ return m.L === CFG.lesson; });
-    h.innerHTML = '<div><b>' + mine.filter(function(m){ return m.kind !== 'n'; }).length + '</b>marks</div><div><b>' + mine.filter(function(m){ return (m.note || '').trim(); }).length + '</b>notes</div>';
+    h.innerHTML = '<div><b>' + mine.filter(function(m){ return m.kind === 'k' || m.kind === 'e'; }).length + '</b>marks</div><div><b>' + mine.filter(function(m){ return (m.note || '').trim(); }).length + '</b>notes</div><div><b>' + mine.filter(function(m){ return m.kind === 's'; }).length + '</b>stickers</div>';
   });
 }
 document.addEventListener('marks', updateMarkSums);
@@ -895,12 +972,22 @@ function marksHtml(n){
   var mine = allMarks().filter(function(m){ return m.L === n; });
   if (!mine.length) return '';
   mine.sort(function(a, b){ return a.ci - b.ci || a.p - b.p || a.a - b.a; });
-  var h = '<h3>Marks and notes in the reading</h3><div class="mkhead"><span>The text</span><span>In the margin</span></div>', last = '';
-  mine.forEach(function(m){
-    if (m.chLabel !== last) { h += '<div class="chh">' + esc(m.chLabel) + '</div>'; last = m.chLabel; }
-    var kind = m.kind === 'k' ? 'Key idea' : m.kind === 'e' ? 'Evidence' : 'Note';
-    h += '<div class="mk"><div class="qt"><span class="kd kd-' + m.kind + '">' + kind + '</span>' + esc(m.text) + '</div><div class="nt' + ((m.note || '').trim() ? '' : ' empty') + '">' + ((m.note || '').trim() ? esc(m.note.trim()) : '') + '</div></div>';
-  });
+  var hl = mine.filter(function(m){ return m.kind !== 's'; }), st = mine.filter(function(m){ return m.kind === 's'; }), h = '', last = '';
+  if (hl.length) {
+    h += '<h3>Marks and notes in the reading</h3><div class="mkhead"><span>The text</span><span>In the margin</span></div>';
+    hl.forEach(function(m){
+      if (m.chLabel !== last) { h += '<div class="chh">' + esc(m.chLabel) + '</div>'; last = m.chLabel; }
+      var kind = m.kind === 'k' ? 'Key idea' : m.kind === 'e' ? 'Evidence' : 'Note';
+      h += '<div class="mk"><div class="qt"><span class="kd kd-' + m.kind + '">' + kind + '</span>' + esc(m.text) + '</div><div class="nt' + ((m.note || '').trim() ? '' : ' empty') + '">' + ((m.note || '').trim() ? esc(m.note.trim()) : '') + '</div></div>';
+    });
+  }
+  if (st.length) {
+    /* each stickered passage is copied out in quotation marks with its chapter */
+    h += '<h3>Stickers in the reading</h3>';
+    st.forEach(function(m){
+      h += '<div class="sk">' + stickerSvg(m.st, 22) + '<div><span class="kd kd-n">' + esc(stickerOf(m.st).label) + ' · ' + esc(m.chLabel) + '</span><span class="sq">&ldquo;' + esc(m.text.replace(/[“"]/g, '‘').replace(/”/g, '’')) + '&rdquo;</span> <span class="sc">(Ch. ' + esc(m.ch) + ')</span></div></div>';
+    });
+  }
   return h;
 }
 function lessonHtml(L){
@@ -924,7 +1011,8 @@ function openPrint(file, heading, body){
     '.chh{font:700 12px/1.3 Arial,sans-serif;color:#4A5057;margin:14px 0 4px}' +
     '.mkhead,.mk{display:grid;grid-template-columns:62% 1fr;column-gap:18px}.mkhead{font:700 9.5px/1 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6E747A;margin:6px 0 6px}' +
     '.mk{margin:0 0 10px;page-break-inside:avoid}.qt{font-style:italic;background:#EEF1F3;padding:6px 9px;border-radius:3px}.nt{font:italic 13.5px/1.5 Georgia,serif;border-left:2px solid #A3202A;padding:4px 0 4px 10px;color:#33424E}.nt.empty{border:0}' +
-    '.kd{display:block;font:normal 700 9.5px/1.4 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}.kd-k{color:#A3202A}.kd-e{color:#33424E}.kd-n{color:#6E747A}table{border-collapse:collapse;font:13px Arial,sans-serif;margin:6px 0 4px}td{padding:3px 12px 3px 0}';
+    '.kd{display:block;font:normal 700 9.5px/1.4 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}.kd-k{color:#A3202A}.kd-e{color:#33424E}.kd-n{color:#6E747A}table{border-collapse:collapse;font:13px Arial,sans-serif;margin:6px 0 4px}td{padding:3px 12px 3px 0}' +
+    '.sk{display:grid;grid-template-columns:24px 1fr;column-gap:10px;margin:0 0 10px;page-break-inside:avoid}.sk svg{margin-top:2px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.sq{font-style:italic}.sc{font:12.5px/1.4 Arial,sans-serif;color:#4A5057;white-space:nowrap}';
   var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + esc(file) + '<\/title>\x3cstyle>' + css + '<\/style><\/head><body><h1>' + esc(heading) + '<\/h1><div class="sub">' + (nm ? esc(nm) + ' · ' : '') + esc(CFG.footer || '') + '<\/div>' + body + '<\/body><\/html>';
   var win = window.open('', '_blank');
   if (!win) { $$('.print-note').forEach(function(n){ n.textContent = 'The PDF window was blocked. Allow pop-ups for this page and try again.'; n.classList.add('show'); }); return; }
@@ -944,6 +1032,12 @@ function downloadWeek(){
 }
 $$('[data-pdf]').forEach(function(b){ b.addEventListener('click', function(){ (b.dataset.pdf === 'week' ? downloadWeek : downloadLesson)(); }); });
 
+/* ---------- section bands: each lettered section sits on its own alternating ground ---------- */
+$$('.panel').forEach(function(p){
+  var i = 0;
+  $$('.sec', p).forEach(function(sec){ if (sec.parentNode !== p || sec.classList.contains('sources')) return; sec.classList.add('band', i++ % 2 ? 'band-b' : 'band-a'); });
+});
+
 /* ---------- boot ---------- */
 switchTab(STORE.get('tab') || TABS[0], true);
 renderStatus(); updateMarkSums();
@@ -952,13 +1046,23 @@ renderStatus(); updateMarkSums();
 <script>
 /* 9th ELA reader: inline text with Focus mode, marks (Key idea / Evidence / Note), margin notes, My marks panel.
    Data: <script type="application/json" id="reader-text">{ chapters:[{ch,title,paras:[...]}], plates:{"II:17":{img,cap}}, gloss:{word:def}, readfor:"html" }
-   Marks live week-wide in weekKey + "-marks": [{id,L,ci,ch,chLabel,parts:[[ci,p,a,b]],p,a,kind,text,note,t}] */
+   vocab:{form:{w,pos,def}} = the week's Word Study words, washed wherever they appear (tap for the definition).
+   Marks live week-wide in weekKey + "-marks": [{id,L,ci,ch,chLabel,parts:[[ci,p,a,b]],p,a,kind,text,note,t}]
+   kind: k Key idea, e Evidence, n Note, s Sticker (st = sticker key; shown in the left gutter beside its lines). */
 (function(){
   var host = document.getElementById('reader'); if (!host) return;
   var D; try { D = JSON.parse(document.getElementById('reader-text').textContent); } catch(e){ return; }
   var MKEY = CFG.weekKey + '-marks';
   var ROMAN = D.chapters.map(function(c){ return c.ch; });
   var img = (ASSETS.img || {});
+
+  var V = D.vocab || {}, HASV = Object.keys(V).length > 0;
+  function vocabIn(t){ /* first run of letters in the token that is a Word Study form */
+    if (!HASV) return null;
+    var re = /[A-Za-z]+/g, m;
+    while ((m = re.exec(t))) { var f = m[0].toLowerCase(); if (V[f]) return { i: m.index, n: m[0].length, f: f }; }
+    return null;
+  }
 
   /* ---------- build ---------- */
   var cv = D.cover || {}, cimg = img[cv.img];
@@ -971,8 +1075,11 @@ renderStatus(); updateMarkSums();
     '<button class="rt" data-r="space" aria-pressed="false" aria-label="Line spacing">&#8597; <span class="l">Spacing</span></button>' +
     '<button class="rt" data-r="line" aria-pressed="false" aria-label="Reading line">&#9644; <span class="l">Line</span></button>' +
     '<button class="rt night-btn" data-r="night" aria-pressed="false">&#9790; <span class="l">Night</span></button>' +
+    '<button class="rt stk-btn" data-r="stk" aria-expanded="false" aria-label="Stickers">' + stickerSvg('star', 18) + ' <span class="l">Stickers</span></button>' +
     '<button class="rt" data-r="marks">My marks <span class="ct" id="rMarkCt">0</span></button><button class="rt" data-r="close" aria-label="Close the book">&#10005; <span class="l">Close book</span></button><div class="rprog"></div></div>' +
-    '<div class="rbody">' + (D.readfor ? '<div class="readfor">' + D.readfor + '</div>' : '') + '<div class="rflow">';
+    '<div class="rbody">' + (D.readfor ? '<div class="readfor">' + D.readfor + '</div>' : '') +
+    '<div class="rkey">' + (HASV ? '<span><i class="vx">Word Study word</i></span>' : '') + '<span><u class="glk">Glossed word</u></span><span class="rk-t">Tap for the meaning</span></div>' +
+    '<div class="gutter" id="rgutter"></div><div class="rflow">';
   D.chapters.forEach(function(c, ci){
     html += '<section class="rch" data-ci="' + ci + '" id="rch-' + ci + '"><div class="chk">Chapter ' + c.ch + '</div><h3>' + esc(c.title) + '</h3>';
     var seen = {};
@@ -982,9 +1089,10 @@ renderStatus(); updateMarkSums();
         if (!t) return;
         if (/^\s+$/.test(t)) { out += w ? '<span class="s" data-s="' + (w - 1) + '"> </span>' : ' '; return; }
         var bare = t.toLowerCase().replace(/^[^a-z]+|[^a-z]+$/g, '');
-        var gl = D.gloss && D.gloss[bare] && !seen[bare] ? ' gl' : '';
-        if (gl) seen[bare] = 1;
-        out += '<span class="w' + gl + '" data-w="' + (w++) + '"' + (gl ? ' data-gl="' + bare + '"' : '') + '>' + esc(t) + '</span>';
+        var vx = vocabIn(t), inner = esc(t), gl = '';
+        if (vx) inner = esc(t.slice(0, vx.i)) + '<i class="vx">' + esc(t.slice(vx.i, vx.i + vx.n)) + '</i>' + esc(t.slice(vx.i + vx.n));
+        else if (D.gloss && D.gloss[bare] && !seen[bare]) { gl = ' gl'; seen[bare] = 1; }
+        out += '<span class="w' + gl + '" data-w="' + (w++) + '"' + (gl ? ' data-gl="' + bare + '"' : '') + (vx ? ' data-vx="' + vx.f + '"' : '') + '>' + inner + '</span>';
       });
       html += '<p data-p="' + pi + '">' + out + '</p>';
       var pl = D.plates && D.plates[c.ch + ':' + pi];
@@ -994,7 +1102,7 @@ renderStatus(); updateMarkSums();
   });
   html += '</div><aside class="margin" aria-label="Margin notes"><div class="m-head">Margin</div><div class="m-empty">Your notes appear here, beside the line they belong to. Your PDF prints them the same way.</div><div class="slips" id="slips"></div></aside></div><div class="rline"></div>';
   host.innerHTML = html;
-  var flow = host.querySelector('.rflow'), slips = host.querySelector('#slips'), margin = host.querySelector('.margin');
+  var flow = host.querySelector('.rflow'), slips = host.querySelector('#slips'), margin = host.querySelector('.margin'), gutter = host.querySelector('#rgutter');
   var cover = host.querySelector('.rcover'), reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function setOpen(on, anim){
     if (on && anim && !reduced) {
@@ -1002,18 +1110,24 @@ renderStatus(); updateMarkSums();
       setTimeout(function(){ host.classList.remove('opening'); host.classList.remove('closed'); afterOpen(); }, 720);
     } else { host.classList.toggle('closed', !on); if (on) afterOpen(); }
     if (!on && host.classList.contains('focus')) setFocus(false);
+    if (!on) { if (arm) endArm(); toggleTray(false); if (pref.line) { pref.line = 0; applyPref(); } }
     STORE.set('open', on ? '1' : '0');
   }
   function afterOpen(){ render(); progress(); if (anim0) { var t = host.getBoundingClientRect().top + window.scrollY - 60; window.scrollTo({ top: t, behavior: 'smooth' }); } }
   var anim0 = false;
   cover.querySelector('.rc-open').addEventListener('click', function(){ anim0 = true; setOpen(true, true); });
   var bar = document.createElement('div'); bar.className = 'hlbar'; bar.setAttribute('role', 'toolbar');
-  bar.innerHTML = '<div class="gloss"></div><button data-hl="k"><i class="sw k"></i>Key idea</button><button data-hl="e"><i class="sw e"></i>Evidence</button><button data-hl="n">&#9998; Note</button><button data-hl="x" class="rm">Remove</button>';
+  bar.innerHTML = '<div class="gloss"></div><button data-hl="k"><i class="sw k"></i>Key idea</button><button data-hl="e"><i class="sw e"></i>Evidence</button><button data-hl="n">&#9998; Note</button><button data-hl="x" class="rm">Remove</button>' +
+    '<div class="stkrow">' + STICKERS.map(function(k){ return '<button type="button" data-st="' + k.k + '" title="' + esc(k.label) + '" aria-label="Sticker: ' + esc(k.label) + '">' + stickerSvg(k.k, 24) + '</button>'; }).join('') + '</div>';
+  var tray = document.createElement('div'); tray.className = 'stktray'; tray.setAttribute('role', 'menu');
+  tray.innerHTML = STICKERS.map(function(k){ return '<button type="button" role="menuitem" data-st="' + k.k + '">' + stickerSvg(k.k, 26) + '<span>' + esc(k.label) + '</span></button>'; }).join('');
+  var armbar = document.createElement('div'); armbar.className = 'stkarm'; armbar.setAttribute('role', 'status');
+  armbar.innerHTML = '<span class="sa-i"></span><span class="sa-t"></span><button class="btn small" type="button" data-sa="place" disabled>Place sticker</button><button class="btn ghost small" type="button" data-sa="cancel">Cancel</button>';
   var ed = document.createElement('div'); ed.className = 'noteed';
   ed.innerHTML = '<div class="label">Your note</div><blockquote></blockquote><textarea placeholder="What does this show? Why does it matter?"></textarea><div class="row"><button class="btn small" data-ne="save">Save note</button><button class="btn ghost small" data-ne="cancel">Cancel</button></div>';
   var panel = document.createElement('aside'); panel.className = 'mpanel'; panel.setAttribute('aria-label', 'My marks');
   panel.innerHTML = '<header><b>My marks</b><button class="x" aria-label="Close">&times;</button></header><div class="body"></div>';
-  host.appendChild(bar); host.appendChild(ed); document.body.appendChild(panel);
+  host.appendChild(bar); host.appendChild(ed); host.appendChild(tray); host.appendChild(armbar); document.body.appendChild(panel);
 
   /* ---------- prefs ---------- */
   var SIZES = [17, 19, 21.5, 24], pref = jget(CFG.weekKey + '-rpref', { s: 1, sp: 0, line: 0, night: 0 });
@@ -1036,6 +1150,7 @@ renderStatus(); updateMarkSums();
     else if (r === 'line') { pref.line = pref.line ? 0 : 1; applyPref(); }
     else if (r === 'night') { pref.night = pref.night ? 0 : 1; applyPref(); }
     else if (r === 'marks') openPanel();
+    else if (r === 'stk') toggleTray();
     else if (r === 'close') { anim0 = false; setOpen(false); window.scrollTo({ top: host.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); }
   });
 
@@ -1059,9 +1174,9 @@ renderStatus(); updateMarkSums();
     STORE.set('focus', on ? '1' : '0');
   }
   document.addEventListener('keydown', function(e){
-    if (e.key === 'Escape') { if (ed.classList.contains('open')) closeEd(); else if (bar.classList.contains('open')) hideBar(); else if (panel.classList.contains('open')) closePanel(); else if (host.classList.contains('focus')) setFocus(false); }
+    if (e.key === 'Escape') { if (arm) endArm(); else if (tray.classList.contains('open')) toggleTray(false); else if (ed.classList.contains('open')) closeEd(); else if (bar.classList.contains('open')) hideBar(); else if (panel.classList.contains('open')) closePanel(); else if (host.classList.contains('focus')) setFocus(false); }
   });
-  document.addEventListener('tabchange', function(e){ if (host.classList.contains('focus') && !host.closest('.panel.on')) setFocus(false); requestAnimationFrame(drawSlips); });
+  document.addEventListener('tabchange', function(e){ if (host.classList.contains('focus') && !host.closest('.panel.on')) setFocus(false); if (arm) endArm(); toggleTray(false); requestAnimationFrame(drawSlips); });
 
   /* ---------- chapters, progress, read state ---------- */
   var readSet = (STORE.get('read') || '').split(',').filter(Boolean);
@@ -1084,7 +1199,9 @@ renderStatus(); updateMarkSums();
   window.addEventListener('resize', function(){ drawSlips(); });
   /* reading line follows the pointer */
   var rline = host.querySelector('.rline');
+  rline.style.top = '-99px';
   host.addEventListener('pointermove', function(e){ if (pref.line) rline.style.top = (e.clientY - rline.offsetHeight / 2) + 'px'; });
+  host.addEventListener('pointerleave', function(){ rline.style.top = '-99px'; });
 
   /* ---------- marks ---------- */
   function load(){ return jget(MKEY, []); }
@@ -1101,6 +1218,7 @@ renderStatus(); updateMarkSums();
     var ms = mine();
     ms.forEach(function(m){
       var last = null;
+      if (m.kind === 's') return;
       m.parts.forEach(function(pt){ wordsIn(pt).forEach(function(w){ w.classList.add('mk-' + m.kind); w.dataset.m = m.id; last = w; }); spacesIn(pt).forEach(function(sp){ sp.classList.add('mk-' + m.kind); }); });
       if (last && (m.note || '').trim()) { var d = document.createElement('button'); d.className = 'inote'; d.type = 'button'; d.dataset.m = m.id; d.innerHTML = '<b>Margin</b>' + esc(m.note.trim()); var P = last.closest('p'), nx = P.nextElementSibling; while (nx && nx.classList.contains('inote')) nx = nx.nextElementSibling; P.parentNode.insertBefore(d, nx); }
     });
@@ -1108,7 +1226,24 @@ renderStatus(); updateMarkSums();
     var ct = document.getElementById('rMarkCt'); if (ct) ct.textContent = ms.length;
     drawSlips(); if (panel.classList.contains('open')) fillPanel();
   }
+  function drawStickers(){
+    gutter.innerHTML = '';
+    if (host.classList.contains('closed')) return;
+    var base = gutter.getBoundingClientRect().top, lastBottom = -999;
+    mine().filter(function(m){ return m.kind === 's'; }).map(function(m){
+      var f = wordsIn(m.parts[0])[0], lw = wordsIn(m.parts[m.parts.length - 1]), l = lw[lw.length - 1];
+      if (!f || !l) return null;
+      var r1 = f.getBoundingClientRect(), r2 = l.getBoundingClientRect();
+      return { m: m, top: r1.top - base, bottom: r2.bottom - base, lh: r1.height };
+    }).filter(Boolean).sort(function(a, b){ return a.top - b.top; }).forEach(function(x){
+      var br = document.createElement('i'); br.className = 'stk-br'; br.style.top = (x.top + 2) + 'px'; br.style.height = Math.max(12, x.bottom - x.top - 4) + 'px'; gutter.appendChild(br);
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'stk'; b.dataset.m = x.m.id;
+      b.setAttribute('aria-label', 'Sticker: ' + stickerOf(x.m.st).label); b.title = stickerOf(x.m.st).label; b.innerHTML = stickerSvg(x.m.st, 26);
+      var top = Math.max(x.top + (x.lh - 26) / 2, lastBottom + 2); b.style.top = top + 'px'; gutter.appendChild(b); lastBottom = top + 26;
+    });
+  }
   function drawSlips(){
+    drawStickers();
     slips.innerHTML = '';
     var noted = mine().filter(function(m){ return (m.note || '').trim(); });
     margin.classList.toggle('has', noted.length > 0);
@@ -1132,13 +1267,17 @@ renderStatus(); updateMarkSums();
     return Object.keys(m).map(function(k){ return m[k]; }).sort(function(a, b){ return a[0] - b[0] || a[1] - b[1]; });
   }
   function clearPre(){ flow.querySelectorAll('.w.pre,.s.pre').forEach(function(w){ w.classList.remove('pre'); }); }
-  function showBar(rect, edit, glossWord){
-    var g = bar.querySelector('.gloss');
-    if (glossWord && D.gloss[glossWord]) { g.innerHTML = '<b>' + esc(glossWord) + '</b> · ' + esc(D.gloss[glossWord]); g.style.display = ''; } else g.style.display = 'none';
+  function showBar(rect, edit, glossWord, stickerEdit){
+    var g = bar.querySelector('.gloss'), vw = glossWord && V[glossWord];
+    bar.classList.toggle('sedit', !!stickerEdit);
+    if (stickerEdit) { g.innerHTML = '<span class="gk">Sticker</span><b>' + esc(stickerOf(stickerEdit).label) + '</b>'; g.style.display = ''; }
+    else if (vw) { g.innerHTML = '<span class="gk">Word Study</span><b>' + esc(vw.w) + '</b> <i>' + esc(vw.pos) + '</i> · ' + esc(vw.def); g.style.display = ''; }
+    else if (glossWord && D.gloss[glossWord]) { g.innerHTML = '<b>' + esc(glossWord) + '</b> · ' + esc(D.gloss[glossWord]); g.style.display = ''; } else g.style.display = 'none';
     bar.querySelector('.rm').style.display = edit ? '' : 'none';
     bar.classList.add('open');
     var bw = bar.offsetWidth, bh = bar.offsetHeight, top = rect.top - bh - 10;
     if (top < 60) top = rect.bottom + 10;
+    top = Math.max(8, Math.min(window.innerHeight - bh - 8, top));
     bar.style.top = top + 'px'; bar.style.left = Math.max(8, Math.min(window.innerWidth - bw - 8, rect.left + rect.width / 2 - bw / 2)) + 'px';
   }
   function hideBar(){ bar.classList.remove('open'); clearPre(); pend = null; }
@@ -1158,7 +1297,7 @@ renderStatus(); updateMarkSums();
   }
   function begin(ws, rect, glossWord){
     clearPre();
-    var parts = partsFromWords(ws), hit = mine().filter(function(m){ return overlap(m, parts); })[0];
+    var parts = partsFromWords(ws), hit = mine().filter(function(m){ return m.kind !== 's' && overlap(m, parts); })[0];
     if (hit) { pend = { hit: hit, parts: hit.parts }; hit.parts.forEach(function(pt){ wordsIn(pt).concat(spacesIn(pt)).forEach(function(w){ w.classList.add('pre'); }); }); }
     else { pend = { parts: parts }; ws.forEach(function(w){ w.classList.add('pre'); }); parts.forEach(function(pt){ spacesIn(pt).forEach(function(x){ x.classList.add('pre'); }); }); }
     showBar(rect, !!hit, glossWord);
@@ -1167,17 +1306,28 @@ renderStatus(); updateMarkSums();
     if (e.target.closest('.ndot,.inote')) return;
     setTimeout(function(){
       var ws = fromSelection();
+      if (arm) { var tw = e.target.closest('.w'); if (ws && ws.length > 1) armPick(null, ws); else if (tw) armPick(tw); return; }
       if (ws) { begin(ws, window.getSelection().getRangeAt(0).getBoundingClientRect()); return; }
       var w = e.target.closest('.w'); if (!w) { hideBar(); return; }
       var m = w.dataset.m && mine().filter(function(x){ return x.id === w.dataset.m; })[0];
       var sent = m ? null : sentenceOf(w);
-      begin(m ? wordsIn(m.parts[0]) : sent, w.getBoundingClientRect(), w.dataset.gl);
+      begin(m ? wordsIn(m.parts[0]) : sent, w.getBoundingClientRect(), w.dataset.vx || w.dataset.gl);
     }, 10);
   });
-  flow.addEventListener('touchend', function(){ setTimeout(function(){ var ws = fromSelection(); if (ws) begin(ws, window.getSelection().getRangeAt(0).getBoundingClientRect()); }, 260); });
-  document.addEventListener('mousedown', function(e){ if (!bar.contains(e.target) && !flow.contains(e.target) && !ed.contains(e.target)) hideBar(); });
+  flow.addEventListener('touchend', function(){ setTimeout(function(){ var ws = fromSelection(); if (arm) { if (ws && ws.length > 1) armPick(null, ws); return; } if (ws) begin(ws, window.getSelection().getRangeAt(0).getBoundingClientRect()); }, 260); });
+  document.addEventListener('mousedown', function(e){
+    if (!bar.contains(e.target) && !flow.contains(e.target) && !ed.contains(e.target) && !armbar.contains(e.target)) hideBar();
+    if (!tray.contains(e.target) && !e.target.closest('[data-r="stk"]')) toggleTray(false);
+  });
   bar.addEventListener('mousedown', function(e){ e.preventDefault(); });
   bar.addEventListener('click', function(e){
+    var sb = e.target.closest('[data-st]');
+    if (sb && pend) {
+      var P0 = pend;
+      if (P0.hit && P0.hit.kind === 's') { var al0 = load(), m0 = al0.filter(function(x){ return x.id === P0.hit.id; })[0]; if (m0) { m0.st = sb.dataset.st; save(al0); } }
+      else addSticker(sb.dataset.st, P0.parts);
+      hideBar(); window.getSelection().removeAllRanges(); return;
+    }
     var b = e.target.closest('[data-hl]'); if (!b || !pend) return;
     var act = b.dataset.hl, all = load(), P = pend;
     if (act === 'x' && P.hit) { save(all.filter(function(m){ return m.id !== P.hit.id; })); hideBar(); window.getSelection().removeAllRanges(); return; }
@@ -1190,6 +1340,49 @@ renderStatus(); updateMarkSums();
     save(all); window.getSelection().removeAllRanges();
     var anchor = bar.getBoundingClientRect(); hideBar();
     if (act === 'n') openEd(m, anchor);
+  });
+
+  /* ---------- stickers: pick one, choose the exact word or lines, place it in the margin ---------- */
+  var arm = null; /* { st, a, ws } while a sticker waits for its words */
+  function toggleTray(force){
+    var on = force === undefined ? !tray.classList.contains('open') : force;
+    tray.classList.toggle('open', on); q('stk').setAttribute('aria-expanded', on ? 'true' : 'false');
+    if (on) { var r = q('stk').getBoundingClientRect(); tray.style.top = (r.bottom + 6) + 'px'; tray.style.left = Math.max(8, Math.min(window.innerWidth - tray.offsetWidth - 8, r.left)) + 'px'; }
+  }
+  tray.addEventListener('click', function(e){ var b = e.target.closest('[data-st]'); if (!b) return; toggleTray(false); startArm(b.dataset.st); });
+  function startArm(st){ hideBar(); window.getSelection().removeAllRanges(); arm = { st: st, a: null, ws: null }; host.classList.add('arming'); armbar.classList.add('open'); paintArm(); }
+  function paintArm(){
+    clearPre();
+    var n = arm.ws ? arm.ws.length : 0;
+    armbar.querySelector('.sa-i').innerHTML = stickerSvg(arm.st, 26);
+    armbar.querySelector('.sa-t').innerHTML = '<b>' + esc(stickerOf(arm.st).label) + '</b>' + (!n ? 'Tap a word, or select a line' : n === 1 ? '1 word · tap another word to stretch to it' : n + ' words · tap a word to move the end');
+    armbar.querySelector('[data-sa="place"]').disabled = !n;
+    if (n) { arm.ws.forEach(function(w){ w.classList.add('pre'); }); partsFromWords(arm.ws).forEach(function(pt){ spacesIn(pt).forEach(function(x){ x.classList.add('pre'); }); }); }
+  }
+  function armPick(w, selWs){
+    if (selWs) { arm.a = selWs[0]; arm.ws = selWs; }
+    else if (!arm.a) { arm.a = w; arm.ws = [w]; }
+    else { var all = Array.prototype.slice.call(flow.querySelectorAll('.w')), i = all.indexOf(arm.a), j = all.indexOf(w); arm.ws = all.slice(Math.min(i, j), Math.max(i, j) + 1); }
+    window.getSelection().removeAllRanges(); paintArm();
+  }
+  function endArm(){ arm = null; host.classList.remove('arming'); armbar.classList.remove('open'); clearPre(); }
+  function addSticker(st, parts){
+    var all = load(), c = D.chapters[parts[0][0]];
+    all.push({ id: 'm' + Date.now().toString(36), L: CFG.lesson, ci: parts[0][0], ch: c.ch, chLabel: 'Chapter ' + c.ch + ': ' + c.title, parts: parts, p: parts[0][1], a: parts[0][2], kind: 's', st: st, text: textOf(parts), note: '', t: Date.now() });
+    save(all);
+  }
+  armbar.addEventListener('mousedown', function(e){ e.preventDefault(); });
+  armbar.addEventListener('click', function(e){
+    var b = e.target.closest('[data-sa]'); if (!b || !arm) return;
+    if (b.dataset.sa === 'place' && arm.ws) addSticker(arm.st, partsFromWords(arm.ws));
+    endArm();
+  });
+  gutter.addEventListener('click', function(e){
+    var b = e.target.closest('.stk'); if (!b || arm) return;
+    var m = mine().filter(function(x){ return x.id === b.dataset.m; })[0]; if (!m) return;
+    clearPre(); pend = { hit: m, parts: m.parts };
+    m.parts.forEach(function(pt){ wordsIn(pt).concat(spacesIn(pt)).forEach(function(w){ w.classList.add('pre'); }); });
+    showBar(b.getBoundingClientRect(), true, null, m.st);
   });
 
   /* ---------- note editor ---------- */
@@ -1217,8 +1410,8 @@ renderStatus(); updateMarkSums();
     var h = '', last = '';
     ms.forEach(function(m){
       if (m.chLabel !== last) { h += '<div class="chh">' + esc(m.chLabel) + '</div>'; last = m.chLabel; }
-      h += '<div class="mrow ' + m.kind + '"><div class="label">' + (m.kind === 'k' ? 'Key idea' : m.kind === 'e' ? 'Evidence' : 'Note') + '</div><div class="q" data-jump="' + m.id + '">&ldquo;' + esc(m.text.length > 180 ? m.text.slice(0, 177) + '…' : m.text) + '&rdquo;</div>' + ((m.note || '').trim() ? '<div class="n">' + esc(m.note) + '</div>' : '') +
-        '<div class="a"><button data-jump="' + m.id + '">Go to</button><button data-note="' + m.id + '">' + ((m.note || '').trim() ? 'Edit note' : 'Add note') + '</button><button data-del="' + m.id + '">Delete</button></div></div>';
+      h += '<div class="mrow ' + m.kind + '"><div class="label">' + (m.kind === 's' ? stickerSvg(m.st, 18) + esc(stickerOf(m.st).label) : m.kind === 'k' ? 'Key idea' : m.kind === 'e' ? 'Evidence' : 'Note') + '</div><div class="q" data-jump="' + m.id + '">&ldquo;' + esc(m.text.length > 180 ? m.text.slice(0, 177) + '…' : m.text) + '&rdquo;</div>' + ((m.note || '').trim() ? '<div class="n">' + esc(m.note) + '</div>' : '') +
+        '<div class="a"><button data-jump="' + m.id + '">Go to</button>' + (m.kind === 's' ? '' : '<button data-note="' + m.id + '">' + ((m.note || '').trim() ? 'Edit note' : 'Add note') + '</button>') + '<button data-del="' + m.id + '">Delete</button></div></div>';
     });
     body.innerHTML = h;
   }
@@ -1227,7 +1420,7 @@ renderStatus(); updateMarkSums();
   panel.addEventListener('click', function(e){
     if (e.target.closest('.x')) return closePanel();
     var j = e.target.closest('[data-jump]'), n = e.target.closest('[data-note]'), d = e.target.closest('[data-del]');
-    if (j) { var w = flow.querySelector('.w[data-m="' + j.dataset.jump + '"]'); closePanel(); if (w) { var P = w.closest('p'); if (host.classList.contains('focus')) host.scrollTo({ top: P.offsetTop + host.querySelector('.rbody').offsetTop - 120, behavior: 'smooth' }); else window.scrollTo({ top: P.getBoundingClientRect().top + window.scrollY - 160, behavior: 'smooth' }); P.classList.remove('flash'); void P.offsetWidth; P.classList.add('flash'); } }
+    if (j) { var jm = load().filter(function(x){ return x.id === j.dataset.jump; })[0], w = jm && para(jm.parts[0][0], jm.parts[0][1]); closePanel(); if (w) { var P = w; if (host.classList.contains('focus')) host.scrollTo({ top: P.offsetTop + host.querySelector('.rbody').offsetTop - 120, behavior: 'smooth' }); else window.scrollTo({ top: P.getBoundingClientRect().top + window.scrollY - 160, behavior: 'smooth' }); P.classList.remove('flash'); void P.offsetWidth; P.classList.add('flash'); } }
     if (n) openEdFor(n.dataset.note, n);
     if (d) save(load().filter(function(m){ return m.id !== d.dataset.del; }));
   });
