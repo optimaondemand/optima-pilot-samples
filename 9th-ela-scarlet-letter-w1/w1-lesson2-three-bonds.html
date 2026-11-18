@@ -178,9 +178,7 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 
 /* ---------- 2026-11-18 section design: alternating grounds, printer's rules, initial blocks, a tailpiece before the next step ---------- */
 :root{--parch:#F3EEE2;--parch-l:#E4DCCB}
-.sec.band{position:relative;margin:0;padding:38px 0 38px;background:var(--bandc);box-shadow:0 0 0 100vmax var(--bandc);clip-path:inset(0 -100vmax)}
-.sec.band-a{--bandc:var(--parch)}
-.sec.band-b{--bandc:var(--tint)}
+.sec.band{position:relative;margin:0;padding:30px 0 34px}
 .sec.band::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;border-top:2px solid var(--slate);border-bottom:1px solid var(--slate)}
 .sec.band + .mori,.sec.band + .card,.sec.band + .reader{margin-top:34px}
 .sec.band + .sec.sources{margin-top:0}
@@ -199,7 +197,27 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
   linear-gradient(var(--line2),var(--line2)) right center/calc(50% - 40px) 1px no-repeat}
 .next .btn:not(.ghost){background:var(--scarlet);border-color:var(--scarlet);padding:13px 24px;font-size:15px}
 .next .btn:not(.ghost):hover{background:var(--scarlet-d);border-color:var(--scarlet-d)}
-@media (max-width:600px){ .sec.band{padding:30px 0} .sec-h h2{font-size:27px} .sec-h .num{width:36px;height:36px;font-size:21px} }
+@media (max-width:600px){ .sec.band{padding:26px 0 28px} .sec-h h2{font-size:27px} .sec-h .num{width:36px;height:36px;font-size:21px} }
+
+/* ---------- 2026-11-18 writing sheet: the response page as a ruled leaf with a margin rule, a signature line and numbered entries ---------- */
+.sheet{position:relative;background:#FFFEFA;border:1px solid var(--line2);border-radius:3px;padding:28px 36px 22px 84px;box-shadow:0 1px 2px rgba(0,0,0,.06),0 10px 24px rgba(30,30,30,.07)}
+.sheet::before{content:"";position:absolute;top:0;bottom:0;left:60px;width:4px;border-left:1px solid var(--scarlet);border-right:1px solid var(--scarlet);opacity:.5}
+.sheet-top{display:flex;align-items:center;gap:14px;margin:0 0 20px}
+.sheet-top svg{flex:none;display:block}
+.sheet-top::after{content:"";flex:1;height:3px;border-top:2px solid var(--slate);border-bottom:1px solid var(--slate)}
+.sheet .signline{max-width:440px;margin:0 0 26px}
+.sheet .signline .q{font:600 11.5px/1.3 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0}
+.sheet .signline input.name{border:0;border-bottom:1.5px solid var(--ink);border-radius:0;background:transparent;padding:4px 2px 2px;font:500 italic 27px/1.25 var(--display);color:var(--ink)}
+.sheet .signline input.name:focus{box-shadow:none;border-bottom-color:var(--scarlet)}
+.sheet .signline input.name::placeholder{color:var(--line2)}
+.sheet .entry{position:relative;margin:0 0 24px}
+.sheet .entry-n{position:absolute;left:-74px;top:-7px;width:44px;text-align:center;font:500 46px/1 var(--display);color:var(--scarlet)}
+.sheet .entry .q{font:500 25px/1.2 var(--display)}
+.sheet .entry .q small{font:400 14.5px/1.55 var(--ui);margin-top:6px}
+.sheet textarea.jbox{border:0;border-radius:0;box-shadow:none;padding:0 2px;min-height:224px;font:17px/32px var(--serif);background:transparent repeating-linear-gradient(180deg,transparent 0,transparent 31px,var(--line2) 31px,var(--line2) 32px);background-attachment:local}
+.sheet textarea.jbox:focus{box-shadow:none}
+@media (max-width:600px){ .sheet{padding:22px 16px 16px 48px} .sheet::before{left:32px} .sheet .entry-n{left:-44px;width:26px;font-size:30px;top:-2px} .sheet .entry .q{font-size:22px} }
+@media print{ .sheet{box-shadow:none} }
 
 /* ---------- the reader (inline + Focus) ---------- */
 .reader{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;--rs:19px;--rlh:1.75}
@@ -354,16 +372,22 @@ body.r-focus{overflow:hidden}
 .rbody{grid-template-columns:44px minmax(0,66ch) 230px;column-gap:0}
 .margin{margin-left:40px}
 .gutter{position:relative}
-.stk{position:absolute;right:12px;width:26px;height:26px;padding:0;border:0;background:none;border-radius:50%;filter:drop-shadow(0 1px 2px rgba(20,26,32,.32));transition:transform .15s}
-.stk:hover{transform:scale(1.12)}
+.stk{position:absolute;right:10px;width:28px;height:28px;padding:0;border:0;background:none;filter:drop-shadow(0 1px 1.5px rgba(20,26,32,.38));transition:transform .15s}
+.stk.stk-tl{transform:rotate(-7deg)}.stk.stk-tr{transform:rotate(5deg)}
+.stk:hover{transform:scale(1.18)}
+.stk.pop{animation:stkpop .42s cubic-bezier(.3,1.6,.5,1)}
+@keyframes stkpop{from{transform:scale(2.1) rotate(-18deg);opacity:0}}
+@media (prefers-reduced-motion:reduce){.stk.pop{animation:none}}
+.stktray .stk-i,.hlbar .stk-i,.stkarm .stk-i,.mrow .stk-i,.rt .stk-i{filter:drop-shadow(0 1px 1px rgba(20,26,32,.3))}
+.mrow .label .stk-i{display:inline-block;vertical-align:-6px;margin-right:6px}
 .stk svg,.stk-i{display:block}
 .stk-br{position:absolute;right:3px;width:5px;border:1.5px solid var(--slate2);border-right:0;border-radius:3px 0 0 3px;opacity:.6}
 .reader.focus.night .stk-br{border-color:#8FA0AD}
 .hlbar .stkrow{flex-basis:100%;display:flex;align-items:center;gap:1px;border-top:1px solid rgba(255,255,255,.16);margin-top:3px;padding-top:3px}
 .hlbar .stkrow::before{content:"Sticker";font:600 10px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:#B8C4CD;padding:0 8px 0 10px}
-.hlbar .stkrow button{padding:5px}
+.hlbar .stkrow{flex-wrap:wrap}.hlbar .stkrow button{padding:4px;transition:transform .12s}.hlbar .stkrow button:hover{background:none;transform:scale(1.2)}
 .hlbar.sedit [data-hl="k"],.hlbar.sedit [data-hl="e"],.hlbar.sedit [data-hl="n"]{display:none}
-.stktray{position:fixed;z-index:82;display:none;width:196px;background:#fff;border:1px solid var(--line2);border-radius:12px;padding:6px;box-shadow:0 14px 40px rgba(20,26,32,.22)}
+.stktray{position:fixed;z-index:82;display:none;width:204px;background:#fff;border:1px solid var(--line2);border-radius:12px;padding:6px;box-shadow:0 14px 40px rgba(20,26,32,.22)}
 .stktray.open{display:block}
 .stktray button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;border-radius:8px;padding:6px 8px;font:600 13.5px/1 var(--ui);color:var(--ink);text-align:left}
 .stktray button:hover{background:var(--tint)}
@@ -374,7 +398,7 @@ body.r-focus{overflow:hidden}
 .reader.arming .rflow{cursor:crosshair}
 .reader.arming .w:hover{background:#E4EAEE}
 .reader.closed .rline{display:none}
-@media (max-width:899px){ .rbody{grid-template-columns:36px minmax(0,1fr)} .stk{right:6px} .stk-br{right:0;width:4px} }
+@media (max-width:899px){ .rbody{grid-template-columns:36px minmax(0,1fr)} .stk{right:4px} .stk-br{right:0;width:4px} }
 @media (max-width:600px){ .rbody{padding-left:6px} .stkarm{flex-wrap:wrap;justify-content:flex-end;bottom:10px} .stkarm .sa-t{flex-basis:calc(100% - 40px)} }
 
 /* ---------- Dr. Mento mini-lesson card ---------- */
@@ -795,17 +819,20 @@ function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace
 
 /* ---------- reading stickers (shared by the reader, the marks panel and the PDF) ---------- */
 var STICKERS = [
-  { k: 'star', label: 'Striking line', tone: 'r', svg: '<path d="M12 3.9l2.4 5.2 5.7.7-4.2 3.9 1.1 5.6L12 16.5l-5 2.8 1.1-5.6-4.2-3.9 5.7-.7z" fill="#fff"/>' },
-  { k: 'q', label: 'Question', tone: 's', svg: '<text x="12" y="17.4" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="15.5" fill="#fff">?</text>' },
-  { k: 'bang', label: 'Surprise', tone: 'r', svg: '<text x="12" y="17.4" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="15.5" fill="#fff">!</text>' },
-  { k: 'heart', label: 'Feeling', tone: 's', svg: '<path d="M12 18.6s-6.4-4-6.4-8.6c0-2.2 1.7-3.6 3.5-3.6 1.2 0 2.3.6 2.9 1.6.6-1 1.7-1.6 2.9-1.6 1.8 0 3.5 1.4 3.5 3.6 0 4.6-6.4 8.6-6.4 8.6z" fill="#fff"/>' },
-  { k: 'eye', label: 'Image', tone: 'r', svg: '<path d="M4 12s3-4.6 8-4.6 8 4.6 8 4.6-3 4.6-8 4.6S4 12 4 12z" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="2.3" fill="#fff"/>' },
-  { k: 'sym', label: 'Symbol', tone: 's', svg: '<circle cx="12" cy="7.9" r="2.9" fill="#fff"/><circle cx="12" cy="16.1" r="2.9" fill="#fff"/><circle cx="7.9" cy="12" r="2.9" fill="#fff"/><circle cx="16.1" cy="12" r="2.9" fill="#fff"/>' }
+  { k: 'fire', label: 'Fire line', svg: '<path d="M14.4 2.6c.8 4.2 6.4 6.4 6.4 12.6a6.8 6.8 0 0 1-13.6 0c0-2.3.9-4.2 2.3-5.5.2 1.8 1 2.9 2.1 3.2-1-4.4.3-7.9 2.8-10.3z" fill="#fff" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"/><path d="M14.4 2.6c.8 4.2 6.4 6.4 6.4 12.6a6.8 6.8 0 0 1-13.6 0c0-2.3.9-4.2 2.3-5.5.2 1.8 1 2.9 2.1 3.2-1-4.4.3-7.9 2.8-10.3z" fill="#F78F1E"/><path d="M14.2 14.2c.6 1.7 2.8 2.5 2.8 4.9a3 3 0 0 1-6 0c0-1.9 1.9-2.8 3.2-4.9z" fill="#FFD166"/>' },
+  { k: 'bolt', label: 'Plot twist', svg: '<path d="M16.6 2.6L6.4 16h5.9l-1.7 9.4L21.6 11h-6.2z" fill="#fff" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"/><path d="M16.6 2.6L6.4 16h5.9l-1.7 9.4L21.6 11h-6.2z" fill="#FFC72C" stroke="#1F2A33" stroke-width="1.5" stroke-linejoin="round"/>' },
+  { k: 'wait', label: 'Wait, what?', svg: '<path d="M5.4 4.6h17.2a2.4 2.4 0 0 1 2.4 2.4v9.6a2.4 2.4 0 0 1-2.4 2.4h-7.4l-5 4.6v-4.6H5.4A2.4 2.4 0 0 1 3 16.6V7a2.4 2.4 0 0 1 2.4-2.4z" fill="#fff" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"/><path d="M5.4 4.6h17.2a2.4 2.4 0 0 1 2.4 2.4v9.6a2.4 2.4 0 0 1-2.4 2.4h-7.4l-5 4.6v-4.6H5.4A2.4 2.4 0 0 1 3 16.6V7a2.4 2.4 0 0 1 2.4-2.4z" fill="#1F2A33"/><text x="14" y="16.2" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="900" font-size="11.5" fill="#fff">?!</text>' },
+  { k: 'flag', label: 'Red flag', svg: '<path d="M8.2 4.6c4.4-2.2 6.8 2.2 13 0v10.2c-6.2 2.2-8.6-2.2-13 0zM6.4 3.6h2.4v21.8H6.4z" fill="#fff" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"/><path d="M8.2 4.6c4.4-2.2 6.8 2.2 13 0v10.2c-6.2 2.2-8.6-2.2-13 0z" fill="#D62839"/><path d="M7.6 4v21" stroke="#1F2A33" stroke-width="2.4" stroke-linecap="round"/>' },
+  { k: 'eyes', label: 'Side-eye', svg: '<path d="M9.6 5h8.8A6.6 6.6 0 0 1 25 11.6v4.8A6.6 6.6 0 0 1 18.4 23H9.6A6.6 6.6 0 0 1 3 16.4v-4.8A6.6 6.6 0 0 1 9.6 5z" fill="#fff" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"/><path d="M9.6 5h8.8A6.6 6.6 0 0 1 25 11.6v4.8A6.6 6.6 0 0 1 18.4 23H9.6A6.6 6.6 0 0 1 3 16.4v-4.8A6.6 6.6 0 0 1 9.6 5z" fill="#76C043"/><ellipse cx="9.6" cy="14" rx="4" ry="5.4" fill="#fff"/><ellipse cx="18.4" cy="14" rx="4" ry="5.4" fill="#fff"/><circle cx="11.4" cy="15" r="2.2" fill="#1F2A33"/><circle cx="20.2" cy="15" r="2.2" fill="#1F2A33"/>' },
+  { k: 'ouch', label: 'Ouch', svg: '<path d="M14 24.4S3.6 17.8 3.6 10.6C3.6 7 6.3 4.6 9.3 4.6c1.9 0 3.7 1 4.7 2.7 1-1.7 2.8-2.7 4.7-2.7 3 0 5.7 2.4 5.7 6 0 7.2-10.4 13.8-10.4 13.8z" fill="#fff" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"/><path d="M14 24.4S3.6 17.8 3.6 10.6C3.6 7 6.3 4.6 9.3 4.6c1.9 0 3.7 1 4.7 2.7 1-1.7 2.8-2.7 4.7-2.7 3 0 5.7 2.4 5.7 6 0 7.2-10.4 13.8-10.4 13.8z" fill="#A53E97"/><path d="M14.4 7.4l-2.8 4.4 4.2 2.6-3 4.6" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>' },
+  { k: 'boom', label: 'Mind blown', svg: '<path d="M14.0 2.4L16.2 7.2L20.8 4.6L19.8 9.8L25.0 10.4L21.2 14.0L25.0 17.6L19.8 18.2L20.8 23.4L16.2 20.8L14.0 25.6L11.8 20.8L7.2 23.4L8.2 18.2L3.0 17.6L6.8 14.0L3.0 10.4L8.2 9.8L7.2 4.6L11.8 7.2z" fill="#fff" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"/><path d="M14.0 2.4L16.2 7.2L20.8 4.6L19.8 9.8L25.0 10.4L21.2 14.0L25.0 17.6L19.8 18.2L20.8 23.4L16.2 20.8L14.0 25.6L11.8 20.8L7.2 23.4L8.2 18.2L3.0 17.6L6.8 14.0L3.0 10.4L8.2 9.8L7.2 4.6L11.8 7.2z" fill="#67308F"/><path d="M12.6 8h2.8l-.5 7.4h-1.8z" fill="#fff"/><circle cx="14" cy="18.6" r="1.6" fill="#fff"/>' },
+  { k: 'ball', label: 'Calling it', svg: '<path d="M14 3.4a8.6 8.6 0 0 1 5.6 15.1l1.9 5.9h-15l1.9-5.9A8.6 8.6 0 0 1 14 3.4z" fill="#fff" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"/><path d="M7.6 21h12.8l1.1 3.4h-15z" fill="#1F2A33"/><circle cx="14" cy="12" r="8.6" fill="#BFE6F2" stroke="#1F2A33" stroke-width="1.5"/><path d="M14 7.2l1.2 3.6 3.6 1.2-3.6 1.2-1.2 3.6-1.2-3.6-3.6-1.2 3.6-1.2z" fill="#fff"/>' }
 ];
-function stickerOf(k){ for (var i = 0; i < STICKERS.length; i++) if (STICKERS[i].k === k) return STICKERS[i]; return STICKERS[0]; }
+/* keys from the first sticker set (2026-11-18 morning) still resolve */
+var STICKER_OLD = { star: 'fire', q: 'wait', bang: 'boom', heart: 'ouch', eye: 'eyes', sym: 'ball' };
+function stickerOf(k){ k = STICKER_OLD[k] || k; for (var i = 0; i < STICKERS.length; i++) if (STICKERS[i].k === k) return STICKERS[i]; return STICKERS[0]; }
 function stickerSvg(k, size){
-  var s = stickerOf(k);
-  return '<svg class="stk-i" width="' + size + '" height="' + size + '" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11.6" fill="#fff"/><circle cx="12" cy="12" r="10.2" fill="' + (s.tone === 'r' ? '#A3202A' : '#1F2A33') + '"/>' + s.svg + '</svg>';
+  return '<svg class="stk-i" width="' + size + '" height="' + size + '" viewBox="0 0 28 28" aria-hidden="true">' + stickerOf(k).svg + '</svg>';
 }
 
 /* ---------- images from the asset pack ---------- */
@@ -1003,7 +1030,7 @@ function marksHtml(n){
     /* each stickered passage is copied out in quotation marks with its chapter */
     h += '<h3>Stickers in the reading</h3>';
     st.forEach(function(m){
-      h += '<div class="sk">' + stickerSvg(m.st, 22) + '<div><span class="kd kd-n">' + esc(stickerOf(m.st).label) + ' · ' + esc(m.chLabel) + '</span><span class="sq">&ldquo;' + esc(m.text.replace(/[“"]/g, '‘').replace(/”/g, '’')) + '&rdquo;</span> <span class="sc">(Ch. ' + esc(m.ch) + ')</span></div></div>';
+      h += '<div class="sk">' + stickerSvg(m.st, 26) + '<div><span class="kd kd-n">' + esc(stickerOf(m.st).label) + ' · ' + esc(m.chLabel) + '</span><span class="sq">&ldquo;' + esc(m.text.replace(/[“"]/g, '‘').replace(/”/g, '’')) + '&rdquo;</span> <span class="sc">(Ch. ' + esc(m.ch) + ')</span></div></div>';
     });
   }
   return h;
@@ -1030,7 +1057,7 @@ function openPrint(file, heading, body){
     '.mkhead,.mk{display:grid;grid-template-columns:62% 1fr;column-gap:18px}.mkhead{font:700 9.5px/1 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#6E747A;margin:6px 0 6px}' +
     '.mk{margin:0 0 10px;page-break-inside:avoid}.qt{font-style:italic;background:#EEF1F3;padding:6px 9px;border-radius:3px}.nt{font:italic 13.5px/1.5 Georgia,serif;border-left:2px solid #A3202A;padding:4px 0 4px 10px;color:#33424E}.nt.empty{border:0}' +
     '.kd{display:block;font:normal 700 9.5px/1.4 Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}.kd-k{color:#A3202A}.kd-e{color:#33424E}.kd-n{color:#6E747A}table{border-collapse:collapse;font:13px Arial,sans-serif;margin:6px 0 4px}td{padding:3px 12px 3px 0}' +
-    '.sk{display:grid;grid-template-columns:24px 1fr;column-gap:10px;margin:0 0 10px;page-break-inside:avoid}.sk svg{margin-top:2px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.sq{font-style:italic}.sc{font:12.5px/1.4 Arial,sans-serif;color:#4A5057;white-space:nowrap}';
+    '.sk{display:grid;grid-template-columns:28px 1fr;column-gap:10px;margin:0 0 10px;page-break-inside:avoid}.sk svg{margin-top:2px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.sq{font-style:italic}.sc{font:12.5px/1.4 Arial,sans-serif;color:#4A5057;white-space:nowrap}';
   var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + esc(file) + '<\/title>\x3cstyle>' + css + '<\/style><\/head><body><h1>' + esc(heading) + '<\/h1><div class="sub">' + (nm ? esc(nm) + ' · ' : '') + esc(CFG.footer || '') + '<\/div>' + body + '<\/body><\/html>';
   var win = window.open('', '_blank');
   if (!win) { $$('.print-note').forEach(function(n){ n.textContent = 'The PDF window was blocked. Allow pop-ups for this page and try again.'; n.classList.add('show'); }); return; }
@@ -1093,7 +1120,7 @@ renderStatus(); updateMarkSums();
     '<button class="rt" data-r="space" aria-pressed="false" aria-label="Line spacing">&#8597; <span class="l">Spacing</span></button>' +
     '<button class="rt" data-r="line" aria-pressed="false" aria-label="Reading line">&#9644; <span class="l">Line</span></button>' +
     '<button class="rt night-btn" data-r="night" aria-pressed="false">&#9790; <span class="l">Night</span></button>' +
-    '<button class="rt stk-btn" data-r="stk" aria-expanded="false" aria-label="Stickers">' + stickerSvg('star', 18) + ' <span class="l">Stickers</span></button>' +
+    '<button class="rt stk-btn" data-r="stk" aria-expanded="false" aria-label="Stickers">' + stickerSvg('fire', 20) + ' <span class="l">Stickers</span></button>' +
     '<button class="rt" data-r="marks">My marks <span class="ct" id="rMarkCt">0</span></button><button class="rt" data-r="close" aria-label="Close the book">&#10005; <span class="l">Close book</span></button><div class="rprog"></div></div>' +
     '<div class="rbody">' + (D.readfor ? '<div class="readfor">' + D.readfor + '</div>' : '') +
     '<div class="rkey">' + (HASV ? '<span><i class="vx">Word Study word</i></span>' : '') + '<span><u class="glk">Glossed word</u></span><span class="rk-t">Tap for the meaning</span></div>' +
@@ -1136,9 +1163,9 @@ renderStatus(); updateMarkSums();
   cover.querySelector('.rc-open').addEventListener('click', function(){ anim0 = true; setOpen(true, true); });
   var bar = document.createElement('div'); bar.className = 'hlbar'; bar.setAttribute('role', 'toolbar');
   bar.innerHTML = '<div class="gloss"></div><button data-hl="k"><i class="sw k"></i>Key idea</button><button data-hl="e"><i class="sw e"></i>Evidence</button><button data-hl="n">&#9998; Note</button><button data-hl="x" class="rm">Remove</button>' +
-    '<div class="stkrow">' + STICKERS.map(function(k){ return '<button type="button" data-st="' + k.k + '" title="' + esc(k.label) + '" aria-label="Sticker: ' + esc(k.label) + '">' + stickerSvg(k.k, 24) + '</button>'; }).join('') + '</div>';
+    '<div class="stkrow">' + STICKERS.map(function(k){ return '<button type="button" data-st="' + k.k + '" title="' + esc(k.label) + '" aria-label="Sticker: ' + esc(k.label) + '">' + stickerSvg(k.k, 26) + '</button>'; }).join('') + '</div>';
   var tray = document.createElement('div'); tray.className = 'stktray'; tray.setAttribute('role', 'menu');
-  tray.innerHTML = STICKERS.map(function(k){ return '<button type="button" role="menuitem" data-st="' + k.k + '">' + stickerSvg(k.k, 26) + '<span>' + esc(k.label) + '</span></button>'; }).join('');
+  tray.innerHTML = STICKERS.map(function(k){ return '<button type="button" role="menuitem" data-st="' + k.k + '">' + stickerSvg(k.k, 30) + '<span>' + esc(k.label) + '</span></button>'; }).join('');
   var armbar = document.createElement('div'); armbar.className = 'stkarm'; armbar.setAttribute('role', 'status');
   armbar.innerHTML = '<span class="sa-i"></span><span class="sa-t"></span><button class="btn small" type="button" data-sa="place" disabled>Place sticker</button><button class="btn ghost small" type="button" data-sa="cancel">Cancel</button>';
   var ed = document.createElement('div'); ed.className = 'noteed';
@@ -1244,6 +1271,7 @@ renderStatus(); updateMarkSums();
     var ct = document.getElementById('rMarkCt'); if (ct) ct.textContent = ms.length;
     drawSlips(); if (panel.classList.contains('open')) fillPanel();
   }
+  var fresh = null; /* id of the sticker just placed: it lands with a pop */
   function drawStickers(){
     gutter.innerHTML = '';
     if (host.classList.contains('closed')) return;
@@ -1256,8 +1284,9 @@ renderStatus(); updateMarkSums();
     }).filter(Boolean).sort(function(a, b){ return a.top - b.top; }).forEach(function(x){
       var br = document.createElement('i'); br.className = 'stk-br'; br.style.top = (x.top + 2) + 'px'; br.style.height = Math.max(12, x.bottom - x.top - 4) + 'px'; gutter.appendChild(br);
       var b = document.createElement('button'); b.type = 'button'; b.className = 'stk'; b.dataset.m = x.m.id;
-      b.setAttribute('aria-label', 'Sticker: ' + stickerOf(x.m.st).label); b.title = stickerOf(x.m.st).label; b.innerHTML = stickerSvg(x.m.st, 26);
-      var top = Math.max(x.top + (x.lh - 26) / 2, lastBottom + 2); b.style.top = top + 'px'; gutter.appendChild(b); lastBottom = top + 26;
+      b.setAttribute('aria-label', 'Sticker: ' + stickerOf(x.m.st).label); b.title = stickerOf(x.m.st).label; b.innerHTML = stickerSvg(x.m.st, 28);
+      b.classList.add(parseInt(x.m.id.slice(-2), 36) % 2 ? 'stk-tl' : 'stk-tr'); if (x.m.id === fresh) { b.classList.add('pop'); fresh = null; }
+      var top = Math.max(x.top + (x.lh - 28) / 2, lastBottom + 2); b.style.top = top + 'px'; gutter.appendChild(b); lastBottom = top + 28;
     });
   }
   function drawSlips(){
@@ -1372,7 +1401,7 @@ renderStatus(); updateMarkSums();
   function paintArm(){
     clearPre();
     var n = arm.ws ? arm.ws.length : 0;
-    armbar.querySelector('.sa-i').innerHTML = stickerSvg(arm.st, 26);
+    armbar.querySelector('.sa-i').innerHTML = stickerSvg(arm.st, 30);
     armbar.querySelector('.sa-t').innerHTML = '<b>' + esc(stickerOf(arm.st).label) + '</b>' + (!n ? 'Tap a word, or select a line' : n === 1 ? '1 word · tap another word to stretch to it' : n + ' words · tap a word to move the end');
     armbar.querySelector('[data-sa="place"]').disabled = !n;
     if (n) { arm.ws.forEach(function(w){ w.classList.add('pre'); }); partsFromWords(arm.ws).forEach(function(pt){ spacesIn(pt).forEach(function(x){ x.classList.add('pre'); }); }); }
@@ -1386,7 +1415,8 @@ renderStatus(); updateMarkSums();
   function endArm(){ arm = null; host.classList.remove('arming'); armbar.classList.remove('open'); clearPre(); }
   function addSticker(st, parts){
     var all = load(), c = D.chapters[parts[0][0]];
-    all.push({ id: 'm' + Date.now().toString(36), L: CFG.lesson, ci: parts[0][0], ch: c.ch, chLabel: 'Chapter ' + c.ch + ': ' + c.title, parts: parts, p: parts[0][1], a: parts[0][2], kind: 's', st: st, text: textOf(parts), note: '', t: Date.now() });
+    fresh = 'm' + Date.now().toString(36);
+    all.push({ id: fresh, L: CFG.lesson, ci: parts[0][0], ch: c.ch, chLabel: 'Chapter ' + c.ch + ': ' + c.title, parts: parts, p: parts[0][1], a: parts[0][2], kind: 's', st: st, text: textOf(parts), note: '', t: Date.now() });
     save(all);
   }
   armbar.addEventListener('mousedown', function(e){ e.preventDefault(); });
@@ -1428,7 +1458,7 @@ renderStatus(); updateMarkSums();
     var h = '', last = '';
     ms.forEach(function(m){
       if (m.chLabel !== last) { h += '<div class="chh">' + esc(m.chLabel) + '</div>'; last = m.chLabel; }
-      h += '<div class="mrow ' + m.kind + '"><div class="label">' + (m.kind === 's' ? stickerSvg(m.st, 18) + esc(stickerOf(m.st).label) : m.kind === 'k' ? 'Key idea' : m.kind === 'e' ? 'Evidence' : 'Note') + '</div><div class="q" data-jump="' + m.id + '">&ldquo;' + esc(m.text.length > 180 ? m.text.slice(0, 177) + '…' : m.text) + '&rdquo;</div>' + ((m.note || '').trim() ? '<div class="n">' + esc(m.note) + '</div>' : '') +
+      h += '<div class="mrow ' + m.kind + '"><div class="label">' + (m.kind === 's' ? stickerSvg(m.st, 22) + esc(stickerOf(m.st).label) : m.kind === 'k' ? 'Key idea' : m.kind === 'e' ? 'Evidence' : 'Note') + '</div><div class="q" data-jump="' + m.id + '">&ldquo;' + esc(m.text.length > 180 ? m.text.slice(0, 177) + '…' : m.text) + '&rdquo;</div>' + ((m.note || '').trim() ? '<div class="n">' + esc(m.note) + '</div>' : '') +
         '<div class="a"><button data-jump="' + m.id + '">Go to</button>' + (m.kind === 's' ? '' : '<button data-note="' + m.id + '">' + ((m.note || '').trim() ? 'Edit note' : 'Add note') + '</button>') + '<button data-del="' + m.id + '">Delete</button></div></div>';
     });
     body.innerHTML = h;
