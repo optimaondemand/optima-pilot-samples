@@ -226,6 +226,9 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .reset:hover{border-color:var(--scarlet);color:var(--scarlet)}
 @media print{.reset-row{display:none}}
 
+/* a picture slot whose file is not in the build yet (build9 packs a 1x1 blank) takes no space */
+img[src^="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8"]{display:none}
+
 /* ---------- the reader (inline + Focus) ---------- */
 .reader{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;--rs:19px;--rlh:1.75}
 .rbar{position:sticky;top:47px;z-index:20;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
@@ -934,7 +937,7 @@ body.r-focus{overflow:hidden}
       </div>
       <div class="place-fb"></div>
       <div class="tally"></div>
-      <div class="img-credit">Figures: AI-generated illustrations in the style of a seventeenth-century woodcut.</div>
+      <div class="img-credit">Figures: AI-generated illustrations in the style of a nineteenth-century wood engraving.</div>
     </div>
   </div>
 

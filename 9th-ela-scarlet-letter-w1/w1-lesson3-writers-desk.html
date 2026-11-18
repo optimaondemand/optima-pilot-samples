@@ -226,6 +226,9 @@ footer.foot .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:
 .reset:hover{border-color:var(--scarlet);color:var(--scarlet)}
 @media print{.reset-row{display:none}}
 
+/* a picture slot whose file is not in the build yet (build9 packs a 1x1 blank) takes no space */
+img[src^="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8"]{display:none}
+
 /* ---------- the reader (inline + Focus) ---------- */
 .reader{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;--rs:19px;--rlh:1.75}
 .rbar{position:sticky;top:47px;z-index:20;display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
@@ -588,6 +591,18 @@ body.r-focus{overflow:hidden}
 #l3-match .chip{font:600 16px/1.3 var(--serif)}
 #l3-match .chip.placed{font-weight:400;font-size:14.5px}
 .checks{margin:0 0 14px}
+
+/* 2026-11-18 Match as a dictionary column: the word lands in front of its meaning */
+.bins.dict{grid-template-columns:1fr;gap:0;border-top:3px double var(--slate);border-bottom:3px double var(--slate);background:#FFFEFA;padding:0 14px}
+.dict .bin{display:grid;grid-template-columns:200px minmax(0,1fr);align-items:center;gap:18px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;min-height:58px;padding:9px 6px}
+.dict .bin:last-child{border-bottom:0}
+.dict .bin.armed{background:var(--tint)}
+.dict .bin h4{order:2;margin:0;font:17px/1.5 var(--serif);letter-spacing:0;text-transform:none;color:var(--ink)}
+.dict .drop{order:1;min-height:36px;border-bottom:2px dotted var(--line2);display:flex;align-items:flex-end}
+.dict .bin:has(.chip.placed) .drop{border-bottom-color:transparent}
+.dict .chip.placed{font:600 24px/1.15 var(--display);color:var(--ink);padding:0}
+#l3-match .bank .chip{font:600 20px/1.2 var(--display)}
+@media (max-width:600px){.dict .bin{grid-template-columns:1fr;gap:4px}.dict .drop{min-height:30px}}
 </style>
 
 </head>
@@ -916,7 +931,7 @@ body.r-focus{overflow:hidden}
         <button class="chip" data-k="m4" data-ans="d-mal" data-fb="Chapter II: &ldquo;such malefactresses as this Hester Prynne.&rdquo;" data-miss="Check the ending of the word, and who is being called this in Chapter II.">malefactress</button>
         <button class="chip" data-k="m5" data-ans="d-ini" data-fb="Chapter II: &ldquo;where iniquity is dragged out into the sunshine!&rdquo;" data-miss="Reread the word&rsquo;s card. Which meaning is about wrong itself, not the person?">iniquity</button>
       </div>
-      <div class="bins five">
+      <div class="bins dict" role="group" aria-label="Five dictionary entries, each waiting for its word">
         <div class="bin" data-bin="d-ini"><h4>Wickedness; a serious wrong</h4><div class="drop"></div></div>
         <div class="bin" data-bin="d-alc"><h4>The old art of trying to turn common metals into gold</h4><div class="drop"></div></div>
         <div class="bin" data-bin="d-mal"><h4>A woman who has done wrong</h4><div class="drop"></div></div>
@@ -990,7 +1005,9 @@ body.r-focus{overflow:hidden}
 <section class="panel" id="tab-desk" role="tabpanel">
   <div class="sec">
     <div class="sec-h"><span class="num">A</span><h2>The Letter in Public</h2></div>
-    <div class="card">
+    <div class="sheet">
+      <div class="sheet-top" aria-hidden="true"><svg viewBox="0 0 70 30" width="70" height="30"><path d="M5 26C17 22 33 7 64 3c-6 10-19 18-36 20l-9 1.6z" fill="#1F2A33"/><path d="M5 26.4L44 10.5M30 17.6l9 .4M36.5 14.6l8-.6M24 20.8l8 .9" fill="none" stroke="#FFFEFA" stroke-width="1" stroke-linecap="round"/><path d="M1.5 28.8L8 24.6" stroke="#1F2A33" stroke-width="1.6" stroke-linecap="round"/><circle cx="1.6" cy="28.6" r="1.4" fill="#A3202A"/></svg></div>
+      <div class="field signline"><div class="q">Your name</div><input class="name" type="text" autocomplete="name" placeholder="First and last name"></div>
       <ul class="checks">
         <li data-ck="l3-ck-obs">One observer in Chapters II&ndash;III, and how that person reads the scarlet letter</li>
         <li data-ck="l3-ck-quote">One exact quotation, cited by chapter, like this: (Ch. II)</li>
@@ -998,14 +1015,13 @@ body.r-focus{overflow:hidden}
         <li data-ck="l3-ck-semi">One balanced sentence joined by a semicolon</li>
         <li data-ck="l3-ck-len">150&ndash;200 words</li>
       </ul>
-      <div class="field">
+      <div class="field entry">
         <div class="q">Write one paragraph <small>Choose one observer. Show how that person reads the letter, and what the reading shows about the observer.</small></div>
         <textarea class="jbox" id="l3-desk" data-label="The Letter in Public: paragraph" data-min="150" rows="12"></textarea>
       </div>
     </div>
   </div>
   <div class="sec">
-    <div class="field" style="max-width:420px"><div class="q">Your name</div><input class="name" type="text" autocomplete="name" placeholder="First and last name"></div>
     <div class="sec-h"><span class="num">&#10003;</span><h2>This Lesson</h2></div>
     <div class="status" data-scope="lesson"></div>
     <p class="hint">Your answers save in this browser as you work. To keep a copy, save this lesson as a PDF.</p>
