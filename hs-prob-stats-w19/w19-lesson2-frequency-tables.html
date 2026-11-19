@@ -377,6 +377,26 @@ button.g-th-draw:hover{border-color:var(--ink)}
   .g-tools button[data-t="done"]{margin-left:0}
 }
 
+/* side tally of completion points (sits in the desk rail when the course has one) */
+.g-rail{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:40;display:flex;flex-direction:column;align-items:flex-end;pointer-events:none}
+.g-tally{width:104px;margin-right:10px;padding:10px 10px 11px;border-radius:10px;border:2px solid currentColor;background:#fff;text-align:center;font-family:var(--ui);box-shadow:-3px 5px 8px rgba(14,28,66,.16)}
+.g-tally .k{display:block;font:600 10.5px/1.2 var(--ui);letter-spacing:.1em;text-transform:uppercase}
+.g-tally b{display:block;font:700 34px/1.05 var(--ui);letter-spacing:-.01em;margin-top:4px}
+.g-tally .of{display:block;font:600 12px/1.2 var(--ui);color:var(--ink)}
+.g-tally .pct{display:inline-block;margin-top:7px;padding:3px 9px;border-radius:999px;background:currentColor;font:700 12.5px/1.2 var(--ui)}
+.g-tally[data-band="red"]{color:#C43D27;background:#FBEBE7}
+.g-tally[data-band="orange"]{color:#B4540A;background:#FDF0E0}
+.g-tally[data-band="green"]{color:#2F6B4F;background:#EAF3EE}
+.g-tally .pct{-webkit-text-fill-color:#fff}
+@media (max-width:760px){
+  .g-rail{top:auto;bottom:0;right:8px;transform:none}
+  .g-tally{width:auto;margin:0 0 8px;padding:5px 10px 6px;display:flex;align-items:baseline;gap:6px;border-radius:999px;box-shadow:0 2px 6px rgba(14,28,66,.2)}
+  .g-tally .k,.g-tally .of{display:none}
+  .g-tally b{font-size:17px;margin:0}
+  .g-tally .pct{margin:0;padding:2px 7px;font-size:11.5px}
+}
+@media print{.g-rail,.g-tally{display:none!important}}
+
 </style>
 <style>
 /* hero figure */
@@ -1900,12 +1920,23 @@ var GRADE = (function(){
   var scoreEl = $('.pset-top .score', PS), compEl = document.createElement('div');
   compEl.className = 'g-comp';
   var top = $('.pset-top', PS); if (top) top.parentNode.insertBefore(compEl, top.nextSibling);
-  var leftOpen = false, lastScore = '', lastComp = '';
+  var leftOpen = false, lastScore = '', lastComp = '', lastTally = '';
+  /* side tally: completion points on every tab; under 70% red, 70 to 89.9% orange, 90% and up green */
+  function band(p){ return p < 70 ? 'red' : p < 90 ? 'orange' : 'green'; }
+  var side = document.createElement('div'); side.className = 'g-tally'; side.setAttribute('role', 'img');
+  (function(){
+    var host = $('.rail');
+    if (!host) { host = document.createElement('div'); host.className = 'g-rail'; document.body.appendChild(host); }
+    host.insertBefore(side, host.firstChild);
+  })();
   compEl.addEventListener('toggle', function(e){ if (e.target.tagName === 'DETAILS') leftOpen = e.target.open; }, true);
   function refresh(){
     var T = tally();
     var sh = '<div><b>' + f1(T.comp) + '<small> / ' + CP + '</small></b>completion</div><div><b>' + f1(T.corr) + '<small> / ' + KP + '</small></b>problem set</div><div class="g-total"><b>' + f1(T.total) + '<small> / ' + T.max + '</small></b>lesson score</div>';
     if (scoreEl && sh !== lastScore) { scoreEl.innerHTML = sh; lastScore = sh; }
+    var pctDone = T.n ? 100 * T.done / T.n : 0, bd = band(pctDone);
+    var th = '<span class="k">Completion</span><b>' + f1(T.comp) + '</b><span class="of">of ' + CP + ' points</span><span class="pct">' + Math.floor(pctDone + 1e-9) + '%</span>';
+    if (th !== lastTally || side.dataset.band !== bd) { side.innerHTML = th; side.dataset.band = bd; lastTally = th; side.setAttribute('aria-label', 'Completion: ' + f1(T.comp) + ' of ' + CP + ' points, ' + Math.floor(pctDone + 1e-9) + ' percent'); }
     var h = '<table class="g-ct"><caption>Completion: ' + T.done + ' of ' + T.n + '</caption><tbody>', left = [];
     T.rows.forEach(function(b){
       h += '<tr' + (b.done === b.n ? ' class="ok"' : '') + '><td>' + esc(b.name) + '</td><td>' + b.done + ' / ' + b.n + '</td></tr>';
@@ -2008,7 +2039,7 @@ var GRADE = (function(){
     /* a page widget registers a completion unit, then marks it when the student has finished it */
     unit: function(id, label, el){ CUSTOM.push({ id: id, label: label, el: el }); refreshSoon(); },
     mark: function(id){ if (DONE[id]) return; DONE[id] = 1; jset('g-done', DONE); refreshSoon(); },
-    tally: tally, pdf: pdfDoc, state: function(){ return S; }, work: function(){ return WORK; }
+    tally: tally, band: band, pdf: pdfDoc, state: function(){ return S; }, work: function(){ return WORK; }
   };
 })();
 </script>
