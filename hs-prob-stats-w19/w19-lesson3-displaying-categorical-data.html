@@ -396,7 +396,72 @@ button.g-th-draw:hover{border-color:var(--ink)}
   .g-tally .pct{margin:0;padding:2px 7px;font-size:11.5px}
 }
 @media print{.g-rail,.g-tally{display:none!important}}
+/* show your work: required tag, instruction, full-screen pad */
+.g-work-how{margin:0 0 18px;padding:10px 14px;border-left:3px solid var(--blue);background:rgba(255,255,255,.75);border-radius:0 8px 8px 0;font:14.5px/1.5 var(--ui);color:var(--ink)}
+.g-req{font:700 10.5px/1 var(--ui);letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--red);border-radius:999px;padding:4px 8px}
+.g-work.need{outline:2px solid var(--red);outline-offset:6px;border-radius:4px}
+.g-pad-q{display:none}
+.g-pad.g-full{position:fixed;inset:0;z-index:1000;margin:0;padding:12px 16px 16px;background:#F7F9F5;overflow:auto;width:100%;height:100%}
+.g-pad.g-full .g-tools{position:sticky;top:-12px;z-index:2;background:#F7F9F5;margin:-12px 0 8px;padding:12px 0 8px}
+.g-pad.g-full .g-pad-q{display:block;font:600 14.5px/1.4 var(--ui);color:var(--ink);margin:0 0 8px}
+.g-tools button[data-t="full"][aria-pressed="true"]{background:var(--blue);border-color:var(--blue);color:#fff}
+html.g-padfull,html.g-padfull body{overflow:hidden}
+html.g-padfull .rail,html.g-padfull .g-rail,html.g-padfull .tabs{visibility:hidden}
 
+/* trackers: count on each tab button, strip at the foot of each tab, jump lists, prompt at Download */
+.tab.seen .n::after{content:none}
+.g-tb{font:700 11px/1 var(--ui);color:var(--red);border:1px solid currentColor;border-radius:999px;padding:3px 6px;align-self:center;letter-spacing:0}
+.g-tb.ok{color:var(--ok);background:var(--ok-t)}
+.g-seg{margin:26px 0 0;padding:12px 16px;border:1px solid var(--line2);border-left:4px solid var(--red);border-radius:0 8px 8px 0;background:#fff;font-family:var(--ui)}
+.g-seg.ok{border-left-color:var(--ok);background:var(--ok-t)}
+.g-seg-h{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.g-seg-h .label{margin:0}
+.g-seg-n{font:700 15px/1.3 var(--ui);color:var(--red)}
+.g-seg.ok .g-seg-n{color:var(--ok)}
+.g-seg-p{font:600 13.5px/1.3 var(--ui);color:var(--ink);margin-left:auto}
+.g-seg-l{margin-top:8px;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline}
+.g-seg-k{font:700 11px/1.3 var(--ui);letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
+.g-seg ul,ul.g-jl{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+ul.g-jl{margin-top:8px}
+.g-jump{border:1px solid var(--line2);background:#fff;color:var(--ink);border-radius:8px;padding:6px 10px;font:14px/1.35 var(--ui);text-align:left;cursor:pointer}
+.g-jump b{font-weight:600}
+.g-jump:hover{border-color:var(--ink)}
+.g-jump::after{content:" \2192";color:var(--blue)}
+.g-flash{outline:3px solid var(--blue);outline-offset:6px;border-radius:6px}
+.g-end{margin-top:22px;border:2px solid var(--red)}
+.g-end-h{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;justify-content:space-between;margin-bottom:6px}
+.g-end-h .label{margin:0;color:var(--red)}
+.g-end-n{font:700 15px/1.3 var(--ui);color:var(--ink)}
+.g-end-k{margin:10px 0 0;font:600 14.5px/1.4 var(--ui);color:var(--red)}
+.g-end-m{margin:10px 0 0;font:14px/1.4 var(--ui);color:var(--muted)}
+.g-end .g-act{margin-top:14px}
+
+/* side tally: lesson points, with completion and problem set lines */
+.g-tally{width:136px}
+.g-tally .row{display:flex;justify-content:space-between;gap:6px;margin-top:6px;padding-top:5px;border-top:1px solid currentColor;font:600 11.5px/1.2 var(--ui);color:var(--ink)}
+.g-tally .row i{font-style:normal}
+.g-tally .row u{text-decoration:none;font-weight:700;white-space:nowrap}
+.g-tally .pct{font-size:11px;padding:4px 8px}
+@media (max-width:760px){
+  .g-tally{width:auto}
+  .g-tally .row{display:none}
+  .g-seg-p{margin-left:0}
+}
+@media print{.g-seg,.g-end,.g-tb{display:none!important}}
+
+</style>
+<style>
+/* AI prompt workshop (optional box: draft, revise, copy) */
+.aiw{border:1px solid var(--line2);border-left:3px solid var(--blue);background:#fff;border-radius:0 8px 8px 0;padding:14px 16px 16px;margin:0 0 22px}
+.aiw-h{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;margin-bottom:4px}
+.aiw-h .label{margin:0;color:var(--blue)}
+.aiw-opt{font:600 11px/1 var(--ui);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:4px 9px}
+.aiw-how{margin:0 0 10px;font:14px/1.5 var(--ui);color:var(--ink)}
+.aiw-in{display:block;width:100%;min-height:120px;resize:vertical;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:12px 14px;font:16px/1.55 var(--ui);color:var(--ink)}
+.aiw-in:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
+.aiw-act{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.aiw-st{font:600 13.5px/1.4 var(--ui);color:var(--ok)}
+@media print{.aiw-act{display:none}}
 </style>
 <style>
 /* hero figure: a zero-baseline bar chart */
@@ -819,6 +884,7 @@ details.watch iframe{display:block;width:100%;height:760px;border:0;background:#
   <div class="sec">
     <div class="sec-h"><span class="num">I</span><h2>Predict, Then Check</h2></div>
     <div class="aside"><span class="label">About AI tools</span>An AI tool can name a display and give fluent reasons for it. It can sound just as sure about a poor choice, and it knows only what you tell it about your data. Using one is optional, and the questions below stand on their own. If you do, decide first, then describe datasets a, b and c below and ask which display fits each, and why. Then challenge one answer: ask it to defend a circle graph for the 12 school clubs, and judge whether its defense depends on the number of categories or only sounds confident.</div>
+    <div class="aiw" data-id="l3-aiw" data-ph="Describe datasets a, b and c, then ask which display fits each, and why"></div>
     <p class="hint">Decide for yourself first. For each dataset, which display fits?</p>
     <div class="card">
       <div class="mcq" data-qid="l3-p1"><p class="stem"><span class="qn">a</span>How a family&rsquo;s monthly budget divides among five spending categories.</p><div class="opts">
@@ -957,7 +1023,7 @@ details.watch iframe{display:block;width:100%;height:760px;border:0;background:#
       <div class="mq" data-qid="l3-s3" data-ans="72" data-vars="" data-ph="degrees" data-miss='[["20","20 is the percent. The angle uses the relative frequency."],["8","8 is the frequency. Use relative frequency times 360."]]' data-hint="Multiply the relative frequency by 360."><p class="stem"><span class="qn">3</span>Swimming: relative frequency 0.20. What is the angle?</p></div>
       <div class="mq" data-qid="l3-s4" data-ans="45" data-vars="" data-ph="degrees" data-miss='[["12.5","12.5 is the percent. The angle uses the relative frequency."],["5","5 is the frequency. Use relative frequency times 360."]]' data-hint="Multiply the relative frequency by 360."><p class="stem"><span class="qn">4</span>Tennis: relative frequency 0.125. What is the angle?</p></div>
       <div class="mq" data-qid="l3-s5" data-ans="18" data-vars="" data-ph="degrees" data-miss='[["5","5 is the percent. The angle uses the relative frequency."],["2","2 is the frequency. Use relative frequency times 360."]]' data-hint="Multiply the relative frequency by 360."><p class="stem"><span class="qn">5</span>Volleyball: relative frequency 0.05. What is the angle?</p></div>
-      <div class="mq" data-qid="l3-s6" data-ans="360" data-vars="" data-ph="degrees" data-miss='[["100","100 is the total of the percents. Angles in a circle total something else."],["1","1 is the total of the relative frequencies. Add the angles instead."],["40","40 is the total frequency. Add the five angles."]]' data-hint="Add the five angles you found in items 1 to 5."><p class="stem"><span class="qn">6</span>Add your five angles. What total should a correct circle graph have?</p></div>
+      <div class="mq" data-qid="l3-s6" data-work="0" data-ans="360" data-vars="" data-ph="degrees" data-miss='[["100","100 is the total of the percents. Angles in a circle total something else."],["1","1 is the total of the relative frequencies. Add the angles instead."],["40","40 is the total frequency. Add the five angles."]]' data-hint="Add the five angles you found in items 1 to 5."><p class="stem"><span class="qn">6</span>Add your five angles. What total should a correct circle graph have?</p></div>
       <div class="mcq" data-qid="l3-s7"><p class="stem"><span class="qn">7</span>A bar chart of the table lists the sports in the order soccer, basketball, swimming, tennis, volleyball. Which list gives the heights on a frequency axis?</p><div class="opts">
         <button class="opt" data-fb="Those are the relative frequencies. A frequency axis uses the counts.">0.35, 0.275, 0.20, 0.125, 0.05</button>
         <button class="opt" data-fb="Those are the percents. A frequency axis uses the counts.">35, 27.5, 20, 12.5, 5</button>
@@ -1047,9 +1113,9 @@ window.ASK = {
     { k: ['pdf', 'download', 'submit', 'turn in', 'hand in', 'save', 'points', 'point', 'grade', 'graded', 'score', 'attempt', 'tries', 'try again', 'retake', 'average', 'averaged'], w: 2,
       a: 'This page is worth ' + total + ' points: ' + G.completion + ' for completing the practice in each tab and ' + G.correct + ' for the Problem Set. You may submit the Problem Set up to ' + G.attempts + ' times, and its points come from the average of the attempts you submit. "Download my work (PDF)" lists every point. Your teacher will tell you where to hand it in.' },
     { k: ['completion', 'complete', 'still to do', 'finish', 'finished'], w: 2,
-      a: 'Completion points count the practice you have done: each tab opened, each practice question tried, each worked example stepped through, each checklist and written answer, and your work shown on the typed problems. The list at the top of the Problem Set shows what is still to do.' },
-    { k: ['show my work', 'show work', 'show your work', 'photo', 'picture', 'draw', 'stylus', 'handwriting', 'handwritten', 'upload', 'write here'], w: 2,
-      a: 'Under each typed-answer problem in the Problem Set, press "Write here" to work with a stylus, a finger, or a mouse, or press "Add a photo" to attach a picture of your paper. Your work prints in the PDF with its problem.' }
+      a: 'Completion points count the practice you have done: each tab opened, each practice question tried, each worked example stepped through, each checklist and written answer, and your work shown on the problems marked "Show your work". The strip at the foot of each tab lists what is not done there, and the count on each tab button shows the same.' },
+    { k: ['show my work', 'show work', 'show your work', 'photo', 'picture', 'draw', 'stylus', 'handwriting', 'handwritten', 'upload', 'write here', 'write on screen', 'full screen', 'fullscreen', 'required', 'finger', 'trackpad'], w: 2,
+      a: 'Problems marked "Show your work: Required" need your work before you can submit an attempt. Press "Write on screen" and write directly on the screen with a stylus or your finger; on a computer, use a mouse or trackpad. "Full screen" gives you the whole screen to write on. Or press "Add a photo" to attach a picture of work done on paper. Your work prints in the PDF with its problem.' }
   ].concat(A.notes || []);
 })();
 </script>
@@ -1530,7 +1596,11 @@ psetScore();
    - Completion points: share of the lesson's practice units done (tabs opened, questions tried, examples stepped, checklists, written boxes,
      page widgets registered with GRADE.unit / GRADE.mark, work shown on typed problems).
    - Correctness points: the Problem Set is answered as a whole and submitted; up to N attempts; the grade is the average of submitted attempts.
-   - Show your work: a drawing pad (pen, finger or mouse) and photo upload under each typed Problem Set item; kept in IndexedDB.
+   - Show your work: a drawing pad (stylus, finger or mouse; can go full screen) and photo upload under each WORKED Problem Set item; kept in IndexedDB.
+     Worked = typed-answer items, unless the item says data-work="0" (a read-off, nothing to work) or data-work="1" (a choice item that needs working).
+     Work is REQUIRED there: an attempt cannot be submitted until every worked problem has written work or a photo.
+   - Trackers: a strip at the foot of every tab (parts done, points, what is not done), a count on every tab button, the side tally,
+     and a prompt at Download if anything is not done.
    - The PDF itemizes every point. */
 var GRADE = (function(){
   var G = CFG.grade, PS = $('.pset');
@@ -1657,6 +1727,14 @@ var GRADE = (function(){
       say('Problem ' + it.num + ': that answer cannot be read yet. Type the number only, like 26.7, with no words or units.');
       it.el.scrollIntoView({ block: 'center' }); it.inp.focus(); return;
     }
+    var nw = noWork();
+    $$('.g-work.need', PS).forEach(function(b){ b.classList.remove('need'); });
+    if (nw.length) {
+      paintSub();
+      nw.forEach(function(it){ var b = $('.g-work', it.el); if (b) b.classList.add('need'); });
+      say('Work is required on ' + (nw.length === 1 ? 'problem ' : 'problems ') + listNums(nw) + '. Write it on the screen or add a photo, then submit.');
+      ($('.g-work', nw[0].el) || nw[0].el).scrollIntoView({ block: 'center' }); return;
+    }
     var n = S.subs.length + 1;
     say((blank ? blank + (blank === 1 ? ' problem is' : ' problems are') + ' blank and will count as not correct. ' : '') + 'Submitting uses attempt ' + n + ' of ' + MAXA + '.');
     act.innerHTML = '<button class="btn" type="button" data-g="go">Submit attempt ' + n + '</button><button class="btn ghost" type="button" data-g="back">Keep working</button>';
@@ -1664,7 +1742,7 @@ var GRADE = (function(){
   }
   function submit(){
     if (!S.open || S.subs.length >= MAXA) return;
-    if (ITEMS.some(function(it){ return judge(it).bad; })) { ask(); return; }
+    if (ITEMS.some(function(it){ return judge(it).bad; }) || noWork().length) { ask(); return; }
     var res = {}, right = 0;
     ITEMS.forEach(function(it){ var j = judge(it); res[it.id] = { v: j.v, ok: !!j.ok, msg: j.blank ? '' : (j.msg || '') }; if (j.i !== undefined) res[it.id].i = j.i; if (j.ok) right++; });
     S.subs.push({ at: Date.now(), res: res, right: right, n: ITEMS.length });
@@ -1685,7 +1763,16 @@ var GRADE = (function(){
   });
 
   /* ================= Show your work: drawing pad + photos (IndexedDB) ================= */
-  var WORKQ = ITEMS.filter(function(it){ return it.kind === 'mq'; }), WORK = {}, DB = null, idbOK = true, LW = 800, PADS = [];
+  var WORKQ = ITEMS.filter(function(it){ var w = it.el.dataset.work; return w === '1' || (w !== '0' && it.kind === 'mq'); }), WORK = {}, DB = null, idbOK = true, LW = 800, PADS = [];
+  function noWork(){ return WORKQ.filter(function(it){ return !hasWork(it.id); }); }
+  function listNums(a){ var x = a.map(function(it){ return it.num; }); return x.length < 2 ? x.join('') : x.slice(0, -1).join(', ') + ' and ' + x[x.length - 1]; }
+  /* one instruction for the set, above the first problem */
+  if (WORKQ.length) (function(){
+    var p = document.createElement('p'); p.className = 'g-work-how';
+    p.innerHTML = '<b>Show your work</b> is required on ' + (WORKQ.length === 1 ? 'problem ' : 'problems ') + esc(listNums(WORKQ)) + '. Write directly on the screen with a stylus or your finger. On a computer, use a mouse or trackpad. You can also add a photo of work done on paper.';
+    var k = $('.mq-keys', PS), top = $('.pset-top', PS);
+    if (k) k.parentNode.insertBefore(p, k.nextSibling); else if (top) top.parentNode.insertBefore(p, top.nextSibling); else PS.insertBefore(p, PS.firstChild);
+  })();
   function rec(id){ return WORK[id] || (WORK[id] = { s: [], H: 0, p: [] }); }
   function calcInk(id){
     var R = rec(id);
@@ -1741,18 +1828,44 @@ var GRADE = (function(){
   function workUI(it){
     var id = it.id, N = esc(it.num), box = document.createElement('div');
     box.className = 'g-work';
-    box.innerHTML = '<div class="g-work-h"><span class="label">Show your work</span><span class="g-work-st"></span></div>' +
-      '<div class="g-work-btns"><button type="button" class="btn ghost small" data-w="pad">Write here</button><button type="button" class="btn ghost small" data-w="photo">Add a photo</button>' +
+    box.innerHTML = '<div class="g-work-h"><span class="label">Show your work</span><span class="g-req">Required</span><span class="g-work-st"></span></div>' +
+      '<div class="g-work-btns"><button type="button" class="btn ghost small" data-w="pad">Write on screen</button><button type="button" class="btn ghost small" data-w="photo">Add a photo</button>' +
       '<input type="file" accept="image/*" multiple hidden aria-label="Photo of your work for problem ' + N + '"></div>' +
       '<div class="g-pad" hidden><div class="g-tools" role="toolbar" aria-label="Drawing tools for problem ' + N + '">' +
       '<button type="button" data-t="pen" class="on" aria-pressed="true">Pen</button><button type="button" data-t="erase" aria-pressed="false">Eraser</button>' +
-      '<button type="button" data-t="undo">Undo</button><button type="button" data-t="clear">Clear</button><button type="button" data-t="more">More space</button><button type="button" data-t="done">Done</button></div>' +
-      '<canvas aria-label="Work area for problem ' + N + '"></canvas></div>' +
+      '<button type="button" data-t="undo">Undo</button><button type="button" data-t="clear">Clear</button><button type="button" data-t="more">More space</button><button type="button" data-t="full" aria-pressed="false">Full screen</button><button type="button" data-t="done">Done</button></div>' +
+      '<div class="g-pad-q"></div><canvas aria-label="Work area for problem ' + N + '. Write with a stylus, a finger, or a mouse."></canvas></div>' +
       '<div class="g-thumbs"></div><div class="g-work-note" aria-live="polite"></div>';
     it.el.appendChild(box);
     var st = $('.g-work-st', box), pad = $('.g-pad', box), cv = $('canvas', box), ctx = cv.getContext('2d'), file = $('input[type=file]', box),
-        thumbs = $('.g-thumbs', box), wnote = $('.g-work-note', box), padBtn = $('[data-w="pad"]', box);
-    var tool = 'pen', cur = null, pid = null, penSeen = false, undoClear = null, timer = null;
+        thumbs = $('.g-thumbs', box), wnote = $('.g-work-note', box), padBtn = $('[data-w="pad"]', box),
+        tools = $('.g-tools', box), fullBtn = $('[data-t="full"]', box), padQ = $('.g-pad-q', box);
+    var tool = 'pen', cur = null, pid = null, penSeen = false, undoClear = null, timer = null, isFull = false, wentNative = false, viewH = 0;
+    padQ.textContent = 'Problem ' + it.num + ': ' + short(($('.stem', it.el) || it.el).textContent.replace(/^\s*\d+\s*/, ''), 140);
+    function fsEl(){ return document.fullscreenElement || document.webkitFullscreenElement || null; }
+    /* full screen: the pad covers the window (and asks the browser for true full screen where it is allowed) */
+    function setFull(on){
+      if (on === isFull) return;
+      end(); isFull = on; wentNative = false;
+      pad.classList.toggle('g-full', on); document.documentElement.classList.toggle('g-padfull', on);
+      fullBtn.textContent = on ? 'Exit full screen' : 'Full screen'; fullBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      if (on) {
+        var rq = pad.requestFullscreen || pad.webkitRequestFullscreen;
+        if (rq) { try { var pr = rq.call(pad); if (pr && pr.catch) pr.catch(function(){}); } catch(e){} }
+      } else if (fsEl() === pad) {
+        var ex = document.exitFullscreen || document.webkitExitFullscreen;
+        if (ex) { try { var px = ex.call(document); if (px && px.catch) px.catch(function(){}); } catch(e){} }
+      }
+      size(); setTimeout(size, 150);
+      if (!on) { box.scrollIntoView({ block: 'center' }); }
+      fullBtn.focus();
+    }
+    ['fullscreenchange', 'webkitfullscreenchange'].forEach(function(n){ document.addEventListener(n, function(){
+      if (fsEl() === pad) wentNative = true;
+      else if (isFull && wentNative) setFull(false);
+      setTimeout(size, 60);
+    }); });
+    document.addEventListener('keydown', function(e){ if (isFull && e.key === 'Escape') setFull(false); });
     function wsay(t){ wnote.textContent = t || ''; wnote.classList.toggle('show', !!t); }
     function full(){ wsay('That picture could not be saved on this device. Download your PDF before you leave this page.'); }
     function flush(){ if (!timer) return; clearTimeout(timer); timer = null; wput(id, full); }
@@ -1763,9 +1876,10 @@ var GRADE = (function(){
       var R = rec(id), parts = [];
       if (hasInk(id)) parts.push('written work');
       if (R.p.length) parts.push(R.p.length + (R.p.length === 1 ? ' photo' : ' photos'));
-      st.textContent = parts.length ? 'Saved: ' + parts.join(', ') : 'None yet';
+      st.textContent = parts.length ? 'Saved: ' + parts.join(', ') : 'Not added yet';
       st.classList.toggle('has', parts.length > 0);
-      padBtn.textContent = hasInk(id) ? 'Edit written work' : 'Write here';
+      if (parts.length) box.classList.remove('need');
+      padBtn.textContent = hasInk(id) ? 'Edit written work' : 'Write on screen';
     }
     function draw(){
       var R = rec(id), h = '';
@@ -1777,15 +1891,22 @@ var GRADE = (function(){
       if (pad.hidden) return;
       var w = cv.clientWidth; if (!w) return;
       var R = rec(id); if (!R.H) R.H = w < 500 ? Math.round(LW * 260 / w) : 300;
-      var dpr = Math.min(window.devicePixelRatio || 1, 2), hpx = Math.round(w * R.H / LW);
+      viewH = R.H;
+      if (isFull) viewH = Math.max(R.H, Math.floor((pad.clientHeight - tools.offsetHeight - padQ.offsetHeight - 44) * LW / w));   /* fill the screen; the saved height grows only if ink lands there */
+      var dpr = Math.min(window.devicePixelRatio || 1, 2), hpx = Math.round(w * viewH / LW);
       cv.style.height = hpx + 'px'; cv.width = Math.round(w * dpr); cv.height = Math.round(hpx * dpr);
       redraw();
     }
     function redraw(){ ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); var k = cv.width / LW; rec(id).s.forEach(function(s){ strokeTo(ctx, k, s); }); }
     function pos(e){ var r = cv.getBoundingClientRect(), k = LW / r.width; return [Math.round((e.clientX - r.left) * k * 10) / 10, Math.round((e.clientY - r.top) * k * 10) / 10, k]; }
     function open(){ pad.hidden = false; draw(); size(); if (!idbOK) wsay('This browser will not keep pictures after you leave the page. Download your PDF before you close it.'); }
-    function close(){ end(); pad.hidden = true; draw(); }
-    function end(){ if (!cur) return; rec(id).s.push(cur); cur = null; pid = null; undoClear = null; saveSoon(); }
+    function close(){ end(); if (isFull) setFull(false); pad.hidden = true; draw(); }
+    function end(){
+      if (!cur) return;
+      var R = rec(id), my = 0; for (var i = 1; i < cur.p.length; i += 2) if (cur.p[i] > my) my = cur.p[i];
+      if (!cur.e && my + 24 > R.H) R.H = Math.min(Math.max(viewH, R.H), Math.ceil(my) + 40);
+      R.s.push(cur); cur = null; pid = null; undoClear = null; saveSoon();
+    }
     cv.addEventListener('pointerdown', function(e){
       if (e.pointerType === 'pen') penSeen = true;
       if (e.pointerType === 'touch' && penSeen) return;
@@ -1814,7 +1935,8 @@ var GRADE = (function(){
       if (t === 'pen' || t === 'erase') { tool = t; $$('[data-t="pen"],[data-t="erase"]', box).forEach(function(x){ var on = x.dataset.t === t; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on ? 'true' : 'false'); }); cv.classList.toggle('erasing', t === 'erase'); }
       else if (t === 'undo') { if (undoClear) { R.s = undoClear; undoClear = null; } else R.s.pop(); redraw(); saveSoon(); }
       else if (t === 'clear') { if (R.s.length) { undoClear = R.s; R.s = []; redraw(); saveSoon(); } }
-      else if (t === 'more') { R.H = Math.min(1600, (R.H || 300) + 160); size(); saveSoon(); }
+      else if (t === 'more') { R.H = Math.min(2400, Math.max(R.H || 300, isFull ? viewH : 0) + 160); size(); saveSoon(); if (isFull) pad.scrollTop = pad.scrollHeight; }
+      else if (t === 'full') { setFull(!isFull); }
       else if (t === 'done') { close(); padBtn.focus(); }
     });
     $('.g-work-btns', box).addEventListener('click', function(e){
@@ -1871,18 +1993,19 @@ var GRADE = (function(){
   var CUSTOM = [], DONE = jget('g-done', {});
   function tabLabel(t){
     var b = $('.tab[data-tab="' + t + '"]'); if (!b) return t;
-    var n = $('.n', b), c = b.cloneNode(true); $$('.n', c).forEach(rm);
+    var n = $('.n', b), c = b.cloneNode(true); $$('.n, .g-tb', c).forEach(rm);
     return (n ? n.textContent.trim() + ' ' : '') + c.textContent.trim();
   }
   function units(){
     var U = [], seen = (STORE.get('seen') || '').split(','), qn = {};
-    function add(el, label, done){ var p = el && el.closest ? el.closest('.panel') : null; U.push({ tab: p ? p.id.slice(4) : PTAB, label: label, done: !!done }); }
-    TABS.forEach(function(t){ if (t !== PTAB) U.push({ tab: t, label: 'Open this tab', done: seen.indexOf(t) > -1 }); });
+    function add(el, label, done){ var p = el && el.closest ? el.closest('.panel') : null; U.push({ i: U.length, tab: p ? p.id.slice(4) : PTAB, label: label, done: !!done, el: el }); }
+    TABS.forEach(function(t){ if (t !== PTAB) U.push({ i: U.length, tab: t, label: 'Open this tab', done: seen.indexOf(t) > -1, el: null }); });
     $$('.mq, .mcq').forEach(function(el){
       if (el.closest('.pset')) return;
       var p = el.closest('.panel'), t = p ? p.id : '', r = itemRec(el);
       qn[t] = (qn[t] || 0) + 1;
-      add(el, 'Question ' + qn[t] + ': ' + short(($('.stem', el) || el).textContent, 60), r && ((r.tries || 0) > 0 || (r.tried || []).length > 0));
+      var sc = ($('.stem', el) || el).cloneNode(true); $$('.qn', sc).forEach(rm);
+      add(el, 'Question ' + qn[t] + ': ' + short(sc.textContent, 60), r && ((r.tries || 0) > 0 || (r.tried || []).length > 0));
     });
     $$('.ex').forEach(function(ex, xi){
       var n = $$('ol.steps > li', ex).length; if (!n) return;
@@ -1892,13 +2015,14 @@ var GRADE = (function(){
     $$('.checks li').forEach(function(li){ var c = li.cloneNode(true); $$('.bx', c).forEach(rm); add(li, 'Checklist: ' + short(c.textContent, 60), li.classList.contains('on')); });
     $$('textarea.jbox').forEach(function(el){ add(el, 'Written answer: ' + (el.dataset.label || el.id), words(el.value) >= Math.max(1, +(el.dataset.min || 0))); });
     CUSTOM.forEach(function(c){ add(c.el, c.label, DONE[c.id]); });
-    WORKQ.forEach(function(it){ add(it.el, 'Problem ' + it.num + ': show your work', hasWork(it.id)); });
+    WORKQ.forEach(function(it){ add($('.g-work', it.el) || it.el, 'Problem ' + it.num + ': show your work', hasWork(it.id)); });
     return U;
   }
   function tally(){
     var U = units(), by = {}, done = 0;
-    TABS.forEach(function(t){ by[t] = { tab: t, name: tabLabel(t), done: 0, n: 0, left: [] }; });
-    U.forEach(function(u){ var b = by[u.tab] || by[PTAB]; b.n++; if (u.done) { b.done++; done++; } else b.left.push(u.label); });
+    TABS.forEach(function(t){ by[t] = { tab: t, name: tabLabel(t), done: 0, n: 0, left: [], leftI: [] }; });
+    U.forEach(function(u){ var b = by[u.tab] || by[PTAB]; b.n++; if (u.done) { b.done++; done++; } else { b.left.push(u.label); b.leftI.push(u.i); } });
+    TABS.forEach(function(t){ var b = by[t]; b.pts = U.length ? CP * b.done / U.length : 0; b.max = U.length ? CP * b.n / U.length : 0; });
     var comp = U.length ? CP * done / U.length : 0, corr = KP * avg();
     return { rows: TABS.map(function(t){ return by[t]; }).filter(function(b){ return b.n; }), done: done, n: U.length,
              comp: r1(comp), corr: r1(corr), total: r1(r1(comp) + r1(corr)), max: r1(CP + KP) };
@@ -1918,20 +2042,57 @@ var GRADE = (function(){
     host.insertBefore(side, host.firstChild);
   })();
   compEl.addEventListener('toggle', function(e){ if (e.target.tagName === 'DETAILS') leftOpen = e.target.open; }, true);
+  function f2(x){ return (Math.round(x * 100 + 1e-9) / 100).toFixed(2); }
+  /* a count on every tab button and a strip at the foot of every tab */
+  var SEG = {}, BADGE = {};
+  $$('.tab').forEach(function(b){ var s = document.createElement('span'); s.className = 'g-tb'; b.appendChild(s); BADGE[b.dataset.tab] = s; });
+  TABS.forEach(function(t){
+    if (t === PTAB) return;
+    var p = $('#tab-' + t); if (!p) return;
+    var d = document.createElement('div'); d.className = 'g-seg'; d.setAttribute('aria-live', 'polite');
+    var nx = $$('.next', p).pop();
+    if (nx && nx.parentNode) nx.parentNode.insertBefore(d, nx); else p.appendChild(d);
+    SEG[t] = { el: d, last: '' };
+  });
+  function jumpBtn(tabName, label, i){ return '<li><button type="button" class="g-jump" data-j="' + i + '">' + (tabName ? '<b>' + esc(tabName) + '</b> · ' : '') + esc(label) + '</button></li>'; }
+  function jump(i){
+    var u = units()[i]; if (!u) return;
+    switchTab(u.tab, true);
+    setTimeout(function(){
+      var el = u.el && u.el.offsetParent ? u.el : $('#tab-' + u.tab); if (!el) return;
+      el.scrollIntoView({ block: u.el && u.el.offsetParent ? 'center' : 'start' });
+      el.classList.add('g-flash'); setTimeout(function(){ el.classList.remove('g-flash'); }, 1800);
+    }, 60);
+  }
+  document.addEventListener('click', function(e){ var b = e.target.closest && e.target.closest('.g-jump'); if (b) jump(+b.dataset.j); });
+  function paintSeg(T){
+    T.rows.forEach(function(b){
+      var all = b.done === b.n, bd = BADGE[b.tab];
+      if (bd) { var bt = all ? '✓' : b.done + '/' + b.n; if (bd.textContent !== bt) bd.textContent = bt; bd.classList.toggle('ok', all); bd.title = b.done + ' of ' + b.n + ' parts done'; }
+      var sg = SEG[b.tab]; if (!sg) return;
+      var h = '<div class="g-seg-h"><span class="label">This tab</span><span class="g-seg-n">' + (all ? '✓ ' : '') + b.done + ' of ' + b.n + ' parts done</span><span class="g-seg-p">' + f2(b.pts) + ' of ' + f2(b.max) + ' completion points</span></div>';
+      if (!all) h += '<div class="g-seg-l"><span class="g-seg-k">Not done</span><ul>' + b.left.map(function(l, k){ return jumpBtn('', l, b.leftI[k]); }).join('') + '</ul></div>';
+      if (h !== sg.last) { sg.el.innerHTML = h; sg.last = h; sg.el.classList.toggle('ok', all); }
+    });
+  }
   function refresh(){
     var T = tally();
     var sh = '<div><b>' + f1(T.comp) + '<small> / ' + CP + '</small></b>completion</div><div><b>' + f1(T.corr) + '<small> / ' + KP + '</small></b>problem set</div><div class="g-total"><b>' + f1(T.total) + '<small> / ' + T.max + '</small></b>lesson score</div>';
     if (scoreEl && sh !== lastScore) { scoreEl.innerHTML = sh; lastScore = sh; }
     var pctDone = T.n ? 100 * T.done / T.n : 0, bd = band(pctDone);
-    var th = '<span class="k">Completion</span><b>' + f1(T.comp) + '</b><span class="of">of ' + CP + ' points</span><span class="pct">' + Math.floor(pctDone + 1e-9) + '%</span>';
-    if (th !== lastTally || side.dataset.band !== bd) { side.innerHTML = th; side.dataset.band = bd; lastTally = th; side.setAttribute('aria-label', 'Completion: ' + f1(T.comp) + ' of ' + CP + ' points, ' + Math.floor(pctDone + 1e-9) + ' percent'); }
+    var th = '<span class="k">Lesson points</span><b>' + f1(T.total) + '</b><span class="of">of ' + T.max + '</span>' +
+      '<span class="row"><i>Completion</i><u>' + f1(T.comp) + ' / ' + CP + '</u></span><span class="row"><i>Problem Set</i><u>' + (S.subs.length ? f1(T.corr) : '–') + ' / ' + KP + '</u></span>' +
+      '<span class="pct">' + T.done + ' of ' + T.n + ' parts done</span>';
+    if (th !== lastTally || side.dataset.band !== bd) { side.innerHTML = th; side.dataset.band = bd; lastTally = th;
+      side.setAttribute('aria-label', 'Lesson points: ' + f1(T.total) + ' of ' + T.max + '. Completion ' + f1(T.comp) + ' of ' + CP + ', ' + T.done + ' of ' + T.n + ' parts done. Problem Set ' + (S.subs.length ? f1(T.corr) + ' of ' + KP : 'not submitted') + '.'); }
+    paintSeg(T);
     var h = '<table class="g-ct"><caption>Completion: ' + T.done + ' of ' + T.n + '</caption><tbody>', left = [];
     T.rows.forEach(function(b){
       h += '<tr' + (b.done === b.n ? ' class="ok"' : '') + '><td>' + esc(b.name) + '</td><td>' + b.done + ' / ' + b.n + '</td></tr>';
-      b.left.forEach(function(l){ left.push('<li><b>' + esc(b.name) + '</b> · ' + esc(l) + '</li>'); });
+      b.left.forEach(function(l, k){ left.push(jumpBtn(b.name, l, b.leftI[k])); });
     });
     h += '</tbody></table>';
-    if (left.length) h += '<details><summary>Still to do (' + left.length + ')</summary><ul>' + left.join('') + '</ul></details>';
+    if (left.length) h += '<details><summary>Not done (' + left.length + ')</summary><ul class="g-jl">' + left.join('') + '</ul></details>';
     if (h !== lastComp) { compEl.innerHTML = h; lastComp = h; var dt = $('details', compEl); if (dt && leftOpen) dt.open = true; }
     return T;
   }
@@ -2017,7 +2178,31 @@ var GRADE = (function(){
     else { imgs.forEach(function(im){ if (im.complete) one(); else { im.onload = one; im.onerror = one; } }); setTimeout(go, 5000); }
   }
   /* the PDF buttons were bound to core's printer: swap them for clean copies bound to this one */
-  $$('[data-pdf]').forEach(function(b){ var n = b.cloneNode(true); b.parentNode.replaceChild(n, b); n.addEventListener('click', print); });
+  /* Download: if anything is not done, say what, and let the student go back or download as is */
+  var endEl = document.createElement('div'); endEl.className = 'card g-end'; endEl.hidden = true; endEl.setAttribute('role', 'alertdialog'); endEl.setAttribute('aria-label', 'Parts of this lesson are not done');
+  if (bar) PS.insertBefore(endEl, bar); else PS.appendChild(endEl);
+  function endCheck(){
+    var T = tally(), li = [];
+    T.rows.forEach(function(b){ b.left.forEach(function(l, k){ li.push(jumpBtn(b.name, l, b.leftI[k])); }); });
+    var noSub = !S.subs.length, more = !noSub && S.subs.length < MAXA;
+    if (!li.length && !noSub) { endEl.hidden = true; print(); return; }
+    var h = '<div class="g-end-h"><span class="label">Before you download</span><span class="g-end-n">' + f1(T.total) + ' of ' + T.max + ' points so far</span></div>';
+    if (li.length) h += '<p class="g-end-k">Not done: ' + li.length + (li.length === 1 ? ' part' : ' parts') + ' · ' + f1(CP - T.comp) + ' completion ' + (r1(CP - T.comp) === 1 ? 'point' : 'points') + ' missing</p><ul class="g-jl">' + li.join('') + '</ul>';
+    if (noSub) h += '<p class="g-end-k">Problem Set: no attempt submitted · 0 of ' + KP + ' points</p>';
+    else if (more && li.length) h += '<p class="g-end-m">Problem Set: ' + S.subs.length + ' of ' + MAXA + ' attempts used</p>';
+    h += '<div class="g-act"><button class="btn" type="button" data-e="back">Go back and finish</button><button class="btn ghost" type="button" data-e="go">Download as is</button></div>';
+    endEl.innerHTML = h; endEl.hidden = false;
+    endEl.scrollIntoView({ block: 'center' }); var fb = $('[data-e="back"]', endEl); if (fb) fb.focus();
+  }
+  endEl.addEventListener('click', function(e){
+    var b = e.target.closest('[data-e]');
+    if (e.target.closest('.g-jump')) { endEl.hidden = true; return; }
+    if (!b) return;
+    endEl.hidden = true;
+    if (b.dataset.e === 'go') print();
+    else { var j = $('.g-jump', endEl); if (j) jump(+j.dataset.j); else if (ITEMS[0]) ITEMS[0].el.scrollIntoView({ block: 'start' }); }
+  });
+  $$('[data-pdf]').forEach(function(b){ var n = b.cloneNode(true); b.parentNode.replaceChild(n, b); n.addEventListener('click', endCheck); });
 
   /* ================= boot ================= */
   paintAll();
@@ -2027,9 +2212,47 @@ var GRADE = (function(){
     /* a page widget registers a completion unit, then marks it when the student has finished it */
     unit: function(id, label, el){ CUSTOM.push({ id: id, label: label, el: el }); refreshSoon(); },
     mark: function(id){ if (DONE[id]) return; DONE[id] = 1; jset('g-done', DONE); refreshSoon(); },
-    tally: tally, band: band, pdf: pdfDoc, state: function(){ return S; }, work: function(){ return WORK; }
+    tally: tally, band: band, pdf: pdfDoc, print: print, state: function(){ return S; }, work: function(){ return WORK; }
   };
 })();
+</script>
+<script>
+/* AI prompt workshop (optional, never graded): a box to draft and revise a prompt on the page, then copy it into any AI tool.
+   Markup: <div class="aiw" data-id="l1-aiw" data-sample="a starting prompt" data-ph="placeholder"></div>
+   buildHS.py adds this file (and aiw.css) only to pages whose body holds class="aiw". The draft is kept in the page's own storage. */
+$$('.aiw').forEach(function(box){
+  var key = 'aiw-' + (box.dataset.id || 'x'), sample = (box.dataset.sample || '').trim();
+  box.innerHTML = '<div class="aiw-h"><span class="label">Workshop your AI prompt</span><span class="aiw-opt">Optional</span></div>' +
+    '<p class="aiw-how">Draft and revise your prompt here. Then copy it and paste it into the AI tool you choose.</p>' +
+    '<textarea class="aiw-in" rows="5" spellcheck="true" aria-label="Your AI prompt draft" placeholder="' + esc(box.dataset.ph || 'Type your prompt') + '"></textarea>' +
+    '<div class="aiw-act"><button type="button" class="btn small" data-a="copy">Copy prompt</button>' +
+    (sample ? '<button type="button" class="btn ghost small" data-a="sample">Start from the sample prompt</button>' : '') +
+    '<button type="button" class="btn ghost small" data-a="clear">Clear</button><span class="aiw-st" aria-live="polite"></span></div>';
+  var ta = $('.aiw-in', box), st = $('.aiw-st', box), copyBtn = $('[data-a="copy"]', box), clearBtn = $('[data-a="clear"]', box), undo = null;
+  ta.value = STORE.get(key) || '';
+  function say(t){ st.textContent = t || ''; }
+  function sync(){ var has = ta.value.trim().length > 0; copyBtn.disabled = !has; clearBtn.disabled = !has && undo === null; clearBtn.textContent = !has && undo !== null ? 'Undo clear' : 'Clear'; }
+  function keep(){ STORE.set(key, ta.value); sync(); }
+  ta.addEventListener('input', function(){ undo = null; say(''); keep(); });
+  box.addEventListener('click', function(e){
+    var b = e.target.closest('[data-a]'); if (!b) return;
+    var a = b.dataset.a;
+    if (a === 'copy') {
+      var t = ta.value.trim(); if (!t) return;
+      var ok = function(){ say('Copied. Paste it into your AI tool.'); };
+      var old = function(){ ta.focus(); ta.select(); var done = false; try { done = document.execCommand('copy'); } catch(x){} if (done) ok(); else say('Select the text and copy it.'); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, old); else old();
+    } else if (a === 'sample') {
+      if (ta.value.trim() && ta.value.trim() !== sample) { undo = ta.value; }
+      ta.value = sample; say(''); keep(); ta.focus();
+    } else if (a === 'clear') {
+      if (!ta.value.trim() && undo !== null) { ta.value = undo; undo = null; }
+      else { undo = ta.value; ta.value = ''; }
+      say(''); keep(); ta.focus();
+    }
+  });
+  sync();
+});
 </script>
 <script>
 /* l3: the checklist marks each failed check as he names it, then the repaired chart replaces the careless one */
