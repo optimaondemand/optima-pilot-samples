@@ -459,9 +459,27 @@ ul.g-jl{margin-top:8px}
 .aiw-how{margin:0 0 10px;font:14px/1.5 var(--ui);color:var(--ink)}
 .aiw-in{display:block;width:100%;min-height:120px;resize:vertical;border:1px solid var(--line2);border-radius:8px;background:#fff;padding:12px 14px;font:16px/1.55 var(--ui);color:var(--ink)}
 .aiw-in:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--blue-t)}
-.aiw-act{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.aiw.flagged .aiw-in{border-color:var(--red)}
+.aiw-act{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
 .aiw-st{font:600 13.5px/1.4 var(--ui);color:var(--ok)}
-@media print{.aiw-act{display:none}}
+/* flag: wording that hands the thinking to the tool */
+.aiw [hidden]{display:none!important}
+.aiw-flag{margin-top:10px;padding:10px 14px;border:1px solid var(--red);border-left:4px solid var(--red);border-radius:0 8px 8px 0;background:var(--red-t);font:14px/1.5 var(--ui);color:var(--ink)}
+.aiw-flag-h{font:700 14.5px/1.35 var(--ui);color:var(--red);margin-bottom:4px}
+.aiw-flag ul{margin:0;padding-left:18px}
+.aiw-flag li{margin:3px 0}
+.aiw-flag li b{font-weight:600}
+/* suggestions: ticked when the draft has that part */
+.aiw-tips{margin-top:12px}
+.aiw-tips .label{display:block;margin:0 0 6px}
+.aiw-tips ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:6px 18px}
+.aiw-tips li{position:relative;padding-left:26px;font:14px/1.4 var(--ui);color:var(--ink)}
+.aiw-tips li::before{content:"";position:absolute;left:0;top:1px;width:16px;height:16px;border:1.5px solid var(--line2);border-radius:50%;background:#fff}
+.aiw-tips li.ok::before{content:"\2713";border-color:var(--ok);background:var(--ok);color:#fff;font:700 11px/16px var(--ui);text-align:center}
+.aiw-tips li b{display:block;font-weight:600}
+.aiw-tips li span{display:block;color:var(--muted);font-size:13.5px}
+.aiw-tips li.ok span{color:var(--ok)}
+@media print{.aiw-act,.aiw-tips,.aiw-flag{display:none}}
 </style>
 <style>
 /* hero figure: a zero-baseline bar chart */
@@ -2219,40 +2237,108 @@ var GRADE = (function(){
 <script>
 /* AI prompt workshop (optional, never graded): a box to draft and revise a prompt on the page, then copy it into any AI tool.
    Markup: <div class="aiw" data-id="l1-aiw" data-sample="a starting prompt" data-ph="placeholder"></div>
-   buildHS.py adds this file (and aiw.css) only to pages whose body holds class="aiw". The draft is kept in the page's own storage. */
-$$('.aiw').forEach(function(box){
-  var key = 'aiw-' + (box.dataset.id || 'x'), sample = (box.dataset.sample || '').trim();
-  box.innerHTML = '<div class="aiw-h"><span class="label">Workshop your AI prompt</span><span class="aiw-opt">Optional</span></div>' +
-    '<p class="aiw-how">Draft and revise your prompt here. Then copy it and paste it into the AI tool you choose.</p>' +
-    '<textarea class="aiw-in" rows="5" spellcheck="true" aria-label="Your AI prompt draft" placeholder="' + esc(box.dataset.ph || 'Type your prompt') + '"></textarea>' +
-    '<div class="aiw-act"><button type="button" class="btn small" data-a="copy">Copy prompt</button>' +
-    (sample ? '<button type="button" class="btn ghost small" data-a="sample">Start from the sample prompt</button>' : '') +
-    '<button type="button" class="btn ghost small" data-a="clear">Clear</button><span class="aiw-st" aria-live="polite"></span></div>';
-  var ta = $('.aiw-in', box), st = $('.aiw-st', box), copyBtn = $('[data-a="copy"]', box), clearBtn = $('[data-a="clear"]', box), undo = null;
-  ta.value = STORE.get(key) || '';
-  function say(t){ st.textContent = t || ''; }
-  function sync(){ var has = ta.value.trim().length > 0; copyBtn.disabled = !has; clearBtn.disabled = !has && undo === null; clearBtn.textContent = !has && undo !== null ? 'Undo clear' : 'Clear'; }
-  function keep(){ STORE.set(key, ta.value); sync(); }
-  ta.addEventListener('input', function(){ undo = null; say(''); keep(); });
-  box.addEventListener('click', function(e){
-    var b = e.target.closest('[data-a]'); if (!b) return;
-    var a = b.dataset.a;
-    if (a === 'copy') {
-      var t = ta.value.trim(); if (!t) return;
-      var ok = function(){ say('Copied. Paste it into your AI tool.'); };
-      var old = function(){ ta.focus(); ta.select(); var done = false; try { done = document.execCommand('copy'); } catch(x){} if (done) ok(); else say('Select the text and copy it.'); };
-      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, old); else old();
-    } else if (a === 'sample') {
-      if (ta.value.trim() && ta.value.trim() !== sample) { undo = ta.value; }
-      ta.value = sample; say(''); keep(); ta.focus();
-    } else if (a === 'clear') {
-      if (!ta.value.trim() && undo !== null) { ta.value = undo; undo = null; }
-      else { undo = ta.value; ta.value = ''; }
-      say(''); keep(); ta.focus();
-    }
+   buildHS.py adds this file (and aiw.css) only to pages whose body holds class="aiw". The draft is kept in the page's own storage.
+   Prompt check (runs on the page, by rules; nothing is sent anywhere):
+   - Suggestions: five parts of a stronger prompt, each ticked when the draft has it.
+   - Flag: wording that hands the thinking to the tool (asks for answers, asks to skip the reasoning, asks it to write the student's
+     answer, or pastes a Problem Set question word for word). The flag informs; it never blocks Copy. */
+(function(){
+  function norm(s){ return String(s).toLowerCase().replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/\s+/g, ' ').trim(); }
+  function toks(s){ return norm(s).replace(/[^a-z0-9 ]+/g, ' ').split(' ').filter(Boolean); }
+  /* every run of six words in the Problem Set's questions and data, to spot one pasted into a prompt */
+  var GRAMS = {}, NG = 6;
+  $$('.pset .stem, .pset .prose, .pset .rawbox, .pset .opt').forEach(function(el){
+    var c = el.cloneNode(true); $$('.qn', c).forEach(function(x){ x.parentNode.removeChild(x); });
+    var w = toks(c.textContent);
+    for (var i = 0; i + NG <= w.length; i++) GRAMS[w.slice(i, i + NG).join(' ')] = 1;
   });
-  sync();
-});
+  function pasted(t){
+    var w = toks(t);
+    for (var i = 0; i + NG <= w.length; i++) if (GRAMS[w.slice(i, i + NG).join(' ')]) return w.slice(i, i + NG).join(' ');
+    return '';
+  }
+
+  var TIPS = [
+    { k: 'task', t: 'Name the task', eg: 'Start with a verb: classify, build, compare, check.',
+      ok: function(t, n){ return n >= 4 && /\b(classify|build|make|create|compare|check|explain|describe|find|calculate|compute|list|sort|identify|decide|choose|label|tell|show|which|what|why|how|does|would)\b/.test(t); } },
+    { k: 'data', t: 'Give the data', eg: 'List or paste exactly what the tool should work from.',
+      ok: function(t, n){ return n >= 10 && (/[:;]/.test(t) || (t.match(/,/g) || []).length >= 2 || /\d/.test(t)); } },
+    { k: 'why', t: 'Ask for the reasoning', eg: 'Add “give a reason for each” or “show the steps.”',
+      ok: function(t){ return !SKIP.test(t) && /\b(why|reasons?|reasoning|explain|explanation|justify|because|step by step|show (?:the |your |each |every )?(?:steps?|work)|how (?:do|did|would|can) (?:you|i|we))\b/.test(t); } },
+    { k: 'form', t: 'Say what you want back', eg: 'A table, a list, one sentence for each.',
+      ok: function(t){ return /\b(table|list|columns?|rows?|sentences?|bullets?|labels?|for each|each one|one word|step by step|steps|totals?|decimal places?|format)\b/.test(t); } },
+    { k: 'own', t: 'Start from your own answer', eg: 'Add “Here is my answer: … Check it and explain any mistake.”',
+      ok: function(t){ return /\b(i think|i thought|i got|i predicted|i chose|i picked|i said|i labell?ed|i counted|i tallied|i found|i classified|my (?:answers?|table|counts?|tally|prediction|work|reasoning|labels?|chart|graph)|here (?:is|are) my|check my|am i (?:right|correct)|did i)\b/.test(t); } }
+  ];
+  var ANS = /\b(?:give|tell|show|send|get)(?: me)?(?: just| only)?(?: all)?(?: of)? the (?:correct |right |final )?answers?\b|\bwhat(?:'s| is| are) the (?:correct |right |final )?answers?\b|\banswers? (?:to|for) (?:all |each of )?(?:the |my |this |these |those )?(?:problems?|questions?|homework|quiz|worksheet|problem set|assignment|lesson|numbers?)\b|\b(?:do|finish|complete) (?:my|this|the|these) (?:homework|assignment|problem set|problems|questions|worksheet|lesson|work)\b|\bsolve (?:this|these|it|them|all|the|my|problems?|questions?|numbers?)\b|\bjust (?:the )?answers?\b|\banswer (?:this|these|it|them|the questions?|the problems?|all)\b|\banswer key\b/;
+  var SKIP = /\b(?:no|without|skip(?: the)?|don't|do not|dont)(?: need(?: any| an)?| give(?: me)?| show(?: me)?| include)?(?: any| an| the)? (?:explanations?|explaining|explain|reasoning|reasons?|steps|work)\b|\b(?:just|only) the (?:final )?(?:numbers?|results?)\b/;
+  var WRITE = /\bwrite (?:me |out )?(?:my|the|a|an|two|2|three|3)(?: \w+)? (?:answer|response|explanation|paragraph|sentences?|essay|reflection)\b/;
+  function hit(re, t){
+    var m = re.exec(t); if (!m) return '';
+    var pre = t.slice(Math.max(0, m.index - 12), m.index);
+    if (/\b(?:my|check|checking) $/.test(pre) || /^my /.test(m[0].replace(/^answers? (?:to|for) /, ''))) return '';   /* "here are my answers to the problems", "check the answers" are the student's own */
+    return m[0];
+  }
+  function check(raw){
+    var t = norm(raw), n = toks(raw).length, flags = [];
+    if (t) {
+      var a = hit(ANS, t), s = (SKIP.exec(t) || [''])[0], w = (WRITE.exec(t) || [''])[0], p = pasted(raw);
+      if (a) flags.push({ k: 'answers', h: 'Asks for answers', q: a, d: 'Work the problem first. Then ask the tool to check your answer or explain one step.' });
+      if (s) flags.push({ k: 'skip', h: 'Asks the tool to skip the reasoning', q: s, d: 'Without its reasons, you cannot check whether it is right.' });
+      if (w) flags.push({ k: 'write', h: 'Asks the tool to write your answer', q: w, d: 'Written answers on this page are yours to write. Ask for feedback on your draft.' });
+      if (p) flags.push({ k: 'pset', h: 'Includes a Problem Set question word for word', q: p + '…', d: 'The Problem Set is graded on your own work.' });
+    }
+    return { flags: flags, tips: TIPS.map(function(x){ return { k: x.k, t: x.t, eg: x.eg, ok: !!t && x.ok(t, n) }; }) };
+  }
+  window.AIW = { check: check };
+
+  $$('.aiw').forEach(function(box){
+    var key = 'aiw-' + (box.dataset.id || 'x'), sample = (box.dataset.sample || '').trim();
+    box.innerHTML = '<div class="aiw-h"><span class="label">Workshop your AI prompt</span><span class="aiw-opt">Optional</span></div>' +
+      '<p class="aiw-how">Draft and revise your prompt here. Then copy it and paste it into the AI tool you choose.</p>' +
+      '<textarea class="aiw-in" rows="5" spellcheck="true" aria-label="Your AI prompt draft" placeholder="' + esc(box.dataset.ph || 'Type your prompt') + '"></textarea>' +
+      '<div class="aiw-flag" role="status" aria-live="polite" hidden></div>' +
+      '<div class="aiw-tips"><span class="label">Suggestions for a stronger prompt</span><ul></ul></div>' +
+      '<div class="aiw-act"><button type="button" class="btn small" data-a="copy">Copy prompt</button>' +
+      (sample ? '<button type="button" class="btn ghost small" data-a="sample">Start from the sample prompt</button>' : '') +
+      '<button type="button" class="btn ghost small" data-a="clear">Clear</button><span class="aiw-st" aria-live="polite"></span></div>';
+    var ta = $('.aiw-in', box), st = $('.aiw-st', box), copyBtn = $('[data-a="copy"]', box), clearBtn = $('[data-a="clear"]', box),
+        flagEl = $('.aiw-flag', box), tipsEl = $('.aiw-tips ul', box), undo = null, lastF = '', lastT = '', tm = null;
+    ta.value = STORE.get(key) || '';
+    function say(t){ st.textContent = t || ''; }
+    function review(){
+      var R = check(ta.value), f = '', h = '';
+      if (R.flags.length) {
+        f = '<div class="aiw-flag-h">This prompt hands your thinking to the AI tool</div><ul>' + R.flags.map(function(x){
+          return '<li data-f="' + x.k + '"><b>' + esc(x.h) + ':</b> “' + esc(x.q) + '”. ' + esc(x.d) + '</li>'; }).join('') + '</ul>';
+      }
+      if (f !== lastF) { flagEl.innerHTML = f; flagEl.hidden = !f; lastF = f; box.classList.toggle('flagged', !!f); }
+      R.tips.forEach(function(x){ h += '<li class="' + (x.ok ? 'ok' : 'todo') + '" data-tip="' + x.k + '"><b>' + esc(x.t) + '</b><span>' + (x.ok ? 'In your prompt' : esc(x.eg)) + '</span></li>'; });
+      if (h !== lastT) { tipsEl.innerHTML = h; lastT = h; }
+    }
+    function sync(){ var has = ta.value.trim().length > 0; copyBtn.disabled = !has; clearBtn.disabled = !has && undo === null; clearBtn.textContent = !has && undo !== null ? 'Undo clear' : 'Clear'; }
+    function keep(){ STORE.set(key, ta.value); sync(); clearTimeout(tm); tm = setTimeout(review, 250); }
+    ta.addEventListener('input', function(){ undo = null; say(''); keep(); });
+    box.addEventListener('click', function(e){
+      var b = e.target.closest('[data-a]'); if (!b) return;
+      var a = b.dataset.a;
+      if (a === 'copy') {
+        var t = ta.value.trim(); if (!t) return;
+        var ok = function(){ say('Copied. Paste it into your AI tool.'); };
+        var old = function(){ ta.focus(); ta.select(); var done = false; try { done = document.execCommand('copy'); } catch(x){} if (done) ok(); else say('Select the text and copy it.'); };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(ok, old); else old();
+      } else if (a === 'sample') {
+        if (ta.value.trim() && ta.value.trim() !== sample) { undo = ta.value; }
+        ta.value = sample; say(''); keep(); review(); ta.focus();
+      } else if (a === 'clear') {
+        if (!ta.value.trim() && undo !== null) { ta.value = undo; undo = null; }
+        else { undo = ta.value; ta.value = ''; }
+        say(''); keep(); review(); ta.focus();
+      }
+    });
+    sync(); review();
+  });
+})();
 </script>
 <script>
 /* l3: the checklist marks each failed check as he names it, then the repaired chart replaces the careless one */
